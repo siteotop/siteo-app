@@ -1,1 +1,1 @@
-import {SiteoCoreInstall} from 'core/index';
+import {SiteoCoreInstall} from './core/index';

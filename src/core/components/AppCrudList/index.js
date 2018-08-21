@@ -1,8 +1,7 @@
 
-import CrudCore from 'core/components/AppCrudList/mixins/core.js';
-import GroupChangeable from 'core/components/AppCrudList/mixins/group.js';
-//var _findIndex = require('lodash/findIndex');
-import {HelperChooiceVariantMenu} from 'core/components/helper/MenuActions';
+import CrudCore from './AppCrudList/mixins/core.js';
+import GroupChangeable from './AppCrudList/mixins/group.js';
+import {HelperChooiceVariantMenu} from '../helper/MenuActions';
 export default {
 
     mixins: [CrudCore, GroupChangeable],
@@ -83,7 +82,7 @@ export default {
 
         },
 
-      
+
         /**
            render  item  confirmation before delete
         */

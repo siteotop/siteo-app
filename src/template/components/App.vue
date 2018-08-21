@@ -1,5 +1,5 @@
 <script>
-import {APP_ID} from 'core/config';
+import {APP_ID} from '../../core/config';
 
 import * as  AppStructure from './Structure';
 export default {

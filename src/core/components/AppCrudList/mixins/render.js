@@ -1,13 +1,11 @@
 
 
 
-import AppComponentToolbar from 'core/components/AppComponentToolbar';
-import MixinLocalMessages from 'core/components/mixins/LocalMessages.js';
+import AppComponentToolbar from '../../AppComponentToolbar';
+import MixinLocalMessages from '../../mixins/LocalMessages.js';
+import AppConfirm from '../../AppConfirm.vue' ;
+import AppForm from '../../AppForm';
 
-import AppConfirm from 'core/components/AppConfirm.vue' ;
-import AppForm from 'core/components/AppForm';
-//import MixinMenuDown from 'core/components/mixins/MenuDown.js'
-//import MixinMenuList from 'core/components/mixins/MenuList.js'
 
 export default {
 

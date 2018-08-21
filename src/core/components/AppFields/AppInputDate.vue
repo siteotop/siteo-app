@@ -31,13 +31,10 @@
 //https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#readme
 //import VueTextMask, {conformToMask}  from  'vue-text-mask';
 
-import AbstractInput from 'core/components/AppFields/mixins/input.js';
-import AppInputText  from 'core/components/AppFields/AppInputText.vue';
-
-import {format, unFormat} from 'core/utils/date-format';
-
-
-import 'core/icons/js/event';
+import AbstractInput from './mixins/input.js';
+import AppInputText  from './AppInputText.vue';
+import {format, unFormat} from '../../utils/date-format';
+import '../../icons/js/event';
 
 export default {
 

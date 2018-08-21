@@ -1,5 +1,6 @@
-import CrudCore from 'core/components/AppCrudList/mixins/core.js';
-import {HelperMenuListRenderMenu, HelperMenuDownRenderMenu} from 'core/components/helper/MenuActions';
+import CrudCore from '../AppCrudList/mixins/core.js';
+import {HelperMenuListRenderMenu, HelperMenuDownRenderMenu} from '../helper/MenuActions';
+
 export default {
 
     mixins: [CrudCore],

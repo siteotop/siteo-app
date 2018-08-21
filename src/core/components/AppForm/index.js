@@ -4,13 +4,13 @@ var _mapValues = require('lodash/mapValues'); // get some values from objects
 
 
 
-import Loader from 'core/components/mixins/component-loading.js';
-import StoreDefault from 'core/components/AppForm/mixins/store.js';
-import Validator from 'core/components/AppForm/mixins/validator.js';
-import FormPrepare from 'core/components/AppForm/mixins/prepare.js';
-import FormRender from 'core/components/AppForm/mixins/render.js';
+import Loader from '../mixins/component-loading.js';
+import StoreDefault from './mixins/store.js';
+import Validator from './mixins/validator.js';
+import FormPrepare from './mixins/prepare.js';
+import FormRender from './mixins/render.js';
 
-import ChunkLoader from 'core/components/mixins/loader-i18-chunk.js';
+import ChunkLoader from '../mixins/loader-i18-chunk.js';
 
 
 

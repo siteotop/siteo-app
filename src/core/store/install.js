@@ -1,10 +1,10 @@
 import Vuex from 'vuex';
 
-import SystemMessages from 'core/store/messages.js';
+import SystemMessages from './messages.js';
 
-import i18n from 'core/store/i18n.js';
-import createInstance from 'core/store/instance.js';
-import { actions}  from 'core/store/helpers/api-actions';
+import i18n from './i18n.js';
+import createInstance from './instance.js';
+import { actions}  from './helpers/api-actions';
 
 export default function (Vue, instance )  {
        Vue.use(Vuex);

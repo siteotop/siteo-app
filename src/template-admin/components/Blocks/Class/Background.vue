@@ -43,7 +43,7 @@
 
 import MDPalette from '../../ColorPalette/MDPalette.vue'
 import ThemePalette from '../../ColorPalette/ThemePalette.vue'
-import MixinVModelInput from 'template-admin/components/Settings/mixins/v-model-input';
+import MixinVModelInput from '../../mixins/v-model-input';
 export default {
 
     $type: 'background',

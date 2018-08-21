@@ -1,5 +1,5 @@
 
-import * as  AppStructure from 'template/components/Structure';
+import * as  AppStructure from './index.js';
 
 export const  createSettComponent = function (componentName,  componentObject ) {
 

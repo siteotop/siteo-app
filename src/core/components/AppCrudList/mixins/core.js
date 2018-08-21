@@ -1,8 +1,8 @@
 
-import CrudRenderCore from 'core/components/AppCrudList/mixins/render.js';
-import LoadModule from 'core/components/mixins/loader-store-module.js';
-import Loader from 'core/components/mixins/component-loading.js';
-import ChunkLoader from 'core/components/mixins/loader-i18-chunk.js';
+import CrudRenderCore from './render.js';
+import LoadModule from '../../mixins/loader-store-module.js';
+import Loader from '../..//mixins/component-loading.js';
+import ChunkLoader from '../..//mixins/loader-i18-chunk.js';
 
 export default {
     mixins: [CrudRenderCore, LoadModule,  Loader, ChunkLoader],
@@ -65,7 +65,7 @@ export default {
 
       setDeleteItem(elementId) {
           this.deletedItem = elementId;
-          //this.setDialog('confirm');
+
       },
 
       /**
@@ -77,24 +77,17 @@ export default {
       },
 
 
-
-
-
-
-
       getCRUDList() {
-            // if we have props
 
-
-            this.startLoading();
-            var self = this;
-            this.$store.dispatch(this.$_LoadModule_getStoreLink('getList')).then(items=>{
-                self.items = items; // self.prepareItems(admins);
-                self.stopLoading();
-            }).catch(error=>{
-               self.$_LocalMessages_add(  self.$store.getters.DICTIONARY_KEY('list_no_load'), 'error');
-               self.stopLoading();
-            });
+          this.startLoading();
+          var self = this;
+          this.$store.dispatch(this.$_LoadModule_getStoreLink('getList')).then(items=>{
+              self.items = items; // self.prepareItems(admins);
+              self.stopLoading();
+          }).catch(error=>{
+             self.$_LocalMessages_add(  self.$store.getters.DICTIONARY_KEY('list_no_load'), 'error');
+             self.stopLoading();
+          });
 
       },
 

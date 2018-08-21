@@ -1,5 +1,5 @@
 
-import {FORMAT_DATE, FORMAT_MASK} from 'core/config';
+import {FORMAT_DATE, FORMAT_MASK} from '../../../config';
 
 export const  CreateForm = function (form,context){
 

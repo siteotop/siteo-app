@@ -1,4 +1,4 @@
-import * as components from 'template/components/Sections/';
+import * as components from '../Sections/';
 
 export default {
     functional: true,

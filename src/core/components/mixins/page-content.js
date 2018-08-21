@@ -1,6 +1,6 @@
-import Rendering from 'core/http/rendering';
+import Rendering from '../../http/rendering';
 //import Messages from 'core/mixins/messages.js';
-import Loader from 'core/components/mixins/component-loading.js';
+import Loader from './component-loading.js';
 export default {
 
 

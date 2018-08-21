@@ -1,19 +1,19 @@
 
 var _Values = require('lodash/values');
 
-import AppComponentToolbar from 'core/components/AppComponentToolbar';
-import MixinLocalMessages from 'core/components/mixins/LocalMessages.js';
+import AppComponentToolbar from '../../AppComponentToolbar';
+import MixinLocalMessages from '../../mixins/LocalMessages.js';
 
 
-import GoogleRecaptcha from 'core/components/AppFields/AppInputRecaptcha.vue';
-import AppConfirm from 'core/components/AppConfirm.vue' ;
-import AppCheckbox from 'core/components/AppFields/AppCheckbox.vue';
-import AppInputText from 'core/components/AppFields/AppInputText.vue';
-import AppSelect from 'core/components/AppFields/AppSelect.vue';
-import AppInputPassword from 'core/components/AppFields/AppInputPassword.vue';
-import AppInputDate from 'core/components/AppFields/AppInputDate.vue';
-import AppSelectCountries from 'core/components/AppFields/AppSelectCountries.vue';
-import AppInputPhone from 'core/components/AppFields/AppInputPhone.vue';
+import GoogleRecaptcha from '../../AppFields/AppInputRecaptcha.vue';
+import AppConfirm from '../../AppConfirm.vue' ;
+import AppCheckbox from '../../AppFields/AppCheckbox.vue';
+import AppInputText from '../../AppFields/AppInputText.vue';
+import AppSelect from '../../AppFields/AppSelect.vue';
+import AppInputPassword from '../../AppFields/AppInputPassword.vue';
+import AppInputDate from '../../AppFields/AppInputDate.vue';
+import AppSelectCountries from '../../AppFields/AppSelectCountries.vue';
+import AppInputPhone from '../../AppFields/AppInputPhone.vue';
 
 export default {
 

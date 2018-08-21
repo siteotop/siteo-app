@@ -1,6 +1,6 @@
 <script>
 
-import AbstractInput from 'core/components/AppFields/mixins/input.js';
+import AbstractInput from './mixins/input.js';
 
 export default {
 

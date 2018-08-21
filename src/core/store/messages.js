@@ -1,6 +1,6 @@
 var _Values = require('lodash/values');   // get values as array and object
 
-import filterMessage from 'core/utils/filter-message';
+import filterMessage from '../utils/filter-message';
 
 
 const SystemMessages = {

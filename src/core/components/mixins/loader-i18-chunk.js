@@ -1,6 +1,6 @@
 
 
-import content from 'core/components/mixins/ContentI18N.js';
+import content from './ContentI18N.js';
 
 
 export default {

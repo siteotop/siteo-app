@@ -1,5 +1,5 @@
-import template from 'template/install.js';
-import {SiteoCoreInstall} from 'core/index';
+import template from './template/install.js';
+import {SiteoCoreInstall} from './core/index';
 
 SiteoCoreInstall(
   template,

@@ -1,13 +1,13 @@
 
-import DesignSettingsNavigation from './Navigation.vue';
-import DesignTabsBlock from './DesignTabsBlock.js';
-import * as SettingsBlocks from './Blocks';
-import ADomainReserved  from './ADomainReserved.vue';
+import DesignSettingsNavigation from './components/Navigation.vue';
+import DesignTabsBlock from './components/DesignTabsBlock.js';
+import * as SettingsBlocks from './components/Blocks';
+import ADomainReserved  from './components/ADomainReserved.vue';
 
 
 const install = function (Vue, options) {
 
-    
+
 
       // if website founded
       if (options.coreVue.store.state.instance.design.AppDrawer) {

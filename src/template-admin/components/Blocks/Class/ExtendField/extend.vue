@@ -12,7 +12,7 @@
 
 <script>
 
-import MixinVModelInput from 'template-admin/components/Settings/mixins/v-model-input';
+import MixinVModelInput from '../../../mixins/v-model-input';
 import * as  HelperValues from  './helper-values';
 
 export default {

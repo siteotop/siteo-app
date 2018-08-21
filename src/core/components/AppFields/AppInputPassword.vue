@@ -4,11 +4,11 @@
 //https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#readme
 //import VueTextMask, {conformToMask}  from  'vue-text-mask';
 
-import AbstractInput from 'core/components/AppFields/mixins/input.js';
-import  AppInputText  from 'core/components/AppFields/AppInputText.vue';
+import AbstractInput from './mixins/input.js';
+import  AppInputText  from './AppInputText.vue';
 
-import 'core/icons/js/eye'; //
-import 'core/icons/js/eye-off'; //
+import '../../icons/js/eye'; //
+import '../../icons/js/eye-off'; //
 
 var _forIn = require('lodash/forIn');
 

@@ -14,9 +14,7 @@ export default {
   data() {
 
       return {
-        //  holderForMouseDown: false,
           changeable: false,
-          //idTimeout: false,
           checked: []
       }
 

@@ -1,6 +1,6 @@
 
 
-import axios from  'core/http/interceptors.js';
+import axios from  './interceptors.js';
 
 
 export default axios.create({

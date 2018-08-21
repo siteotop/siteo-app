@@ -1,5 +1,5 @@
 
-import MixinVModelInput from 'template-admin/components/Settings/mixins/v-model-input';
+import MixinVModelInput from '../mixins/v-model-input';
 
 /**
    https://github.com/vuetifyjs/vuetify/blob/master/src/stylus/settings/_colors.styl

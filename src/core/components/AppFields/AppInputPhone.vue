@@ -1,9 +1,7 @@
 <script>
 
-import AbstractInput from 'core/components/AppFields/mixins/input.js';
-import AppInputText  from 'core/components/AppFields/AppInputText.vue';
-//import InputSelect  from 'core/components/AppFields/AppSelect.vue';
-
+import AbstractInput from './mixins/input.js';
+import AppInputText  from './AppInputText.vue';
 
 export default {
 

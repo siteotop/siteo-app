@@ -1,6 +1,6 @@
 
-import AppToolbarHelp from 'core/components/AppToolbarHelp';
-import {HelperMenuListRenderAction, HelperChooiceVariantMenu} from 'core/components/helper/MenuActions';
+import AppToolbarHelp from './AppToolbarHelp';
+import {HelperMenuListRenderAction, HelperChooiceVariantMenu} from './helper/MenuActions';
 const AppToolbarHelper = {
 
   __render_IconTitle(h, iconTitle) {

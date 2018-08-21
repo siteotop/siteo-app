@@ -1,6 +1,6 @@
-import {template, DesignComponents} from 'template/admin.js';
-import {SiteoCoreInstall} from 'core/index';
-import DesignSettingsPlugin  from 'template-admin/components/Settings';
+import {template, DesignComponents} from './template/admin.js';
+import {SiteoCoreInstall} from './core/index';
+import DesignSettingsPlugin  from './template-admin/index';
 //import {AdminStorePlugin} from 'core-admin/plugin.js';
 
 SiteoCoreInstall(

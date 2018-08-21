@@ -1,8 +1,8 @@
 
 
 
-import axios from  'core/http/interceptors.js';
-import {API_URL} from 'core/config';
+import axios from  './interceptors.js';
+import {API_URL} from '../config';
 //var params = {};
 /*if (_GC.LANG_ACTIVE != _GC.LANG_DEFAULT) {
     params = {lang: _GC.LANG_ACTIVE};

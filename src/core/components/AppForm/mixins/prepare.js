@@ -1,6 +1,6 @@
 
 
-import {CreateSubmit} from 'core/components/AppFields/helper/create-fields.js';
+import {CreateSubmit} from '../../AppFields/helper/create-fields.js';
 
 var _template = require('lodash/template');
 

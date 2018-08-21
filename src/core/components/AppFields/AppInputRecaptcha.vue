@@ -11,7 +11,7 @@
 <script>
 
 import $script from 'scriptjs';
-import {recaptcha} from 'core/config.js';
+import {recaptcha} from '../../config.js';
 
 //https://developers.google.com/recaptcha/docs/display
 //https://developers.google.com/recaptcha/docs/language

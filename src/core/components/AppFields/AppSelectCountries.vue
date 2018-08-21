@@ -20,9 +20,9 @@
 
 <script>
 
-import AppSelect from 'core/components/AppFields/AppSelect.vue';
-import AbstractInput from 'core/components/AppFields/mixins/input.js';
-import AppGpsFixed from 'core/components/AppGpsFixed.vue';
+import AppSelect from './AppSelect.vue';
+import AbstractInput from './mixins/input.js';
+import AppGpsFixed from '../AppGpsFixed.vue';
 
 export default {
   mixins: [AbstractInput],
