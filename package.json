@@ -1,0 +1,98 @@
+{
+  "name": "siteo-template",
+  "description": "Core material design template for  web apps which based on Siteo platform https://siteo.top",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": {
+    "name": "Dmytro Diachuk",
+    "email": "vavilon2@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/siteotop/siteo-template"
+  },
+  "homepage": "http://designer.siteo.top/",
+  "keywords": [
+    "siteo",
+    "template",
+    "material design",
+    "vuetify",
+    "vuetifyjs",
+    "vue",
+    "app",
+    "website",
+    "web app",
+    "design",
+    "siteotop"
+  ],
+
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-helper-vue-jsx-merge-props": "^2.0.2",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-imports": "^1.4.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-plugin-transform-vue-jsx": "^3.5.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-runtime": "^6.26.0",
+    "bundle-loader": "^0.5.6",
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.11",
+    "lodash.startcase": "^4.4.0",
+    "mini-css-extract-plugin": "^0.4.0",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.1.5",
+    "precss": "^3.1.2",
+    "sass-loader": "^7.0.3",
+    "sass-resources-loader": "^1.3.1",
+    "style-loader": "^0.18.2",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "uglifyjs-webpack-plugin": "^1.2.6",
+    "vue-cli": "^2.8.2",
+    "vue-loader": "^15.2.4",
+    "vue-template-compiler": "^2.5.16",
+    "vuetify-loader": "^0.1.1",
+    "webpack": "^4.12.0",
+    "webpack-babel-external-helpers": "^0.1.0",
+    "webpack-cli": "^3.0.8",
+    "webpack-manifest-plugin": "^2.0.3"
+  },
+  "dependencies": {
+    "axios": "^0.16.2",
+    "babel-polyfill": "^6.26.0",
+    "date-fns": "^1.29.0",
+    "js-cookie": "^2.2.0",
+    "localforage": "^1.6.0",
+    "lodash": "^4.17.4",
+    "material-design-icons": "^3.0.1",
+    "scriptjs": "^2.5.8",
+    "spinkit": "^1.2.5",
+    "vee-validate": "^2.0.9",
+    "vue": "^2.5.16",
+    "vue-awesome": "^2.3.3",
+    "vue-meta": "^1.5.0",
+    "vue-progressbar": "^0.7.3",
+    "vue-router": "^3.0.1",
+    "vue-spinner": "^1.0.3",
+    "vue2-animate": "^2.0.0",
+    "vuedraggable": "^2.16.0",
+    "vuetify": "^1.1.4",
+    "vuex": "^3.0.1",
+    "vuex-router-sync": "^5.0.0"
+  },
+  "browserslist": [
+    "> 0.5%",
+    "IE 10"
+  ],
+  "scripts": {
+    "build": "webpack",
+    "production": "NODE_ENV=production webpack"
+  }
+}
