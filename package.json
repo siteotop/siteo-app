@@ -1,7 +1,7 @@
 {
   "name": "siteo-template",
   "description": "Core material design template for  web apps which based on Siteo platform https://siteo.top",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "author": {
     "name": "Dmytro Diachuk",
@@ -25,7 +25,6 @@
     "design",
     "siteotop"
   ],
-
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-helper-vue-jsx-merge-props": "^2.0.2",
