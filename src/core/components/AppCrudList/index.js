@@ -1,6 +1,6 @@
 
-import CrudCore from './AppCrudList/mixins/core.js';
-import GroupChangeable from './AppCrudList/mixins/group.js';
+import CrudCore from './mixins/core.js';
+import GroupChangeable from './mixins/group.js';
 import {HelperChooiceVariantMenu} from '../helper/MenuActions';
 export default {
 

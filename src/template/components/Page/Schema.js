@@ -1,4 +1,4 @@
-import * as components from '../Sections/';
+import * as components from '../Sections/index';
 
 export default {
     functional: true,
