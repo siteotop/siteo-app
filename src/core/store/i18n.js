@@ -2,7 +2,6 @@
 
 const i18n = {
   state: {
-     mainChunkName: '',
      routes: {},
      global: {},
      veeValidate: {}
@@ -14,7 +13,7 @@ const i18n = {
     //set global values
     seti18nGlobals(state, i18n){
 
-        //  state. = i18n;
+
           state.routes= i18n.routes;
           state.global= i18n.global;
           state.veeValidate=  i18n.veeValidate;
@@ -40,18 +39,19 @@ const i18n = {
 
   actions: {
 
-      /**
-        set lang options when page have first load
-      */
+
+    /**
+      set lang options when page have first load
+    */
      setStartLang ({commit, getters, state}, chunkName) {
-        state.mainChunkName = chunkName;
-        import('core/i18n/'+getters.LANG_PORTAL+'/'+chunkName+'.js').then( function(response){
+
+        import(/* webpackChunkName: "local/lang-[request]" */ `../i18n/${getters.LANG_PORTAL}.js`).then( function(response){
              commit('seti18nGlobals', response  );
-         }) ;
+         });
 
      },
 
-     initPageLocal({getters}, chunkName){
+    /* initPageLocal({getters}, chunkName){
           return import('core/i18n/'+getters.LANG_PORTAL+'/'+chunkName+'.js');
 
      },
@@ -59,7 +59,6 @@ const i18n = {
      getContentForComponent({dispatch, state}, nameComponent) {
 
           var chunk = nameComponent[0];
-        //  state.mainChunkName
           return dispatch('initPageLocal',  chunk).then(function (response) {
               return response[nameComponent];
           })
@@ -67,7 +66,7 @@ const i18n = {
 
 
      }
-
+*/
 
 
  },
