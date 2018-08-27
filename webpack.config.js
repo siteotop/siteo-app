@@ -27,6 +27,10 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 */
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
+/**
+  Cpoy files
+*/
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 //var HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -40,10 +44,8 @@ module.exports = {
   entry: {
     // index without template
     'siteo-core': './src/core.js',
-
     // index with template
     'siteo-template': './src/template.js',
-
     // index with template admin
     'siteo-template-admin': './src/template-admin.js',
 
@@ -129,6 +131,7 @@ optimization: {
             */
             new ManifestPlugin({fileName: name_manifet_file, publicPath: ''}),
             new CleanWebpackPlugin(['static'], {root:path.resolve(__dirname, 'dist'),  exclude:  [name_manifet_file]}),
+            new CleanWebpackPlugin(['static'], {root:path.resolve(__dirname, 'example/dist')}),
 
             new webpack.DefinePlugin({
               'process.env': {
@@ -145,6 +148,11 @@ optimization: {
                 filename: "[name].css",
                 chunkFilename: "[id].css"
               }),
+
+            new CopyWebpackPlugin([
+              { from: 'dist/**/*', to: '../example' },
+
+            ])
 
             // new HtmlWebpackPlugin()
 

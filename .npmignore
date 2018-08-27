@@ -1,4 +1,5 @@
 /.babelrc
+/example
 /package-lock.json
 /postcss.config.js
 /webpack.config.js
