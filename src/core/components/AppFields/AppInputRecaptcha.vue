@@ -11,7 +11,7 @@
 <script>
 
 import $script from 'scriptjs';
-import {recaptcha} from '../../config.js';
+import {configApps} from '../../config.js';
 
 //https://developers.google.com/recaptcha/docs/display
 //https://developers.google.com/recaptcha/docs/language
@@ -122,7 +122,7 @@ export default {
       //  console.log(element);
 
        var recaptcha_options = {
-          'sitekey' : recaptcha.sitekey,
+          'sitekey' : configApps.recaptcha.sitekey,
           'callback' : self.getResponse,
           'expired-callback':self.expiredResponse,
           'size': this.size

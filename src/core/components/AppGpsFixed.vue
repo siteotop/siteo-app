@@ -52,10 +52,8 @@ export default {
     }},
 
     data() {
-      //  var ip = this.$store.state.instance.active.ip;
         return {
             countryCode: '',
-          //  startedGPS: false,
             IP: '',  // (ip!='127.0.0.1'? ip : '' ),
             statusGPS: 0,
 

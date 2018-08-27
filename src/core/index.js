@@ -99,20 +99,20 @@ const MY_ICONS = {
 */
 export const SiteoCoreInstall = function (template, data,  plugins ) {
 
-   console.log(data);
-
+   //console.log(data);
+   //start Vuetify
    Vue.use(Vuetify, {icons: MY_ICONS, theme:  data.WEBSITE.design? data.WEBSITE.design.theme.colors:{}});
 
+   // start VueProgressBar
    Vue.use(VueProgressBar, {
      color: 'rgb(106, 180, 255)',
      failedColor: 'red',
      thickness: '3px',
    })
 
-   //add to site core  main objects
-  // options.coreVue.extends = siteCore;
+   // create store
    template.coreVue.store = StoreInstall(Vue, /*options.store||{},*/ data );
-   //options.coreVue.router = RouterInstall(Vue, options.router||{}, options.coreVue.store);
+   // create router
    template.coreVue.router =  new VueRouter({
        base: data.DNS.active.path,
        mode: 'history',
@@ -129,7 +129,8 @@ export const SiteoCoreInstall = function (template, data,  plugins ) {
       }
 
    }
-
+   template.coreVue.el = '#siteo-top-app';
+   
    let app2 = new Vue(
       template.coreVue
    );

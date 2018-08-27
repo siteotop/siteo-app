@@ -2,7 +2,7 @@
 
 
 import axios from  './interceptors.js';
-import {API_URL} from '../config';
+import {configApps} from '../config';
 //var params = {};
 /*if (_GC.LANG_ACTIVE != _GC.LANG_DEFAULT) {
     params = {lang: _GC.LANG_ACTIVE};
@@ -11,16 +11,11 @@ import {API_URL} from '../config';
 }
 */
 var api = axios.create({
-      baseURL: API_URL,
+      baseURL: configApps.API_URL,
       withCredentials: true,
       //headers: {'common': { 'Authorization':"Bearer sdfsdfsdfsdf23424s" }},
-    //  params:params
+      //  params:params
 });
-
-
-
-
-
 
 
 export default api;

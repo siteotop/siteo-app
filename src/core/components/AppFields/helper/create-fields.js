@@ -1,5 +1,5 @@
 
-import {FORMAT_DATE, FORMAT_MASK} from '../../../config';
+//import {FORMAT_DATE, FORMAT_MASK} from '../../../config';
 
 export const  CreateForm = function (form,context){
 
@@ -117,7 +117,7 @@ export const CreateSelectResource = function (settings){
 */
 export const CreateDate =function ( settings ) {
 
-   const  mask = settings.format.replace(/[A-Z]{1}/g, FORMAT_MASK );
+   const  mask = settings.format.replace(/[A-Z]{1}/g, '#' /* was FORMAT_MASK from config  */ );
    let validate = {date_format: settings.format};
    if (settings.between) {
       validate.date_between = settings.between;
@@ -125,8 +125,8 @@ export const CreateDate =function ( settings ) {
 
 
   return PlainField({
-     default_format: FORMAT_DATE,
-     //format: settings.format,
+     default_format: "YYYY-MM-DD"  , // was FORMAT_DATE from config
+      //format: settings.format,
      //example:  settings.example,
      placeholder: settings.format,
      picker: false,

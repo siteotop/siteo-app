@@ -1,10 +1,8 @@
 <script>
-import {APP_ID} from '../../core/config';
 
 import * as  AppStructure from './Structure';
 export default {
-     el: '#' + APP_ID,
-     //mixins: [PageLoader],
+    
      renderList: ['AppDrawer', 'AppToolbar',  'AppFooter', 'AppContent'],  //AppStructure,
      components: AppStructure,
      data() {

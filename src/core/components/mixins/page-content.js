@@ -167,7 +167,7 @@ export default {
       */
       getDataStructureFromPrerender(prerender) {
 
-        if (prerender.status <400  ) {
+        if (prerender.status < 400  ) {
 
               this.setServerData(prerender.structure);
             //  console.log('start errors');

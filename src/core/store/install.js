@@ -34,7 +34,6 @@ export default function (Vue, instance )  {
          modules: {
            instance: createInstance ( instance ),
            SystemMessages,
-          // Routes,
            i18n,
          },
 

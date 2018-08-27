@@ -5,7 +5,7 @@ After install Vuetify, need  change render function for v-icon
 
 Put this render function instead native render function
 */
-{
+export default {
     name: 'v-icon',
     functional: true,
     props: {
@@ -98,7 +98,7 @@ Put this render function instead native render function
 				]);
 
 
-				// native realizations 
+				// native realizations
         return h('i', data, newChildren);
     }
 }
