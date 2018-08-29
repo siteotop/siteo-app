@@ -62,8 +62,8 @@ export const DesignComponents = {
 
                   if (component.wrapped) {
                      var wrappedComponent =  Vue.component(component.wrapped);
-                     var instance = new wrappedComponent();
-                     connectSpecial(componentName, props, instance.$options.props);
+                     var instanceComponent = new wrappedComponent();
+                     connectSpecial(componentName, props, instanceComponent.$options.props);
 
                   }
 

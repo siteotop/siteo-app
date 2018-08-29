@@ -64335,7 +64335,7 @@ exports.default = {
 
     return {
       title: this.contentI18N.title,
-      titleTemplate: '%s  - ' + this.$store.state.instance.website.name,
+      titleTemplate: '%s  - ' + this.$store.state.appInstance.data.name,
       meta: [{ name: 'description', vmid: 'description', content: this.contentI18N.description }]
 
     };
@@ -66246,11 +66246,11 @@ var MY_ICONS = {
 
   /***
   */
-};var SiteoCoreInstall = exports.SiteoCoreInstall = function SiteoCoreInstall(template, data, plugins) {
+};var SiteoCoreInstall = exports.SiteoCoreInstall = function SiteoCoreInstall(appInstance, appDns, template, plugins) {
 
   //console.log(data);
   //start Vuetify
-  _vue2.default.use(_vuetify2.default, { icons: MY_ICONS, theme: data.WEBSITE.design ? data.WEBSITE.design.theme.colors : {} });
+  _vue2.default.use(_vuetify2.default, { icons: MY_ICONS, theme: appInstance.design ? appInstance.design.theme.colors : {} });
 
   // start VueProgressBar
   _vue2.default.use(_vueProgressbar2.default, {
@@ -66260,10 +66260,10 @@ var MY_ICONS = {
   });
 
   // create store
-  template.coreVue.store = (0, _install2.default)(_vue2.default, /*options.store||{},*/data);
+  template.coreVue.store = (0, _install2.default)(_vue2.default, appInstance, appDns);
   // create router
   template.coreVue.router = new _router2.default({
-    base: data.DNS.active.path,
+    base: appDns.active.path || '/',
     mode: 'history',
     fallback: false, // для браузеров где нет History Api  (IE9) будет просто открывать новую страницу
     routes: template.routes
@@ -66520,7 +66520,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-exports.default = function (Vue, instance) {
+exports.default = function (Vue, appInstance, appDns) {
     Vue.use(_vuex2.default);
     return new _vuex2.default.Store({
         state: {
@@ -66543,7 +66543,7 @@ exports.default = function (Vue, instance) {
             }
         },
         modules: {
-            instance: (0, _instance2.default)(instance),
+            appInstance: (0, _websiteInstance2.default)(appInstance, appDns),
             SystemMessages: _messages2.default,
             i18n: _i18n2.default
         },
@@ -66566,119 +66566,13 @@ var _i18n = __webpack_require__(/*! ./i18n.js */ "./src/core/store/i18n.js");
 
 var _i18n2 = _interopRequireDefault(_i18n);
 
-var _instance = __webpack_require__(/*! ./instance.js */ "./src/core/store/instance.js");
+var _websiteInstance = __webpack_require__(/*! ./websiteInstance.js */ "./src/core/store/websiteInstance.js");
 
-var _instance2 = _interopRequireDefault(_instance);
+var _websiteInstance2 = _interopRequireDefault(_websiteInstance);
 
 var _apiActions = __webpack_require__(/*! ./helpers/api-actions */ "./src/core/store/helpers/api-actions.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-
-/***/ "./src/core/store/instance.js":
-/*!************************************!*\
-  !*** ./src/core/store/instance.js ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-exports.default = function (options) {
-  return {
-
-    //  namespaced: true,
-
-    state: function state() {
-      return options.DNS;
-    },
-
-    modules: {
-      website: {
-        state: function state() {
-          return options.WEBSITE.website;
-        }
-
-      },
-
-      menu: {
-        state: options.WEBSITE.menu || []
-      },
-
-      domains: {
-        state: options.WEBSITE.domains
-      },
-
-      design: {
-        state: options.WEBSITE.design,
-
-        mutations: {
-
-          /**
-             change state  bRender
-             @param state
-             @param rules {object}  rules include blocks name which need block ()
-          */
-          setOffRender: function setOffRender(state, nameStructure) {
-            if (!state[nameStructure].props) {
-              state[nameStructure].props = { coreOff: true };
-            } else if (!state[nameStructure].props.coreOff) {
-              state[nameStructure].props.coreOff = true;
-            }
-          },
-          setOnRender: function setOnRender(state, nameStructure) {
-            if (state[nameStructure].props && state[nameStructure].props.coreOff) {
-              state[nameStructure].props.coreOff = false;
-            }
-          }
-        }
-
-      }
-    },
-
-    getters: {
-      CORE_HOST: function CORE_HOST(state) {
-
-        return 'https://' + state.core.host;
-      },
-      LANG_PORTAL: function LANG_PORTAL(state) {
-        return state.active.lang;
-      },
-
-
-      /**
-        list  for domains lang
-      */
-      LIST_LANG: function LIST_LANG(state, getters, rootState) {
-        //return state.list;
-        var route, langs, list;
-        route = rootState.route;
-        langs = [];
-        //  console.log( state.website.domains);
-        list = state.domains;
-
-        for (var i in list) {
-
-          var l = {};
-          l.l = list[i].l.toUpperCase();
-          l.n = l.l + ' - ' + getters.LANGUAGES[list[i].l];
-          l.d = list[i].d + route.path;
-          langs.push(l);
-          //  console.log(lang);
-        }
-
-        return langs;
-      }
-    }
-
-  };
-};
 
 /***/ }),
 
@@ -66818,6 +66712,98 @@ var SystemMessages = {
 };
 
 exports.default = SystemMessages;
+
+/***/ }),
+
+/***/ "./src/core/store/websiteInstance.js":
+/*!*******************************************!*\
+  !*** ./src/core/store/websiteInstance.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (appInstance, appDns) {
+  return {
+
+    state: function state() {
+      if (appInstance.menu == undefined) {
+        appInstance.menu = [];
+      }
+      if (appInstance.design == undefined) {
+        appInstance.desig = {};
+      }
+      appInstance.hosts = appDns;
+      return appInstance;
+    },
+
+    mutations: {
+
+      /**
+         change state  bRender
+         @param state
+         @param rules {object}  rules include blocks name which need block ()
+      */
+      setOffRender: function setOffRender(state, nameStructure) {
+        if (!state.design[nameStructure].props) {
+          state.design[nameStructure].props = { coreOff: true };
+        } else if (!state.design[nameStructure].props.coreOff) {
+          state.design[nameStructure].props.coreOff = true;
+        }
+      },
+      setOnRender: function setOnRender(state, nameStructure) {
+        if (state.design[nameStructure].props && state.design[nameStructure].props.coreOff) {
+          state.design[nameStructure].props.coreOff = false;
+        }
+      }
+    },
+
+    getters: {
+
+      /*
+      CORE_HOST(state) {
+            return   'https://'+state.core.host;
+      },
+      */
+
+      LANG_PORTAL: function LANG_PORTAL(state) {
+        return state.hosts.active.lang;
+      },
+
+
+      /**
+        list  for domains lang
+      */
+      LIST_LANG: function LIST_LANG(state, getters, rootState) {
+        //return state.list;
+        var route, langs, list;
+        route = rootState.route;
+        langs = [];
+        //  console.log( state.website.domains);
+        list = state.domains;
+
+        for (var i in list) {
+
+          var l = {};
+          l.l = list[i].l.toUpperCase();
+          l.n = l.l + ' - ' + getters.LANGUAGES[list[i].l];
+          l.d = list[i].d + route.path;
+          langs.push(l);
+          //  console.log(lang);
+        }
+
+        return langs;
+      }
+    }
+
+  };
+};
 
 /***/ }),
 

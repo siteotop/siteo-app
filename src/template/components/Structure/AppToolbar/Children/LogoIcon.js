@@ -6,7 +6,7 @@ export default {
 
   render(h, context) {
 
-      var website = context.parent.$store.state.instance.website|| {};
+      var website = context.parent.$store.state.appInstance.data|| {};
 
       if (!website.src&&!website.name ) {
         return '';

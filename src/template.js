@@ -2,9 +2,7 @@ import template from './template/install.js';
 import {SiteoCoreInstall} from './core/index';
 
 SiteoCoreInstall(
-  template,
-  {
-    WEBSITE:  _WEBSITE,
-    DNS: _DNS
-  }
+  _APP_INSTANCE,
+  _APP_DOMAIN,
+  template
 )

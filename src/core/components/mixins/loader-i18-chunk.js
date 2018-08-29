@@ -60,7 +60,7 @@ export default {
 
     return {
       title:  this.contentI18N.title,
-      titleTemplate: '%s  - ' + this.$store.state.instance.website.name,
+      titleTemplate: '%s  - ' + this.$store.state.appInstance.data.name,
       meta: [
         {name: 'description', vmid: 'description', content:  this.contentI18N.description}
       ]

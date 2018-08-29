@@ -4707,15 +4707,15 @@ exports.default = {
   },
   created: function created() {
     // add _id for website, because templates does not work without it
-    this.$store.commit('websites/setApiId', this.$store.state.instance.website._id);
+    this.$store.commit('websites/setApiId', this.$store.state.appInstance.data._id);
     // add _id for  templates
-    this.$store.commit('websites/templates/setApiId', this.$store.state.instance.website.templates_id);
+    this.$store.commit('websites/templates/setApiId', this.$store.state.appInstance.data.templates_id);
   },
 
   methods: {
     saveDesign: function saveDesign() {
       // update template store
-      this.$store.dispatch('websites/templates/updateObject', { designStructure: this.$store.state.instance.design });
+      this.$store.dispatch('websites/templates/updateObject', { designStructure: this.$store.state.appInstance.design });
       //this.$emit('saveDesign', {} );
     }
   },
@@ -4733,7 +4733,7 @@ exports.default = {
 
   computed: {
     arrayDesignStructure: function arrayDesignStructure() {
-      return (0, _values2.default)(this.$store.state.instance.design);
+      return (0, _values2.default)(this.$store.state.appInstance.design);
     },
 
 
@@ -4793,8 +4793,6 @@ exports.default = {
     //console.log(JSON.stringify(this.$vuetify.breakpoint));
     if (this.$vuetify.breakpoint.width > this.mobileBreakPoint) {
       if (this.instanceDesign.AppDrawer.props && this.instanceDesign.AppDrawer.props.startmdAndUp) {
-        //console.log(this.instanceDesign.AppDrawer.props.startmdAndUp);
-        //console.log(this.instanceDesign.AppDrawer.props);
         this.$store.state.drawer = this.instanceDesign.AppDrawer.props.startmdAndUp;
       }
     }
@@ -4818,14 +4816,14 @@ exports.default = {
       }
     },
     instanceDesign: function instanceDesign() {
-      return this.$store.state.instance.design;
+      return this.$store.state.appInstance.design;
     },
     AppToolbarMenu: function AppToolbarMenu() {
-      return this.$store.state.instance.menu;
+      return this.$store.state.appInstance.menu;
     },
     AppDrawerMenu: function AppDrawerMenu() {
       //console.log('start');
-      return this.$store.state.instance.menu;
+      return this.$store.state.appInstance.menu;
     }
   },
 
@@ -32942,13 +32940,7 @@ var render = function(_h, _vm) {
                           attrs: { name: "siteo", scale: "10" }
                         }),
                         _vm._v(" "),
-                        _c("h1", [
-                          _vm._v(
-                            _vm._s(
-                              _vm.parent.$root.$store.state.instance.active.host
-                            )
-                          )
-                        ]),
+                        _c("h1", [_vm._v("Input hostname for Website")]),
                         _vm._v(" "),
                         _c("h2", [
                           _vm._v(
@@ -71557,7 +71549,7 @@ exports.default = {
 
     return {
       title: this.contentI18N.title,
-      titleTemplate: '%s  - ' + this.$store.state.instance.website.name,
+      titleTemplate: '%s  - ' + this.$store.state.appInstance.data.name,
       meta: [{ name: 'description', vmid: 'description', content: this.contentI18N.description }]
 
     };
@@ -73538,11 +73530,11 @@ var MY_ICONS = {
 
   /***
   */
-};var SiteoCoreInstall = exports.SiteoCoreInstall = function SiteoCoreInstall(template, data, plugins) {
+};var SiteoCoreInstall = exports.SiteoCoreInstall = function SiteoCoreInstall(appInstance, appDns, template, plugins) {
 
   //console.log(data);
   //start Vuetify
-  _vue2.default.use(_vuetify2.default, { icons: MY_ICONS, theme: data.WEBSITE.design ? data.WEBSITE.design.theme.colors : {} });
+  _vue2.default.use(_vuetify2.default, { icons: MY_ICONS, theme: appInstance.design ? appInstance.design.theme.colors : {} });
 
   // start VueProgressBar
   _vue2.default.use(_vueProgressbar2.default, {
@@ -73552,10 +73544,10 @@ var MY_ICONS = {
   });
 
   // create store
-  template.coreVue.store = (0, _install2.default)(_vue2.default, /*options.store||{},*/data);
+  template.coreVue.store = (0, _install2.default)(_vue2.default, appInstance, appDns);
   // create router
   template.coreVue.router = new _router2.default({
-    base: data.DNS.active.path,
+    base: appDns.active.path || '/',
     mode: 'history',
     fallback: false, // для браузеров где нет History Api  (IE9) будет просто открывать новую страницу
     routes: template.routes
@@ -74329,7 +74321,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-exports.default = function (Vue, instance) {
+exports.default = function (Vue, appInstance, appDns) {
     Vue.use(_vuex2.default);
     return new _vuex2.default.Store({
         state: {
@@ -74352,7 +74344,7 @@ exports.default = function (Vue, instance) {
             }
         },
         modules: {
-            instance: (0, _instance2.default)(instance),
+            appInstance: (0, _websiteInstance2.default)(appInstance, appDns),
             SystemMessages: _messages2.default,
             i18n: _i18n2.default
         },
@@ -74375,119 +74367,13 @@ var _i18n = __webpack_require__(/*! ./i18n.js */ "./src/core/store/i18n.js");
 
 var _i18n2 = _interopRequireDefault(_i18n);
 
-var _instance = __webpack_require__(/*! ./instance.js */ "./src/core/store/instance.js");
+var _websiteInstance = __webpack_require__(/*! ./websiteInstance.js */ "./src/core/store/websiteInstance.js");
 
-var _instance2 = _interopRequireDefault(_instance);
+var _websiteInstance2 = _interopRequireDefault(_websiteInstance);
 
 var _apiActions = __webpack_require__(/*! ./helpers/api-actions */ "./src/core/store/helpers/api-actions.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-
-/***/ "./src/core/store/instance.js":
-/*!************************************!*\
-  !*** ./src/core/store/instance.js ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-exports.default = function (options) {
-  return {
-
-    //  namespaced: true,
-
-    state: function state() {
-      return options.DNS;
-    },
-
-    modules: {
-      website: {
-        state: function state() {
-          return options.WEBSITE.website;
-        }
-
-      },
-
-      menu: {
-        state: options.WEBSITE.menu || []
-      },
-
-      domains: {
-        state: options.WEBSITE.domains
-      },
-
-      design: {
-        state: options.WEBSITE.design,
-
-        mutations: {
-
-          /**
-             change state  bRender
-             @param state
-             @param rules {object}  rules include blocks name which need block ()
-          */
-          setOffRender: function setOffRender(state, nameStructure) {
-            if (!state[nameStructure].props) {
-              state[nameStructure].props = { coreOff: true };
-            } else if (!state[nameStructure].props.coreOff) {
-              state[nameStructure].props.coreOff = true;
-            }
-          },
-          setOnRender: function setOnRender(state, nameStructure) {
-            if (state[nameStructure].props && state[nameStructure].props.coreOff) {
-              state[nameStructure].props.coreOff = false;
-            }
-          }
-        }
-
-      }
-    },
-
-    getters: {
-      CORE_HOST: function CORE_HOST(state) {
-
-        return 'https://' + state.core.host;
-      },
-      LANG_PORTAL: function LANG_PORTAL(state) {
-        return state.active.lang;
-      },
-
-
-      /**
-        list  for domains lang
-      */
-      LIST_LANG: function LIST_LANG(state, getters, rootState) {
-        //return state.list;
-        var route, langs, list;
-        route = rootState.route;
-        langs = [];
-        //  console.log( state.website.domains);
-        list = state.domains;
-
-        for (var i in list) {
-
-          var l = {};
-          l.l = list[i].l.toUpperCase();
-          l.n = l.l + ' - ' + getters.LANGUAGES[list[i].l];
-          l.d = list[i].d + route.path;
-          langs.push(l);
-          //  console.log(lang);
-        }
-
-        return langs;
-      }
-    }
-
-  };
-};
 
 /***/ }),
 
@@ -74627,6 +74513,98 @@ var SystemMessages = {
 };
 
 exports.default = SystemMessages;
+
+/***/ }),
+
+/***/ "./src/core/store/websiteInstance.js":
+/*!*******************************************!*\
+  !*** ./src/core/store/websiteInstance.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (appInstance, appDns) {
+  return {
+
+    state: function state() {
+      if (appInstance.menu == undefined) {
+        appInstance.menu = [];
+      }
+      if (appInstance.design == undefined) {
+        appInstance.desig = {};
+      }
+      appInstance.hosts = appDns;
+      return appInstance;
+    },
+
+    mutations: {
+
+      /**
+         change state  bRender
+         @param state
+         @param rules {object}  rules include blocks name which need block ()
+      */
+      setOffRender: function setOffRender(state, nameStructure) {
+        if (!state.design[nameStructure].props) {
+          state.design[nameStructure].props = { coreOff: true };
+        } else if (!state.design[nameStructure].props.coreOff) {
+          state.design[nameStructure].props.coreOff = true;
+        }
+      },
+      setOnRender: function setOnRender(state, nameStructure) {
+        if (state.design[nameStructure].props && state.design[nameStructure].props.coreOff) {
+          state.design[nameStructure].props.coreOff = false;
+        }
+      }
+    },
+
+    getters: {
+
+      /*
+      CORE_HOST(state) {
+            return   'https://'+state.core.host;
+      },
+      */
+
+      LANG_PORTAL: function LANG_PORTAL(state) {
+        return state.hosts.active.lang;
+      },
+
+
+      /**
+        list  for domains lang
+      */
+      LIST_LANG: function LIST_LANG(state, getters, rootState) {
+        //return state.list;
+        var route, langs, list;
+        route = rootState.route;
+        langs = [];
+        //  console.log( state.website.domains);
+        list = state.domains;
+
+        for (var i in list) {
+
+          var l = {};
+          l.l = list[i].l.toUpperCase();
+          l.n = l.l + ' - ' + getters.LANGUAGES[list[i].l];
+          l.d = list[i].d + route.path;
+          langs.push(l);
+          //  console.log(lang);
+        }
+
+        return langs;
+      }
+    }
+
+  };
+};
 
 /***/ }),
 
@@ -74775,10 +74753,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 //import {AdminStorePlugin} from 'core-admin/plugin.js';
 
-(0, _index.SiteoCoreInstall)(_admin.template, {
-  WEBSITE: _WEBSITE, // createDefaultDesign(_WEBSITE),
-  DNS: _DNS
-}, [/*AdminStorePlugin,*/_admin.DesignComponents, _index3.default]);
+(0, _index.SiteoCoreInstall)(_APP_INSTANCE, _APP_DOMAIN, _admin.template, [/*AdminStorePlugin,*/_admin.DesignComponents, _index3.default]);
 
 /***/ }),
 
@@ -76566,7 +76541,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var install = function install(Vue, options) {
 
   // if website founded
-  if (options.coreVue.store.state.instance.design.AppDrawer) {
+  if (options.coreVue.store.state.appInstance.design.AppDrawer) {
     // register some component which needed for create settings navigation drawer
     Vue.component(_DesignTabsBlock2.default.name, _DesignTabsBlock2.default);
     Vue.component(_Navigation2.default.name, _Navigation2.default);
@@ -76680,8 +76655,8 @@ var DesignComponents = exports.DesignComponents = {
 
                 if (component.wrapped) {
                     var wrappedComponent = Vue.component(component.wrapped);
-                    var instance = new wrappedComponent();
-                    connectSpecial(componentName, props, instance.$options.props);
+                    var instanceComponent = new wrappedComponent();
+                    connectSpecial(componentName, props, instanceComponent.$options.props);
                 }
 
                 return props;
@@ -77024,8 +76999,8 @@ exports.default = {
   name: 'AppAction',
   render: function render(h, context) {
     var mobile = context.parent.$root.$vuetify.breakpoint.xs,
-        design = context.parent.$store.state.instance.design.AppAction || {},
-        actionText = context.parent.$store.state.instance.website.actionText;
+        design = context.parent.$store.state.appInstance.design.AppAction || {},
+        actionText = context.parent.$store.state.appInstance.data.actionText;
 
     //context.data.props.icon = mobile;
     //console.log(context);
@@ -77190,7 +77165,7 @@ var AppDrawerHeader = exports.AppDrawerHeader = {
   functional: true,
 
   render: function render(h, context) {
-    return h('v-toolbar', { props: { flat: true } }, [h('v-toolbar-title', [context.parent.$store.state.instance.website.name])]);
+    return h('v-toolbar', { props: { flat: true } }, [h('v-toolbar-title', [context.parent.$store.state.appInstance.data.name])]);
   }
 };
 
@@ -77260,9 +77235,8 @@ exports.default = {
   //props: _settingsProps,
   render: function render(h, context) {
 
-    //var instance = createSettings(context);
-    var design = context.parent.$store.state.instance.design[SHORT_NAME] || {};
-    //website = context.parent.$store.state.instance.website|| {};
+    var design = context.parent.$store.state.appInstance.design[SHORT_NAME] || {};
+
     if (design.props && design.props.coreOff === true) {
       return '';
     }
@@ -77338,7 +77312,7 @@ exports.default = {
   wrapped: 'v-footer',
 
   render: function render(h, context) {
-    var design = context.parent.$store.state.instance.design[SHORT_NAME] || {};
+    var design = context.parent.$store.state.appInstance.design[SHORT_NAME] || {};
     return h('v-footer', {
       props: (0, _extends3.default)({
         app: true,
@@ -77350,7 +77324,7 @@ exports.default = {
         flat: true
       },
       attrs: {
-        href: context.parent.$store.getters.CORE_HOST
+        href: 'https://siteo.top'
       }
     }, [h('AppIcon', { props: { name: 'siteo-grey' } }), h('span', {
       class: {
@@ -77465,7 +77439,7 @@ exports.default = {
 
   render: function render(h, context) {
 
-    var website = context.parent.$store.state.instance.website || {};
+    var website = context.parent.$store.state.appInstance.data || {};
 
     if (!website.src && !website.name) {
       return '';
@@ -77526,7 +77500,7 @@ exports.default = {
   render: function render(h, context) {
     return h('v-toolbar-title', {
       class: context.data.class
-    }, [context.parent.$store.state.instance.website.name]);
+    }, [context.parent.$store.state.appInstance.data.name]);
   }
 };
 
@@ -77646,7 +77620,7 @@ exports.default = {
   wrapped: 'v-toolbar',
 
   render: function render(h, context) {
-    var design = context.parent.$store.state.instance.design[SHORT_NAME] || {};
+    var design = context.parent.$store.state.appInstance.design[SHORT_NAME] || {};
     if (design.props && design.props.coreOff === true) {
       return '';
     }

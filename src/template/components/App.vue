@@ -2,7 +2,7 @@
 
 import * as  AppStructure from './Structure';
 export default {
-    
+
      renderList: ['AppDrawer', 'AppToolbar',  'AppFooter', 'AppContent'],  //AppStructure,
      components: AppStructure,
      data() {
@@ -21,8 +21,6 @@ export default {
         //console.log(JSON.stringify(this.$vuetify.breakpoint));
         if (this.$vuetify.breakpoint.width>this.mobileBreakPoint ) {
           if (this.instanceDesign.AppDrawer.props&&this.instanceDesign.AppDrawer.props.startmdAndUp) {
-            //console.log(this.instanceDesign.AppDrawer.props.startmdAndUp);
-            //console.log(this.instanceDesign.AppDrawer.props);
             this.$store.state.drawer = this.instanceDesign.AppDrawer.props.startmdAndUp;
           }
        }
@@ -52,16 +50,16 @@ export default {
         },
 
         instanceDesign() {
-          return this.$store.state.instance.design;
+          return this.$store.state.appInstance.design;
         },
 
         AppToolbarMenu() {
-            return this.$store.state.instance.menu;
+            return this.$store.state.appInstance.menu;
         },
 
         AppDrawerMenu() {
           //console.log('start');
-          return this.$store.state.instance.menu;
+          return this.$store.state.appInstance.menu;
         }
 
 

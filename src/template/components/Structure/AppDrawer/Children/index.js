@@ -7,7 +7,7 @@ export const  AppDrawerHeader = {
     render(h, context) {
       return h('v-toolbar', {props: {flat:true}},
         [
-          h('v-toolbar-title', [context.parent.$store.state.instance.website.name ]),
+          h('v-toolbar-title', [context.parent.$store.state.appInstance.data.name ]),
 
         ]
       )

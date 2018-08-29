@@ -83,15 +83,15 @@ export default {
 
   created() {
     // add _id for website, because templates does not work without it
-    this.$store.commit('websites/setApiId', this.$store.state.instance.website._id);
+    this.$store.commit('websites/setApiId', this.$store.state.appInstance.data._id);
     // add _id for  templates
-    this.$store.commit('websites/templates/setApiId', this.$store.state.instance.website.templates_id );
+    this.$store.commit('websites/templates/setApiId', this.$store.state.appInstance.data.templates_id );
   },
   methods: {
 
       saveDesign() {
         // update template store
-        this.$store.dispatch('websites/templates/updateObject', { designStructure: this.$store.state.instance.design})
+        this.$store.dispatch('websites/templates/updateObject', { designStructure: this.$store.state.appInstance.design})
          //this.$emit('saveDesign', {} );
       },
 
@@ -132,7 +132,7 @@ export default {
   computed: {
 
     arrayDesignStructure() {
-      return Object.values(this.$store.state.instance.design);
+      return Object.values(this.$store.state.appInstance.design);
     },
 
     /**

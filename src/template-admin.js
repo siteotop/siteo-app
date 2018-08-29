@@ -4,11 +4,9 @@ import DesignSettingsPlugin  from './template-admin/index';
 //import {AdminStorePlugin} from 'core-admin/plugin.js';
 
 SiteoCoreInstall(
+  _APP_INSTANCE,
+  _APP_DOMAIN,
   template,
-  {
-    WEBSITE: _WEBSITE, // createDefaultDesign(_WEBSITE),
-    DNS: _DNS
-  },
 
   [/*AdminStorePlugin,*/ DesignComponents, DesignSettingsPlugin]
 

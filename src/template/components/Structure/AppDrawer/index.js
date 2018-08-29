@@ -38,9 +38,9 @@ export default {
   //props: _settingsProps,
   render (h, context) {
 
-      //var instance = createSettings(context);
-      var design = context.parent.$store.state.instance.design[SHORT_NAME] || {};
-      //website = context.parent.$store.state.instance.website|| {};
+
+      var design = context.parent.$store.state.appInstance.design[SHORT_NAME] || {};
+
       if (design.props&& design.props.coreOff===true) {
         return '';
       }

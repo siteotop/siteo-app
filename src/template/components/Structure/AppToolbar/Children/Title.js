@@ -8,7 +8,7 @@ export default {
         class:context.data.class
       },
       [
-        context.parent.$store.state.instance.website.name
+        context.parent.$store.state.appInstance.data.name
       ]
     )
   }

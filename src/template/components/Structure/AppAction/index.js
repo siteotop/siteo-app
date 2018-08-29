@@ -6,8 +6,8 @@ export default {
   name: 'AppAction',
   render(h, context) {
     var mobile = context.parent.$root.$vuetify.breakpoint.xs,
-    design = context.parent.$store.state.instance.design.AppAction||{},
-    actionText = context.parent.$store.state.instance.website.actionText;
+    design = context.parent.$store.state.appInstance.design.AppAction||{},
+    actionText = context.parent.$store.state.appInstance.data.actionText;
 
 
     //context.data.props.icon = mobile;

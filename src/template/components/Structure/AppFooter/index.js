@@ -31,7 +31,7 @@ export default {
     wrapped: 'v-footer',
 
     render(h, context) {
-      var design = context.parent.$store.state.instance.design[SHORT_NAME] || {};
+      var design = context.parent.$store.state.appInstance.design[SHORT_NAME] || {};
       return h('v-footer', {
           props: {
             app: true,
@@ -49,7 +49,7 @@ export default {
                         flat: true
                       },
                       attrs: {
-                        href: context.parent.$store.getters.CORE_HOST
+                        href: 'https://siteo.top'
                       }
                     },
                     [

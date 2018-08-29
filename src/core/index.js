@@ -97,11 +97,11 @@ const MY_ICONS = {
 
 /***
 */
-export const SiteoCoreInstall = function (template, data,  plugins ) {
+export const SiteoCoreInstall = function (appInstance, appDns, template,   plugins ) {
 
    //console.log(data);
    //start Vuetify
-   Vue.use(Vuetify, {icons: MY_ICONS, theme:  data.WEBSITE.design? data.WEBSITE.design.theme.colors:{}});
+   Vue.use(Vuetify, {icons: MY_ICONS, theme:  appInstance.design? appInstance.design.theme.colors:{}});
 
    // start VueProgressBar
    Vue.use(VueProgressBar, {
@@ -111,10 +111,10 @@ export const SiteoCoreInstall = function (template, data,  plugins ) {
    })
 
    // create store
-   template.coreVue.store = StoreInstall(Vue, /*options.store||{},*/ data );
+   template.coreVue.store = StoreInstall(Vue, appInstance, appDns );
    // create router
    template.coreVue.router =  new VueRouter({
-       base: data.DNS.active.path,
+       base: appDns.active.path|| '/',
        mode: 'history',
        fallback: false,  // для браузеров где нет History Api  (IE9) будет просто открывать новую страницу
        routes: template.routes
@@ -130,7 +130,7 @@ export const SiteoCoreInstall = function (template, data,  plugins ) {
 
    }
    template.coreVue.el = '#siteo-top-app';
-   
+
    let app2 = new Vue(
       template.coreVue
    );
