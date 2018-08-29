@@ -130,8 +130,8 @@ optimization: {
               Plugin create manifest.json file
             */
             new ManifestPlugin({fileName: name_manifet_file, publicPath: ''}),
-            new CleanWebpackPlugin(['static'], {root:path.resolve(__dirname, 'dist'),  exclude:  [name_manifet_file]}),
-            new CleanWebpackPlugin(['static'], {root:path.resolve(__dirname, 'example/dist')}),
+           //  new CleanWebpackPlugin(['static'], {root:path.resolve(__dirname, 'dist'),  exclude:  [name_manifet_file]}),
+            //new CleanWebpackPlugin(['static'], {root:path.resolve(__dirname, 'example/dist')}),
 
             new webpack.DefinePlugin({
               'process.env': {
@@ -149,10 +149,7 @@ optimization: {
                 chunkFilename: "[id].css"
               }),
 
-            new CopyWebpackPlugin([
-              { from: 'dist/**/*', to: '../example' },
 
-            ])
 
             // new HtmlWebpackPlugin()
 
