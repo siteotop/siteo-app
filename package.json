@@ -92,7 +92,7 @@
     "IE 10"
   ],
   "scripts": {
-    "build": "webpack",
-    "production": "NODE_ENV=production webpack"
+    "dev": "webpack --config build/dev.webpack.config.js",
+    "dist": "NODE_ENV=production webpack --config build/dist.webpack.config.js"
   }
 }

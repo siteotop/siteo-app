@@ -1,5 +1,6 @@
 /.babelrc
 /example
+/dev
 /package-lock.json
 /postcss.config.js
 /webpack.config.js
