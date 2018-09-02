@@ -11,6 +11,10 @@ import VueProgressBar from 'vue-progressbar';
 import Meta from 'vue-meta'
 Vue.use(Meta);
 
+/**I18N */
+import VueI18n from 'vue-i18n';
+Vue.use(VueI18n);
+import messages from './lang';
 
 /**ROUTER
    create Routing for every APP
@@ -95,7 +99,10 @@ const MY_ICONS = {
   'edit': ''
 }
 
+
+
 /***
+
 */
 export const SiteoCoreInstall = function (appInstance, appDns, template,   plugins ) {
 
@@ -131,6 +138,15 @@ export const SiteoCoreInstall = function (appInstance, appDns, template,   plugi
    }
    template.coreVue.el = '#siteo-top-app';
 
+   // Create VueI18n instance with options
+
+   template.coreVue.i18n = new VueI18n({
+      locale: 'en',
+      messages
+       // set locale messages
+    });
+
+    // start Vue instance
    let app2 = new Vue(
       template.coreVue
    );
