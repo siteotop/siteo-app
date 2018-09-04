@@ -146,6 +146,7 @@ export const SiteoCoreInstall = function (appInstance, appDns, template,   plugi
    // Create VueI18n instance with options
    appDns.lang;
    template.coreVue.i18n = new VueI18n({
+      silentTranslationWarn: process.env.NODE_ENV === 'development'? false: true, // silent log 
       locale: appDns.active.lang, // app lang
       messages: messages
        // set locale messages

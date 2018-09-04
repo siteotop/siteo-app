@@ -11,10 +11,10 @@
           md5: true,
           lg4:true,
           xl3:true
-        }" >
+        }">
 
           <v-card  >
-            <AppForm i18nkey="formOrder" :propsStructure="pageStructure" ></AppForm>
+             <AppForm i18nkey="formOrder" :propsStructure="formStructure" ></AppForm>
           </v-card>
       </v-flex>
   </v-layout>
@@ -30,7 +30,7 @@ export default {
   data() {
 
       return {
-        pageStructure: {
+        formStructure: {
           userEmail: CreateEmail({autocomplete:true}),
           password: CreatePassword(),
           statesystem: CreateCheckbox({trueValue:1, falseValue:'', value: 1, required: false}),

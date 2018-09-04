@@ -16,7 +16,7 @@ export default {
 
            // watch for values
           var self = this;
-          this.$watch('pageStructure.' + element.name +'.value', function (value) {
+          this.$watch('formStructure.' + element.name +'.value', function (value) {
               //  console.log(element.name);
                 //console.log(element.value);
                 if (element.defaultValue!=value) {
@@ -41,7 +41,7 @@ export default {
         */
         createVeeAttributes(){
 
-            const attr = {attributes:_mapValues(this.pageStructure, 'label')}
+            const attr = {attributes:_mapValues(this.formStructure, 'label')}
             const dictionary = {};
             dictionary[this.$validator.locale] =  attr;
           //  console.log(dictionary);

@@ -79,7 +79,7 @@ export default {
            <div class="pa-3"  >
 
               {
-                  _Values(this.pageStructure).map(function(el) {
+                  _Values(this.formStructure).map(function(el) {
 
                     var myinput =function (ev) {
                         el.value = ev;

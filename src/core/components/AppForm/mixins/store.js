@@ -15,14 +15,14 @@ export default {
     clearForm(){
 
 
-        _Values(this.pageStructure).map(function(element) {
+        _Values(this.formStructure).map(function(element) {
              //console.log('nulled form for' + element.name );
              console.log(element.defaultValue);
 
              element.value = element.defaultValue;
              //element.state = false;
          });
-        console.log(this.pageStructure);
+        console.log(this.formStructure);
         this.clearMessagesForm();
         this.disableForm();
 
@@ -39,7 +39,7 @@ export default {
         // console.log(this.defaultValues);
       //  var defaultValues = _Clone(this.defaultValues);
         var self = this;
-       _Values(this.pageStructure).map(function(element) {
+       _Values(this.formStructure).map(function(element) {
 
             if (self.defaultValues[element.name]&&  !element.skipStartValue ){
                self.setNewValueForElement( self.defaultValues[element.name], element);
@@ -60,7 +60,7 @@ export default {
 
       var data_clone = _Clone(data);
       var self = this;
-      _Values(this.pageStructure).map(function(element) {
+      _Values(this.formStructure).map(function(element) {
             var  value;
            if (element.unFilteredFunc) {
                value = element.unFilteredFunc(element.value, element);
@@ -84,7 +84,7 @@ export default {
 
     updateDefaultsValues() {
 
-        _Values(this.pageStructure).map(function(element) {
+        _Values(this.formStructure).map(function(element) {
               element.defaultValue = element.value;
 
          });

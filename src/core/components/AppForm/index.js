@@ -63,7 +63,7 @@ export default {
         leaveform: false,
 
         //i18n: {},
-        pageStructure: false,
+        formStructure: false,
 
       }
   },
@@ -74,13 +74,13 @@ export default {
 
     //console.log(this.propsStructure);
     if (this.propsStructure) {
-       this.pageStructure = this.propsStructure;
+       this.formStructure = this.propsStructure;
     }
     //console.log(JSON.stringify(this.$props));
 
   //  console.log(JSON.stringify(this.fieldsI18n));
 
-    this.preparePageStructure();
+    this.prepareFormStructure();
     if (this.activateForm) {
       this.enableForm();
     }
@@ -143,11 +143,11 @@ export default {
           /**
             generate validate
           */
-          initPageStructure(){
+          initFormStructure(){
               var self = this;
               this.buttonSubmit = true;
               this.setDefaultValuesFromStore();
-              _Values(this.pageStructure).map(function(element) {
+              _Values(this.formStructure).map(function(element) {
                   // attach validators to the elements
                   self.atachValidator(element);
               });
@@ -160,7 +160,7 @@ export default {
 
           destroyForm(){
             this.disableForm();
-            this.pageStructure = {};
+            this.formStructure = {};
             this.buttonSubmit = false;
 
           },
@@ -170,7 +170,7 @@ export default {
 
               this.$store.commit('clearAllMessages');
               this.$_LocalMessages_clear();
-              _Values(this.pageStructure).map(function(element) {
+              _Values(this.formStructure).map(function(element) {
                     element.state = false;
                     element.feedback = [];
               });
@@ -186,12 +186,12 @@ export default {
             this.startFormLoader();
             const self = this;
 
-            const form_data = _mapValues(this.pageStructure, 'value');
+            const form_data = _mapValues(this.formStructure, 'value');
             //  console.log(form_data);
              this.$validator.validateAll(form_data).then(result => {
                   if (!result) {
                       self.stopFormLoader();
-                        _Values(this.pageStructure).map(function(element) {
+                        _Values(this.formStructure).map(function(element) {
                             self.validateOneElement(element, element.value);
 
                         });
@@ -213,9 +213,9 @@ export default {
             reset Google Captcha
           */
           clearCaptcha() {
-            //console.log(this.pageStructure.captcha);
-            if (this.pageStructure.captcha!==undefined) {
-                this.pageStructure.captcha.reload ++;
+            //console.log(this.formStructure.captcha);
+            if (this.formStructure.captcha!==undefined) {
+                this.formStructure.captcha.reload ++;
             }
 
           },
@@ -294,10 +294,10 @@ export default {
                     self.$_LocalMessages_add( string_message, 'error');
 
 
-                    if (self.pageStructure&&self.pageStructure[message.field]!==undefined) {
-                        //label = self.pageStructure[message.field].label+'": ';
+                    if (self.formStructure&&self.formStructure[message.field]!==undefined) {
+                        //label = self.formStructure[message.field].label+'": ';
 
-                        self.setErrorForElement(self.pageStructure[message.field], string_message);
+                        self.setErrorForElement(self.formStructure[message.field], string_message);
                     }
 
                });
@@ -326,8 +326,8 @@ export default {
                 console.log('form is disabled');
           },
           enableForm(){
-            //  console.log(this.pageStructure);
-              if ( Object.keys(this.pageStructure).length >0)  {
+            //  console.log(this.formStructure);
+              if ( Object.keys(this.formStructure).length >0)  {
                   console.log('form is enabled');
                 this.formActive = true;
               }

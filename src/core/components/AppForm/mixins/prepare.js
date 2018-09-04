@@ -9,30 +9,30 @@ export default {
 
     methods: {
 
-      preparePageStructure(){
+      prepareFormStructure(){
 
-          if (!this.pageStructure) {
+          if (!this.formStructure) {
             return false;
           }
 
-          for (let field_name in this.pageStructure ) {
-              var field = this.pageStructure[field_name];
+          for (let field_name in this.formStructure ) {
+              var field = this.formStructure[field_name];
               field.name =  field_name;
               if ( field.i18n) {
                   this.createFieldI18n(field, field_name);
               }
            }
-          // console.log(this.pageStructure);
+          // console.log(this.formStructure);
            this.createSubmit();
 
-           this.initPageStructure();
+           this.initFormStructure();
       },
 
 
       createSubmit() {
       //  var submit = SUBMIT;
-        this.$set( this.pageStructure, 'submit', CreateSubmit()  );
-        this.createFieldI18n(this.pageStructure.submit, 'submit');
+        this.$set( this.formStructure, 'submit', CreateSubmit()  );
+        this.createFieldI18n(this.formStructure.submit, 'submit');
 
       },
 
