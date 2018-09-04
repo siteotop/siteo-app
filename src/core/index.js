@@ -15,7 +15,7 @@ Vue.use(Meta);
 import VueI18n from 'vue-i18n';
 Vue.use(VueI18n);
 import messages from './i18n';
-
+console.log(messages);
 /**ROUTER
    create Routing for every APP
 */
@@ -99,6 +99,9 @@ const MY_ICONS = {
   'edit': ''
 }
 
+import VeeValidate from 'vee-validate';
+
+
 
 
 /***
@@ -109,6 +112,8 @@ export const SiteoCoreInstall = function (appInstance, appDns, template,   plugi
    //console.log(data);
    //start Vuetify
    Vue.use(Vuetify, {icons: MY_ICONS, theme:  appInstance.design? appInstance.design.theme.colors:{}});
+
+
 
    // start VueProgressBar
    Vue.use(VueProgressBar, {
@@ -139,16 +144,20 @@ export const SiteoCoreInstall = function (appInstance, appDns, template,   plugi
    template.coreVue.el = '#siteo-top-app';
 
    // Create VueI18n instance with options
-
+   appDns.lang;
    template.coreVue.i18n = new VueI18n({
-      locale: 'en',
-      messages
+      locale: appDns.active.lang, // app lang
+      messages: messages
        // set locale messages
     });
 
+    // connect  vee-validator
+
+    Vue.use(VeeValidate, appDns.active.lang!='en'? { dictionary: messages.validation, local: appDns.lang }:undefined);
+
     // start Vue instance
-   let app2 = new Vue(
+    let app2 = new Vue(
       template.coreVue
-   );
+    );
 
 }

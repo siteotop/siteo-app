@@ -1,14 +1,10 @@
-
-
 var _mapValues = require('lodash/mapValues'); // get some values from objects
-var _foIn = require('lodash/forIn'); // get some values from objects  https://lodash.com/docs/4.17.4#forIn
-import { Validator } from 'vee-validate';
-
-
 
 export default {
-      $validator: null,
-
+      //$validator: null,
+      $_veeValidate: {
+          validator: 'new'
+      },
 
 
       methods: {
@@ -16,8 +12,7 @@ export default {
 
         atachValidator(element) {
 
-        //  this.$validator.attach(element.name, this.remakeServerValidator(element, element.validate));
-          this.$validator.attach(element.name, element.validate);  // deleting server vaidators which writen after ||
+           this.$validator.attach(element.name, element.validate);  // deleting server vaidators which writen after ||
 
            // watch for values
           var self = this;
@@ -39,71 +34,19 @@ export default {
             })
         },
 
-        remakeServerValidator(element, validators) {
-
-
-             // array new front-end validators
-             var string_validator = [];
-
-
-            _foIn(validators, function(value , validator) {
-
-
-
-                if (typeof(value) == 'boolean') {
-                   string_validator.push(validator);
-                } else {
-                  switch (validator) {
-                   case 'in' :
-                      if (typeof(value) != 'string') {
-                      //  console.log(element);
-                      //  console.log(validators);
-                        element.options = value;
-                        string_validator.push(validator+':'+value.join(','));
-                      }
-
-                      break;
-                    default:
-                      string_validator.push(validator+':'+value);
-                      break;
-                  }
-
-                }
-            })
-           console.log(string_validator);
-
-            return string_validator.join('|');
-        },
 
         /*
-        create validator form
+          cretae attributes for form
+          
         */
-        createValidator(){
-            this.$validator = new Validator();
-            this.errors = null;
-            this.$set(this, 'errors', this.$validator.errors);
-            this.createVeeMessages(this.$validator);
-        },
-
-        createVeeMessages(validator){
-            var messages =this.$store.getters.VEE_MESSAGES;
-            console.log(typeof (messages));
-            console.log(JSON.stringify(messages));
-            if (typeof (messages)=='object') {
-               const dictionary = {};
-               dictionary[messages.name] = messages;
-               Validator.localize( dictionary);
-               validator.setLocale(messages.name);
-            }
-        },
-
         createVeeAttributes(){
 
             const attr = {attributes:_mapValues(this.pageStructure, 'label')}
             const dictionary = {};
-            dictionary[Validator.locale] =  attr;
+            dictionary[this.$validator.locale] =  attr;
           //  console.log(dictionary);
-            Validator.localize(dictionary);
+           console.log(dictionary);
+            this.$validator.localize(dictionary);
 
 
         },

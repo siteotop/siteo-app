@@ -1,7 +1,8 @@
-
+import VeeEn from 'vee-validate/dist/locale/en';
 
 export  default {
   en: {
+    validation: VeeEn,
     cancel: 'Отмена',
     no_data: 'Данных для отображения нет',
 
@@ -16,6 +17,7 @@ export  default {
       confirm_title: 'Удаление',
       confirm_desc: 'Ви действительно желаете удалить данные?'
     },
+
     commonForm: {
       success: 'Success response form',
       leave: 'Ви желаете прервать заполнение формы?',

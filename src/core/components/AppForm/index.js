@@ -144,25 +144,13 @@ export default {
             generate validate
           */
           initPageStructure(){
-
-              this.createValidator();
-
-              this.buttonSubmit = true;
-
               var self = this;
-
+              this.buttonSubmit = true;
               this.setDefaultValuesFromStore();
               _Values(this.pageStructure).map(function(element) {
-                  //element.state = null;
-
                   // attach validators to the elements
-                    self.atachValidator(element);
-
-
+                  self.atachValidator(element);
               });
-
-
-
 
               this.createVeeAttributes();
               self.disableForm();
@@ -173,8 +161,6 @@ export default {
           destroyForm(){
             this.disableForm();
             this.pageStructure = {};
-            //this.$delete('pageStructure');
-
             this.buttonSubmit = false;
 
           },
@@ -304,7 +290,7 @@ export default {
                       }
 
                     }
-                    string_message = string_message.shift(); 
+                    string_message = string_message.shift();
                     self.$_LocalMessages_add( string_message, 'error');
 
 
