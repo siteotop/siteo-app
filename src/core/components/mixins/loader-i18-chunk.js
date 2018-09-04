@@ -1,20 +1,11 @@
 
-
-import content from './ContentI18N.js';
-
-
 export default {
-  mixins: [content],
 
   props: {
-      chunk: {
-          type: [String, Boolean],
-          default: true
-      },
-
-      propsContentI18n: {
-         type: [Object, Boolean],
-         default: false
+      // key for vue-i18
+      i18nkey: {
+        type: String,
+        default: ''
       },
 
       needUpdateMeta: {
@@ -30,21 +21,16 @@ export default {
 
   },
 
-  data () {
-    return {
-
-        isCallSetter: false
-
-      }
-  },
 
   computed: {
     iconTitle() {
-        if (this.$store.state.Routes[this.$options.name]) {
+       return '';
+       /*  if (this.$store.state.Routes[this.$options.name]) {
           return   this.$store.state.Routes[this.$options.name].i;
         } else {
           return false;
         }
+        */
 
     }
 
@@ -55,75 +41,49 @@ export default {
   metaInfo () {
 
     if (!this.needUpdateMeta) {
-      return {};
+       return {};
     }
 
     return {
-      title:  this.contentI18N.title,
+      title: this.$i18n_t('title'),
       titleTemplate: '%s  - ' + this.$store.state.appInstance.data.name,
       meta: [
-        {name: 'description', vmid: 'description', content:  this.contentI18N.description}
+        {name: 'description', vmid: 'description', content:  this.$i18n_t('description')}
       ]
 
     }
   },
 
 
-  created() {
-
-    if (!this.isCallSetter&&this.chunk) {
-        if (this.chunk === true) {
-          if (this.$options.name) {
-             this.getAsyncChunkByName(this.$options.name);
-          }
-
-        } else {
-          this.getAsyncChunkByName(this.chunk);
-
-        }
-    }
-
-
-
-  },
-
-  beforeMount() {
-    if (this.propsContentI18n) {
-       this.$_ContentI18N_set( this.propsContentI18n);
-    }
-  },
-
-  watch: {
-      'propsContentI18n': function (newContent) {
-            if (newContent) {
-                this.$_ContentI18N_set( newContent);
-            }
-
-
-
-      }
-
-  },
-
-
   methods: {
-
-    getAsyncChunkByName(componentName) {
-      this.isCallSetter = true;
-      console.log(componentName);
-      this.$store.dispatch('getContentForComponent', componentName).then(result=>{
-           if (result) {
-             this.$_ContentI18N_set(result);
-           }
-      }).catch(function(error){
-          console.log(error);//  next();
-      });
-
+    /**
+      wrapper for vue-i18n and using component key this.i18nkey
+      @return transllate
+    */
+    $i18n_t(key) {
+      return this.$t(this.i18nkey+'.'+key)
     },
 
+    /**
+      check exist key
+      wrapper for vue-i18n and using component key this.i18nkey
+      @return Boolean
+    */
+    $i18n_te(key) {
+      var fullkey = this.i18nkey+'.'+key;
+      return this.$te(fullkey);
+    },
 
-
-
+    /**
+        @return translation or translation with default key
+    */
+    $i18n_td(key, default_key) {
+        if (this.$i18n_te(key)) {
+            return this.$i18n_t(key)
+        } else {
+              return this.$t(default_key)
+        }
+    }
 
   }
 

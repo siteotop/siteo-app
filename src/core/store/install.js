@@ -2,7 +2,7 @@ import Vuex from 'vuex';
 
 import SystemMessages from './messages.js';
 
-import i18n from './i18n.js';
+//import i18n from './i18n.js';
 import createInstance from './appInstance.js';
 import { actions}  from './helpers/api-actions';
 
@@ -34,7 +34,7 @@ export default function (Vue, appInstance, appDns )  {
          modules: {
            appInstance: createInstance (appInstance, appDns ),
            SystemMessages,
-           i18n,
+          // i18n,
          },
 
          actions: actions

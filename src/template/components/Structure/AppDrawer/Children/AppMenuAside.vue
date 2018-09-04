@@ -74,7 +74,7 @@ export default {
           return   this.$store.getters[menuId];
       } else {
 
-        // generate menu using only admin app 
+        // generate menu using only admin app
         //  return  this.$store.getters.generateMenu(this.idSubMenu);
       }
 
@@ -88,7 +88,7 @@ export default {
     subMenuMenuTitle(){
        if (this.idSubMenu) {
        //const key =   this.$route.matched[0].name;
-       return  this.$store.getters.DICTIONARY_KEY(this.idSubMenu, 'routes');
+       return this.$t('routes.'+this.idSubMenu);
 
      } else {
        return  '';

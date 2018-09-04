@@ -69,7 +69,7 @@ const SystemMessages = {
 
         if (!error||!error.response||typeof(error.response.data)!='object') {
             console.log(error.response);
-            dispatch('generateSystemMessage', {text: getters.DICTIONARY_KEY('error_system'), type: 'error'});
+            dispatch('generateSystemMessage', {text: 'Error NO CODE: System error. Content is not Object', type: 'error'});
             throw {errorContentNull: true};
           //  return false;
        }

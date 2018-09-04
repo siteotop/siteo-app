@@ -47,7 +47,7 @@ export default {
       title () {
 
           if (this.isTitle) {
-              return  this.$store.getters.DICTIONARY_KEY(this.status).title;
+              return  this.$t('page'+this.status+'.title')
           } else {
             return 'Server Error ' + this.status.status;
           }
@@ -55,7 +55,7 @@ export default {
 
       description() {
           if (this.isTitle) {
-            return  this.$store.getters.DICTIONARY_KEY(this.status).description;
+            return this.$t('page'+this.status+'.description');
          } else {
            return this.status.message;
          }

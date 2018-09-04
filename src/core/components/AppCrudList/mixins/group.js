@@ -123,7 +123,7 @@ export default {
           var actions = [];
 
           if (this.buttonDelete) {
-             actions.push(this.getObjectActionDelete(ids, this.$store.getters.DICTIONARY_KEY('list_del_check')) );
+             actions.push(this.getObjectActionDelete(ids, this.$t('commonList.del_check')) );
           }
           return this.getGroupActionHelper(actions);
 
@@ -136,7 +136,8 @@ export default {
       */
       renderGroupHeader(h) {
           var self = this;
-          var title = this.checked.length + ' '+ this.$store.getters.DICTIONARY_KEY('list_checked');
+          var title = this.checked.length + ' '+
+          this.$t('commonList.checked');
           return h('AppComponentToolbar', {
             props: {
               title: title,

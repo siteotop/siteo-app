@@ -24,7 +24,7 @@
         Main Components
     </v-subheader>
     <v-expansion-panel>
-      <DesignTabsBlock  :contentI18N="contentI18N.content" :designStructure="arrayDesignStructure">
+      <DesignTabsBlock  :designStructure="arrayDesignStructure">
       </DesignTabsBlock>
     </v-expansion-panel>
 

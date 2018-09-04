@@ -122,11 +122,13 @@ export default {
              if (!type) {
                type = 'submit';
              }
-             var successText = this.$_ContentI18N_get('success', type, 'form_success'); // this.contentI18N.success[type];
-             /*if (!successText) {
-                 successText = this.$store.getters.DICTIONARY_KEY('form_success');
-             }*/
-
+             var translation_key = 'success.'+type,
+              successText = '';
+             if (this.$i18n_te(translation_key)) {
+                 successText = this.$i18n_t(translation_key) ;
+             } else {
+                  successText = this.$t('commonForm.success');
+             }
              return successText;
 
            },
@@ -291,25 +293,18 @@ export default {
 
               _Values( error.messages).map(function (message, key){
 
-                    console.log(message);
                     let string_message = [];
-
                     for (let keyMessage in  message.messages ) {
 
-                      var keyError = message.field+keyMessage;
-                      console.log(keyError);
-                      if (self.contentI18N.errors[keyError]) {
-                        string_message.push(self.contentI18N.errors[keyError]);
+                    var keyError = message.field+keyMessage;
+                    if (self.$i18n_te('errors.'+keyError)) {
+                        string_message.push(self.$i18n_t('errors.'+keyError));
                       } else {
                         string_message.push(message.messages[keyMessage]);
                       }
 
                     }
-
-                    string_message = string_message.shift(); // join('; ');
-                    //messages.push( );
-                    //self.catchFormValidation(message.field, string_message);
-                    //var label = '';
+                    string_message = string_message.shift(); 
                     self.$_LocalMessages_add( string_message, 'error');
 
 
@@ -332,20 +327,16 @@ export default {
             var keyError = error.error_code;
             var message  = error.error_description;
 
-            var translate = this.$_ContentI18N_get('errors', keyError, false);
-            if (translate) {
-               message = translate;
+            var translation_key = this.i18nkey+'.errors.'+keyError;
+            if (this.$te(ktranslation_key)) {
+               message = this.$t(translation_key);
             }
-
-
-
             this.$_LocalMessages_add( message,  type );
           },
 
 
           disableForm(){
                 this.formActive = false;
-
                 console.log('form is disabled');
           },
           enableForm(){

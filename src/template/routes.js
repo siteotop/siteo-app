@@ -1,6 +1,6 @@
-
-import PageSchema from './components/Page/Schema.js';
-import PageError from './components/Page/Error.vue';
+import PageSchema from './components/PageSchema';
+import PageError from './components/Pages/Error.vue';
+import PageOrder from './components/Pages/Order.vue';
 export default  [
 
         {
@@ -9,6 +9,14 @@ export default  [
           component: PageSchema,
 
         },
+
+        {
+          name: "order",
+          path:  '/order',
+          component: PageOrder,
+
+        },
+
         {
           name: "PageSchema",
           path:  '/:postId',

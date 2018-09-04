@@ -15,8 +15,8 @@
          <v-list-tile avatar>
 
            <v-list-tile-content>
-             <v-list-tile-title> {{$store.getters.DICTIONARY_KEY('country_code')}}: {{countryCode}}</v-list-tile-title>
-             <v-list-tile-sub-title>{{$store.getters.DICTIONARY_KEY('IP_1')}}: {{IP}}</v-list-tile-sub-title>
+             <v-list-tile-title> {{$t('gpsFixed.country_code')}}: {{countryCode}}</v-list-tile-title>
+             <v-list-tile-sub-title>{{$t('gpsFixed.ip')}}: {{IP}}</v-list-tile-sub-title>
            </v-list-tile-content>
            <v-list-tile-action>
 

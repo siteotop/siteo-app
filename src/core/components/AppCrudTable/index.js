@@ -124,18 +124,18 @@ export default {
     computed: {
 
 
-
+      /**
+        create translate text for every column in table
+        @return headers with text property
+      */
       computedHeaders() {
 
-          if (!Object.keys(this.contentI18N.content).length) {
-             return this.headers;
-          }
+
           for (let i in this.headers) {
-              this.headers[i].text = this.$_ContentI18N_get('content', ['_f', this.headers[i].value,  'l' ], false);
+              // add translation  in  text property
+              this.headers[i].text = this.$i18n_t('content._f.'+this.headers[i].value+'.l');
            }
-
-           return this.headers;
-
+          return this.headers;
 
       },
 

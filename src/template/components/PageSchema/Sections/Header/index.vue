@@ -10,8 +10,9 @@
         </div>
 
          <transition name="fade" appear>
-          <AppAction> parent.$t('form.hello') }}</AppAction>
+          <AppAction></AppAction>
         </transition>
+
       </v-layout>
 
 </v-container>

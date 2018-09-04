@@ -134,10 +134,7 @@ export default {
         this.preparePageStructure();
         this.successGetStructure(this.pageStructure);
 
-       //  if (!this.$options.$page_uri) {
-            //  this.$_ContentI18N_setFromRoutes();
-           //    return false;
-      //  }
+      
 
 
       },

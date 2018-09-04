@@ -85,7 +85,7 @@ export default {
               self.items = items; // self.prepareItems(admins);
               self.stopLoading();
           }).catch(error=>{
-             self.$_LocalMessages_add(  self.$store.getters.DICTIONARY_KEY('list_no_load'), 'error');
+             self.$_LocalMessages_add( self.$t('commonList.no_load'), 'error');
              self.stopLoading();
           });
 

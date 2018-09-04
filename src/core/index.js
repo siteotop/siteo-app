@@ -14,7 +14,7 @@ Vue.use(Meta);
 /**I18N */
 import VueI18n from 'vue-i18n';
 Vue.use(VueI18n);
-import messages from './lang';
+import messages from './i18n';
 
 /**ROUTER
    create Routing for every APP

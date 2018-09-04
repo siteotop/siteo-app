@@ -105,14 +105,14 @@ export default {
                   ]),
 
                   h('v-list-tile-content', [
-                      h('v-list-tile-title', [self.$store.getters.DICTIONARY_KEY('list_del_check_one')]),
+                      h('v-list-tile-title', [self.$t('commonList.del_check_one')]),
                       h('v-list-tile-sub-title', [h('v-btn', {
                         on: {
                           click: function($event){
                               self.eventActionDelete(item[self.nameElementId]);
                           }
                         }
-                      }, [self.$store.getters.DICTIONARY_KEY('list_delete')]),
+                      }, [self.$t('commonList.delete')]),
                       h('v-btn',{
                         on: {
                           click: function($event){
@@ -120,7 +120,7 @@ export default {
                           }
                         }
                       },
-                      [self.$store.getters.DICTIONARY_KEY('cancel')])]),
+                      [self.$t('cancel')])]),
 
                   ]),
 
@@ -134,13 +134,13 @@ export default {
         renderCRUDBody(h){
             var self = this;
 
-            if (this.isLoaderActive||!this.contentLoaded) {// <AppPulseLoader loading={this.isLoaderActive} ></AppPulseLoader>
+            if (this.isLoaderActive) {// <AppPulseLoader loading={this.isLoaderActive} ></AppPulseLoader>
                return h('AppPulseLoader', {props: {loading:true} });
             }
 
             if (!this.filterItems.length) {
 
-              return h('v-card-text', [this.textNoData])
+              return h('v-card-text', [this.$i18n_td('content.nolist', 'no_data')])
             }
 
             return [h('v-list', {

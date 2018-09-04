@@ -88,25 +88,10 @@ export default {
   },
 
   computed: {
-    textActionEdit() {
-      return this.$_ContentI18N_get('content',   ['_ac','edit'], 'list_edit');
-    },
-    textActionDelete() {
-      return this.$_ContentI18N_get('content',   ['_ac','delete'], 'list_delete');
 
-    },
-    textActionAdd() {
-       return this.$_ContentI18N_get('content',   ['_ac','add'], 'list_add');
-       //return  this.textActionHelper('add');
-    },
-    textActionGet() {
-       return this.$_ContentI18N_get('content',   ['_ac','get'], 'open');
-       //return  this.textActionHelper('add');
-    },
 
-    textNoData() {
-      return this.$_ContentI18N_get('content', 'nolist', 'no_data');
-    },
+
+
 
     /**
        checking needed open dialog with form edit or add
@@ -166,7 +151,7 @@ export default {
       },
 
       getObjectActionGet() {
-          return this.createObjectAction('eye', this.textActionGet, this.eventActionGet);
+          return this.createObjectAction('eye',this.$i18n_td('content._ac.get', 'open'), this.eventActionGet);
       },
 
       getObjectActionAdd() {
@@ -174,12 +159,12 @@ export default {
              return false;
           }
 
-         return [this.createObjectAction('plus', this.textActionAdd, this.eventActionAdd,  this.colorAdd)];
+         return [this.createObjectAction('plus',this.$i18n_td('content._ac.add', 'commonList.add'), this.eventActionAdd,  this.colorAdd)];
       },
 
       getObjectActionEdit(elementId) {
          var self = this;
-         return this.createObjectAction('edit', this.textActionEdit, function () {
+         return this.createObjectAction('edit', this.$i18n_td('content._ac.edit', 'commonList.edit')), function () {
            //console.log()
            self.eventActionEdit(elementId);
          },  this.colorEdit);
@@ -187,7 +172,7 @@ export default {
 
       getObjectActionDelete(elementId, title) {
          if (!title) {
-           title = this.textActionDelete;
+           title = this.$i18n_td('content._ac.delete', 'commonList.delete');
          }
          var self = this;
          return this.createObjectAction('delete',  title, function () {
@@ -303,7 +288,8 @@ export default {
 
         renderFormAdd(h) {
             var formsAdd = {};
-            formsAdd.propsContentI18n = this.generatei18forForms('_fa');;
+            //formsAdd.propsContentI18n = this.generatei18forForms('_fa');;
+            formsEdit.i18nkey = this.i18nkey+'._f';
             formsAdd.formAction = this.$_LoadModule_getStoreLink('createObjectInList');
             formsAdd.propsStructure = this.generateFormAddStructure();
 
@@ -320,7 +306,8 @@ export default {
         renderFormEdit(h) {
 
           var formsEdit = {};
-          formsEdit.propsContentI18n = this.generatei18forForms('_fe');
+          //formsEdit.propsContentI18n =    this.generatei18forForms('_fe');
+          formsEdit.i18nkey = this.i18nkey+'._f';
           formsEdit.formAction = this.$_LoadModule_getStoreLink('updateObjectInList');
           formsEdit.propsStructure = this.generateFormEditStructure();
           formsEdit.defaultValues = this.formsEditdata;
@@ -329,14 +316,14 @@ export default {
         },
 
 
-
+        /*
         generatei18forForms(type_form) {
           var i18n = this.$_ContentI18N_get('content',  type_form);
 
           i18n['content'] = this.$_ContentI18N_get('content', '_f');
           i18n['errors'] = this.$_ContentI18N_get('errors');  //Errors();
           return i18n;
-        },
+        },*/
 
 
         /**
@@ -345,7 +332,7 @@ export default {
         renderFormAction(h, props, icon) {
           var toolbarAction,  self = this;
           props.needToolbar = false;
-          props.chunk = false;
+          
           if (this.renderTypeDialog) {
               toolbarAction = 'closeAction';
           } else {
@@ -373,8 +360,8 @@ export default {
 
         createConfirmDelete(callBack) {
           var confirm = {};
-          confirm.title = this.$_ContentI18N_get('content', ['_c', 'title'] , 'list_confirm_title');
-          confirm.description =  this.$_ContentI18N_get('content',  ['_c', 'description'], 'list_confirm_desc');;
+          confirm.title = this.i18n_td('content._c.title', 'commonList.confirm_title');
+          confirm.description =  this.i18n_td('content._c.description', 'commonList.confirm_desc');
 
 
           var self = this;
@@ -414,11 +401,8 @@ export default {
 
         renderCoreComponent(h) {
          var self = this;
-         if (!this.contentLoaded) {
-            return '';
-         }
 
-          return h('div', [
+         return h('div', [
 
                   this.showContentAction? this.detectedActionForRender(h, this.routeListAction): '',
 
@@ -428,7 +412,11 @@ export default {
                     ]
                   },  [
 
-                    h('AppComponentToolbar', {props: { iconTitle: this.iconTitle, title:  this.contentI18N.title, desc: this.contentI18N.description, mainActions: self.getObjectActionAdd() }}),
+                    h('AppComponentToolbar', {props: {
+                      iconTitle: this.iconTitle,
+                      title: this.$i18n_t('title'),
+                      desc: this.$i18n_t('description'),
+                      mainActions: self.getObjectActionAdd() }}),
 
 
                    this.$_LocalMessages_render(h),

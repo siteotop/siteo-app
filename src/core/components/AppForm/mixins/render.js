@@ -38,7 +38,7 @@ export default {
     renderConfirm() {
 
         return this.leaveform?
-         <AppConfirm  dialog={true} on-hideDialog={()=>this.leaveform=false} func={this.leaveform} title={this.$store.getters.DICTIONARY_KEY('form_leave')} description={this.$store.getters.DICTIONARY_KEY('form_leave_desc')} ></AppConfirm> : '';
+         <AppConfirm  dialog={true} on-hideDialog={()=>this.leaveform=false} func={this.leaveform} title={this.$t('commonForm.leave')} description={this.$t('commonForm.leave_desc')} ></AppConfirm> : '';
 
     },
 
@@ -47,13 +47,13 @@ export default {
     },
 
     renderFooter(h){
-      if (!this.contentI18N.footer) {
+      if (!this.$te(this.i18nkey + '.footer')) {
         return '';
       }
       return   h('div', {class:{'pt-2':true, 'grey--text':true}}, [
-          this.contentI18N.footer.text,
+          this.$i18n_t('footer.text'),
           ' ',
-          h('router-link', {props: {to:this.contentI18N.footer.action.to}}, [this.contentI18N.footer.action.text])
+          this.$i18n_te('footer.action')? h('router-link', {props: {to: this.$i18n_t('footer.action.to')}}, [this.$i18n_t('footer.action.text')]): ''
       ]);
     }
 
@@ -68,7 +68,11 @@ export default {
       //console.log(this);
   //   console.log(this.meta.title);
       var a =<v-card flat fluid >
-           { this.needToolbar? h('AppComponentToolbar', {props: {iconTitle: this.iconTitle, title:this.contentI18N.title, desc: this.contentI18N.description }}): '' }
+           { this.needToolbar? h('AppComponentToolbar', {props: {
+             iconTitle: this.iconTitle,
+             title: this.$i18n_t('title'),
+             desc: this.$i18n_t('description')
+           }}): '' }
 
            <v-card-text>
            {this.$_LocalMessages_render(h)}

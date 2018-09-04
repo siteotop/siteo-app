@@ -19,13 +19,9 @@ export default {
         children: {
           type: Boolean,
           default: false
-        },
-
-
-
-        contentI18N: {
-          type: Object
         }
+
+
     },
 
     render(h, context) {

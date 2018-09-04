@@ -45,7 +45,13 @@ export default function ( appInstance, appDns ) {
            return   'https://'+state.core.host;
       },
      */
-
+     LANGUAGES(){
+       return {
+         'en':'English',
+         'ru':'Русский',
+         'uk':'Українська'
+       }
+     }, 
 
       LANG_PORTAL(state){
           return state.hosts.active.lang;
