@@ -1,19 +1,4 @@
 
-//import {FORMAT_DATE, FORMAT_MASK} from '../../../config';
-
-export const  CreateForm = function (form,context){
-
-      if (context.props) {
-         for (var i in context.props) {
-            form.props[i] = context.props[i];
-         }
-      }
-      if (context.listeners) {
-        form.on = context.listeners;
-      }
-      return form;
-
-}
 
 
 export const  PlainField =function (fields, settings) {

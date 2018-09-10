@@ -12,7 +12,7 @@ export default {
     functional :true,
     name: SHORT_NAME,
     children: true,
-    wrapped: 'v-toolbar',
+    wrapped: 'VToolbar',
 
     render (h, context) {
         var design = context.parent.$store.state.appInstance.design[SHORT_NAME] || {};

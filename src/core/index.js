@@ -113,6 +113,7 @@ export const SiteoCoreInstall = function (appInstance, appDns, template,   plugi
    //start Vuetify
    Vue.use(Vuetify, {icons: MY_ICONS, theme:  appInstance.design? appInstance.design.theme.colors:{}});
 
+   console.log(Vue.options);
 
 
    // start VueProgressBar
@@ -135,18 +136,13 @@ export const SiteoCoreInstall = function (appInstance, appDns, template,   plugi
 
    sync(template.coreVue.store, template.coreVue.router );
 
-   if (plugins&&plugins.length) {
-      for (var i in plugins ) {
-        Vue.use(plugins[i], {coreVue:template.coreVue, pluginOptions: plugins[i].options  } );
-      }
 
-   }
    template.coreVue.el = '#siteo-top-app';
 
    // Create VueI18n instance with options
-   appDns.lang;
+
    template.coreVue.i18n = new VueI18n({
-      silentTranslationWarn: process.env.NODE_ENV === 'development'? false: true, // silent log 
+      silentTranslationWarn: process.env.NODE_ENV === 'development'? false: true, // silent log
       locale: appDns.active.lang, // app lang
       messages: messages
        // set locale messages
@@ -155,6 +151,14 @@ export const SiteoCoreInstall = function (appInstance, appDns, template,   plugi
     // connect  vee-validator
 
     Vue.use(VeeValidate, appDns.active.lang!='en'? { dictionary: messages.validation, local: appDns.lang }:undefined);
+
+    // add plugins
+    if (plugins&&plugins.length) {
+       for (var i in plugins ) {
+         Vue.use(plugins[i], {coreVue:template.coreVue, pluginOptions: plugins[i].options  } );
+       }
+
+    }
 
     // start Vue instance
     let app2 = new Vue(

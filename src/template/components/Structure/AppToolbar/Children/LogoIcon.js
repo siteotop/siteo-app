@@ -2,7 +2,7 @@
 export default {
   name: 'AppToolbarLogoIcon',
   functional: true,
-  wrapped: 'v-avatar',
+  wrapped: 'VAvatar',
 
   render(h, context) {
 

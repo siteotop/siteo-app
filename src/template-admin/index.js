@@ -8,7 +8,7 @@ import ADomainReserved  from './components/ADomainReserved.vue';
 const install = function (Vue, options) {
 
 
-
+      console.log(Vue.options);
       // if website founded
       if (options.coreVue.store.state.appInstance.design.AppDrawer) {
         // register some component which needed for create settings navigation drawer

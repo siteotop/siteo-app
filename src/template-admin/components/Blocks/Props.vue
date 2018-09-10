@@ -33,7 +33,11 @@ export default {
 
 
       generatedProps() {
-        var props = this.$root.$options.DesignComponents.generateProps(this.componentName);
+        var props =
+        
+        this.$root.$options.DesignComponents.generateProps(this.componentName);
+
+
         for (var nameProp in  props) {
           if (SpecialFields[this.componentName]&&SpecialFields[this.componentName][nameProp]!==undefined) {
               if (SpecialFields[this.componentName][nameProp]!==false) {

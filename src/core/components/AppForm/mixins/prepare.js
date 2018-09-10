@@ -42,7 +42,7 @@ export default {
       createFieldI18n(field, field_name) {
 
           this.$set( field, 'label', this.$i18n_t('content.'+field_name+'.l'));
-          this.$set( field, 'description', this.$i18n_t('content.'+field_name+'.d'));
+          this.$set( field, 'description',  this.$i18n_t('content.'+field_name+'.d'));
       },
 
     }

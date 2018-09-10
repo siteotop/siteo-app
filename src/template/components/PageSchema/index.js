@@ -1,7 +1,7 @@
 import * as components from './Sections';
 
 export default {
-    functional: true,
+    //functional: true,
 
     props: {
         structurePage: {
@@ -18,7 +18,7 @@ export default {
                       _at: 'Action Text',  //
                       _ah: 'Action Href',  //
                       _bc: '', // background color
-                      _bi: '', // background image  
+                      _bi: '', // background image
                     },
                     // settings section
                     _s: {
@@ -33,11 +33,11 @@ export default {
   //  components: components,
 
 
-    render(h, context ) {
+    render(h ) {
 
-        return context.props.structurePage.map(function(section) {
+        return h('div', this.structurePage.map(function(section) {
             return h(components[section._n], { props: {}  }  )
-        })
+        })) 
 
     }
 

@@ -16,7 +16,7 @@ export default {
 
   functional: true,
   name: SHORT_NAME,
-  wrapped: 'v-navigation-drawer',
+  wrapped: 'VNavigationDrawer',
   children: true,
   /*
   props: {

@@ -21,7 +21,7 @@ export default  [
           name: "PageSchema",
           path:  '/:postId',
           component: PageSchema,
-
+          props: true,
         },
 
         {

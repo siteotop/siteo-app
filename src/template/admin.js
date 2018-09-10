@@ -1,5 +1,3 @@
-import  _merge from 'lodash/merge';
-import template from './install.js';
 import {createSettComponent} from './components/Structure/design';
 import * as  AppStructure from './components/Structure';
 
@@ -21,7 +19,8 @@ for (var parentName in AppStructure) {
 export const DesignComponents = {
 
     install: function (Vue, options) {
-
+           console.log(Vue.options);
+           console.log(Vue.options.components);
           var getComponent = function (componentName) {
               if (AppStructure[componentName]) {
                  return AppStructure[componentName];
@@ -61,6 +60,7 @@ export const DesignComponents = {
                   }
 
                   if (component.wrapped) {
+                     // component Wrapped must be in "CamelCase" naming  
                      var wrappedComponent =  Vue.component(component.wrapped);
                      var instanceComponent = new wrappedComponent();
                      connectSpecial(componentName, props, instanceComponent.$options.props);
@@ -81,6 +81,3 @@ export const DesignComponents = {
 
 
 }
-
-
-export {template};

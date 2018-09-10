@@ -28,7 +28,7 @@ export default {
     functional: true,
     name: 'AppFooter',
   //  children: true,
-    wrapped: 'v-footer',
+    wrapped: 'VFooter',
 
     render(h, context) {
       var design = context.parent.$store.state.appInstance.design[SHORT_NAME] || {};
