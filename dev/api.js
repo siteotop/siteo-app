@@ -104,7 +104,9 @@ var _APP_INSTANCE = {
        "name":"AppAction",
        "props":{},
        "class":[]
-     }},
+     }
+
+   },
 
  "menu":[
    {
