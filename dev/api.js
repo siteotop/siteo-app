@@ -92,7 +92,7 @@ var _APP_INSTANCE = {
      },
      "AppFooter":{
        "name":"AppFooter",
-       "props":{},
+       "props":{absolute: true},
        "class":[]
      },
      "AppContent":{
@@ -129,4 +129,3 @@ var _APP_INSTANCE = {
    }
   ]
  };
- var _PRERENDER =null;

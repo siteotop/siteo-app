@@ -63,7 +63,7 @@ export default {
 
     },
 
-    name: 'section-contacts'
+    //name: 'section-contacts'
 
 
 }

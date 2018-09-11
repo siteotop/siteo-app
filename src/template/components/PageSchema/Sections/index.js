@@ -1,4 +1,8 @@
-export { default as Header} from './Header/index.vue';
+export { default as HeaderImage} from './HeaderImage.vue';
+export { default as Action} from './Action.vue';
+export { default as Features} from './Features.vue';
+export { default as TextSide} from './TextSide.vue';
+
 
 /*
 export { default as SectionFeatures} from './section-features.vue';
