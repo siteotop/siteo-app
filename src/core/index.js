@@ -1,5 +1,4 @@
 require('babel-polyfill');
-
 import Vue from 'vue'; //1 include vue
 
 /**Progres bar */
@@ -15,13 +14,13 @@ Vue.use(Meta);
 import VueI18n from 'vue-i18n';
 Vue.use(VueI18n);
 import messages from './i18n';
-console.log(messages);
+
 /**ROUTER
    create Routing for every APP
 */
 import VueRouter from 'router';
 Vue.use(VueRouter);
-//import RouterInstall from 'core/router/install.js';
+
 
 /**Vue Store
   Storing all data from backend
@@ -53,10 +52,9 @@ import './icons.js';
 /**CORE COMPONENTS
   All components which was created by Siteo
 */
-import * as components from './components';
-for (let NameComponent in components) {
-   Vue.component(NameComponent, components[NameComponent] );
-}
+
+import  AppForm from './components/AppForm';
+Vue.component('AppForm', AppForm);
 
 
 /** SiteoInstall Function  */
@@ -112,10 +110,7 @@ export const SiteoCoreInstall = function (appInstance, appDns, template,   plugi
    //console.log(data);
    //start Vuetify
    Vue.use(Vuetify, {icons: MY_ICONS, theme:  appInstance.design? appInstance.design.theme.colors:{}});
-
-   console.log(Vue.options);
-
-
+   Vue.use(template);
    // start VueProgressBar
    Vue.use(VueProgressBar, {
      color: 'rgb(106, 180, 255)',

@@ -1,19 +1,8 @@
 <template functional>
-<section class="white text--secondary ">
-  <v-container dark tag="section" >
-    <h2 class="mt-4 display-2 text-xs-center">{{props._ti}}</h2>
-    <div class="title mb-4 text-xs-center ">{{props._de}}</div>
+<SectionWrap v-bind="props">
+  <v-container >
    <v-layout row reverse>
-     <v-flex xs12 sm4 class="my-3">
-       <div class="text-xs-center">
-         <h2 class="headline">The best way to start developing</h2>
-         <span class="subheading">
-           Cras facilisis mi vitae nunc
-         </span>
-       </div>
-     </v-flex>
-
-      <v-flex md6>
+     <v-flex md6>
           <v-card flat>
             <v-card-text class="subheading" v-html="props._te"></v-card-text>
           </v-card>
@@ -21,10 +10,9 @@
       <v-flex md6>
             {{props._me}}
       </v-flex>
-      
    </v-layout>
   </v-container>
-</section>
+</SectionWrap>
 </template>
 
 <script>

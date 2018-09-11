@@ -1,13 +1,9 @@
 <template functional>
-  <v-container fluid  dark tag="section" class="primary text--secondary ">
-   <v-layout column align-center>
-          <h2 class="mb-2 display-1 text-xs-left">{{props._ti}}</h2>
-          <div class="subheading mb-3 text-xs-center ">{{props._de}}</div>
+  <SectionWrap v-bind="props">
     <transition name="fade" appear>
      <AppAction></AppAction>
     </transition>
-   </v-layout>
-  </v-container>
+  </SectionWrap>
 </template>
 
 <script>
