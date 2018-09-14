@@ -1,8 +1,10 @@
 <template functional>
   <SectionWrap v-bind="props">
+    <v-layout column align-center>
     <transition name="fade" appear>
      <AppAction></AppAction>
     </transition>
+   </v-layout>
   </SectionWrap>
 </template>
 
