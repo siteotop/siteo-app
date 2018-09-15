@@ -105,7 +105,7 @@ export default {
      getSettingsFromComponent(componentName) {
 
 
-       return this.$root.$options.DesignComponents.createSettComponent(componentName, this.childrenComponents[componentName]);
+       return this.$root.$options._siteoPlugins['design'].createSettComponent(componentName, this.childrenComponents[componentName]);
       /* var newObject = {name: componentName};
        var childrenComponents = this.childrenComponents;
        for (var i in this.$options.listBlock) {
@@ -123,7 +123,7 @@ export default {
   computed: {
 
     childrenComponents() {
-      return this.$root.$options.DesignComponents.getChildrenList(this.componentName);
+      return this.$root.$options._siteoPlugins['design'].getChildrenList(this.componentName);
     },
 
     // create basic components for merge with server options

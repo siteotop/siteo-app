@@ -102,9 +102,6 @@ import VeeValidate from 'vee-validate';
 
 
 
-/***
-
-*/
 export const SiteoCoreInstall = function (appInstance, appDns, template,   plugins ) {
 
    //console.log(data);
@@ -116,7 +113,11 @@ export const SiteoCoreInstall = function (appInstance, appDns, template,   plugi
      color: 'rgb(106, 180, 255)',
      failedColor: 'red',
      thickness: '3px',
-   })
+   });
+
+   Vue.MyglobalMethod = function () {
+      console.log('Run global Method');
+   }
 
    // create store
    template.coreVue.store = StoreInstall(Vue, appInstance, appDns );
@@ -139,20 +140,25 @@ export const SiteoCoreInstall = function (appInstance, appDns, template,   plugi
    template.coreVue.i18n = new VueI18n({
       silentTranslationWarn: process.env.NODE_ENV === 'development'? false: true, // silent log
       locale: appDns.active.lang, // app lang
-      messages: messages
-       // set locale messages
+      messages: messages // set locale messages
     });
 
     // connect  vee-validator
-
-    Vue.use(VeeValidate, appDns.active.lang!='en'? { dictionary: messages.validation, local: appDns.lang }:undefined);
+    Vue.use(VeeValidate, appDns.active.lang!='en'? {
+      dictionary: messages.validation,
+      local: appDns.lang
+    }:undefined);
 
     // add plugins
+    template.coreVue.SiteoAddPlugin = function (plugin) {
+      Vue.use(plugin, {coreVue:template.coreVue, pluginOptions: plugin.options });
+    };
+    template.coreVue._siteoPlugins = {};
+
     if (plugins&&plugins.length) {
        for (var i in plugins ) {
-         Vue.use(plugins[i], {coreVue:template.coreVue, pluginOptions: plugins[i].options  } );
+          template.coreVue.SiteoAddPlugin(plugins[i]);
        }
-
     }
 
     // start Vue instance

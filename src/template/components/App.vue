@@ -1,9 +1,14 @@
 <script>
 
-import * as  AppStructure from './Structure';
+import * as AppStructure from './Structure';
+import * as componentsPage from './PageSchema/Sections';
+
 export default {
 
-     renderList: ['AppDrawer', 'AppToolbar',  'AppFooter', 'AppContent'],  //AppStructure,
+     renderList: ['AppDrawer', 'AppToolbar',  'AppFooter', 'AppContent'],
+
+     componentsPage: componentsPage,
+
      components: AppStructure,
      data() {
 

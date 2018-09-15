@@ -34,8 +34,8 @@ export default {
 
       generatedProps() {
         var props =
-        
-        this.$root.$options.DesignComponents.generateProps(this.componentName);
+
+        this.$root.$options._siteoPlugins['design'].generateProps(this.componentName);
 
 
         for (var nameProp in  props) {

@@ -100,11 +100,11 @@ var _APP_INSTANCE = {
        "props":{},
        "class":[]
      },
-     "AppAction":{
+  /*   "AppAction":{
        "name":"AppAction",
        "props":{},
        "class":[]
-     }
+     }*/
 
    },
 
@@ -126,6 +126,12 @@ var _APP_INSTANCE = {
      "id":"location",
      "path":"\/location",
      "title":"Адрес"
+   },
+   {
+     "i":"user-sett",
+     "id":"admin",
+     "path":"\/admin",
+     "title":"Admin"
    }
   ]
  };

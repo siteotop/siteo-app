@@ -1,13 +1,9 @@
-
-
 /**
   main object for template
 */
 import App from './components/App.vue';
-import basicRoutes from './routes';
+import basicRoutes from './components/routes';
 import * as components from './components/Elements';
-import * as ComponetSections from './components/PageSchema/Sections';
-App.ComponetSections = ComponetSections;
 
 export default {
   install: function (Vue, options) {

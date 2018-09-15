@@ -1,26 +1,20 @@
-import {createSettComponent} from './components/Structure/design';
-import * as  AppStructure from './components/Structure';
+import {createSettComponent} from '../components/Structure/design';
+import * as  AppStructure from '../components/Structure';
 
 var childrenList = {};
 // check everything  structure's component  for availability children
 for (var parentName in AppStructure) {
      if (AppStructure[parentName].children) {
         // if component has children, get them and set options
-        var children = require(`./components/Structure/${parentName}/Children/index.js`);
+        var children = require(`../components/Structure/${parentName}/Children/index.js`);
         childrenList[parentName] = children;
 
      }
 }
-//console.log(designStructure);
-//console.log( allDesignStructure);
-//template.coreVue.allDesignStructure = allDesignStructure;
-
 
 export const DesignComponents = {
 
     install: function (Vue, options) {
-           console.log(Vue.options);
-           console.log(Vue.options.components);
           var getComponent = function (componentName) {
               if (AppStructure[componentName]) {
                  return AppStructure[componentName];
@@ -60,7 +54,7 @@ export const DesignComponents = {
                   }
 
                   if (component.wrapped) {
-                     // component Wrapped must be in "CamelCase" naming  
+                     // component Wrapped must be in "CamelCase" naming
                      var wrappedComponent =  Vue.component(component.wrapped);
                      var instanceComponent = new wrappedComponent();
                      connectSpecial(componentName, props, instanceComponent.$options.props);
@@ -74,7 +68,7 @@ export const DesignComponents = {
           }
 
 
-          options.coreVue.DesignComponents = DesignComponents;
+          options.coreVue._siteoPlugins['design'] = DesignComponents;
 
 
     }

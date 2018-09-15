@@ -45,17 +45,17 @@ module.exports = {
 
   entry: {
     // index without template
-    'siteo-core': './src/core.js',
+  //  'siteo-core': './src/core.js',
     // index with template
     'siteo-template': './src/template.js',
     // index with template admin
-    'siteo-template-admin': './src/template-admin.js',
+  //  'siteo-template-admin': './src/template-admin.js',
 
   },
 
   output: {
     path: path.resolve(__dirname,  DIR_RESOURCE),
-    publicPath: '/',
+    publicPath: 'dist/',
     filename: '[name].js',
 
 
@@ -90,17 +90,21 @@ optimization: {
 
     /**
       split for common chunk
-
+    */
     splitChunks: {
       cacheGroups: {
-         commons: {
-           name: 'commons',
+        vendors: {
+          test: function () {return false},
+          priority: -10
+        },
+        /* commons: {
+           name: 'siteo-commons',
            chunks: 'initial',
-           minChunks: 4
-         }
+           minChunks: 2
+         }*/
        }
     }
-    */
+
   },
 
 

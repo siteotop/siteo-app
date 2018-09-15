@@ -1,19 +1,25 @@
-import PageSchema from './components/PageSchema';
-import PageError from './components/Pages/Error.vue';
-import PageOrder from './components/Pages/Order.vue';
+import PageSchema from './PageSchema';
+import PageError from './Pages/Error.vue';
+import PageOrder from './Pages/Order.vue';
 export default  [
 
         {
           name: "indexPage",
           path:  '/',
           component: PageSchema,
-
         },
 
         {
           name: "order",
           path:  '/order',
           component: PageOrder,
+
+        },
+
+        {
+          name: "admin",
+          path:  '/admin',
+          component:  ()=>import('../components-settings/index.vue' /* webpackChunkName: "chunk/admin" */  ),
 
         },
 
