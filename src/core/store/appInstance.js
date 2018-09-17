@@ -1,15 +1,15 @@
-export default function ( appInstance, appDns ) {
+export default function ( APP_INSTANCE, appDns ) {
   return  {
 
     state: function() {
-      if (appInstance.menu==undefined) {
-        appInstance.menu = [];
+      if (APP_INSTANCE.menu==undefined) {
+        APP_INSTANCE.menu = [];
       }
-      if (appInstance.design==undefined) {
-        appInstance.desig = {};
+      if (APP_INSTANCE.design==undefined) {
+        APP_INSTANCE.desig = {};
       }
-      appInstance.hosts = appDns;
-      return appInstance;
+      APP_INSTANCE.hosts = appDns;
+      return APP_INSTANCE;
     },
 
    mutations: {
@@ -51,7 +51,7 @@ export default function ( appInstance, appDns ) {
          'ru':'Русский',
          'uk':'Українська'
        }
-     }, 
+     },
 
       LANG_PORTAL(state){
           return state.hosts.active.lang;

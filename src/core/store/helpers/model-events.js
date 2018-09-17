@@ -2,6 +2,10 @@
 import API from 'core/store/helpers/model-api.js'
 import createItems from 'core/store/helpers/model-items.js'
 
+/**
+  @return  String Data fo Sending to The server 
+*/
+
 const prepareData = function (data) {
       for (let i in data) {
            if ( typeof(data[i]) =='object') {

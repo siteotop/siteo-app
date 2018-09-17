@@ -7,8 +7,8 @@ export default {
   wrapped:'v-btn',
   render(h, context) {
     var mobile = context.parent.$root.$vuetify.breakpoint.xs,
-    design = context.parent.$store.state.appInstance.design.AppAction||{},
-    actionText = context.parent.$store.state.appInstance.data.actionText;
+    design = context.parent.$store.state.APP_INSTANCE.design.AppAction||{},
+    actionText = context.parent.$store.state.APP_INSTANCE.data.actionText;
 
 
     //context.data.props.icon = mobile;

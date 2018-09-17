@@ -15,7 +15,7 @@ export default {
     wrapped: 'VToolbar',
 
     render (h, context) {
-        var design = context.parent.$store.state.appInstance.design[SHORT_NAME] || {};
+        var design = context.parent.$store.state.APP_INSTANCE.design[SHORT_NAME] || {};
         if (design.props&& design.props.coreOff===true) {
           return '';
         }

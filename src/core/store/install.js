@@ -6,7 +6,7 @@ import SystemMessages from './messages.js';
 import createInstance from './appInstance.js';
 import { actions}  from './helpers/api-actions';
 
-export default function (Vue, appInstance, appDns )  {
+export default function (Vue, APP_INSTANCE, appDns )  {
        Vue.use(Vuex);
        return  new Vuex.Store({
          state: {
@@ -32,9 +32,10 @@ export default function (Vue, appInstance, appDns )  {
              }
          },
          modules: {
-           appInstance: createInstance (appInstance, appDns ),
+           APP_INSTANCE: createInstance (APP_INSTANCE, appDns ),
+           //appPage: createPage(),
            SystemMessages,
-          // i18n,
+
          },
 
          actions: actions

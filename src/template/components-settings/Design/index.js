@@ -10,7 +10,7 @@ const install = function (Vue, options) {
 
 
       // if website founded
-      if (options.coreVue.store.state.appInstance.design.AppDrawer) {
+      if (options.coreVue.store.state.APP_INSTANCE.design.AppDrawer) {
         // register some component which needed for create settings navigation drawer
         Vue.component(DesignTabsBlock.name, DesignTabsBlock);
         Vue.component(DesignSettingsNavigation.name, DesignSettingsNavigation);

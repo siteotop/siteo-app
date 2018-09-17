@@ -46,7 +46,7 @@ export default {
 
     return {
       title: this.$i18n_t('title'),
-      titleTemplate: '%s  - ' + this.$store.state.appInstance.data.name,
+      titleTemplate: '%s  - ' + this.$store.state.APP_INSTANCE.data.name,
       meta: [
         {name: 'description', vmid: 'description', content:  this.$i18n_t('description')}
       ]

@@ -55,16 +55,16 @@ export default {
         },
 
         instanceDesign() {
-          return this.$store.state.appInstance.design;
+          return this.$store.state.APP_INSTANCE.design;
         },
 
         AppToolbarMenu() {
-            return this.$store.state.appInstance.menu;
+            return this.$store.state.APP_INSTANCE.menu;
         },
 
         AppDrawerMenu() {
           //console.log('start');
-          return this.$store.state.appInstance.menu;
+          return this.$store.state.APP_INSTANCE.menu;
         }
 
 

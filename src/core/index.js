@@ -102,11 +102,11 @@ import VeeValidate from 'vee-validate';
 
 
 
-export const SiteoCoreInstall = function (appInstance, appDns, template,   plugins ) {
+export const SiteoCoreInstall = function (APP_INSTANCE, appDns, template,   plugins ) {
 
    //console.log(data);
    //start Vuetify
-   Vue.use(Vuetify, {icons: MY_ICONS, theme:  appInstance.design? appInstance.design.theme.colors:{}});
+   Vue.use(Vuetify, {icons: MY_ICONS, theme:  APP_INSTANCE.design? APP_INSTANCE.design.theme.colors:{}});
    Vue.use(template);
    // start VueProgressBar
    Vue.use(VueProgressBar, {
@@ -120,7 +120,7 @@ export const SiteoCoreInstall = function (appInstance, appDns, template,   plugi
    }
 
    // create store
-   template.coreVue.store = StoreInstall(Vue, appInstance, appDns );
+   template.coreVue.store = StoreInstall(Vue, APP_INSTANCE, appDns );
    // create router
    template.coreVue.router =  new VueRouter({
        base: appDns.active.path|| '/',
