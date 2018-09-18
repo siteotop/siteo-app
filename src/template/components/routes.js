@@ -3,20 +3,15 @@ import PageError from './Pages/Error.vue';
 import PageOrder from './Pages/Order.vue';
 export default  [
 
-      {
-        name: "PageSchema",
-        path:  '/(:idString-p:postId)?',
-        component: PageSchema,
-        props: true,
-      },
 
-      /*  {
+
+        {
           name: "indexPage",
           path:  '/',
           component: PageSchema,
           props: true,
         },
-      */
+
         {
           name: "order",
           path:  '/order',
@@ -30,7 +25,12 @@ export default  [
           component:  ()=>import('../components-settings/index.vue' /* webpackChunkName: "chunk/admin" */  ),
 
         },
-
+        {
+          name: "PageSchema",
+          path:  '/:idString-p:postId',
+          component: PageSchema,
+          props: true,
+        },
 
         {
            path: "*",

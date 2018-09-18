@@ -7,8 +7,12 @@ export const  createStorePage = function (parent ) {
           _id: '',
           title: '',
           description: '',
-          cannonical: '',
-          preview: '',
+          meta_title: '',
+          meta_description: '',
+          meta_canonical: '',
+          meta_og_title: '',
+          meta_robots: '',
+        
           contentStructure: []
 
       }

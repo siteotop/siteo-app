@@ -13,14 +13,14 @@ var _APP_INSTANCE = {
  data:{
    _id:152710249031417,
    pid:"7rL5Q4LRdk",
-   name:"Gotothegoal",
+   name:"Site Name",
    title:"Title Website",
    slogan:"Slogan of Website",
    actionText:"Action Text",
    description:"Short description ",
    domain:"",
    templates_id:"1532775890",
-   pages_id: '1532775891', 
+   pages_id: '1532775891',
    countryAlpha2:"UA",
    lang:"uk",
    design:false

@@ -23,10 +23,38 @@ export default {
 
     },
 
-    beforeRouteEnter (to, from, next) {
+
+    metaInfo () {
+
+     return {
+        title: this.meta_title,
+        titleTemplate: '%s  - ' + this.$store.state.APP_INSTANCE.data.name,
+        meta: [
+          {name: 'description', vmid: 'description', content: this.meta_description }
+        ]
+
+      }
+    },
+
+    created() {
+        this.getPageFromServer();
+    },
+
+    watch: {
+
+        postId(newValue, OldValue) {
+          console.log('change postId');
+          this.onLeave();
+          this.getPageFromServer();
+        }
+
+    },
+
+    /*beforeRouteEnter (to, from, next) {
 
       next(vm=>{
           console.log('created');
+          vm.onLeave();
           vm.getPageFromServer();
       })
     },
@@ -35,7 +63,7 @@ export default {
     beforeRouteUpdate (to, from, next) {
 
         console.log('update');
-
+        this.onLeave();
         this.getPageFromServer();
         next();
     },
@@ -45,9 +73,19 @@ export default {
        this.onLeave();
        next();
     },
+*/
 
-    
     computed: {
+        meta_title() {
+
+            return this.$store.state.APP_PAGE.objectActive.meta_title? this.$store.state.APP_PAGE.objectActive.meta_title:
+            this.$store.state.APP_PAGE.objectActive.title ;
+        },
+
+        meta_description() {
+            return this.$store.state.APP_PAGE.objectActive.meta_description?
+            this.$store.state.APP_PAGE.objectActive.meta_description:  this.$store.state.APP_PAGE.objectActive.description;
+        },
 
         pageMenu() {
           var page_menu = [];
@@ -110,7 +148,12 @@ console.log(_PRERENDER._id);
 
     },
 
-
+    /**
+       https://codepen.io/isitannarli/pen/NdVZmL
+       https://codepen.io/yunusekim/pen/XaBoNZ
+       https://cloudcannon.com/deconstructions/2014/11/15/facebook-content-placeholder-deconstruction.html
+       https://github.com/michalsnik/vue-content-placeholders
+    */
 
     render(h ) {
 
