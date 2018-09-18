@@ -39,6 +39,7 @@ export default function ( APP_INSTANCE, appDns ) {
 
     getters: {
 
+      
       /*
       CORE_HOST(state) {
 

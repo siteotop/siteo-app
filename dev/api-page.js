@@ -1,7 +1,11 @@
  var _PRERENDER = {
+    _id: '1532775891',
+    pid: 'sjh234kjhsdf',
     title: '',
+
     description: '',
-    content: [
+    canonical: '/',
+    contentStructure: [
 
       // Header Image
       {

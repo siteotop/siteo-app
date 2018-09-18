@@ -6,6 +6,7 @@ const  API = function (api ) {
         state: {
           parent: api.parent||'', // parent module  where we get prefix for urlID
           url: api.url,
+          public: api.public||false,
           nameId: api.nameId||'',
           id: 0,
 
@@ -39,7 +40,7 @@ const  API = function (api ) {
              if (state.id) {
                  return  getters.urlWithoutId + '/' + state.id;
              } else {
-               return getters.urlWithoutId + '/no_id' 
+               return getters.urlWithoutId + '/no_id'
              }
 
            },

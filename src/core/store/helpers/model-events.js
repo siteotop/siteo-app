@@ -3,7 +3,7 @@ import API from 'core/store/helpers/model-api.js'
 import createItems from 'core/store/helpers/model-items.js'
 
 /**
-  @return  String Data fo Sending to The server 
+  @return  String Data fo Sending to The server
 */
 
 const prepareData = function (data) {
@@ -97,10 +97,22 @@ const createModelCRUD = function (object, turnOnList) {
                config.method = 'GET';
                config.url = getters.urlID;  // '/users/me';
                return   dispatch('callAPI', config, {root:true}).then(response=>{
-                       console.log(response);
                        commit('updateModel', response.data);
                        return state.objectActive;
                        //return response.data;
+                    }
+               );
+            },
+
+            /**
+                get object from model APi
+            */
+            getPublicObject({dispatch, commit, getters, state}, id) {
+               // console.log(this);
+               commit('setApiId', id);
+               return   dispatch('callPublicApi', getters.urlID, {root:true}).then(response=>{
+                       commit('updateModel', response.data);
+                       return state.objectActive;
                     }
                );
             },

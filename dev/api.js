@@ -20,6 +20,7 @@ var _APP_INSTANCE = {
    description:"Short description ",
    domain:"",
    templates_id:"1532775890",
+   pages_id: '1532775891', 
    countryAlpha2:"UA",
    lang:"uk",
    design:false
@@ -114,6 +115,25 @@ var _APP_INSTANCE = {
      "id":"main",
      "path":"\/",
      "title":"\u0413\u043e\u043b\u043e\u0432\u043d\u0430"
+   },
+
+   {
+     "i":"user-sett",
+     "id":"page",
+     "path":"\/kdshfksd-sdfsd-sdfj-p23423432",
+     "title":"Страница "
+   },
+   {
+     "i":"user-sett",
+     "id":"page",
+     "path":"\/kdshfksd-sdfssd-sdfj-p23423432",
+     "title":"Страница3 "
+   },
+   {
+     "i":"user-sett",
+     "id":"page",
+     "path":"\/kdshfksd-sdfsd-sdfj-p23423431",
+     "title":"Страница2 "
    },
    {
      "i":"user-sett",
