@@ -18,14 +18,12 @@ import messages from './i18n';
 /**ROUTER
    create Routing for every APP
 */
-import VueRouter from 'router';
-Vue.use(VueRouter);
-
+import RouterInstall from './router';
 
 /**Vue Store
   Storing all data from backend
 */
-import StoreInstall from './store/install.js';
+import StoreInstall from './store';
 
 /**SYNC router with store
   in Vue store we can get 'route' property
@@ -110,7 +108,7 @@ export const SiteoCoreInstall = function (APP_INSTANCE, appDns, template,   plug
    Vue.use(template);
    // start VueProgressBar
    Vue.use(VueProgressBar, {
-     color: 'rgb(106, 180, 255)',
+     color: Vue.prototype.$vuetify.theme.secondary ||'rgb(106, 180, 255)',
      failedColor: 'red',
      thickness: '3px',
    });
@@ -122,14 +120,9 @@ export const SiteoCoreInstall = function (APP_INSTANCE, appDns, template,   plug
    // create store
    template.coreVue.store = StoreInstall(Vue, APP_INSTANCE, appDns );
    // create router
-   template.coreVue.router =  new VueRouter({
-       base: appDns.active.path|| '/',
-       mode: 'history',
-       fallback: false,  // для браузеров где нет History Api  (IE9) будет просто открывать новую страницу
-       routes: template.routes
+   template.coreVue.router = RouterInstall(Vue, template.coreVue.store, appDns.active.path, template.routes )
 
-    });
-
+   //sync router with store for access route from store
    sync(template.coreVue.store, template.coreVue.router );
 
 

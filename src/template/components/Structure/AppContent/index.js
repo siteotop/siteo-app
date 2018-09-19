@@ -40,7 +40,9 @@ export default {
         /**
           BLOCK PROGRESS BAR
         */
-        h('vue-progress-bar')
+        h('vue-progress-bar'),
+      //  h('v-progress-linear', {props: {indeterminate:true} }),
+
 
     ]);
 

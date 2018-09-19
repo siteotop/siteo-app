@@ -122,6 +122,8 @@ console.log(post_id);
 console.log(_PRERENDER._id);
 
           if ( _PRERENDER._id == post_id) {
+              this.$store.commit('APP_PAGE/setApiId',_PRERENDER._id);
+              //this.$store.commit('APP_PAGE/updateModel', _PRERENDER);
               this.$store.commit('APP_PAGE/updateModel', _PRERENDER);
               return;
           }

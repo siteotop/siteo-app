@@ -31,7 +31,7 @@ const  API = function (api ) {
            urlWithoutId(state, getters, rootState, rootGetters) {
              var prefixurl = '';
              if (state.parent) {
-                prefixurl=  rootGetters[state.parent + '/urlID'];
+                prefixurl=  rootGetters[state.parent];
              }
              return  prefixurl + state.url;
            },

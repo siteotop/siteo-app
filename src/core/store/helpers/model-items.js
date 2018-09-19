@@ -150,8 +150,7 @@ const createItems = function (items) {
          deleteFromItems({dispatch, state, getters, commit}, tid) {
 
               if (Array.isArray(tid)) {
-
-                 return  dispatch('deleteGroupInList', tid);
+                  return  dispatch('deleteGroupInList', tid);
               }
 
               commit('setApiId', tid);

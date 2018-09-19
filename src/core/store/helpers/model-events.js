@@ -80,8 +80,6 @@ const createModelCRUD = function (object, turnOnList) {
             createObject({dispatch, state, getters}, data) {
                var  config = {data: prepareData(data)};
                config.method = 'POST';
-
-               console.log(config);
                config.url = getters.urlWithoutId+ '/0';
                return  dispatch('callAPI', config,  {root:true});
 
@@ -92,11 +90,12 @@ const createModelCRUD = function (object, turnOnList) {
             */
             getObject({dispatch, commit, getters, state}, id) {
                // console.log(this);
-               commit('setApiId', id);
+
                var config = {};
                config.method = 'GET';
-               config.url = getters.urlID;  // '/users/me';
+               config.url =  getters.urlWithoutId+ '/'+ id;  // '/users/me';
                return   dispatch('callAPI', config, {root:true}).then(response=>{
+                       commit('setApiId', id);
                        commit('updateModel', response.data);
                        return state.objectActive;
                        //return response.data;
@@ -109,8 +108,9 @@ const createModelCRUD = function (object, turnOnList) {
             */
             getPublicObject({dispatch, commit, getters, state}, id) {
                // console.log(this);
-               commit('setApiId', id);
-               return   dispatch('callPublicApi', getters.urlID, {root:true}).then(response=>{
+
+               return   dispatch('callPublicApi', getters.urlWithoutId+ '/'+ id, {root:true}).then(response=>{
+                       commit('setApiId', id);
                        commit('updateModel', response.data);
                        return state.objectActive;
                     }
@@ -144,10 +144,10 @@ const createModelCRUD = function (object, turnOnList) {
               remove one object from Model
             */
             deleteObject({dispatch, commit, getters},  id) {
-                commit('setApiId', id);
+                //commit('setApiId', id);
                 var  config = {};
                 config.method = 'DELETE';
-                config.url = getters.urlID;
+                config.url = getters.urlWithoutId+ '/'+ id;
                 return   dispatch('callAPI', config, {root:true}).then(response=>{
                      commit('clearModel');
                      return response;
