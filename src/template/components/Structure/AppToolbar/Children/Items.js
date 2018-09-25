@@ -28,7 +28,7 @@ export default {
 
        items.map(function (item) {
           if (item.title) {
-            return h('v-btn', {props: {to: item.path, exact: true, flat: true}}, [ h('AppIcon', {props: {name:item.i}}),  item.title ])
+            return h('v-btn', {props: {to: item.path, exact: true, flat: true}}, [   item.title ])
           }
        })
 

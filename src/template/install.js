@@ -4,7 +4,7 @@
 import App from './components/App.vue';
 import basicRoutes from './components/routes';
 import * as components from './components/Elements';
-
+import ICONS from './icons';
 export default {
   install: function (Vue, options) {
 
@@ -15,7 +15,7 @@ export default {
 
   routes: basicRoutes,
   coreVue: App,
-  icons: [],
+  icons: ICONS,
   //store: {}
 
 }

@@ -8,7 +8,7 @@ let paths = [
     ];
 
 Icon.register({
-  siteo: {
+  'si-logo': {
     width: 640,
     height: 640,
     paths:paths
@@ -17,7 +17,7 @@ Icon.register({
 
 
 Icon.register({
-  'siteo-grey': {
+  'si-logo-grey': {
     width: 640,
     height: 640,
     paths:  [

@@ -31,7 +31,7 @@ var _APP_INSTANCE = {
      "colors":{
        "primary":"#64b5f6",
        "secondary":"#424242",
-       "accent":"#82B1FF",
+       "accent":"#AEEA00",
        "error":"#FF5252",
        "warning":"#FFC107",
        "info":"#2196F3",
@@ -67,7 +67,7 @@ var _APP_INSTANCE = {
          {
            "name":"AppToolbarLogoIcon",
            "props":{"color":"primary lighten-5"},
-           "class":[]
+           "class":['hidden-sm-and-down']
          },
          {
            "name":"AppToolbarTitle",
@@ -82,7 +82,7 @@ var _APP_INSTANCE = {
          {
            "name":"AppToolbarItems",
            "props":{},
-           "class":[]
+           "class":['hidden-sm-and-down']
          },
          {
            "name":"AppToolbarAction",
@@ -111,44 +111,46 @@ var _APP_INSTANCE = {
 
  "menu":[
    {
-     "i":"user-sett",
+     "i":"si-home",
      "id":"main",
      "path":"\/",
      "title":"\u0413\u043e\u043b\u043e\u0432\u043d\u0430"
    },
 
+
    {
-     "i":"user-sett",
-     "id":"page",
-     "path":"\/kdshfksd-sdfsd-sdfj-p23423432",
-     "title":"Страница "
-   },
-   {
-     "i":"user-sett",
-     "id":"page",
-     "path":"\/kdshfksd-sdfssd-sdfj-p23423432",
-     "title":"Страница3 "
-   },
-   {
-     "i":"user-sett",
-     "id":"page",
-     "path":"\/kdshfksd-sdfsd-sdfj-p23423431",
-     "title":"Страница2 "
-   },
-   {
-     "i":"user-sett",
+     "i":"si-services",
      "id":"services",
      "path":"\/services",
      "title":"Услуги"
    },
    {
-     "i":"user-sett",
+     "i":"si-places",
      "id":"location",
-     "path":"\/location",
-     "title":"Адрес"
+     "path":"\/places",
+     "title":"Places"
    },
    {
-     "i":"user-sett",
+     "i":"si-experts",
+     "id":"experts",
+     "path":"\/experts",
+     "title":"Experts"
+   },
+   {
+     "i":"si-blog",
+     "id":"blog",
+     "path":"\/kdshfksd-sdfssd-sdfj-p23423432",
+     "title":"Blog"
+   },
+   {
+     "i":"si-qa",
+     "id":"qa",
+     "path":"\/kdshfksd-sdfsd-sdfj-p23423431",
+     "title":"Q/A"
+   },
+
+   {
+     "i":"si-settings",
      "id":"admin",
      "path":"\/admin",
      "title":"Admin"

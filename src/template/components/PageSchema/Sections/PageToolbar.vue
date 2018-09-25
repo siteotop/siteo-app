@@ -1,7 +1,7 @@
 <template >
   <v-toolbar v-scroll="onScroll" v-bind="tProps"  :class="tClass" :style="tStyle">
       <v-btn v-show="offsetOn" @click="$vuetify.goTo(0, {duration: 40})"  fab small color="primary">
-        <AppIcon inverse name="arrow-d"></AppIcon>
+        <AppIcon inverse name="si-arrow-up"></AppIcon>
       </v-btn>
       <v-spacer></v-spacer>
         <v-toolbar-items>

@@ -40,7 +40,7 @@ export default function ( APP_INSTANCE, appDns ) {
     getters: {
 
       WEBSITE_API_URL(state) {
-        return 'websites/' +state.data._id;
+        return '/websites/' +state.data._id;
       },
       /*
       CORE_HOST(state) {

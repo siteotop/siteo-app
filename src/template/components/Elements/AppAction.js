@@ -6,16 +6,17 @@ export default {
   name: 'AppAction',
   wrapped:'v-btn',
   render(h, context) {
-    var mobile = context.parent.$root.$vuetify.breakpoint.xs,
-    design = context.parent.$store.state.APP_INSTANCE.design.AppAction||{},
+    var
+
+    //  design = context.parent.$store.state.APP_INSTANCE.design.AppAction||{},
     actionText = context.parent.$store.state.APP_INSTANCE.data.actionText;
 
 
     //context.data.props.icon = mobile;
     //console.log(context);
     return   h('v-btn', {
-      props: design.props,
-      class: design.class,
+      props: {color: 'accent', large: true,  ...context.props  }  ,
+      class: ['black--text'],
       on: {
         click: function (event) {
            context.parent.$router.push({name: 'order'});
@@ -24,8 +25,9 @@ export default {
       }
     },
       [
-        h('AppIcon', {attrs: {name:'cart-plus'}}),
-          !mobile? actionText: '',
+        h('AppIcon', {attrs: {name:'si-action'}}),
+
+          !context.props.mobile? ' '+ actionText: '',
       ]
    )
 

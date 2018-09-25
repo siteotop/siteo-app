@@ -2,10 +2,9 @@
   <v-container >
     <v-layout justify-center>
           <v-flex d-flex  >
-            <v-card class="text-md-center">
-                <v-card-text primary-title class="display-2 error--text">
-                      <AppIcon name="emoji-sad"></AppIcon>
-                      <p> {{title}} </p>
+            <v-card flat class="text-xs-center">
+                <v-card-text primary-title class=" error--text">
+                      <p :class="$vuetify.breakpoint.xs? 'display-1': 'display-3'"> {{title}} </p>
 
                 </v-card-text>
                 <v-card-text class="body-1 grey--text">
@@ -14,7 +13,7 @@
                 <v-card-actions >
                    <v-spacer></v-spacer>
                     <v-btn  color="orange">Share</v-btn>
-                    <v-btn  color="orange">Explore</v-btn>
+
                    <v-spacer></v-spacer>
                 </v-card-actions>
            </v-card>

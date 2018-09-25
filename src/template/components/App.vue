@@ -9,7 +9,7 @@ export default {
 
      componentsPage: componentsPage,
 
-     components: AppStructure,
+     components: {...AppStructure} ,
      data() {
 
 

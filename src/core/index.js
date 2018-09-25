@@ -44,7 +44,7 @@ import './style/common.css'
 
 
 /**ICONS*/
-import './icons.js';
+import IconsRegister from  './icons/register.js';
 
 
 /**CORE COMPONENTS
@@ -67,55 +67,25 @@ Vue.component('AppForm', AppForm);
 */
 
 
-const MY_ICONS = {
-  'complete': 'check',
-  'cancel': '',
-  'close': '',
-  'delete': 'delete', // delete (e.g. v-chip close)
-  'clear': '',
-  'success': '',
-  'info': '',
-  'warning': '',
-  'error': '',
-  'prev': 'prev',
-  'next': 'next',
-  'checkboxOn': 'checkbox',
-  'checkboxOff': 'checkbox-empty',
-  'checkboxIndeterminate': 'checkbox-minus',
-  'delimiter': '', // for carousel
-  'sort': '',
-  'expand': 'arrow-d',
-  'menu': 'menu',
-
-  'subgroup': '',
-  'dropdown':'arrow-d',
-
-  'radioOn': '',
-  'radioOff': '',
-  'edit': ''
-}
-
 import VeeValidate from 'vee-validate';
-
-
 
 
 export const SiteoCoreInstall = function (APP_INSTANCE, appDns, template,   plugins ) {
 
    //console.log(data);
    //start Vuetify
-   Vue.use(Vuetify, {icons: MY_ICONS, theme:  APP_INSTANCE.design? APP_INSTANCE.design.theme.colors:{}});
+   Vue.use(Vuetify, {
+     theme:  APP_INSTANCE.design? APP_INSTANCE.design.theme.colors:{}
+   });
+
    Vue.use(template);
    // start VueProgressBar
    Vue.use(VueProgressBar, {
-     color: Vue.prototype.$vuetify.theme.secondary ||'rgb(106, 180, 255)',
+     color: Vue.prototype.$vuetify.theme.accent ||'rgb(106, 180, 255)',
      failedColor: 'red',
      thickness: '3px',
    });
 
-   Vue.MyglobalMethod = function () {
-      console.log('Run global Method');
-   }
 
    // create store
    template.coreVue.store = StoreInstall(Vue, APP_INSTANCE, appDns );
@@ -142,12 +112,21 @@ export const SiteoCoreInstall = function (APP_INSTANCE, appDns, template,   plug
       local: appDns.lang
     }:undefined);
 
+    // Connect Icon.Register
+    template.coreVue.IconsRegister = IconsRegister;
+    if (template.icons) {
+      IconsRegister(template.icons)
+    } else {
+      IconsRegister(template.icons)
+    }
+
+
     // add plugins
     template.coreVue.SiteoAddPlugin = function (plugin) {
       Vue.use(plugin, {coreVue:template.coreVue, pluginOptions: plugin.options });
     };
     template.coreVue._siteoPlugins = {};
-
+    
     if (plugins&&plugins.length) {
        for (var i in plugins ) {
           template.coreVue.SiteoAddPlugin(plugins[i]);
