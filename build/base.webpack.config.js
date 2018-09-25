@@ -9,6 +9,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 const NODE_ENV = process.env.NODE_ENV || "development";
+const DIR_RESOURCE = process.env.DIR_RESOURCE || 'dev/dist';
 
 //const ManifestPlugin = require('webpack-manifest-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -36,7 +37,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 //var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const DIR_RESOURCE =  NODE_ENV ==  'development' ? '../dev/dist' : "../dist";
+
 
 module.exports = {
   mode:  NODE_ENV,
@@ -54,7 +55,7 @@ module.exports = {
   },
 
   output: {
-    path: path.resolve(__dirname,  DIR_RESOURCE),
+    path: path.resolve(__dirname, '../' + DIR_RESOURCE),
     publicPath: 'dist/',
     filename: '[name].js',
 
@@ -82,6 +83,7 @@ optimization: {
 
           compress: {
               drop_console: true // drop console call
+
           }
         }
       }
@@ -137,12 +139,13 @@ optimization: {
               Plugin create manifest.json file
             */
           //  new ManifestPlugin({fileName: name_manifet_file, publicPath: ''}),
-            new CleanWebpackPlugin(['dev/dist'], {root:path.resolve(__dirname, '../')}),
+            new CleanWebpackPlugin([DIR_RESOURCE], {root:path.resolve(__dirname, '../')}),
             //new CleanWebpackPlugin(['static'], {root:path.resolve(__dirname, 'example/dist')}),
 
             new webpack.DefinePlugin({
               'process.env': {
                 NODE_ENV: JSON.stringify(NODE_ENV),
+                //DIR_RESOURCE: JSON.stringify(DIR_RESOURCE)
               //  REQUIRED_VUE: JSON.stringify('2.5.8')
               }
             }),
@@ -184,8 +187,7 @@ optimization: {
             path.resolve(__dirname, '../src'),
             path.resolve(__dirname, '../node_modules/vue-awesome'),
           //  path.resolve(__dirname, 'node_modules/vuetify/src'),
-            path.resolve(__dirname, '../node_modules/vuetify/es5/components')
-
+            path.resolve(__dirname, '../node_modules/vuetify/es5/components'),
           ]
       },
 
