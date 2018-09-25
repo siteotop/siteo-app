@@ -3,12 +3,13 @@ import DesignSettingsNavigation from './Navigation.vue';
 import DesignTabsBlock from './DesignTabsBlock.js';
 import * as SettingsBlocks from './Blocks';
 import ADomainReserved  from './ADomainReserved.vue';
+import ComponentsHelper from './ComponentsHelper.js';
 
 
 const install = function (Vue, options) {
 
 
-
+      options.coreVue._siteoPlugins['design'] = ComponentsHelper(Vue);
       // if website founded
       if (options.coreVue.store.state.APP_INSTANCE.design.AppDrawer) {
         // register some component which needed for create settings navigation drawer
