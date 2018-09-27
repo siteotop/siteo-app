@@ -2,7 +2,7 @@
 <SectionWrap v-bind="props">
   <v-container grid-list-md>
    <v-layout row wrap justify-center >
-    <v-flex md8 v-for="(item, i) in props._li"
+    <v-flex  md8 v-for="(item, i) in props._li"
      :key="i"  >
       <v-card  >
           <v-img
@@ -14,18 +14,17 @@
             <v-container fill-height fluid>
               <v-layout fill-height>
                 <v-flex xs12 align-end flexbox>
-                  <span class="headline">{{item._t}}</span>
+                   <span class="headline"><v-avatar color="primary">{{(i+1)}}</v-avatar> {{item._t}}</span>
                 </v-flex>
               </v-layout>
             </v-container>
           </v-img>
-          <v-card-title>
-            <div>
-              <span class="grey--text">{{item._s}}</span><br>
-
-              <span>{{item._d}}</span>
-            </div>
+          <v-card-title v-if="item._s">
+            <span class="grey--text">{{item._s}}</span>
           </v-card-title>
+          <v-card-text>
+            {{item._d}}
+          </v-card-text>
         </v-card>
    </v-flex>
   </v-layout>
@@ -45,7 +44,6 @@
         },
 
       }
-    },
-    //name: 'section-action',
-  }
+    }
+}
 </script>

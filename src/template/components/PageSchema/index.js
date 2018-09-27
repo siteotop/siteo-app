@@ -75,6 +75,12 @@ export default {
     },
 */
 
+    beforeRouteLeave(to, from, next) {
+      console.log('leave');
+       this.onLeave();
+       next();
+    },
+
     computed: {
         meta_title() {
 
@@ -118,8 +124,8 @@ export default {
           } else {
             post_id = this.postId;
           }
-console.log(post_id);
-console.log(_PRERENDER._id);
+          //console.log(post_id);
+          //console.log(_PRERENDER._id);
 
           if ( _PRERENDER._id == post_id) {
               this.$store.commit('APP_PAGE/setApiId',_PRERENDER._id);

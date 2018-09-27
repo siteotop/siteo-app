@@ -1,6 +1,7 @@
 import PageSchema from './PageSchema';
 import PageError from './Pages/Error.vue';
 import PageOrder from './Pages/Order.vue';
+import PageServices from './Pages/Services.vue';
 export default  [
 
 
@@ -10,6 +11,13 @@ export default  [
           path:  '/',
           component: PageSchema,
           props: true,
+        },
+
+        {
+          name: "services",
+          path:  '/services',
+          component: PageServices,
+
         },
 
         {

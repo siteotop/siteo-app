@@ -1,7 +1,9 @@
 import {createModelCRUD}  from './helpers/model-events.js'
+
+const DEFAULT_GETTER = 'websites/urlID';
 export const  createStorePage = function (parent) {
   return createModelCRUD({
-    api: {url: '/pages',  parent: parent||'websites/urlID'},
+    api: {url: '/pages',  parent: parent||DEFAULT_GETTER },
     state () {
         return {
           _id: '',
@@ -14,6 +16,24 @@ export const  createStorePage = function (parent) {
           meta_robots: '',
 
           contentStructure: []
+
+      }
+    }
+  })
+
+} ;
+
+export const  createServices = function (parent) {
+  return createModelCRUD({
+    api: {url: '/services',  parent: parent||DEFAULT_GETTER },
+    state () {
+        return {
+          _id: '',
+          title: '',
+          price: '',
+          preview: '',
+          internal_uri: '',
+          picture: ''
 
       }
     }

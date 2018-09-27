@@ -10,6 +10,7 @@ export { default as QAnswer} from './QAnswer.vue';
 export { default as MediaList} from './MediaList.vue';
 export { default as Video} from './Video.vue';
 export { default as StepByStep} from './StepByStep.vue';
+export { default as ServiceList} from './ServiceList.vue';
 
 
 

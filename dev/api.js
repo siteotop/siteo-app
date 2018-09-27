@@ -109,6 +109,53 @@ var _APP_INSTANCE = {
 
    },
 
+ "services" : {
+
+    items: [
+      {
+        _id: '123123',
+        title: 'Service Title number 1',
+        subtitle: 'Subtitle For service position',
+        preview: ' All about service,  All about service,All about service,All about service,All about service,All about service,All about service,All about service,All about service,All about service,All about service,All about service,All about service,All about service,All about service,All about service,',
+        price: '123.4',
+        internal_url:'/',
+        picture: 'https://picsum.photos/510/300?random'
+      },
+
+      {
+        _id: '123123',
+        title: 'Service Title number 1',
+        subtitle: 'Subtitle For service position',
+        preview: ' All about service,  All about service,All about service,All about service,All about service,All about service,All abce,',
+        price: '1323.4',
+        internal_url:'/',
+        picture: 'https://picsum.photos/510/300?random'
+      },
+
+      {
+        _id: '123123',
+        title: 'Service sdfasfd asdf Title number 1',
+        subtitle: 'Subtitl position',
+        preview: ' All about service,  All about service,All about service,All about service,All about service,All about service,All abce, asdf asdf sadf',
+        price: '123',
+        internal_url:'/',
+        picture: 'https://picsum.photos/510/300?random'
+      },
+
+      {
+        _id: '123123',
+        title: 'Service sdfasfd asdf Title number 1',
+        subtitle: 'Subtitl position',
+        preview: ' All about service,  All about service,All about service,All aas asdf asdf asdf sadasdf asfd asfdbout service,All about service,All about service,All abce, asdf asdf sadf',
+        price: '13.4',
+        internal_url:'/',
+        picture: 'https://picsum.photos/510/300?random'
+      },
+
+
+    ]
+ },
+
  "menu":[
    {
      "i":"si-home",

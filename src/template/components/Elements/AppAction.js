@@ -14,6 +14,9 @@ export default {
 
     //context.data.props.icon = mobile;
     //console.log(context);
+    if (context.props.small  ) {
+      context.props.large = false;
+    }
     return   h('v-btn', {
       props: {color: 'accent', large: true,  ...context.props  }  ,
       class: ['black--text'],

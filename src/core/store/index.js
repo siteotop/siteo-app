@@ -5,7 +5,7 @@ import SystemMessages from './messages.js';
 //import i18n from './i18n.js';
 
 import createInstance from './appInstance.js';
-import {createStorePage} from './pages.js';
+import {createStorePage, createServices} from './models.js';
 import { actions}  from './helpers/api-actions';
 
 /**
@@ -16,7 +16,7 @@ import { actions}  from './helpers/api-actions';
 */
 export default function (Vue, APP_INSTANCE, appDns )  {
        Vue.use(Vuex);
-       return  new Vuex.Store({
+       var store =  new Vuex.Store({
          state: {
            drawer: false,
            pageLoader: false
@@ -42,6 +42,7 @@ export default function (Vue, APP_INSTANCE, appDns )  {
          modules: {
            APP_INSTANCE: createInstance (APP_INSTANCE, appDns ),
            APP_PAGE: createStorePage('WEBSITE_API_URL'),
+           APP_SERVICES: createServices('WEBSITE_API_URL'),
            SystemMessages,
 
          },
@@ -49,6 +50,9 @@ export default function (Vue, APP_INSTANCE, appDns )  {
          actions: actions
        });
 
-      // return Vue.$store;
+       // add services list to store
+       store.commit('APP_SERVICES/saveList', APP_INSTANCE.services.items );
+       
+       return store;
 
 }

@@ -7,7 +7,11 @@ import {
   mdiMagnify,
   mdiForum,
   mdiSettings,
-  mdiArrowUpThick
+  mdiArrowUpThick,
+  mdiSortVariant,
+  mdiViewList,
+  //mdiViewGrid,
+  //mdiViewModule
  } from '@mdi/js'
 
 import './siteo.js';
@@ -15,7 +19,7 @@ import './siteo.js';
 export default {
 
     'si-home': mdiHome,   // main link
-    'si-services': mdiFilterVariant, // link for services
+    'si-services': mdiViewList, // link for services
     'si-places': mdiMapMarker, // link for subjects
     'si-experts': mdiAccountSearch,
     'si-blog': mdiLibraryBooks,
@@ -26,6 +30,12 @@ export default {
     'si-arrow-up': mdiArrowUpThick,
     'si-arrow-left': '',
     'si-arrow-right': '',
+    'si-sort': mdiSortVariant,
+    'si-filter':   mdiFilterVariant
+    //'si-grid-1': mdiViewList,
+    //'si-grid-2': mdiViewGrid,
+    //'si-grid-3': mdiViewModule,
+
 
 
 };
