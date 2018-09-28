@@ -7,9 +7,8 @@ export default {
   wrapped:'v-btn',
   render(h, context) {
     var
-
-    //  design = context.parent.$store.state.APP_INSTANCE.design.AppAction||{},
-    actionText = context.parent.$store.state.APP_INSTANCE.data.actionText;
+      design = context.parent.$store.state.APP_INSTANCE.design.AppAction||{},
+      actionText = context.parent.$store.state.APP_INSTANCE.data.actionText;
 
 
     //context.data.props.icon = mobile;
@@ -18,7 +17,7 @@ export default {
       context.props.large = false;
     }
     return   h('v-btn', {
-      props: {color: 'accent', large: true,  ...context.props  }  ,
+      props: {color: 'accent', large: true, ...design,  ...context.props  }  ,
       class: ['black--text'],
       on: {
         click: function (event) {

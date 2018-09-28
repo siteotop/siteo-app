@@ -58,10 +58,10 @@
 </template>
 <script>
 
-import ChunkLoader from 'core/components/mixins/loader-i18-chunk.js';
+import ChunkLoader from '../../components/_mixins/loader-i18-chunk.js';
 //import * as SettingsComponents from './Settings';
 
-import LoadModule from 'core/components/mixins/loader-store-module.js';
+import LoadModule from '../../components/_mixins/loader-store-module.js';
 
 
 export default {

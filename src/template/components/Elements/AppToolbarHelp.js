@@ -1,4 +1,4 @@
-import ToolbarMenu from './extends/ToolbarMenu.js';
+import ToolbarMenu from '../_extends/ToolbarMenu.js';
 import AppComponentToolbar from './AppComponentToolbar';
 export default {
   name: 'AppToolbarHelp',

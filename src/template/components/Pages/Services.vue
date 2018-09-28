@@ -2,7 +2,6 @@
   <SectionWrapList  storeName="APP_SERVICES" >
       <template slot-scope="{ item }">
           <v-card  >
-            <!-- serviceListComm -->
               <v-img v-if="item.picture"
                 aspect-ratio="1.77"
                 class="white--text"

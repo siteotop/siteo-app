@@ -1,7 +1,17 @@
 var _Values = require('lodash/values');   // get values as array and object
 
-import filterMessage from '../utils/filter-message';
+const filterMessage = function ( message) {
 
+  //let mess  = {};
+  //let mess_array = message.text.split('|');
+  //  mess.text  = message.text;
+  //  mess.type  = message.type;
+  //  mess.link  = mess_array[1];
+    message.state = true;
+  //  mess.linktext = mess_array[2];
+    return message;
+
+};
 
 const SystemMessages = {
   state: {

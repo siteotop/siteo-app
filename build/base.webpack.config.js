@@ -127,7 +127,7 @@ optimization: {
       'vuex': 'vuex/dist/vuex.esm.js',
       'axios': 'axios/dist/axios.js',
       'scriptjs': 'scriptjs/dist/script.js',
-      'dateformat': 'date-fns/format',
+      
 
 
     }

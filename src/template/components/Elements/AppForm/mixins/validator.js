@@ -37,15 +37,15 @@ export default {
 
         /*
           cretae attributes for form
-          
+
         */
         createVeeAttributes(){
 
             const attr = {attributes:_mapValues(this.formStructure, 'label')}
             const dictionary = {};
             dictionary[this.$validator.locale] =  attr;
-          //  console.log(dictionary);
-           console.log(dictionary);
+            //  console.log(dictionary);
+            console.log(dictionary);
             this.$validator.localize(dictionary);
 
 

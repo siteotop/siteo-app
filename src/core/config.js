@@ -2,7 +2,7 @@
 export const  configApps = {
     API_URL: 'https://api.siteo.top/api/v1/',
     AUTH_URL: 'https://api.siteo.top/api/auth2/',
-    recaptcha: { 'sitekey': '6LdRBCAUAAAAAD1G95xZfHvPD_-3VLijXfa-48Xm'}
+    //recaptcha: { 'sitekey': '6LdRBCAUAAAAAD1G95xZfHvPD_-3VLijXfa-48Xm'}
 }
 
 

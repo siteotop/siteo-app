@@ -25,6 +25,11 @@ var _APP_INSTANCE = {
    lang:"uk",
    design:false
  },
+
+ configs: {
+    recaptcha: '6LdRBCAUAAAAAD1G95xZfHvPD_-3VLijXfa-48Xm' 
+ },
+
  "design":{
    "theme":{
      "name":"theme",

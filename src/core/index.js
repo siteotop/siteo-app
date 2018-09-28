@@ -51,8 +51,8 @@ import IconsRegister from  './icons/register.js';
   All components which was created by Siteo
 */
 
-import  AppForm from './components/AppForm';
-Vue.component('AppForm', AppForm);
+//import  AppForm from './components/AppForm';
+//Vue.component('AppForm', AppForm);
 
 
 /** SiteoInstall Function  */
@@ -126,7 +126,7 @@ export const SiteoCoreInstall = function (APP_INSTANCE, appDns, template,   plug
       Vue.use(plugin, {coreVue:template.coreVue, pluginOptions: plugin.options });
     };
     template.coreVue._siteoPlugins = {};
-    
+
     if (plugins&&plugins.length) {
        for (var i in plugins ) {
           template.coreVue.SiteoAddPlugin(plugins[i]);

@@ -1,5 +1,5 @@
 
-import Loader from '../../../core/components/mixins/component-loading.js';
+import Loader from '../_mixins/component-loading.js';
 import PageError from '../Pages/Error.vue';
 export default {
     mixins: [ Loader],

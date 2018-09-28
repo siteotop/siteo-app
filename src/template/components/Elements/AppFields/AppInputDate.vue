@@ -33,8 +33,8 @@
 
 import AbstractInput from './mixins/input.js';
 import AppInputText  from './AppInputText.vue';
-import {format, unFormat} from '../../utils/date-format';
-import '../../icons/js/event';
+import {format, unFormat} from './helper/date-format';
+
 
 export default {
 

@@ -1,8 +1,8 @@
 
 import CrudRenderCore from './render.js';
 import LoadModule from '../../mixins/loader-store-module.js';
-import Loader from '../..//mixins/component-loading.js';
-import ChunkLoader from '../..//mixins/loader-i18-chunk.js';
+import Loader from '../../mixins/component-loading.js';
+import ChunkLoader from '../../mixins/loader-i18-chunk.js';
 
 export default {
     mixins: [CrudRenderCore, LoadModule,  Loader, ChunkLoader],

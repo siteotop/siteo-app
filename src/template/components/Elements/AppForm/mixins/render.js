@@ -2,7 +2,7 @@
 var _Values = require('lodash/values');
 
 import AppComponentToolbar from '../../AppComponentToolbar';
-import MixinLocalMessages from '../../mixins/LocalMessages.js';
+import MixinLocalMessages from '../../../_mixins/LocalMessages.js';
 
 
 import GoogleRecaptcha from '../../AppFields/AppInputRecaptcha.vue';
@@ -10,7 +10,7 @@ import AppConfirm from '../../AppConfirm.vue' ;
 import AppCheckbox from '../../AppFields/AppCheckbox.vue';
 import AppInputText from '../../AppFields/AppInputText.vue';
 import AppSelect from '../../AppFields/AppSelect.vue';
-import AppInputPassword from '../../AppFields/AppInputPassword.vue';
+//import AppInputPassword from '../../AppFields/AppInputPassword.vue';
 import AppInputDate from '../../AppFields/AppInputDate.vue';
 import AppSelectCountries from '../../AppFields/AppSelectCountries.vue';
 import AppInputPhone from '../../AppFields/AppInputPhone.vue';
@@ -26,7 +26,7 @@ export default {
       AppCheckbox,
       AppInputText,
       AppSelect,
-      AppInputPassword,
+      //AppInputPassword,
       AppInputDate,
       AppSelectCountries,
       AppInputPhone,
