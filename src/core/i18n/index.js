@@ -19,6 +19,7 @@ export  default {
     },
 
     commonForm: {
+      reset: 'Reset Form',
       success: 'Success response form',
       leave: 'Ви желаете прервать заполнение формы?',
       leave_desc: 'Все заполненные данные будут утеряны.'
@@ -28,9 +29,36 @@ export  default {
       title: 'Form new ',
       description:'Form new in the order page',
       content: {
-        password: {
-          l:"Пароль" ,
-          d: "Enter your password, который вы используете для входа на Siteo"
+        name: {
+          l: 'Your name',
+          d: 'Description About name',
+        },
+        lastname: {
+          l: 'Your lastname',
+          d: '',
+        },
+        email: {
+          l:"Email" ,
+          d: "Tap your email"
+        },
+
+        phone: {
+          l:"Phone" ,
+          d: "Tap your phone"
+        },
+
+        services: {
+          l:"Services" ,
+          d: "Tap your Services"
+        },
+
+        dateorder: {
+          l:"Date" ,
+          d: "Tap your Services"
+        },
+        submit: {
+          l: 'Send',
+          d: '',
         }
       },
       footer: {text:'Footer Order' }

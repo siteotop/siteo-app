@@ -11,7 +11,7 @@ const AppToolbarHelper = {
   },
 
   __render_DescIcon(h, desc) {
-      return h(AppToolbarHelp, { props:  {iconBar: 'help-circle',  desc: desc}})
+      return h(AppToolbarHelp, { props:  {iconBar: 'si-help',  desc: desc}})
   },
 
 }
@@ -71,7 +71,7 @@ export default {
 
           context.props.desc? AppToolbarHelper.__render_DescIcon(h,   context.props.desc):'',
           context.props.mainActions? HelperChooiceVariantMenu(h, context.props.mainActions, true) :'' ,
-          context.props.closeAction? HelperMenuListRenderAction(h, {icon: 'cancel', title: 'close', event: context.props.closeAction}): ''
+          context.props.closeAction? HelperMenuListRenderAction(h, {icon: 'si-close', title: 'close', event: context.props.closeAction}): ''
         ]
       );
 

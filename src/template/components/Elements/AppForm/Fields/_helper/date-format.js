@@ -1,5 +1,6 @@
 import format from 'date-fns/format';
 
+
 // use only YEAR MONTH DAY
 const unFormatDate= function(stringDate, stringFormat, mask) {
       // 14/05/1987
@@ -28,7 +29,10 @@ const getTokenFromDate = function(token, stringFormat, stringDate){
       return result;
   };
 
+/**
 
+
+*/
  const unFormat = function (value, format_string, default_format) {
     return format( unFormatDate(value, format_string),  default_format );
  }

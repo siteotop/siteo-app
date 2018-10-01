@@ -1,6 +1,7 @@
 import {createModelCRUD}  from './helpers/model-events.js'
 
 const DEFAULT_GETTER = 'websites/urlID';
+
 export const  createStorePage = function (parent) {
   return createModelCRUD({
     api: {url: '/pages',  parent: parent||DEFAULT_GETTER },

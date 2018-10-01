@@ -3,10 +3,10 @@ var _Values = require('lodash/values');
 
 import AppComponentToolbar from '../../AppComponentToolbar';
 import MixinLocalMessages from '../../../_mixins/LocalMessages.js';
-
-
-import GoogleRecaptcha from '../../AppFields/AppInputRecaptcha.vue';
 import AppConfirm from '../../AppConfirm.vue' ;
+/*
+import GoogleRecaptcha from '../../AppFields/AppInputRecaptcha.vue';
+
 import AppCheckbox from '../../AppFields/AppCheckbox.vue';
 import AppInputText from '../../AppFields/AppInputText.vue';
 import AppSelect from '../../AppFields/AppSelect.vue';
@@ -14,14 +14,27 @@ import AppSelect from '../../AppFields/AppSelect.vue';
 import AppInputDate from '../../AppFields/AppInputDate.vue';
 import AppSelectCountries from '../../AppFields/AppSelectCountries.vue';
 import AppInputPhone from '../../AppFields/AppInputPhone.vue';
+*/
+import AppFieldName from '../Fields/AppFieldName';
+import AppFieldEmail from '../Fields/AppFieldEmail';
+import AppFieldPhone from '../Fields/AppFieldPhone';
+import AppFieldServices from '../Fields/AppFieldServices';
+import AppFieldDate from '../Fields/AppFieldDate.vue';
 
 export default {
 
   mixins: [ MixinLocalMessages],
 
   components: {
+    AppComponentToolbar,
+    AppConfirm,
+    AppFieldName,
+    AppFieldEmail,
+    AppFieldPhone,
+    AppFieldServices,
+    AppFieldDate
     //VForm,
-      GoogleRecaptcha,
+    /*  GoogleRecaptcha,
       AppConfirm,
       AppCheckbox,
       AppInputText,
@@ -31,19 +44,55 @@ export default {
       AppSelectCountries,
       AppInputPhone,
       AppComponentToolbar
-   },
+   */},
 
   methods: {
 
-    renderConfirm() {
+    renderConfirm(h) {
 
-        return this.leaveform?
-         <AppConfirm  dialog={true} on-hideDialog={()=>this.leaveform=false} func={this.leaveform} title={this.$t('commonForm.leave')} description={this.$t('commonForm.leave_desc')} ></AppConfirm> : '';
+        return this.leaveform? h('AppConfirm', {
+          props: {
+            dialog:true,
+            func: this.leaveform,
+            title: this.$t('commonForm.leave'), description:this.$t('commonForm.leave_desc')},
+          on: {hideDialog:()=>{this.leaveform=false} }}): '';
 
     },
 
-    renderInput(h, el){
-      return h( el.component, { props: {el:el, value: el.value }});
+    /**
+      Create Submit blcok for Form
+    */
+    renderSubmit(h) {
+      var self = this;
+      return h('v-layout', {
+          props: {row: true, wrap: true },
+          directives: [
+            {
+              name: 'show',
+              value: !this.isLoaderActive&&this.buttonSubmit
+            }
+          ]
+        }, [
+          h('v-flex', {class: {xs10: true}},[
+              h('v-btn', {props: {disabled: !this.formActive}, on: {click:function(ev){ self.onSubmit(ev) }} }, [
+                self.submitElement.label
+              ])
+          ]),
+          h('v-flex', {class: {xs2: true}}, [
+            h('v-tooltip', {
+              props: {top: true}}, [
+               h('v-btn', {
+                 slot:'activator',
+                 props: {icon: true, disabled:!self.formActive },
+                 on: {click: function () { self.leaveform = self.clearForm}}}, [
+                h('AppIcon', {props: {name: 'si-clear'}})
+              ]),
+              h('span',  [this.$t('commonForm.reset')])
+            ])
+          ]),
+
+        ])
+
     },
 
     renderFooter(h){
@@ -60,25 +109,63 @@ export default {
 
   },
 
+
+  render(h) {
+      var self = this ;
+      //console.log(this.formStructure);
+      return h('v-card', {props: { fluid:true}},
+        [
+
+          // toolbar
+          this.needToolbar? h('AppComponentToolbar', {props: {
+            iconTitle: this.iconTitle,
+            title: this.$i18n_t('title'),
+            desc: this.$i18n_t('description')
+          }}): '',
+          // v-card-tex
+          h('v-card-text', [
+           this.$_LocalMessages_render(h),
+           h('div',
+
+              this.formStructure.map(function(el){
+              return h(el.name, {
+                props:el.props,
+                //attrs:{ value: self.valueStructure[el.props.name]},
+                on: {
+                  input: function(event) {
+                    //console.log(event);
+                    //self.valueStructure[el.props.name] = event;
+                    el.props.value = event;
+                    if (event) {
+                      self.enableForm();
+                    }
+
+                    // console.log(event;);
+                  }
+                }
+              })
+           }),
+           h('app-pulse-loader', {props: {loading: this.isLoaderActive} }),
+           self.renderFooter(h)
+
+
+          ),
+           this.renderConfirm(h),
+           this.renderSubmit(h)
+          ])
+        ]
+      )
+  }
   /**
     RENDER FUNCTION FOR FORM
-  */
+
      render(h) {
-      var self = this ;
-      //console.log(this);
-  //   console.log(this.meta.title);
-      var a =<v-card flat fluid >
-           { this.needToolbar? h('AppComponentToolbar', {props: {
-             iconTitle: this.iconTitle,
-             title: this.$i18n_t('title'),
-             desc: this.$i18n_t('description')
-           }}): '' }
 
            <v-card-text>
            {this.$_LocalMessages_render(h)}
            <div class="pa-3"  >
 
-              {
+                {
                   _Values(this.formStructure).map(function(el) {
 
                     var myinput =function (ev) {
@@ -126,8 +213,7 @@ export default {
                         break;
 
                       case 'submit':
-                      /*  <v-btn  large  color="outline-secondary" on-click={self.clearForm} disabled={!self.formActive}><icon name="form-clear"></icon> Reset </v-btn>
-                      */
+
                             return <v-layout row wrap v-show={(!self.isLoaderActive&&self.buttonSubmit)}>
 
                                 <v-flex xs10>
@@ -175,6 +261,6 @@ export default {
         return a;
 
     }
-
+*/
 
 }

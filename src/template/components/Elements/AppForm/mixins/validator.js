@@ -1,4 +1,3 @@
-var _mapValues = require('lodash/mapValues'); // get some values from objects
 
 export default {
       //$validator: null,
@@ -8,92 +7,96 @@ export default {
 
 
       methods: {
-
-
-        atachValidator(element) {
-
-           this.$validator.attach(element.name, element.validate);  // deleting server vaidators which writen after ||
-
-           // watch for values
+        /**
+          Create Validations for every element of formStructure
+          @param {Object} formStructure
+         */
+        createValidation(formStructure) {
           var self = this;
-          this.$watch('formStructure.' + element.name +'.value', function (value) {
-              //  console.log(element.name);
-                //console.log(element.value);
-                if (element.defaultValue!=value) {
-                    if (element.validate) {
-                      self.validateOneElement(element, value);
+          const attrs = {};
+
+          formStructure.map(function(element, index) {
+              self.atachValidator(element.props, index);
+              // create attribs attr for method createAttrDictionary()
+              attrs[element.props.name] = element.props.label;
+          });
+
+          this.createAttrDictionary(attrs);
+        },
+
+
+        /**
+          createAttrDictionary for creating  attrs for messaging in vee-validate
+          @param {Object} attrs  - objects of atts
+          @example attrs = { name: 'Your Name', lastname: 'Your Lastname' }
+        */
+        createAttrDictionary(attrs){
+          const dictionary = {};
+          dictionary[this.$validator.locale] = {attributes:  attrs } ;
+          this.$validator.localize(dictionary);
+        },
+
+
+        /**
+          Atach Validator for every field and connect to messaging
+          @param {Object} fieldProps - formStructure.element.props
+          @param {Number} index  - index of element
+        */
+        atachValidator(fieldProps, index) {
+          //create param error for fieldProps
+          fieldProps.error = null;
+          var self = this;
+          this.$watch('formStructure.' +index+'.props.value', function (value) {
+
+                if (fieldProps.defaultValue!=value) {
+                    if (self.fields[fieldProps.name]) {
+                      self.validateOneElement(fieldProps, value);
                     }
-                //    console.log('form is enabled in validator');
-                  //  console.log(element);
-                   self.enableForm();
+                   // enable form if we start change fields
+
                 } else {
-                   self.nulledState(element);
+
+                   self.nulledState(fieldProps);
                 }
-                //  console.log(element);
 
             })
         },
 
 
-        /*
-          cretae attributes for form
-
+        /**
+          Make null state for element which has  validation true (validate OK)
+          @param {Object} fieldProps - formStructure.field.props
         */
-        createVeeAttributes(){
-
-            const attr = {attributes:_mapValues(this.formStructure, 'label')}
-            const dictionary = {};
-            dictionary[this.$validator.locale] =  attr;
-            //  console.log(dictionary);
-            console.log(dictionary);
-            this.$validator.localize(dictionary);
-
-
+        nulledState(fieldProps) {
+          fieldProps.error =null;
+          fieldProps.errorMessages = [];
         },
 
-        nulledState(element) {
 
-          element.state =null;
-          element.feedback = [];
-        },
         /**
           validate one element
+          @param {Object} fieldProps - element is  formStructure.element.props
         */
-        validateOneElement(element, value){
+        validateOneElement(fieldProps, value){
           const self = this;
+          if (this.errors.has(fieldProps.name)) {
+           this.setErrorForElement(fieldProps,  this.errors.first(fieldProps.name))
+          } else {
+            this.nulledState(fieldProps);
+          }
 
-          // trim element if  it need
-
-
-          self.$validator.validate(element.name, value).then(function(result) {
-
-
-                //self.validateOneElement(result, element );
-              //  console.log(element.name);
-                if (result) {
-                   self.nulledState(element);
-                } else {
-                   var errorBag = self.$validator.errors;
-                   self.setErrorForElement(element,  errorBag.first(element.name));
-
-                }
-
-          })
 
         },
 
 
-          /*
-             add error about validation one element
-          */
-          setErrorForElement(element, message){
-
-             element.state = true;
-             element.feedback =[ message];
-
-
-
-          },
+        /**
+           add error about validation one element
+           @param {Object} fieldProps - formStructure.element.props
+        */
+        setErrorForElement(fieldProps, message){
+           fieldProps.error = true;
+           fieldProps.errorMessages =[ message];
+        },
 
 
       }

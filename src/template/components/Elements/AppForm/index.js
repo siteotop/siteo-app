@@ -1,6 +1,7 @@
 
 var _Values = require('lodash/values');   // get values as array and object
-var _mapValues = require('lodash/mapValues'); // get some values from objects
+
+
 
 
 
@@ -31,7 +32,7 @@ export default {
       },
 
       propsStructure: {
-          type: Object
+          type: Array
         //  default: function () { return {sdfs:true}}
       },
 
@@ -51,7 +52,15 @@ export default {
       activateForm: {
         type: Boolean,
         default: false
+      },
+
+      typeInput: {
+        type: String,
+        default: '', // solo, box, outline
+
       }
+
+
 
   },
 
@@ -61,11 +70,17 @@ export default {
   data () {
     return {
         buttonSubmit: false,
+        submitElement: {
+           name:'submit',
+           label: 'Submit',
+           hint: ''
+        },
         formActive: false,
         leaveform: false,
 
         //i18n: {},
-        formStructure: false,
+        formStructure: [],
+        //valueStructure: {names:''}
 
       }
   },
@@ -75,14 +90,10 @@ export default {
   created() {
 
     //console.log(this.propsStructure);
-    if (this.propsStructure) {
-       this.formStructure = this.propsStructure;
-    }
-    //console.log(JSON.stringify(this.$props));
-
-  //  console.log(JSON.stringify(this.fieldsI18n));
-
-    this.prepareFormStructure();
+    //if (this.propsStructure) {
+    //   this.formStructure = this.propsStructure;
+    //}
+    this.formStructure  = this.prepareFormStructure(this.propsStructure);
     if (this.activateForm) {
       this.enableForm();
     }
@@ -139,45 +150,22 @@ export default {
           /**
             prepare page Structure if was not server request
           */
-
-
-
-          /**
-            generate validate
-          */
-          initFormStructure(){
-              var self = this;
-              this.buttonSubmit = true;
-              this.setDefaultValuesFromStore();
-              _Values(this.formStructure).map(function(element) {
-                  // attach validators to the elements
-                  self.atachValidator(element);
-              });
-
-              this.createVeeAttributes();
-              self.disableForm();
-
-          },
-
-
           destroyForm(){
             this.disableForm();
-            this.formStructure = {};
+            this.formStructure = [];
             this.buttonSubmit = false;
-
           },
 
-
+          /**
+            Clear all messages from elements of formStructure
+          */
           clearMessagesForm(){
-
-              this.$store.commit('clearAllMessages');
-              this.$_LocalMessages_clear();
-              _Values(this.formStructure).map(function(element) {
-                    element.state = false;
-                    element.feedback = [];
-              });
-
-            },
+            this.$store.commit('clearAllMessages');
+            this.$_LocalMessages_clear();
+            this.formStructure.map((element)=>{
+              this.nulledState(element.props)
+            });
+          },
 
 
           /*
@@ -188,15 +176,16 @@ export default {
             this.startFormLoader();
             const self = this;
 
-            const form_data = _mapValues(this.formStructure, 'value');
-            //  console.log(form_data);
+            const form_data = {};
+            this.formStructure.map((element)=>{ form_data[element.props.name] = element.props.value  });
+
+            console.log(form_data);
              this.$validator.validateAll(form_data).then(result => {
                   if (!result) {
-                      self.stopFormLoader();
-                        _Values(this.formStructure).map(function(element) {
-                            self.validateOneElement(element, element.value);
-
-                        });
+                    self.stopFormLoader();
+                    this.formStructure.map(function(element) {
+                        self.validateOneElement(element.props, element.props.value);
+                    });
 
                   } else {
                     //  console.log(form_data);
@@ -329,7 +318,7 @@ export default {
           },
           enableForm(){
             //  console.log(this.formStructure);
-              if ( Object.keys(this.formStructure).length >0)  {
+              if (!this.formActive&& Object.keys(this.formStructure).length >0)  {
                   console.log('form is enabled');
                 this.formActive = true;
               }

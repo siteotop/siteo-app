@@ -120,7 +120,7 @@ export default {
                           }
                         }
                       },
-                      [self.$t('cancel')])]),
+                      [self.$t('si-close')])]),
 
                   ]),
 

@@ -27,7 +27,7 @@ var _APP_INSTANCE = {
  },
 
  configs: {
-    recaptcha: '6LdRBCAUAAAAAD1G95xZfHvPD_-3VLijXfa-48Xm' 
+    recaptcha: '6LdRBCAUAAAAAD1G95xZfHvPD_-3VLijXfa-48Xm'
  },
 
  "design":{
@@ -106,6 +106,53 @@ var _APP_INSTANCE = {
        "props":{},
        "class":[]
      },
+
+     "AppFormOrder": {
+       props: {typeInput:''},
+       children: [
+         {
+           name: 'AppFieldName',
+           props: {
+              name: 'name',
+           }
+         },
+
+         {
+           name: 'AppFieldName',
+           props: {
+              name: 'lastname',
+           }
+         },
+
+         {
+           name: 'AppFieldEmail',
+           props: {
+              name: 'email',
+           }
+         },
+         {
+           name: 'AppFieldPhone',
+           props: {
+              name: 'phone',
+           }
+         },
+
+         {
+           name: 'AppFieldServices',
+           props: {
+              name: 'services',
+           }
+         },
+
+         {
+           name: 'AppFieldDate',
+           props: {
+              name: 'dateorder',
+           }
+         }
+
+       ]
+     }
   /*   "AppAction":{
        "name":"AppAction",
        "props":{},
@@ -118,7 +165,7 @@ var _APP_INSTANCE = {
 
     items: [
       {
-        _id: '123123',
+        _id: '1213123',
         title: 'Service Title number 1',
         subtitle: 'Subtitle For service position',
         preview: ' All about service,  All about service,All about service,All about service,All about service,All about service,All about service,All about service,All about service,All about service,All about service,All about service,All about service,All about service,All about service,All about service,',
@@ -128,7 +175,7 @@ var _APP_INSTANCE = {
       },
 
       {
-        _id: '123123',
+        _id: '1223123',
         title: 'Service Title number 1',
         subtitle: 'Subtitle For service position',
         preview: ' All about service,  All about service,All about service,All about service,All about service,All about service,All abce,',
@@ -138,7 +185,7 @@ var _APP_INSTANCE = {
       },
 
       {
-        _id: '123123',
+        _id: '1233123',
         title: 'Service sdfasfd asdf Title number 1',
         subtitle: 'Subtitl position',
         preview: ' All about service,  All about service,All about service,All about service,All about service,All about service,All abce, asdf asdf sadf',
@@ -148,7 +195,7 @@ var _APP_INSTANCE = {
       },
 
       {
-        _id: '123123',
+        _id: '1243123',
         title: 'Service sdfasfd asdf Title number 1',
         subtitle: 'Subtitl position',
         preview: ' All about service,  All about service,All about service,All aas asdf asdf asdf sadasdf asfd asfdbout service,All about service,All about service,All abce, asdf asdf sadf',
@@ -187,6 +234,12 @@ var _APP_INSTANCE = {
      "id":"experts",
      "path":"\/experts",
      "title":"Experts"
+   },
+   {
+     "i":"si-events",
+     "id":"events",
+     "path":"\/events",
+     "title":"Events"
    },
    {
      "i":"si-blog",

@@ -332,7 +332,7 @@ export default {
         renderFormAction(h, props, icon) {
           var toolbarAction,  self = this;
           props.needToolbar = false;
-          
+
           if (this.renderTypeDialog) {
               toolbarAction = 'closeAction';
           } else {

@@ -10,19 +10,16 @@ export default {
   methods: {
 
     /**
-      does not use
+      Clear all values from all formStructure elements
     */
     clearForm(){
 
 
-        _Values(this.formStructure).map(function(element) {
-             //console.log('nulled form for' + element.name );
-             console.log(element.defaultValue);
+        this.formStructure.map(function(element) {
+             element.props.value = element.props.defaultValue;
 
-             element.value = element.defaultValue;
-             //element.state = false;
-         });
-        console.log(this.formStructure);
+        });
+      //  console.log(this.formStructure);
         this.clearMessagesForm();
         this.disableForm();
 
@@ -30,19 +27,20 @@ export default {
     },
 
 
-
-    setDefaultValuesFromStore() {
+    /**
+      Set default values to every element from formStructure
+      @param {Array} formStructure
+    */
+    setDefaultValuesFromStore(formStructure) {
        if (!this.defaultValues) {
            return false;
         }
 
-        // console.log(this.defaultValues);
-      //  var defaultValues = _Clone(this.defaultValues);
         var self = this;
-       _Values(this.formStructure).map(function(element) {
-
-            if (self.defaultValues[element.name]&&  !element.skipStartValue ){
-               self.setNewValueForElement( self.defaultValues[element.name], element);
+        formStructure.map(function(element) {
+            var field = element.props;
+            if (self.defaultValues[field.name]&&  !field.skipStartValue ){
+               self.setNewValueForElement( self.defaultValues[field.name], field);
             }
         });
      },
@@ -51,7 +49,7 @@ export default {
 
 
        element.value =  newValue;   //this.filter(element, newValue);
-       element.defaultValue = element.value;
+       element.defaultValue = newValue;
 
      },
 

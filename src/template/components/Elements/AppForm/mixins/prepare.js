@@ -9,40 +9,78 @@ export default {
 
     methods: {
 
-      prepareFormStructure(){
 
-          if (!this.formStructure) {
-            return false;
+      /**
+        @param {array} propsStructure -  children element from propsStructure
+        @return {array}  - prepared formStructure for using in component
+      */
+      prepareFormStructure(propsStructure){
+
+          if (!propsStructure.length) {
+             return [];
           }
+          //var formStructure =
+          for (let field_name in propsStructure) {
+              var field = propsStructure[field_name].props;
 
-          for (let field_name in this.formStructure ) {
-              var field = this.formStructure[field_name];
-              field.name =  field_name;
-              if ( field.i18n) {
-                  this.createFieldI18n(field, field_name);
+              if (!field.value) {
+                this.$set(field, 'value', '');
               }
+
+              if (!field.defaultValue) {
+                this.$set(field, 'defaultValue', '');
+              }
+
+              //this.$set(field, 'defaultValues', '');
+              if (propsStructure[field_name]._name) {
+                field.name = propsStructure[field_name]._name;
+              }
+              if (!field.name) {
+                 console.log('Field no have name');
+              }
+              this.connectCommonProps(field);
+              // connect i18n
+              this.createFieldI18n(field);
+
            }
           // console.log(this.formStructure);
            this.createSubmit();
 
-           this.initFormStructure();
+
+           this.setDefaultValuesFromStore(propsStructure);
+           this.createValidation(propsStructure);
+           this.disableForm();
+
+           return propsStructure;
+           // this.initFormStructure();
       },
 
+      connectCommonProps(field) {
+        if (this.typeInput) {
+          field[this.typeInput] = true;
+        }
+
+      },
 
       createSubmit() {
+         this.buttonSubmit = true;
+         this.createFieldI18n(this.submitElement);
+
+
       //  var submit = SUBMIT;
-        this.$set( this.formStructure, 'submit', CreateSubmit()  );
-        this.createFieldI18n(this.formStructure.submit, 'submit');
+      //  this.$set( this.formStructure, 'submit', CreateSubmit()  );
+      //
 
       },
 
-      /*
-        get label (l) and description (d) from i18n chunk
+      /**
+         @param {Object} field
+         connect label (l) and description (d) from i18n chunk
       */
-      createFieldI18n(field, field_name) {
+      createFieldI18n(field) {
 
-          this.$set( field, 'label', this.$i18n_t('content.'+field_name+'.l'));
-          this.$set( field, 'description',  this.$i18n_t('content.'+field_name+'.d'));
+          this.$set( field, 'label', this.$i18n_t('content.'+field.name+'.l'));
+          this.$set( field, 'hint',  this.$i18n_t('content.'+field.name+'.d'));
       },
 
     }

@@ -10,6 +10,10 @@ import {
   mdiArrowUpThick,
   mdiSortVariant,
   mdiViewList,
+  mdiHelpCircle,
+  mdiCalendarText,
+  mdiBackupRestore,
+  mdiClose
   //mdiViewGrid,
   //mdiViewModule
  } from '@mdi/js'
@@ -31,7 +35,11 @@ export default {
     'si-arrow-left': '',
     'si-arrow-right': '',
     'si-sort': mdiSortVariant,
-    'si-filter':   mdiFilterVariant
+    'si-filter':   mdiFilterVariant,
+    'si-help': mdiHelpCircle,
+    'si-events':mdiCalendarText,
+    'si-clear': mdiBackupRestore,
+    'si-close':mdiClose
     //'si-grid-1': mdiViewList,
     //'si-grid-2': mdiViewGrid,
     //'si-grid-3': mdiViewModule,

@@ -11,7 +11,7 @@
 
 
 
-            <v-btn small  fab  @click="menuActive=false" > <AppIcon name="cancel"></AppIcon> </v-btn>
+            <v-btn small  fab  @click="menuActive=false" > <AppIcon name="si-close"></AppIcon> </v-btn>
 
         </v-toolbar>
         <v-card-text class="pa-0">
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import MixinVModelInput from '../mixins/v-model-input';
+import MixinVModelInput from '../../../components/_mixins/v-model-input';
 import MDPalette from './MDPalette.vue'
 export default {
 

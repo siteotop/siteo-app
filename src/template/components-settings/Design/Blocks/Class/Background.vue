@@ -11,7 +11,7 @@
             <v-toolbar-title v-if ="valueData">{{valueData}}</v-toolbar-title>
             <v-toolbar-title v-else >no selected</v-toolbar-title>
             <v-btn small :class="classActiveButton" fab  @click="closeMenu()" > <AppIcon name="check"></AppIcon> </v-btn>
-            <v-btn small  fab  @click="menuActive=false" > <AppIcon name="cancel"></AppIcon> </v-btn>
+            <v-btn small  fab  @click="menuActive=false" > <AppIcon name="si-close"></AppIcon> </v-btn>
 
         </v-toolbar>
         <v-card-text class="pa-0">
@@ -43,7 +43,7 @@
 
 import MDPalette from '../../ColorPalette/MDPalette.vue'
 import ThemePalette from '../../ColorPalette/ThemePalette.vue'
-import MixinVModelInput from '../../mixins/v-model-input';
+import MixinVModelInput from '../../../../components/_mixins/v-model-input';
 export default {
 
     $type: 'background',

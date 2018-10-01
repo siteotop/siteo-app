@@ -8,7 +8,6 @@ export default {
         v-model (value)
      */
      value: {
-
         type: String,
         default: '',
      }
