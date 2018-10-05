@@ -26,6 +26,10 @@ export default {
 
   props: {
 
+      /**
+       dispatch link for $sore.dispatch
+       All actions for form are  making throught $store.dispatch
+      */
       formAction: {
         type: String,
         default: ''
@@ -92,15 +96,19 @@ export default {
 
       if (newValue.length != oldValue.length ) {
           var self = this;
+          console.log(this.errors);
 
-          console.log(this.$validator.fields);
+          //console.log(this.$validator.fields);
+          this.$validator.fields
           oldValue.map(function(element, index) {
             self.$validator.detach(element._n);
             self.$delete(self.formStructure, index);
           });
         this.destroyForm();
         this.formStructure  = this.prepareFormStructure(newValue);
-        
+        console.log(this.errors.count());
+        this.errors.clear();
+        this.clearMessagesForm();
       }
 
     }

@@ -50,7 +50,7 @@ export default {
           var self = this;
           //var key = ;
           this.$watch( 'formStructure.' +index+'.props.value', function (value) {
-
+                console.log(fieldName + ' = '+value  );
                 if (fieldProps.defaultValue!=value) {
                     if (self.fields[fieldName]) {
                       self.validateOneElement(fieldName, fieldProps, value);

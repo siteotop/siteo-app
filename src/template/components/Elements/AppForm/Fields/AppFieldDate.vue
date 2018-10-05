@@ -11,12 +11,13 @@
        <v-text-field
          slot="activator"
          v-bind="$options.propsData"
+         :error = "error"
          :value="currentDateInput"
-         v-validate="{required: true}"
          name="date"
          prepend-inner-icon="event"
          readonly
        ></v-text-field>
+
        <v-date-picker color="primary" :min="currentDate" v-model="valueData" scrollable>
          <v-btn flat color="primary" @click="clear()"><AppIcon name="si-clear"></AppIcon></v-btn>
          <v-spacer></v-spacer>
@@ -39,7 +40,7 @@ export default {
 
   mixins: [VModelInput],
 
-  props: ['hint', 'label', 'solo'],
+  props: ['hint', 'label', 'solo', 'error', 'errorMessages'],
 
   data() {
     return {

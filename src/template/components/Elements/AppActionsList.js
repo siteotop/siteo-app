@@ -19,8 +19,9 @@ const actionsList = [
 
 export default {
     functional: true,
-
+    props: ['active'],
     render(h, context) {
+
         return actionsList.map(function(action) {
             return h('AppAction', {props: {
               hideText: true,
@@ -31,7 +32,8 @@ export default {
               siicon: 'si-'+ action.name,
               large:false,
               color:  action.color,
-              fab: true
+              fab: true,
+              outline:context.props.active ==action.name? true: false
             } })
         });
 

@@ -65,6 +65,27 @@ export  default {
 
     },
 
+    formRecall:  {
+      title: 'We recall you',
+      description:'We recall you',
+      content: {
+        name: {
+          l: '@:formOrder.content.name.l',
+          d: '@:formOrder.content.name.d',
+        },
+
+        phone: {
+          l:"@:formOrder.content.phone.l" ,
+          d: "@:formOrder.content.phone.d"
+        },
+
+        submit: {
+          l: 'Recall me',
+          d: '',
+        }
+      }
+    },
+
     gpsFixed: {
       country_code: 'Country code',
       ip: 'IP adress'

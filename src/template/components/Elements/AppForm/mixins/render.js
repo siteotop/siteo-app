@@ -64,6 +64,7 @@ export default {
       var self = this;
       return h('v-layout', {
           props: {row: true, wrap: true },
+          class: ['my-3'], 
           directives: [
             {
               name: 'show',
@@ -143,14 +144,17 @@ export default {
                 }
               })
            }),
-           h('app-pulse-loader', {props: {loading: this.isLoaderActive} }),
-           self.renderFooter(h)
+
+
 
 
           ),
            this.renderConfirm(h),
-           this.renderSubmit(h)
-          ])
+           this.renderSubmit(h),
+            h('app-pulse-loader', {props: {loading: this.isLoaderActive} }),
+            self.renderFooter(h)
+         ]),
+
         ]
       )
   }
