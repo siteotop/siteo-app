@@ -11,7 +11,17 @@ export default function (Vue, store, path,  routes) {
         base: path|| '/',
         mode: 'history',
         fallback: false,  // для браузеров где нет History Api  (IE9) будет просто открывать новую страницу
-        routes: routes
+        routes: routes,
+        scrollBehavior (to, from, savedPosition) {
+          // return desired position https://router.vuejs.org/guide/advanced/scroll-behavior.html
+          if (savedPosition) {
+            //Returning the savedPosition will result in a native-like behavior when navigating with back/forward buttons:
+            return savedPosition
+          } else {
+            //If a falsy value or an empty object is returned, no scrolling will happen.
+            return { x: 0, y: 0 }
+          }
+        }
 
      });
 

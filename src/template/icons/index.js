@@ -2,6 +2,11 @@ import {
   mdiHome,
   mdiFilterVariant,
   mdiAccountSearch,
+  mdiShopping,
+  mdiPhone,
+  mdiPhoneReturn,
+  mdiLink,
+  mdiCellphoneMessage,
   mdiMapMarker,
   mdiLibraryBooks,
   mdiMagnify,
@@ -27,7 +32,8 @@ export default {
     'si-places': mdiMapMarker, // link for subjects
     'si-experts': mdiAccountSearch,
     'si-blog': mdiLibraryBooks,
-    'si-action': mdiMagnify,
+
+    'si-search': mdiMagnify,
     'si-qa': mdiForum,
     'si-settings': mdiSettings,
     'si-arrow-down': '',
@@ -39,7 +45,16 @@ export default {
     'si-help': mdiHelpCircle,
     'si-events':mdiCalendarText,
     'si-clear': mdiBackupRestore,
-    'si-close':mdiClose
+    'si-close':mdiClose,
+    // icons for actions
+    'si-order': mdiShopping,
+    'si-call': mdiPhone,
+    'si-recall': mdiPhoneReturn,
+    'si-messagers': mdiCellphoneMessage,
+    'si-link': mdiLink,
+
+
+
     //'si-grid-1': mdiViewList,
     //'si-grid-2': mdiViewGrid,
     //'si-grid-3': mdiViewModule,

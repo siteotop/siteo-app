@@ -107,49 +107,37 @@ var _APP_INSTANCE = {
        "class":[]
      },
 
+     /*"AppActionsList": {
+        props: { block: []},
+        children: [
+          {
+            name: 'AppAOrder'
+          },
+          {
+            name: 'AppACall'
+          },
+          {
+            name: 'AppAReCall'
+          },
+          {
+            name: 'AppAText'
+          }
+        ]
+
+     },*/
+
      "AppFormOrder": {
        props: {typeInput:''},
-       children: [
+       children: [ 'name', 'lastname', 'email', 'phone', 'services', 'dateorder'
+        /**
+          was before create fieldsMap
          {
            name: 'AppFieldName',
            props: {
               name: 'name',
            }
          },
-
-         {
-           name: 'AppFieldName',
-           props: {
-              name: 'lastname',
-           }
-         },
-
-         {
-           name: 'AppFieldEmail',
-           props: {
-              name: 'email',
-           }
-         },
-         {
-           name: 'AppFieldPhone',
-           props: {
-              name: 'phone',
-           }
-         },
-
-         {
-           name: 'AppFieldServices',
-           props: {
-              name: 'services',
-           }
-         },
-
-         {
-           name: 'AppFieldDate',
-           props: {
-              name: 'dateorder',
-           }
-         }
+         */
 
        ]
      }

@@ -1,10 +1,17 @@
-<template functional>
+<template >
 
-  <SectionWrap v-bind="props">
+  <SectionWrap >
     <v-container >
+      <v-layout  justify-center class="mb-2">
+         <div text-xs-center>
+           <AppActionsList></AppActionsList>
+         </div >
+     </v-layout>
      <v-layout  justify-center>
         <v-flex xs12 sm8 md6 >
-         <AppFormOrder></AppFormOrder>
+
+          <component v-if="" :is="'app-form-'+typeAction"></component>
+
         </v-flex md9 >
    </v-layout>
    </v-container>
@@ -16,6 +23,15 @@
 
 export default {
   name: 'PageOrder',
+
+  props: {
+    typeAction: {
+      type: String,
+      defualt: 'order'
+    }
+
+
+  },
 
 
 

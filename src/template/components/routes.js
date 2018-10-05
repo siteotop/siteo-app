@@ -22,8 +22,9 @@ export default  [
 
         {
           name: "order",
-          path:  '/order',
+          path:  '/go/:typeAction(order|call|recall|messagers)?',
           component: PageOrder,
+          props: true
 
         },
 

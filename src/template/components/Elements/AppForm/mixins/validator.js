@@ -14,11 +14,12 @@ export default {
         createValidation(formStructure) {
           var self = this;
           const attrs = {};
-
+          //console.log(self.$validator);
           formStructure.map(function(element, index) {
-              self.atachValidator(element.props, index);
+              self.$validator.attach(element._n, element.validators )
+              self.atachValidator(element._n, element.props, index);
               // create attribs attr for method createAttrDictionary()
-              attrs[element.props.name] = element.props.label;
+              attrs[element._n] = element.props.label;
           });
 
           this.createAttrDictionary(attrs);
@@ -42,15 +43,17 @@ export default {
           @param {Object} fieldProps - formStructure.element.props
           @param {Number} index  - index of element
         */
-        atachValidator(fieldProps, index) {
+        atachValidator(fieldName, fieldProps, index) {
           //create param error for fieldProps
+
           fieldProps.error = null;
           var self = this;
-          this.$watch('formStructure.' +index+'.props.value', function (value) {
+          //var key = ;
+          this.$watch( 'formStructure.' +index+'.props.value', function (value) {
 
                 if (fieldProps.defaultValue!=value) {
-                    if (self.fields[fieldProps.name]) {
-                      self.validateOneElement(fieldProps, value);
+                    if (self.fields[fieldName]) {
+                      self.validateOneElement(fieldName, fieldProps, value);
                     }
                    // enable form if we start change fields
 
@@ -77,13 +80,23 @@ export default {
           validate one element
           @param {Object} fieldProps - element is  formStructure.element.props
         */
-        validateOneElement(fieldProps, value){
+        validateOneElement(fieldName, fieldProps, value){
           const self = this;
-          if (this.errors.has(fieldProps.name)) {
-           this.setErrorForElement(fieldProps,  this.errors.first(fieldProps.name))
-          } else {
-            this.nulledState(fieldProps);
-          }
+          console.log(this.errors);
+          this.$validator.validate(fieldName,  value).then(function(result) {
+             if (!result) {
+                // validation NO
+                self.setErrorForElement(fieldProps,  self.errors.first(fieldName))
+              } else {
+                 // validation OK
+                 self.nulledState(fieldProps);
+              }
+
+          }).catch(function(){
+
+            // something went wrong (non-validation related).
+          })
+
 
 
         },

@@ -15,8 +15,7 @@ import AppInputDate from '../../AppFields/AppInputDate.vue';
 import AppSelectCountries from '../../AppFields/AppSelectCountries.vue';
 import AppInputPhone from '../../AppFields/AppInputPhone.vue';
 */
-import AppFieldName from '../Fields/AppFieldName';
-import AppFieldEmail from '../Fields/AppFieldEmail';
+import AppFieldPlainText from '../Fields/AppFieldPlainText';
 import AppFieldPhone from '../Fields/AppFieldPhone';
 import AppFieldServices from '../Fields/AppFieldServices';
 import AppFieldDate from '../Fields/AppFieldDate.vue';
@@ -28,8 +27,7 @@ export default {
   components: {
     AppComponentToolbar,
     AppConfirm,
-    AppFieldName,
-    AppFieldEmail,
+    AppFieldPlainText,
     AppFieldPhone,
     AppFieldServices,
     AppFieldDate
@@ -113,7 +111,7 @@ export default {
   render(h) {
       var self = this ;
       //console.log(this.formStructure);
-      return h('v-card', {props: { fluid:true}},
+      return h('v-card', {props: { flat: true, fluid:true}},
         [
 
           // toolbar
@@ -130,7 +128,7 @@ export default {
               this.formStructure.map(function(el){
               return h(el.name, {
                 props:el.props,
-                //attrs:{ value: self.valueStructure[el.props.name]},
+                attrs:{ name: el._n},
                 on: {
                   input: function(event) {
                     //console.log(event);

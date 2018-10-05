@@ -20,8 +20,9 @@ export default {
              return [];
           }
           //var formStructure =
-          for (let field_name in propsStructure) {
-              var field = propsStructure[field_name].props;
+          for (let index_component in propsStructure) {
+              var field = propsStructure[index_component].props,
+              name = propsStructure[index_component]._n
 
               if (!field.value) {
                 this.$set(field, 'value', '');
@@ -32,15 +33,15 @@ export default {
               }
 
               //this.$set(field, 'defaultValues', '');
-              if (propsStructure[field_name]._name) {
-                field.name = propsStructure[field_name]._name;
+            /*  if (propsStructure[index_component]._n) {
+                field.name = propsStructure[index_component]._name;
               }
               if (!field.name) {
                  console.log('Field no have name');
-              }
+            }*/
               this.connectCommonProps(field);
               // connect i18n
-              this.createFieldI18n(field);
+              this.createFieldI18n(field, name);
 
            }
           // console.log(this.formStructure);
@@ -64,7 +65,7 @@ export default {
 
       createSubmit() {
          this.buttonSubmit = true;
-         this.createFieldI18n(this.submitElement);
+         this.createFieldI18n(this.submitElement, 'submit');
 
 
       //  var submit = SUBMIT;
@@ -77,10 +78,10 @@ export default {
          @param {Object} field
          connect label (l) and description (d) from i18n chunk
       */
-      createFieldI18n(field) {
+      createFieldI18n(field, name) {
 
-          this.$set( field, 'label', this.$i18n_t('content.'+field.name+'.l'));
-          this.$set( field, 'hint',  this.$i18n_t('content.'+field.name+'.d'));
+          this.$set( field, 'label', this.$i18n_t('content.'+name+'.l'));
+          this.$set( field, 'hint',  this.$i18n_t('content.'+name+'.d'));
       },
 
     }
