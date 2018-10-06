@@ -34,7 +34,7 @@ export default {
     //  console.log(context);
       const vueIcon = createElement(VueIcon,  {
         attrs: props,
-        class: { 'grey--text': context.props.defColor,  'text--darken-1': context.props.defColor },
+      //  class: { 'grey--text': context.props.defColor,  'text--darken-1': context.props.defColor },
         directives: context.data.directives
       });
 

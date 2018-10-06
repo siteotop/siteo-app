@@ -18,13 +18,22 @@ export default {
       context.props.large = false;
     }
     return   h('v-btn', {
-      props: {color: 'accent',  light:true, to: {name: 'order', params: {typeAction: 'order'}},  large: true, ...design,  ...context.props  }  ,
+      props: {
+        color: 'accent',
+        light:true,
+        to: {name: 'order', params: {typeAction: 'order'}},
+        large: true,
+        ...design,
+        ...context.props}  ,
       //class: ['black--text'],
       on: {
         click: function (event) {
             console.log(' here send statistic for ');
            //context.parent.$router.push({name: 'order'});
-        }
+        },
+
+        ...context.listeners
+
       }
     },
       [

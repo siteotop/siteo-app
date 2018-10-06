@@ -26,6 +26,69 @@ var _APP_INSTANCE = {
    design:false
  },
 
+ phones: [
+
+    {
+      p_number: '380939979490',
+      type: 'phone',
+      call: true,
+      chat: true,
+      confirm: true,
+      human: true,
+      title: 'Main'
+    },
+
+    {
+      p_number: 'dmytro.diachuck',
+      type: 'skype',
+      call: true,
+      chat: true,
+      confirm: true,
+      human: true,
+      title: 'Main'
+    },
+    {
+      p_number: '380939979490',
+      type: 'viber',
+      call: true,
+      chat: true,
+      confirm: true,
+      human: true,
+      title: 'Main'
+    },
+    {
+      p_number: '380939979490',
+      type: 'whatsapp',
+      call: true,
+      chat: true,
+      confirm: true,
+      human: true,
+      title: 'Main'
+    },
+    {
+      p_number: 'nickname',
+      type: 'telegram',
+      call: true,
+      chat: true,
+      confirm: true,
+      human: true,
+      title: 'Main'
+    },
+
+    {
+      p_number: 'nickname',
+      type: 'messenger',
+      call: true,
+      chat: true,
+      confirm: true,
+      human: true,
+      title: 'Main'
+    },
+
+ ],
+
+
+
  configs: {
     recaptcha: '6LdRBCAUAAAAAD1G95xZfHvPD_-3VLijXfa-48Xm'
  },

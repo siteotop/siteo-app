@@ -8,7 +8,7 @@
      </v-layout>
      <v-layout  justify-center>
         <v-flex xs12 sm8 md6 >
-          <component v-if="" :formAction = "formAction" :is="'app-form-'+typeAction"></component>
+          <component :formAction = "formAction" :is="'app-action-'+typeAction"></component>
         </v-flex md9 >
    </v-layout>
    </v-container>

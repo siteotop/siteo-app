@@ -3,16 +3,17 @@ const actionsList = [
       name: 'order',
       color: 'accent'
     },
-    {
-      name: 'call',
-      color: 'green',
-    },
+
     {
       name: 'recall',
       color: 'orange',
     },
     {
-      name: 'messagers',
+      name: 'call',
+      color: 'green',
+    },
+    {
+      name: 'chat',
       color: 'blue',
     },
 ];

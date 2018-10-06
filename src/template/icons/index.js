@@ -6,7 +6,8 @@ import {
   mdiPhone,
   mdiPhoneReturn,
   mdiLink,
-  mdiCellphoneMessage,
+  mdiCellphone,
+  mdiMessageText,
   mdiMapMarker,
   mdiLibraryBooks,
   mdiMagnify,
@@ -18,7 +19,14 @@ import {
   mdiHelpCircle,
   mdiCalendarText,
   mdiBackupRestore,
-  mdiClose
+  mdiClose,
+  mdiSkype,
+  mdiWhatsapp,
+  mdiTelegram,
+  mdiContentCopy,
+  mdiFacebookMessenger,
+  mdiPhoneInTalk
+
   //mdiViewGrid,
   //mdiViewModule
  } from '@mdi/js'
@@ -50,8 +58,15 @@ export default {
     'si-order': mdiShopping,
     'si-call': mdiPhone,
     'si-recall': mdiPhoneReturn,
-    'si-messagers': mdiCellphoneMessage,
+    'si-chat': mdiMessageText,
     'si-link': mdiLink,
+    'si-copy': mdiContentCopy,
+    'si-phone': mdiCellphone,
+    'si-skype': mdiSkype,
+    'si-viber': mdiPhoneInTalk,
+    'si-whatsapp': mdiWhatsapp,
+    'si-telegram': mdiTelegram,
+    'si-messenger': mdiFacebookMessenger
 
 
 
