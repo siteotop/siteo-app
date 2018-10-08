@@ -29,6 +29,7 @@ export default {
     var self  = this;
     return h('AppAction', {
         props: {
+          color: 'grey',
           fab: true,
           flat: this.nohover,
           outline: this.nohover,

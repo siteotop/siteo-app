@@ -21,6 +21,7 @@ import {
   mdiBackupRestore,
   mdiClose,
   mdiSkype,
+  mdiAt,
   mdiWhatsapp,
   mdiTelegram,
   mdiContentCopy,
@@ -66,7 +67,8 @@ export default {
     'si-viber': mdiPhoneInTalk,
     'si-whatsapp': mdiWhatsapp,
     'si-telegram': mdiTelegram,
-    'si-messenger': mdiFacebookMessenger
+    'si-messenger': mdiFacebookMessenger,
+    'si-email': mdiAt
 
 
 

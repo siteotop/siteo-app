@@ -1,10 +1,11 @@
 <template >
   <v-list two-line>
 
-          <v-list-tile v-for="(phone, index) in phones"  @click="" :key="index">
+          <v-list-tile v-for="(phone, index) in phones"  @click="" :key="index"  v-if="phone[actionType]">
             <v-list-tile-action>
               <v-avatar
-                color="grey lighten-5 "
+                :color="colors[phone.type].color"
+                class="white--text"
               >
                 <AppIcon :name="'si-'+phone.type"></AppIcon>
               </v-avatar>
@@ -27,13 +28,14 @@
 </template>
 
 <script>
-
+import ChatColors from './AppAction/_helper/chat-colors';
 import AppActionPhone from './AppAction/Phone.js';
 import AppActionSkype from './AppAction/Skype.js';
 import AppActionTelegram from './AppAction/Telegram.js';
 import AppActionViber from './AppAction/Viber.js';
 import AppActionWhatsapp from './AppAction/Whatsapp.js';
 import AppActionMessenger from './AppAction/Messenger.js';
+import AppActionEmail from './AppAction/Email.js';
 
 
 export default {
@@ -43,7 +45,8 @@ export default {
     AppActionTelegram,
     AppActionViber,
     AppActionWhatsapp,
-    AppActionMessenger
+    AppActionMessenger,
+    AppActionEmail
   },
 
   props: {
@@ -60,8 +63,8 @@ export default {
 
   data() {
 
-
     return {
+      colors: ChatColors,
       phones: this.projectPhones || this.$store.state.APP_INSTANCE.phones
     }
   },

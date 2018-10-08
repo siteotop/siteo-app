@@ -35,7 +35,7 @@ var _APP_INSTANCE = {
       chat: true,
       confirm: true,
       human: true,
-      title: 'Main'
+
     },
 
     {
@@ -45,7 +45,7 @@ var _APP_INSTANCE = {
       chat: true,
       confirm: true,
       human: true,
-      title: 'Main'
+
     },
     {
       p_number: '380939979490',
@@ -54,7 +54,7 @@ var _APP_INSTANCE = {
       chat: true,
       confirm: true,
       human: true,
-      title: 'Main'
+
     },
     {
       p_number: '380939979490',
@@ -63,16 +63,16 @@ var _APP_INSTANCE = {
       chat: true,
       confirm: true,
       human: true,
-      title: 'Main'
+
     },
     {
       p_number: 'nickname',
       type: 'telegram',
-      call: true,
+      call: false,
       chat: true,
       confirm: true,
       human: true,
-      title: 'Main'
+
     },
 
     {
@@ -82,7 +82,17 @@ var _APP_INSTANCE = {
       chat: true,
       confirm: true,
       human: true,
-      title: 'Main'
+
+    },
+
+    {
+      p_number: 'vavilon2@gmail.com',
+      type: 'email',
+      call: false,
+      chat: true,
+      confirm: true,
+      human: true,
+
     },
 
  ],
