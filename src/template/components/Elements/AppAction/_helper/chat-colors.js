@@ -23,8 +23,5 @@ export default {
     'email' : {
       color: 'red lighten-1',
     },
-
-
-
-
+    
 }

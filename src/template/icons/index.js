@@ -26,7 +26,19 @@ import {
   mdiTelegram,
   mdiContentCopy,
   mdiFacebookMessenger,
-  mdiPhoneInTalk
+  mdiPhoneInTalk,
+  mdiOpenInNew,
+  mdiFacebookBox,
+  mdiInstagram,
+  mdiYoutube,
+  mdiVkBox,
+  mdiWeb,
+  mdiPinterestBox,
+  mdiTwitterBox,
+  mdiTumblrBox,
+  mdiLinkedinBox,
+  mdiGooglePlusBox,
+  mdiReddit
 
   //mdiViewGrid,
   //mdiViewModule
@@ -55,12 +67,12 @@ export default {
     'si-events':mdiCalendarText,
     'si-clear': mdiBackupRestore,
     'si-close':mdiClose,
-    // icons for actions
+    // icons for actions chat and calls
     'si-order': mdiShopping,
     'si-call': mdiPhone,
     'si-recall': mdiPhoneReturn,
     'si-chat': mdiMessageText,
-    'si-link': mdiLink,
+    'si-links': mdiLink,
     'si-copy': mdiContentCopy,
     'si-phone': mdiCellphone,
     'si-skype': mdiSkype,
@@ -68,7 +80,21 @@ export default {
     'si-whatsapp': mdiWhatsapp,
     'si-telegram': mdiTelegram,
     'si-messenger': mdiFacebookMessenger,
-    'si-email': mdiAt
+    'si-email': mdiAt,
+    // icons for standart social links and  share component
+    'si-website':mdiWeb,
+    'si-openurl': mdiOpenInNew,
+    'si-fb':mdiFacebookBox,
+    'si-instagram':mdiInstagram,
+    'si-youtube':mdiYoutube,
+    'si-vk':mdiVkBox,
+
+    'si-pinterest':mdiPinterestBox,
+    'si-twitter':mdiTwitterBox,
+    'si-tumblr':mdiTumblrBox,
+    'si-linkedin':mdiLinkedinBox,
+    'si-reddit':mdiReddit,
+    'si-googlep':mdiGooglePlusBox,
 
 
 

@@ -22,7 +22,7 @@ export default  [
 
         {
           name: "order",
-          path:  '/go/:typeAction(order|call|recall|chat)?',
+          path:  '/go/:typeAction(order|call|recall|chat|links)?',
           component: PageOrder,
           props: true
 

@@ -65,18 +65,9 @@ export default {
 
     return {
       colors: ChatColors,
-      phones: this.projectPhones || this.$store.state.APP_INSTANCE.phones
+      phones: this.projectPhones || this.$store.state.APP_INSTANCE.contacts
     }
-  },
-
-  methods: {
-    copyToClipboard() {
-        console.log('hover');
-    },
-
-
   }
-
 
 }
 

@@ -25,8 +25,81 @@ var _APP_INSTANCE = {
    lang:"uk",
    design:false
  },
+ links: [
+   {
+     title: 'Facebook',
+     type: 'fb',
+     url: 'https://www.facebook.com/vavilon1'
+   },
 
- phones: [
+
+   {
+     title: 'Instagram',
+     type: 'instagram',
+     url: 'https://instagram.com/'
+   },
+
+   {
+     title: 'Youtube',
+     type: 'youtube',
+     url: 'https://www.youtube.com/'
+   },
+
+   {
+     title: 'Vkontakte',
+     type: 'vk',
+     url: 'https://vk.com'
+   },
+
+   {
+     title: 'Website',
+     type: 'website',
+     url: 'https://siteo.com'
+   },
+
+   {
+     title: 'Pinterest ',
+     type: 'pinterest',
+     url: 'https://pnterest.com'
+   },
+
+   {
+     title: 'Twitter',
+     type: 'twitter',
+     url: 'https://twitter.com'
+   },
+   {
+     title: 'Tumblr',
+     type: 'tumblr',
+     url: 'https://tumblr.com'
+   },
+
+   {
+     title: 'Linkedin',
+     type: 'linkedin',
+     url: 'https://linkedin.com/'
+   },
+   {
+     title: 'Reddit',
+     type: 'reddit',
+     url: 'https://reddit.com'
+   },
+
+   {
+     title: 'Google Plus',
+     type: 'googlep',
+     url: 'https://reddit.com'
+   },
+
+   {
+     title: ' Other Link',
+     type: 'links',
+     url: 'https://some-url.com'
+   },
+
+
+ ],
+ contacts: [
 
     {
       p_number: '380939979490',

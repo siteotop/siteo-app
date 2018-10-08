@@ -16,6 +16,11 @@ const actionsList = [
       name: 'chat',
       color: 'blue',
     },
+
+    {
+      name: 'links',
+      color: 'light-blue',
+    },
 ];
 
 export default {
