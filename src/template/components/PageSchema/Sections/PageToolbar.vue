@@ -1,7 +1,7 @@
 <template >
-  <v-toolbar v-scroll="onScroll" v-bind="tProps"  :class="tClass" :style="tStyle">
+  <v-toolbar  v-bind="tProps"  :class="tClass" :style="tStyle">
       <v-btn v-show="offsetOn" @click="$vuetify.goTo(0, {duration: 40})"  fab small color="primary">
-        <AppIcon inverse name="si-arrow-up"></AppIcon>
+        <AppIcon inverse name="si-arrow-up">icon_in_page_tooolbar</AppIcon>
       </v-btn>
       <v-spacer></v-spacer>
         <v-toolbar-items>
@@ -23,16 +23,16 @@ export default {
       items: {
         type: Array,
 
+      },
+
+      offset: {
+        type: Number
+
       }
+
     },
 
-    data() {
-      return {
-        offset: 0
-      }
-    },
-
-    computed: {
+  computed: {
         // height of screen
        /*  targetHeight() {
           return this.$vuetify.breakpoint.height||550;
@@ -84,14 +84,9 @@ export default {
             }
         },
 
-    },
-
-    methods: {
-      onScroll() {
-        this.offset = window.pageYOffset || document.documentElement.scrollTop;
-
-      }
     }
+
+
 
 }
 </script>

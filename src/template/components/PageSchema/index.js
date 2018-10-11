@@ -1,12 +1,14 @@
 
 import Loader from '../_mixins/component-loading.js';
 import PageError from '../Pages/Error.vue';
+import FunctionalSpeedDeal from './Functional/SpeedDeal.vue';
 export default {
     mixins: [ Loader],
 
     data() {
         return  {
-          error: false
+          error: false,
+          offsetTop: 0,
         }
     },
 
@@ -111,6 +113,12 @@ export default {
 
     methods: {
 
+
+        onScroll(e) {
+          this.offsetTop = window.pageYOffset || document.documentElement.scrollTop;
+        },
+
+
         onLeave() {
           this.error = false;
           this.$store.commit('APP_PAGE/clearModel');
@@ -170,15 +178,30 @@ export default {
           return h(PageError, { props: {status: this.error}  }  )
         }
 
-        return h('div',  [
+        return h('div',  {
+          directives: [
+              {
+                name: 'scroll',
+                value: this.onScroll,
+                expression:'onScroll'
+              }
+          ]
+        }, [
             // toolbar for Page
-          h( self.$root.$options.componentsPage['PageToolbar'], {props: {items:this.pageMenu}}),
+          h( self.$root.$options.componentsPage['PageToolbar'], {props: {items:this.pageMenu, offset: this.offsetTop}}),
            // sections for Page
           this.$store.state.APP_PAGE.objectActive.contentStructure.map(function(section) {
               return h(self.$root.$options.componentsPage[section._n], { props: section._props  }  )
           }),
 
-          h('')
+          h(FunctionalSpeedDeal, {
+            directives:[
+              {
+                name: 'show',
+                value: this.offsetTop> this.$vuetify.breakpoint.height? true: false
+              }
+            ]}
+          )
       ]
       )
 

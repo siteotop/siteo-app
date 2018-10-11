@@ -12,7 +12,6 @@ export default {
      data() {
           return {
            startdrawer: false,
-           offsetTop: 0,
           }
      },
 
