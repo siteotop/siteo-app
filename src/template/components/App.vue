@@ -6,20 +6,14 @@ import * as componentsPage from './PageSchema/Sections';
 export default {
 
      renderList: ['AppDrawer', 'AppToolbar',  'AppFooter', 'AppContent'],
-
      componentsPage: componentsPage,
-
      components: {...AppStructure} ,
+
      data() {
-
-
-         return {
+          return {
            startdrawer: false,
            offsetTop: 0,
-
-
-         }
-
+          }
      },
 
      created(){
