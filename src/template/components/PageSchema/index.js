@@ -9,6 +9,7 @@ export default {
         return  {
           error: false,
           offsetTop: 0,
+          showUpButton: false
         }
     },
 
@@ -48,6 +49,15 @@ export default {
           console.log('change postId');
           this.onLeave();
           this.getPageFromServer();
+        },
+
+        offsetTop(current, before) {
+            this.showUpButton = false;
+            if (current>this.$vuetify.breakpoint.height) {
+             if (current<before) {
+               this.showUpButton = true;
+             }
+           }
         }
 
     },
@@ -105,6 +115,10 @@ export default {
 
           })
           return page_menu;
+        },
+
+        needShowAction() {
+          return this.offsetTop> this.$vuetify.breakpoint.height;
         }
 
 
@@ -194,14 +208,35 @@ export default {
               return h(self.$root.$options.componentsPage[section._n], { props: section._props  }  )
           }),
 
+          // SpeedDeal
           h(FunctionalSpeedDeal, {
             directives:[
               {
                 name: 'show',
-                value: this.offsetTop> this.$vuetify.breakpoint.height? true: false
+                value: this.needShowAction
               }
             ]}
-          )
+          ),
+
+          // Button UP
+          h('v-fab-transition', [
+            h('v-btn', {props: {fixed: true, large: this.$vuetify.breakpoint.smAndUp, bottom: true, left:true,  fab: true, color: 'secondary'},
+              on: {
+                click: ()=>{this.$vuetify.goTo(0, {duration: 40})}
+              },
+              directives: [
+                {
+                  name: 'show',
+                  value: this.showUpButton&&this.needShowAction
+                }
+              ]
+            }, [
+              h('AppIcon', {props: {name: 'si-arrow-up', inverse: true }})
+            ])
+
+          ])
+
+
       ]
       )
 

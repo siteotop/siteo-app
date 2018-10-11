@@ -1,8 +1,5 @@
 <template >
   <v-toolbar  v-bind="tProps"  :class="tClass" :style="tStyle">
-      <v-btn v-show="offsetOn" @click="$vuetify.goTo(0, {duration: 40})"  fab small color="primary">
-        <AppIcon inverse name="si-arrow-up">icon_in_page_tooolbar</AppIcon>
-      </v-btn>
       <v-spacer></v-spacer>
         <v-toolbar-items>
             <v-btn v-for="(item, i) in items" :key="i"
