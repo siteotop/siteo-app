@@ -11,18 +11,5 @@ export { default as MediaList} from './MediaList.vue';
 export { default as Video} from './Video.vue';
 export { default as StepByStep} from './StepByStep.vue';
 export { default as ServiceList} from './ServiceList.vue';
-
-
-
-/*
-export { default as SectionFeatures} from './section-features.vue';
-export { default as SectionContacts} from './section-contacts.vue';
-export { default as SectionAction} from './section-action.vue';
-export { default as SectionPrices} from './section-prices.vue';
-export { default as SectionBlog} from './section-blog.vue';
-export { default as SectionOrder} from './section-order.vue';
-*/
-
-
-
-//export {getRoutesSite, siteDesign}
+export { default as OrderAction} from './OrderAction.vue';
+export { default as OrderActionButtons} from './OrderActionButtons.vue';

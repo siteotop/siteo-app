@@ -172,11 +172,13 @@ export default {
 
         return h('div',  [
             // toolbar for Page
-            h( self.$root.$options.componentsPage['PageToolbar'], {props: {items:this.pageMenu}}),
+          h( self.$root.$options.componentsPage['PageToolbar'], {props: {items:this.pageMenu}}),
            // sections for Page
           this.$store.state.APP_PAGE.objectActive.contentStructure.map(function(section) {
               return h(self.$root.$options.componentsPage[section._n], { props: section._props  }  )
-            })
+          }),
+
+          h('')
       ]
       )
 

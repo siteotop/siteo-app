@@ -38,10 +38,6 @@ export default {
       color:'red darken-1'
   },
 
-  googlep: {
-      color:'red'
-  },
-
   links: {
     color:'grey'
   }

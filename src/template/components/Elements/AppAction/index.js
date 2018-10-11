@@ -7,8 +7,7 @@ export default {
   wrapped:'v-btn',
   render(h, context) {
     var
-      design = context.parent.$store.state.APP_INSTANCE.design.AppAction||{},
-      actionText =  context.parent.$store.state.APP_INSTANCE.data.actionText;
+      design = context.parent.$store.state.APP_INSTANCE.design.AppAction||{};
 
 
 
@@ -39,7 +38,7 @@ export default {
       [
         h('AppIcon', {attrs: {name:context.props.siicon||'si-order'}}),
 
-          !context.props.hideText? actionText: '',
+          !context.props.hideText? (context.props.actionText|| context.parent.$store.state.APP_INSTANCE.data.actionText): '',
       ]
    )
 

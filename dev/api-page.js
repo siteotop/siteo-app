@@ -54,6 +54,17 @@
       },
 
       {
+        _n: 'OrderActionButtons',
+        _props: {
+          _ti: 'Buttons  Action ',
+          _de: 'Description about Buttons  Action',
+
+          _bc:'grey lighten-3'
+        }
+
+      },
+
+      {
         _n: 'Features',
         _props: {
         //  _ti: 'Feauters Borsch',
@@ -77,6 +88,17 @@
 
           ],
           _bc:'grey lighten-5'
+        }
+
+      },
+
+      {
+        _n: 'OrderAction',
+        _props: {
+          _ti: 'Form Action ',
+          _de: 'Description about form ',
+          _bi: 'http://www.thebusinessalliance.net/wp-content/uploads/2018/04/promote-your-business.jpg',
+          _bc:'grey lighten-2'
         }
 
       },
@@ -185,7 +207,7 @@
 
       },
 
-    
+
       {
         _n: 'HtmlText',
         _props: {

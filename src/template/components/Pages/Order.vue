@@ -1,28 +1,27 @@
 <template >
-<SectionWrap >
-    <v-container >
-      <v-layout  justify-center class="mb-2">
-         <div text-xs-center>
-           <AppActionsList :active="typeAction"></AppActionsList>
-         </div >
-     </v-layout>
-     <v-layout  justify-center>
-        <v-flex xs12 sm8 md6 >
-          <component :formAction = "formAction" :is="'app-action-'+typeAction"></component>
-        </v-flex md9 >
-   </v-layout>
-   </v-container>
+<SectionWrap v-if="typeAction">
+  <OrderActionButtons  :typeAction="typeAction"></OrderActionButtons>
+  <OrderAction  :typeAction="typeAction"  ></OrderAction>
 </SectionWrap>
-
+<SectionWrap v-else>
+  <OrderActionButtons  :block="true"></OrderActionButtons>
+</SectionWrap>
 </template>
 
 <script>
 import {createOrders} from '../../../core/store/models';
 import MixinsLoaderStoreModule from '../_mixins/loader-store-module';
 
+import OrderAction from '../PageSchema/Sections/OrderAction.vue';
+import OrderActionButtons from '../PageSchema/Sections/OrderActionButtons.vue';
+
 export default {
   name: 'PageOrder',
   mixins: [MixinsLoaderStoreModule],
+  components: {
+    OrderAction,
+    OrderActionButtons
+  },
   $_LoadModule_plain: createOrders('WEBSITE_API_URL', false),
   props: {
     typeAction: {

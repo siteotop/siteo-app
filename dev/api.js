@@ -25,6 +25,7 @@ var _APP_INSTANCE = {
    lang:"uk",
    design:false
  },
+
  links: [
    {
      title: 'Facebook',
@@ -85,11 +86,7 @@ var _APP_INSTANCE = {
      url: 'https://reddit.com'
    },
 
-   {
-     title: 'Google Plus',
-     type: 'googlep',
-     url: 'https://reddit.com'
-   },
+  
 
    {
      title: ' Other Link',
@@ -173,7 +170,8 @@ var _APP_INSTANCE = {
 
 
  configs: {
-    recaptcha: '6LdRBCAUAAAAAD1G95xZfHvPD_-3VLijXfa-48Xm'
+    recaptcha: '6LdRBCAUAAAAAD1G95xZfHvPD_-3VLijXfa-48Xm',
+
  },
 
  "design":{

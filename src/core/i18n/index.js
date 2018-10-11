@@ -6,7 +6,13 @@ export  default {
     cancel: 'Отмена',
     no_data: 'Данных для отображения нет',
 
-
+    actions: {
+        order: 'Заказать',
+        call: 'Позвонить',
+        recall: 'Обратный звонок',
+        chat: 'Месенджеры',
+        links: 'Ссылки'
+    },
     commonList: {
       edit: 'Редактировать',
       delete: 'Удалить',

@@ -11,7 +11,6 @@ export default {
       props.i18nkey = "formOrder";
       props.formAction = context.props.formAction;
       return  h('AppForm', {props:  props})
-
   }
 
 }
