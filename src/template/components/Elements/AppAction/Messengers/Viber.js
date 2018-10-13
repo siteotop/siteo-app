@@ -1,4 +1,4 @@
-import CallChat from './_mixins/CallChat'
+import CallChat from '../_mixins/CallChat'
 
 export default {
 

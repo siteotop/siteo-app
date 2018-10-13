@@ -29,13 +29,13 @@
 
 <script>
 import ChatColors from './AppAction/_helper/chat-colors';
-import AppActionPhone from './AppAction/Phone.js';
-import AppActionSkype from './AppAction/Skype.js';
-import AppActionTelegram from './AppAction/Telegram.js';
-import AppActionViber from './AppAction/Viber.js';
-import AppActionWhatsapp from './AppAction/Whatsapp.js';
-import AppActionMessenger from './AppAction/Messenger.js';
-import AppActionEmail from './AppAction/Email.js';
+import AppActionPhone from './AppAction/Messengers/Phone.js';
+import AppActionSkype from './AppAction/Messengers/Skype.js';
+import AppActionTelegram from './AppAction/Messengers/Telegram.js';
+import AppActionViber from './AppAction/Messengers/Viber.js';
+import AppActionWhatsapp from './AppAction/Messengers/Whatsapp.js';
+import AppActionMessenger from './AppAction/Messengers/Messenger.js';
+import AppActionEmail from './AppAction/Messengers/Email.js';
 
 
 export default {
