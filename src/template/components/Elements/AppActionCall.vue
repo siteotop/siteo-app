@@ -1,30 +1,37 @@
 <template >
-  <v-list two-line>
+  <v-list v-if="vList" two-line>
 
-          <v-list-tile v-for="(phone, index) in phones"  @click="" :key="index"  v-if="phone[actionType]">
+          <v-list-tile v-for="(contect, index) in services"  @click="" :key="index"  v-if="contect[actionType]">
             <v-list-tile-action>
               <v-avatar
-                :color="colors[phone.type].color"
+                :color="colors[contect.type].color"
                 class="white--text"
               >
-                <AppIcon :name="'si-'+phone.type"></AppIcon>
+                <AppIcon :name="'si-'+contect.type"></AppIcon>
               </v-avatar>
             </v-list-tile-action>
 
             <v-list-tile-content>
-              <v-list-tile-title>{{phone.p_number}}</v-list-tile-title>
-              <v-list-tile-sub-title>{{phone.type}}</v-list-tile-sub-title>
+              <v-list-tile-title>{{contect.p_number}}</v-list-tile-title>
+              <v-list-tile-sub-title>{{contect.type}}</v-list-tile-sub-title>
             </v-list-tile-content>
 
             <v-list-tile-action >
                <component
-                 :is="'app-action-'+phone.type"
+                 :is="'app-action-'+contect.type"
                  :actionType="actionType"
-                 :serviceId="phone.p_number"></component>
+                 :iconNative="false"
+                 :serviceId="contect.p_number"></component>
             </v-list-tile-action>
           </v-list-tile>
   </v-list>
-
+  <div v-else>
+    <component v-for="(contect, index) in services" :key="index"
+      :is="'app-action-'+contect.type"
+      :color="colors[contect.type].color"
+      :actionType="actionType"
+      :serviceId="contect.p_number"></component>
+  </div>
 </template>
 
 <script>
@@ -55,6 +62,11 @@ export default {
          default: 'call'
       },
 
+      vList: {
+        type: Boolean,
+        default: false
+      },
+
       projectPhones: {
           type: [Boolean, Array],
           default: false
@@ -65,7 +77,7 @@ export default {
 
     return {
       colors: ChatColors,
-      phones: this.projectPhones || this.$store.state.APP_INSTANCE.contacts
+      services: this.projectPhones || this.$store.state.APP_INSTANCE.contacts
     }
   }
 

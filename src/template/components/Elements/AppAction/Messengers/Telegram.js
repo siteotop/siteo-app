@@ -3,6 +3,7 @@ import CallChat from '../_mixins/CallChat'
 export default {
 
   extends: CallChat,
+  service: 'telegram',
   name: 'AppActionTelegram',
   computed: {
 

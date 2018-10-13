@@ -1,7 +1,7 @@
 <template >
 <SectionWrap v-if="typeAction">
   <OrderActionButtons  :typeAction="typeAction"></OrderActionButtons>
-  <OrderAction  :typeAction="typeAction"  ></OrderAction>
+  <OrderAction :vList="true"  :typeAction="typeAction"  ></OrderAction>
 </SectionWrap>
 <SectionWrap v-else>
   <OrderActionButtons  :block="true"></OrderActionButtons>

@@ -1,11 +1,23 @@
+
 export default {
 
   props: {
+
+      color: {
+        type: String,
+        default: 'grey'
+      },
+
       serviceId:{
         type: [String, Number],
         default: ''
       },
 
+      iconNative: {
+        type: Boolean,
+        default: true
+      },
+      
       actionType: {
         type: String,
         default: 'call', //chat
@@ -21,7 +33,11 @@ export default {
 
   computed: {
     icon() {
-      return this.actionType =='call'? 'si-call': 'si-chat';
+      if (this.iconNative) {
+        return 'si-'+this.$options.service;
+      } else {
+        return this.actionType =='call'? 'si-call': 'si-chat';
+      }
     }
   },
 
@@ -29,7 +45,7 @@ export default {
     var self  = this;
     return h('AppAction', {
         props: {
-          color: 'grey',
+          color: this.color,
           fab: true,
           flat: this.nohover,
           outline: this.nohover,
@@ -55,12 +71,3 @@ export default {
 
   }
 }
-
-/*
-tel:+120345678910
-whatsapp://send?phone=+120345678910
-viber://chat?number=120345678910
-tg://resolve?domain=nikname
-skype:nikname?chat or  skype:nikname?call
-https://www.messenger.com/username
-*/
