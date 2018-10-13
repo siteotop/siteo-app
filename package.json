@@ -86,7 +86,7 @@
     "vue-spinner": "^1.0.3",
     "vue2-animate": "^2.0.0",
     "vuedraggable": "^2.16.0",
-    "vuetify": "^1.2.3",
+    "vuetify": "^1.2.9",
     "vuex": "^3.0.1",
     "vuex-router-sync": "^5.0.0"
   },
