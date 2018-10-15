@@ -1,7 +1,8 @@
 <template >
   <v-toolbar  v-bind="tProps"  :class="tClass" :style="tStyle">
+      <v-btn outline ><AppIcon name="si-dots-menu"></AppIcon> Menu </v-btn>
       <v-spacer></v-spacer>
-        <v-toolbar-items>
+        <v-toolbar-items v-if="$vuetify.breakpoint.smAndUp">
             <v-btn v-for="(item, i) in items" :key="i"
               :href="item.href"
               v-on:click.prevent="$vuetify.goTo(item.href, { offset: -100})"
@@ -9,6 +10,9 @@
             >{{item.title}}</v-btn>
         </v-toolbar-items>
       <v-spacer></v-spacer>
+      <v-btn icon @click="$emit('shareWindow')"><AppIcon name="si-share"  ></AppIcon> </v-btn>
+      <v-btn icon><AppIcon name="si-qa"></AppIcon> </v-btn>
+      <v-btn icon><AppIcon name="si-bookmark"></AppIcon> </v-btn>
 
   </v-toolbar>
 </template>
@@ -30,15 +34,9 @@ export default {
     },
 
   computed: {
-        // height of screen
-       /*  targetHeight() {
-          return this.$vuetify.breakpoint.height||550;
-        },
-      */
+
         // when offset on
         offsetOn() {
-
-        //  return  (this.offset>this.targetHeight);
           return  (this.offset>300);
         },
 

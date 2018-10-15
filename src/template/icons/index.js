@@ -39,7 +39,13 @@ import {
   mdiTumblrBox,
   mdiLinkedinBox,
   mdiGooglePlusBox,
-  mdiReddit
+  mdiReddit,
+  mdiShareVariant,
+  mdiBookmark,
+  mdiDotsVertical,
+
+
+
 
   //mdiViewGrid,
   //mdiViewModule
@@ -74,7 +80,7 @@ export default {
     'si-recall': mdiPhoneReturn,
     'si-chat': mdiMessageText,
     'si-links': mdiLink,
-    'si-copy': mdiContentCopy,
+
     'si-phone': mdiCellphone,
     'si-skype': mdiSkype,
     'si-viber': mdiPhoneInTalk,
@@ -96,12 +102,12 @@ export default {
     'si-linkedin':mdiLinkedinBox,
     'si-reddit':mdiReddit,
     'si-googlep':mdiGooglePlusBox,
+    ///////////
+    'si-copy': mdiContentCopy,
+    'si-share': mdiShareVariant,
+    'si-bookmark': mdiBookmark,
+    'si-dots-menu': mdiDotsVertical,
 
-
-
-    //'si-grid-1': mdiViewList,
-    //'si-grid-2': mdiViewGrid,
-    //'si-grid-3': mdiViewModule,
 
 
 

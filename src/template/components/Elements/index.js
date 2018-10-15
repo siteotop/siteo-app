@@ -11,6 +11,7 @@ export {default as AppActionCall} from './AppActionCall.vue';
 export {default as AppActionChat} from './AppActionChat.js';
 export {default as AppActionLinks} from './AppActionLinks.vue';
 export {default as AppActionsList} from './AppActionsList.js';
+export {default as AppActionShare} from './AppActionShare.vue';
 
 export {default as SectionWrap} from '../PageSchema/Sections/Helper/SectionWrap.vue';
 export {default as SectionWrapList} from '../PageSchema/Sections/Helper/SectionWrapList.vue';

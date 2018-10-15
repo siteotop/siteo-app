@@ -2,6 +2,7 @@
 import Loader from '../_mixins/component-loading.js';
 import PageError from '../Pages/Error.vue';
 import FunctionalSpeedDeal from './Functional/SpeedDeal.vue';
+import FunctionalShareWindow from './Functional/ShareWindow.vue';
 export default {
     mixins: [ Loader],
 
@@ -9,7 +10,8 @@ export default {
         return  {
           error: false,
           offsetTop: 0,
-          showUpButton: false
+          showUpButton: false,
+          shareWindow: false
         }
     },
 
@@ -202,7 +204,12 @@ export default {
           ]
         }, [
             // toolbar for Page
-          h( self.$root.$options.componentsPage['PageToolbar'], {props: {items:this.pageMenu, offset: this.offsetTop}}),
+          h( self.$root.$options.componentsPage['PageToolbar'], {
+            props: {items:this.pageMenu, offset: this.offsetTop},
+            on: {
+              shareWindow: ()=>{this.shareWindow = true}
+            }
+          }),
            // sections for Page
           this.$store.state.APP_PAGE.objectActive.contentStructure.map(function(section) {
               return h(self.$root.$options.componentsPage[section._n], { props: section._props  }  )
@@ -217,6 +224,8 @@ export default {
               }
             ]}
           ),
+
+          this.shareWindow? h(FunctionalShareWindow, {props: {canonicalUrl: this.$store.state.APP_PAGE.objectActive.meta_canonical, text:this.$store.state.APP_PAGE.objectActive.meta_og_title||this.$store.state.APP_PAGE.objectActive.meta_title}}):'',
 
           // Button UP
           h('v-fab-transition', [

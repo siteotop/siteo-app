@@ -21,7 +21,7 @@
        </v-btn>
        <AppActionsList></AppActionsList>
      </v-speed-dial>
-</v-fab-transition>     
+</v-fab-transition>
 </template>
 
 <script>
