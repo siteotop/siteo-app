@@ -2,7 +2,9 @@
   <v-toolbar  v-bind="tProps"  :class="tClass" :style="tStyle">
       <v-btn outline ><AppIcon name="si-dots-menu"></AppIcon> Menu </v-btn>
       <v-spacer></v-spacer>
+
         <v-toolbar-items v-if="$vuetify.breakpoint.smAndUp">
+            <v-btn icon @click="$vuetify.goTo(0)"><AppIcon name="si-home"></AppIcon></v-btn>
             <v-btn v-for="(item, i) in items" :key="i"
               :href="item.href"
               v-on:click.prevent="$vuetify.goTo(item.href, { offset: -100})"
