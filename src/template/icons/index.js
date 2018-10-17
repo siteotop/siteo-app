@@ -80,7 +80,7 @@ export default {
     'si-recall': mdiPhoneReturn,
     'si-chat': mdiMessageText,
     'si-links': mdiLink,
-
+    'si-sms':  mdiMessageText,
     'si-phone': mdiCellphone,
     'si-skype': mdiSkype,
     'si-viber': mdiPhoneInTalk,

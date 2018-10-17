@@ -30,68 +30,68 @@ var _APP_INSTANCE = {
    {
      title: 'Facebook',
      type: 'fb',
-     url: 'https://www.facebook.com/vavilon1'
+     href: 'https://www.facebook.com/vavilon1'
    },
 
 
    {
      title: 'Instagram',
      type: 'instagram',
-     url: 'https://instagram.com/'
+     href: 'https://instagram.com/'
    },
 
    {
      title: 'Youtube',
      type: 'youtube',
-     url: 'https://www.youtube.com/'
+     href: 'https://www.youtube.com/'
    },
 
    {
      title: 'Vkontakte',
      type: 'vk',
-     url: 'https://vk.com'
+     href: 'https://vk.com'
    },
 
    {
      title: 'Website',
      type: 'website',
-     url: 'https://siteo.com'
+     href: 'https://siteo.com'
    },
 
    {
      title: 'Pinterest ',
      type: 'pinterest',
-     url: 'https://pnterest.com'
+     href: 'https://pnterest.com'
    },
 
    {
      title: 'Twitter',
      type: 'twitter',
-     url: 'https://twitter.com'
+     href: 'https://twitter.com'
    },
    {
      title: 'Tumblr',
      type: 'tumblr',
-     url: 'https://tumblr.com'
+     href: 'https://tumblr.com'
    },
 
    {
      title: 'Linkedin',
      type: 'linkedin',
-     url: 'https://linkedin.com/'
+     href: 'https://linkedin.com/'
    },
    {
      title: 'Reddit',
      type: 'reddit',
-     url: 'https://reddit.com'
+     href: 'https://reddit.com'
    },
 
-  
+
 
    {
      title: ' Other Link',
      type: 'links',
-     url: 'https://some-url.com'
+     url_id: 'https://some-url.com'
    },
 
 
@@ -99,7 +99,7 @@ var _APP_INSTANCE = {
  contacts: [
 
     {
-      p_number: '380939979490',
+      url_id: '380939979490',
       type: 'phone',
       call: true,
       chat: true,
@@ -109,7 +109,7 @@ var _APP_INSTANCE = {
     },
 
     {
-      p_number: 'dmytro.diachuck',
+      url_id: 'dmytro.diachuck',
       type: 'skype',
       call: true,
       chat: true,
@@ -118,7 +118,7 @@ var _APP_INSTANCE = {
 
     },
     {
-      p_number: '380939979490',
+      url_id: '380939979490',
       type: 'viber',
       call: true,
       chat: true,
@@ -127,7 +127,7 @@ var _APP_INSTANCE = {
 
     },
     {
-      p_number: '380939979490',
+      url_id: '380939979490',
       type: 'whatsapp',
       call: true,
       chat: true,
@@ -136,7 +136,7 @@ var _APP_INSTANCE = {
 
     },
     {
-      p_number: 'nickname',
+      url_id: 'nickname',
       type: 'telegram',
       call: false,
       chat: true,
@@ -146,7 +146,7 @@ var _APP_INSTANCE = {
     },
 
     {
-      p_number: 'nickname',
+      url_id: 'nickname',
       type: 'messenger',
       call: true,
       chat: true,
@@ -156,7 +156,7 @@ var _APP_INSTANCE = {
     },
 
     {
-      p_number: 'vavilon2@gmail.com',
+      url_id: 'vavilon2@gmail.com',
       type: 'email',
       call: false,
       chat: true,

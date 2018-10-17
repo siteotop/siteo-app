@@ -193,7 +193,7 @@ export default {
         if (this.error) {
           return h(PageError, { props: {status: this.error}  }  )
         }
-
+        //console.log('count');
         return h('div',  {
           directives: [
               {
@@ -224,8 +224,16 @@ export default {
               }
             ]}
           ),
-
-          this.shareWindow? h(FunctionalShareWindow, {props: {canonicalUrl: this.$store.state.APP_PAGE.objectActive.meta_canonical, text:this.$store.state.APP_PAGE.objectActive.meta_og_title||this.$store.state.APP_PAGE.objectActive.meta_title}}):'',
+          // Share Window
+          this.shareWindow? h(FunctionalShareWindow, {
+            props: {
+              canonicalUrl: this.$store.state.APP_PAGE.objectActive.meta_canonical, ogTitle:this.$store.state.APP_PAGE.objectActive.meta_og_title||this.$store.state.APP_PAGE.objectActive.meta_title,
+              
+            },
+            on: {
+              closeShare: ()=>{this.shareWindow = false}
+            }
+            }):'',
 
           // Button UP
           h('v-fab-transition', [

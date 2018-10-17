@@ -5,8 +5,9 @@
     description: 'Description for List and Meta Tile', //
     meta_title: 'If Seo Title Present it replace Basic Title', // if this title  empty using basic title for list
     meta_description: 'This description good for google snippet. And you must write some useful information which describe your article', // if this title  empty using basic description for list
-    meta_canonical: '/',
+    meta_canonical: 'http://jstest.com/',
     meta_og_title: 'This is title for Facebook and other social networks', // if this title  empty using basic title for list
+  //  meta_og_image: '', // if this title  empty using basic title for list
     meta_robots: 'index, follow',
 
     contentStructure: [
@@ -63,6 +64,41 @@
         }
 
       },
+
+      {
+        _n: 'OrderAction',
+        _props: {
+          _ti: 'Chats',
+          _de: 'Description about Chat Actions',
+          typeAction: 'chat',
+          vList: false,
+          _bc:'grey lighten-3'
+        }
+
+      },
+
+      {
+        _n: 'OrderAction',
+        _props: {
+          _ti: 'Calls',
+          _de: 'Description about clall Actions',
+          typeAction: 'call',
+          _bc:'grey lighten-3'
+        }
+
+      },
+
+      {
+        _n: 'OrderAction',
+        _props: {
+          _ti: 'Links',
+          _de: 'Description about clall Actions',
+          typeAction: 'links',
+          _bc:'grey lighten-3'
+        }
+
+      },
+
 
       {
         _n: 'Features',

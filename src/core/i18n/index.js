@@ -3,7 +3,10 @@ import VeeEn from 'vee-validate/dist/locale/en';
 export  default {
   en: {
     validation: VeeEn,
+    copy: 'Копировать',
     cancel: 'Отмена',
+    close: 'Закрыть',
+    share: 'Share',
     no_data: 'Данных для отображения нет',
 
     actions: {

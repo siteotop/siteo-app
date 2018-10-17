@@ -1,5 +1,5 @@
 <script>
-import {fieldsMapMake} from './AppForm/Fields/_helper/MapsSiteoFields';
+import {fieldsMapMake} from '../AppForm/Fields/_helper/MapsSiteoFields';
 
 export default {
   functional: true,

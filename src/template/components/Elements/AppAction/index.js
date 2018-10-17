@@ -1,3 +1,6 @@
+/**
+  Button for all actions on Siteo
+*/
 
 export default {
 
