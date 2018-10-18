@@ -43,6 +43,7 @@ import {
   mdiShareVariant,
   mdiBookmark,
   mdiDotsVertical,
+  mdiGithubBox,
 
 
 
@@ -102,6 +103,7 @@ export default {
     'si-linkedin':mdiLinkedinBox,
     'si-reddit':mdiReddit,
     'si-googlep':mdiGooglePlusBox,
+    'si-github': mdiGithubBox,
     ///////////
     'si-copy': mdiContentCopy,
     'si-share': mdiShareVariant,

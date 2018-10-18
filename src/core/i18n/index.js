@@ -8,7 +8,7 @@ export  default {
     close: 'Закрыть',
     share: 'Share',
     no_data: 'Данных для отображения нет',
-
+    copyright:'Website {name} creating on {template} and using platform' , 
     actions: {
         order: 'Заказать',
         call: 'Позвонить',

@@ -1,25 +1,7 @@
-const langMenu =  function (h, parent) {
-    return h('v-menu', {props: {left: true}}, [
-        h('v-btn', {
-            props: {
-                icon: true
-            },
-            slot: 'activator'
-        }, [
-            parent.$store.getters.LANG_PORTAL.toUpperCase()
-        ]),
 
-        h('v-list',
-          parent.$store.getters.LIST_LANG.map(function (li){
-              return h('v-list-tile', {attrs: {href: li.d}},  [
-                h('v-list-tile-title', [li.n])
-              ])
-          })
-        )
-    ])
-};
-
-const SHORT_NAME = 'AppFooter';
+import * as StructureChildren from './Children';
+import  AppFooterCopyright  from './Children/AppFooterCopyright.vue';
+import helperChildren from '../helperChildren.js';
 /**
   Footer for website
 */
@@ -31,7 +13,8 @@ export default {
     wrapped: 'VFooter',
 
     render(h, context) {
-      var design = context.parent.$store.state.APP_INSTANCE.design[SHORT_NAME] || {};
+      var design = context.parent.$store.state.APP_INSTANCE.design['AppFooter'] || {};
+
       return h('v-footer', {
           props: {
             app: true,
@@ -40,36 +23,23 @@ export default {
           },
           class: design.class
         },
-          [
-            h('v-container', {props: {fluid: true, 'text-xs-center': true}}, [
-                h('v-layout', [
-                  h('v-flex', [
-                    h('v-btn', {
-                      props: {
-                        flat: true
-                      },
-                      attrs: {
-                        href: 'https://siteo.top'
-                      }
-                    },
-                    [
-                      h('AppIcon', {props: {name: 'si-logo-grey'}} ),
-                      h('span', {
-                        class: {
-                          'grey--text': true,
-                          'body-1': true,
-                          'text--lighten-1': true,
-                          'hidden-xs-only': true
-                        }
-                      }, [ 'siteo.top'])
-                    ])
-                  ]),
+        [
+          h('v-layout',
+          {
+            attrs: {
+            row:true,
+            wrap:true
+          }},
 
-                  h('v-spacer'),
-                  h('v-flex', [langMenu(h, context.parent)] )
-                ])
-            ])
-          ]
+       [
+        helperChildren(h, design.children, StructureChildren),
+        
+        h(AppFooterCopyright)
+      ]
+      )
+
+
+      ]
         )
 
     }

@@ -17,7 +17,7 @@ var _APP_INSTANCE = {
    title:"Title Website",
    slogan:"Slogan of Website",
    actionText:"Action Text",
-   description:"Short description ",
+   description:"This service help you find what you need. We help yuo bla bla bla. This service help you find what you need. We help yuo bla bla bla. This service help you find what you need. We help yuo bla bla bla. This service help you find what you need. We help yuo bla bla bla. ",
    domain:"",
    templates_id:"1532775890",
    pages_id: '1532775891',
@@ -240,10 +240,21 @@ var _APP_INSTANCE = {
          }
        ]
      },
+
      "AppFooter":{
        "name":"AppFooter",
-       "props":{absolute: true},
-       "class":[]
+       "props":{absolute:true,  inset:true, dark:true, color: 'secondary'},
+       "class":[],
+       "children": [
+        'AppFooterMenu',
+        'AppFooterAbout',
+         {
+           "name": 'AppFooterLinks',
+           "props": {typeAction:'links'}
+         }
+         //'AppFooterCopyright',
+
+       ]
      },
      "AppContent":{
        "name":"AppContent",

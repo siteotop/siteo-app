@@ -4,8 +4,8 @@
      <v-layout  justify-center>
         <v-flex xs12 sm8 md6 text-xs-center >
           <component :vList="props.vList" :is="'app-action-'+props.typeAction"></component>
-        </v-flex md9 >
-   </v-layout>
+        </v-flex>
+     </v-layout>
    </v-container>
 </SectionWrap>
 </template>
