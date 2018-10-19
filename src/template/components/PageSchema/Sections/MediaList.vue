@@ -11,6 +11,7 @@
            v-for="(item, i) in props._li"
            :key="i"
            avatar
+           tag="li"
            @click=""
          >
            <v-list-tile-avatar>
@@ -23,7 +24,7 @@
            </v-list-tile-content>
 
            <v-list-tile-action>
-             <v-checkbox value="1"></v-checkbox>
+             <v-checkbox color="primary" value="1"></v-checkbox>
            </v-list-tile-action>
          </v-list-tile>
        </v-list>

@@ -7,8 +7,9 @@ export  default {
     cancel: 'Отмена',
     close: 'Закрыть',
     share: 'Share',
+    m: 'Content',
     no_data: 'Данных для отображения нет',
-    copyright:'Website {name} creating on {template} and using platform' , 
+    copyright:'Website {name} creating on {template} and using platform' ,
     actions: {
         order: 'Заказать',
         call: 'Позвонить',

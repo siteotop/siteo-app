@@ -3,6 +3,8 @@ import Loader from '../_mixins/component-loading.js';
 import PageError from '../Pages/Error.vue';
 import FunctionalSpeedDeal from './Functional/SpeedDeal.vue';
 import FunctionalShareWindow from './Functional/ShareWindow.vue';
+import  PageToolbar from './Functional/PageToolbar.vue';
+
 export default {
     mixins: [ Loader],
 
@@ -107,17 +109,6 @@ export default {
             this.$store.state.APP_PAGE.objectActive.meta_description:  this.$store.state.APP_PAGE.objectActive.description;
         },
 
-        pageMenu() {
-          var page_menu = [];
-          this.$store.state.APP_PAGE.objectActive.contentStructure.map(function(section) {
-
-              if (section._props._na) {
-                  page_menu.push( {title: section._props._na, href: '#'+section._props._id  });
-              }
-
-          })
-          return page_menu;
-        },
 
         needShowAction() {
           return this.offsetTop> this.$vuetify.breakpoint.height;
@@ -204,8 +195,8 @@ export default {
           ]
         }, [
             // toolbar for Page
-          h( self.$root.$options.componentsPage['PageToolbar'], {
-            props: {items:this.pageMenu, offset: this.offsetTop},
+          h(PageToolbar, {
+            props: {offset: this.offsetTop},
             on: {
               shareWindow: ()=>{this.shareWindow = true}
             }
@@ -228,7 +219,7 @@ export default {
           this.shareWindow? h(FunctionalShareWindow, {
             props: {
               canonicalUrl: this.$store.state.APP_PAGE.objectActive.meta_canonical, ogTitle:this.$store.state.APP_PAGE.objectActive.meta_og_title||this.$store.state.APP_PAGE.objectActive.meta_title,
-              
+
             },
             on: {
               closeShare: ()=>{this.shareWindow = false}

@@ -25,6 +25,7 @@
         }
       },
 
+    
       {
         _n: 'HtmlTextImage',
         _props: {
@@ -158,6 +159,8 @@
         _n: 'MediaList',
         _props: {
          // _ti: 'List of ingridients  ',  //
+          _id:'kj234jk',
+          _na:'Ingridients',
           _de: 'All Ingridients for typical Borch',  //
           _li: [
               {

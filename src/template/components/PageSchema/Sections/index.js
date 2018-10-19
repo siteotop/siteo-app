@@ -1,4 +1,3 @@
-export { default as PageToolbar} from './PageToolbar.vue';
 export { default as HeaderImage} from './HeaderImage.vue';
 export { default as HeaderAction} from './HeaderAction.vue';
 export { default as HeaderTitle} from './Helper/SectionWrap.vue';
