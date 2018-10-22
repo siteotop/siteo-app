@@ -6,9 +6,9 @@ export default {
   render(h, context) {
     return  h('AppForm', {
       props: {
-        i18nkey: 'formRecall',
-        formAction: context.props.formAction,
-        propsStructure: ['name', 'phone']
+        i18nkey: 'formEmail',
+        formAction: context.props.formAction || 'makeSubscribe',
+        propsStructure: ['name', 'email']
       }
     })
   }

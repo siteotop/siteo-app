@@ -79,6 +79,10 @@ export  default {
       title: 'We recall you',
       description:'We recall you',
       content: {
+        services: {
+          l: '@:formOrder.content.services.l',
+          d: '@:formOrder.content.services.d',
+        },
         name: {
           l: '@:formOrder.content.name.l',
           d: '@:formOrder.content.name.d',
@@ -91,6 +95,27 @@ export  default {
 
         submit: {
           l: 'Recall me',
+          d: '',
+        }
+      }
+    },
+
+    formEmail:  {
+      title: 'Subscribe on email',
+      description:'Subscribe on email',
+      content: {
+        name: {
+          l: '@:formOrder.content.name.l',
+          d: '@:formOrder.content.name.d',
+        },
+
+        email: {
+          l:"@:formOrder.content.email.l" ,
+          d: "@:formOrder.content.email.d"
+        },
+
+        submit: {
+          l: 'Subscribe',
           d: '',
         }
       }
