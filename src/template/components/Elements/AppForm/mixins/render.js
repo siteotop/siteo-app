@@ -63,7 +63,7 @@ export default {
     renderSubmit(h) {
       var self = this;
       return h('v-layout', {
-          props: {row: true, wrap: true },
+          props: {row: true,  wrap: true },
           class: ['my-3'],
           directives: [
             {
@@ -72,7 +72,7 @@ export default {
             }
           ]
         }, [
-          h('v-flex', {class: {xs10: true}},[
+          h('v-flex', {class: {xs10: true, 'text-xs-left':true}},[
               h('v-btn', {props: {disabled: !this.formActive}, on: {click:function(ev){ self.onSubmit(ev) }} }, [
                 self.submitElement.label
               ])
