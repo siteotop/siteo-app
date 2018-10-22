@@ -8,7 +8,8 @@ export default {
       props: {
         i18nkey: 'formEmail',
         formAction: context.props.formAction || 'makeSubscribe',
-        propsStructure: ['name', 'email']
+        propsStructure: ['name', 'email'],
+        typeInput: 'outline'
       }
     })
   }

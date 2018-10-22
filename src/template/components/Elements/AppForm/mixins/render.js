@@ -1,20 +1,8 @@
 
-var _Values = require('lodash/values');
 
 import AppComponentToolbar from '../../AppComponentToolbar';
 import MixinLocalMessages from '../../../_mixins/LocalMessages.js';
 import AppConfirm from '../../AppConfirm.vue' ;
-/*
-import GoogleRecaptcha from '../../AppFields/AppInputRecaptcha.vue';
-
-import AppCheckbox from '../../AppFields/AppCheckbox.vue';
-import AppInputText from '../../AppFields/AppInputText.vue';
-import AppSelect from '../../AppFields/AppSelect.vue';
-//import AppInputPassword from '../../AppFields/AppInputPassword.vue';
-import AppInputDate from '../../AppFields/AppInputDate.vue';
-import AppSelectCountries from '../../AppFields/AppSelectCountries.vue';
-import AppInputPhone from '../../AppFields/AppInputPhone.vue';
-*/
 import AppFieldPlainText from '../Fields/AppFieldPlainText';
 import AppFieldPhone from '../Fields/AppFieldPhone';
 import AppFieldServices from '../Fields/AppFieldServices';
@@ -31,18 +19,7 @@ export default {
     AppFieldPhone,
     AppFieldServices,
     AppFieldDate
-    //VForm,
-    /*  GoogleRecaptcha,
-      AppConfirm,
-      AppCheckbox,
-      AppInputText,
-      AppSelect,
-      //AppInputPassword,
-      AppInputDate,
-      AppSelectCountries,
-      AppInputPhone,
-      AppComponentToolbar
-   */},
+    },
 
   methods: {
 
@@ -122,30 +99,36 @@ export default {
             desc: this.$i18n_t('description')
           }}): '',
           // v-card-tex
-          h('v-card-text', [
+          h('v-container', { class: 'grid-list-sm'}, [
            this.$_LocalMessages_render(h),
-           h('div',
-
+           h('v-layout', { attrs: {row:true,  wrap:true, 'align-end': true}},
+            [
               this.formStructure.map(function(el){
-              return h(el.name, {
-                props:el.props,
-                attrs:{ name: el._n},
-                on: {
-                  input: function(event) {
-                    //console.log(event);
-                    //self.valueStructure[el.props.name] = event;
-                    el.props.value = event;
-                    if (event) {
-                      self.enableForm();
-                    }
 
-                    // console.log(event;);
-                  }
-                }
-              })
+
+
+                return  h('v-flex', {class: 'xs12' },
+                    [  h(el.name, {
+                      props:el.props,
+                      attrs:{ name: el._n},
+                      on: {
+                        input: function(event) {
+                          //console.log(event);
+                          //self.valueStructure[el.props.name] = event;
+                          el.props.value = event;
+                          if (event) {
+                            self.enableForm();
+                          }
+
+                          // console.log(event;);
+                        }
+                      }
+                    })
+                ])
+
            }),
 
-
+         ]
 
 
           ),

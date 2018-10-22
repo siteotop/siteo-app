@@ -25,7 +25,7 @@
         }
       },
 
-    
+
       {
         _n: 'HtmlTextImage',
         _props: {
@@ -125,6 +125,18 @@
 
           ],
           _bc:'grey lighten-5'
+        }
+
+      },
+
+      {
+        _n: 'OrderAction',
+        _props: {
+          _ti: 'Email',
+          _de: 'Description about Email  Actions',
+          typeAction: 'email',
+          vList: false,
+          _bc:'grey lighten-3'
         }
 
       },

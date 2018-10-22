@@ -85,6 +85,26 @@ export default function ( APP_INSTANCE, appDns ) {
        },
 
 
+    },
+
+    actions: {
+
+      makeOrder({dispatch, getters}, data) {
+        var config = {data:data};
+         config.method = 'POST';
+         config.url = getters.WEBSITE_API_URL + '/orders';
+         return  dispatch('callAPI', config, {root:true});
+
+      },
+
+      makeSubscribe({dispatch, getters}, data) {
+        var config = {data:data};
+         config.method = 'POST';
+         config.url = getters.WEBSITE_API_URL + '/subscribers';
+         return  dispatch('callAPI', config, {root:true});
+
+      },
+
     }
 
 

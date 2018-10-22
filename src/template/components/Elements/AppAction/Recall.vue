@@ -8,8 +8,8 @@ export default {
     return  h('AppForm', {
       props: {
         i18nkey: 'formRecall',
-        formAction: context.props.formAction,
-        propsStructure: ['name', 'phone']
+        formAction: context.props.formAction || 'makeOrder',
+        propsStructure: ['services', 'name', 'phone']
       }
     })
   }

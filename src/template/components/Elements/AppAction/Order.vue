@@ -9,7 +9,7 @@ export default {
       var props =   context.parent.$store.state.APP_INSTANCE.design.AppFormOrder.props||{};
       props.propsStructure = structure;
       props.i18nkey = "formOrder";
-      props.formAction = context.props.formAction;
+      props.formAction = context.props.formAction || 'makeOrder';
       return  h('AppForm', {props:  props})
   }
 

@@ -52,7 +52,7 @@ export default function (Vue, APP_INSTANCE, appDns )  {
 
        // add services list to store
        store.commit('APP_SERVICES/saveList', APP_INSTANCE.services.items );
-       
+
        return store;
 
 }

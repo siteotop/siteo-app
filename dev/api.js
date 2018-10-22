@@ -283,7 +283,7 @@ var _APP_INSTANCE = {
 
      "AppFormOrder": {
        props: {typeInput:''},
-       children: [ 'name', 'lastname', 'email', 'phone', 'services', 'dateorder'
+       children: ['services', 'name', 'lastname', 'email', 'phone',  'dateorder'
         /**
           was before create fieldsMap
          {
