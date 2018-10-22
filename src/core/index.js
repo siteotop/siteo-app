@@ -46,15 +46,6 @@ import './style/common.css'
 /**ICONS*/
 import IconsRegister from  './icons/register.js';
 
-
-/**CORE COMPONENTS
-  All components which was created by Siteo
-*/
-
-//import  AppForm from './components/AppForm';
-//Vue.component('AppForm', AppForm);
-
-
 /** SiteoInstall Function  */
 
 /**
@@ -114,7 +105,7 @@ export const SiteoCoreInstall = function (APP_INSTANCE, appDns, template,   plug
 
       */
       inject: false,
-      
+
       dictionary: messages.validation,
       local: appDns.lang
      }

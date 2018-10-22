@@ -100,7 +100,7 @@ export default {
 
           //console.log(this.$validator.fields);
           this.$validator.fields
-          oldValue.map(function(element, index) {
+          this.formStructure.map(function(element, index) {
             self.$validator.detach(element._n);
             self.$delete(self.formStructure, index);
           });

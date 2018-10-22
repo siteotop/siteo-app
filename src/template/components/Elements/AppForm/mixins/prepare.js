@@ -1,9 +1,5 @@
 
-
-import {CreateSubmit} from '../../AppFields/helper/create-fields.js';
-
-//var _template = require('lodash/template');
-
+import {getStructureForField} from '../Fields/_helper/MapsSiteoFields';
 
 export default {
 
@@ -16,13 +12,23 @@ export default {
       */
       prepareFormStructure(propsStructure){
 
+
           if (!propsStructure.length) {
              return [];
           }
+          var formStructure = [];
           //var formStructure =
           for (let index_component in propsStructure) {
-              var field = propsStructure[index_component].props,
-              name = propsStructure[index_component]._n
+              var field_structure = {};
+              if (typeof(propsStructure[index_component]) == 'string') {
+                field_structure = getStructureForField(propsStructure[index_component]);
+              } else {
+                field_structure = propsStructure[index_component];
+              }
+              formStructure.push(field_structure);
+
+              var field = field_structure.props,
+              name = field_structure._n
 
               if (!field.value) {
                 this.$set(field, 'value', '');
@@ -48,11 +54,11 @@ export default {
            this.createSubmit();
 
 
-           this.setDefaultValuesFromStore(propsStructure);
-           this.createValidation(propsStructure);
+           this.setDefaultValuesFromStore(formStructure);
+           this.createValidation(formStructure);
            this.disableForm();
 
-           return propsStructure;
+           return formStructure;
            // this.initFormStructure();
       },
 
@@ -66,12 +72,6 @@ export default {
       createSubmit() {
          this.buttonSubmit = true;
          this.createFieldI18n(this.submitElement, 'submit');
-
-
-      //  var submit = SUBMIT;
-      //  this.$set( this.formStructure, 'submit', CreateSubmit()  );
-      //
-
       },
 
       /**

@@ -31,14 +31,12 @@ const fieldsMap = {
   }
 
 }
-export const fieldsMapMake = function (structure) {
-  return structure.map(function(fieldName) {
 
-     return {
-       name: fieldsMap[fieldName].c,
-       validators: fieldsMap[fieldName].v,
-       _n: fieldName,
-       props: fieldsMap[fieldName].p||{}
-     }
- });
+export const  getStructureForField = function (fieldName) {
+  return {
+    name: fieldsMap[fieldName].c,
+    validators: fieldsMap[fieldName].v,
+    _n: fieldName,
+    props: fieldsMap[fieldName].p||{}
+  }
 }

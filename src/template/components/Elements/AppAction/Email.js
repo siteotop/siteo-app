@@ -1,4 +1,3 @@
-<script>
 
 export default {
   functional: true,
@@ -15,5 +14,3 @@ export default {
   }
 
 }
-
-</script>
