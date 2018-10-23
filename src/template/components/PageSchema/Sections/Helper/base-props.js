@@ -2,32 +2,47 @@
 export default {
 
   props: {
-    _id: {
+
+
+    _id: {   // id of block
       type: String,
-      default: '', // id of block
-    },
-    _na: {
-      type: String,
-      default: '', // name of block
-    },
-    _ti: {
-      type: String,
-      default: '', //Title  Header Block
+      default: '',
     },
 
-    _de: {
+    _na: { // name of block
       type: String,
-      default: '', // Description Header Block
+      default: '',
     },
 
-    _bc: {
+    _ti: { //Title  Header Block
       type: String,
-      default: '', // background color
+      default: '',
     },
 
-    _bi: {
+    _de: { // Description Header Block
       type: String,
-      default: '', // // background image
+      default: '',
+    },
+
+    _bc: { // background color
+      type: String,
+      default: '',
+    },
+
+    _bi: { // background image
+      type: String,
+      default: '',
+    },
+
+    _bls: { // Array  blocks for flex
+      type: [Boolean, Array],
+      default: false
+
+    },
+
+    _fc: { // class for flexbox
+      type: String,
+      default: 'xs12 sm12 md12'
     }
 
 

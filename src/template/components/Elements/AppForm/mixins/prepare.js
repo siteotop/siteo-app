@@ -45,7 +45,7 @@ export default {
               if (!field.name) {
                  console.log('Field no have name');
             }*/
-              this.connectCommonProps(field);
+              this.connectCommonProps(field, name);
               // connect i18n
               this.createFieldI18n(field, name);
 
@@ -62,10 +62,12 @@ export default {
            // this.initFormStructure();
       },
 
-      connectCommonProps(field) {
+      connectCommonProps(field, name) {
         if (this.typeInput) {
           field[this.typeInput] = true;
         }
+
+        field['prependIcon'] =name
 
       },
 

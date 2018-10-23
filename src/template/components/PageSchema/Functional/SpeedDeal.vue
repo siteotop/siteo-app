@@ -19,7 +19,7 @@
           <AppIcon v-if="fab" name="si-close"></AppIcon>
 
        </v-btn>
-       <AppActionsList></AppActionsList>
+       <AppActionList></AppActionList>
      </v-speed-dial>
 </v-fab-transition>
 </template>

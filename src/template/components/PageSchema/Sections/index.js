@@ -1,14 +1,4 @@
 export { default as HeaderImage} from './HeaderImage.vue';
-export { default as HeaderAction} from './HeaderAction.vue';
-export { default as HeaderTitle} from './Helper/SectionWrap.vue';
-export { default as Features} from './Features.vue';
-export { default as HtmlTextImage} from './HtmlTextImage.vue';
-export { default as HtmlText} from './HtmlText.vue';
 export { default as Parallax} from './Parallax.vue';
-export { default as QAnswer} from './QAnswer.vue';
-export { default as MediaList} from './MediaList.vue';
-export { default as Video} from './Video.vue';
+export { default as SectionWrap} from './Helper/SectionWrap.vue';
 export { default as StepByStep} from './StepByStep.vue';
-export { default as ServiceList} from './ServiceList.vue';
-export { default as OrderAction} from './OrderAction.vue';
-export { default as OrderActionButtons} from './OrderActionButtons.vue';

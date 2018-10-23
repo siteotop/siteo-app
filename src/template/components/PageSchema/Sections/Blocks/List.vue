@@ -1,11 +1,6 @@
 <template functional>
-<SectionWrap v-bind="props" >
-  <v-container >
-   <v-layout row wrap justify-center >
-     <v-flex xs12 md8>
-       <v-card >
-
-         <v-list subheader>
+ <v-card class="transparent">
+    <v-list subheader>
          <v-subheader>{{props._ti}}</v-subheader>
          <v-list-tile
            v-for="(item, i) in props._li"
@@ -28,19 +23,11 @@
            </v-list-tile-action>
          </v-list-tile>
        </v-list>
-
-        </v-card>
-      </v-flex>
-
-   </v-layout>
-  </v-container>
-</SectionWrap>
+</v-card>
 </template>
 
 <script>
-  import BaseProps from './Helper/base-props.js';
   export default {
-    extends: BaseProps,
     props: {
       // text
       _li: {
@@ -48,15 +35,11 @@
         default: function() {
           return [];
         },
-      },
-      // media
-      _me: {
-        type: String,
-        default: '',
-      },
+      }
+
 
 
     },
-    //name: 'section-text',
+
   }
 </script>
