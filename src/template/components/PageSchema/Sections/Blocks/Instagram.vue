@@ -34,9 +34,18 @@ export default {
         axios.get(url).then(function(result){
             console.log(result);
             self.htmlInsta=result.data.html;
-            $script('//www.instagram.com/embed.js', 'instagram' );
-        }).catch(function(error){
+            $script('https://www.instagram.com/embed.js', 'instagram' );
+            $script.ready('instagram', function() {
+              self.$nextTick(function () {
+                window.instgrm.Embeds.process();
+              })
+                //setTimeout(function(){ window.instgrm.Embeds.process();}, 200);
+            });
 
+
+
+        }).catch(function(error){
+          self.htmlInsta = '';
           console.log('Instagram error ');
           console.log(error);
       })
