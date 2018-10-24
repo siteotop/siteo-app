@@ -117,11 +117,19 @@
       {
         _n: 'SectionWrap',
         _props: {
-          _ti: 'Buttons  Action ',
-          _de: 'Description about Buttons  Action',
+          _ti: '',
+          _de: '',
           _bc:'grey lighten-3',
           _fc: 'md6 text-xs-center align-center',
           _bls: [
+            {
+              _n:'BTitle',
+              _props: {
+                _ti: 'Title for title block',
+                _st: 'Subtitle for title block must be grey',
+                _de: 'Description must be ladhf lasdkjfh not more 300 symbol. And is not Html Text dsf sdfg sdfg sdfg sdfgl. Dsdmfb ldfg jshdfgj h skjdfg jhsgdfkhkjsdhfg kjhsdkfg hksdhg fkhskdhgfkhsdkfghkhsdfgk hksdhfg khsdkfgh kjsdhfgk hsdkfhg kjsdhgfk hsdkdsf'
+              }
+            },
             {
               _n: 'AppActionOrder'
             }
@@ -138,19 +146,20 @@
            _fc: 'md6',
            _bls: [
              {
-               _n:'BInstagram',
+               _n: 'BHtmlText',
+
                _props: {
-                 _url: 'https://www.instagram.com/p/BpPnezuAZjr',
-                 _hc: true
+                   _te: '<h3>He he</h3><p>Borscht derives from an ancient soup originally cooked from pickled stems, leaves and umbels of common hogweed (Heracleum sphondylium), a herbaceous plant growing in damp meadows, which lent the dish its Slavic name. With time, it evolved into a diverse array of tart soups, among which the beet-based red borscht has become the most popular.</p> <p>It is typically made by combining meat or bone stock with sautéed vegetables, which – as well as beetroots – <b>usually include cabbage</b>, carrots, onions, potatoes and tomatoes. Depending on the recipe, borscht may include meat or fish, or be purely vegetarian; it may be served either hot or cold; and it may range from a hearty one-pot meal to a clear broth or a smooth drink. </p><p>It is often served with smetana or sour cream, hard-boiled eggs or potatoes, but there exists an ample choice of more involved garnishes and side dishes, such as uszka or pampushky, that can be served with the soup.</p>',
                }
              },
              {
                _n:'BInstagram',
                _props: {
-                 _url: 'https://www.instagram.com/p/BpJI_EsAk-A',
+                 _url: 'https://www.instagram.com/p/BpPnezuAZjr',
                  _hc: true
                }
              }
+
 
            ]
          }
