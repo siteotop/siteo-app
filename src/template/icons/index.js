@@ -44,6 +44,7 @@ import {
   mdiBookmark,
   mdiDotsVertical,
   mdiGithubBox,
+  mdiFormatQuoteOpen
 
 
 
@@ -109,6 +110,8 @@ export default {
     'si-share': mdiShareVariant,
     'si-bookmark': mdiBookmark,
     'si-dots-menu': mdiDotsVertical,
+
+    'si-quote': mdiFormatQuoteOpen
 
 
 

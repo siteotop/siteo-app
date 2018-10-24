@@ -206,6 +206,38 @@
 
       },
 
+      {
+        _n: 'SectionWrap',
+        _props: {
+          _ti: 'Buttons  Action ',
+          _de: 'Description about Buttons  Action sdfg lskdfjgh ljsdfhgkj sfdlkjgh kjlsdhg klhsdlkgh klsjfdhgklhsdg kjhsdlkgh lksjfdhg lkjsdhglkjsd',
+          _bc:'white',
+          _fc: 'md6',
+          _bls: [
+            {
+              _n: 'BQuote',
+              _props: {
+                 _au: 'Author BQuote',
+                 _po: 'Position for example website.com',
+                 _av: 'https://s2.wp.com/wp-content/themes/h4/landing/marketing/pages/_common/components/testimonials/media/ann-morgan.png',
+                 _qu: 'It’s been a great privilege and a life‑changing experience. I’m grateful to WordPress.com for providing an affordable and user‑friendly platform for individuals to launch projects and be heard in this way.'
+              }
+            },
+
+            {
+              _n: 'BQuote',
+              _props: {
+                 _au: 'Author2 BQuote',
+                 _po: 'Position for example siteo.com',
+                 _av: 'https://s0.wp.com/wp-content/themes/h4/landing/marketing/pages/_common/components/testimonials/media/quintin-lake.png',
+                 _qu: 'It’s been a great privilege and a life‑changing experience. I’m grateful to WordPress.com '
+              }
+            }
+          ]
+        }
+
+      },
+
 
 
       {

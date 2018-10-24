@@ -7,3 +7,4 @@ export { default as BQa} from './Qa.vue';
 export { default as BVideo} from './Video.vue';
 export { default as BInstagram} from './Instagram.vue';
 export { default as BFacebook} from './Facebook.vue';
+export { default as BQuote} from './Quote.vue';
