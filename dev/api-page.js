@@ -124,14 +124,36 @@
           _bls: [
             {
               _n: 'AppActionOrder'
-            },
-
-            {
-              _n:'BInstagram'
             }
+
 
           ]
         }
+
+      },
+
+      {
+         _n: 'SectionWrap',
+         _props: {
+           _fc: 'md6',
+           _bls: [
+             {
+               _n:'BInstagram',
+               _props: {
+                 _url: 'https://www.instagram.com/p/BpPnezuAZjr',
+                 _hc: true
+               }
+             },
+             {
+               _n:'BInstagram',
+               _props: {
+                 _url: 'https://www.instagram.com/p/BpJI_EsAk-A',
+                 _hc: true
+               }
+             }
+
+           ]
+         }
 
       },
 

@@ -90,7 +90,6 @@ export const SiteoCoreInstall = function (APP_INSTANCE, appDns, template,   plug
    template.coreVue.el = '#siteo-top-app';
 
    // Create VueI18n instance with options
-
    template.coreVue.i18n = new VueI18n({
       silentTranslationWarn: process.env.NODE_ENV === 'development'? false: true, // silent log
       locale: appDns.active.lang, // app lang
