@@ -124,6 +124,10 @@
           _bls: [
             {
               _n: 'AppActionOrder'
+            },
+
+            {
+              _n:'BInstagram'
             }
 
           ]
@@ -178,7 +182,7 @@
           _na: 'reciept',
           _ti: 'How to cook Borsh',  //
           _de: 'dskjgh lshdflgh lsdkfjgh lskdfhgkl jhsdflkjhg kljhsdfkjlgh kjsdfhgkj hsdfkhg lkjsdfhgkljhsdfkjgh kjsdfhlgkjh lskdfhg kjlhsdflkjgh kjlsfdhg kljsdfhgkljh sfdkljgh kljsfdhgkjsfdhgks asdf asfd asfdasfd asdf asdfa',  //
-          _bc: 'green', // background color
+          _bc: '', // background color
           _bi: '', // background image
           _fc: 'xs12 md6',
           _bls: [

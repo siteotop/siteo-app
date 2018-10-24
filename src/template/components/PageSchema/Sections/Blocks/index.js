@@ -4,3 +4,4 @@ export { default as BFeatures} from './Features.vue';
 export { default as BList} from './List.vue';
 export { default as BQa} from './Qa.vue';
 export { default as BVideo} from './Video.vue';
+export { default as BInstagram} from './Instagram.vue';
