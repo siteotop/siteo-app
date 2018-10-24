@@ -120,10 +120,13 @@
           _ti: '',
           _de: '',
           _bc:'grey lighten-3',
-          _fc: 'md6 text-xs-center align-center',
+          _cc: 'grid-list-xl',
+          _lc: 'align-center justify-center row wrap fill-heigh',
+          _fc: 'md6 text-xs-center',
           _bls: [
             {
               _n:'BTitle',
+              _fc: 'text-md-right ',
               _props: {
                 _ti: 'Title for title block',
                 _st: 'Subtitle for title block must be grey',

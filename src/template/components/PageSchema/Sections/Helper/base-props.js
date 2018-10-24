@@ -40,7 +40,17 @@ export default {
 
     },
 
-    _fc: { // class for flexbox
+    _cc: { //common  class for container  which included layout and  flexboxes
+      type: String,
+      default: 'grid-list-md'
+    },
+
+    _lc: { //common  class for layout which included flexboxes
+      type: String,
+      default: 'row wrap justify-center'
+    },
+
+    _fc: { //common  class for flexboxes
       type: String,
       default: 'xs12 sm12 md12'
     }
