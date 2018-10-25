@@ -1,9 +1,8 @@
 <template functional>
  <v-parallax :src="props._bi" :height="props._he">
   <SectionWrap v-bind="props">
-    
   </SectionWrap>
- </v-parallax>
+</v-parallax>
 
 </template>
 

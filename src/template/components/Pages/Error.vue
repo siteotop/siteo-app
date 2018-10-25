@@ -5,7 +5,6 @@
             <v-card flat class="text-xs-center">
                 <v-card-text primary-title class=" error--text">
                       <p :class="$vuetify.breakpoint.xs? 'display-1': 'display-3'"> {{title}} </p>
-
                 </v-card-text>
                 <v-card-text class="body-1 grey--text">
                     {{description}}
@@ -13,7 +12,6 @@
                 <v-card-actions >
                    <v-spacer></v-spacer>
                     <v-btn  color="orange">Share</v-btn>
-
                    <v-spacer></v-spacer>
                 </v-card-actions>
            </v-card>

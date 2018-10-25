@@ -209,9 +209,10 @@
       {
         _n: 'SectionWrap',
         _props: {
-          _ti: 'Buttons  Action ',
-          _de: 'Description about Buttons  Action sdfg lskdfjgh ljsdfhgkj sfdlkjgh kjlsdhg klhsdlkgh klsjfdhgklhsdg kjhsdlkgh lksjfdhg lkjsdhglkjsd',
-          _bc:'white',
+          _ti: 'Они это сделали',
+          _de: '',
+          _bc:'blue',
+          _cc:'fluid',
           _fc: 'md6',
           _bls: [
             {
@@ -230,7 +231,7 @@
                  _au: 'Author2 BQuote',
                  _po: 'Position for example siteo.com',
                  _av: 'https://s0.wp.com/wp-content/themes/h4/landing/marketing/pages/_common/components/testimonials/media/quintin-lake.png',
-                 _qu: 'It’s been a great privilege and a life‑changing experience. I’m grateful to WordPress.com '
+                 _qu: 'Це не так просто прифдывпа фпывадопфыловпа дфыова фыловпа олфыпв лоаплофыпва лофывало фолывпа лофыпа влофы алофылова лофыаво фылопафыв'
               }
             }
           ]

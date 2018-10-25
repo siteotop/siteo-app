@@ -16,4 +16,3 @@ export {default as AppActionEmail} from './AppAction/Email.js';
 export {default as AppActionShare} from './AppAction/Shares.vue';
 
 export {default as SectionWrap} from '../PageSchema/Sections/Helper/SectionWrap.vue';
-export {default as SectionWrapList} from '../PageSchema/Sections/Helper/SectionWrapList.vue';

@@ -1,5 +1,5 @@
 <template functional>
-  <v-container  :id="props._id" fluid tag="section" :class=" (parent.$vuetify.breakpoint.smAndDown? props._bc+' pa-1': props._bc )" >
+  <v-container :id="props._id" fluid tag="section" :class=" (parent.$vuetify.breakpoint.smAndDown? props._bc+' pa-1': props._bc )" >
     <v-layout column  v-if="props._ti||props._de">
       <v-flex>
         <v-container class="py-0 my-0">

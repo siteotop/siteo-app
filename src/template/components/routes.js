@@ -1,7 +1,7 @@
 import PageSchema from './PageSchema';
 import PageError from './Pages/Error.vue';
 import PageOrder from './Pages/Order.vue';
-import PageServices from './Pages/Services.vue';
+import PageServices from './PageSchema/Sections/Lists/Services.js';
 export default  [
 
 
