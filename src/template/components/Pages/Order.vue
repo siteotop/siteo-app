@@ -1,11 +1,10 @@
-<template >
-<SectionWrap v-if="typeAction">
+<template functional>
+<SectionWrap v-if="props.typeAction">
   <v-flex xs12 text-xs-center>
-  <AppActionList  :active="typeAction"></AppActionList>
-
+    <AppActionList  :active="props.typeAction"></AppActionList>
   </v-flex>
   <v-flex md6>
-  <component :is="'app-action-'+typeAction" :vList="true"   ></component>
+    <component :is="'app-action-'+props.typeAction" :vList="true"   ></component>
   </v-flex>
 </SectionWrap>
 <SectionWrap v-else>
@@ -14,16 +13,9 @@
 </template>
 
 <script>
-import {createOrders} from '../../../core/store/models';
-import MixinsLoaderStoreModule from '../_mixins/loader-store-module';
-
-
-
 export default {
   name: 'PageOrder',
-  mixins: [MixinsLoaderStoreModule],
 
-  $_LoadModule_plain: createOrders('WEBSITE_API_URL', false),
   props: {
     typeAction: {
       type: String,
@@ -31,12 +23,6 @@ export default {
     }
 
 
-  },
-
-  computed: {
-    formAction() {
-      return this.$_LoadModule_getStoreLink('createObject');
-    }
   }
 
 }
