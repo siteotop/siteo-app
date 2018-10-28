@@ -42,6 +42,22 @@ export const  createServices = function (parent) {
 
 };
 
+export const  createExperts = function (parent) {
+  return createModelCRUD({
+    api: {url: '/experts',  parent: parent||DEFAULT_GETTER },
+    state () {
+        return  {
+           _id: '1223123',
+           name: '',
+           position: '',
+           picture: '',
+           about: '',
+         }
+    }
+  })
+
+};
+
 export const  createOrders = function (parent, turnonlist) {
   return createModelCRUD({
     api: {url: '/orders',  parent: parent||DEFAULT_GETTER },

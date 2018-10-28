@@ -2,6 +2,7 @@ import PageSchema from './PageSchema';
 import PageError from './Pages/Error.vue';
 import PageOrder from './Pages/Order.vue';
 import PageServices from './PageSchema/Sections/Lists/Services.js';
+import PageExperts from './PageSchema/Sections/Lists/Experts.js';
 export default  [
 
 
@@ -17,6 +18,12 @@ export default  [
           name: "services",
           path:  '/services',
           component: PageServices,
+
+        },
+        {
+          name: "experts",
+          path:  '/experts',
+          component: PageExperts,
 
         },
 

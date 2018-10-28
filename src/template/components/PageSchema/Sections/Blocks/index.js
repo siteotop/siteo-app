@@ -8,3 +8,5 @@ export { default as BVideo} from './Video.vue';
 export { default as BInstagram} from './Instagram.vue';
 export { default as BFacebook} from './Facebook.vue';
 export { default as BQuote} from './Quote.vue';
+export { default as BCExpert} from '../Lists/Cards/Expert.vue';
+export { default as BCService} from '../Lists/Cards/Service.vue';

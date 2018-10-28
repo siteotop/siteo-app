@@ -1,7 +1,8 @@
 <template>
-<SectionWrap >
-   <v-container grid-list-md>
-    <slot name="header"><v-layout  wrap class="mb-4">
+<SectionWrap v-bind="{_cc:'fluid'}">
+   <v-container  grid-list-md>
+    <slot name="header">
+      <v-layout  wrap class="mb-4">
       <v-toolbar flat>
            <v-btn   fab flat>
              <AppIcon name="si-filter"></AppIcon>
@@ -18,7 +19,7 @@
     <v-layout row wrap fill-height  >
      <v-flex d-flex sm6 md4 v-for="(item, i) in items"
       :key="i" >
-          <CardService v-bind="item"></CardService>
+          <CardList v-bind="item"></CardList>
      </v-flex>
     </v-layout>
     <slot name="pagination">
