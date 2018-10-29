@@ -17,12 +17,12 @@
   </v-layout>
   <v-layout>
     <v-flex>
-      <v-container :class="props._cc">
+      <slot></slot>
+      <v-container v-if="props._bls!==false" :class="props._cc">
           <v-layout :class="props._lc">
             <v-flex :class="block._fc?   props._fc+' '+block._fc: props._fc"    v-for="(block, index) in props._bls" :key="index">
                 <component :is="block._n" v-bind="block._props" > </component>
             </v-flex>
-            <slot></slot>
          </v-layout>
       </v-container>
     </v-flex>
