@@ -35,7 +35,6 @@ export default {
           outline: true,
           large:  false,
           hideText:true,
-          to: '',
           siicon:'si-'+ context.props.icon
         },
         attrs: {

@@ -19,6 +19,9 @@ export default {
     if (context.props.small  ) {
       context.props.large = false;
     }
+    if (context.props.href ) {
+      context.props.to = '';
+    }
     return   h('v-btn', {
       props: {
         color: 'accent',
