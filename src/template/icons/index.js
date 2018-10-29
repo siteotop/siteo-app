@@ -32,6 +32,7 @@ import {
   mdiFacebookBox,
   mdiInstagram,
   mdiYoutube,
+  mdiGoogleMaps,
   mdiVkBox,
   mdiWeb,
   mdiPinterestBox,
@@ -59,7 +60,7 @@ export default {
 
     'si-home': mdiHome,   // main link
     'si-services': mdiViewList, // link for services
-    'si-places': mdiMapMarker, // link for subjects
+    'si-locations': mdiMapMarker, // link for subjects
     'si-experts': mdiAccountSearch,
     'si-blog': mdiLibraryBooks,
 
@@ -104,6 +105,7 @@ export default {
     'si-linkedin':mdiLinkedinBox,
     'si-reddit':mdiReddit,
     'si-googlep':mdiGooglePlusBox,
+    'si-googlemaps':mdiGoogleMaps,
     'si-github': mdiGithubBox,
     ///////////
     'si-copy': mdiContentCopy,
@@ -111,7 +113,8 @@ export default {
     'si-bookmark': mdiBookmark,
     'si-dots-menu': mdiDotsVertical,
 
-    'si-quote': mdiFormatQuoteOpen
+    'si-quote': mdiFormatQuoteOpen,
+
 
 
 

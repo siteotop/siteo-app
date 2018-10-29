@@ -403,6 +403,40 @@ var _APP_INSTANCE = {
    ]
  },
 
+ locations: [
+   {
+     _id: '',
+     title: 'Main Oficce',
+     country_id: 'ua',
+     city_id: 'kyiv',
+     city: 'Kiev',
+     street: 'Оболонська набережна',
+     street_n: '12б',
+     zipcode: '23409',
+     description: 'lsdhg lsdkghkl dsjhfgk jhsdlghskdhg kdhglksd',
+     timework: {},
+     google_b: '',
+     lat: '50.609996',
+     lng: '26.261811'
+   },
+
+   {
+     _id: '',
+     title: 'Main Oficce',
+     country_id: 'ua',
+     city_id: 'kyiv',
+     city: 'Kiev',
+     street: 'Оболонська набережна',
+     street_n: '12б',
+     zipcode: '23409',
+     description: 'lsdhg lsdkghkl dsjhfgk jhsdlghskdhg kdhglksd',
+     timework: {},
+     google_b: '',
+     lat: '50.609996',
+     lng: '26.261811'
+    }
+ ],
+
  "menu":[
    {
      "i":"si-home",
@@ -419,10 +453,10 @@ var _APP_INSTANCE = {
      "title":"Услуги"
    },
    {
-     "i":"si-places",
+     "i":"si-locations",
      "id":"location",
-     "path":"\/places",
-     "title":"Places"
+     "path":"\/locations",
+     "title":"Адресса"
    },
    {
      "i":"si-experts",

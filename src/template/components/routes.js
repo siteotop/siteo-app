@@ -29,7 +29,7 @@ export default  [
 
         {
           name: "order",
-          path:  '/go/:typeAction(order|call|recall|chat|links)?',
+          path:  '/go/:typeAction(order|call|recall|chat|links|locations)?',
           component: PageOrder,
           props: true
 

@@ -15,7 +15,8 @@ export  default {
         call: 'Позвонить',
         recall: 'Обратный звонок',
         chat: 'Месенджеры',
-        links: 'Ссылки'
+        links: 'Ссылки',
+        locations: 'Адреса'
     },
     commonList: {
       edit: 'Редактировать',

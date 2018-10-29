@@ -118,7 +118,7 @@
 
         _n: 'ListServices',
         _props: {
-          _ti: 'Title  Header Block ',  //
+          _ti: 'Services ',  //
           _de: 'Description Header Block',  //
 
 
@@ -130,7 +130,7 @@
 
         _n: 'ListExperts',
         _props: {
-          _ti: 'Title  Header Block ',  //
+          _ti: 'Experts from company',  //
           _de: 'Description Header Block',  //
 
 
@@ -143,7 +143,7 @@
 
         _n: 'SectionWrap',
         _props: {
-          _ti: 'Experts',  //
+          _ti: 'Experts custom not Auto ',  //
           _de: 'Description Header Block',  //
           _bc: 'red', // background color
           _bi: '', // background image

@@ -5,7 +5,7 @@ import SystemMessages from './messages.js';
 //import i18n from './i18n.js';
 
 import createInstance from './appInstance.js';
-import {createStorePage, createServices, createExperts } from './models.js';
+import {createStorePage, createServices, createExperts} from './models.js';
 import { actions}  from './helpers/api-actions';
 
 /**
@@ -51,15 +51,19 @@ export default function (Vue, APP_INSTANCE, appDns )  {
          actions: actions
        });
 
-       if (APP_INSTANCE.services&&APP_INSTANCE.services.items) {
-          store.registerModule('APP_SERVICES', createServices('WEBSITE_API_URL'));
-          store.commit('APP_SERVICES/saveList', APP_INSTANCE.services.items );
-       }
+       [
+         {n:'services', f:createServices},
+         {n:'experts', f:createExperts},
+        // {n: 'locations',f:createLocations}
+       ].map(function(ListOption) {
+         if (APP_INSTANCE[ListOption.n]&&APP_INSTANCE[ListOption.n].items) {
+            var name = 'APP_'+ListOption.n.toUpperCase();
+            store.registerModule(name, createServices('WEBSITE_API_URL'));
+            store.commit(name+'/saveList', APP_INSTANCE[ListOption.n].items );
+         }
+       })
 
-       if (APP_INSTANCE.experts&& APP_INSTANCE.experts.items) {
-          store.registerModule('APP_EXPERTS', createServices('WEBSITE_API_URL'));
-          store.commit('APP_EXPERTS/saveList', APP_INSTANCE.experts.items );
-       }
+
 
 
        return store;

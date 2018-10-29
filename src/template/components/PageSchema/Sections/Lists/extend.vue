@@ -1,7 +1,7 @@
 <template>
-<SectionWrap v-bind="{_cc:'fluid'}">
-   <v-container  grid-list-md>
-    <slot name="header">
+<SectionWrap v-bind="$options.propsData">
+   <v-container  :class="_cc">
+    <slot v-if="header" name="header">
       <v-layout  wrap class="mb-4">
       <v-toolbar flat>
            <v-btn   fab flat>
@@ -16,13 +16,13 @@
       </v-toolbar>
      </v-layout>
    </slot>
-    <v-layout row wrap fill-height  >
-     <v-flex d-flex sm6 md4 v-for="(item, i) in items"
+    <v-layout :class="_lc"   >
+     <v-flex :class="flexClass"  v-for="(item, i) in items"
       :key="i" >
           <CardList v-bind="item"></CardList>
      </v-flex>
     </v-layout>
-    <slot name="pagination">
+    <slot v-if="pagination" name="pagination">
       <v-layout column wrap >
         <v-flex justify-center text-xs-center>
         <v-pagination
@@ -38,8 +38,28 @@
 </template>
 <script>
 
+import BaseProps from '../Helper/base-props.js';
 
 export default {
+    extends: BaseProps,
+
+    props: {
+
+      _lc: {
+        type:String,
+        default: 'row wrap fill-height'
+      },
+
+      header: {
+        type:Boolean,
+        default: false
+      },
+      pagination: {
+        type:Boolean,
+        default: false
+      }
+
+    },
 
       //mixins: [LoaderStoreModule],
 
@@ -51,10 +71,15 @@ export default {
       },
 
       computed: {
-         items() {
-              console.log(this.$store.state[this.$options.storeName].items.objects);
-             return this.$store.state[this.$options.storeName].items.objects;
-          },
+        flexClass() {
+            return 'd-flex xs12 sm6 ' + 'md4'
+
+        },
+
+        items() {
+            console.log(this.$store.state[this.$options.storeName].items.objects);
+           return this.$store.state[this.$options.storeName].items.objects;
+        },
 
          sectionProps () {
           return {

@@ -21,6 +21,11 @@ const actionsList = [
       name: 'links',
       color: 'light-blue',
     },
+
+    {
+      name: 'locations',
+      color: 'red lighten-1',
+    }
 ];
 
 export default {
@@ -48,7 +53,8 @@ export default {
                   hideText: true,
                   to:{
                     name:'order',
-                    params: {typeAction: action.name}},
+                    params: {typeAction: action.name}
+                  },
                   dark: true,
                   siicon: 'si-'+ action.name,
                   small: context.parent.$vuetify.breakpoint.xs,

@@ -53,7 +53,17 @@ export default {
 
     price: {
       type:String
-    }
+    },
+
+    lat: {
+      type:String
+    },
+
+    lng: {
+      type:String
+    },
+
+
 
   }
 
