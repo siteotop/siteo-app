@@ -437,6 +437,53 @@ var _APP_INSTANCE = {
     }
  ],
 
+ posts: {
+   items: [
+      {
+        _id: '',
+        title: "First Post ",
+        picture: 'https://picsum.photos/510/300?random',
+        preview: 'lsdhg lsdkghkl dsjhfgk jhsdlghskdhg kdhglksdlsdhg lsdkghkl dsjhfgk jhsdlghskdhg kdhglksdlsdhg lsdkghkl dsjhfgk jhsdlghskdhg kdhglksdlsdhg lsdkghkl dsjhfgk jhsdlghskdhg kdhglksd',
+        url:'/post-id-temporary'
+      },
+      {
+        _id: '',
+        title: "First Post ",
+        picture: 'https://picsum.photos/510/300?random',
+        preview: 'lsdhg lsddsjhfgk jhsdlghskdhg kdhglksdlsdhg lsdkghkl dsjhfgk jhsdlghskdhg kdhglksd',
+        url:'/post-id-temporary-5'
+      },
+      {
+        _id: '',
+        title: "First Post ",
+        picture: 'https://picsum.photos/510/300?random',
+        preview: 'lsdkghkl dsjhfgk jhsdlghskdhg kdhglksdlsdhg lsdkghkl dsjhfgk jhsdlghskdhg kdhglksd',
+        url:'/post-id-temporary-4'
+      },
+      {
+        _id: '',
+        title: "First Post ",
+        picture: 'https://picsum.photos/510/300?random',
+        preview: 'lsdhg lsdkghkl dsjhfgk jhsdlghskdhg kdhglksdlsdhg lsdkghkl dsjhfgk jhsdlghskdhg kdhglksdlsdhg lsdkghkl dsjhfgk jhsdlghskdhg kdhglksdlsdhg lsdkghkl dsjhfksd',
+        url:'/post-id-temporary-2'
+      },
+      {
+        _id: '',
+        title: "First Post ",
+        picture: 'https://picsum.photos/510/300?random',
+        preview: 'lsdhg lsdkghkl dsjhfgk jhsdlghskdhg kdhglksdlsdhg lsdkghkl dsjhfgk jhsdlghskdhg kdhglksdlsdhg lsdkghkl jhsdlghskdhg kdhglksd',
+        url:'/post-id-temporary-3'
+      },
+      {
+        _id: '',
+        title: "First Post ",
+        picture: 'https://picsum.photos/510/300?random',
+        preview: 'lsdhg lsdkghkl dsjhfgk jhsdlghskdhg kdhglksdlsl dsjhfgk jhsdlghskdhg kdhglksdlsdhg lsdkghkl dsjhfgk jhsdlghskdhg kdhglksd',
+        url:'/post-id-temporary1'
+      }
+   ]
+ },
+
  "menu":[
    {
      "i":"si-home",
@@ -455,7 +502,7 @@ var _APP_INSTANCE = {
    {
      "i":"si-locations",
      "id":"location",
-     "path":"\/locations",
+     "path":"\/go/locations",
      "title":"Адресса"
    },
    {
@@ -472,8 +519,8 @@ var _APP_INSTANCE = {
    },
    {
      "i":"si-blog",
-     "id":"blog",
-     "path":"\/kdshfksd-sdfssd-sdfj-p23423432",
+     "id":"posts",
+     "path":"\/posts",
      "title":"Blog"
    },
    {

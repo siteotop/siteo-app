@@ -5,7 +5,7 @@ import SystemMessages from './messages.js';
 //import i18n from './i18n.js';
 
 import createInstance from './appInstance.js';
-import {createStorePage, createServices, createExperts} from './models.js';
+import {createStorePage, createServices, createExperts, createPosts} from './models.js';
 import { actions}  from './helpers/api-actions';
 
 /**
@@ -54,6 +54,7 @@ export default function (Vue, APP_INSTANCE, appDns )  {
        [
          {n:'services', f:createServices},
          {n:'experts', f:createExperts},
+         {n:'posts', f:createPosts }
         // {n: 'locations',f:createLocations}
        ].map(function(ListOption) {
          if (APP_INSTANCE[ListOption.n]&&APP_INSTANCE[ListOption.n].items) {

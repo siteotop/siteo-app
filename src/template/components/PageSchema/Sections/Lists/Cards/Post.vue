@@ -9,25 +9,18 @@
             class="white--text"
             :src="props.picture"
           >
-            <v-container fill-height fluid>
-              <v-layout fill-height>
-                <v-flex xs12 align-end flexbox>
-                  <span class="headline">{{props.title}}</span>
-                </v-flex>
-              </v-layout>
-            </v-container>
+
           </v-img>
-          <v-card-title v-else class="headline">
+          <v-card-title  class="headline">
              {{props.title}}
-          </v-card-title>
-          <v-card-title v-if="props.subtitle">
-            <span class="headline font-weight-medium">${{props.price}} </span>
-            <v-spacer></v-spacer>
-            <AppAction  :large="false"></AppAction>
           </v-card-title>
           <v-card-text>
             {{props.preview}}
           </v-card-text>
+          <v-card-actions>
+            <v-btn :to="props.url">Read More</v-btn>
+
+          </v-card-actions>
         </v-card>
       </v-hover>
 </template>
@@ -36,6 +29,7 @@
 export default {
 
   props: {
+
     picture: {
       type: String
     },
@@ -44,16 +38,14 @@ export default {
       type: String
     },
 
-    subtitle: {
-      type: String
-    },
     preview: {
       type: String
     },
 
-    price: {
+    url: {
       type:String
-    }
+    },
+
 
   }
 
