@@ -10,7 +10,7 @@ export default {
 
       needUpdateMeta: {
           type:Boolean,
-          default: true,
+          default: false,
       },
 
       needToolbar: {
@@ -25,13 +25,6 @@ export default {
   computed: {
     iconTitle() {
        return '';
-       /*  if (this.$store.state.Routes[this.$options.name]) {
-          return   this.$store.state.Routes[this.$options.name].i;
-        } else {
-          return false;
-        }
-        */
-
     }
 
   },
