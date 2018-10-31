@@ -5,7 +5,7 @@
        :class="`elevation-${hover ? 12 : 2}`"
     >
           <v-img v-if="props.picture"
-            aspect-ratio="1.77"
+            aspect-ratio="1.61"
             class="white--text"
             :src="props.picture"
           >
