@@ -1,7 +1,7 @@
 
 import ListExtend from './extend.vue';
-import CardList from './Cards/Service.vue';
-
+import ToogleCards from './Cards/Expert.vue';
+//import ListExpert from './Lists/Expert.vue';
 
 /**
 // add services list to store
@@ -10,6 +10,7 @@ store.commit('APP_SERVICES/saveList', APP_INSTANCE.services.items );
 */
 export default {
   extends: ListExtend,
-  storeName: 'APP_SERVICES',
-  components: {CardList}
+  storeName: 'APP_EXPERTS',
+
+  components: {ToogleCards}
 }

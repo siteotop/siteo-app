@@ -1,6 +1,5 @@
 <template >
   <v-toolbar  v-bind="tProps"  :class="tClass" :style="tStyle">
-
       <v-menu offset-y>
       <v-btn slot="activator" outline ><AppIcon name="si-dots-menu"></AppIcon> {{$t('m')}} </v-btn>
       <v-list>
@@ -16,7 +15,6 @@
       </v-list>
     </v-menu>
       <v-spacer></v-spacer>
-
         <v-toolbar-items v-if="$vuetify.breakpoint.mdAndUp">
             <v-btn icon @click="$vuetify.goTo(0)"><AppIcon name="si-home"></AppIcon></v-btn>
             <v-btn v-for="(item, i) in pageMenu" :key="i"
@@ -76,6 +74,7 @@ export default {
             if (this.offsetOn) {
              //  props.app =true;
              props.fixed =true;
+             //props.app=true;
             } else {
               props.flat =true;
               //props.absolute =false;

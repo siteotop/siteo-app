@@ -17,6 +17,7 @@ import {
   mdiArrowLeftThick,
   mdiSortVariant,
   mdiViewList,
+  mdiViewModule,
   mdiHelpCircle,
   mdiCalendarText,
   mdiBackupRestore,
@@ -71,8 +72,6 @@ export default {
     'si-arrow-up': mdiArrowUpThick,
     'si-arrow-left': mdiArrowLeftThick,
     'si-arrow-right': '',
-    'si-sort': mdiSortVariant,
-    'si-filter':   mdiFilterVariant,
     'si-help': mdiHelpCircle,
     'si-events':mdiCalendarText,
     'si-clear': mdiBackupRestore,
@@ -112,8 +111,11 @@ export default {
     'si-share': mdiShareVariant,
     'si-bookmark': mdiBookmark,
     'si-dots-menu': mdiDotsVertical,
-
     'si-quote': mdiFormatQuoteOpen,
+    // services
+    'si-sort': mdiSortVariant,
+    'si-filter':   mdiFilterVariant,
+    'si-view-cards': mdiViewModule
 
 
 

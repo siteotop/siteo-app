@@ -33,29 +33,8 @@
 </template>
 
 <script>
+import ServiceProps from '../_props/service.js';
 export default {
-
-  props: {
-    picture: {
-      type: String
-    },
-
-    title: {
-      type: String
-    },
-
-    subtitle: {
-      type: String
-    },
-    preview: {
-      type: String
-    },
-
-    price: {
-      type:String
-    }
-
+    extends:ServiceProps
   }
-
-}
 </script>

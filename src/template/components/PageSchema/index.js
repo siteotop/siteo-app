@@ -3,7 +3,7 @@ import Loader from '../_mixins/component-loading.js';
 import PageError from '../Pages/Error.vue';
 import FunctionalSpeedDeal from './Functional/SpeedDeal.vue';
 import FunctionalShareWindow from './Functional/ShareWindow.vue';
-import  PageToolbar from './Functional/PageToolbar.vue';
+import PageToolbar from './Functional/PageToolbar.vue';
 
 import * as  Blocks from './Sections/Blocks/index.js';
 
@@ -104,7 +104,6 @@ export default {
 
     computed: {
         meta_title() {
-
             return this.$store.state.APP_PAGE.objectActive.meta_title? this.$store.state.APP_PAGE.objectActive.meta_title:
             this.$store.state.APP_PAGE.objectActive.title ;
         },

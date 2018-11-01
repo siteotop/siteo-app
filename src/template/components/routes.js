@@ -1,9 +1,8 @@
 import PageSchema from './PageSchema';
 import PageError from './Pages/Error.vue';
 import PageOrder from './Pages/Order.vue';
-import PageServices from './PageSchema/Sections/Lists/Services.js';
-import PageExperts from './PageSchema/Sections/Lists/Experts.js';
-import PagePosts from './PageSchema/Sections/Lists/Posts.js';
+import PageItems from './Pages/Items.vue';
+
 export default  [
 
 
@@ -18,20 +17,21 @@ export default  [
         {
           name: "services",
           path:  '/services',
-          component: PageServices,
-
+          component: PageItems,
+          props: { typeList: 'services' }
         },
         {
           name: "experts",
           path:  '/experts',
-          component: PageExperts,
-
+          component: PageItems,
+          props: { typeList: 'experts' }
         },
 
         {
           name: "posts",
           path:  '/posts',
-          component: PagePosts,
+          component: PageItems,
+          props: { typeList: 'posts' }
         },
 
         {

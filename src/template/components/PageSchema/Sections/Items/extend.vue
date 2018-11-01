@@ -1,26 +1,14 @@
 <template>
 <SectionWrap v-bind="$options.propsData">
    <v-container  :class="_cc">
-    <slot v-if="header" name="header">
-      <v-layout  wrap class="mb-4">
-      <v-toolbar flat>
-           <v-btn   fab flat>
-             <AppIcon name="si-filter"></AppIcon>
-           </v-btn>
-           <v-spacer></v-spacer>
-           Hello filters
-           <v-spacer></v-spacer>
-            <v-btn   fab flat>
-               <AppIcon name="si-sort"></AppIcon>
-            </v-btn>
-      </v-toolbar>
-     </v-layout>
-   </slot>
+    <slot v-if="header" name="header"></slot>
     <v-layout :class="_lc"   >
-     <v-flex :class="flexClass"  v-for="(item, i) in items"
+     <v-flex  :class="flexClass"  v-for="(item, i) in items"
       :key="i" >
-          <CardList v-bind="item"></CardList>
-     </v-flex>
+        <component :is="componentName"   v-bind="item"></component>
+      </v-flex>
+
+
     </v-layout>
     <slot v-if="pagination" name="pagination">
       <v-layout column wrap >
@@ -45,9 +33,14 @@ export default {
 
     props: {
 
-      _lc: {
+      _lc: {  // layout class
         type:String,
         default: 'row wrap fill-height'
+      },
+
+      toogleComponent: {
+        type: String,
+        default: 'cards'
       },
 
       header: {
@@ -57,6 +50,11 @@ export default {
       pagination: {
         type:Boolean,
         default: false
+      },
+
+      query: {
+        type: String,
+        drfault : ''
       }
 
     },
@@ -71,23 +69,27 @@ export default {
       },
 
       computed: {
+        componentName () {
+          return  'toogle-'+this.toogleComponent;
+        },
+
         flexClass() {
+          if (this.toogleComponent == 'list') {
+            return '  xs12 ';
+          } else {
             return 'd-flex xs12 sm6 ' + 'md4'
+          }
+
+
 
         },
 
         items() {
             console.log(this.$store.state[this.$options.storeName].items.objects);
            return this.$store.state[this.$options.storeName].items.objects;
-        },
+        }
 
-         sectionProps () {
-          return {
-            _ti: 'Services',
-            _de: 'Description about service',
 
-          }
-         }
       }
 
 
