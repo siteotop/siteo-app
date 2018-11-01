@@ -12,25 +12,52 @@
 
     contentStructure: [
 
-      // Header Image
       {
-        _n: 'HeaderImage',
+
+        _n: 'SectionWrap',
         _props: {
-          _ti: 'Ukrainian Red Borsht',  //
+          _bi:'https://picsum.photos/1500/600?random',
+          _ti: 'Services ',  //
+          _tc: 'align-center primary',
+          _hc: 'white--text display-4',
+          _dc: 'ma-2 display-1 white--text',
+          _gr: 'to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)',
+          _he: 600,
+          _co: 1,
+          _hn: 1,
           _de: 'Description Header Block',  //
-          _at: 'Action Text',  //
-          _ah: 'Action Href',  //
-          _bc: '', // background color
-          _bi: 'https://cdni.rbth.com/rbthmedia/images/all/2017/03/03/stock-photo-ukrainian-beetroot-soup-borscht-on-napkin-on-wooden-background-497415466.jpg', // background image
+          _fc: 'xs12 sm6 md3 text-xs-center',
+          _bls: [
+
+            {
+              _n:'AppAction',
+              _props: {
+                _at: 'Action Text',  //
+                _ah: 'Action Href',  //
+              }
+            },
+
+            {
+              _n:'AppAction',
+              _props: {
+                _at: 'Download',  //
+                _ah: 'Action Href',  //
+              }
+            }
+          ]
+
         }
+
       },
+
 
       {
         _n: 'SectionWrap',
         _props: {
           _ti: '',
           _de: '',
-        //  _bc:'grey lighten-3',
+          _tc: 'align-center white ',
+
           _bls: [
             {
               _n: 'BFeatures',
@@ -67,7 +94,7 @@
           _na:'About',
           _ti: 'About Borsht',  //
           _de: 'Borsht is very good food with beetroot',  //
-          _bc: 'white',
+          _tc: 'white',
           _fc: 'xs12 sm12 md6',
           _bls: [
             {
@@ -98,7 +125,7 @@
         _props: {
           _ti: 'Title  Header Block ',  //
           _de: 'Description Header Block',  //
-          _bc: 'primary', // background color
+          _tc: 'primary',
           _bi: '', // background image
           _fc: 'xs12 sm6 md4 text-xs-center',
           _bls: [
@@ -145,7 +172,8 @@
         _props: {
           _ti: 'Experts custom not Auto ',  //
           _de: 'Description Header Block',  //
-          _bc: 'red', // background color
+          _tc: 'red',
+
           _bi: '', // background image
           _fc: 'xs12 sm6 md4 text-xs-center',
           _bls: [
@@ -188,7 +216,7 @@
         _props: {
           _ti: '',
           _de: '',
-          _bc:'grey lighten-3',
+          _tc: 'grey lighten-3',
           _cc: 'grid-list-xl',
           _lc: 'align-center justify-center row wrap fill-heigh',
           _fc: 'md6 text-xs-center',
@@ -243,7 +271,7 @@
         _props: {
           _ti: 'Buttons  Action ',
           _de: 'Description about Buttons  Action',
-          _bc:'grey lighten-3',
+          _tc: 'grey lighten-3',
           _fc: 'md6 text-xs-center align-center',
           _bls: [
             {
@@ -264,7 +292,7 @@
         _props: {
           _ti: 'Buttons  Action ',
           _de: 'Description about Buttons  Action sdfg lskdfjgh ljsdfhgkj sfdlkjgh kjlsdhg klhsdlkgh klsjfdhgklhsdg kjhsdlkgh lksjfdhg lkjsdhglkjsd',
-        //  _bc:'grey lighten-3',
+
           _fc: 'md12 text-xs-center',
           _bls: [
             {
@@ -280,7 +308,8 @@
         _props: {
           _ti: 'Они это сделали',
           _de: '',
-          _bc:'blue',
+
+          _tc:'blue',
           _cc:'fluid',
           _fc: 'md6',
           _bls: [
@@ -318,7 +347,7 @@
           _na: 'reciept',
           _ti: 'How to cook Borsh',  //
           _de: 'dskjgh lshdflgh lsdkfjgh lskdfhgkl jhsdflkjhg kljhsdfkjlgh kjsdfhgkj hsdfkhg lkjsdfhgkljhsdfkjgh kjsdfhlgkjh lskdfhg kjlhsdflkjgh kjlsfdhg kljsdfhgkljh sfdkljgh kljsfdhgkjsfdhgks asdf asfd asfdasfd asdf asdfa',  //
-          _bc: '', // background color
+
           _bi: '', // background image
           _fc: 'xs12 md6',
           _bls: [
@@ -408,12 +437,14 @@
 
       {
         // name section
-        _n: 'Parallax',
+        _n: 'SectionWrap',
         // data section
         _props: {
           _ti: 'Title  Header Block ',
           _de: 'If you want to prepare Borsht. See reciept bottom',  //
           _he:350,
+          _tc: 'align-center',
+          _co:2,
           _bi: 'https://previews.123rf.com/images/timolina/timolina1710/timolina171000285/88030343-traditional-ukrainian-russian-borscht-with-white-beans-on-the-bowl-.jpg', // background image
         }
 
@@ -455,7 +486,7 @@
             }
           ],
 
-          _bc: 'primary', // background color
+          _tc: 'primary', // background color
           _bi: '', // background image
         }
 
@@ -467,7 +498,7 @@
         _props: {
           _ti: 'About Borsht',  //
           _de: 'Borsht is very good food with beetroot',  //
-          _bc: '',
+
           _fc: 'xs12 sm12 md6',
           _bls: [
             {
@@ -494,8 +525,6 @@
           _ti: 'Video About Borsh',  //
           _de: 'It is shortly video about how to cooking borsh',  //
 
-          _bc: '', // background color
-          _bi: '', // background image
           _fc: 'md6',
           _bls:[
             {

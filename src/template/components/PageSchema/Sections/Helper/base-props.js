@@ -4,12 +4,22 @@ export default {
   props: {
 
 
-    _id: {   // id of block
+    _id: {   // id of block (used for attr id of block)
       type: String,
       default: '',
     },
 
-    _na: { // name of block
+    _hn: { // h tag number (used for title of block)
+       type: Number,
+       default: 2
+    },
+
+    _he: { //height block
+      type: [Boolean,  Number],
+      default: 600
+    },
+
+    _na: { // name of block or one word title (used for menu in PageToolbar)
       type: String,
       default: '',
     },
@@ -24,9 +34,35 @@ export default {
       default: '',
     },
 
+    _tc: { // top class for top v-container
+      type: String,
+      default: ''
+
+    },
+
+    _hc: { // h tag class header
+      type: String,
+      default: 'display-1 secondary--text'
+    },
+
+    _dc: { // description class
+      type: String,
+      default: 'subheading'
+    },
+
     _bc: { // background color
       type: String,
       default: '',
+    },
+
+    _gr: { // gradient work on v-img
+      type: String,
+      default: ''
+    },
+
+    _co: { // number of component
+      type: [Number],
+      default: 0,
     },
 
     _bi: { // background image

@@ -1,21 +1,14 @@
 <template functional>
-  <v-container :id="props._id" fluid tag="section" :class=" (parent.$vuetify.breakpoint.smAndDown? props._bc+' pa-1': props._bc )" >
-    <v-layout column  v-if="props._ti||props._de">
+  <component :is="['v-container', 'v-img', 'v-parallax'][props._co]||'v-container'" :id="props._id" fluid  v-bind="[{ tag: 'section'}, {height:props._he, src: props._bi, gradient: props._gr  },{height:props._he, src: props._bi} ][props._co]" :class="props._tc+(parent.$vuetify.breakpoint.smAndDown? ' pa-1': '' )" >
+    <v-layout column justify-center   v-if="props._ti||props._de" class="text-xs-center pt-5 pb-2">
       <v-flex>
-        <v-container class="py-0 my-0">
-          <v-layout justify-center>
-              <v-flex  xs12  class="my-4 text-xs-center" >
-                <h2 v-if="props._ti" :class="(parent.$vuetify.breakpoint.smAndDown?'display-1': 'display-2' )+' secondary--text'">{{props._ti}}</h2>
-                <h3 class="display-1" v-if="!props._ti&&props._de">{{props._de}} </h3>
-                <span v-if="props._ti&&props._de" class="subheading">
-                  {{props._de}}
-                </span>
-              </v-flex>
-          </v-layout>
-        </v-container>
-    </v-flex>
+        <component :is="'h'+props._hn" v-if="props._ti" :class="props._hc+  (parent.$vuetify.breakpoint.smAndDown?' display-1': '' )">{{props._ti}}</component>
+        <span v-if="props._de" :class="props._dc+(parent.$vuetify.breakpoint.smAndDown?' subheading': '' )">
+          {{props._de}}
+        </span>
+      </v-flex>
   </v-layout>
-  <v-layout>
+  <v-layout >
     <v-flex>
       <slot></slot>
       <v-container v-if="props._bls!==false" :class="props._cc">
@@ -27,12 +20,14 @@
       </v-container>
     </v-flex>
   </v-layout>
-</v-container>
+
+</component>
 </template>
 
 <script>
 
 import BaseProps from './base-props.js';
+
 
 export default {
   extends: BaseProps,
