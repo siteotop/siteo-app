@@ -78,7 +78,7 @@ export default {
                     name:'order',
                     params: {typeAction: action.name}},
                   dark: true,
-                  actionText: context.parent.$t('actions.'+action.name),
+                  _at: context.parent.$t('actions.'+action.name),
                   siicon: 'si-'+ action.name,
                 //  small: context.parent.$vuetify.breakpoint.xs,
                 //  large:false,

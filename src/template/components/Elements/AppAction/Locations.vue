@@ -25,7 +25,7 @@
           color="red"
           outline
           target="_blank"
-          siicon="si-googlemaps" :href="'https://www.google.com/maps/dir/?api=1&destination='+location.lat+','+location.lng" actionText="Direction in Google Maps" >
+          siicon="si-googlemaps" :href="'https://www.google.com/maps/dir/?api=1&destination='+location.lat+','+location.lng" _at="Direction in Google Maps" >
         </AppAction>
   </v-card-actions>
     <v-card-actions>
@@ -33,7 +33,7 @@
           block
           outline
           target="_blank"
-          siicon="si-locations" :href="'geo:'+location.lat+','+location.lng" actionText="Open Default Map App" >
+          siicon="si-locations" :href="'geo:'+location.lat+','+location.lng" _at="Open Default Map App" >
         </AppAction>
 
           </v-card-actions>
@@ -49,7 +49,7 @@
 /**
 <AppAction
   target="_blank"
-  siicon="si-locations" :href="'geo:'+location.lat+','+location.lng" actionText="Open Map App" >
+  siicon="si-locations" :href="'geo:'+location.lat+','+location.lng" _at="Open Map App" >
 </AppAction>
 */
 export default {
