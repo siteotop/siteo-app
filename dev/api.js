@@ -16,7 +16,7 @@ var _APP_INSTANCE = {
    name:"Site Name",
    title:"Title Website",
    slogan:"Slogan of Website",
-   actionText:"Action Text",
+   actionText:"Call to action",
    description:"This service help you find what you need. We help yuo bla bla bla. This service help you find what you need. We help yuo bla bla bla. This service help you find what you need. We help yuo bla bla bla. This service help you find what you need. We help yuo bla bla bla. ",
    domain:"",
    templates_id:"1532775890",

@@ -17,7 +17,8 @@
         _n: 'SectionWrap',
         _props: {
           _bi:'https://picsum.photos/1500/600?random',
-          _ti: 'Services ',  //
+          _ti: 'This is title block',  //
+          _de: 'It is description text. Text above uses h1 tag',  //
           _tc: 'align-center primary',
           _hc: 'white--text display-4',
           _dc: 'ma-2 display-1 white--text',
@@ -25,7 +26,7 @@
           _he: 600,
           _co: 1,
           _hn: 1,
-          _de: 'Description Header Block',  //
+
           _fc: 'xs12 sm6 md3 text-xs-center',
           _bls: [
 
@@ -40,8 +41,10 @@
             {
               _n:'AppAction',
               _props: {
-                _at: 'Download',  //
-                _ah: 'Action Href',  //
+                _at: 'Non Default Text',  //
+                color: 'red',
+                dark: true,
+                to: '/services',  //
               }
             }
           ]
@@ -55,33 +58,40 @@
         _n: 'SectionWrap',
         _props: {
           _ti: '',
-          _de: '',
+          _de: 'This is only  description for BFeatures block ',
           _tc: 'align-center white ',
-
+          _cl: 'BTitle',
+          _cl_props: {
+            _tc: 'display-1'
+          },
+          _lc: 'row wrap align-center',
+          _fc: 'text-xs-center xs12  md4',
           _bls: [
             {
-              _n: 'BFeatures',
-              _props: {
-                _li: [
-                    {
-                      _i: 'color_lens',
-                      _t: 'prepare 40 min.',
-                      _d: 'alsdjfh lsdfjh lkashdf lkashfd lkjsahdfl'
-                    },
-                    {
-                      _i: 'flash_on',
-                      _t: 'Soup',
-                      _d: 'alsdjfh lsdfjh lkashdf lkashfd lkjsahdfl'
-                    },
-                    {
-                      _i: 'build',
-                      _t: 'prepare 40 min.',
-                      _d: 'alsdjfh lsdfjh lkashdf lkashfd lkjsahdfl'
-                    }
 
-                ],
-              }
-            }
+                  _ti: 'First',
+                  _st: 'Subtitle',
+                  _me: 'https://picsum.photos/100/100?random'
+
+            },
+            {
+
+                  _ti: 'Second',
+                  _st: 'Subtitle',
+                  _me: 'https://picsum.photos/100/100?random'
+
+
+            },
+
+            {
+
+                  _ti: 'Third',
+                  _st: 'Subtitle',
+                  _me: 'https://picsum.photos/100/100?random'
+              
+
+            },
+
           ]
         }
 
@@ -92,8 +102,9 @@
         _props: {
           _id:'about-borsht',
           _na:'About',
-          _ti: 'About Borsht',  //
-          _de: 'Borsht is very good food with beetroot',  //
+          _ti: 'Do you need html text?',  //
+          _de: 'It is no problem. You can combine HtmlText with others blocks. For example, block image',  //
+          _hc: 'display-2 font-weight-regular ',
           _tc: 'white',
           _fc: 'xs12 sm12 md6',
           _bls: [
@@ -101,14 +112,14 @@
               _n: 'BHtmlText',
 
               _props: {
-                  _te: '<h3>He he</h3><p>Borscht derives from an ancient soup originally cooked from pickled stems, leaves and umbels of common hogweed (Heracleum sphondylium), a herbaceous plant growing in damp meadows, which lent the dish its Slavic name. With time, it evolved into a diverse array of tart soups, among which the beet-based red borscht has become the most popular.</p> <p>It is typically made by combining meat or bone stock with sautéed vegetables, which – as well as beetroots – <b>usually include cabbage</b>, carrots, onions, potatoes and tomatoes. Depending on the recipe, borscht may include meat or fish, or be purely vegetarian; it may be served either hot or cold; and it may range from a hearty one-pot meal to a clear broth or a smooth drink. </p><p>It is often served with smetana or sour cream, hard-boiled eggs or potatoes, but there exists an ample choice of more involved garnishes and side dishes, such as uszka or pampushky, that can be served with the soup.</p>',
+                  _te: '<h3>This text can be creating in  WYSIWYG redactor</h3><p>We can use <strong>strong text</strong> and much more tags, like <em>this</em>. But Html redactor has some rule for adding texts and it can to block some tags like script or link</p><p>In HtmlText block you can create paragraph.</p><h3>And Title using h3, h4,h5</h3><p>H1 and H1, you can use in Title(_ti) and description(_de) props for section.</p>',
               }
             },
 
             {
               _n: 'BImage',
               _props: {
-                  _me: 'https://www.curiouscuisiniere.com/wp-content/uploads/2013/12/Chunky-Polish-Borscht-3424.21.jpg',
+                  _me: 'https://picsum.photos/500/500?random',
 
               }
             }
@@ -123,8 +134,8 @@
 
         _n: 'SectionWrap',
         _props: {
-          _ti: 'Title  Header Block ',  //
-          _de: 'Description Header Block',  //
+          _ti: 'Title with button',  //
+          _de: 'If you click on default AppAction button you will  go to order form  by default. Everywhere! Everytime!',  //
           _tc: 'primary',
           _bi: '', // background image
           _fc: 'xs12 sm6 md4 text-xs-center',
@@ -146,7 +157,7 @@
         _n: 'ListServices',
         _props: {
           _ti: 'Services ',  //
-          _de: 'Description Header Block',  //
+          _de: 'If all services or items which you sell',  //
 
 
         }
@@ -159,6 +170,7 @@
         _props: {
           _ti: 'Experts from company',  //
           _de: 'Description Header Block',  //
+          _tc: 'blue-grey lighten-1'
 
 
         }
@@ -166,50 +178,6 @@
       },
 
 
-      {
-
-        _n: 'SectionWrap',
-        _props: {
-          _ti: 'Experts custom not Auto ',  //
-          _de: 'Description Header Block',  //
-          _tc: 'red',
-
-          _bi: '', // background image
-          _fc: 'xs12 sm6 md4 text-xs-center',
-          _bls: [
-            {
-              _n:'BCExpert',
-              _props: {
-                name: 'First Men',
-                position: 'Seo and Founder',
-                picture: 'https://thumbs.dreamstime.com/z/profile-icon-male-avatar-portrait-casual-person-silhouette-face-flat-design-vector-46846328.jpg',
-                about: 'HE is sljfh lkajshdflkasdfjh ask;hf;aslfj;lasjfdk;hask;fjdh kasjhfd kjhaskfj hkjashfk hasfkdhaklsdhf kjashdf kjlhasklfdhlkjashf kjhaskljfh lkash fkhsakjlfh klashfkljashfklhaskfhsalk',
-              }
-            },
-
-            {
-              _n:'BCExpert',
-              _props: {
-                name: 'First Men',
-                position: 'Seo and Founder',
-                picture: 'https://thumbs.dreamstime.com/z/profile-icon-male-avatar-portrait-casual-person-silhouette-face-flat-design-vector-46846328.jpg',
-                about: 'HE is sljfh lkajshdflkasdfjh ask;hf;aslfj;lasjfdk;hask;fjdh kasjhfd kjhaskfj hkjashfk hasfkdhaklsdhf kjashdf kjlhasklfdhlkjashf kjhaskljfh lkash fkhsakjlfh klashfkljashfklhaskfhsalk',
-              }
-            },
-
-            {
-              _n:'BCExpert',
-              _props: {
-                name: 'First Men',
-                position: 'Seo and Founder',
-                picture: 'https://thumbs.dreamstime.com/z/profile-icon-male-avatar-portrait-casual-person-silhouette-face-flat-design-vector-46846328.jpg',
-                about: 'HE is sljfh lkajshdflkasdfjh ask;hf;aslfj;lasjfdk;hask;fjdh kasjhfd kjhaskfj hkjashfk hasfkdhaklsdhf kjashdf kjlhasklfdhlkjashf kjhaskljfh lkash fkhsakjlfh klashfkljashfklhaskfhsalk',
-              }
-            }
-          ]
-        }
-
-      },
 
       {
         _n: 'SectionWrap',
@@ -219,15 +187,17 @@
           _tc: 'grey lighten-3',
           _cc: 'grid-list-xl',
           _lc: 'align-center justify-center row wrap fill-heigh',
-          _fc: 'md6 text-xs-center',
+          _fc: 'md6 ',
           _bls: [
             {
               _n:'BTitle',
-              _fc: 'text-md-right ',
+              _fc: 'text-md-left ',
               _props: {
-                _ti: 'Title for title block',
-                _st: 'Subtitle for title block must be grey',
-                _de: 'Description must be ladhf lasdkjfh not more 300 symbol. And is not Html Text dsf sdfg sdfg sdfg sdfgl. Dsdmfb ldfg jshdfgj h skjdfg jhsgdfkhkjsdhfg kjhsdkfg hksdhg fkhskdhgfkhsdkfghkhsdfgk hksdhfg khsdkfgh kjsdhfgk hsdkfhg kjsdhgfk hsdkdsf'
+                _ti: 'Integrate your order form',
+                _st: 'Form is very flexible',
+                _de: 'You can use combination of fields. Base core fields are name, lastname, email, phone, date, services, experts. Some fields, such as, services, experts are integrated with your price list and your people list. Customer can select one of them when booking throught your web-app, if those fields will include at form.',
+
+                //_dc: 'body-2'
               }
             },
             {
@@ -244,21 +214,34 @@
          _n: 'SectionWrap',
          _props: {
            _fc: 'md6',
+           _lc: 'align-center row wrap ',
            _bls: [
              {
-               _n: 'BHtmlText',
-
-               _props: {
-                   _te: '<h3>He he</h3><p>Borscht derives from an ancient soup originally cooked from pickled stems, leaves and umbels of common hogweed (Heracleum sphondylium), a herbaceous plant growing in damp meadows, which lent the dish its Slavic name. With time, it evolved into a diverse array of tart soups, among which the beet-based red borscht has become the most popular.</p> <p>It is typically made by combining meat or bone stock with sautéed vegetables, which – as well as beetroots – <b>usually include cabbage</b>, carrots, onions, potatoes and tomatoes. Depending on the recipe, borscht may include meat or fish, or be purely vegetarian; it may be served either hot or cold; and it may range from a hearty one-pot meal to a clear broth or a smooth drink. </p><p>It is often served with smetana or sour cream, hard-boiled eggs or potatoes, but there exists an ample choice of more involved garnishes and side dishes, such as uszka or pampushky, that can be served with the soup.</p>',
-               }
-             },
-             {
                _n:'BInstagram',
+                _fc: 'text-xs-center ',
                _props: {
                  _url: 'https://www.instagram.com/p/BpPnezuAZjr',
                  _hc: true
                }
+             },
+             {
+               _n:'BTitle',
+               _fc: 'text-md-center',
+               _props: {
+                 _ti: 'Integrate your instagram Post',
+                 _st: 'It is easy and asynchrony',
+                 _de: 'Put your link with post id in  instagram block. And your custumers will see your picture  with caption or  only image. People will be easy  follow you or your business account in Instagram.com',
+                _tc: 'display-3  pink--text',
+                 _me: 'http://pluspng.com/img-png/instagram-png-file-instagram-icon-png-599.png',
+
+                _mc: 'i',
+                _mt: true,
+                _ms: 200,
+
+                 //_dc: 'body-2'
+               }
              }
+
 
 
            ]

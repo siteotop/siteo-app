@@ -19,6 +19,15 @@ export default {
       default: 600
     },
 
+    _cl: { // component which using in all _bls list (only this component)
+      type: [Boolean, String],
+      default: false
+    },
+
+    _cl_props: {
+        type: Object,
+    },
+
     _na: { // name of block or one word title (used for menu in PageToolbar)
       type: String,
       default: '',
@@ -39,6 +48,10 @@ export default {
       default: ''
 
     },
+    _tl: { // layout classes for top container
+      type: String,
+      default: ' justify-center text-xs-center pt-5 pb-4'
+    },
 
     _hc: { // h tag class header
       type: String,
@@ -47,7 +60,7 @@ export default {
 
     _dc: { // description class
       type: String,
-      default: 'subheading'
+      default: 'title font-weight-medium'
     },
 
     _bc: { // background color

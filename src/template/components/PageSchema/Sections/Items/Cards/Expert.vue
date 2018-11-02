@@ -1,30 +1,9 @@
 <template functional>
-<v-card class="elevation-1">
-      <v-layout justify-center row wrap>
-        <v-flex justify-center text-xs-center>
-            <v-avatar size="150" tile >
-              <img
-                :src="props.picture"
-                alt="Avatar"
-            >
-            </v-avatar>
-        </v-flex>
-      </v-layout>
-      <v-card-text>
-        <h5 class="headline">{{props.name}}</h5>
-        <span class="subheading">  {{props.position}} </span>
-      </v-card-text>
-      <v-card-text class="body-2 font-weight-light">
-        {{props.about}}
-      </v-card-text>
-      <v-card-actions>
-      </v-card-actions>
-</v-card>
+<b-title v-bind="{_ti: props.name, _de:props.about, _st:props.position, _me:props.picture, _vc: 'elevation-1 text-xs-center',  _ms: 150, _mt:true, _tc: 'headline', _dc:'body-2 font-weight-light' }" ></b-title>
 </template>
 
 
 <script>
-
 
   export default {
 

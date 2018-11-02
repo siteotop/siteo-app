@@ -1,6 +1,7 @@
 
 import ListExtend from './extend.vue';
 import ToogleCards from './Cards/Expert.vue';
+import BTitle from '../Blocks/Title.vue';
 //import ListExpert from './Lists/Expert.vue';
 
 /**
@@ -12,5 +13,5 @@ export default {
   extends: ListExtend,
   storeName: 'APP_EXPERTS',
 
-  components: {ToogleCards}
+  components: {ToogleCards, BTitle}
 }
