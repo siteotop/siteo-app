@@ -74,8 +74,8 @@ export default {
     },
 
     _co: { // number of component
-      type: [Number],
-      default: 0,
+      type: String,
+      default:'v-container',
     },
 
     _bi: { // background image

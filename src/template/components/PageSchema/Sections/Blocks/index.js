@@ -1,6 +1,5 @@
 export { default as BHtmlText} from './HtmlText.vue';
 export { default as BImage} from './Image.vue';
-export { default as BFeatures} from './Features.vue';
 export { default as BTitle} from './Title.vue';
 export { default as BList} from './List.vue';
 export { default as BQa} from './Qa.vue';

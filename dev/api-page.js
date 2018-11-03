@@ -24,7 +24,7 @@
           _dc: 'ma-2 display-1 white--text',
           _gr: 'to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)',
           _he: 600,
-          _co: 1,
+          _co: 'v-img',
           _hn: 1,
 
           _fc: 'xs12 sm6 md3 text-xs-center',
@@ -60,6 +60,7 @@
           _ti: '',
           _de: 'This is only  description for BFeatures block ',
           _tc: 'align-center white ',
+
           _cl: 'BTitle',
           _cl_props: {
             _tc: 'display-1'
@@ -88,7 +89,7 @@
                   _ti: 'Third',
                   _st: 'Subtitle',
                   _me: 'https://picsum.photos/100/100?random'
-              
+
 
             },
 
@@ -289,8 +290,8 @@
       {
         _n: 'SectionWrap',
         _props: {
-          _ti: 'Они это сделали',
-          _de: '',
+          _ti: 'Block of Quotes ',
+          _de: 'Block with quotes from people or customers',
 
           _tc:'blue',
           _cc:'fluid',
@@ -299,20 +300,20 @@
             {
               _n: 'BQuote',
               _props: {
-                 _au: 'Author BQuote',
-                 _po: 'Position for example website.com',
-                 _av: 'https://s2.wp.com/wp-content/themes/h4/landing/marketing/pages/_common/components/testimonials/media/ann-morgan.png',
-                 _qu: 'It’s been a great privilege and a life‑changing experience. I’m grateful to WordPress.com for providing an affordable and user‑friendly platform for individuals to launch projects and be heard in this way.'
+                 _au: 'Dmytro Diachuk',
+                 _po: 'Founder siteo.com',
+                 _av: 'https://scontent.fhen1-1.fna.fbcdn.net/v/t1.0-9/14054133_1212875082083948_7676951218311066170_n.jpg?_nc_cat=107&_nc_ht=scontent.fhen1-1.fna&oh=2c1909bb38e52d557b3b8fd27d28ac9d&oe=5C88A703',
+                 _qu: 'I am creating a platform for structuring small markets. Siteo-template is javascript template locate on  GitHub project which will using for small website, website-aggregators, and business web app. Each market or small business uses separate siteo-template with settings and special configuration.'
               }
             },
 
             {
               _n: 'BQuote',
               _props: {
-                 _au: 'Author2 BQuote',
-                 _po: 'Position for example siteo.com',
-                 _av: 'https://s0.wp.com/wp-content/themes/h4/landing/marketing/pages/_common/components/testimonials/media/quintin-lake.png',
-                 _qu: 'Це не так просто прифдывпа фпывадопфыловпа дфыова фыловпа олфыпв лоаплофыпва лофывало фолывпа лофыпа влофы алофылова лофыаво фылопафыв'
+                 _au: 'Inna Shepetyuk',
+                 _po: 'have created web-app on siteo-top',
+                 _av: 'https://scontent.fhen1-1.fna.fbcdn.net/v/t1.0-9/14063771_10206538812939961_1732695943355684861_n.jpg?_nc_cat=109&_nc_ht=scontent.fhen1-1.fna&oh=d1d942df476eb91a099d5243688afcd2&oe=5C3EE555',
+                 _qu: 'I am using siteo platfowm for my project. It is very Easy, Simple and Fast. I have integrated my all social links and create page for my  instagram shops'
               }
             }
           ]
@@ -370,7 +371,7 @@
             {
               _n:'BImage',
               _props: {
-                _me:'https://1ajvmf3xekdd2r35dh3pklbl-wpengine.netdna-ssl.com/wp-content/uploads/2014/05/vegan-doukhobor-borscht-prepared-ingredients1280-688x516.jpg'
+                _me:''
               }
             }
 
@@ -425,10 +426,18 @@
         _props: {
           _ti: 'Title  Header Block ',
           _de: 'If you want to prepare Borsht. See reciept bottom',  //
-          _he:350,
+          _he:500,
+          _hc: 'display-3',
           _tc: 'align-center',
-          _co:2,
-          _bi: 'https://previews.123rf.com/images/timolina/timolina1710/timolina171000285/88030343-traditional-ukrainian-russian-borscht-with-white-beans-on-the-bowl-.jpg', // background image
+          _co:'v-parallax',
+          _lc: 'justify-center text-xs-center',
+          _bi: 'https://picsum.photos/1600/600?random', // background image
+          _bls: [
+            {
+              _n: 'AppAction',
+
+            }
+          ]
         }
 
       },
@@ -482,40 +491,8 @@
           _ti: 'About Borsht',  //
           _de: 'Borsht is very good food with beetroot',  //
 
-          _fc: 'xs12 sm12 md6',
+          _fc: 'xs12 sm12 md8',
           _bls: [
-            {
-              _n: 'BHtmlText',
-              _props: {
-               _te: '<h3>He he</h3><p>Borscht derives from an ancient soup originally cooked from pickled stems, leaves and umbels of common hogweed (Heracleum sphondylium), a herbaceous plant growing in damp meadows, which lent the dish its Slavic name. With time, it evolved into a diverse array of tart soups, among which the beet-based red borscht has become the most popular.</p> <p>It is typically made by combining meat or bone stock with sautéed vegetables, which – as well as beetroots – <b>usually include cabbage</b>, carrots, onions, potatoes and tomatoes. Depending on the recipe, borscht may include meat or fish, or be purely vegetarian; it may be served either hot or cold; and it may range from a hearty one-pot meal to a clear broth or a smooth drink. </p><p>It is often served with smetana or sour cream, hard-boiled eggs or potatoes, but there exists an ample choice of more involved garnishes and side dishes, such as uszka or pampushky, that can be served with the soup.</p>',
-              }
-            },
-            {
-              _n:'BVideo',
-              _props: {
-                _vi: 'nejk74AtW0I'
-              }
-            }
-          ]
-
-        }
-
-      },
-
-      {
-        _n: 'SectionWrap',
-        _props: {
-          _ti: 'Video About Borsh',  //
-          _de: 'It is shortly video about how to cooking borsh',  //
-
-          _fc: 'md6',
-          _bls:[
-            {
-              _n:'BVideo',
-              _props: {
-                _vi: 'IqPt750Ptw8'
-              }
-            },
 
             {
               _n:'BVideo',
@@ -524,10 +501,10 @@
               }
             }
           ]
+
         }
 
       }
-
 
 
 
