@@ -1,8 +1,8 @@
 <template>
 <SectionWrap v-bind="$options.propsData">
-   <v-container  :class="_cc">
+   <v-container  :class="$bc">
     <slot v-if="header" name="header"></slot>
-    <v-layout :class="_lc"   >
+    <v-layout :class="$bl"   >
      <v-flex  :class="flexClass"  v-for="(item, i) in items"
       :key="i" >
         <component :is="componentName"   v-bind="item"></component>
@@ -33,7 +33,7 @@ export default {
 
     props: {
 
-      _lc: {  // layout class
+      $bl: {  // layout class
         type:String,
         default: 'row wrap fill-height'
       },

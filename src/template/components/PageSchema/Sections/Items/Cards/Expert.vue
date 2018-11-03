@@ -1,5 +1,5 @@
 <template functional>
-<b-title v-bind="{_ti: props.name, _de:props.about, _st:props.position, _me:props.picture, _vc: 'elevation-1 text-xs-center',  _ms: 150, _mt:true, _tc: 'headline', _dc:'body-2 font-weight-light' }" ></b-title>
+<b-title v-bind="{_ti: props.name, _de:props.about, _st:props.position, _me:props.picture, $vc: 'elevation-1 text-xs-center',  $ms: 150, $mt:true, $_ti: 'headline', $_de:'body-2 font-weight-light' }" ></b-title>
 </template>
 
 

@@ -15,7 +15,7 @@ export default {
       type: String,
       default: ''
     },
-    _hc: { // hidecaption
+    $t: { // hidecaption
       type: Boolean,
       default: false
     }
@@ -30,7 +30,7 @@ export default {
   created() {
       var self = this;
       if (!this._url) { return;}
-      var url ='https://api.instagram.com/oembed?omitscript=true&hidecaption='+this._hc+'&url=' + this._url;
+      var url ='https://api.instagram.com/oembed?omitscript=true&hidecaption='+this.$t+'&url=' + this._url;
         axios.get(url).then(function(result){
             console.log(result);
             self.htmlInsta=result.data.html;

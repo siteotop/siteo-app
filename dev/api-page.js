@@ -1,4 +1,4 @@
- var _PRERENDER = {
+var _PRERENDER = {
     _id: '1532775891',
     pid: 'sjh234kjhsdf',
     title: 'Title for  lists and  meta title', //  title for  lists and  meta title
@@ -19,16 +19,16 @@
           _bi:'https://picsum.photos/1500/600?random',
           _ti: 'This is title block',  //
           _de: 'It is description text. Text above uses h1 tag',  //
-          _tc: 'align-center primary',
-          _hc: 'white--text display-4',
-          _dc: 'ma-2 display-1 white--text',
-          _gr: 'to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)',
-          _he: 600,
-          _co: 'v-img',
-          _hn: 1,
+          $tc: 'align-center primary',
+          $_ti: 'white--text display-4',
+          $_de: 'ma-2 display-1 white--text',
+          $gr: 'to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)',
+          $he: 600,
+          $co: 'v-img',
+          $ht: 1,
 
-          _fc: 'xs12 sm6 md3 text-xs-center',
-          _bls: [
+          $bf: 'xs12 sm6 md3 text-xs-center',
+          $bls: [
 
             {
               _n:'AppAction',
@@ -59,15 +59,15 @@
         _props: {
           _ti: '',
           _de: 'This is only  description for BFeatures block ',
-          _tc: 'align-center white ',
+          $tc: 'align-center white ',
 
-          _cl: 'BTitle',
-          _cl_props: {
-            _tc: 'display-1'
+          $cl: 'BTitle',
+          $clp: {
+            $_ti: 'display-1'
           },
-          _lc: 'row wrap align-center',
-          _fc: 'text-xs-center xs12  md4',
-          _bls: [
+          $bl: 'row wrap align-center',
+          $bf: 'text-xs-center xs12  md4',
+          $bls: [
             {
 
                   _ti: 'First',
@@ -105,10 +105,10 @@
           _na:'About',
           _ti: 'Do you need html text?',  //
           _de: 'It is no problem. You can combine HtmlText with others blocks. For example, block image',  //
-          _hc: 'display-2 font-weight-regular ',
-          _tc: 'white',
-          _fc: 'xs12 sm12 md6',
-          _bls: [
+          $_ti: 'display-2 font-weight-regular ',
+          $tc: 'white',
+          $bf: 'xs12 sm12 md6',
+          $bls: [
             {
               _n: 'BHtmlText',
 
@@ -137,10 +137,10 @@
         _props: {
           _ti: 'Title with button',  //
           _de: 'If you click on default AppAction button you will  go to order form  by default. Everywhere! Everytime!',  //
-          _tc: 'primary',
+          $tc: 'primary',
           _bi: '', // background image
-          _fc: 'xs12 sm6 md4 text-xs-center',
-          _bls: [
+          $bf: 'xs12 sm6 md4 text-xs-center',
+          $bls: [
             {
               _n:'AppAction',
               _props: {
@@ -171,7 +171,7 @@
         _props: {
           _ti: 'Experts from company',  //
           _de: 'Description Header Block',  //
-          _tc: 'blue-grey lighten-1'
+          $tc: 'blue-grey lighten-1'
 
 
         }
@@ -185,11 +185,11 @@
         _props: {
           _ti: '',
           _de: '',
-          _tc: 'grey lighten-3',
-          _cc: 'grid-list-xl',
-          _lc: 'align-center justify-center row wrap fill-heigh',
-          _fc: 'md6 ',
-          _bls: [
+          $tc: 'grey lighten-3',
+          $bc: 'grid-list-xl',
+          $bl: 'align-center justify-center row wrap fill-heigh',
+          $bf: 'md6 ',
+          $bls: [
             {
               _n:'BTitle',
               _fc: 'text-md-left ',
@@ -198,7 +198,7 @@
                 _st: 'Form is very flexible',
                 _de: 'You can use combination of fields. Base core fields are name, lastname, email, phone, date, services, experts. Some fields, such as, services, experts are integrated with your price list and your people list. Customer can select one of them when booking throught your web-app, if those fields will include at form.',
 
-                //_dc: 'body-2'
+
               }
             },
             {
@@ -214,15 +214,15 @@
       {
          _n: 'SectionWrap',
          _props: {
-           _fc: 'md6',
-           _lc: 'align-center row wrap ',
-           _bls: [
+           $bf: 'md6',
+           $bl: 'align-center row wrap ',
+           $bls: [
              {
                _n:'BInstagram',
                 _fc: 'text-xs-center ',
                _props: {
                  _url: 'https://www.instagram.com/p/BpPnezuAZjr',
-                 _hc: true
+                 $t: true
                }
              },
              {
@@ -232,14 +232,13 @@
                  _ti: 'Integrate your instagram Post',
                  _st: 'It is easy and asynchrony',
                  _de: 'Put your link with post id in  instagram block. And your custumers will see your picture  with caption or  only image. People will be easy  follow you or your business account in Instagram.com',
-                _tc: 'display-3  pink--text',
-                 _me: 'http://pluspng.com/img-png/instagram-png-file-instagram-icon-png-599.png',
+                $_ti: 'display-3  pink--text',
+                 $me: 'http://pluspng.com/img-png/instagram-png-file-instagram-icon-png-599.png',
 
-                _mc: 'i',
-                _mt: true,
-                _ms: 200,
 
-                 //_dc: 'body-2'
+                $mt: true,
+                $ms: 200,
+
                }
              }
 
@@ -255,9 +254,9 @@
         _props: {
           _ti: 'Buttons  Action ',
           _de: 'Description about Buttons  Action',
-          _tc: 'grey lighten-3',
-          _fc: 'md6 text-xs-center align-center',
-          _bls: [
+          $tc: 'grey lighten-3',
+          $bf: 'md6 text-xs-center align-center',
+          $bls: [
             {
               _n: 'AppActionChat'
             },
@@ -277,8 +276,8 @@
           _ti: 'Buttons  Action ',
           _de: 'Description about Buttons  Action sdfg lskdfjgh ljsdfhgkj sfdlkjgh kjlsdhg klhsdlkgh klsjfdhgklhsdg kjhsdlkgh lksjfdhg lkjsdhglkjsd',
 
-          _fc: 'md12 text-xs-center',
-          _bls: [
+          $bf: 'md12 text-xs-center',
+          $bls: [
             {
               _n: 'AppActionLinks'
             }
@@ -293,10 +292,10 @@
           _ti: 'Block of Quotes ',
           _de: 'Block with quotes from people or customers',
 
-          _tc:'blue',
-          _cc:'fluid',
-          _fc: 'md6',
-          _bls: [
+          $tc:'blue',
+          $bc:'fluid',
+          $bf: 'md6',
+          $bls: [
             {
               _n: 'BQuote',
               _props: {
@@ -333,8 +332,8 @@
           _de: 'dskjgh lshdflgh lsdkfjgh lskdfhgkl jhsdflkjhg kljhsdfkjlgh kjsdfhgkj hsdfkhg lkjsdfhgkljhsdfkjgh kjsdfhlgkjh lskdfhg kjlhsdflkjgh kjlsfdhg kljsdfhgkljh sfdkljgh kljsfdhgkjsfdhgks asdf asfd asfdasfd asdf asdfa',  //
 
           _bi: '', // background image
-          _fc: 'xs12 md6',
-          _bls: [
+          $bf: 'xs12 md6',
+          $bls: [
             {
               _n: 'BList',
               _props: {
@@ -426,13 +425,13 @@
         _props: {
           _ti: 'Title  Header Block ',
           _de: 'If you want to prepare Borsht. See reciept bottom',  //
-          _he:500,
-          _hc: 'display-3',
-          _tc: 'align-center',
-          _co:'v-parallax',
-          _lc: 'justify-center text-xs-center',
+          $he:500,
+          $_ti: 'display-3',
+          $tc: 'align-center',
+          $co:'v-parallax',
+          $bl: 'justify-center text-xs-center',
           _bi: 'https://picsum.photos/1600/600?random', // background image
-          _bls: [
+          $bls: [
             {
               _n: 'AppAction',
 
@@ -448,7 +447,7 @@
         _props: {
           _ti: 'Popular questions about Borsch',  //
           _de: 'Few questions that ask with name dishes',  //
-          _bls: [
+          $bls: [
             {
               _n:'BQa',
               _props: {
@@ -478,7 +477,7 @@
             }
           ],
 
-          _tc: 'primary', // background color
+          $tc: 'primary', // background color
           _bi: '', // background image
         }
 
@@ -491,8 +490,8 @@
           _ti: 'About Borsht',  //
           _de: 'Borsht is very good food with beetroot',  //
 
-          _fc: 'xs12 sm12 md8',
-          _bls: [
+          $bf: 'xs12 sm12 md8',
+          $bls: [
 
             {
               _n:'BVideo',
