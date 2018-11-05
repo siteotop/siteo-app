@@ -37,14 +37,7 @@ export default {
               if (!field.defaultValue) {
                 this.$set(field, 'defaultValue', '');
               }
-
-              //this.$set(field, 'defaultValues', '');
-            /*  if (propsStructure[index_component]._n) {
-                field.name = propsStructure[index_component]._name;
-              }
-              if (!field.name) {
-                 console.log('Field no have name');
-            }*/
+              
               this.connectCommonProps(field, name);
               // connect i18n
               this.createFieldI18n(field, name);

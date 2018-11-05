@@ -4,28 +4,28 @@ export default {
   props: {
 
 
-    _id: {   // id of block (used for attr id of block)
+    _$: {   // id of block (used for attr id of block)
       type: String,
       default: '',
     },
 
-    _na: { // name of block or one word title (used for menu in PageToolbar)
+    _n: { // name of block or one word title (used for menu in PageToolbar)
       type: String,
       default: '',
     },
 
 
-    _ti: { //Title  Header Block
+    _t: { //Title  Header Block
       type: String,
       default: '',
     },
 
-    _de: { // Description Header Block
+    _d: { // Description Header Block
       type: String,
       default: '',
     },
 
-    _bi: { // background image
+    _p: { //  picture for background
       type: String,
       default: '',
     },
@@ -61,12 +61,12 @@ export default {
       default: ' justify-center text-xs-center pt-5 pb-4'
     },
 
-    $_ti: { //  tag class header
+    $_t: { //  tag class header
       type: String,
       default: 'display-1 secondary--text'
     },
 
-    $_de: { // description class
+    $_d: { // description class
       type: String,
       default: 'title font-weight-medium'
     },
@@ -100,7 +100,7 @@ export default {
       default: 'row wrap justify-center'
     },
 
-    $bf: { //flex for block 
+    $bf: { //flex for block
       type: String,
       default: 'xs12 sm12 md12'
     }

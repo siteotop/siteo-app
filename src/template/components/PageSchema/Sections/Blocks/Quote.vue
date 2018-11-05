@@ -1,60 +1,39 @@
 <template functional>
 <v-card class="elevation-0 transparent">
-      <v-layout justify-center row wrap>
-        <v-flex justify-center text-xs-center>
-            <v-avatar size="130" >
-              <img
-                :src="props._av"
-                alt="Avatar"
-            >
-            </v-avatar>
-        </v-flex>
-      </v-layout>
+  <v-card-text class="text-xs-center" v-if="props._m">
+      <v-avatar  :tile="props.$_mt" :size="props.$_ms"  >
+        <img  :src="props._m" :alt="props._t">
+      </v-avatar>
+  </v-card-text>
+  <v-card-text>
       <v-layout  >
-        <v-flex align-start class="grey--text">
+        <v-flex v-if="!parent.$vuetify.breakpoint.xs"  class=" align-start grey--text">
             <AppIcon scale="6" name="si-quote"></AppIcon>
         </v-flex>
-
-        <v-flex class="headline font-weight-thin font-italic">
-          {{props._qu}}
-            <v-divider></v-divider>
+        <v-flex :class="props.$_d||'headline font-weight-thin font-italic'">
+          {{props._d}}
+        <v-divider></v-divider>
         </v-flex>
       </v-layout>
-
-      <v-card-actions>
-        <v-spacer>
-        </v-spacer>
-        <div>
-        <strong class="title">{{props._au}}</strong>
-          <br>
-        <em class="subheading">{{props._po}}</em>
-      </div>
-      </v-card-actions>
+  </v-card-text>
+  <v-card-text :class="props.$b||'text-xs-right'">
+    <strong :class="props.$_t||'title'">{{props._t}}</strong>
+      <br>
+      <em :class="props.$_s||'subheading'">{{props._s}}</em>
+  </v-card-text>
 </v-card>
 </template>
 
-
 <script>
-  export default {
-      props: {
-         _au: { // author
-           type: String,
-           default: '',
-         },
 
-         _po: { // position
-           type: String,
-           default: '',
-         },
-         _av: { // avatar
-           type: String,
-           default: '',
-         },
+import BTitleProps from './_extends/b-title-props.js';
 
-         _qu: { // quote
-           type: String,
-           default: '',
-         }
-      }
+export default {
+  extends: BTitleProps,
+  props: {
+    $b: {
+      type: String
+    }
   }
+}
 </script>
