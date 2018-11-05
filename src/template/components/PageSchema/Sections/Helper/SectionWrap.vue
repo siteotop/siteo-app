@@ -12,12 +12,11 @@
     <v-flex>
       <slot></slot>
       <v-container v-if="props.$bls!==false" :class="props.$bc">
-          <v-layout :class="props.$bl">
-            <v-flex :class="block.$bf?   props.$bf+' '+block.$bf: props.$bf"    v-for="(block, index) in props.$bls" :key="index">
-                <component v-if="!props.$cl" :is="block._n" v-bind="block._props" > </component>
-                <component v-else :is="props.$cl" v-bind="Object.assign( props.$clp, block )" > </component>
-            </v-flex>
-         </v-layout>
+        <v-layout :class="props.$bl">
+          <v-flex :class="block.$bf?   props.$bf+' '+block.$bf: props.$bf"    v-for="(block, index) in props.$bls" :key="index">
+            <component  :is="block._n" v-bind="block._props" > </component>
+          </v-flex>
+        </v-layout>
       </v-container>
     </v-flex>
   </v-layout>

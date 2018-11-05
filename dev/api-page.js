@@ -55,19 +55,20 @@ var _PRERENDER = {
 
 
       {
-        _n: 'SectionWrap',
+        _n: 'SectionListWrap',
         _props: {
           _t: '',
           _d: 'This is only  description for BFeatures block ',
           $tc: 'align-center white ',
 
+
+          $bl: 'row wrap align-center',
+          $bf: 'text-xs-center xs12  md4',
           $cl: 'BTitle',
           $clp: {
             $_t: 'display-1'
           },
-          $bl: 'row wrap align-center',
-          $bf: 'text-xs-center xs12  md4',
-          $bls: [
+          items: [
             {
 
                   _t: 'First',

@@ -1,35 +1,9 @@
-<template>
-<SectionWrap v-bind="$options.propsData">
-   <v-container  :class="$bc">
-    <slot v-if="header" name="header"></slot>
-    <v-layout :class="$bl"   >
-     <v-flex  :class="flexClass"  v-for="(item, i) in items"
-      :key="i" >
-        <component :is="componentName"   v-bind="item"></component>
-      </v-flex>
-
-
-    </v-layout>
-    <slot v-if="pagination" name="pagination">
-      <v-layout column wrap >
-        <v-flex justify-center text-xs-center>
-        <v-pagination
-            v-model="page"
-           :length="6"
-         >
-        </v-pagination>
-      </v-flex>
-     </v-layout>
-   </slot>
-  </v-container>
-</SectionWrap>
-</template>
-<script>
-
-import BaseProps from '../Helper/base-props.js';
+import BaseProps from '../../Helper/base-props.js';
+import SectionListWrap from '../../Helper/SectionListWrap.vue';
 
 export default {
     extends: BaseProps,
+    components: {SectionListWrap},
 
     props: {
 
@@ -94,5 +68,3 @@ export default {
 
 
 }
-
-</script>

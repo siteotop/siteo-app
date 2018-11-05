@@ -4,37 +4,46 @@
        slot-scope="{ hover }"
        :class="`elevation-${hover ? 12 : 2}`"
     >
-          <v-img v-if="props.picture"
+          <v-img v-if="props._m"
             aspect-ratio="1.61"
             class="white--text"
-            :src="props.picture"
+            :src="props._m"
           >
             <v-container fill-height fluid>
               <v-layout fill-height>
                 <v-flex xs12 align-end flexbox>
-                  <span class="headline">{{props.title}}</span>
+                  <span class="headline">{{props._t}}</span>
                 </v-flex>
               </v-layout>
             </v-container>
           </v-img>
           <v-card-title v-else class="headline">
-             {{props.title}}
+             {{props._t}}
           </v-card-title>
-          <v-card-title v-if="props.subtitle">
-            <span class="headline font-weight-medium">${{props.price}} </span>
+          <v-card-title>
+            <span class="headline font-weight-medium">$ {{props._p}} </span>
             <v-spacer></v-spacer>
             <AppAction  :large="false"></AppAction>
           </v-card-title>
           <v-card-text>
-            {{props.preview}}
+            {{props._d}}
           </v-card-text>
         </v-card>
       </v-hover>
 </template>
 
 <script>
-import ServiceProps from '../_props/service.js';
+import BTitleProps from './_extends/b-title-props.js';
+
 export default {
-    extends:ServiceProps
-  }
+   extends: BTitleProps,
+
+   props: {
+     _p: {
+       type: String,
+
+     }
+   }
+}
+
 </script>

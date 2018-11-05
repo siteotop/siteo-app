@@ -29,9 +29,9 @@
 
 <script>
 
-import ListServices from '../PageSchema/Sections/Items/Services.js';
-import ListPosts from '../PageSchema/Sections/Items/Posts.js';
-import ListExperts from '../PageSchema/Sections/Items/Experts.js';
+import ListServices from '../PageSchema/Sections/Items/Services.vue';
+import ListPosts from '../PageSchema/Sections/Items/Posts.vue';
+import ListExperts from '../PageSchema/Sections/Items/Experts.vue';
 
 export default {
  components: {

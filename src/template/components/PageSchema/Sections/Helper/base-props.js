@@ -41,14 +41,7 @@ export default {
       default: 600
     },
 
-    $cl: { // component list. component  which using in all $bls list (only this component)
-      type: [Boolean, String],
-      default: false
-    },
-
-    $clp: { // component list props.  if component has $cl will be use this
-        type: Object,
-    },
+    
 
     $tc: { // top container  class for top v-container
       type: String,
