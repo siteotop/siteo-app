@@ -1,23 +1,23 @@
 <template>
-  <v-container >
-    <v-layout justify-center>
-          <v-flex d-flex  >
-            <v-card flat class="text-xs-center">
-                <v-card-text primary-title class=" error--text">
-                      <p :class="$vuetify.breakpoint.xs? 'display-1': 'display-3'"> {{title}} </p>
-                </v-card-text>
-                <v-card-text class="body-1 grey--text">
-                    {{description}}
-                </v-card-text>
-                <v-card-actions >
-                   <v-spacer></v-spacer>
-                    <v-btn  color="orange">Share</v-btn>
-                   <v-spacer></v-spacer>
-                </v-card-actions>
-           </v-card>
-        </v-flex>
-    </v-layout>
-  </v-container>
+<div>
+  <PageSchema :structure="[{
+      _n:'SectionWrap',
+      _props: {
+        _t: title,
+        _d: description,
+        $tc: 'primary',
+        $_t: 'white--text display-4',
+        $_d: 'ma-2 display-1 white--text',
+        $bls: [
+          {
+            _n:'AppAction',
+            $bf:'text-xs-center'
+
+          },
+        ]
+      }
+    } ]"></PageSchema>
+</div>
 
 </template>
 
