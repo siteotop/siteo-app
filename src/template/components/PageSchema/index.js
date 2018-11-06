@@ -13,7 +13,7 @@ export default {
 
     render(h, context) {
       return context.props.structure.map(function(section) {
-          return h(section._n, { props: section._props  }  )
+          return h(section._n, { props: section._props  } )
       })
     }
 
