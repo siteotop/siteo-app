@@ -1,3 +1,5 @@
+export {default as PageSchema} from './PageSchema';
+
 export {default as AppAction} from './Elements/AppAction/';
 export {default as AppIcon} from './Elements/AppIcon';
 export {default as AppVBtnMobile} from './Elements/AppVBtnMobile.js';

@@ -1,4 +1,4 @@
-import PageSchema from './PageSchema';
+import PagesApi from './Pages/Api.js';
 import PageError from './Pages/Error.vue';
 import PageOrder from './Pages/Order.vue';
 import PageItems from './Pages/Items.vue';
@@ -10,7 +10,7 @@ export default  [
         {
           name: "indexPage",
           path:  '/',
-          component: PageSchema,
+          component: PagesApi,
           props: true,
         },
 
@@ -51,7 +51,7 @@ export default  [
         {
           name: "PageSchema",
           path:  '/:idString-p:postId',
-          component: PageSchema,
+          component: PagesApi,
           props: true,
         },
 
