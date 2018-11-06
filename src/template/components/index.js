@@ -35,5 +35,6 @@ export {default as BLocation} from './PageSchema/Sections/Blocks/BLocation.vue';
 // Section Type
 export {default as SectionWrap} from './PageSchema/Sections/SectionWrap.vue';
 export {default as SectionListWrap} from './PageSchema/Sections/SectionListWrap.vue';
-export {default as ListServices} from './PageSchema/Sections/Items/Services.vue';
-export {default as ListExperts} from './PageSchema/Sections/Items/Experts.vue';
+export {default as AutoServices} from './PageSchema/Sections/Items/AutoServices.vue';
+export {default as AutoExperts} from './PageSchema/Sections/Items/AutoExperts.vue';
+export {default as AutoLocations} from './PageSchema/Sections/Items/AutoLocations.vue';

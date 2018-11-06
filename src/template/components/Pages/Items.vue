@@ -21,24 +21,15 @@
    </v-btn>
  </v-toolbar>
 
-<component :is="'list-'+typeList" :toogleComponent="toogle_component">
+<component :is="'auto-'+typeList" :toogleComponent="toogle_component">
   <v-layout slot="header"  wrap class="mb-4"> </v-layout>
 </component>
 </div>
 </template>
 
 <script>
-
-import ListServices from '../PageSchema/Sections/Items/Services.vue';
-import ListPosts from '../PageSchema/Sections/Items/Posts.vue';
-import ListExperts from '../PageSchema/Sections/Items/Experts.vue';
-
 export default {
- components: {
-   ListServices,
-   ListPosts,
-   ListExperts
- },
+
   props: {
     typeList: {
       type: String,

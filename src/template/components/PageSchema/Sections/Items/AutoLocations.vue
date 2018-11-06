@@ -1,11 +1,17 @@
 <template functional>
-<v-container class="grid-list-xs pa-0">
-  <v-layout row wrap >
-    <v-flex xs12 v-for="(location, index) in parent.$store.state.APP_INSTANCE.locations" :key="index">
-  
-      </v-flex>
-   </v-layout>
-</v-container>
+  <SectionListWrap :items="parent.$store.state.APP_INSTANCE.locations" :$bf="flexClass" $bl="row wrap fill-height">
+    <template slot-scope="{item}">
+       <b-service
+        :_t="item.title"
+        :_ci="item.city"
+        :_st="item.street"
+        :_sn="item.street_n"
+        :_zi="item.zipcode"
+        :_lat="item.lat"
+        :_lng="item.lng"
+        ></b-service>
+    </template>
+  </SectionListWrap>
 </template>
 
 <script>
@@ -17,6 +23,7 @@
   siicon="si-locations" :href="'geo:'+location.lat+','+location.lng" _at="Open Map App" >
 </AppAction>
 */
+
 export default {
 
 }

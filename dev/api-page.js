@@ -158,7 +158,7 @@ var _PRERENDER = {
 
       {
 
-        _n: 'ListServices',
+        _n: 'AutoServices',
         _props: {
           _t: 'Services ',  //
           _d: 'If all services or items which you sell',  //
@@ -170,7 +170,7 @@ var _PRERENDER = {
 
       {
 
-        _n: 'ListExperts',
+        _n: 'AutoExperts',
         _props: {
           _t: 'Experts from company',  //
           _d: 'Description Header Block',  //
