@@ -10,3 +10,10 @@ export { default as BQuote} from './Quote.vue';
 export { default as BExpert} from './Expert.js';
 export { default as BService} from './Service.vue';
 export { default as BPost} from './Post.vue';
+export { default as BStep} from './Step.vue';
+export { default as BLocation} from './Location.vue';
+
+export { default as SectionWrap} from '../Helper/SectionWrap.vue';
+export { default as SectionListWrap} from '../Helper/SectionListWrap.vue';
+export { default as ListServices} from '../Items/Services.vue';
+export { default as ListExperts} from '../Items/Experts.vue';

@@ -11,12 +11,12 @@ export default {
     mixins: [ Loader],
 
     data() {
-        return  {
-          error: false,
-          offsetTop: 0,
-          showUpButton: false,
-          shareWindow: false
-        }
+      return  {
+        error: false,
+        offsetTop: 0,
+        showUpButton: false,
+        shareWindow: false
+      }
     },
 
     props: {
@@ -207,7 +207,7 @@ export default {
           }),
            // sections for Page
           this.$store.state.APP_PAGE.objectActive.contentStructure.map(function(section) {
-              return h(self.$root.$options.componentsPage[section._n], { props: section._props  }  )
+              return h(section._n, { props: section._props  }  )
           }),
 
           // SpeedDeal

@@ -99,6 +99,8 @@ var _PRERENDER = {
 
       },
 
+
+
       {
         _n: 'SectionWrap',
         _props: {
@@ -121,7 +123,7 @@ var _PRERENDER = {
             {
               _n: 'BImage',
               _props: {
-                  _me: 'https://picsum.photos/500/500?random',
+                  _m: 'https://picsum.photos/500/500?random',
 
               }
             }
@@ -369,11 +371,46 @@ var _PRERENDER = {
             },
 
             {
-              _n:'BImage',
+              _n: 'SectionListWrap',
               _props: {
-                _me:''
+                _t: '',
+                _d: '',
+                $tc: 'align-center white ',
+
+                $bc: ' ',
+                $bl: 'row wrap align-center',
+                $bf: 'text-xs-center xs6  md3',
+                $cl: 'BImage',
+                $clp: {
+                  $_t: 'display-1'
+                },
+                items: [
+                  {
+                    _m: 'https://picsum.photos/220/220?random'
+                  },
+                  {
+                     _m: 'https://picsum.photos/222/222?random'
+                  },
+
+                  {
+                    _m: 'https://picsum.photos/223/223?random'
+                  },
+                  {
+                    _m: 'https://picsum.photos/220/220?random'
+                  },
+                  {
+                    _m: 'https://picsum.photos/223/223?random'
+                  },
+                  {
+                     _m: 'https://picsum.photos/222/222?random'
+                  },
+
+                ]
               }
-            }
+
+            },
+
+
 
           ]
         }
@@ -383,35 +420,38 @@ var _PRERENDER = {
 
       {
         // name section
-        _n: 'StepByStep',
+        _n: 'SectionListWrap',
         // data section
+
+
         _props: {
           //_t: 'Title  Header Block ',
+            $cl: 'BStep',
           _d: 'If you want to prepare Borsht. See reciept bottom',  //
-          _li: [
+          items: [
               {
                 _t:'Крок 1 ',
                 _s:'Text in v-card-title',
                 _d:' фываюлор флдывра дорфыдлваор лдфырвалдрдл офырвадлор фылдовра длорфылдовар длфырвалд орфыдловра рфыавлд орфлдыорва лдорфыалвр длфыра влодфрыдлвар длфыравдло рфыдлвар лдофырва лдорлдофырвалд рдлфоывра лдрфылдвра лдорфылдвар лдфырвалод рдлфоырва лдорфылодвар лодрфылводар лодфырва лдорфылвоа рлодфырва длорфылдвар лдофырав лдофырва лодыфвра',
-                _i:'https://cdn.vuetifyjs.com/images/cards/docks.jpg'
+                _m:'https://cdn.vuetifyjs.com/images/cards/docks.jpg'
               },
               {
                 _t:'Крок 1 ',
                 _s:'',
                 _d:' фываюлор флдывра дорфыдлваор лдфырвалдрдл офырвадлор фылдовра длорфылдовар длфырвалд орфыдловра рфыавлд орфлдыорва лдорфыалвр длфыра влодфрыдлвар длфыравдло рфыдлвар лдофырва лдорлдофырвалд рдлфоывра лдрфылдвра лдорфылдвар лдфырвалод рдлфоырва лдорфылодвар лодрфылводар лодфырва лдорфылвоа рлодфырва длорфылдвар лдофырав лдофырва лодыфвра',
-                _i:'https://cdn.vuetifyjs.com/images/cards/docks.jpg'
+                _m:'https://cdn.vuetifyjs.com/images/cards/docks.jpg'
               },
               {
                 _t:'Крок 1 ',
                 _s:'',
                 _d:' фываюлор флдывра дорфыдлваор лдфырвалдрдл офырвадлор фылдовра длорфылдовар длфырвалд орфыдловра рфыавлд орфлдыорва лдорфыалвр длфыра влодфрыдлвар длфыравдло рфыдлвар лдофырва лдорлдофырвалд рдлфоывра лдрфылдвра лдорфылдвар лдфsdvdfg sdfg sdfg sdfg sdfg sdfg dsfgырвалод рдлфоырва лдорфылодвар лодрфылводар лодфырва лдорфылвоа рлодфырва длорфылдвар лдофырав лдофырва лодыфвра',
-                _i:'https://cdn.vuetifyjs.com/images/cards/docks.jpg'
+                _m:'https://cdn.vuetifyjs.com/images/cards/docks.jpg'
               },
               {
                 _t:'Крок 1 ',
                 _s:'',
                 _d:' фываюлор флдывра дорфыдлваор лдфырвалдрдл офырвадлор фылдовра длорфылдовар длфырвалд орфыдловра рфыавлд орфлдыорва лдорфыалвр длфыра влодфрыдлвар длфыравдло рфыдлвар лдофырва лдорлдофырвалд рдлфоывра лдрфылдвра лдорфылдвар лдфырвалод рдлфоырва лдорфылодвар лодрфылводар лодфырва лдорфылвоа рлодфырва длорфылдвар лдофырав лдофырва лодыфвра',
-                _i:'https://cdn.vuetifyjs.com/images/cards/docks.jpg'
+                _m:'https://cdn.vuetifyjs.com/images/cards/docks.jpg'
               },
           ]
            // background image
