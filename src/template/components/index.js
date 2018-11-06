@@ -17,23 +17,23 @@ export {default as AppActionShare} from './Elements/AppAction/Shares.vue';
 
 
 // BLOCKS
-export {default as BHtmlText} from './PageSchema/Sections/Blocks/HtmlText.vue';
-export {default as BImage} from './PageSchema/Sections/Blocks/Image.vue';
-export {default as BTitle} from './PageSchema/Sections/Blocks/Title.vue';
-export {default as BList} from './PageSchema/Sections/Blocks/List.vue';
-export {default as BQa} from './PageSchema/Sections/Blocks/Qa.vue';
-export {default as BVideo} from './PageSchema/Sections/Blocks/Video.vue';
-export {default as BInstagram} from './PageSchema/Sections/Blocks/Instagram.vue';
-export {default as BFacebook} from './PageSchema/Sections/Blocks/Facebook.vue';
-export {default as BQuote} from './PageSchema/Sections/Blocks/Quote.vue';
-export {default as BExpert} from './PageSchema/Sections/Blocks/Expert.js';
-export {default as BService} from './PageSchema/Sections/Blocks/Service.vue';
-export {default as BPost} from './PageSchema/Sections/Blocks/Post.vue';
-export {default as BStep} from './PageSchema/Sections/Blocks/Step.vue';
-export {default as BLocation} from './PageSchema/Sections/Blocks/Location.vue';
+export {default as BHtmlText} from './PageSchema/Sections/Blocks/BHtmlText.vue';
+export {default as BImage} from './PageSchema/Sections/Blocks/BImage.vue';
+export {default as BTitle} from './PageSchema/Sections/Blocks/BTitle.vue';
+export {default as BList} from './PageSchema/Sections/Blocks/BList.vue';
+export {default as BQa} from './PageSchema/Sections/Blocks/BQa.vue';
+export {default as BVideo} from './PageSchema/Sections/Blocks/BVideo.vue';
+export {default as BInstagram} from './PageSchema/Sections/Blocks/BInstagram.vue';
+export {default as BFacebook} from './PageSchema/Sections/Blocks/BFacebook.vue';
+export {default as BQuote} from './PageSchema/Sections/Blocks/BQuote.vue';
+export {default as BExpert} from './PageSchema/Sections/Blocks/BExpert.js';
+export {default as BService} from './PageSchema/Sections/Blocks/BService.vue';
+export {default as BPost} from './PageSchema/Sections/Blocks/BPost.vue';
+export {default as BStep} from './PageSchema/Sections/Blocks/BStep.vue';
+export {default as BLocation} from './PageSchema/Sections/Blocks/BLocation.vue';
 
 // Section Type
-export {default as SectionWrap} from './PageSchema/Sections/Wrap.vue';
-export {default as SectionListWrap} from './PageSchema/Sections/ListWrap.vue';
+export {default as SectionWrap} from './PageSchema/Sections/SectionWrap.vue';
+export {default as SectionListWrap} from './PageSchema/Sections/SectionListWrap.vue';
 export {default as ListServices} from './PageSchema/Sections/Items/Services.vue';
 export {default as ListExperts} from './PageSchema/Sections/Items/Experts.vue';
