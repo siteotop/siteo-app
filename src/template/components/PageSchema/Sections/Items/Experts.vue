@@ -14,14 +14,9 @@
 <script>
 import ListExtend from './_extends/AutoList';
 
-import BExpert from '../Blocks/Expert.js';
-
 export default {
   extends: ListExtend,
   storeName: 'APP_EXPERTS',
-  components: {
-    BExpert
-  }
 }
 
 </script>

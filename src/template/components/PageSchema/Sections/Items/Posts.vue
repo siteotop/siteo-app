@@ -14,11 +14,8 @@
 
 <script>
 import ListExtend from './_extends/AutoList';
-import BPost from '../Blocks/Post.vue';
-
 export default {
   extends: ListExtend,
   storeName: 'APP_POSTS',
-  components: {BPost}
 }
 </script>

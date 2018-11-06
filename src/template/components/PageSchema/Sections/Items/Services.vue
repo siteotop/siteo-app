@@ -14,12 +14,9 @@
 
 <script>
 import ListExtend from './_extends/AutoList';
-import BService from '../Blocks/Service.vue';
 
 export default {
   extends: ListExtend,
   storeName: 'APP_SERVICES',
-
-  components: {BService }
 }
 </script>
