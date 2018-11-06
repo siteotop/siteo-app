@@ -2,14 +2,14 @@
 <v-card >
  <v-card-title class="headline pb-0">
   <AppIcon name="si-locations"></AppIcon>
-  {{prop._t}}
+  {{props._t}}
   <v-spacer></v-spacer>
  </v-card-title>
    <v-card-text>
       <span>{{props._ci}}, {{props._st}}, {{props._sn}}
       </span>
       <v-spacer></v-spacer>
-      {{prop._zi}}
+      {{props._zi}}
    </v-card-text>
  <v-card-actions>
   <AppAction
@@ -36,7 +36,7 @@
 
 export default {
   //extends: BTitleProps,
-  props: ['_ci', '_st', '_sn', '_zi', '_lat', '_lng' ]
+  props: [ '_t', '_ci', '_st', '_sn', '_zi', '_lat', '_lng' ]
 
 }
 </script>

@@ -1,7 +1,7 @@
 <template functional>
   <SectionListWrap :items="parent.$store.state.APP_INSTANCE.locations" :$bf="flexClass" $bl="row wrap fill-height">
     <template slot-scope="{item}">
-       <b-service
+       <b-location
         :_t="item.title"
         :_ci="item.city"
         :_st="item.street"
@@ -9,7 +9,7 @@
         :_zi="item.zipcode"
         :_lat="item.lat"
         :_lng="item.lng"
-        ></b-service>
+        ></b-location>
     </template>
   </SectionListWrap>
 </template>
