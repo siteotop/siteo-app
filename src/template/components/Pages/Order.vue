@@ -23,11 +23,10 @@
 
 <script>
 
-import AppActionLocations from '../Elements/AppAction/Locations.vue';
 
 export default {
   name: 'PageOrder',
-  components: {AppActionLocations},
+  //  components: {AppActionLocations},
   props: {
     typeAction: {
       type: String,

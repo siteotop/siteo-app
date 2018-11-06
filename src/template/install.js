@@ -3,7 +3,7 @@
 */
 import App from './components/App.vue';
 import basicRoutes from './components/routes';
-import * as components from './components/Elements';
+import * as components from './components';
 import ICONS from './icons';
 export default {
   install: function (Vue, options) {

@@ -5,7 +5,6 @@ import FunctionalSpeedDeal from './Functional/SpeedDeal.vue';
 import FunctionalShareWindow from './Functional/ShareWindow.vue';
 import PageToolbar from './Functional/PageToolbar.vue';
 
-import * as  Blocks from './Sections/Blocks/index.js';
 
 export default {
     mixins: [ Loader],
@@ -32,9 +31,7 @@ export default {
 
     },
 
-    components: {
-      ...Blocks
-    },
+   
 
     metaInfo () {
 

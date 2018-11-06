@@ -1,9 +1,7 @@
 import BaseProps from '../../Helper/base-props.js';
-import SectionListWrap from '../../Helper/SectionListWrap.vue';
 
 export default {
     extends: BaseProps,
-    components: {SectionListWrap},
 
     props: {
 

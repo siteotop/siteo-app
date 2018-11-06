@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import BaseProps from './base-props.js';
+import BaseProps from './Helper/base-props.js';
 
 export default {
    extends: BaseProps,
