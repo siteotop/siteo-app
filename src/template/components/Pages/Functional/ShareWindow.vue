@@ -30,12 +30,12 @@
            </v-text-field>
 
           <v-divider></v-divider>
-            <AppActionShare
+            <AppSharing
               :cannonical="canonicalUrl"
               :ogTitle="ogTitle"
-            
+
             >
-            </AppActionShare>
+            </AppSharing>
          </v-card-text>
 
          <v-divider></v-divider>
@@ -74,6 +74,8 @@
 
 <script>
 
+import AppSharing from './Share/index.vue';
+
 export default {
   props:{
     canonicalUrl: {
@@ -85,6 +87,7 @@ export default {
     }
   },
 
+  components: {AppSharing},
 
   data() {
       return {
