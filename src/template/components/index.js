@@ -7,18 +7,18 @@ export {default as AppPulseLoader} from './Elements/AppPulseLoader.vue';
 //export {default as AppAvatar} from 'core/components/AppAvatar.js';
 export {default as AppMessagesBlock} from './Elements/AppMessagesBlock.js';
 export {default as AppForm} from './Elements/AppForm';
-export {default as AppActionOrder} from './Elements/AppAction/Order.vue';
-export {default as AppActionRecall} from './Elements/AppAction/Recall.vue';
+
 export {default as AppCommonLinks} from './Elements/AppAction/CommonLinks.vue';
 export {default as AppActionCall} from './Elements/AppAction/Calls.vue';
 export {default as AppActionChat} from './Elements/AppAction/Chats.js';
 export {default as AppActionLinks} from './Elements/AppAction/Links.vue';
 export {default as AppActionList} from './Elements/AppAction/List.js';
-export {default as AppActionEmail} from './Elements/AppAction/Email.js';
+
 export {default as AppActionShare} from './Elements/AppAction/Shares.vue';
 
 
 // BLOCKS
+
 export {default as BHtmlText} from './PageSchema/Sections/Blocks/BHtmlText.vue';
 export {default as BImage} from './PageSchema/Sections/Blocks/BImage.vue';
 export {default as BTitle} from './PageSchema/Sections/Blocks/BTitle.vue';
@@ -33,6 +33,9 @@ export {default as BService} from './PageSchema/Sections/Blocks/BService.vue';
 export {default as BPost} from './PageSchema/Sections/Blocks/BPost.vue';
 export {default as BStep} from './PageSchema/Sections/Blocks/BStep.vue';
 export {default as BLocation} from './PageSchema/Sections/Blocks/BLocation.vue';
+export {default as BFormEmail} from './PageSchema/Sections/Blocks/BFormEmail.js';
+export {default as BFormOrder} from './PageSchema/Sections/Blocks/BFormOrder.vue';
+export {default as BFormRecall} from './PageSchema/Sections/Blocks/BFormRecall.vue';
 
 // Section Type
 export {default as SectionWrap} from './PageSchema/Sections/SectionWrap.vue';

@@ -2,7 +2,7 @@
 
 export default {
   functional: true,
-  name: 'AppFormOrder',
+  name: 'BFormOrder',
   props: ['formAction'],
   render(h, context) {
       var structure =  context.parent.$store.state.APP_INSTANCE.design.AppFormOrder.children;

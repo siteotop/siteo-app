@@ -9,7 +9,14 @@
 export default {
   name: 'PageOrder',
   //  components: {AppActionLocations},
-
+  mapComponents: {
+     locations: 'AutoLocations',
+     order: 'BFormOrder',
+     recall: 'BFormRecall',
+     call: 'AppActionCall',
+     chat: 'AppActionChat',
+     links: 'AppActionLinks'
+  },
 
   props: {
     typeAction: {
@@ -20,14 +27,8 @@ export default {
 
   computed: {
     structure() {
-      var bls = [], nameAction='';
-
-      if (this.typeAction =='locations') {
-         nameAction = 'AutoLocations';
-      } else {
-        nameAction = 'app-action-'+this.typeAction;
-      }
-
+      var bls = [], nameAction=this.$options.mapComponents[this.typeAction];
+      console.log(nameAction);
       if (this.typeAction) {
         bls =  [
 

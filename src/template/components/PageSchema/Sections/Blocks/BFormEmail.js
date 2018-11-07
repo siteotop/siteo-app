@@ -1,7 +1,7 @@
 
 export default {
   functional: true,
-  name: 'AppFormRecall',
+  name: 'BFormEmail',
   props: ['formAction'],
   render(h, context) {
     return  h('AppForm', {
