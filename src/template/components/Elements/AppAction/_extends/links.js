@@ -28,9 +28,9 @@ export default {
   },
 
   render (h) {
-      return h('AppCommonLinks', {
+      return h('BLinks', {
         props: {
-          collectLinks: this.collectLinks,
+          items: this.collectLinks,
           vList: this.vList,
           actionType: this.actionType
       }});

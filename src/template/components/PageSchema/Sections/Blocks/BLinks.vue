@@ -1,7 +1,7 @@
 <template functional>
   <v-list v-if="props.vList" two-line>
 
-          <v-list-tile v-for="(LINK, index) in props.collectLinks"  @click="" :key="index" >
+          <v-list-tile v-for="(LINK, index) in props.items"  @click="" :key="index" >
             <v-list-tile-action>
               <v-avatar
                 :color="LINK.color"
@@ -17,7 +17,7 @@
             </v-list-tile-content>
 
             <v-list-tile-action >
-               <component :is="props.AppActionCallChat"
+               <component :is="$options.CallChatButton"
 
                  :hrefService="LINK.href"
                  :icon="props.actionType"
@@ -27,9 +27,9 @@
   </v-list>
   <div v-else>
     <v-tooltip top lazy
- v-for="(LINK, index) in  props.collectLinks" :key="index">
+ v-for="(LINK, index) in  props.items" :key="index">
       <component slot="activator"
-        :is="props.AppActionCallChat"
+        :is="$options.CallChatButton"
 
         :color="LINK.color"
         :icon="LINK.icon"
@@ -42,27 +42,59 @@
 
 <script>
 
-import AppActionCallChat from './CallChat';
+const CallChatButton = {
+  functional: true,
+  props: {
+
+      color: {
+        type: String,
+        default: 'grey'
+      },
+
+      hrefService:{
+        type: String,
+        default: ''
+      },
+
+      icon: {
+        type: String,
+        default: 'chat'
+      }
+  },
+
+  render(h, context) {
+    return h('AppAction', {
+        props: {
+          color: context.props.color,
+          ripple: true,
+          fab: true,
+          flat: true,
+          outline: true,
+          large:  false,
+          hideText:true,
+          siicon:'si-'+ context.props.icon
+        },
+        attrs: {
+          href: context.props.hrefService,
+          target:"_blank"
+        }
+
+    });
+
+  }
+};
 
 
 export default {
 
+  CallChatButton: CallChatButton,
 
   props: {
 
-     AppActionCallChat: {
-      type: Object,
-      default: function () {
-        return AppActionCallChat;
-      }
-     },
-
-     collectLinks: {
+     items: {
        type: [Boolean, Array],
        default: false
      },
-
-
 
      actionType: {
         type: String,

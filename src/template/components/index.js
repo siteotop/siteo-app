@@ -8,7 +8,6 @@ export {default as AppPulseLoader} from './Elements/AppPulseLoader.vue';
 export {default as AppMessagesBlock} from './Elements/AppMessagesBlock.js';
 export {default as AppForm} from './Elements/AppForm';
 
-export {default as AppCommonLinks} from './Elements/AppAction/CommonLinks.vue';
 export {default as AppActionCall} from './Elements/AppAction/Calls.vue';
 export {default as AppActionChat} from './Elements/AppAction/Chats.js';
 export {default as AppActionLinks} from './Elements/AppAction/Links.vue';
@@ -36,6 +35,8 @@ export {default as BLocation} from './PageSchema/Sections/Blocks/BLocation.vue';
 export {default as BFormEmail} from './PageSchema/Sections/Blocks/BFormEmail.js';
 export {default as BFormOrder} from './PageSchema/Sections/Blocks/BFormOrder.vue';
 export {default as BFormRecall} from './PageSchema/Sections/Blocks/BFormRecall.vue';
+export {default as BLinks} from './PageSchema/Sections/Blocks/BLinks.vue';
+
 
 // Section Type
 export {default as SectionWrap} from './PageSchema/Sections/SectionWrap.vue';
