@@ -1,5 +1,5 @@
 <template functional>
-  <component :is="props.$co||'v-container'" :id="props._$" fluid  v-bind="{'v-container': { tag: 'section'}, 'v-img':{height:props.$he, src: props._p, gradient: props.$gr  }, 'v-parallax':{height:props.$he, src: props._p}}[props.$co]" :class="props.$tc+(parent.$vuetify.breakpoint.smAndDown? ' pa-1': '' )" >
+  <component :is="props.$co||'v-container'" :id="props._$" fluid  v-bind="{'v-container': { tag: 'section'}, 'v-img':{height:props.$he, src: props._p, gradient: props.$gr  }, 'v-parallax':{height:props.$he, alt:props._t, src: props._p}}[props.$co]" :class="props.$tc+(parent.$vuetify.breakpoint.smAndDown? ' pa-1': '' )" >
     <v-layout  column  v-if="props._t||props._d" :class="props.$tl">
       <v-flex>
         <component :is="'h'+props.$ht" v-if="props._t" :class="props.$_t+  (parent.$vuetify.breakpoint.smAndDown?' display-1': '' )">{{props._t}}</component>
