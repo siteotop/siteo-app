@@ -9,9 +9,9 @@ export default {
     }
   },
 
-  
+
   render(h, context){
-      return h('AppActionCall', {props: {vList: context.props.vList, actionType: 'chat'}});
+      return h('AutoCalls', {props: {vList: context.props.vList, actionType: 'chat'}});
   }
 
 }

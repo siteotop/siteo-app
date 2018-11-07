@@ -261,11 +261,11 @@ var _PRERENDER = {
           $bf: 'md6 text-xs-center align-center',
           $bls: [
             {
-              _n: 'AppActionChat'
+              _n: 'AutoChats'
             },
 
             {
-              _n: 'AppActionCall'
+              _n: 'AutoCalls'
             },
 
           ]
@@ -282,7 +282,7 @@ var _PRERENDER = {
           $bf: 'md12 text-xs-center',
           $bls: [
             {
-              _n: 'AppActionLinks'
+              _n: 'AutoLinks'
             }
           ]
         }

@@ -2,7 +2,7 @@
 
 <script>
 import Colors from './_helper/colors';
-import ExtendLinks from './_extends/links';
+import ExtendLinks from './_extends/AutoLinks';
 
 export default {
 

@@ -13,9 +13,9 @@ export default {
      locations: 'AutoLocations',
      order: 'BFormOrder',
      recall: 'BFormRecall',
-     call: 'AppActionCall',
-     chat: 'AppActionChat',
-     links: 'AppActionLinks'
+     call: 'AutoCalls',
+     chat: 'AutoChats',
+     links: 'AutoLinks'
   },
 
   props: {

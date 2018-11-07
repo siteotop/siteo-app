@@ -3,7 +3,7 @@
   <v-container >
    <v-layout >
       <v-flex xs12 text-xs-center class="subheading" >
-        <AppActionLinks></AppActionLinks>
+        <AutoLinks></AutoLinks>
       </v-flex>
     </v-layout>
   </v-container>

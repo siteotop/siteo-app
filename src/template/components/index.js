@@ -35,8 +35,8 @@ export {default as BFormOrder} from './PageSchema/Sections/Blocks/BFormOrder.vue
 export {default as BFormRecall} from './PageSchema/Sections/Blocks/BFormRecall.vue';
 export {default as BLinks} from './PageSchema/Sections/Blocks/BLinks.vue';
 
-export {default as AutoCall} from './PageSchema/Sections/Items/AutoCalls.vue';
-export {default as AutoChat} from './PageSchema/Sections/Items/AutoChats.js';
+export {default as AutoCalls} from './PageSchema/Sections/Items/AutoCalls.vue';
+export {default as AutoChats} from './PageSchema/Sections/Items/AutoChats.js';
 export {default as AutoLinks} from './PageSchema/Sections/Items/AutoLinks.vue';
 
 // Section Type
