@@ -26,7 +26,7 @@
           </v-list-tile>
   </v-list>
   <div v-else>
-    <v-tooltip top
+    <v-tooltip top lazy
  v-for="(LINK, index) in  props.collectLinks" :key="index">
       <component slot="activator"
         :is="props.AppActionCallChat"

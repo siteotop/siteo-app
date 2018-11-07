@@ -46,7 +46,7 @@ export default {
         if (!context.props.block) {
         return actionsList.map(function(action) {
 
-            return h('v-tooltip', {props: {top:true}}, [
+            return h('v-tooltip', {props: {top:true, lazy:true}}, [
               h('AppAction', {
                 slot:"activator",
                 props: {
