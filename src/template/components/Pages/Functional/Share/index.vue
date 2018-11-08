@@ -58,8 +58,8 @@ export default {
         return h('BLinks', {
           props: {
             items: this.collectLinks,
-            vList: this.vList,
-            actionType: this.actionType
+            $vl: this.$vl,
+          
         }});
 
     }

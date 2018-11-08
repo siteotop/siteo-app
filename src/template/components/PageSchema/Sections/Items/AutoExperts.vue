@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import ListExtend from './_extends/AutoList';
+import ListExtend from './_extends/List';
 
 export default {
   extends: ListExtend,

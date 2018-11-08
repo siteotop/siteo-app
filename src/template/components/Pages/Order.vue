@@ -8,7 +8,23 @@
 
 export default {
   name: 'PageOrder',
-  //  components: {AppActionLocations},
+
+  components: {
+      'AutoChats': {
+         functional: true,
+         render(h, context) {
+            return h('AutoContacts', {props: {$vl: true,$clp: {outline:true, siicon: 'si-chat' } }})
+         }
+      },
+
+      'AutoCalls': {
+         functional: true,
+         render(h, context) {
+            return h('AutoContacts', {props: {$vl: true, $t: 'call',$clp: {outline:true, siicon: 'si-call' } }})
+         }
+      }
+  },
+
   mapComponents: {
      locations: 'AutoLocations',
      order: 'BFormOrder',
@@ -33,7 +49,7 @@ export default {
         bls =  [
 
           {
-            _n:'AppActionList',
+            _n:'AutoActions',
             _props: {
               active: this.typeAction
             }
@@ -43,14 +59,14 @@ export default {
             _n:nameAction,
             $bf: 'sm8 md6',
             _props: {
-                vList: true
+                $vl: true
             }
           }
         ];
       } else {
         bls = [
           {
-            _n:'OrderActionButtons',
+            _n:'AutoActions',
             _props: {
               block:true
             }

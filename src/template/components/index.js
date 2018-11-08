@@ -1,21 +1,17 @@
-export {default as PageSchema} from './PageSchema';
-
+// Global Elements
 export {default as AppAction} from './Elements/AppAction/';
 export {default as AppIcon} from './Elements/AppIcon';
 export {default as AppVBtnMobile} from './Elements/AppVBtnMobile.js';
 export {default as AppPulseLoader} from './Elements/AppPulseLoader.vue';
-//export {default as AppAvatar} from 'core/components/AppAvatar.js';
 export {default as AppMessagesBlock} from './Elements/AppMessagesBlock.js';
 export {default as AppForm} from './Elements/AppForm';
 
+// Section Type
+export {default as PageSchema} from './PageSchema';
+export {default as SectionWrap} from './PageSchema/Sections/SectionWrap.vue';
+export {default as SectionListWrap} from './PageSchema/Sections/SectionListWrap.vue';
 
-export {default as AppActionList} from './Elements/AppAction/List.js';
-
-
-
-
-// BLOCKS
-
+// BLOCKS FOR PAGE
 export {default as BHtmlText} from './PageSchema/Sections/Blocks/BHtmlText.vue';
 export {default as BImage} from './PageSchema/Sections/Blocks/BImage.vue';
 export {default as BTitle} from './PageSchema/Sections/Blocks/BTitle.vue';
@@ -35,13 +31,10 @@ export {default as BFormOrder} from './PageSchema/Sections/Blocks/BFormOrder.vue
 export {default as BFormRecall} from './PageSchema/Sections/Blocks/BFormRecall.vue';
 export {default as BLinks} from './PageSchema/Sections/Blocks/BLinks.vue';
 
-export {default as AutoCalls} from './PageSchema/Sections/Items/AutoCalls.vue';
-export {default as AutoChats} from './PageSchema/Sections/Items/AutoChats.js';
+//AUTO BLOCKS FOR PAGE
+export {default as AutoContacts} from './PageSchema/Sections/Items/AutoContacts.vue';
 export {default as AutoLinks} from './PageSchema/Sections/Items/AutoLinks.vue';
-
-// Section Type
-export {default as SectionWrap} from './PageSchema/Sections/SectionWrap.vue';
-export {default as SectionListWrap} from './PageSchema/Sections/SectionListWrap.vue';
+export {default as AutoActions} from './PageSchema/Sections/Items/AutoActions.vue';
 export {default as AutoServices} from './PageSchema/Sections/Items/AutoServices.vue';
 export {default as AutoExperts} from './PageSchema/Sections/Items/AutoExperts.vue';
 export {default as AutoLocations} from './PageSchema/Sections/Items/AutoLocations.vue';

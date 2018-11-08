@@ -4,6 +4,7 @@
         aspect-ratio="1.77"
         class="white--text"
         :src="props._m"
+        :alt="props._t"
       >
         <v-container fill-height fluid>
           <v-layout fill-height>

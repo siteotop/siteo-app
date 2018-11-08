@@ -101,6 +101,7 @@ var _APP_INSTANCE = {
     {
       url_id: '380939979490',
       type: 'phone',
+      title: '',
       call: true,
       chat: true,
       confirm: true,
@@ -111,6 +112,7 @@ var _APP_INSTANCE = {
     {
       url_id: 'dmytro.diachuck',
       type: 'skype',
+      title: '',
       call: true,
       chat: true,
       confirm: true,
@@ -120,6 +122,7 @@ var _APP_INSTANCE = {
     {
       url_id: '380939979490',
       type: 'viber',
+      title: '',
       call: true,
       chat: true,
       confirm: true,
@@ -129,6 +132,7 @@ var _APP_INSTANCE = {
     {
       url_id: '380939979490',
       type: 'whatsapp',
+      title: '',
       call: true,
       chat: true,
       confirm: true,
@@ -138,6 +142,7 @@ var _APP_INSTANCE = {
     {
       url_id: 'nickname',
       type: 'telegram',
+      title: '',
       call: false,
       chat: true,
       confirm: true,
@@ -148,6 +153,7 @@ var _APP_INSTANCE = {
     {
       url_id: 'nickname',
       type: 'messenger',
+      title: '',
       call: true,
       chat: true,
       confirm: true,
@@ -158,6 +164,7 @@ var _APP_INSTANCE = {
     {
       url_id: 'vavilon2@gmail.com',
       type: 'email',
+      title: 'Написать',
       call: false,
       chat: true,
       confirm: true,

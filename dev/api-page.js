@@ -33,8 +33,8 @@ var _PRERENDER = {
             {
               _n:'AppAction',
               _props: {
-                _at: 'Action Text',  //
-                _ah: 'Action Href',  //
+                _at: 'Action Text',
+
               }
             },
 
@@ -148,7 +148,7 @@ var _PRERENDER = {
               _n:'AppAction',
               _props: {
                 _at: 'Action Text',  //
-                _ah: 'Action Href',  //
+                //_ah: 'Action Href',  //
               }
             }
           ]
@@ -261,11 +261,18 @@ var _PRERENDER = {
           $bf: 'md6 text-xs-center align-center',
           $bls: [
             {
-              _n: 'AutoChats'
+              _n: 'AutoContacts',
+              _props: {
+                $t: 'call',
+                $clp: {
+                  fab: true
+                }
+              }
             },
 
             {
-              _n: 'AutoCalls'
+              _n: 'AutoContacts',
+
             },
 
           ]
@@ -475,6 +482,7 @@ var _PRERENDER = {
           $bls: [
             {
               _n: 'AppAction',
+
 
             }
           ]

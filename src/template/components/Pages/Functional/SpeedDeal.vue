@@ -5,7 +5,7 @@
        fixed
        right
        bottom
-
+       transition="slide-y-reverse-transition"
      >
        <v-btn
          slot="activator"
@@ -19,7 +19,7 @@
           <AppIcon v-if="fab" name="si-close"></AppIcon>
 
        </v-btn>
-       <AppActionList></AppActionList>
+       <AutoActions></AutoActions>
      </v-speed-dial>
 </v-fab-transition>
 </template>

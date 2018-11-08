@@ -31,28 +31,12 @@
 
 <script>
 import BaseProps from './Helper/base-props.js';
+import ListProps from './Helper/list-props.js';
 
 export default {
    extends: BaseProps,
-   props: {
-     $cl: { // component list. component  which using in all $bls list (only this component)
-       type: [Boolean, String],
-       default: false
-     },
+   mixins: [ListProps]
 
-     $clp: { // component list props.  if component has $cl will be use this
-         type: Object,
-         default: function () {return {};}
-     },
-
-     items: {
-       type: Array,
-       default: function () {
-         return [];
-       }
-     }
-
-   }
 }
 
 

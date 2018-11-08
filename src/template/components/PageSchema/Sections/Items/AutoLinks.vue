@@ -2,24 +2,19 @@
 
 <script>
 import Colors from './_helper/colors';
-import ExtendLinks from './_extends/AutoLinks';
+import ExtendLinks from './_extends/Links';
 
 export default {
 
   extends: ExtendLinks,
-  defaultAPPProperty: 'links',
-  props: {
-      actionType: {
-         type: String,
-         default: 'openurl'
-      }
-  },
+
   computed: {
 
         collectLinks() {
           var new_array = [];
-          for (var i in this.services)  {
-             var service = this.services[i];
+          var services= this.$store.state.APP_INSTANCE.links;
+          for (var i in services)  {
+             var service = services[i];
               new_array.push({
                   href: service.href,
                   color: Colors[service.type] || '',

@@ -1,5 +1,7 @@
 /**
   Button for all actions on Siteo
+  Default AppAction go to order  /go/order
+  when sombody click to action we call  statistic event
 */
 
 export default {
@@ -8,6 +10,10 @@ export default {
   functional: true,
   name: 'AppAction',
   wrapped:'v-btn',
+
+  /*
+    props: [ '_at', 'title']
+  */
 
   render(h, context) {
     var
@@ -20,32 +26,33 @@ export default {
     if (context.props.small  ) {
       context.props.large = false;
     }
-    if (context.props.href ) {
+    if (context.props.href) {
+        //console.log(context);
       context.props.to = '';
     }
+
     return   h('v-btn', {
       props: {
         color: 'accent',
         light:true,
-        to: {name: 'order', params: {typeAction: 'order'}},
         large: true,
+        to: {name: 'order', params: {typeAction: 'order'}},
         ...design,
-        ...context.props}  ,
-      //class: ['black--text'],
+        ...context.props },
+      attrs: context.data.attrs,
       on: {
         click: function (event) {
-            console.log(' here send statistic for ');
-           //context.parent.$router.push({name: 'order'});
+            console.log(' here send statistic');
         },
 
-        ...context.listeners
+        //...context.listeners
 
       }
     },
       [
         h('AppIcon', {attrs: {name:context.props.siicon||'si-order'}}),
 
-          !context.props.hideText? (context.props._at|| context.parent.$store.state.APP_INSTANCE.data.actionText): '',
+          (!context.props.fab)? (context.props._at || context.parent.$store.state.APP_INSTANCE.data.actionText): '',
       ]
    )
 

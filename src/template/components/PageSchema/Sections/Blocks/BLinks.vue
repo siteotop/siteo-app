@@ -1,5 +1,5 @@
 <template functional>
-  <v-list v-if="props.vList" two-line>
+  <v-list v-if="props.$vl" two-line>
 
           <v-list-tile v-for="(LINK, index) in props.items"  @click="" :key="index" >
             <v-list-tile-action>
@@ -17,96 +17,33 @@
             </v-list-tile-content>
 
             <v-list-tile-action >
-               <component :is="$options.CallChatButton"
+              <AppAction :fab="true"
+                :href="LINK.href"
+                :_at="LINK.title"
+                v-bind="Object.assign({fab:true, large:false} , props.$clp)  "
+                >
+              </AppAction>
 
-                 :hrefService="LINK.href"
-                 :icon="props.actionType"
-                ></component>
             </v-list-tile-action>
           </v-list-tile>
   </v-list>
   <div v-else>
     <v-tooltip top lazy
  v-for="(LINK, index) in  props.items" :key="index">
-      <component slot="activator"
-        :is="$options.CallChatButton"
-
-        :color="LINK.color"
-        :icon="LINK.icon"
-        :hrefService="LINK.href"
-        ></component>
+    <slot v-bind:item="LINK">
+      <AppAction slot="activator"
+        v-bind="Object.assign({_at:LINK.title,  href:LINK.href, color:LINK.color, dark: true, siicon:'si-'+LINK.icon  }, props.$clp)"
+        ></AppAction>
         <span>{{LINK.subtitle}}</span>
+      </slot>
     </v-tooltip>
   </div>
 </template>
 
 <script>
-
-const CallChatButton = {
-  functional: true,
-  props: {
-
-      color: {
-        type: String,
-        default: 'grey'
-      },
-
-      hrefService:{
-        type: String,
-        default: ''
-      },
-
-      icon: {
-        type: String,
-        default: 'chat'
-      }
-  },
-
-  render(h, context) {
-    return h('AppAction', {
-        props: {
-          color: context.props.color,
-          ripple: true,
-          fab: true,
-          flat: true,
-          outline: true,
-          large:  false,
-          hideText:true,
-          siicon:'si-'+ context.props.icon
-        },
-        attrs: {
-          href: context.props.hrefService,
-          target:"_blank"
-        }
-
-    });
-
-  }
-};
-
-
+import ListProps from '../Helper/list-props.js';
 export default {
-
-  CallChatButton: CallChatButton,
-
-  props: {
-
-     items: {
-       type: [Boolean, Array],
-       default: false
-     },
-
-     actionType: {
-        type: String,
-        default: 'call'
-     },
-
-     vList: {
-       type: Boolean,
-       default: false
-     },
-  }
-
+  extends:ListProps
 
 }
 

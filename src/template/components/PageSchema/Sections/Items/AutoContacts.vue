@@ -3,26 +3,32 @@
 <script>
 import Messengers from './_helper/messengers';
 import Colors from './_helper/colors';
-import ExtendLinks from './_extends/AutoLinks';
+import ExtendLinks from './_extends/Links';
 
 export default {
   extends: ExtendLinks,
-  defaultAPPProperty: 'contacts',
+  props: {
+      $t: {
+         type: String,
+         default: 'chat'
+      },
+  },
 
   computed: {
 
       collectLinks() {
         var new_array = [];
-        for (var i in this.services)  {
-           var service = this.services[i];
-            if (service[this.actionType]) {
+        var services =this.$store.state.APP_INSTANCE.contacts;
+        for (var i in services )  {
+           var service = services [i];
+            if (service[this.$t]) {
 
                 new_array.push({
                     href: this.getHrefForService(service),
                     color: Colors[service.type] || '',
                     icon:  service.type,
-                    title: service.url_id,
-                    subtitle: service.type,
+                    title: service.title|| service.type,
+                    subtitle: service.url_id ,
                  });
 
             }
