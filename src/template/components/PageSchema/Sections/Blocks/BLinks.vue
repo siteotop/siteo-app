@@ -20,7 +20,7 @@
               <AppAction :fab="true"
                 :href="LINK.href"
                 :_at="LINK.title"
-                v-bind="Object.assign({fab:true, large:false} , props.$clp)  "
+                v-bind="Object.assign({fab:true, large:false} , props.$clp)"
                 >
               </AppAction>
 
@@ -34,7 +34,7 @@
       <AppAction slot="activator"
         v-bind="Object.assign({_at:LINK.title,  href:LINK.href, color:LINK.color, dark: true, siicon:'si-'+LINK.icon  }, props.$clp)"
         ></AppAction>
-        <span>{{LINK.subtitle}}</span>
+        <span>{{LINK.title}}</span>
       </slot>
     </v-tooltip>
   </div>
