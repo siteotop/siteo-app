@@ -43,8 +43,7 @@ import './style/animations.scss';
 import './style/common.css'
 
 
-/**ICONS*/
-import IconsRegister from  './icons/register.js';
+
 
 /** SiteoInstall Function  */
 
@@ -110,13 +109,7 @@ export const SiteoCoreInstall = function (APP_INSTANCE, appDns, template,   plug
      }
     );
 
-    // Connect Icon.Register
-    template.coreVue.IconsRegister = IconsRegister;
-    if (template.icons) {
-      IconsRegister(template.icons)
-    } else {
-      IconsRegister(template.icons)
-    }
+
 
 
     // add plugins

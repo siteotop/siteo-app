@@ -1,6 +1,8 @@
 /**
   main object for template
 */
+/**ICONS*/
+import IconsRegister from  './icons/register.js';
 import App from './components/App.vue';
 import basicRoutes from './components/routes';
 import * as components from './components';
@@ -11,11 +13,13 @@ export default {
     for (let NameComponent in components) {
        Vue.component(NameComponent, components[NameComponent] );
     }
+
+   IconsRegister(ICONS)
   },
 
   routes: basicRoutes,
-  coreVue: App,
-  icons: ICONS,
+  coreVue: App
+
   //store: {}
 
 }
