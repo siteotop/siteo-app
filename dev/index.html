@@ -16,7 +16,17 @@
 
     <script  type="text/javascript" src="/api.js"></script>
     <script  type="text/javascript" src="/api-page.js"></script>
-    <link rel="stylesheet" href="/dist/siteo-template.css" type="text/css">
+    <link rel="stylesheet" href="/dist/core.css" type="text/css">
+    <link rel="stylesheet" href="/dist/template.css" type="text/css">
+    <script  type="text/javascript" src="/dist/siteo-core.js"></script>
     <script  type="text/javascript" src="/dist/siteo-template.js"></script>
+    <script>
+        console.log(Siteo);
+        Siteo.core.start(
+          _APP_INSTANCE,
+          _APP_DOMAIN,
+          Siteo.template.default
+        );
+    </script>
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
   </html>

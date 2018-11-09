@@ -48,7 +48,8 @@ module.exports = {
     // index without template
   //  'siteo-core': './src/core.js',
     // index with template
-    'siteo-template': './src/template.js',
+    'core': './src/core/index.js',
+    'template': './src/template/install.js',
     // index with template admin
   //  'siteo-template-admin': './src/template-admin.js',
 
@@ -57,8 +58,9 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../' + DIR_RESOURCE),
     publicPath: 'dist/',
-    filename: '[name].js',
-
+    filename: 'siteo-[name].js',
+    library: ["Siteo", "[name]"],
+		libraryTarget: "umd"
 
   },
 
@@ -127,7 +129,7 @@ optimization: {
       'vuex': 'vuex/dist/vuex.esm.js',
       'axios': 'axios/dist/axios.js',
       'scriptjs': 'scriptjs/dist/script.js',
-      
+
 
 
     }

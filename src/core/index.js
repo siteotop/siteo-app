@@ -60,7 +60,7 @@ import './style/common.css'
 import VeeValidate from 'vee-validate';
 
 
-export const SiteoCoreInstall = function (APP_INSTANCE, appDns, template,   plugins ) {
+export const start = function (APP_INSTANCE, appDns, template,   plugins ) {
 
    //console.log(data);
    //start Vuetify
