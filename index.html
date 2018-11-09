@@ -20,10 +20,13 @@
     <link rel="stylesheet" href="https://siteotop.github.io/siteo-template/dist/template.css" type="text/css">
     <script  type="text/javascript" src="https://siteotop.github.io/siteo-template/dist/siteo-core.js"></script>
     <script  type="text/javascript" src="https://siteotop.github.io/siteo-template/dist/siteo-template.js"></script>
+    <script  type="text/javascript" src="https://siteotop.github.io/siteo-template/dist/locale/en.js"></script>
+
     <script>
         _APP_INSTANCE.configs.path = '/siteo-template/'
         Siteo.core.start(
           _APP_INSTANCE,
+          SiteoLocal[_APP_INSTANCE.configs.lang],
           Siteo.template.default
         );
     </script>

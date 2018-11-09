@@ -13,7 +13,7 @@ Vue.use(Meta);
 /**I18N */
 import VueI18n from 'vue-i18n';
 Vue.use(VueI18n);
-import messages from './i18n';
+
 
 /**ROUTER
    create Routing for every APP
@@ -60,9 +60,9 @@ import './style/common.css'
 import VeeValidate from 'vee-validate';
 
 
-export const start = function (APP_INSTANCE, template,   plugins ) {
+export const start = function (APP_INSTANCE, messages, template,    plugins ) {
 
-   //console.log(data);
+
    //start Vuetify
    Vue.use(Vuetify, {
      theme:  APP_INSTANCE.design? APP_INSTANCE.design.theme.colors:{}
@@ -104,7 +104,7 @@ export const start = function (APP_INSTANCE, template,   plugins ) {
       */
       inject: false,
 
-      dictionary: messages.validation,
+      dictionary: messages.validation||false,
       local: APP_INSTANCE.configs.lang
      }
     );
