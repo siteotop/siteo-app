@@ -141,7 +141,7 @@ optimization: {
               Plugin create manifest.json file
             */
           //  new ManifestPlugin({fileName: name_manifet_file, publicPath: ''}),
-            new CleanWebpackPlugin([DIR_RESOURCE], {root:path.resolve(__dirname, '../')}),
+            new CleanWebpackPlugin([DIR_RESOURCE], {root:path.resolve(__dirname, '../'), exclude: ['locale']}),
             //new CleanWebpackPlugin(['static'], {root:path.resolve(__dirname, 'example/dist')}),
 
             new webpack.DefinePlugin({
