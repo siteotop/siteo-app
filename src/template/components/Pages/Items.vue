@@ -8,11 +8,17 @@
 
 
    <v-btn-toggle mandatory v-model="toogle_component">
+
+
+              <v-btn flat value="cards">
+                   <AppIcon name="si-view-cards"></AppIcon>
+              </v-btn>
+              <v-btn flat value="card">
+                  <AppIcon name="si-view-card"></AppIcon>
+              </v-btn>
+
               <v-btn flat value="list">
                   <AppIcon name="si-services"></AppIcon>
-              </v-btn>
-              <v-btn flat value="cards">
-                  <AppIcon name="si-view-cards"></AppIcon>
               </v-btn>
   </v-btn-toggle>
 

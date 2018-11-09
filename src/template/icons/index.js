@@ -46,7 +46,8 @@ import {
   mdiBookmark,
   mdiDotsVertical,
   mdiGithubBox,
-  mdiFormatQuoteOpen
+  mdiFormatQuoteOpen,
+  mdiViewAgenda
 
 
 
@@ -115,7 +116,8 @@ export default {
     // services
     'si-sort': mdiSortVariant,
     'si-filter':   mdiFilterVariant,
-    'si-view-cards': mdiViewModule
+    'si-view-cards': mdiViewModule,
+    'si-view-card': mdiViewAgenda
 
 
 

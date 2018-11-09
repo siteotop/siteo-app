@@ -10,7 +10,7 @@ export default {
         default: 'row wrap fill-height'
       },
 
-      toogleComponent: {
+      toogleComponent: { // variants ['list', 'cards', 'card' ]
         type: String,
         default: 'cards'
       },
@@ -46,7 +46,7 @@ export default {
         },
 
         flexClass() {
-          if (this.toogleComponent == 'list') {
+          if (this.toogleComponent == 'list'||this.toogleComponent == 'card') {
             return '  xs12 ';
           } else {
             return 'd-flex xs12 sm6 ' + 'md4'
