@@ -1,30 +1,29 @@
-var _APP_DOMAIN ={
 
-   "active":{
+var _APP_INSTANCE = {
+
+  configs: {
      "host":"siteo.top",
      "path":"\/",
      "lang":"en",
-     "state":"reserved"
-     }
-   };
+     "state":"reserved",
+     recaptcha: '6LdRBCAUAAAAAD1G95xZfHvPD_-3VLijXfa-48Xm',
+  },
 
-
-var _APP_INSTANCE = {
- data:{
-   _id:152710249031417,
-   pid:"7rL5Q4LRdk",
-   name:"Site Name",
-   title:"Title Website",
-   slogan:"Slogan of Website",
-   actionText:"Call to action",
-   description:"This service help you find what you need. We help yuo bla bla bla. This service help you find what you need. We help yuo bla bla bla. This service help you find what you need. We help yuo bla bla bla. This service help you find what you need. We help yuo bla bla bla. ",
-   domain:"",
-   templates_id:"1532775890",
-   pages_id: '1532775891',
-   countryAlpha2:"UA",
-   lang:"uk",
-   design:false
- },
+   data:{
+     _id:152710249031417,
+     pid:"7rL5Q4LRdk",
+     name:"Site Name",
+     title:"Title Website",
+     slogan:"Slogan of Website",
+     actionText:"Call to action",
+     description:"Description for Website or Project. This text using in footer or in some lists. It is not longer. Shortly message for customer about your business.",
+     domain:"",
+     templates_id:"1532775890",
+     pages_id: '1532775891',
+     countryAlpha2:"UA",
+     lang:"uk",
+     design:false
+   },
 
  links: [
    {
@@ -174,12 +173,6 @@ var _APP_INSTANCE = {
 
  ],
 
-
-
- configs: {
-    recaptcha: '6LdRBCAUAAAAAD1G95xZfHvPD_-3VLijXfa-48Xm',
-
- },
 
  "design":{
    "theme":{

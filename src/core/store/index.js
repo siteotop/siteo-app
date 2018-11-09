@@ -11,10 +11,9 @@ import { actions}  from './helpers/api-actions';
 /**
   @param Vue
   @param APP_INSTANCE - website structure
-  @param appDns - some additional  settings for  website
 
 */
-export default function (Vue, APP_INSTANCE, appDns )  {
+export default function (Vue, APP_INSTANCE)  {
        Vue.use(Vuex);
        var store =  new Vuex.Store({
          state: {
@@ -40,7 +39,7 @@ export default function (Vue, APP_INSTANCE, appDns )  {
              }
          },
          modules: {
-           APP_INSTANCE: createInstance (APP_INSTANCE, appDns ),
+           APP_INSTANCE: createInstance (APP_INSTANCE),
            APP_PAGE: createStorePage('WEBSITE_API_URL'),
 
            //APP_EXPERTS: createExperts ('WEBSITE_API_URL'),
@@ -63,9 +62,6 @@ export default function (Vue, APP_INSTANCE, appDns )  {
             store.commit(name+'/saveList', APP_INSTANCE[ListOption.n].items );
          }
        })
-
-
-
 
        return store;
 

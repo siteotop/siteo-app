@@ -1,4 +1,4 @@
-export default function ( APP_INSTANCE, appDns ) {
+export default function ( APP_INSTANCE) {
   return  {
 
     state: function() {
@@ -8,7 +8,6 @@ export default function ( APP_INSTANCE, appDns ) {
       if (APP_INSTANCE.design==undefined) {
         APP_INSTANCE.desig = {};
       }
-      APP_INSTANCE.hosts = appDns;
       return APP_INSTANCE;
     },
 
@@ -57,7 +56,7 @@ export default function ( APP_INSTANCE, appDns ) {
      },
 
       LANG_PORTAL(state){
-          return state.hosts.active.lang;
+          return state.config.lang;
       },
 
       /**

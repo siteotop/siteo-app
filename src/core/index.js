@@ -60,7 +60,7 @@ import './style/common.css'
 import VeeValidate from 'vee-validate';
 
 
-export const start = function (APP_INSTANCE, appDns, template,   plugins ) {
+export const start = function (APP_INSTANCE, template,   plugins ) {
 
    //console.log(data);
    //start Vuetify
@@ -78,9 +78,9 @@ export const start = function (APP_INSTANCE, appDns, template,   plugins ) {
 
 
    // create store
-   template.coreVue.store = StoreInstall(Vue, APP_INSTANCE, appDns );
+   template.coreVue.store = StoreInstall(Vue, APP_INSTANCE);
    // create router
-   template.coreVue.router = RouterInstall(Vue, template.coreVue.store, appDns.active.path, template.routes )
+   template.coreVue.router = RouterInstall(Vue, template.coreVue.store, APP_INSTANCE.configs.path, template.routes )
 
    //sync router with store for access route from store
    sync(template.coreVue.store, template.coreVue.router );
@@ -91,7 +91,7 @@ export const start = function (APP_INSTANCE, appDns, template,   plugins ) {
    // Create VueI18n instance with options
    template.coreVue.i18n = new VueI18n({
       silentTranslationWarn: process.env.NODE_ENV === 'development'? false: true, // silent log
-      locale: appDns.active.lang, // app lang
+      locale: APP_INSTANCE.configs.lang, // app lang
       messages: messages // set locale messages
     });
 
@@ -105,7 +105,7 @@ export const start = function (APP_INSTANCE, appDns, template,   plugins ) {
       inject: false,
 
       dictionary: messages.validation,
-      local: appDns.lang
+      local: APP_INSTANCE.configs.lang
      }
     );
 
