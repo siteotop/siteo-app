@@ -1,12 +1,18 @@
 /**
   main object for template
 */
+import App from './components/App.vue';
+
+/**Basic routes*/
+import basicRoutes from './components/routes'
+
+/**Basic components*/
+import * as components from './components';
+
 /**ICONS*/
 import IconsRegister from  './icons/register.js';
-import App from './components/App.vue';
-import basicRoutes from './components/routes';
-import * as components from './components';
 import ICONS from './icons';
+
 export default {
   install: function (Vue, options) {
 
@@ -19,7 +25,5 @@ export default {
 
   routes: basicRoutes,
   coreVue: App
-
-  //store: {}
 
 }
