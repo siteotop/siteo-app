@@ -59,7 +59,7 @@ export default {
           props: {
             items: this.collectLinks,
             $vl: this.$vl,
-          
+            $clp: {fab: true, outline: true}
         }});
 
     }
