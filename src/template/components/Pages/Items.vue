@@ -13,7 +13,7 @@
               <v-btn flat value="cards">
                    <AppIcon name="si-view-cards"></AppIcon>
               </v-btn>
-              <v-btn flat value="card">
+              <v-btn v-if="!$vuetify.breakpoint.xs" flat value="card">
                   <AppIcon name="si-view-card"></AppIcon>
               </v-btn>
 
