@@ -1,4 +1,5 @@
-require('babel-polyfill');
+import "@babel/polyfill";
+
 import Vue from 'vue'; //1 include vue
 
 /**Progres bar */
