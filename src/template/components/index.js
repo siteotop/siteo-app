@@ -38,3 +38,4 @@ export {default as AutoActions} from './PageSchema/Sections/Items/AutoActions.vu
 export {default as AutoServices} from './PageSchema/Sections/Items/AutoServices.vue';
 export {default as AutoExperts} from './PageSchema/Sections/Items/AutoExperts.vue';
 export {default as AutoLocations} from './PageSchema/Sections/Items/AutoLocations.vue';
+export {default as AutoPosts} from './PageSchema/Sections/Items/AutoPosts.vue';
