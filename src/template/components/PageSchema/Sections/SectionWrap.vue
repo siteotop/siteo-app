@@ -2,11 +2,14 @@
   <component :is="props.$co||'v-container'" :id="props._$" fluid  v-bind="{'v-container': { tag: 'section'}, 'v-img':{height:props.$he, src: props._p, gradient: props.$gr  }, 'v-parallax':{height:props.$he, alt:props._t, src: props._p}}[props.$co]" :class="props.$tc+(parent.$vuetify.breakpoint.smAndDown? ' pa-1': '' )" >
     <v-layout  column  v-if="props._t||props._d" :class="props.$tl">
       <v-flex>
+        <v-container>
         <component :is="'h'+props.$ht" v-if="props._t" :class="props.$_t+  (parent.$vuetify.breakpoint.smAndDown?' display-1': '' )">{{props._t}}</component>
         <span v-if="props._d" :class="props.$_d+(parent.$vuetify.breakpoint.smAndDown?' subheading': '' )">
           {{props._d}}
         </span>
+      </v-container>
       </v-flex>
+
   </v-layout>
   <v-layout >
     <v-flex>
