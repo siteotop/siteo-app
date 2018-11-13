@@ -22,6 +22,12 @@ export default {
          render(h, context) {
             return h('AutoContacts', {props: {$vl: true, $t: 'call',$clp: {outline:true, siicon: 'si-call' } }})
          }
+      },
+      'AutoWrapLinks': {
+         functional: true,
+         render(h, context) {
+            return h('AutoLinks', {props: {$vl: true, $t: 'links',$clp: {outline:true, siicon: 'si-links' } }})
+         }
       }
   },
 
@@ -31,7 +37,7 @@ export default {
      recall: 'BFormRecall',
      call: 'AutoCalls',
      chat: 'AutoChats',
-     links: 'AutoLinks'
+     links: 'AutoWrapLinks'
   },
 
   props: {
