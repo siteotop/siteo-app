@@ -27,7 +27,14 @@ export default {
       query: {
         type: String,
         drfault : ''
-      }
+      },
+
+      $vl:  { // version list type of list ( list like V-list )
+        type: Boolean,
+        default:false
+      } 
+
+
 
     },
 
@@ -51,8 +58,6 @@ export default {
           } else {
             return 'd-flex xs12 sm6 ' + 'md4'
           }
-
-
 
         },
 

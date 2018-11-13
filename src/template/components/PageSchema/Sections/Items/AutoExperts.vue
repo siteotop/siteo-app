@@ -6,6 +6,9 @@
         :_d="item.about"
         :_s="item.position"
         :_m="item.picture"
+        :$vl="$vl"
+        _al="/go/order"
+        _at="Order in Expert"
         ></b-expert>
     </template>
   </SectionListWrap>

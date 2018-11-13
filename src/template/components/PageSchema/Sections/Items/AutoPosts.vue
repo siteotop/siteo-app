@@ -6,6 +6,7 @@
         :_d="item.preview"
         :_m="item.picture"
         :_u="item.url"
+        :$vl="$vl"
         ></b-post>
     </template>
   </SectionListWrap>

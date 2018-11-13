@@ -1,10 +1,13 @@
 <template functional>
 <v-container class="white">
   <v-layout row wrap >
-      <v-flex hidden-xs-only sm2>
-        <v-avatar  :tile="props.$_mt" :size="props.$_ms"  >
-          <img  :src="props._m" :alt="props._t">
-        </v-avatar>
+
+      <v-flex hidden-xs-only sm2 >
+        <slot name="image" v-if="props._m">
+          <v-avatar  :tile="props.$_mt" :size="props.$_ms"  >
+            <img  :src="props._m" :alt="props._t">
+          </v-avatar>
+        </slot>
       </v-flex>
 
       <v-flex xs12 sm7 md8>
@@ -13,7 +16,7 @@
             <component :is="'h'+props.$ht"  :class="props.$_t||'title'">{{props._t}}</component>
             <span :class="props.$_s||' grey--text'">{{props._s}}</span>
           </v-card-text>
-          <v-card-text  :class="props.$_d||'body-1 text-truncate'" >
+          <v-card-text  :class="(props.$_d||'body-1')+ (parent.$root.$vuetify.breakpoint.xs?' text-truncate':'')" >
             {{props._d}}
           </v-card-text>
         </v-card>
@@ -21,9 +24,9 @@
       </v-flex>
       <v-flex xs12 sm3 md2>
         <v-card flat>
-          <slot name="action">
-            <v-card-actions>
-              <AppAction  :fab="true" :large="false"></AppAction>
+          <slot name="action" >
+            <v-card-actions v-if="props._al"  :class="props.$_al">
+              <AppAction :to="props._al" :_at="props._at"  :fab="true" :large="false" v-bind="props.$aa" ></AppAction>
             </v-card-actions>
           </slot>
         </v-card>

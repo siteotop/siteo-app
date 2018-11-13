@@ -1,5 +1,5 @@
 <template functional>
-<v-card :class="props.$vc||'elevation-0 transparent'">
+<v-card v-if="!props.$vl" :class="props.$vc||'elevation-0 transparent'">
         <v-card-text  v-if="props._m">
           <v-avatar  :tile="props.$_mt" :size="props.$_ms"  >
             <img  :src="props._m" :alt="props._t">
@@ -18,6 +18,10 @@
               <AppAction :to="props._al" :_at="props._at" v-bind="props.$aa"></AppAction>
         </v-card-text>
 </v-card>
+
+<b-horizontal v-else  v-bind="props">
+</b-horizontal>
+
 </template>
 
 

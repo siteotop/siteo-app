@@ -27,7 +27,7 @@
    </v-btn>
  </v-toolbar>
 
-<component :is="'auto-'+typeList" :toogleComponent="toogle_component">
+<component :is="'auto-'+typeList" :toogleComponent="toogle_component" :$vl="toogle_component=='list'">
   <v-layout slot="header"  wrap class="mb-4"> </v-layout>
 </component>
 </div>

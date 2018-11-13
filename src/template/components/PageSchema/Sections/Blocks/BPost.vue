@@ -1,5 +1,5 @@
 <template functional>
-  <v-hover>
+  <v-hover v-if="!props.$vl">
     <v-card
        slot-scope="{ hover }"
        :class="`elevation-${hover ? 12 : 2}`"
@@ -20,7 +20,21 @@
             <v-btn :to="props._u">Read More</v-btn>
           </v-card-actions>
         </v-card>
-      </v-hover>
+  </v-hover>
+  <b-horizontal v-else  v-bind="props">
+    <template slot="image" slot-scope="name">
+      <v-img
+         aspect-ratio="1"
+        :src="props._m"
+        :alt="props._t"
+      ></v-img>
+    </template>
+    <template slot="action" slot-scope="name">
+      <v-card-actions>
+        <v-btn :to="props._u">Read More</v-btn>
+      </v-card-actions>
+    </template>
+  </b-horizontal>
 </template>
 
 <script>

@@ -58,7 +58,7 @@ export default {
 
       $_mt: { // tile for v-avatar
         type: Boolean,
-        default: false
+        //default: false
       },
       // Settings props
 

@@ -240,7 +240,8 @@ var _PRERENDER = {
                 $aa: {
                   dark: true,
                   color: 'red',
-                  siicon: 'si-recall'
+                  siicon: 'si-recall',
+                  rel: 'nofollow'
                 },
                 $_al: 'text-xs-center' ,
                 $_t: 'display-3  pink--text',
