@@ -10,7 +10,7 @@ export default {
         default: 'row wrap fill-height'
       },
 
-      toogleComponent: { // variants ['list', 'cards', 'card' ]
+      toggleComponent: { // variants ['list', 'cards', 'card' ]
         type: String,
         default: 'cards'
       },
@@ -32,7 +32,7 @@ export default {
       $vl:  { // version list type of list ( list like V-list )
         type: Boolean,
         default:false
-      } 
+      }
 
 
 
@@ -48,12 +48,9 @@ export default {
       },
 
       computed: {
-        componentName () {
-          return  'toogle-'+this.toogleComponent;
-        },
 
         flexClass() {
-          if (this.toogleComponent == 'list'||this.toogleComponent == 'card') {
+          if (this.toggleComponent == 'list'||this.toggleComponent == 'card') {
             return '  xs12 ';
           } else {
             return 'd-flex xs12 sm6 ' + 'md4'

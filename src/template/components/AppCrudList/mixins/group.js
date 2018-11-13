@@ -70,7 +70,7 @@ export default {
 
       },
 
-      toogleChecked(id) {
+      toggleChecked(id) {
         var  index =   this.checked.indexOf(id);
            if (index!=-1) {
               // if  present
@@ -196,7 +196,7 @@ export default {
                 on: {
                   click : function (event) {
                      event.stopPropagation();
-                     self.toogleChecked( item[self.nameElementId]);
+                     self.toggleChecked( item[self.nameElementId]);
 
                   }
                 }

@@ -7,7 +7,7 @@
    <v-spacer></v-spacer>
 
 
-   <v-btn-toggle mandatory v-model="toogle_component">
+   <v-btn-toggle mandatory v-model="toggle_component">
 
 
               <v-btn flat value="cards">
@@ -27,7 +27,7 @@
    </v-btn>
  </v-toolbar>
 
-<component :is="'auto-'+typeList" :toogleComponent="toogle_component" :$vl="toogle_component=='list'">
+<component :is="'auto-'+typeList" :toggleComponent="toggle_component" :$vl="toggle_component=='list'">
   <v-layout slot="header"  wrap class="mb-4"> </v-layout>
 </component>
 </div>
@@ -45,7 +45,7 @@ export default {
 
   data() {
     return {
-      toogle_component: 'cards'
+      toggle_component: 'cards'
     }
   },
 
