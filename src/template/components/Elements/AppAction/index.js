@@ -11,9 +11,7 @@ export default {
   name: 'AppAction',
   wrapped:'v-btn',
 
-  /*
-    props: [ '_at', 'title']
-  */
+
 
   render(h, context) {
     var

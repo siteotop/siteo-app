@@ -235,6 +235,14 @@ var _PRERENDER = {
                  _t: 'Integrate your instagram Post',
                  _s: 'It is easy and asynchrony',
                  _d: 'Put your link with post id in  instagram block. And your custumers will see your picture  with caption or  only image. People will be easy  follow you or your business account in Instagram.com',
+                _al: '/go/recall',
+                _at:'We Recall to  You',
+                $aa: {
+                  dark: true,
+                  color: 'red',
+                  siicon: 'si-recall'
+                },
+                $_al: 'text-xs-center' ,
                 $_t: 'display-3  pink--text',
                 _m: 'http://pluspng.com/img-png/instagram-png-file-instagram-icon-png-599.png',
 

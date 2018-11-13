@@ -21,6 +21,25 @@ export default {
         default: ''
       },
 
+      _al: { // Action Component name
+        type: String,
+        default: ''
+      },
+
+
+      _at: {
+        type: String,
+        default: ''
+      },
+
+      $_al: {
+        type: String
+
+      },
+
+      $aa: { // Action props for AppAction
+        type: Object,
+      },
 
       $vc: { // v-card class
         type: String,
@@ -58,10 +77,15 @@ export default {
         default: ''
       },
 
-      $ac: { // Action Component name
-        type: String,
-        default: ''
+
+
+
+
+      $vl:  { // version list type of list ( list like V-list )
+        type: Boolean,
+        default:false
       }
+
 
     }
 }

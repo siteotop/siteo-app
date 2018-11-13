@@ -14,9 +14,9 @@
         <v-card-text  :class="props.$_d||'headline'" >
           {{props._d}}
         </v-card-text>
-        <v-card-actions v-if="props.$ac">
-            <component :is="props.$ac"> </component>
-        </v-card-actions>
+        <v-card-text v-if="props._al"  :class="props.$_al" >
+              <AppAction :to="props._al" :_at="props._at" v-bind="props.$aa"></AppAction>
+        </v-card-text>
 </v-card>
 </template>
 
