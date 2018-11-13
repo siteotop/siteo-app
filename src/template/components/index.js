@@ -30,6 +30,7 @@ export {default as BFormEmail} from './PageSchema/Sections/Blocks/BFormEmail.js'
 export {default as BFormOrder} from './PageSchema/Sections/Blocks/BFormOrder.vue';
 export {default as BFormRecall} from './PageSchema/Sections/Blocks/BFormRecall.vue';
 export {default as BLinks} from './PageSchema/Sections/Blocks/BLinks.vue';
+export {default as BHorizontal} from './PageSchema/Sections/Blocks/BHorizontal.vue';
 
 //AUTO BLOCKS FOR PAGE
 export {default as AutoContacts} from './PageSchema/Sections/Items/AutoContacts.vue';
