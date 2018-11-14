@@ -8,8 +8,9 @@ export  const en = {
     close: 'Закрыть',
     share: 'Share',
     m: 'Content',
+    rm: 'Read More',
     no_data: 'Данных для отображения нет',
-    copyright:'Website {name} creating on {template} and using platform' ,
+    copyright:'Website "{name}" created on app "{template}" and hosted on platform' ,
     actions: {
         order: 'Заказать',
         call: 'Позвонить',
@@ -18,6 +19,17 @@ export  const en = {
         links: 'Ссылки',
         locations: 'Адреса'
     },
+
+    auto: {
+      call: 'Call by',
+      chat: 'Write message by',
+      links: '{company_name} in'
+    },
+
+    // написать через
+    // подзвонить через
+    // Перейти на / ми в / {company name}
+
     commonList: {
       edit: 'Редактировать',
       delete: 'Удалить',
