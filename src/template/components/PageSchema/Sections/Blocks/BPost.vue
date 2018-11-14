@@ -17,7 +17,7 @@
             {{props._d}}
           </v-card-text>
           <v-card-actions>
-            <v-btn :to="props._u">Read More</v-btn>
+            <v-btn :to="props._u">{{parent.$t('rm')}}</v-btn>
           </v-card-actions>
         </v-card>
   </v-hover>
@@ -31,7 +31,7 @@
     </template>
     <template slot="action" slot-scope="name">
       <v-card-actions>
-        <v-btn :to="props._u">Read More</v-btn>
+        <v-btn :to="props._u">{{parent.$t('rm')}}</v-btn>
       </v-card-actions>
     </template>
   </b-horizontal>

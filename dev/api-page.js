@@ -225,7 +225,7 @@ var _PRERENDER = {
                 $bf: 'text-xs-center ',
                _props: {
                  _url: 'https://www.instagram.com/p/BpPnezuAZjr',
-                 $t: true
+                 $hc: true
                }
              },
              {
@@ -272,7 +272,7 @@ var _PRERENDER = {
             {
               _n: 'AutoContacts',
               _props: {
-                $t: 'call',
+                $type: 'call',
                 $clp: {
                   fab: true
                 }

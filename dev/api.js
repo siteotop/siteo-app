@@ -27,14 +27,14 @@ var _APP_INSTANCE = {
 
  links: [
    {
-     title: 'Facebook',
+     title: 'We in Facebook',
      type: 'fb',
      href: 'https://www.facebook.com/vavilon1'
    },
 
 
    {
-     title: 'Instagram',
+     title: '',
      type: 'instagram',
      href: 'https://instagram.com/'
    },

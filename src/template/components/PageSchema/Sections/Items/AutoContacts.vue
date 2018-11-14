@@ -8,7 +8,7 @@ import ExtendLinks from './_extends/Links';
 export default {
   extends: ExtendLinks,
   props: {
-      $t: {
+      $type: { // type of contact
          type: String,
          default: 'chat'
       },
@@ -19,15 +19,16 @@ export default {
       collectLinks() {
         var new_array = [];
         var services =this.$store.state.APP_INSTANCE.contacts;
+        var text = this.$t('auto.'+this.$type);
         for (var i in services )  {
            var service = services [i];
-            if (service[this.$t]) {
+            if (service[this.$type]) {
 
                 new_array.push({
                     href: this.getHrefForService(service),
                     color: Colors[service.type] || '',
                     icon:  service.type,
-                    title: service.title|| service.type,
+                    title: service.title|| text +' '+ service.type,
                     subtitle: service.url_id ,
                  });
 
