@@ -24,7 +24,7 @@ export default {
           class: design.class
         },
         [
-          h('v-container', {class: 'my-0 pa-0'},
+          h('v-container', {class: 'fluid my-0 pa-0'},
 
           [
             h('PageSchema', {props: {structure: design.children }}),

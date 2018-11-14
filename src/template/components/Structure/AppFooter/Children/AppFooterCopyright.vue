@@ -1,13 +1,8 @@
 <template functional>
-  <SectionWrap >
-    <v-divider></v-divider>
-    <v-container >
-     <v-layout  >
-        <v-flex text-xs-center  >
+  <SectionWrap $tc="fluid secondary darken-1 py-0 my-0">
+    <v-flex text-xs-center class="pa-2" >
           {{parent.$t('copyright', {name: parent.$store.state.APP_INSTANCE.data.name, template: ' siteo-template'})}}  <v-btn target="_blank" flat href="https://siteo.top"><AppIcon  name="si-logo-grey"></AppIcon>siteo.top </v-btn>
          </v-flex>
-      </v-layout>
-    </v-container>
   </SectionWrap>
 
 </template>
