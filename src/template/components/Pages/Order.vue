@@ -20,7 +20,7 @@ export default {
       'AutoCalls': {
          functional: true,
          render(h, context) {
-            return h('AutoContacts', {props: {$vl: true, $t: 'call',$clp: {outline:true, siicon: 'si-call' } }})
+            return h('AutoContacts', {props: {$vl: true, $type: 'call',$clp: {outline:true, siicon: 'si-call' } }})
          }
       },
       'AutoWrapLinks': {
