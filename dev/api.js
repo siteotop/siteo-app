@@ -246,14 +246,33 @@ var _APP_INSTANCE = {
        "props":{absolute:true,  inset:true, dark:true, color: 'secondary'},
        "class":[],
        "children": [
-        'AppFooterMenu',
-        'AppFooterAbout',
          {
-           "name": 'AppFooterLinks',
-           "props": {typeAction:'links'}
-         }
-         //'AppFooterCopyright',
+           _n: 'SectionWrap',
+           _props: {
+             $bf: '',
+             //$bl:'text-xs-center',
+             $bls: [
+               {
+                 _n:'AutoContacts',
+                 $bf: 'xs12 md4',
+                 _props: {
+                   $clp:{
+                     fab:true, outline: true, color: 'primary'
+                   }
+                 }
+               },
 
+               {
+                 _n: 'BTitle',
+                  $bf: 'xs12 md8',
+                 _props: {
+                   _d: 'Text Footer Text Footer Text Footer Text Footer Text Footer Text Footer Text Footer Text Footer Text Footer Text Footer Text Footer Text Footer Text Footer Text Footer Text Footer Text Footer '
+                 }
+               }
+             ]
+
+           }
+         }
        ]
      },
      "AppContent":{

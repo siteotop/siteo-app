@@ -24,22 +24,14 @@ export default {
           class: design.class
         },
         [
-          h('v-layout',
-          {
-            attrs: {
-            row:true,
-            wrap:true
-          }},
+          h('v-container', {class: 'my-0 pa-0'},
 
-       [
-        helperChildren(h, design.children, StructureChildren),
-        
-        h(AppFooterCopyright)
-      ]
-      )
+          [
+            h('PageSchema', {props: {structure: design.children }}),
+            h(AppFooterCopyright)
+          ])
 
-
-      ]
+        ]
         )
 
     }
