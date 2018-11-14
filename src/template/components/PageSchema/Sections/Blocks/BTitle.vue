@@ -5,10 +5,10 @@
             <img  :src="props._m" :alt="props._t">
           </v-avatar>
         </v-card-text>
-        <v-card-text >
+        <v-card-text v-if="props._t">
           <component :is="'h'+props.$ht"  :class="props.$_t||'display-3'">{{props._t}}</component>
         </v-card-text>
-        <v-card-text :class="props.$_s||'title grey--text'" >
+        <v-card-text v-if="props._s" :class="props.$_s||'title grey--text'" >
           {{props._s}}
         </v-card-text>
         <v-card-text  :class="props.$_d||'headline'" >
