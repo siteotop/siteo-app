@@ -10,7 +10,7 @@ export  const en = {
     m: 'Content',
     rm: 'Read More',
     no_data: 'Данных для отображения нет',
-    copyright:'Website "{name}" created on app "{template}" and hosted on platform' ,
+    copyright:'Website created on app "{template}" and hosted on platform',
     actions: {
         order: 'Заказать',
         call: 'Позвонить',
