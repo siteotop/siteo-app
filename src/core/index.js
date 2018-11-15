@@ -16,6 +16,19 @@ import VueI18n from 'vue-i18n';
 Vue.use(VueI18n);
 
 
+/**
+  main object for template
+*/
+import CoreVue from './components/App.vue';
+
+/**Basic routes*/
+import basicRoutes from './components/routes'
+
+import * as CoreComponents from  './components';
+for (let NameComponent in CoreComponents) {
+   Vue.component(NameComponent, CoreComponents[NameComponent]);
+}
+//delete CoreComponents;
 /**ROUTER
    create Routing for every APP
 */
@@ -44,7 +57,8 @@ import './style/animations.scss';
 import './style/common.css'
 
 
-
+/**ICONS*/
+import IconsRegister from  './components/Icons/register.js';
 
 /** SiteoInstall Function  */
 
@@ -69,7 +83,7 @@ export const start = function (APP_INSTANCE, messages, template,    plugins ) {
      theme:  APP_INSTANCE.design? APP_INSTANCE.design.theme.colors:{}
    });
 
-   Vue.use(template);
+
    // start VueProgressBar
    Vue.use(VueProgressBar, {
      color: Vue.prototype.$vuetify.theme.accent ||'rgb(106, 180, 255)',
@@ -79,18 +93,18 @@ export const start = function (APP_INSTANCE, messages, template,    plugins ) {
 
 
    // create store
-   template.coreVue.store = StoreInstall(Vue, APP_INSTANCE);
+   CoreVue.store = StoreInstall(Vue, APP_INSTANCE);
    // create router
-   template.coreVue.router = RouterInstall(Vue, template.coreVue.store, APP_INSTANCE.configs.path, template.routes )
+   CoreVue.router = RouterInstall(Vue, CoreVue.store, APP_INSTANCE.configs.path, basicRoutes )
 
    //sync router with store for access route from store
-   sync(template.coreVue.store, template.coreVue.router );
+   sync(CoreVue.store, CoreVue.router );
 
 
-   template.coreVue.el = '#siteo-top-app';
+   CoreVue.el = '#siteo-top-app';
 
    // Create VueI18n instance with options
-   template.coreVue.i18n = new VueI18n({
+   CoreVue.i18n = new VueI18n({
       silentTranslationWarn: process.env.NODE_ENV === 'development'? false: true, // silent log
       locale: APP_INSTANCE.configs.lang, // app lang
       messages: messages // set locale messages
@@ -112,22 +126,23 @@ export const start = function (APP_INSTANCE, messages, template,    plugins ) {
 
 
 
-
+    CoreVue.IconsRegister= IconsRegister;
     // add plugins
-    template.coreVue.SiteoAddPlugin = function (plugin) {
-      Vue.use(plugin, {coreVue:template.coreVue, pluginOptions: plugin.options });
+    CoreVue.SiteoAddPlugin = function (plugin) {
+      Vue.use(plugin, {coreVue:CoreVue, pluginOptions: plugin.options });
     };
-    template.coreVue._siteoPlugins = {};
-
+    //CoreVue._siteoPlugins = {};
+  //  Vue.use(template);
+    CoreVue.SiteoAddPlugin(template);
     if (plugins&&plugins.length) {
        for (var i in plugins ) {
-          template.coreVue.SiteoAddPlugin(plugins[i]);
+          CoreVue.SiteoAddPlugin(plugins[i]);
        }
     }
 
     // start Vue instance
     let app2 = new Vue(
-      template.coreVue
+      CoreVue
     );
 
 }

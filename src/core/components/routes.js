@@ -43,12 +43,6 @@ export default  [
         },
 
         {
-          name: "admin",
-          path:  '/admin',
-          component:  ()=>import('../components-settings/index.vue' /* webpackChunkName: "chunk/admin" */  ),
-
-        },
-        {
           name: "PageSchema",
           path:  '/:idString-p:postId',
           component: PagesApi,

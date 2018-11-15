@@ -1,7 +1,7 @@
 
 
 <script>
-import Colors from '../../../PageSchema/Sections/Items/_helper/colors';
+import Colors from '../../../_helper/colors';
 import Sharing from './sharing';
 
 export default {

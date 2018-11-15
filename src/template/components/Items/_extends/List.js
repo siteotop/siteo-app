@@ -1,7 +1,10 @@
-import BaseProps from '../../Helper/base-props.js';
+//import BaseProps from '../../Helper/base-props.js';
 
+/**
+  Props SectionWrap 
+*/
 export default {
-    extends: BaseProps,
+  //  extends: BaseProps,
 
     props: {
 

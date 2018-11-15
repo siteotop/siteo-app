@@ -41,9 +41,9 @@
 </template>
 
 <script>
-import ListProps from '../Helper/list-props.js';
+//import ListProps from '../Helper/list-props.js';
 export default {
-  extends:ListProps
+  //extends:ListProps
 
 }
 

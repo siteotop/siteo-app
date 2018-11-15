@@ -1,4 +1,5 @@
 import Icon from 'vue-awesome/components/Icon.vue'
+import './siteo.js';
 
 export default  function(bundle) {
   if (bundle) {

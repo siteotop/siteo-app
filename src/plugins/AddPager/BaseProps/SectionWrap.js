@@ -41,7 +41,7 @@ export default {
       default: 600
     },
 
-    
+
 
     $tc: { // top container  class for top v-container
       type: String,

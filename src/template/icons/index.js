@@ -49,14 +49,9 @@ import {
   mdiFormatQuoteOpen,
   mdiViewAgenda
 
-
-
-
-  //mdiViewGrid,
-  //mdiViewModule
  } from '@mdi/js'
 
-import './siteo.js';
+
 
 export default {
 
@@ -118,9 +113,5 @@ export default {
     'si-filter':   mdiFilterVariant,
     'si-view-cards': mdiViewModule,
     'si-view-card': mdiViewAgenda
-
-
-
-
 
 };
