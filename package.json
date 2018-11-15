@@ -1,7 +1,7 @@
 {
   "name": "siteo-template",
   "description": "Core material design template for  web apps which based on Siteo platform https://siteo.top",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "sideEffects": false,
   "author": {
@@ -91,6 +91,5 @@
     "dist": "NODE_ENV=production DIR_RESOURCE=dist   webpack --config build/locale.webpack.config.js && NODE_ENV=production DIR_RESOURCE=dist webpack --config build/dist.webpack.config.js",
     "dist-dev": "NODE_ENV=production DIR_RESOURCE=dev/dist webpack --config build/dist.webpack.config.js",
     "locale-dev": "DIR_RESOURCE=dev/dist   webpack --config build/locale.webpack.config.js"
-
   }
 }
