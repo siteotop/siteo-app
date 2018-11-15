@@ -1,6 +1,7 @@
 
-import * as StructureChildren from './Children';
+//import * as StructureChildren from './Children';
 import  AppFooterCopyright  from './Children/AppFooterCopyright.vue';
+import  BottomNav  from './Children/BottomNav.vue';
 import helperChildren from '../helperChildren.js';
 /**
   Footer for website
@@ -15,7 +16,9 @@ export default {
     render(h, context) {
       var design = context.parent.$store.state.APP_INSTANCE.design['AppFooter'] || {};
 
-      return h('v-footer', {
+      return  context.parent.$vuetify.breakpoint.xs?
+       h(BottomNav, { }):
+       h('v-footer', {
           props: {
             app: true,
             height:'auto',
@@ -28,11 +31,12 @@ export default {
 
           [
             h('PageSchema', {props: {structure: design.children }}),
+            
             h(AppFooterCopyright)
           ])
 
         ]
-        )
+      );
 
     }
 
