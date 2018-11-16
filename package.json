@@ -91,6 +91,6 @@
     "dist": "NODE_ENV=production DIR_RESOURCE=dist   webpack --config build/locale.webpack.config.js && NODE_ENV=production DIR_RESOURCE=dist webpack --config build/dist.webpack.config.js",
     "dist-dev": "NODE_ENV=production DIR_RESOURCE=dev/dist webpack --config build/dist.webpack.config.js",
     "locale-dev": "DIR_RESOURCE=dev/dist   webpack --config build/locale.webpack.config.js",
-    "version-patch": "npm run dist && git add -A && git commit -m \"Compile dist files\"  &&  npm version patch -m 'Upgrade patch  to %s && npm publish' && git push"
+    "version-patch": "npm run dist && git add -A && git commit -m \"Compile dist files\"  &&  npm version patch -m 'Upgrade patch  to %s ' && npm publish && git push"
   }
 }
