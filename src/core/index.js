@@ -97,7 +97,7 @@ export const start = function (APP_INSTANCE, messages, template,    plugins ) {
    // create store
    CoreVue.store = StoreInstall(Vue, APP_INSTANCE);
    // create router
-   CoreVue.router = RouterInstall(Vue, CoreVue.store, APP_INSTANCE.configs.path, basicRoutes )
+   CoreVue.router = RouterInstall(Vue, CoreVue.store, APP_INSTANCE.configs.path, basicRoutes(template.routes) )
 
    //sync router with store for access route from store
    sync(CoreVue.store, CoreVue.router );

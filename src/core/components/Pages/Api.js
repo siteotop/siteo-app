@@ -1,5 +1,4 @@
 
-import PageError from './Error.vue';
 import CorePage from './_extends/page.js';
 export default {
 
@@ -148,8 +147,10 @@ export default {
         //console.log('Page ');
 
         if (this.error) {
-          return h(PageError, { props: {status: this.error}  }  )
+          throw {statusError:this.error };
         }
+          //return h(PageError, { props: {status: this.error}  }  )
+
           //console.log('count');
           return h('div',
            [

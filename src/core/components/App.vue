@@ -6,7 +6,7 @@ export default {
 
      renderList: ['AppDrawer', 'AppToolbar',  'AppFooter', 'AppContent'],
      //componentsPage: componentsPage,
-     components: {...AppStructure} ,
+     components: {...AppStructure},
 
      data() {
           return {
