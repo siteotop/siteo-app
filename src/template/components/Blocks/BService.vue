@@ -7,13 +7,22 @@
           <v-img v-if="props._m"
             aspect-ratio="1.61"
             class="white--text"
+            gradient="to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)"
             :src="props._m"
             :alt="props._t"
           >
             <v-container fill-height fluid>
-              <v-layout fill-height>
-                <v-flex xs12 align-end flexbox>
-                  <span class="headline">{{props._t}}</span>
+              <v-layout fill-height align-center text-xs-center>
+                <v-flex xs12 >
+                  <span v-if="!hover" class="headline">{{props._t}}</span>
+                  <div v-else class="align-center ">
+                      <div class="display-1 ">
+                        $ {{props._p}}
+                      </div>
+                      <div>
+                        <AppAction ></AppAction>
+                      </div>
+                  </div>
                 </v-flex>
               </v-layout>
             </v-container>
@@ -24,7 +33,7 @@
           <v-card-title>
             <span class="headline font-weight-medium">$ {{props._p}} </span>
             <v-spacer></v-spacer>
-            <AppAction  :large="false"></AppAction>
+            <AppAction :fab="true" :large="false"></AppAction>
           </v-card-title>
           <v-card-text>
             {{props._d}}
