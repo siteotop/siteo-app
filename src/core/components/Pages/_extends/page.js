@@ -2,6 +2,7 @@
 import FunctionalSpeedDeal from '../Functional/SpeedDeal.vue';
 import FunctionalShareWindow from '../Functional/ShareWindow.vue';
 import FunctionalPageToolbar from '../Functional/PageToolbar.vue';
+import FunctionalButtonUp from  '../Functional/ButtonUp.vue';
 
 import Loader from '../../_mixins/component-loading.js';
 export default {
@@ -10,14 +11,14 @@ export default {
   components: {
     FunctionalSpeedDeal,
     FunctionalShareWindow,
-    FunctionalPageToolbar
+    FunctionalPageToolbar,
+    FunctionalButtonUp
 
   },
   data() {
     return  {
       error: false,
-      offsetTop: 0,
-      showUpButton: false,
+      //offsetTop: 0,
       shareWindow: false
     }
   },
@@ -34,49 +35,7 @@ export default {
       ]
 
     }
-  },
-
-
-  watch: {
-
-      postId(newValue, OldValue) {
-        console.log('change postId');
-        this.onLeave();
-        this.getPageFromServer();
-      },
-
-      offsetTop(current, before) {
-          this.showUpButton = false;
-          if (current>this.$vuetify.breakpoint.height) {
-           if (current<before) {
-             this.showUpButton = true;
-           }
-         }
-      }
-
-  },
-
-
-
-
-
-  computed: {
-      needShowAction() {
-        return this.offsetTop> this.$vuetify.breakpoint.height;
-      }
-
-
-  },
-
-  methods: {
-      onScroll(e) {
-        this.offsetTop = window.pageYOffset || document.documentElement.scrollTop;
-      },
-
-
-  },
-
-
+  }
 
 
 }

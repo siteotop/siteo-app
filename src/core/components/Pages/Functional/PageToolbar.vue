@@ -1,5 +1,5 @@
 <template >
-  <v-toolbar  v-bind="tProps"  :class="tClass" :style="tStyle">
+  <v-toolbar  v-scroll="onScroll" v-bind="tProps"  :class="tClass" :style="tStyle">
       <v-menu offset-y>
       <v-btn slot="activator" outline ><AppIcon name="si-dots-menu"></AppIcon> {{$t('m')}} </v-btn>
       <v-list>
@@ -33,16 +33,16 @@
 </template>
 
 <script>
-
+import PageScroll from './_extends/PageScroll';
 export default {
-    props: {
+  extends: PageScroll,
+  props: {
+    hightUp: {
+      type: Number,
+      default: 300
+    }
 
-      offset: {
-        type: Number
-
-      }
-
-    },
+  },
 
   computed: {
 
@@ -59,7 +59,7 @@ export default {
         },
         // when offset on
         offsetOn() {
-          return  (this.offset>300);
+          return  (this.offsetTop>this.hightUp);
         },
 
 

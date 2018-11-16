@@ -1,6 +1,7 @@
 <template>
 <v-fab-transition>
   <v-speed-dial
+       v-scroll="onScroll" v-show="needShowAction"
        v-model="fab"
        fixed
        right
@@ -31,8 +32,9 @@
 	- pulse
 	- change icons
 */
+import PageScroll from './_extends/PageScroll';
 export default {
-
+   extends:  PageScroll,
    data() {
      return {
        fab: false

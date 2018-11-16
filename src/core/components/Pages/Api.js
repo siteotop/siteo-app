@@ -49,9 +49,18 @@ export default {
       this.getPageFromServer();
   },
 
+  watch: {
+
+      postId(newValue, OldValue) {
+        console.log('change postId');
+        this.onLeave();
+        this.getPageFromServer();
+      }
+
+  },
 
 
-    beforeRouteLeave(to, from, next) {
+  beforeRouteLeave(to, from, next) {
       console.log('leave');
        this.onLeave();
        next();
@@ -75,53 +84,47 @@ export default {
 
     methods: {
 
+      onLeave() {
+        this.error = false;
+        this.$store.commit('APP_PAGE/clearModel');
 
-        onScroll(e) {
-          this.offsetTop = window.pageYOffset || document.documentElement.scrollTop;
-        },
+      },
 
-
-        onLeave() {
-          this.error = false;
-          this.$store.commit('APP_PAGE/clearModel');
-
-        },
-
-        getPageFromServer() {
-          var post_id;
-          if (!this.postId) {
-            post_id = this.$store.state.APP_INSTANCE.data.pages_id;
-          } else {
-            post_id = this.postId;
-          }
-          //console.log(post_id);
-          //console.log(_PRERENDER._id);
-
-          if ( _PRERENDER._id == post_id) {
-              this.$store.commit('APP_PAGE/setApiId',_PRERENDER._id);
-              //this.$store.commit('APP_PAGE/updateModel', _PRERENDER);
-              this.$store.commit('APP_PAGE/updateModel', _PRERENDER);
-              return;
-          }
-          var self = this;
-          this.startLoading();
-          this.$store.dispatch('APP_PAGE/getPublicObject', post_id )
-          .then(function (response) {
-                console.log(response);
-                  self.stopLoading();
-                  //  self.setServerData(response.data);
-
-
-          }).catch(function(error) {
-              console.log(error.response);
-              self.error= error.response.status;
-              self.stopLoading();
-            //  self.$store.dispatch('generateSystemMessageRespone', error)
-
-             //  self.catchError(error.response);
-
-          });
+      getPageFromServer() {
+        var post_id;
+        if (!this.postId) {
+          post_id = this.$store.state.APP_INSTANCE.data.pages_id;
+        } else {
+          post_id = this.postId;
         }
+        //console.log(post_id);
+        //console.log(_PRERENDER._id);
+
+        if ( _PRERENDER._id == post_id) {
+            this.$store.commit('APP_PAGE/setApiId',_PRERENDER._id);
+            //this.$store.commit('APP_PAGE/updateModel', _PRERENDER);
+            this.$store.commit('APP_PAGE/updateModel', _PRERENDER);
+            return;
+        }
+        var self = this;
+        this.startLoading();
+        this.$store.dispatch('APP_PAGE/getPublicObject', post_id )
+        .then(function (response) {
+              console.log(response);
+                self.stopLoading();
+                //  self.setServerData(response.data);
+
+
+        }).catch(function(error) {
+            console.log(error.response);
+            self.error= error.response.status;
+            self.stopLoading();
+          //  self.$store.dispatch('generateSystemMessageRespone', error)
+
+           //  self.catchError(error.response);
+
+        });
+      }
 
 
     },
@@ -148,18 +151,10 @@ export default {
           return h(PageError, { props: {status: this.error}  }  )
         }
           //console.log('count');
-          return h('div',  {
-            directives: [
-                {
-                  name: 'scroll',
-                  value: this.onScroll,
-                  expression:'onScroll'
-                }
-            ]
-          }, [
+          return h('div',
+           [
               // toolbar for Page
             h('FunctionalPageToolbar', {
-              props: {offset: this.offsetTop},
               on: {
                 shareWindow: ()=>{this.shareWindow = true}
               }
@@ -169,14 +164,7 @@ export default {
             h('PageSchema', {props: {structure: this.$store.state.APP_PAGE.objectActive.contentStructure }}),
 
             // SpeedDeal
-            h('FunctionalSpeedDeal', {
-              directives:[
-                {
-                  name: 'show',
-                  value: this.needShowAction
-                }
-              ]}
-            ),
+            h('FunctionalSpeedDeal'),
             // Share Window
             this.shareWindow? h('FunctionalShareWindow', {
               props: {
@@ -189,22 +177,8 @@ export default {
               }):'',
 
             // Button UP
-            h('v-fab-transition', [
-              h('v-btn', {props: {fixed: true, large: this.$vuetify.breakpoint.smAndUp, bottom: true, left:true,  fab: true, color: 'secondary'},
-                on: {
-                  click: ()=>{this.$vuetify.goTo(0, {duration: 40})}
-                },
-                directives: [
-                  {
-                    name: 'show',
-                    value: this.showUpButton&&this.needShowAction
-                  }
-                ]
-              }, [
-                h('AppIcon', {props: {name: 'si-arrow-up', inverse: true }})
-              ])
+            h('FunctionalButtonUp')
 
-            ])
 
 
         ]
