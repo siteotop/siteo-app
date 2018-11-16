@@ -71,6 +71,8 @@ import IconsRegister from  './components/Icons/register.js';
 
 */
 
+import axios from 'axios';
+import $script from 'scriptjs';
 
 import VeeValidate from 'vee-validate';
 
@@ -100,7 +102,8 @@ export const start = function (APP_INSTANCE, messages, template,    plugins ) {
    //sync router with store for access route from store
    sync(CoreVue.store, CoreVue.router );
 
-
+   CoreVue.$script = $script;
+   CoreVue.axios = axios;
    CoreVue.el = '#siteo-top-app';
 
    // Create VueI18n instance with options
@@ -131,9 +134,10 @@ export const start = function (APP_INSTANCE, messages, template,    plugins ) {
     CoreVue.SiteoAddPlugin = function (plugin) {
       Vue.use(plugin, {coreVue:CoreVue, pluginOptions: plugin.options });
     };
-    //CoreVue._siteoPlugins = {};
-  //  Vue.use(template);
+    // CoreVue._siteoPlugins = {};
+    // Vue.use(template);
     CoreVue.SiteoAddPlugin(template);
+
     if (plugins&&plugins.length) {
        for (var i in plugins ) {
           CoreVue.SiteoAddPlugin(plugins[i]);

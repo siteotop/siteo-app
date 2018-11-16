@@ -1,13 +1,8 @@
 <template >
-  <div v-html="htmlInsta">
-
-  </div>
+  <div v-html="htmlInsta"></div>
 </template>
 
 <script>
-
-import axios from 'axios';
-import $script from 'scriptjs';
 
 export default {
   props: {
@@ -15,7 +10,7 @@ export default {
       type: String,
       default: ''
     },
-    
+
     $hc: { // hidecaption
       type: Boolean,
       default: false
@@ -32,7 +27,8 @@ export default {
       var self = this;
       if (!this._url) { return;}
       var url ='https://api.instagram.com/oembed?omitscript=true&hidecaption='+this.$hc+'&url=' + this._url;
-        axios.get(url).then(function(result){
+      var $script = self.$root.$options.$script;
+        self.$root.$options.axios.get(url).then(function(result){
             console.log(result);
             self.htmlInsta=result.data.html;
             $script('https://www.instagram.com/embed.js', 'instagram' );
