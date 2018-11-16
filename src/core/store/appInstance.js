@@ -56,7 +56,7 @@ export default function ( APP_INSTANCE) {
      },
 
       LANG_PORTAL(state){
-          return state.config.lang;
+          return state.configs.lang;
       },
 
       /**
