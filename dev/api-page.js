@@ -135,6 +135,65 @@ var _PRERENDER = {
       },
 
       {
+        $$: 'SectionWrap',
+        _props: {
+          _t: 'Tabs',
+          _d: '',
+          $bc:'',
+          $bf: 'md12 text-xs-center',
+          $bls: [
+            {
+              $$: 'BTabs',
+
+              _props: {
+                $bls: [
+                  {
+                    $$:'BFormOrder',
+                    _n: 'Order',
+                    _i: 'si-order',
+                    _props:{
+
+                    }
+
+
+                  },
+
+                  {
+                    $$:'BFormRecall',
+                    _n: 'Order Recall',
+                    _i: 'si-recall',
+                    _props: {
+
+                    }
+
+                  },
+
+                  {
+                    $$:'BTitle',
+                    _n: 'Title',
+                    _i: 'si-help',
+                    _props: {
+                      _t: 'Title 1',
+                      _s: 'Subtitle ',
+                      _d: 'Decription lasjdhf klahsdf klhasklfh khasf kjhaskj fhaskjhf kjashf kjhaslkjfhkjlsahf klhasf kljhkalsjhf klashfklhas'
+                    }
+
+                  },
+
+                  {
+                    $$: 'AutoServices',
+                    _n: 'Services',
+                    _i: 'si-services',
+
+
+                  }
+                ]
+              }
+            }
+          ]
+        }
+
+      },
 
       {
 
