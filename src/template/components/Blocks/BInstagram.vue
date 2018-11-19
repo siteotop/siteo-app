@@ -3,19 +3,9 @@
 </template>
 
 <script>
-
+import PropsBInstagram from '../../../plugins/AddPager/BaseProps/BInstagram';
 export default {
-  props: {
-    _url: {
-      type: String,
-      default: ''
-    },
-
-    $hc: { // hidecaption
-      type: Boolean,
-      default: false
-    }
-  },
+  extends: PropsBInstagram,
 
   data() {
       return {

@@ -1,6 +1,8 @@
 
-export default {
+import SectionWrap from './SectionWrap';
 
+export default {
+  extends: SectionWrap,
   props: {
     $cl: { // component list. component  which using in all $bls list (only this component)
       type: [Boolean, String],
@@ -24,6 +26,6 @@ export default {
       type: Boolean,
       default:false
     }
- 
+
   }
 }

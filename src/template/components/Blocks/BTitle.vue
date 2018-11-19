@@ -6,7 +6,7 @@
           </v-avatar>
         </v-card-text>
         <v-card-text v-if="props._t">
-          <component :is="'h'+props.$ht"  :class="props.$_t||'display-3'">{{props._t}}</component>
+          <component :is="'h'+(props.$ht||3)"  :class="props.$_t||'display-3'">{{props._t}}</component>
         </v-card-text>
         <v-card-text v-if="props._s" :class="props.$_s||'title grey--text'" >
           {{props._s}}
@@ -27,10 +27,7 @@
 
 <script>
 
-import BTitleProps from './_extends/b-title-props.js';
-
 export default {
-  extends: BTitleProps
 
 }
 </script>

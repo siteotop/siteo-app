@@ -1,4 +1,7 @@
 
+/**
+ Props for  Pages/SectionWrap
+*/
 export default {
 
   props: {

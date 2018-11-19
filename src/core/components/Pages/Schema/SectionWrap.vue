@@ -35,11 +35,7 @@
 
 <script>
 
-//import BaseProps from './Helper/base-props.js';
-
-
 export default {
-  //extends: BaseProps,
 
 
 }

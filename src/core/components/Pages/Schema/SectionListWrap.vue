@@ -30,12 +30,7 @@
 </template>
 
 <script>
-//import BaseProps from './Helper/base-props.js';
-//import ListProps from './Helper/list-props.js';
-
 export default {
-  // extends: BaseProps,
-   //mixins: [ListProps]
 
 }
 

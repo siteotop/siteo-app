@@ -1,8 +1,9 @@
 
-  import BTitleProps from './_extends/b-title-props.js';
-
+  /**
+    Extends BTitle 
+  */
   export default {
-      extends: BTitleProps,
+
       functional: true,
 
       render(h, context) {

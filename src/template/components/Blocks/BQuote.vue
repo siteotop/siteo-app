@@ -1,7 +1,7 @@
 <template functional>
 <v-card class="elevation-0 transparent">
   <v-card-text class="text-xs-center" v-if="props._m">
-      <v-avatar  :tile="props.$_mt" :size="props.$_ms"  >
+      <v-avatar  :tile="props.$_mt" :size="props.$_ms||100"  >
         <img  :src="props._m" :alt="props._t">
       </v-avatar>
   </v-card-text>
@@ -26,14 +26,6 @@
 
 <script>
 
-import BTitleProps from './_extends/b-title-props.js';
-
 export default {
-  extends: BTitleProps,
-  props: {
-    $b: {
-      type: String
-    }
-  }
 }
 </script>

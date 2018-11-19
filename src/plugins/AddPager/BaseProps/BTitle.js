@@ -77,10 +77,6 @@ export default {
         default: ''
       },
 
-
-
-
-
       $vl:  { // version list type of list ( list like V-list )
         type: Boolean,
         default:false

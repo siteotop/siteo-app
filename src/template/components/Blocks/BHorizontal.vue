@@ -13,7 +13,7 @@
       <v-flex xs12 sm7 md8>
         <v-card flat>
           <v-card-text class="mb-0 pb-0">
-            <component :is="'h'+props.$ht"  :class="props.$_t||'title'">{{props._t}}</component>
+            <component :is="'h'+(props.$ht||3)"  :class="props.$_t||'title'">{{props._t}}</component>
             <span :class="props.$_s||' grey--text'">{{props._s}}</span>
           </v-card-text>
           <v-card-text  :class="(props.$_d||'body-1')+ (parent.$root.$vuetify.breakpoint.xs?' text-truncate':'')" >
