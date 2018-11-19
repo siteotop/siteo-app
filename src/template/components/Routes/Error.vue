@@ -1,7 +1,7 @@
 <template>
 <div>
   <PageSchema :structure="[{
-      _n:'SectionWrap',
+      $$:'SectionWrap',
       _props: {
         _t: title,
         _d: description,
@@ -10,7 +10,7 @@
         $_d: 'ma-2 display-1 white--text',
         $bls: [
           {
-            _n:'AppAction',
+            $$:'AppAction',
             $bf:'text-xs-center'
 
           },

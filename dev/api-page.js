@@ -14,7 +14,7 @@ var _PRERENDER = {
 
       {
 
-        _n: 'SectionWrap',
+        $$: 'SectionWrap',
         _props: {
           _p:'https://picsum.photos/1500/600?random',
           _t: 'This is title block',  //
@@ -31,7 +31,7 @@ var _PRERENDER = {
           $bls: [
 
             {
-              _n:'AppAction',
+              $$:'AppAction',
               _props: {
                 _at: 'Action Text',
 
@@ -39,7 +39,7 @@ var _PRERENDER = {
             },
 
             {
-              _n:'AppAction',
+              $$:'AppAction',
               _props: {
                 _at: 'Non Default Text',  //
                 color: 'red',
@@ -55,7 +55,7 @@ var _PRERENDER = {
 
 
       {
-        _n: 'SectionListWrap',
+        $$: 'SectionListWrap',
         _props: {
           _t: '',
           _d: 'This is only  description for BFeatures block ',
@@ -102,7 +102,7 @@ var _PRERENDER = {
 
 
       {
-        _n: 'SectionWrap',
+        $$: 'SectionWrap',
         _props: {
           _$:'about-borsht',
           _n:'About',
@@ -113,7 +113,7 @@ var _PRERENDER = {
           $bf: 'xs12 sm12 md6',
           $bls: [
             {
-              _n: 'BHtmlText',
+              $$: 'BHtmlText',
 
               _props: {
                   _te: '<h3>This text can be creating in  WYSIWYG redactor</h3><p>We can use <strong>strong text</strong> and much more tags, like <em>this</em>. But Html redactor has some rule for adding texts and it can to block some tags like script or link</p><p>In HtmlText block you can create paragraph.</p><h3>And Title using h3, h4,h5</h3><p>H1 and H1, you can use in Title(_t) and description(_d) props for section.</p>',
@@ -121,7 +121,7 @@ var _PRERENDER = {
             },
 
             {
-              _n: 'BImage',
+              $$: 'BImage',
               _props: {
                   _m: 'https://picsum.photos/500/500?random',
 
@@ -136,7 +136,9 @@ var _PRERENDER = {
 
       {
 
-        _n: 'SectionWrap',
+      {
+
+        $$: 'SectionWrap',
         _props: {
           _t: 'Title with button',  //
           _d: 'If you click on default AppAction button you will  go to order form  by default. Everywhere! Everytime!',  //
@@ -145,7 +147,7 @@ var _PRERENDER = {
           $bf: 'xs12 sm6 md4 text-xs-center',
           $bls: [
             {
-              _n:'AppAction',
+              $$:'AppAction',
               _props: {
                 _at: 'Action Text',  //
                 //_ah: 'Action Href',  //
@@ -158,7 +160,7 @@ var _PRERENDER = {
 
       {
 
-        _n: 'AutoServices',
+        $$: 'AutoServices',
         _props: {
           _t: 'Services ',  //
           _d: 'If all services or items which you sell',  //
@@ -170,7 +172,7 @@ var _PRERENDER = {
 
       {
 
-        _n: 'AutoExperts',
+        $$: 'AutoExperts',
         _props: {
           _t: 'Experts from company',  //
           _d: 'Description Header Block',  //
@@ -184,7 +186,7 @@ var _PRERENDER = {
 
 
       {
-        _n: 'SectionWrap',
+        $$: 'SectionWrap',
         _props: {
           _t: '',
           _d: '',
@@ -194,7 +196,7 @@ var _PRERENDER = {
           $bf: 'md6 ',
           $bls: [
             {
-              _n:'BTitle',
+              $$:'BTitle',
               $bf: 'text-md-left ',
               _props: {
                 _t: 'Integrate your order form',
@@ -205,7 +207,7 @@ var _PRERENDER = {
               }
             },
             {
-              _n: 'BFormOrder'
+              $$: 'BFormOrder'
             }
 
 
@@ -215,13 +217,13 @@ var _PRERENDER = {
       },
 
       {
-         _n: 'SectionWrap',
+         $$: 'SectionWrap',
          _props: {
            $bf: 'md6',
            $bl: 'align-center row wrap ',
            $bls: [
              {
-               _n:'BInstagram',
+               $$:'BInstagram',
                 $bf: 'text-xs-center ',
                _props: {
                  _url: 'https://www.instagram.com/p/BpPnezuAZjr',
@@ -229,7 +231,7 @@ var _PRERENDER = {
                }
              },
              {
-               _n:'BTitle',
+               $$:'BTitle',
                $bf: 'text-md-center',
                _props: {
                  _t: 'Integrate your instagram Post',
@@ -262,7 +264,7 @@ var _PRERENDER = {
       },
 
       {
-        _n: 'SectionWrap',
+        $$: 'SectionWrap',
         _props: {
           _t: 'Buttons  Action ',
           _d: 'Description about Buttons  Action',
@@ -270,7 +272,7 @@ var _PRERENDER = {
           $bf: 'md6 text-xs-center align-center',
           $bls: [
             {
-              _n: 'AutoContacts',
+              $$: 'AutoContacts',
               _props: {
                 $type: 'call',
                 $clp: {
@@ -280,7 +282,7 @@ var _PRERENDER = {
             },
 
             {
-              _n: 'AutoContacts',
+              $$: 'AutoContacts',
 
             },
 
@@ -290,7 +292,7 @@ var _PRERENDER = {
       },
 
       {
-        _n: 'SectionWrap',
+        $$: 'SectionWrap',
         _props: {
           _t: 'Buttons  Action ',
           _d: 'Description about Buttons  Action sdfg lskdfjgh ljsdfhgkj sfdlkjgh kjlsdhg klhsdlkgh klsjfdhgklhsdg kjhsdlkgh lksjfdhg lkjsdhglkjsd',
@@ -298,15 +300,17 @@ var _PRERENDER = {
           $bf: 'md12 text-xs-center',
           $bls: [
             {
-              _n: 'AutoLinks'
+              $$: 'AutoLinks'
             }
           ]
         }
 
       },
 
+
+
       {
-        _n: 'SectionWrap',
+        $$: 'SectionWrap',
         _props: {
           _t: 'Block of Quote',
           _d: 'Block with quotes from people or customers',
@@ -316,7 +320,7 @@ var _PRERENDER = {
           $bf: 'md6',
           $bls: [
             {
-              _n: 'BQuote',
+              $$: 'BQuote',
               _props: {
                  _t: 'Dmytro Diachuk',
                  _s: 'Founder siteo.com',
@@ -326,7 +330,7 @@ var _PRERENDER = {
             },
 
             {
-              _n: 'BQuote',
+              $$: 'BQuote',
               _props: {
                  _t: 'Inna Shepetyuk',
                  _s: 'have created web-app on siteo-top',
@@ -343,7 +347,7 @@ var _PRERENDER = {
 
       {
 
-        _n: 'SectionWrap',
+        $$: 'SectionWrap',
         _props: {
           _$: 'reciept',
           _n: 'reciept',
@@ -354,7 +358,7 @@ var _PRERENDER = {
           $bf: 'xs12 md6',
           $bls: [
             {
-              _n: 'BList',
+              $$: 'BList',
               _props: {
                 _li: [
                     {
@@ -387,7 +391,7 @@ var _PRERENDER = {
             },
 
             {
-              _n: 'SectionListWrap',
+              $$: 'SectionListWrap',
               _props: {
                 _t: '',
                 _d: '',
@@ -436,14 +440,14 @@ var _PRERENDER = {
 
       {
         // name section
-        _n: 'SectionListWrap',
+        $$: 'SectionListWrap',
         // data section
 
 
         _props: {
           //_t: 'Title  Header Block ',
             $cl: 'BStep',
-          _d: 'If you want to prepare Borsht. See reciept bottom',  //
+            _d: 'If you want to prepare Borsht. See reciept bottom',  //
           items: [
               {
                 _t:'Крок 1 ',
@@ -477,7 +481,7 @@ var _PRERENDER = {
 
       {
         // name section
-        _n: 'SectionWrap',
+        $$: 'SectionWrap',
         // data section
         _props: {
           _t: 'Title  Header Block ',
@@ -490,7 +494,7 @@ var _PRERENDER = {
           _p: 'https://picsum.photos/1600/600?random', // background image
           $bls: [
             {
-              _n: 'AppAction',
+              $$: 'AppAction',
 
 
             }
@@ -501,13 +505,13 @@ var _PRERENDER = {
 
       {
 
-        _n: 'SectionWrap',
+        $$: 'SectionWrap',
         _props: {
           _t: 'Popular questions about Borsch',  //
           _d: 'Few questions that ask with name dishes',  //
           $bls: [
             {
-              _n:'BQa',
+              $$:'BQa',
               _props: {
                 _qa:
                 [
@@ -543,7 +547,7 @@ var _PRERENDER = {
 
 
       {
-        _n: 'SectionWrap',
+        $$: 'SectionWrap',
         _props: {
           _t: 'About Borsht',  //
           _d: 'Borsht is very good food with beetroot',  //
@@ -552,7 +556,7 @@ var _PRERENDER = {
           $bls: [
 
             {
-              _n:'BVideo',
+              $$:'BVideo',
               _props: {
                 _vi: 'nejk74AtW0I'
               }

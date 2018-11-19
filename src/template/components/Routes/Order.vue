@@ -55,14 +55,14 @@ export default {
         bls =  [
 
           {
-            _n:'AutoActions',
+            $$:'AutoActions',
             _props: {
               active: this.typeAction
             }
           },
 
           {
-            _n:nameAction,
+            $$:nameAction,
             $bf: 'sm8 md6',
             _props: {
                 $vl: true
@@ -72,7 +72,7 @@ export default {
       } else {
         bls = [
           {
-            _n:'AutoActions',
+            $$:'AutoActions',
             _props: {
               block:true
             }
@@ -83,7 +83,7 @@ export default {
 
       return [
         {
-          _n: 'SectionWrap',
+          $$: 'SectionWrap',
           _props: {
             $bf: 'xs12 text-xs-center',
             //$bl:'text-xs-center',
