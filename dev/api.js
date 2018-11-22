@@ -247,13 +247,13 @@ var _APP_INSTANCE = {
        "class":[],
        "children": [
          {
-           _n: 'SectionWrap',
+           $$: 'SectionWrap',
            _props: {
              $bf: '',
              //$bl:'text-xs-center',
              $bls: [
                {
-                 _n:'AutoContacts',
+                 $$:'AutoContacts',
                  $bf: 'xs12 md4',
                  _props: {
                    $clp:{
@@ -263,7 +263,7 @@ var _APP_INSTANCE = {
                },
 
                {
-                 _n: 'BTitle',
+                 $$: 'BTitle',
                   $bf: 'xs12 md8',
                  _props: {
                    _d: 'Text Footer Text Footer Text Footer Text Footer Text Footer Text Footer Text Footer Text Footer Text Footer Text Footer Text Footer Text Footer Text Footer Text Footer Text Footer Text Footer '
