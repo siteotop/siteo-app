@@ -19,7 +19,7 @@ export {default as BFormRecall} from './Blocks/BFormRecall.vue';
 export {default as BLinks} from './Blocks/BLinks.vue';
 export {default as BHorizontal} from './Blocks/BHorizontal.vue';
 export {default as BTabs} from './Blocks/BTabs.vue';
-
+export {default as AppDialogAction} from './AppDialogAction';
 //AUTO BLOCKS FOR PAGE
 export {default as AutoContacts} from './Items/AutoContacts.vue';
 export {default as AutoLinks} from './Items/AutoLinks.vue';
@@ -28,3 +28,4 @@ export {default as AutoServices} from './Items/AutoServices.vue';
 export {default as AutoExperts} from './Items/AutoExperts.vue';
 export {default as AutoLocations} from './Items/AutoLocations.vue';
 export {default as AutoPosts} from './Items/AutoPosts.vue';
+export {default as AutoOrderTabs} from './Items/AutoOrderTabs.vue';

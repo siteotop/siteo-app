@@ -9,9 +9,6 @@ export default {
 
   functional: true,
   name: 'AppAction',
-  wrapped:'v-btn',
-
-
 
   render(h, context) {
     var
@@ -40,6 +37,10 @@ export default {
       attrs: context.data.attrs,
       on: {
         click: function (event) {
+          console.log(context);
+             if (context.listeners&&context.listeners.click) {
+               context.listeners.click();
+             }
             console.log(' here send statistic');
         },
 
