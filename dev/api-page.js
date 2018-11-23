@@ -46,6 +46,16 @@ var _PRERENDER = {
                 dark: true,
                 to: '/services',  //
               }
+            },
+
+            {
+              $$:'AppDialogAction',
+              _props: {
+                _at: 'Dialog Action',  //
+                color: 'red',
+                dark: true,
+                to: '/services',  //
+              }
             }
           ]
 
