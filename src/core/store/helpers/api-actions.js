@@ -83,7 +83,7 @@ const actions = {
 
   callCoreApi({dispatch}, APIconfig ) {
 
-
+    
 
     return  RESTApi({
        method: APIconfig.method,
@@ -99,20 +99,6 @@ const actions = {
           dispatch('generateSystemMessageRespone', error, { root: true });
      });
 
-  },
-
-  callPublicApi({dispatch}, URL) {
-    return  RESTApi({
-       method: 'GET',
-       url: URL,
-       //headers: {'X-Requested-With': 'XMLHttpRequest'},
-       params: {json:true},
-
-    }).catch (error=>{
-
-          console.log(error);
-          dispatch('generateSystemMessageRespone', error, { root: true });
-     });
   }
 
 

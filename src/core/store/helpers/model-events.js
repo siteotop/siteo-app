@@ -102,20 +102,7 @@ const createModelCRUD = function (object, turnOnList) {
                     }
                );
             },
-
-            /**
-                get object from model APi
-            */
-            getPublicObject({dispatch, commit, getters, state}, id) {
-               // console.log(this);
-
-               return   dispatch('callPublicApi', getters.urlWithoutId+ '/'+ id, {root:true}).then(response=>{
-                       commit('setApiId', id);
-                       commit('updateModel', response.data);
-                       return state.objectActive;
-                    }
-               );
-            },
+            
 
             /**
                 upadete  object in model APi  and update in store

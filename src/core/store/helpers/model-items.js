@@ -10,7 +10,15 @@ const createItems = function (items) {
 
       state: {
         objects: [],
+
+        /**
+           was loaded/checked first  items from server
+        */
         crudLoaded: false,
+
+        /**
+          scipt needs send request for getting full object from server
+        */
         getfullObjectFromServer: items.getfullObjectFromServer|| false
       },
 
@@ -161,23 +169,27 @@ const createItems = function (items) {
           },
 
 
+          /**
+            search object in items.
+            If not found in loaded items and state.getfullObjectFromServer = false
+          */
           searchObjectInItems({state, dispatch,  getters, commit}, id_object) {
-                // var findObject = {};
-                // findObject[getters.nameId] = id_object;
-                 if (state.getfullObjectFromServer || !state.crudLoaded) {
-                     return dispatch('getObject', id_object);
-                 }
 
-                 console.log(id_object);
-                 var result = _find(state.objects,  function(o) { return o[getters.nameId] == id_object; } );
-                 console.log(result );
-                 if (result) {
-                    commit('setApiId', id_object);
-                    commit('updateModel', result);
-                   return result;
-                 } else {
-                   throw { error_message: 'not found'};
-                 }
+             if (state.getfullObjectFromServer || !state.crudLoaded) {
+                 return dispatch('getObject', id_object);
+             }
+
+             console.log(id_object);
+             var result = _find(state.objects,  function(o) { return o[getters.nameId] == id_object; } );
+             console.log(result );
+             if (result) {
+                commit('setApiId', id_object);
+                commit('updateModel', result);
+               return result;
+             } else {
+
+               throw { error_message: 'not found'};
+             }
 
           }
 
