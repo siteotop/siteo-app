@@ -1,8 +1,6 @@
 <template>
-
 <div>
     <AppAction @click="vDialog=!vDialog" v-bind="actionProps" to=''></AppAction>
-
     <v-dialog
       v-if="vDialog"
       v-model="vDialog"
@@ -14,12 +12,10 @@
         <v-toolbar dark dense color="secondary">
           <v-spacer></v-spacer>
           <v-btn @click="vDialog=false" icon flat><AppIcon name="si-close"></AppIcon></v-btn></v-toolbar>
-        <AutoOrderTabs :onlyTabs="false"></AutoOrderTabs>
+        <AutoOrderTabs></AutoOrderTabs>
       </v-card>
     </v-dialog>
 </div>
-
-
 </template>
 
 <script>

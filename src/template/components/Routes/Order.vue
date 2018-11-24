@@ -2,7 +2,7 @@
 <v-container :class="parent.$vuetify.breakpoint.xs?'ma-0 pa-0':'my-0 py-0'">
   <v-layout justify-center>
     <v-flex md8>
-      <AutoOrderTabs :typeAction="props.typeAction"></AutoOrderTabs>
+      <AutoOrderTabs :onlyTabs="false" :typeAction="props.typeAction"></AutoOrderTabs>
     </v-flex>
   </v-layout>
 </v-container>

@@ -6,25 +6,25 @@
      dark
      value="recall"
      :iconsAndText="icon"
-     
+
    >
      <v-tabs-slider color="primary"></v-tabs-slider>
 
-     <v-tab v-for="(BComponent ) in getTabsActions" :key="BComponent.index" :to="onlyTabs?BComponent.to:''" >
+     <v-tab v-for="(BComponent ) in getTabsActions" :key="BComponent.index" :to="onlyTabs?'':BComponent.to" >
        {{BComponent._n}}
 
        <AppIcon v-if="icon" :name="BComponent._i"></AppIcon>
 
      </v-tab>
 
-     <v-tab-item v-if="!onlyTabs" lazy
+     <v-tab-item v-if="onlyTabs" lazy
        v-for="(BComponent) in getTabsActions"  :key="BComponent.index"
       >
        <component :is="BComponent.$$" ></component>
      </v-tab-item>
 
    </v-tabs>
-    <component v-if="onlyTabs" :is="$options.mapComponents[typeAction]" ></component>
+    <component v-if="!onlyTabs" :is="$options.mapComponents[typeAction]" ></component>
  </div>
 </template>
 
@@ -37,7 +37,7 @@ export default {
       defualt: 'order'
     },
 
-    onlyTabs: {
+    onlyTabs: { // turn on tabs (not router-link)
       type: Boolean,
       default: true
     },
