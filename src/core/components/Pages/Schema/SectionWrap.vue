@@ -1,5 +1,5 @@
 <template functional>
-  <component :is="props.$co||'v-container'" :id="props._$" fluid  v-bind="{'v-container': { tag: 'section'}, 'v-img':{height:props.$he||600, src: props._p, gradient: props.$gr  }, 'v-parallax':{height:props.$he, alt:props._t, src: props._p}}[props.$co]" :class="props.$tc+(parent.$vuetify.breakpoint.smAndDown? ' pa-1': '' )" >
+  <component :is="props.$co||'v-container'" :id="props._$" fluid  v-bind="{'v-container': { tag: 'section'}, 'v-img':{height:props.$he||600, src: props._p, gradient: props.$gr||'to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)'  }, 'v-parallax':{height:props.$he, alt:props._t, src: props._p}}[props.$co]"  :class="(props.$tc||'')+(parent.$vuetify.breakpoint.smAndDown? ' px-1': '' )" >
     <v-layout
       v-if="props._t||props._d"
       column
@@ -22,7 +22,7 @@
       <slot></slot>
       <v-container v-if="props.$bls!==false" :class="props.$bc||'grid-list-md'">
         <v-layout :class="props.$bl||'row wrap justify-center'">
-          <v-flex :class="block.$bf?   props.$bf+' '+block.$bf: props.$bf"    v-for="(block, index) in props.$bls" :key="index">
+          <v-flex :class="block.$bf?   (props.$bf||'')+' '+block.$bf: (props.$bf||'')"    v-for="(block, index) in props.$bls" :key="index">
             <component  :is="block.$$" v-bind="block._props" > </component>
           </v-flex>
         </v-layout>
