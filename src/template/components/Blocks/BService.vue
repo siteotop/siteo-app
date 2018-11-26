@@ -20,7 +20,8 @@
                         $ {{props._p}}
                       </div>
                       <div>
-                        <AppAction ></AppAction>
+                        <AppAction  :to="props._to"></AppAction>
+
                       </div>
                   </div>
                 </v-flex>
@@ -33,7 +34,8 @@
           <v-card-title>
             <span class="headline font-weight-medium">$ {{props._p}} </span>
             <v-spacer></v-spacer>
-            <AppAction :fab="true" :large="false"></AppAction>
+            <AppAction :to="props._to" :fab="true" :large="false"></AppAction>
+
           </v-card-title>
           <v-card-text>
             {{props._d}}
@@ -51,7 +53,7 @@
     <template slot="action" slot-scope="name">
           <v-card-text class="headline font-weight-medium"> $ {{props._p}} </v-card-text>
           <v-card-actions>
-            <AppAction  :fab="true" :large="false"></AppAction>
+            <AppAction :to="props._to"  :fab="true" :large="false"></AppAction>
           </v-card-actions>
     </template>
   </b-horizontal>

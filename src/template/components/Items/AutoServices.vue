@@ -8,6 +8,7 @@
         :_m="item.picture"
         :_p="item.price"
         :$vl="$vl"
+        :_to="{ name: 'service', params: { objectId: item._id }}"
         ></b-service>
     </template>
   </SectionListWrap>
