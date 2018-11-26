@@ -19,6 +19,12 @@ export default {
         type: Boolean,
         default: false
       },
+
+      sharing: {
+        type: Boolean,
+        default: false
+      },
+
       buttonUp: {
         type: Boolean,
         default: false
@@ -37,8 +43,12 @@ export default {
       console.log(' render page ');
 
       return h('div', [
-          context.props.pageToolbar? h(FunctionalPageToolbar, {props: {contentStructure:context.props.structure },   on: {
-              shareWindow: ()=>{context.parent.shareWindow = true}
+          context.props.pageToolbar? h(FunctionalPageToolbar, {props: {
+            contentStructure:context.props.structure,
+            sharing: context.props.sharing
+          },
+          on: {
+              shareWindow: ()=>{ context.parent.shareWindow = true}
             }}):'',
           context.props.structure.map(function(section) {
               return h(section.$$, { props: section._props  } )

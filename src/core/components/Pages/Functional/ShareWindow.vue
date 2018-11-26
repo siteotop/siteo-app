@@ -16,7 +16,7 @@
           <AppIcon name="si-share"></AppIcon>
             {{$t('share')}}
           <v-spacer></v-spacer>
-           <v-btn   icon   @click="shareWindow = false"><AppIcon name="si-close"></AppIcon></v-btn>
+           <v-btn    icon   @click="shareWindow = false"><AppIcon name="si-close"></AppIcon></v-btn>
          </v-card-title>
 
          <v-card-text>
@@ -81,7 +81,7 @@ export default {
     canonicalUrl: {
       type: String
     },
-
+    
     ogTitle: {
       type: String
     }

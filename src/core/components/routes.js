@@ -1,5 +1,5 @@
 import PagesApi from './Pages/Api.js';
-
+import CorePage from './Pages/_extends/page.js';
 
 export default function (templateRoutes) {
 
@@ -7,6 +7,8 @@ export default function (templateRoutes) {
           console.log(err);
           return h(templateRoutes.RouteError, {props: {status: err.statusError }});
       };
+
+      templateRoutes.RouteService.extends = CorePage;
 
       return [
             {
@@ -37,10 +39,10 @@ export default function (templateRoutes) {
             },
 
             {
-              name: "service",
+              name: "objectService",
               path:  '/p/:objectId',
-              component: templateRoutes.RouteItem,
-              props: function (route){ console.log(route);  return { objectComponent: 'OneService', objectId: route.params.objectId  } }
+              component: templateRoutes.RouteService,
+              props: true
 
             },
 
@@ -54,7 +56,7 @@ export default function (templateRoutes) {
 
             {
               name: "objectPost",
-              path:  '/:idString-p:postId',
+              path:  '/:objectId',
               component: PagesApi,
               props: true,
             },

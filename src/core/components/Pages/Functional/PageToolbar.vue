@@ -25,7 +25,7 @@
             >{{item.title}}</v-btn>
         </v-toolbar-items>
       <v-spacer></v-spacer>
-      <v-btn icon @click="$emit('shareWindow')"><AppIcon name="si-share"  ></AppIcon> </v-btn>
+      <v-btn v-if="sharing" icon @click="$emit('shareWindow')"><AppIcon name="si-share"  ></AppIcon> </v-btn>
       <v-btn icon><AppIcon name="si-qa"></AppIcon> </v-btn>
       <v-btn icon><AppIcon name="si-bookmark"></AppIcon> </v-btn>
 
@@ -41,7 +41,10 @@ export default {
       type: Number,
       default: 300
     },
-
+    sharing: {
+      type: Boolean,
+      default: false
+    },
     contentStructure: {
       type: [Array, Boolean]
     }

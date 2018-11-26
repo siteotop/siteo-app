@@ -1,22 +1,11 @@
 
 import CorePage from './_extends/page.js';
 export default {
-
+  storeName: 'APP_PAGE',
   extends: CorePage,
 
 
-  props: {
-      postId: {
-        type: String,
-        default: '',
-      },
 
-      idString:{
-        type: String,
-        default: '',
-      },
-
-  },
 
   /*beforeRouteEnter (to, from, next) {
 
@@ -44,26 +33,9 @@ export default {
 */
 
 
-  created() {
-      this.getPageFromServer();
-  },
-
-  watch: {
-
-      postId(newValue, OldValue) {
-        console.log('change postId');
-        this.onLeave();
-        this.getPageFromServer();
-      }
-
-  },
 
 
-  beforeRouteLeave(to, from, next) {
-      console.log('leave');
-       this.onLeave();
-       next();
-    },
+
 
     computed: {
         meta_title() {
@@ -81,20 +53,14 @@ export default {
 
     },
 
+
     methods: {
-
-      onLeave() {
-        this.error = false;
-        this.$store.commit('APP_PAGE/clearModel');
-
-      },
-
-      getPageFromServer() {
+      preFetch() {
         var post_id;
-        if (!this.postId) {
+        if (!this.objectId) {
           post_id = this.$store.state.APP_INSTANCE.data.pages_id;
         } else {
-          post_id = this.postId;
+          post_id = this.objectId;
         }
         //console.log(post_id);
         //console.log(_PRERENDER._id);
@@ -103,31 +69,12 @@ export default {
             this.$store.commit('APP_PAGE/setApiId',_PRERENDER._id);
             //this.$store.commit('APP_PAGE/updateModel', _PRERENDER);
             this.$store.commit('APP_PAGE/updateModel', _PRERENDER);
-            return;
+            return true;
+        } else {
+          return false;
         }
-        var self = this;
-        this.startLoading();
-        this.$store.dispatch('APP_PAGE/getObject', post_id )
-        .then(function (response) {
-              console.log(response);
-                self.stopLoading();
-                //  self.setServerData(response.data);
-
-
-        }).catch(function(error) {
-            console.log(error.response);
-            self.error= error.response.status;
-            self.stopLoading();
-          //  self.$store.dispatch('generateSystemMessageRespone', error)
-
-           //  self.catchError(error.response);
-
-        });
       }
-
-
     },
-
 
     /**
 
@@ -157,6 +104,7 @@ export default {
               pageToolbar: true,
               speedDeal: true,
               structure: this.$store.state.APP_PAGE.objectActive.contentStructure,
+              sharing: true,
               shareWindow: this.shareWindow,
               buttonUp: true
             }
