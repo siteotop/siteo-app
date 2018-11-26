@@ -31,6 +31,7 @@ export const  createServices = function (parent) {
         return {
           _id: '',
           title: '',
+          subtitle: '',
           price: '',
           preview: '',
           internal_uri: '',
