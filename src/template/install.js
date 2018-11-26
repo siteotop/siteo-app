@@ -7,6 +7,7 @@ import ICONS from './icons';
 import RouteError from './components/Routes/Error.vue';
 import RouteOrder from './components/Routes/Order.vue';
 import RouteItems from './components/Routes/Items.vue';
+import RouteItem from './components/Routes/Item.vue';
 
 export default {
   install: function (Vue, options) {
@@ -23,7 +24,8 @@ export default {
   routes: {
      RouteOrder,
      RouteItems,
-     RouteError
+     RouteError,
+     RouteItem
   }
 
 }

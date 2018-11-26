@@ -37,6 +37,14 @@ export default function (templateRoutes) {
             },
 
             {
+              name: "service",
+              path:  '/p/:objectId',
+              component: templateRoutes.RouteItem,
+              props: function (route){ console.log(route);  return { objectComponent: 'OneService', objectId: route.params.objectId  } }
+
+            },
+
+            {
               name: "order",
               path:  '/go/:typeAction(order|call|recall|chat|links|locations)?',
               component: templateRoutes.RouteOrder,
@@ -45,7 +53,7 @@ export default function (templateRoutes) {
             },
 
             {
-              name: "PageSchema",
+              name: "objectPost",
               path:  '/:idString-p:postId',
               component: PagesApi,
               props: true,
