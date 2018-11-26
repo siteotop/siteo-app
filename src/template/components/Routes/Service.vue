@@ -17,11 +17,43 @@
     {
       $$: 'SectionWrap',
       _props: {
-        $tc:'my-0 py-0',
-        $bc:'my-0 pa-0',
-        $bls:[{$$:'AutoOrderTabs', $bf:'md6 elevation-4 white top-m-3' }]
+        $tc: 'my-0 pa-0',
+        $bc: 'my-0 pa-0',
+        $tcm: 'ma-0 dd pa-0',
+        $bls:[
+           {
+            $$:'AutoOrderTabs',
+            $bf:'md6 elevation-4 white top-m-3'
+           }
+          ]
       }
-    }]"></PageSchema>
+    },
+
+    {
+      $$: 'SectionWrap',
+      _props: {
+
+        $bls:[
+          {
+            $$:'BTitle',
+            _props: {
+              _s: $store.state.APP_SERVICES.objectActive.subtitle,
+              _d: $store.state.APP_SERVICES.objectActive.preview,
+              _al: '/',
+              _at: 'Read more',
+              $_al: 'text-xs-center',
+              $aa: {color: 'default', 'siicon':false}
+            }
+          },
+
+         ]
+      }
+    },
+
+
+
+
+    ]"></PageSchema>
 
 </template>
 
