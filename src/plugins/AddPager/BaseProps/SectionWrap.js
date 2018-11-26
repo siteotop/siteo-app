@@ -52,6 +52,11 @@ export default {
 
     },
 
+    $tcm: { // append if breakpoint.xs
+      type: String,
+      default: ' px-1'
+    }
+
     $tl: { // layout classes for top container
       type: String,
       default: ' justify-center text-xs-center pt-5 pb-4'
