@@ -40,7 +40,12 @@ export default {
     hightUp: {
       type: Number,
       default: 300
+    },
+
+    contentStructure: {
+      type: [Array, Boolean]
     }
+
 
   },
 
@@ -48,7 +53,7 @@ export default {
 
         pageMenu() {
           var page_menu = [];
-          this.$store.state.APP_PAGE.objectActive.contentStructure.map(function(section) {
+          this.contentStructure.map(function(section) {
 
               if (section._props&&section._props._n&&section._props._$) {
                   page_menu.push( {title: section._props._n||section._props._ti, _ti: section._props._ti||section._props._n, href: '#'+section._props._$  });

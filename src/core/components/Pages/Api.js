@@ -151,39 +151,19 @@ export default {
         }
           //return h(PageError, { props: {status: this.error}  }  )
 
-          //console.log('count');
-          return h('div',
-           [
-              // toolbar for Page
-            h('FunctionalPageToolbar', {
-              on: {
-                shareWindow: ()=>{this.shareWindow = true}
-              }
-            }),
-             // sections for Page
 
-            h('PageSchema', {props: {structure: this.$store.state.APP_PAGE.objectActive.contentStructure }}),
+        return h('PageSchema', {
+            props: {
+              pageToolbar: true,
+              speedDeal: true,
+              structure: this.$store.state.APP_PAGE.objectActive.contentStructure,
+              shareWindow: this.shareWindow,
+              buttonUp: true
+            }
 
-            // SpeedDeal
-            h('FunctionalSpeedDeal'),
-            // Share Window
-            this.shareWindow? h('FunctionalShareWindow', {
-              props: {
-                canonicalUrl: this.$store.state.APP_PAGE.objectActive.meta_canonical, ogTitle:this.$store.state.APP_PAGE.objectActive.meta_og_title||this.$store.state.APP_PAGE.objectActive.meta_title,
-
-              },
-              on: {
-                closeShare: ()=>{this.shareWindow = false}
-              }
-              }):'',
-
-            // Button UP
-            h('FunctionalButtonUp')
+          })
 
 
-
-        ]
-        )
 
       }
 

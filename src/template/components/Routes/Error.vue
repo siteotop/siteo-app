@@ -1,5 +1,4 @@
 <template>
-<div>
   <PageSchema :structure="[{
       $$:'SectionWrap',
       _props: {
@@ -17,8 +16,6 @@
         ]
       }
     } ]"></PageSchema>
-</div>
-
 </template>
 
 <script>
