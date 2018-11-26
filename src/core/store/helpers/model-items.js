@@ -60,8 +60,7 @@ const createItems = function (items) {
                   state.objects.push(items[i]);
                }
             }
-            //state.objects = list;
-          //  state.firstLoaded = true;
+          state.crudLoaded = true;
         },
 
         clearList(state, items) {
@@ -83,7 +82,7 @@ const createItems = function (items) {
            config.url = getters.urlWithoutId;
            return   dispatch('callAPI', config, {root:true}).then(response=>{
                 //commit('updateModel', config.data);
-                state.crudLoaded = true;
+
                 commit('saveList', response.data.items);
 
 
