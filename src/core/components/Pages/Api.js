@@ -107,7 +107,7 @@ export default {
         }
         var self = this;
         this.startLoading();
-        this.$store.dispatch('APP_PAGE/getPublicObject', post_id )
+        this.$store.dispatch('APP_PAGE/getObject', post_id )
         .then(function (response) {
               console.log(response);
                 self.stopLoading();
