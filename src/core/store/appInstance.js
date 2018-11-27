@@ -2,13 +2,16 @@ export default function ( APP_INSTANCE) {
   return  {
 
     state: function() {
-      if (APP_INSTANCE.menu==undefined) {
-        APP_INSTANCE.menu = [];
-      }
-      if (APP_INSTANCE.design==undefined) {
-        APP_INSTANCE.desig = {};
-      }
-      return APP_INSTANCE;
+       return {
+         data: APP_INSTANCE.data,
+         lang: APP_INSTANCE.configs.lang,
+         contacts: APP_INSTANCE.contacts,
+         design: APP_INSTANCE.design|| {},
+         menu: APP_INSTANCE.menu||[],
+         links: APP_INSTANCE.links||[],
+         locations: APP_INSTANCE.locations||[]
+       }
+      return ;
     },
 
    mutations: {
@@ -56,7 +59,7 @@ export default function ( APP_INSTANCE) {
      },
 
       LANG_PORTAL(state){
-          return state.configs.lang;
+          return state.lang;
       },
 
       /**
