@@ -1,12 +1,12 @@
 import Vuex from 'vuex';
-
+import {createRESTApi} from 'core/http/rest-api.js';
 import SystemMessages from './messages.js';
 
 //import i18n from './i18n.js';
 
 import createInstance from './appInstance.js';
 import {createStorePage, createServices, createExperts, createPosts} from './models.js';
-import { actions}  from './helpers/api-actions';
+//import { actions}  from './helpers/api-actions';
 
 /**
   @param Vue
@@ -14,11 +14,16 @@ import { actions}  from './helpers/api-actions';
 
 */
 export default function (Vue, APP_INSTANCE)  {
+
        Vue.use(Vuex);
+       var RESTApi = createRESTApi(APP_INSTANCE.configs.api_url);
        var store =  new Vuex.Store({
          state: {
            drawer: false,
-           pageLoader: false
+           pageLoader: false,
+           public_token: APP_INSTANCE.configs.public_token,
+           usePablicToken: true,
+           dispatchGetToken: 'NAME_MODULE/action' // for example "account/refreshToken"
          },
 
          mutations: {
@@ -47,8 +52,41 @@ export default function (Vue, APP_INSTANCE)  {
 
          },
 
-         actions: actions
+         actions: {
+
+           callAPI({dispatch, state, getters, rootGetters}, APIconfig) {
+
+              if (state.usePablicToken) {
+                APIconfig.access_token = state.public_token;
+                return  dispatch('callCoreApi', APIconfig );
+              } else {
+                console.log(state.dispatchGetToken);
+              }
+
+           },
+
+           callCoreApi({dispatch}, APIconfig ) {
+
+             return  RESTApi({
+                method: APIconfig.method,
+                url: APIconfig.url,
+                data: APIconfig.data,
+                headers: {'common': { 'Authorization':"Bearer "+ APIconfig.access_token }},
+                params: APIconfig.params,
+                withCredentials: true
+               //  responseType:'stream'
+             }).catch (error=>{
+
+                   console.log(error);
+                   dispatch('generateSystemMessageRespone', error, { root: true });
+              });
+
+           }
+         }
        });
+
+
+       //connect and fill additional stores
 
        [
          {n:'services', f:createServices},

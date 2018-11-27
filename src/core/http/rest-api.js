@@ -1,7 +1,6 @@
 import axios from 'axios';
-import {configApps} from '../config';
 
-
+export const createRESTApi =  function (API_URL) {
   // Add a request interceptor
   axios.interceptors.request.use(
   function (config) {
@@ -39,10 +38,10 @@ import {configApps} from '../config';
      return Promise.reject(error);
   });
 
-var api = axios.create({
-      baseURL: configApps.API_URL,
+  return  axios.create({
+      baseURL: API_URL
 
-});
+  });
 
 
-export default api;
+}

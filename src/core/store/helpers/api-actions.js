@@ -1,5 +1,5 @@
 
-import RESTApi from 'core/http/rest-api.js';
+
 //import {AuthStorage} from 'core/utils/local-storage';
 
 const needRefresh= function (expire) {
@@ -83,7 +83,7 @@ const actions = {
 
   callCoreApi({dispatch}, APIconfig ) {
 
-    
+
 
     return  RESTApi({
        method: APIconfig.method,

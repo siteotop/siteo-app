@@ -6,6 +6,8 @@ var _APP_INSTANCE = {
      "path":"\/",
      "lang":"en",
      "state":"reserved",
+     public_token: 'public_token_is_no_user_token_for_access_api_siteo',
+     api_url: 'https://api.siteo.top/api/v1/',
      recaptcha: '6LdRBCAUAAAAAD1G95xZfHvPD_-3VLijXfa-48Xm',
   },
 
