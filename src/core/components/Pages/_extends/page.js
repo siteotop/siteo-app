@@ -61,6 +61,11 @@ export default {
 
   methods: {
 
+    catchError() {
+        throw {statusError:this.error };
+    },
+
+
     onLeave() {
       this.error = false;
       this.$store.commit(this.$options.storeName+'/clearModel');
@@ -77,7 +82,7 @@ export default {
       if (this.preFetch()) {
         return;
       }
-        
+
       var self = this;
       this.startLoading();
       this.$store.dispatch(this.$options.storeName+'/searchObjectInItems', this.objectId )
@@ -86,8 +91,14 @@ export default {
             self.stopLoading();
 
       }).catch(function(error) {
-          console.log(error.response);
-          self.error= error.response.status;
+          console.log(error);
+
+          if (error.response) {
+              self.error= error.response.status;
+          } else {
+              self.error = 404
+            }
+          //
           self.stopLoading();
       });
     }

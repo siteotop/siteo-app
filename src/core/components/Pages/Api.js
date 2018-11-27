@@ -94,7 +94,7 @@ export default {
         //console.log('Page ');
 
         if (this.error) {
-          throw {statusError:this.error };
+          this.catchError();
         }
           //return h(PageError, { props: {status: this.error}  }  )
 

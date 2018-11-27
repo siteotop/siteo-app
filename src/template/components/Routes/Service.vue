@@ -1,5 +1,6 @@
 <template>
-  <PageSchema :shareWindow="shareWindow" :sharing="true" :pageToolbar="true"  :structure="[
+  <div v-if="error">{{catchError()}}</div>
+  <PageSchema v-else  :shareWindow="shareWindow" :sharing="true" :pageToolbar="true"  :structure="[
     {
       $$: 'SectionWrap',
       _props: {
@@ -42,18 +43,15 @@
               _al: '/',
               _at: 'Read more',
               $_al: 'text-xs-center',
-              $aa: {color: 'default', 'siicon':false}
+              $aa: {color: 'default', 'siicon':'si-links'}
             }
           },
 
          ]
       }
     },
-
-
-
-
-    ]"></PageSchema>
+    ]">
+  </PageSchema>
 
 </template>
 

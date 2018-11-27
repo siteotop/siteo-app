@@ -186,8 +186,8 @@ const createItems = function (items) {
                 commit('updateModel', result);
                return result;
              } else {
-
-               throw { error_message: 'not found'};
+               return dispatch('getObject', id_object);
+               //throw { error_message: 'not found'};
              }
 
           }
