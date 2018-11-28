@@ -334,6 +334,8 @@ var _APP_INSTANCE = {
         subtitle: 'Subtitle For service position',
         preview: ' All about service,  All about service,All about service,All about service,All about service,All about service,All about service,All about service,All about service,All about service,All about service,All about service,All about service,All about service,All about service,All about service,',
         price: '123.4',
+        actionText: '',
+        readMore: '/',
         internal_url:'/',
         picture: 'https://picsum.photos/510/300?random'
       },
@@ -344,6 +346,8 @@ var _APP_INSTANCE = {
         subtitle: 'Subtitle For service position',
         preview: ' All about service,  All about service,All about service,All about service,All about service,All about service,All abce,',
         price: '1323.4',
+        actionText: '',
+        readMore: '/',
         internal_url:'/',
         picture: 'https://picsum.photos/510/300?random'
       },
@@ -354,6 +358,8 @@ var _APP_INSTANCE = {
         subtitle: 'Subtitl position',
         preview: ' All about service,  All about service,All about service,All about service,All about service,All about service,All abce, asdf asdf sadf',
         price: '123',
+        actionText: '',
+        readMore: '/',
         internal_url:'/',
         picture: 'https://picsum.photos/510/300?random'
       },
@@ -364,6 +370,8 @@ var _APP_INSTANCE = {
         subtitle: 'Subtitl position',
         preview: ' All about service,  All about service,All about service,All aas asdf asdf asdf sadasdf asfd asfdbout service,All about service,All about service,All abce, asdf asdf sadf',
         price: '13.4',
+        actionText: '',
+        readMore: '',
         internal_url:'/',
         picture: 'https://picsum.photos/510/300?random'
       },

@@ -1,5 +1,7 @@
 import PagesApi from './Pages/Api.js';
+import OneService from './Pages/OneService.js';
 import CorePage from './Pages/_extends/page.js';
+
 
 export default function (templateRoutes) {
 
@@ -8,7 +10,8 @@ export default function (templateRoutes) {
           return h(templateRoutes.RouteError, {props: {status: err.statusError }});
       };
 
-      templateRoutes.RouteService.extends = CorePage;
+      OneService.components = {OneService: templateRoutes.RouteOneService };
+
 
       return [
             {
@@ -41,7 +44,7 @@ export default function (templateRoutes) {
             {
               name: "objectService",
               path:  '/p/:objectId',
-              component: templateRoutes.RouteService,
+              component: OneService,
               props: true
 
             },

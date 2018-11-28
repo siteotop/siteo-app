@@ -1,6 +1,5 @@
-<template>
-  <div v-if="error">{{catchError()}}</div>
-  <PageSchema v-else  :shareWindow="shareWindow" :sharing="true" :pageToolbar="true"  :structure="[
+<template functional>
+  <PageSchema v-else  :shareWindow="props.shareWindow" :sharing="true" :pageToolbar="true"  :structure="[
     {
       $$: 'SectionWrap',
       _props: {
@@ -9,9 +8,9 @@
         $he:'300',
         $_t:'display-3 white--text',
         $_d:'display-1 white--text pa-1 font-weight-medium',
-        _t:$store.state.APP_SERVICES.objectActive.title,
-        _d:$store.state.APP_SERVICES.objectActive.price + ' $',
-        _p:$store.state.APP_SERVICES.objectActive.picture
+        _t:props.objectService.title,
+        _d:props.objectService.price + ' $',
+        _p:props.objectService.picture
       }
     },
 
@@ -38,18 +37,20 @@
           {
             $$:'BTitle',
             _props: {
-              _s: $store.state.APP_SERVICES.objectActive.subtitle,
-              _d: $store.state.APP_SERVICES.objectActive.preview,
-              _al: '/',
+              _s: props.objectService.subtitle,
+              _d: props.objectService.preview,
+              _al: props.objectService.readMore||'',
               _at: 'Read more',
               $_al: 'text-xs-center',
               $aa: {color: 'default', 'siicon':'si-links'}
             }
-          },
+          }
 
          ]
       }
     },
+
+
     ]">
   </PageSchema>
 
@@ -58,8 +59,17 @@
 <script>
 
 export default {
+  props: {
+    objectService: {
+      type: Object
+    },
 
-  storeName: 'APP_SERVICES',
+    shareWindow: {
+      type: Boolean,
+
+    }
+  }
+
 
 }
 

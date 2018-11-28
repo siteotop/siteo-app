@@ -4,40 +4,7 @@ export default {
   storeName: 'APP_PAGE',
   extends: CorePage,
 
-
-
-
-  /*beforeRouteEnter (to, from, next) {
-
-    next(vm=>{
-        console.log('created');
-        vm.onLeave();
-        vm.getPageFromServer();
-    })
-  },
-
-
-  beforeRouteUpdate (to, from, next) {
-
-      console.log('update');
-      this.onLeave();
-      this.getPageFromServer();
-      next();
-  },
-
-  beforeRouteLeave(to, from, next) {
-    console.log('leave');
-     this.onLeave();
-     next();
-  },
-*/
-
-
-
-
-
-
-    computed: {
+  computed: {
         meta_title() {
             return this.$store.state.APP_PAGE.objectActive.meta_title? this.$store.state.APP_PAGE.objectActive.meta_title:
             this.$store.state.APP_PAGE.objectActive.title ;

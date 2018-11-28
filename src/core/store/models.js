@@ -34,6 +34,8 @@ export const  createServices = function (parent) {
           subtitle: '',
           price: '',
           preview: '',
+          readMore: '',
+          actionText: '',
           internal_uri: '',
           picture: ''
 

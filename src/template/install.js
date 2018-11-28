@@ -7,7 +7,7 @@ import ICONS from './icons';
 import RouteError from './components/Routes/Error.vue';
 import RouteOrder from './components/Routes/Order.vue';
 import RouteItems from './components/Routes/Items.vue';
-import RouteService from './components/Routes/Service.vue';
+import RouteOneService from './components/Routes/OneService.vue';
 
 export default {
   install: function (Vue, options) {
@@ -25,7 +25,7 @@ export default {
      RouteOrder,
      RouteItems,
      RouteError,
-     RouteService
+     RouteOneService
   }
 
 }

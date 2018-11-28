@@ -11,6 +11,7 @@ export  const en = {
     rm: 'Read More',
     no_data: 'Данных для отображения нет',
     copyright:'Website created on app "{template}" and hosted on platform',
+
     actions: {
         order: 'Заказать',
         call: 'Позвонить',
@@ -19,6 +20,9 @@ export  const en = {
         links: 'Ссылки',
         locations: 'Адреса'
     },
+
+    service_t: '{title} - Order item',
+    service_d: '{actionText} {title}, Price {price}, ' ,
 
     auto: {
       call: 'Call by',

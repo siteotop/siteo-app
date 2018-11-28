@@ -38,7 +38,6 @@ export default {
 
 
   created() {
-
       this.fetchDataFromApi();
   },
 
@@ -89,6 +88,9 @@ export default {
       .then(function (response) {
             console.log(response);
             self.stopLoading();
+            if (self.afterFetching) {
+              self.afterFetching();
+            }
 
       }).catch(function(error) {
           console.log(error);
