@@ -324,7 +324,7 @@ export default {
       var message  = error.error_description;
 
       var translation_key = this.i18nkey+'.errors.'+keyError;
-      if (this.$te(ktranslation_key)) {
+      if (this.$te(translation_key)) {
          message = this.$t(translation_key);
       }
       this.$_LocalMessages_add( message,  type );
