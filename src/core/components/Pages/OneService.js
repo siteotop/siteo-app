@@ -17,6 +17,10 @@ export default {
 
     meta_description() {
       return this.$t('service_d', this.objectService );
+    },
+
+    canonical() {
+      return this.$store.getters.CORE_HOST + '/p/'+ this.objectService._id;
     }
   },
   methods: {

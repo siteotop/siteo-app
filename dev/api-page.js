@@ -5,7 +5,7 @@ var _PRERENDER = {
     description: 'Description for List and Meta Tile', //
     meta_title: 'If Seo Title Present it replace Basic Title', // if this title  empty using basic title for list
     meta_description: 'This description good for google snippet. And you must write some useful information which describe your article', // if this title  empty using basic description for list
-    meta_canonical: 'http://jstest.com/',
+    url: '/',
     meta_og_title: 'This is title for Facebook and other social networks', // if this title  empty using basic title for list
   //  meta_og_image: '', // if this title  empty using basic title for list
     meta_robots: 'index, follow',

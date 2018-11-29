@@ -15,6 +15,9 @@ export default {
             this.$store.state.APP_PAGE.objectActive.meta_description:  this.$store.state.APP_PAGE.objectActive.description;
         },
 
+        canonical() {
+          return this.$store.getters.CORE_HOST + this.$store.state.APP_PAGE.objectActive.url;
+        }
 
 
 

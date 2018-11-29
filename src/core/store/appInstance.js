@@ -4,7 +4,7 @@ export default function ( APP_INSTANCE) {
     state: function() {
        return {
          data: APP_INSTANCE.data,
-         lang: APP_INSTANCE.configs.lang,
+         configs: APP_INSTANCE.configs,
          contacts: APP_INSTANCE.contacts,
          design: APP_INSTANCE.design|| {},
          menu: APP_INSTANCE.menu||[],
@@ -65,22 +65,13 @@ export default function ( APP_INSTANCE) {
       WEBSITE_API_URL(state) {
         return '/websites/' +state.data._id;
       },
-      /*
-      CORE_HOST(state) {
 
-           return   'https://'+state.core.host;
+      CORE_HOST(state) {
+        return  state.configs.host+state.configs.path;
       },
-     */
-     LANGUAGES(){
-       return {
-         'en':'English',
-         'ru':'Русский',
-         'uk':'Українська'
-       }
-     },
 
       LANG_PORTAL(state){
-          return state.lang;
+          return state.configs.lang;
       },
 
       /**

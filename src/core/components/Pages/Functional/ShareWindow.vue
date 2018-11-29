@@ -75,25 +75,28 @@
 <script>
 
 import AppSharing from './Share/index.vue';
+import  _find  from 'lodash/find';
 
 export default {
-  props:{
-    canonicalUrl: {
-      type: String
-    },
-    
-    ogTitle: {
-      type: String
-    }
-  },
 
   components: {AppSharing},
 
   data() {
       return {
         snackbar: false,
-        shareWindow: true
+        shareWindow: true,
+        ogTitle: this.$parent.$metaInfo.title
       }
+  },
+
+
+  computed: {
+    canonicalUrl () {
+
+      
+      var link =_find(this.$parent.$metaInfo.link, function(o) { return o['rel'] == 'canonical'; })
+       return  link.href;
+    }
   },
 
   methods: {

@@ -8,7 +8,12 @@ export default function (Vue, store, path,  routes) {
     Vue.use(VueRouter);
     var router;
     router = new VueRouter({
-        base: path|| '/',
+        /**
+          https://router.vuejs.org/api/#base
+          our path is without last "/"
+          "" or "/app"
+        */
+        base: path+'/',
         mode: 'history',
         fallback: false,  // для браузеров где нет History Api  (IE9) будет просто открывать новую страницу
         routes: routes,

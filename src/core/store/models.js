@@ -15,7 +15,7 @@ export const  createStorePage = function (parent) {
           meta_canonical: '',
           meta_og_title: '',
           meta_robots: '',
-
+          url: '',
           contentStructure: []
 
       }

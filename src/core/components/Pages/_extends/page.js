@@ -31,6 +31,9 @@ export default {
       titleTemplate: '%s  - ' + this.$store.state.APP_INSTANCE.data.name,
       meta: [
         {name: 'description', vmid: 'description', content: this.meta_description }
+      ],
+      link: [
+      { rel: 'canonical', href: this.canonical },
       ]
 
     }
@@ -38,6 +41,7 @@ export default {
 
 
   created() {
+      
       this.fetchDataFromApi();
   },
 
