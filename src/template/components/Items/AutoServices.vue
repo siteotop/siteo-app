@@ -1,5 +1,5 @@
-<template>
-  <SectionListWrap :items="items" :$bf="flexClass" $bl="row wrap fill-height">
+<template functional>
+  <SectionListWrap :items="parent.$store.state.APP_SERVICES.items.objects" :$bf="(props.toggleComponent == 'list'||props.toggleComponent == 'card')? '  xs12 ': 'd-flex xs12 sm6 md4'" $bl="row wrap fill-height">
     <template slot-scope="{item}">
        <b-service
         :_t="item.title"
@@ -7,7 +7,7 @@
         :_s="item.subtitle"
         :_m="item.picture"
         :_p="item.price"
-        :$vl="$vl"
+        :$vl="props.$vl"
         :_to="{ name: 'objectService', params: { objectId: item._id }}"
         ></b-service>
     </template>
@@ -15,10 +15,6 @@
 </template>
 
 <script>
-import ListExtend from './_extends/List';
-
 export default {
-  extends: ListExtend,
-  storeName: 'APP_SERVICES',
 }
 </script>

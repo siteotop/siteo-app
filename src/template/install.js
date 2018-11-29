@@ -6,7 +6,6 @@ import ICONS from './icons';
 
 import RouteError from './components/Routes/Error.vue';
 import RouteOrder from './components/Routes/Order.vue';
-import RouteItems from './components/Routes/Items.vue';
 import RouteOneService from './components/Routes/OneService.vue';
 
 export default {
@@ -23,7 +22,7 @@ export default {
   //ICONS: ICONS,
   routes: {
      RouteOrder,
-     RouteItems,
+
      RouteError,
      RouteOneService
   }

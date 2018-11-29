@@ -1,7 +1,7 @@
 import PagesApi from './Pages/Api.js';
 import OneService from './Pages/OneService.js';
 import CorePage from './Pages/_extends/page.js';
-
+import RouteItems from './Items/_extends/core.vue';
 
 export default function (templateRoutes) {
 
@@ -24,20 +24,20 @@ export default function (templateRoutes) {
             {
               name: "services",
               path:  '/services',
-              component: templateRoutes.RouteItems,
+              component: RouteItems,
               props: { typeList: 'services' }
             },
             {
               name: "experts",
               path:  '/experts',
-              component: templateRoutes.RouteItems,
+              component: RouteItems,
               props: { typeList: 'experts' }
             },
 
             {
               name: "posts",
               path:  '/posts',
-              component: templateRoutes.RouteItems,
+              component: RouteItems,
               props: { typeList: 'posts' }
             },
 

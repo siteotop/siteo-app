@@ -27,12 +27,11 @@
    </v-btn>
  </v-toolbar>
 
-<component :is="'auto-'+typeList" :toggleComponent="toggle_component" :$vl="toggle_component=='list'">
+<component  :is="'auto-'+typeList" :toggleComponent="toggle_component" :$vl="toggle_component=='list'">
   <v-layout slot="header"  wrap class="mb-4"> </v-layout>
 </component>
 </div>
 </template>
-
 <script>
 export default {
 

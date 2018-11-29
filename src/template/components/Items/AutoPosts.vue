@@ -1,12 +1,12 @@
-<template>
-  <SectionListWrap :items="items" :$bf="flexClass" $bl="row wrap fill-height">
+<template functional>
+  <SectionListWrap :items="parent.$store.state.APP_POSTS.items.objects" :$bf="(props.toggleComponent == 'list'||props.toggleComponent == 'card')? '  xs12 ': 'd-flex xs12 sm6 md4'" $bl="row wrap fill-height">
     <template slot-scope="{item}">
        <b-post
         :_t="item.title"
         :_d="item.preview"
         :_m="item.picture"
         :_u="item.url"
-        :$vl="$vl"
+        :$vl="props.$vl"
         ></b-post>
     </template>
   </SectionListWrap>
@@ -14,9 +14,7 @@
 
 
 <script>
-import ListExtend from './_extends/List';
 export default {
-  extends: ListExtend,
-  storeName: 'APP_POSTS',
+
 }
 </script>
