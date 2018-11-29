@@ -2,8 +2,8 @@
 var _APP_INSTANCE = {
 
   configs: {
-     "host":"siteo.top",
-     "path":"\/",
+     "host":"https://siteo.top",
+     "path":"",
      "lang":"en",
      "state":"reserved",
      public_token: 'public_token_is_no_user_token_for_access_api_siteo',
@@ -361,7 +361,7 @@ var _APP_INSTANCE = {
         actionText: '',
         readMore: '/',
         internal_url:'/',
-        picture: 'https://picsum.photos/510/300?random'
+        picture: ''
       },
 
       {
@@ -373,7 +373,7 @@ var _APP_INSTANCE = {
         actionText: '',
         readMore: '',
         internal_url:'/',
-        picture: 'https://picsum.photos/510/300?random'
+        picture: 'https://picsum.photos/500/300?random'
       },
 
 

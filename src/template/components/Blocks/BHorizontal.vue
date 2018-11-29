@@ -3,8 +3,8 @@
   <v-layout row wrap >
 
       <v-flex hidden-xs-only sm2 >
-        <slot name="image" v-if="props._m">
-          <v-avatar  :tile="props.$_mt" :size="props.$_ms"  >
+        <slot name="image">
+          <v-avatar  v-if="props._m"  :tile="props.$_mt" :size="props.$_ms"  >
             <img  :src="props._m" :alt="props._t">
           </v-avatar>
         </slot>

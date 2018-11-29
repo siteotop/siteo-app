@@ -4,9 +4,9 @@
        slot-scope="{ hover }"
        :class="`elevation-${hover ? 12 : 2}`"
     >
-          <v-img v-if="props._m"
+          <v-img
             aspect-ratio="1.61"
-            class="white--text"
+            class="primary darken-2 white--text"
             gradient="to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)"
             :src="props._m"
             :alt="props._t"
@@ -28,9 +28,7 @@
               </v-layout>
             </v-container>
           </v-img>
-          <v-card-title v-else class="headline">
-             {{props._t}}
-          </v-card-title>
+
           <v-card-title>
             <span class="headline font-weight-medium">$ {{props._p}} </span>
             <v-spacer></v-spacer>
@@ -45,6 +43,7 @@
   <b-horizontal v-else  v-bind="props">
     <template slot="image" slot-scope="name">
             <v-img
+              class="primary darken-2 white--text"
                aspect-ratio="1"
               :src="props._m"
               :alt="props._t"

@@ -3,6 +3,7 @@
     {
       $$: 'SectionWrap',
       _props: {
+        $tc: 'primary',
         $co:'v-img',
         $ht:'1',
         $he:'300',
@@ -19,7 +20,7 @@
       _props: {
         $tc: 'my-0 pa-0',
         $bc: 'my-0 pa-0',
-        $tcm: 'ma-0 dd pa-0',
+        $tcm: 'ma-0 pa-0',
         $bls:[
            {
             $$:'AutoOrderTabs',
