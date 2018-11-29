@@ -5,8 +5,8 @@ import CorePage from './Pages/_extends/page.js';
 
 export default function (templateRoutes) {
 
+      //https://vuejs.org/v2/api/#renderError
       CorePage.renderError = function (h, err) {
-          console.log(err);
           return h(templateRoutes.RouteError, {props: {status: err.statusError }});
       };
 
