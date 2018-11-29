@@ -24,7 +24,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
   extract-text-webpack-plugin  was changed to mini-css-extract-plugin for CSS
 */
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 /**
   minimization plugin
 */
@@ -89,7 +89,8 @@ optimization: {
           }
         }
       }
-      )
+      ),
+      new OptimizeCSSAssetsPlugin({})
     ],
 
     /**
@@ -101,11 +102,7 @@ optimization: {
           test: function () {return false},
           priority: -10
         },
-        /* commons: {
-           name: 'siteo-commons',
-           chunks: 'initial',
-           minChunks: 2
-         }*/
+
        }
     }
 
@@ -197,20 +194,18 @@ optimization: {
       /**
         was created  by this documentation https://webpack.js.org/loaders/sass-loader/
         and Vue Loader  https://vue-loader.vuejs.org/migrating.html#css-extraction
+
       */
       {
-        test: /\.scss$/,
+        test: /\.(sa|sc|c)ss$/,
         use: [
-          'vue-style-loader',
-           MiniCssExtractPlugin.loader,    //  'style-loader', // creates style nodes from JS strings
-            'css-loader',
-           //'postcss-loader',
-           'postcss-loader',
-           'sass-loader',
-
-
-
-        ]
+          NODE_ENV !== 'production'
+           ? 'vue-style-loader'
+           : MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
+        ],
       },
 
       /**
@@ -220,26 +215,17 @@ optimization: {
         test: /\.styl$/,
         use: [
 
-          'vue-style-loader',
-           MiniCssExtractPlugin.loader,
+          // https://vue-loader.vuejs.org/guide/extract-css.html#webpack-4
+          NODE_ENV !== 'production'
+           ? 'vue-style-loader'
+           : MiniCssExtractPlugin.loader,
           'css-loader',
+          'postcss-loader',
           'stylus-loader',
 
         ]
       },
 
-      // this will apply to both plain `.css` files
-      // AND `<style>` blocks in `.vue` files
-      {
-        test: /\.css$/,
-        use: [
-
-          //MiniCssExtractPlugin.loader,
-          'vue-style-loader',
-           MiniCssExtractPlugin.loader,
-          'css-loader'
-        ]
-      }
     ]
   },
 

@@ -53,8 +53,8 @@ import Vuetify from 'vuetify';
 import 'vuetify/dist/vuetify.min.css';
 
 /**CSS*/
-import './style/animations.scss';
-import './style/common.css'
+require( './style/animations.scss');
+require('./style/common.css')
 
 
 /**ICONS*/
