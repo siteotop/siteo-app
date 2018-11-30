@@ -45,6 +45,7 @@ export default {
       return h('div', [
           context.props.pageToolbar? h(FunctionalPageToolbar, {props: {
             contentStructure:context.props.structure,
+            hightUp: 300,
             sharing: context.props.sharing
           },
           on: {

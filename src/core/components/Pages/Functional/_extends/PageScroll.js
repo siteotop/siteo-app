@@ -3,6 +3,15 @@
   Mixin for scrolling element
 */
 export default {
+
+  props: {
+    hightUp: {
+      type: Number,
+      default: 0
+    },
+  },
+
+
   data() {
     return {
       offsetTop: 0
@@ -11,7 +20,7 @@ export default {
 
   computed: {
       needShowAction() {
-        return this.offsetTop> this.$vuetify.breakpoint.height;
+        return this.offsetTop> (this.hightUp||this.$vuetify.breakpoint.height);
       }
   },
 

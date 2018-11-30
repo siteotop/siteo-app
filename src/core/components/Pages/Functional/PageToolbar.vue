@@ -1,11 +1,11 @@
 <template >
   <v-toolbar  v-scroll="onScroll" v-bind="tProps"  :class="tClass" :style="tStyle">
-      <v-toolbar-side-icon v-if="offsetOn" @click="$store.state.drawer=!$store.state.drawer" ></v-toolbar-side-icon>
+      <v-toolbar-side-icon v-if="needShowAction" @click="$store.state.drawer=!$store.state.drawer" ></v-toolbar-side-icon>
       <v-menu offset-y>
       <v-btn slot="activator" outline ><AppIcon name="si-dots-menu"></AppIcon> {{$t('m')}} </v-btn>
       <v-list>
 
-        <v-list-tile v-if="offsetOn" tag="li" @click="$vuetify.goTo(0)"
+        <v-list-tile v-if="needShowAction" tag="li" @click="$vuetify.goTo(0)"
         ><v-list-tile-title>Top</v-list-tile-title></v-list-tile>
         <v-list-tile
            tag="li"
@@ -42,10 +42,7 @@ import PageScroll from './_extends/PageScroll';
 export default {
   extends: PageScroll,
   props: {
-    hightUp: {
-      type: Number,
-      default: 300
-    },
+
     sharing: {
       type: Boolean,
       default: false
@@ -70,10 +67,7 @@ export default {
           })
           return page_menu;
         },
-        // when offset on
-        offsetOn() {
-          return  (this.offsetTop>this.hightUp);
-        },
+
 
 
         tProps() {
@@ -84,7 +78,7 @@ export default {
              fixed: false,
             // dense: this.$vuetify.breakpoint.smAndDown
             }
-            if (this.offsetOn) {
+            if (this.needShowAction) {
              //  props.app =true;
              props.fixed =true;
              //props.app=true;
@@ -97,7 +91,7 @@ export default {
             return props;
         },
         tStyle() {
-            if (this.offsetOn) {
+            if (this.needShowAction) {
                 return {};
             } else {
 
@@ -108,7 +102,7 @@ export default {
             }
         },
         tClass() {
-            if (this.offsetOn) {
+            if (this.needShowAction) {
                 return 'secondary'
             } else {
                 return 'transparent'
