@@ -526,7 +526,7 @@ var _APP_INSTANCE = {
      "i":"si-home",
      "id":"main",
      "path":"\/",
-     "title":"\u0413\u043e\u043b\u043e\u0432\u043d\u0430"
+     "title":"Main"
    },
 
 
@@ -534,13 +534,13 @@ var _APP_INSTANCE = {
      "i":"si-services",
      "id":"services",
      "path":"\/services",
-     "title":"Услуги"
+     "title":"Services"
    },
    {
      "i":"si-locations",
      "id":"location",
      "path":"\/go/locations",
-     "title":"Адресса"
+     "title":"Locations"
    },
    {
      "i":"si-experts",
@@ -548,30 +548,15 @@ var _APP_INSTANCE = {
      "path":"\/experts",
      "title":"Experts"
    },
-   {
-     "i":"si-events",
-     "id":"events",
-     "path":"\/events",
-     "title":"Events"
-   },
+
    {
      "i":"si-blog",
      "id":"posts",
      "path":"\/posts",
      "title":"Blog"
-   },
-   {
-     "i":"si-qa",
-     "id":"qa",
-     "path":"\/kdshfksd-sdfsd-sdfj-p23423431",
-     "title":"Q/A"
-   },
-
-   {
-     "i":"si-settings",
-     "id":"admin",
-     "path":"\/admin",
-     "title":"Admin"
    }
+
+
+
   ]
  };
