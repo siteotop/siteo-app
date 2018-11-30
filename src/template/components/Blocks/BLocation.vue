@@ -32,9 +32,11 @@
 </template>
 
 <script>
+//https://stackoverflow.com/questions/9688607/how-to-open-a-mobile-devices-map-app-when-a-user-clicks-on-a-link
+// Google Maps link https://developers.google.com/maps/documentation/urls/guide#search-action
 
 export default {
-  
+
 
 }
 </script>
