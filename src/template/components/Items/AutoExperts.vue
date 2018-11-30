@@ -1,5 +1,5 @@
 <template functional >
-  <SectionListWrap :items="parent.$store.state.APP_EXPERTS.items.objects" :$bf="(props.toggleComponent == 'list'||props.toggleComponent == 'card')? '  xs12 ': 'd-flex xs12 sm6 md4'">
+  <SectionListWrap v-bind="props" :items="parent.$store.state.APP_EXPERTS.items.objects" :$bf="(props.toggleComponent == 'list'||props.toggleComponent == 'card')? '  xs12 ': 'd-flex xs12 sm6 md4'">
     <template slot-scope="{item}">
        <b-expert
         :_t="item.name"

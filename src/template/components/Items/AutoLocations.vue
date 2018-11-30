@@ -1,5 +1,5 @@
 <template functional>
-  <SectionListWrap :items="parent.$store.state.APP_INSTANCE.locations" :$bf="flexClass" $bl="row wrap fill-height">
+  <SectionListWrap  v-bind="props" :items="parent.$store.state.APP_INSTANCE.locations" :$bf="flexClass" $bl="row wrap fill-height">
     <template slot-scope="{item}">
        <b-location
         :_t="item.title"
