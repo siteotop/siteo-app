@@ -73,7 +73,6 @@ export default {
         tProps() {
            var props = {
              dark: true,
-             app: false,
              flat: false,
              fixed: false,
             // dense: this.$vuetify.breakpoint.smAndDown
