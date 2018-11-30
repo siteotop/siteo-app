@@ -4,6 +4,7 @@
     <v-btn   fab flat>
       <AppIcon name="si-filter"></AppIcon>
     </v-btn>
+    <v-toolbar-title>{{title}}</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-btn-toggle mandatory v-model="toggle_component">
       <v-btn flat value="cards">
@@ -20,7 +21,7 @@
         <AppIcon name="si-sort"></AppIcon>
    </v-btn>
   </PageItemsToolbar>
-  <component  :is="'auto-'+typeList" :toggleComponent="toggle_component" :$vl="toggle_component=='list'">
+  <component   :is="'auto-'+typeList" :_t="title" $tl="justify-center text-xs-center pt-1 pb-4" :toggleComponent="toggle_component" :$vl="toggle_component=='list'">
     <v-layout slot="header"  wrap class="mb-4"> </v-layout>
   </component>
 </div>
@@ -44,13 +45,19 @@ export default {
     }
   },
 
+  computed: {
+      title() {
+        return this.$t('routes.'+this.typeList+'.title');
+      }
+  },
+
   metaInfo () {
 
    return {
-      title: this.meta_title,
+      title: this.title,
       titleTemplate: '%s  - ' + this.$store.state.APP_INSTANCE.data.name,
       meta: [
-        {name: 'description', vmid: 'description', content: this.meta_description }
+        {name: 'description', vmid: 'description', content: '' }
       ]
 
     }

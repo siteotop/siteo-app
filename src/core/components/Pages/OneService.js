@@ -12,11 +12,11 @@ export default {
        }
     }),
     meta_title() {
-       return this.$t('service_t', this.objectService );
+       return this.$t('routes.objectService.title', this.objectService );
     },
 
     meta_description() {
-      return this.$t('service_d', this.objectService );
+      return this.$t('routes.objectService.description', this.objectService );
     },
 
     canonical() {

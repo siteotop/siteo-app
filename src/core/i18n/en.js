@@ -21,9 +21,6 @@ export  const en = {
         locations: 'Адреса'
     },
 
-    service_t: '{title} - Order item',
-    service_d: '{actionText} {title}, Price {price}, ' ,
-
     auto: {
       call: 'Call by',
       chat: 'Write message by',

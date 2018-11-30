@@ -106,6 +106,10 @@ export const start = function (APP_INSTANCE, messages, template,    plugins ) {
    CoreVue.axios = axios;
    CoreVue.el = '#siteo-top-app';
 
+
+   // connect routes translating to all messages
+   messages[APP_INSTANCE.configs.lang].routes = APP_INSTANCE.routes;
+   console.log(messages);
    // Create VueI18n instance with options
    CoreVue.i18n = new VueI18n({
       silentTranslationWarn: process.env.NODE_ENV === 'development'? false: true, // silent log
