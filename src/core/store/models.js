@@ -33,6 +33,7 @@ export const  createServices = function (parent) {
           title: '',
           subtitle: '',
           price: '',
+          discount: '',
           preview: '',
           readMore: '',
           actionText: '',

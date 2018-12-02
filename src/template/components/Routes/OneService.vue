@@ -3,15 +3,24 @@
     {
       $$: 'SectionWrap',
       _props: {
-        $tc: 'primary',
+        $tc: 'primary mp-5',
         $co:'v-img',
         $ht:'1',
         $he:'300',
         $_t:'display-3 white--text',
         $_d:'display-1 white--text pa-1 font-weight-medium',
         _t:props.objectService.title,
-        _d:props.objectService.price + ' $',
-        _p:props.objectService.picture
+        _p:props.objectService.picture,
+        $bls: [
+          {
+            $$: 'AppPriceService',
+            $bf: 'white--text text-xs-center headline md2 top-m-3',
+            _props: {
+               discount: props.objectService.discount,
+               price: props.objectService.price
+            }
+          }
+        ]
       }
     },
 

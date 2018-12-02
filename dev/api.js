@@ -32,6 +32,7 @@ var _APP_INSTANCE = {
      pages_id: '1532775891',
      countryAlpha2:"UA",
      lang:"uk",
+     currency: 'USD', 
      design:false
    },
 
@@ -350,10 +351,11 @@ var _APP_INSTANCE = {
 
       {
         _id: '1223124',
-        title: 'Service Title number 1',
+        title: 'Service Title with discount',
         subtitle: 'Subtitle For service position',
         preview: ' All about service,  All about service,All about service,All about service,All about service,All about service,All abce,',
         price: '1323.4',
+        discount: 15,
         actionText: '',
         readMore: '/',
         internal_url:'/',
@@ -362,10 +364,11 @@ var _APP_INSTANCE = {
 
       {
         _id: '1233126',
-        title: 'Service sdfasfd asdf Title number 1',
+        title: 'Service without picture',
         subtitle: 'Subtitl position',
         preview: ' All about service,  All about service,All about service,All about service,All about service,All about service,All abce, asdf asdf sadf',
         price: '123',
+        discount: '',
         actionText: '',
         readMore: '/',
         internal_url:'/',
@@ -374,10 +377,11 @@ var _APP_INSTANCE = {
 
       {
         _id: '124315663',
-        title: 'Service sdfasfd asdf Title number 1',
+        title: 'Service price is FREE',
         subtitle: 'Subtitl position',
         preview: ' All about service,  All about service,All about service,All aas asdf asdf asdf sadasdf asfd asfdbout service,All about service,All about service,All abce, asdf asdf sadf',
         price: '13.4',
+        discount: '100',
         actionText: '',
         readMore: '',
         internal_url:'/',

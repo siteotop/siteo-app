@@ -9,7 +9,10 @@ export default {
        type: String,
 
      },
-     _to: { //  to router_link 
+     _di: { // discount
+        type: [Number, String, Boolean]
+     },
+     _to: { //  to router_link
        type: String
      }
    }
