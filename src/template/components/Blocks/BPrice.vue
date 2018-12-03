@@ -8,7 +8,7 @@
       <span v-if="props.discount!='100'">{{Math.ceil(props.price/100*(100-props.discount))}} {{parent.$store.state.APP_INSTANCE.data.currency}}</span>
       <span v-else class="red--text font-weight-black"> FREE </span>
       <sup>
-      <v-chip  label color="error" text-color="white" class="font-weight-bold">
+      <v-chip v-if="props.discount!='100'"  label color="error" text-color="white" class="font-weight-bold">
         -{{props.discount}}%
       </v-chip></sup> </v-flex>
   </v-layout>

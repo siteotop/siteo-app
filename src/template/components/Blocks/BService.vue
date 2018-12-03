@@ -11,13 +11,12 @@
             :src="props._m"
             :alt="props._t"
           >
-
             <v-container fill-height fluid>
               <v-layout fill-height align-center text-xs-center>
                 <v-flex xs12 >
                   <span v-if="!hover" class="headline">{{props._t}}</span>
                   <div v-else class="align-center ">
-                        <AppPriceService class="headline font-weight-bold " :discount="props._di" :price="props._p"></AppPriceService>
+                        <BPrice class="headline font-weight-bold " :discount="props._di" :price="props._p"></BPrice>
                       <div>
                         <AppAction  :to="props._to"></AppAction>
 
@@ -30,7 +29,7 @@
 
           <v-card-title>
 
-              <AppPriceService class="headline font-weight-medium" :discount="props._di" :price="props._p"></AppPriceService>
+              <BPrice class="headline font-weight-medium" :discount="props._di" :price="props._p"></BPrice>
             <v-spacer></v-spacer>
             <AppAction :to="props._to" :fab="true" :large="false"></AppAction>
 
@@ -51,7 +50,7 @@
     </template>
     <template slot="action" slot-scope="name">
           <v-card-text class="headline font-weight-medium">
-            <AppPriceService :discount="props._di" :price="props._p"></AppPriceService>
+            <BPrice :discount="props._di" :price="props._p"></BPrice>
           </v-card-text>
           <v-card-actions>
             <AppAction :to="props._to"  :fab="true" :large="false"></AppAction>

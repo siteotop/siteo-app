@@ -4,7 +4,6 @@ export {default as AppIcon} from './Elements/AppIcon';
 export {default as AppPulseLoader} from './Elements/AppPulseLoader.vue';
 export {default as AppMessagesBlock} from './Elements/AppMessagesBlock.js';
 export {default as AppForm} from './Elements/AppForm';
-export {default as AppPriceService} from './Elements/AppPriceService.vue';
 
 // PageHelper
 export {default as PageSchema} from './Pages/Schema/index';

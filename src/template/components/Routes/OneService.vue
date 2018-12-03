@@ -13,7 +13,7 @@
         _p:props.objectService.picture,
         $bls: [
           {
-            $$: 'AppPriceService',
+            $$: 'BPrice',
             $bf: 'white--text text-xs-center headline md2 top-m-3',
             _props: {
                discount: props.objectService.discount,
