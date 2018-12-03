@@ -1,7 +1,7 @@
 {
   "name": "siteo-template",
   "description": "Core material design template for  web apps which based on Siteo platform https://siteo.top",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "license": "MIT",
   "sideEffects": false,
   "author": {
