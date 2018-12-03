@@ -24,10 +24,13 @@
   <component   :is="'auto-'+typeList" :_t="title" $tl="justify-center text-xs-center pt-1 pb-4" :toggleComponent="toggle_component" :$vl="toggle_component=='list'">
     <v-layout slot="header"  wrap class="mb-4"> </v-layout>
   </component>
+  <FunctionalButtonUp></FunctionalButtonUp>
 </div>
 </template>
 <script>
-import PageItemsToolbar from '../Functional/PageItemsToolbar.vue'
+import PageItemsToolbar from '../Functional/PageItemsToolbar.vue';
+import FunctionalButtonUp from  '../../Pages/Functional/ButtonUp.vue';
+
 export default {
 
   props: {
@@ -37,7 +40,8 @@ export default {
     }
   },
   components: {
-    PageItemsToolbar
+    PageItemsToolbar,
+    FunctionalButtonUp
   },
   data() {
     return {
