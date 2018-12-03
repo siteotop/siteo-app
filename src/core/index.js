@@ -153,4 +153,6 @@ export const start = function (APP_INSTANCE, messages, template,    plugins ) {
       CoreVue
     );
 
+    return app2;
+
 }
