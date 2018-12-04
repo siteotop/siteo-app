@@ -21,14 +21,10 @@ export default {
         self.$root.$options.axios.get(url).then(function(result){
             console.log(result);
             self.htmlInsta=result.data.html;
-            $script('https://www.instagram.com/embed.js', 'instagram' );
-            $script.ready('instagram', function() {
-              self.$nextTick(function () {
+            $script('https://www.instagram.com/embed.js').then(function() {
                 window.instgrm.Embeds.process();
-              })
-                //setTimeout(function(){ window.instgrm.Embeds.process();}, 200);
-            });
-
+            })
+          
 
 
         }).catch(function(error){

@@ -72,7 +72,8 @@ import IconsRegister from  './components/Icons/register.js';
 */
 
 import axios from 'axios';
-import $script from 'scriptjs';
+
+import VS2 from 'vue-script2';
 
 import VeeValidate from 'vee-validate';
 
@@ -102,7 +103,7 @@ export const start = function (APP_INSTANCE, messages, template,    plugins ) {
    //sync router with store for access route from store
    sync(CoreVue.store, CoreVue.router );
 
-   CoreVue.$script = $script;
+   CoreVue.$script = VS2.load;
    CoreVue.axios = axios;
    CoreVue.el = '#siteo-top-app';
 
