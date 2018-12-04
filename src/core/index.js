@@ -1,4 +1,4 @@
-import "@babel/polyfill";
+//import "@babel/polyfill";
 
 import Vue from 'vue'; //1 include vue
 
@@ -78,7 +78,7 @@ import VS2 from 'vue-script2';
 import VeeValidate from 'vee-validate';
 
 
-export const start = function (APP_INSTANCE, messages, template,    plugins ) {
+export default function (APP_INSTANCE, messages, template,    plugins ) {
 
 
    //start Vuetify

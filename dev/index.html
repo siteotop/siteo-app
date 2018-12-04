@@ -18,14 +18,14 @@
     <link rel="stylesheet" href="/dist/core.css" type="text/css">
     <script  type="text/javascript" src="/dist/siteo-core.js"></script>
     <script  type="text/javascript" src="/dist/siteo-template.js"></script>
-    <script  type="text/javascript" src="/dist/locale/en.js"></script>
+    <script  type="text/javascript" src="/dist/siteo-en.js"></script>
     <script>
         _APP_INSTANCE.configs.host="http://jstest.com";
-
-        Siteo.core.start(
+        console.log(Siteo_core);
+        Siteo_core(
           _APP_INSTANCE,
-          SiteoLocal[_APP_INSTANCE.configs.lang],
-          Siteo.template.default
+          Siteo_en,
+          Siteo_template
         );
     </script>
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">

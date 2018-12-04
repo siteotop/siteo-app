@@ -1,6 +1,6 @@
 //import VeeEn from 'vee-validate/dist/locale/en';
 
-export  const en = {
+export default {
   en: {
   //  validation: VeeEn,
     copy: 'Копировать',

@@ -3,7 +3,6 @@
    create path  for files
 */
 
-
 const path = require('path');
 
 const webpack = require('webpack');
@@ -46,6 +45,7 @@ module.exports = {
     // index with template
     'core': './src/core/index.js',
     'template': './src/template/install.js',
+    'en': './src/core/i18n/en.js',
     // index with template admin
   //  'siteo-template-admin': './src/template-admin.js',
 
@@ -55,8 +55,9 @@ module.exports = {
     path: path.resolve(__dirname, '../' + DIR_RESOURCE),
     publicPath: 'dist/',
     filename: 'siteo-[name].js',
-    library: ["Siteo", "[name]"],
-		libraryTarget: "umd"
+    library: "Siteo_[name]",
+		libraryTarget: "umd",
+    libraryExport: 'default'
 
   },
 
