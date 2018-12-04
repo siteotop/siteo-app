@@ -11,10 +11,6 @@ const webpack = require('webpack');
 const NODE_ENV = process.env.NODE_ENV || "development";
 const DIR_RESOURCE = process.env.DIR_RESOURCE || 'dev/dist';
 
-//const ManifestPlugin = require('webpack-manifest-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const name_manifet_file = "manifest-server.json";
-
 /**
   From 15 version  of vue-loader, we need use  VueLoaderPlugin
 */
@@ -134,12 +130,7 @@ optimization: {
 
       plugins: [
 
-            /**
-              Plugin create manifest.json file
-            */
-          //  new ManifestPlugin({fileName: name_manifet_file, publicPath: ''}),
-            new CleanWebpackPlugin([DIR_RESOURCE], {root:path.resolve(__dirname, '../'), exclude: ['locale']}),
-            //new CleanWebpackPlugin(['static'], {root:path.resolve(__dirname, 'example/dist')}),
+
 
             new webpack.DefinePlugin({
               'process.env': {
