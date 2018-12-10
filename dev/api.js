@@ -4,13 +4,9 @@ var _APP_INSTANCE = {
   configs: {
      "host":"https://siteo.top",
      "path":"",
-     "lang":"en",
-     "state":"reserved",
      public_token: 'public_token_is_no_user_token_for_access_api_siteo',
      api_url: 'https://api.siteo.top/api/v1/',
-     recaptcha: '6LdRBCAUAAAAAD1G95xZfHvPD_-3VLijXfa-48Xm',
-
-  },
+   },
 
     routes: {
       services: {route: '/services', title:'Services'},
@@ -31,12 +27,17 @@ var _APP_INSTANCE = {
      templates_id:"1532775890",
      pages_id: '1532775891',
      countryAlpha2:"UA",
-     lang:"uk",
-     currency: 'USD', 
+     lang:"en",
+     currency: 'USD',
      design:false
    },
+  plugins: {
+   recaptcha: {
+      token: '6LdRBCAUAAAAAD1G95xZfHvPD_-3VLijXfa-48Xm',
+   }
+ },
 
- links: [
+  links: [
    {
      title: 'We in Facebook',
      type: 'fb',

@@ -109,12 +109,11 @@ export default function (APP_INSTANCE, messages, template,    plugins ) {
 
 
    // connect routes translating to all messages
-   messages[APP_INSTANCE.configs.lang].routes = APP_INSTANCE.routes;
-   console.log(messages);
+   messages[APP_INSTANCE.data.lang].routes = APP_INSTANCE.routes;
    // Create VueI18n instance with options
    CoreVue.i18n = new VueI18n({
       silentTranslationWarn: process.env.NODE_ENV === 'development'? false: true, // silent log
-      locale: APP_INSTANCE.configs.lang, // app lang
+      locale: APP_INSTANCE.data.lang, // app lang
       messages: messages // set locale messages
     });
 
@@ -128,7 +127,7 @@ export default function (APP_INSTANCE, messages, template,    plugins ) {
       inject: false,
 
       dictionary: messages.validation||false,
-      local: APP_INSTANCE.configs.lang
+      local: APP_INSTANCE.data.lang
      }
     );
 
