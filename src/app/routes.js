@@ -1,7 +1,7 @@
-import PagesApi from './Pages/Api.js';
-import OneService from './Pages/OneService.js';
-import CorePage from './Pages/_extends/page.js';
-import RouteItems from './Items/_extends/core.vue';
+import PagesApi from './components/Pages/Api.js';
+import OneService from './components/Pages/OneService.js';
+import CorePage from './components/Pages/_extends/page.js';
+import RouteItems from './components/Items/_extends/core.vue';
 
 export default function (templateRoutes) {
 

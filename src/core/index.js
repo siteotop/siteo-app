@@ -21,8 +21,7 @@ Vue.use(VueI18n);
 */
 import CoreVue from './components/App.vue';
 
-/**Basic routes*/
-import basicRoutes from './components/routes'
+
 
 import * as CoreComponents from  './components';
 for (let NameComponent in CoreComponents) {
@@ -60,17 +59,6 @@ require('./style/common.css')
 /**ICONS*/
 import IconsRegister from  './components/Icons/register.js';
 
-/** SiteoInstall Function  */
-
-/**
-@example  options = {
-    stores: {},
-    router: { routes:  {}, components: {} },
-    Vue: {}
-}
-
-*/
-
 import axios from 'axios';
 
 import VS2 from 'vue-script2';
@@ -78,7 +66,7 @@ import VS2 from 'vue-script2';
 import VeeValidate from 'vee-validate';
 
 
-export default function (APP_INSTANCE, messages, template,    plugins ) {
+export default function (APP_INSTANCE, messages,  plugins ) {
 
 
    //start Vuetify
@@ -98,7 +86,7 @@ export default function (APP_INSTANCE, messages, template,    plugins ) {
    // create store
    CoreVue.store = StoreInstall(Vue, APP_INSTANCE);
    // create router
-   CoreVue.router = RouterInstall(Vue, CoreVue.store, APP_INSTANCE.configs.path, basicRoutes(template.routes) )
+   CoreVue.router = RouterInstall(Vue, CoreVue.store, APP_INSTANCE.configs.path )
 
    //sync router with store for access route from store
    sync(CoreVue.store, CoreVue.router );
@@ -136,11 +124,8 @@ export default function (APP_INSTANCE, messages, template,    plugins ) {
     CoreVue.IconsRegister= IconsRegister;
     // add plugins
     CoreVue.SiteoAddPlugin = function (plugin) {
-      Vue.use(plugin, {coreVue:CoreVue, pluginOptions: plugin.options });
+      Vue.use(plugin, {$coreVue:CoreVue, $pluginOptions: plugin.options });
     };
-    // CoreVue._siteoPlugins = {};
-    // Vue.use(template);
-    CoreVue.SiteoAddPlugin(template);
 
     if (plugins&&plugins.length) {
        for (var i in plugins ) {

@@ -15,14 +15,13 @@ export default {
        Vue.component(NameComponent, components[NameComponent] );
     }
 
-    options.coreVue.IconsRegister(ICONS);
+    options.$coreVue.IconsRegister(ICONS);
   },
 
   //components: components,
   //ICONS: ICONS,
   routes: {
      RouteOrder,
-
      RouteError,
      RouteOneService
   }

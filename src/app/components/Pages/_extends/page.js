@@ -1,6 +1,6 @@
 
 
-import Loader from '../../_mixins/component-loading.js';
+import Loader from '../../../../core/components/_mixins/component-loading.js';
 export default {
 
   mixins: [ Loader],
@@ -41,7 +41,7 @@ export default {
 
 
   created() {
-      
+
       this.fetchDataFromApi();
   },
 

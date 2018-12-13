@@ -1,7 +1,7 @@
 
 
 <script>
-import Colors from '../../../_helper/colors';
+import Colors from '../../../../../core/components/_helper/colors';
 import Sharing from './sharing';
 
 export default {
