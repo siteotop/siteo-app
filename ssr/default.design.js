@@ -78,7 +78,7 @@ module.exports = {
              //$bl:'text-xs-center',
              $bls: [
                {
-                 $$:'AutoContacts',
+                 $$:'WiContacts',
                  $bf: 'xs12 md4',
                  _props: {
                    $clp:{

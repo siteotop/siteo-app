@@ -12,7 +12,7 @@
         <v-toolbar dark dense color="secondary">
           <v-spacer></v-spacer>
           <v-btn @click="vDialog=false" icon flat><AppIcon name="si-close"></AppIcon></v-btn></v-toolbar>
-        <AutoOrderTabs></AutoOrderTabs>
+        <WiOrderTabs></WiOrderTabs>
       </v-card>
     </v-dialog>
 </div>

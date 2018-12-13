@@ -93,7 +93,8 @@
   "scripts": {
     "dev": "webpack --config build/base.webpack.config.js",
     "dist": "NODE_ENV=production DIR_RESOURCE=dist   webpack --config build/base.webpack.config.js",
-    "server": "webpack --config build/server.webpack.config.js",
+    "build-server": "webpack --config build/server.webpack.config.js",
+    
     "dist-dev": "NODE_ENV=production DIR_RESOURCE=dev/dist webpack --config build/base.webpack.config.js",
     "version-patch": "npm run dist && git add -A && git commit -m \"Compile dist files\"  &&  npm version patch -m 'Upgrade patch  to %s ' && npm publish && git push"
   }

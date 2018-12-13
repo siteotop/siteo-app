@@ -59,29 +59,29 @@ export default {
 
      order: 'BFormOrder',
      recall: 'BFormRecall',
-     call: 'AutoCalls',
-     chat: 'AutoChats',
-     links: 'AutoWrapLinks',
-     locations: 'AutoLocations',
+     call: 'WiCalls',
+     chat: 'WiChats',
+     links: 'WiWrapLinks',
+     locations: 'WiLocations',
   },
   components: {
-      'AutoChats': {
+      'WiChats': {
          functional: true,
          render(h, context) {
-            return h('AutoContacts', {props: {$vl: true,$clp: {outline:true, siicon: 'si-chat' } }})
+            return h('WiContacts', {props: {$vl: true,$clp: {outline:true, siicon: 'si-chat' } }})
          }
       },
 
-      'AutoCalls': {
+      'WiCalls': {
          functional: true,
          render(h, context) {
-            return h('AutoContacts', {props: {$vl: true, $type: 'call',$clp: {outline:true, siicon: 'si-call' } }})
+            return h('WiContacts', {props: {$vl: true, $type: 'call',$clp: {outline:true, siicon: 'si-call' } }})
          }
       },
-      'AutoWrapLinks': {
+      'WiWrapLinks': {
          functional: true,
          render(h, context) {
-            return h('AutoLinks', {props: {$vl: true, $t: 'links',$clp: {outline:true, siicon: 'si-links' } }})
+            return h('WiLinks', {props: {$vl: true, $t: 'links',$clp: {outline:true, siicon: 'si-links' } }})
          }
       }
   },

@@ -32,7 +32,7 @@
         $tcm: 'ma-0 pa-0',
         $bls:[
            {
-            $$:'AutoOrderTabs',
+            $$:'WiOrderTabs',
             $bf:'md6 elevation-4 white top-m-3'
            }
           ]

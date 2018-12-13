@@ -21,7 +21,7 @@
         <AppIcon name="si-sort"></AppIcon>
    </v-btn>
   </PageItemsToolbar>
-  <component   :is="'auto-'+typeList" :_t="title" $tl="justify-center text-xs-center pt-1 pb-4" :toggleComponent="toggle_component" :$vl="toggle_component=='list'">
+  <component   :is="'wi-'+typeList" :_t="title" $tl="justify-center text-xs-center pt-1 pb-4" :toggleComponent="toggle_component" :$vl="toggle_component=='list'">
     <v-layout slot="header"  wrap class="mb-4"> </v-layout>
   </component>
   <FunctionalButtonUp></FunctionalButtonUp>

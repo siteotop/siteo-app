@@ -20,7 +20,7 @@
           <AppIcon v-if="fab" name="si-close"></AppIcon>
 
        </v-btn>
-       <AutoActions></AutoActions>
+       <WiActions></WiActions>
      </v-speed-dial>
 </v-fab-transition>
 </template>
