@@ -11,7 +11,7 @@
       <title>siteo</title>
     </head>
     <body>
-      <div id="siteo-top-app"></div>
+      <div id="app"></div>
     </body>
 
     <script  type="text/javascript" src="https://siteotop.github.io/siteo-template/dev/api.js"></script>
@@ -24,11 +24,11 @@
 
     <script>
         _APP_INSTANCE.configs.path = '/siteo-template'
-        Siteo.core.start(
+        var app=Siteo_core(
           _APP_INSTANCE,
-          SiteoLocal[_APP_INSTANCE.configs.lang],
-          Siteo.template.default
-        );
+          Siteo_en,
+          Siteo_template
+        ).$mount('#app');
     </script>
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
   </html>
