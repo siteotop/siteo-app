@@ -20,13 +20,15 @@
 
   <script  type="text/javascript" src="http://jstest.com/dist/siteo-core.js"></script>
   <script  type="text/javascript" src="http://jstest.com/dist/siteo-template.js"></script>
+  <script  type="text/javascript" src="http://jstest.com/dist/siteo-app.js"></script>
   <script  type="text/javascript" src="http://jstest.com/dist/siteo-en.js"></script>
   <script>
       _APP_INSTANCE = {{{JSON.stringify(_APP_INSTANCE)}}}
+      Siteo_app.options.template = Siteo_template;
       Siteo_core(
         _APP_INSTANCE,
         Siteo_en,
-        Siteo_template
+        [Siteo_app]
       ).$mount('#app');
   </script>
   <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">

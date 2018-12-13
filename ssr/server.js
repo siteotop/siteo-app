@@ -26,7 +26,7 @@ server.get('*', (req, res) => {
 
     renderer.renderToString(app, context, (err, html) => {
       if (err) {
-        console.log(err);
+        //console.log(JSON.stringify(err));
         if (err.code === 404) {
           res.status(404).end('404 error')
         } else {
@@ -45,7 +45,7 @@ server.get('*', (req, res) => {
          return_error = JSON.stringify(error.response.data);
       }
 
-      res.status(500).end('<div>Error: '+ (return_error||error) +'</div>');
+      res.status(500).end('<div>Error: '+ (return_error||JSON.stringify(error)) +'</div>');
     } else {
       res.status(500).end('500 createApp error')
     }

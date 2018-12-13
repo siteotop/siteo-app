@@ -2,7 +2,9 @@
 
 // entry-server.js
 import  createApp  from '../src/core';
-import  template  from '../src/template/install';
+import  template  from '../src/template';
+import  siteoApp  from '../src/app';
+siteoApp.options.template = template;
 import  SiteoLocalEN  from '../src/core/i18n/en';
 import  axios from 'axios';
 import  defaultDesign  from './default.design';
@@ -36,7 +38,7 @@ export default (context) => {
 
       // for getting AppInstance we need id for APP_INSTANCE
 
-      var app = createApp(response.data, SiteoLocalEN, template);
+      var app = createApp(response.data, SiteoLocalEN, [siteoApp]);
       context.meta = app.$meta();
       // устанавливаем маршрут для маршрутизатора серверной части
       app.$router.push(context.url)

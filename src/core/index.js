@@ -124,7 +124,12 @@ export default function (APP_INSTANCE, messages,  plugins ) {
     CoreVue.IconsRegister= IconsRegister;
     // add plugins
     CoreVue.SiteoAddPlugin = function (plugin) {
+
       Vue.use(plugin, {$coreVue:CoreVue, $pluginOptions: plugin.options });
+      if (plugin.siteoInstall) {
+        plugin.siteoInstall(CoreVue, plugin.options)
+      }
+
     };
 
     if (plugins&&plugins.length) {

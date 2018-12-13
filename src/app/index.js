@@ -10,9 +10,13 @@ export default {
       Vue.component('PageSchema', PageSchema);
       Vue.component('SectionWrap', SectionWrap);
       Vue.component('SectionListWrap', SectionListWrap);
-      options.$coreVue.router.addRoutes(SiteoRoutes(options.$pluginOptions.template.routes));
-      options.$coreVue.SiteoAddPlugin(options.$pluginOptions.template);
+  },
 
+  siteoInstall: function ($coreVue, $pluginOptions) {
+    // add routes
+    $coreVue.router.addRoutes(SiteoRoutes($pluginOptions.template.routes));
+    // add templates
+    $coreVue.SiteoAddPlugin($pluginOptions.template);
   },
 
   options: {template:{}}
