@@ -2,6 +2,10 @@
 node_modules
 /dev/dist
 
+# SSR
+/ssr/dist
+/ssr/configs.js
+
 # local env files
 .env.local
 .env.*.local

@@ -53,12 +53,14 @@
     "uglifyjs-webpack-plugin": "^1.2.6",
     "vue-cli": "^2.8.2",
     "vue-loader": "^15.4.2",
+    "vue-server-renderer": "^2.5.17",
     "vue-template-compiler": "^2.5.17",
     "vuetify-loader": "^0.1.1",
     "webpack": "^4.19.1",
     "webpack-babel-external-helpers": "^0.1.0",
     "webpack-cli": "^3.0.8",
-    "webpack-manifest-plugin": "^2.0.3"
+    "webpack-manifest-plugin": "^2.0.3",
+    "webpack-merge": "^4.1.4"
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
@@ -90,9 +92,9 @@
   ],
   "scripts": {
     "dev": "webpack --config build/base.webpack.config.js",
-    "dist": "NODE_ENV=production DIR_RESOURCE=dist   webpack --config build/locale.webpack.config.js && NODE_ENV=production DIR_RESOURCE=dist webpack --config build/dist.webpack.config.js",
+    "dist": "NODE_ENV=production DIR_RESOURCE=dist   webpack --config build/base.webpack.config.js",
+    "server": "webpack --config build/server.webpack.config.js",
     "dist-dev": "NODE_ENV=production DIR_RESOURCE=dev/dist webpack --config build/base.webpack.config.js",
-    "locale-dev": "DIR_RESOURCE=dev/dist   webpack --config build/locale.webpack.config.js",
     "version-patch": "npm run dist && git add -A && git commit -m \"Compile dist files\"  &&  npm version patch -m 'Upgrade patch  to %s ' && npm publish && git push"
   }
 }
