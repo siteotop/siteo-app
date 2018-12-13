@@ -44,7 +44,8 @@ module.exports = {
   //  'siteo-core': './src/core.js',
     // index with template
     'core': './src/core/index.js',
-    'template': './src/template/install.js',
+    'template': './src/template/index.js',
+    'app': './src/app/index.js',
     'en': './src/core/i18n/en.js',
     // index with template admin
   //  'siteo-template-admin': './src/template-admin.js',
