@@ -105,7 +105,7 @@ export default function (APP_INSTANCE, messages, template,    plugins ) {
 
    CoreVue.$script = VS2.load;
    CoreVue.axios = axios;
-   CoreVue.el = '#siteo-top-app';
+
 
 
    // connect routes translating to all messages

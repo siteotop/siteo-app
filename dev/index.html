@@ -10,7 +10,7 @@
       <title>siteo</title>
     </head>
     <body>
-      <div id="siteo-top-app"></div>
+      <div id="app"></div>
     </body>
 
     <script  type="text/javascript" src="/api.js"></script>
@@ -21,12 +21,12 @@
     <script  type="text/javascript" src="/dist/siteo-en.js"></script>
     <script>
         _APP_INSTANCE.configs.host="http://jstest.com";
-        console.log(Siteo_core);
-        Siteo_core(
+        var app=Siteo_core(
           _APP_INSTANCE,
           Siteo_en,
           Siteo_template
-        );
+        ).$mount('#app');
+        console.log(app.$router);
     </script>
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
   </html>

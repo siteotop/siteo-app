@@ -117,12 +117,10 @@ optimization: {
       ],
 
     alias: {
-
       'vue': 'vue/dist/vue.runtime.esm.js',
       'router': 'vue-router/dist/vue-router.esm.js' ,
       'vuex': 'vuex/dist/vuex.esm.js',
-      'axios': 'axios/dist/axios.js',
-      'scriptjs': 'scriptjs/dist/script.js',
+
 
 
 
