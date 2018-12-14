@@ -4,7 +4,7 @@ import PageSchema from './components/Pages/Schema/index';
 import SectionWrap from './components/Pages/Schema/SectionWrap.vue';
 import SectionListWrap from './components/Pages/Schema/SectionListWrap.vue';
 import SiteoRoutes from './routes';
-import * as StoreModules from  './store';
+import * as StoreModules from  './store/modules';
 
 //import {createStorePage, createServices, createExperts, createPosts} from './models.js';
 
