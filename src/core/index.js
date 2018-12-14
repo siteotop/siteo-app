@@ -37,7 +37,7 @@ import RouterInstall from './router';
   Storing all data from backend
 */
 import StoreInstall from './store';
-
+import {createModelCRUD} from './store/helpers/model-events'
 /**SYNC router with store
   in Vue store we can get 'route' property
 */
@@ -119,7 +119,9 @@ export default function (APP_INSTANCE, messages,  plugins ) {
      }
     );
 
-
+    CoreVue.registerStoreModule = function (name, module) {
+          CoreVue.store.registerModule(name, createModelCRUD(module))
+    };
 
     CoreVue.IconsRegister= IconsRegister;
     // add plugins
@@ -131,6 +133,8 @@ export default function (APP_INSTANCE, messages,  plugins ) {
       }
 
     };
+
+
 
     if (plugins&&plugins.length) {
        for (var i in plugins ) {

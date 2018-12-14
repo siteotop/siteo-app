@@ -5,7 +5,7 @@ import SystemMessages from './messages.js';
 //import i18n from './i18n.js';
 
 import createInstance from './appInstance.js';
-import {createStorePage, createServices, createExperts, createPosts} from './models.js';
+
 //import { actions}  from './helpers/api-actions';
 
 /**
@@ -45,7 +45,7 @@ export default function (Vue, APP_INSTANCE)  {
          },
          modules: {
            APP_INSTANCE: createInstance (APP_INSTANCE),
-           APP_PAGE: createStorePage('WEBSITE_API_URL'),
+
 
            //APP_EXPERTS: createExperts ('WEBSITE_API_URL'),
            SystemMessages,
@@ -86,20 +86,6 @@ export default function (Vue, APP_INSTANCE)  {
        });
 
 
-       //connect and fill additional stores
-
-       [
-         {n:'services', f:createServices},
-         {n:'experts', f:createExperts},
-         {n:'posts', f:createPosts }
-        // {n: 'locations',f:createLocations}
-       ].map(function(ListOption) {
-         if (APP_INSTANCE[ListOption.n]&&APP_INSTANCE[ListOption.n].items) {
-            var name = 'APP_'+ListOption.n.toUpperCase();
-            store.registerModule(name, createServices('WEBSITE_API_URL'));
-            store.commit(name+'/saveList', APP_INSTANCE[ListOption.n].items );
-         }
-       })
 
        return store;
 
