@@ -16,9 +16,7 @@ export default {
     render(h, context) {
       var design = context.parent.$store.state.APP_INSTANCE.design['AppFooter'] || {};
 
-      return  context.parent.$vuetify.breakpoint.xs?
-       h(BottomNav, { }):
-       h('v-footer', {
+      return  h('v-footer', {
           props: {
             app: true,
             height:'auto',
@@ -30,8 +28,8 @@ export default {
           h('v-container', {class: 'fluid my-0 pa-0'},
 
           [
-            h('PageSchema', {props: {structure: design.children }}),
-            
+            design.children? h('PageSchema', {props: {structure: design.children }}):'',
+
             h(AppFooterCopyright)
           ])
 
