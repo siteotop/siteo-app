@@ -22,6 +22,7 @@ export default {
     $coreVue.SiteoAddPlugin($pluginOptions.template);
     console.log(StoreModules);
     $coreVue.registerStoreModule( 'APP_PAGE', StoreModules.pages('WEBSITE_API_URL'));
+    $coreVue.registerStoreModule( ['APP_INSTANCE', 'order'],  StoreModules.orders() );
 
 
 
