@@ -1,6 +1,6 @@
 
 
-import AppComponentToolbar from '../../AppComponentToolbar';
+
 import MixinLocalMessages from '../../../_mixins/LocalMessages.js';
 import AppFieldPlainText from '../Fields/AppFieldPlainText';
 import AppFieldPhone from '../Fields/AppFieldPhone';
@@ -11,8 +11,8 @@ export default {
 
   mixins: [ MixinLocalMessages],
 
+
   components: {
-    AppComponentToolbar,
     AppFieldPlainText,
     AppFieldPhone,
     AppFieldServices,
@@ -90,12 +90,7 @@ export default {
       return h('v-card', {props: { flat: true, fluid:true}},
         [
 
-          // toolbar
-          this.needToolbar? h('AppComponentToolbar', {props: {
-            iconTitle: this.iconTitle,
-            title: this.$i18n_t('title'),
-            desc: this.$i18n_t('description')
-          }}): '',
+
           // v-card-tex
           h('v-container', { class: 'grid-list-sm'}, [
           h('AppMessagesBlock', {
