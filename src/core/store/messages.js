@@ -80,7 +80,7 @@ const SystemMessages = {
         if (!error||!error.response||typeof(error.response.data)!='object') {
             console.log(error.response);
             dispatch('generateSystemMessage', {text: 'Error NO CODE: System error. Content is not Object', type: 'error'});
-            throw {errorContentNull: true};
+            throw { error_code: '500' , error_description: 'Error: Response content is null or non Object'};
           //  return false;
        }
 
