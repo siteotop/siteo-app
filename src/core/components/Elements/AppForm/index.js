@@ -250,21 +250,20 @@ export default {
         //var dispatch = this.$options.$storeForValues + '/' + this.$options.$method;
         //var apidata = {data: data}
      return self.$store.dispatch(this.formAction, data).then(response=>{
-              var sec__mess = self.getSuccessMessage();
-            //  console.log(response);
-            //  self.$store.dispatch('generateSystemMessage', {text: sec__mess, type: 'success'});
+              var suc__mess = self.getSuccessMessage();
+
               self.stopFormLoader(true);
               self.disableForm();
               self.updateDefaultsValues();
               self.successFormRequest(response);
               if (self.successDestroy) {
-                 self.$_LocalMessages_add( sec__mess, 'success');
+                 self.$_LocalMessages_add( suc__mess, 'success');
                  self.destroyForm();
               } else {
-                self.$store.dispatch('generateSystemMessage', {text: sec__mess, type: 'success'});
+                self.$store.dispatch('generateSystemMessage', {text: suc__mess, type: 'success'});
               }
 
-              self.$emit('successForm', sec__mess);
+              self.$emit('successForm', suc__mess);
 
 
         }).catch(error=>{
@@ -286,7 +285,6 @@ export default {
         //console.log(message);
         var self = this;
         if (error.validatorMessages) {
-
         _Values( error.messages).map(function (message, key){
 
               let string_message = [];
@@ -312,6 +310,7 @@ export default {
 
          });
        } else {
+
 
          self.addLocalMessageFromResponse(error, 'error' );
 
