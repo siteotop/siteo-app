@@ -2,7 +2,6 @@
 
 import AppComponentToolbar from '../../AppComponentToolbar';
 import MixinLocalMessages from '../../../_mixins/LocalMessages.js';
-import AppConfirm from '../../AppConfirm.vue' ;
 import AppFieldPlainText from '../Fields/AppFieldPlainText';
 import AppFieldPhone from '../Fields/AppFieldPhone';
 import AppFieldServices from '../Fields/AppFieldServices';
@@ -14,7 +13,6 @@ export default {
 
   components: {
     AppComponentToolbar,
-    AppConfirm,
     AppFieldPlainText,
     AppFieldPhone,
     AppFieldServices,
