@@ -2,13 +2,6 @@
 
 export default {
 
-  props: {
-    startMessage: {
-      type: [Boolean,  Object],
-      default: false
-    }
-
-  },
 
   data() {
     return {
@@ -16,22 +9,6 @@ export default {
     }
   },
 
-  created() {
-      if (this.startMessage) {
-        this.$_LocalMessages_add(this.startMessage);
-      }
-
-  },
-
-  watch: {
-
-    startMessage(newMessage) {
-        if (newMessage) {
-            this.$_LocalMessages_add(newMessage);
-        }
-    }
-
-  },
 
   methods: {
 
@@ -52,17 +29,6 @@ export default {
 
           this.LocalMessages = [];
       },
-
-      $_LocalMessages_render(h) {
-
-          return h('AppMessagesBlock', {
-              props: {
-                  messages:   this.LocalMessages,
-                  block: 'v-alert'
-              }
-          });
-
-      }
 
   }
 

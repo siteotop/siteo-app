@@ -98,7 +98,12 @@ export default {
           }}): '',
           // v-card-tex
           h('v-container', { class: 'grid-list-sm'}, [
-           this.$_LocalMessages_render(h),
+          h('AppMessagesBlock', {
+                props: {
+                    messages:   this.LocalMessages,
+                    block: 'v-alert'
+                }
+           }),
            h('v-layout', { attrs: {row:true,  wrap:true, 'align-end': true}},
             [
               this.formStructure.map(function(el){
