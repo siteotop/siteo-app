@@ -9,7 +9,7 @@ export default {
       props: {
         i18nkey: 'formRecall',
         defaultValues: context.parent.$store.state.APP_INSTANCE.order,
-        formAction: context.props.formAction || 'makeOrder',
+        formAction: context.props.formAction || 'order/createObject',
         propsStructure: ['services', 'name', 'phone']
       }
     })
