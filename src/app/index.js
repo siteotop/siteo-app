@@ -26,14 +26,18 @@ export default {
 
 
     ['services', 'experts',  'posts'].map(function(ListOption) {
-      if (_APP_INSTANCE[ListOption]&&_APP_INSTANCE[ListOption].items) {
+      if ($pluginOptions.instance[ListOption]&&$pluginOptions.instance[ListOption].items) {
          var name = 'APP_'+ListOption.toUpperCase();
          $coreVue.registerStoreModule(name, StoreModules[ListOption]('WEBSITE_API_URL'));
-         $coreVue.store.commit(name+'/saveList', _APP_INSTANCE[ListOption].items );
+         $coreVue.store.commit(name+'/saveList', $pluginOptions.instance[ListOption].items );
       }
     })
   },
 
-  options: {template:{}}
+  options: {
+    instance: {},
+    messages: {},
+    template:{}
+  }
 
 }

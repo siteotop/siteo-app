@@ -22,12 +22,12 @@
     <script  type="text/javascript" src="/dist/siteo-en.js"></script>
     <script>
         _APP_INSTANCE.configs.host="http://jstest.com";
-        
+
         Siteo_app.options.template = Siteo_template;
+        Siteo_app.options.instance = _APP_INSTANCE;
+        Siteo_app.options.messages = Siteo_en;
         var app=Siteo_core(
-          _APP_INSTANCE,
-          Siteo_en,
-          [Siteo_app]
+          Siteo_app
         ).$mount('#app');
 
     </script>

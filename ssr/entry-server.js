@@ -25,7 +25,7 @@ export default (context) => {
     if (!response.data.data) {
        throw response.data;
     }
-      console.log(response.data);
+      //console.log(response.data);
       // connect configs to public file
       response.data.configs = context.configsAPI;
 
@@ -33,12 +33,14 @@ export default (context) => {
       if (!response.data.design) {
         response.data.design = defaultDesign;
       }
-      context._APP_INSTANCE = response.data;
+     context._APP_INSTANCE = response.data;
      return new Promise((resolve, reject) => {
 
       // for getting AppInstance we need id for APP_INSTANCE
 
-      var app = createApp(response.data, SiteoLocalEN, [siteoApp]);
+      siteoApp.options.instance = response.data;
+      siteoApp.options.messages = SiteoLocalEN;
+      var app = createApp(siteoApp);
       context.meta = app.$meta();
       // устанавливаем маршрут для маршрутизатора серверной части
       app.$router.push(context.url)

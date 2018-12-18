@@ -41,7 +41,6 @@ export default {
 
     render(h, context) {
       console.log(' render page ');
-      console.log(context);
       return h('div', [
           context.props.pageToolbar? h(FunctionalPageToolbar, {props: {
             contentStructure:context.props.structure,
