@@ -97,13 +97,15 @@ export default function (APP, plugins ) {
 
 
    // connect routes translating to all messages
-   APP.options.messages[APP.options.instance.data.lang].routes = APP.options.instance.routes;
+   //APP.options.messages[APP.options.instance.data.lang].routes = APP.options.instance.routes;
    // Create VueI18n instance with options
    CoreVue.i18n = new VueI18n({
       silentTranslationWarn: process.env.NODE_ENV === 'development'? false: true, // silent log
       locale: APP.options.instance.data.lang, // app lang
       messages: APP.options.messages // set locale messages
     });
+  
+
 
     // connect  vee-validator
     Vue.use(VeeValidate, {

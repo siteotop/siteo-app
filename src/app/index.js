@@ -20,9 +20,20 @@ export default {
     $coreVue.router.addRoutes(SiteoRoutes($pluginOptions.template.routes));
     // add templates
     $coreVue.SiteoAddPlugin($pluginOptions.template);
-    $coreVue.registerStoreModule( 'APP_PAGE', StoreModules.pages('WEBSITE_API_URL'));
-    $coreVue.registerStoreModule( ['APP_INSTANCE', 'order'],  StoreModules.orders() );
 
+    // register main module for Page
+    $coreVue.registerStoreModule(
+      'APP_PAGE',
+      StoreModules.pages('WEBSITE_API_URL')
+    );
+    // register  module order to  instance
+    $coreVue.registerStoreModule(
+      ['APP_INSTANCE', 'order'],
+      StoreModules.orders()
+    );
+
+    // merge messages from instance
+    $coreVue.i18n.mergeLocaleMessage($pluginOptions.instance.data.lang, {routes: $pluginOptions.instance.routes} );
 
 
     ['services', 'experts',  'posts'].map(function(ListOption) {
