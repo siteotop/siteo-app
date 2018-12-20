@@ -54,7 +54,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, '../' + DIR_RESOURCE),
-    publicPath: 'dist/',
+    publicPath: '/dist/',
     filename: 'siteo-[name].js',
     library: "Siteo_[name]",
 		libraryTarget: "umd",
