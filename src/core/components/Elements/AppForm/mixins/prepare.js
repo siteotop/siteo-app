@@ -1,5 +1,5 @@
 
-import {getStructureForField} from '../Fields/_helper/MapsSiteoFields';
+import {getStructureForField, mergeStructureFields} from '../Fields/_helper/MapsSiteoFields';
 
 export default {
 
@@ -23,24 +23,25 @@ export default {
               if (typeof(propsStructure[index_component]) == 'string') {
                 field_structure = getStructureForField(propsStructure[index_component]);
               } else {
-                field_structure = propsStructure[index_component];
+                field_structure = mergeStructureFields(propsStructure[index_component]) ;
               }
+
               formStructure.push(field_structure);
 
-              var field = field_structure.props,
+              var field_props = field_structure.props,
               name = field_structure._n
 
-              if (!field.value) {
-                this.$set(field, 'value', '');
+              if (!field_props.value) {
+                this.$set(field_props, 'value', '');
               }
 
-              if (!field.defaultValue) {
-                this.$set(field, 'defaultValue', '');
+              if (!field_props.defaultValue) {
+                this.$set(field_props, 'defaultValue', '');
               }
-              
-              this.connectCommonProps(field, name);
+
+              this.connectCommonProps(field_props, name);
               // connect i18n
-              this.createFieldI18n(field, name);
+              this.createFieldI18n(field_props, name);
 
            }
           // console.log(this.formStructure);
@@ -60,7 +61,7 @@ export default {
           field[this.typeInput] = true;
         }
 
-        field['prependIcon'] =name
+        //field['prependIcon'] = name
 
       },
 
