@@ -17,7 +17,7 @@ export default {
           //console.log(self.$validator);
           formStructure.map(function(element, index) {
               self.$validator.attach(element._n, element.validators )
-              self.atachValidator(element._n, element.props, index);
+              self.atachValidator(element._n, element, index);
               // create attribs attr for method createAttrDictionary()
               attrs[element._n] = element.props.label;
           });
@@ -43,15 +43,15 @@ export default {
           @param {Object} fieldProps - formStructure.element.props
           @param {Number} index  - index of element
         */
-        atachValidator(fieldName, fieldProps, index) {
+        atachValidator(fieldName, element, index) {
           //create param error for fieldProps
-
+          var fieldProps = element.props;
           fieldProps.error = null;
           var self = this;
           //var key = ;
-          this.$watch( 'formStructure.' +index+'.props.value', function (value) {
+          this.$watch( 'formStructure.' +index+'.value', function (value) {
                 console.log(fieldName + ' = '+value  );
-                if (fieldProps.defaultValue!=value) {
+                if (element.defaultValue!=value) {
                     if (self.fields[fieldName]) {
                       self.validateOneElement(fieldName, fieldProps, value);
                     }
@@ -82,7 +82,7 @@ export default {
         */
         validateOneElement(fieldName, fieldProps, value){
           const self = this;
-          console.log(this.errors);
+          //console.log(this.errors);
           this.$validator.validate(fieldName,  value).then(function(result) {
              if (!result) {
                 // validation NO

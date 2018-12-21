@@ -16,7 +16,7 @@ export default {
 
 
         this.formStructure.map(function(element) {
-             element.props.value = element.props.defaultValue;
+             element.value = element.defaultValue;
 
         });
       //  console.log(this.formStructure);
@@ -38,9 +38,9 @@ export default {
 
         var self = this;
         formStructure.map(function(element) {
-            var field = element.props;
-            if (self.defaultValues[element._n]&&  !field.skipStartValue ){
-               self.setNewValueForElement( self.defaultValues[element._n], field);
+            //var field = element.props;
+            if (self.defaultValues[element._n]&&  !element.skipStartValue ){
+               self.setNewValueForElement( self.defaultValues[element._n], element);
             }
         });
      },
@@ -83,7 +83,7 @@ export default {
     updateDefaultsValues() {
 
         this.formStructure.map(function(element) {
-              element.props.defaultValue = element.props.value;
+              element.defaultValue = element.value;
 
          });
 

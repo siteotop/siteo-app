@@ -1,14 +1,16 @@
 <template>
   <v-card flat fluid>
-    <v-container class='grid-list-sm'>
+    <slot name="title"><v-subheader>{{$i18n_t('title')}}</v-subheader>
+    </slot>
+    <v-container class='grid-list-sm mt-0 pt-0'>
         <AppMessagesBlock
           :messages="LocalMessages" block="v-alert">
         </AppMessagesBlock>
        <v-layout row wrap align-end>
           <v-flex xs12 v-for="(field, index) in formStructure" :key="index">
               <component :is="field.name"
-                  v-bind="field.props"  :name="field._n" :value="field.props.value"
-                  @input="(event)=>{changeValue(event, field)}"
+                    :name="field._n" v-model="field.value"  v-bind="field.props"
+
               > </component>
           </v-flex>
        </v-layout>
@@ -193,13 +195,6 @@ export default {
 
 
   methods: {
-
-     changeValue(newValue, field) {
-       field.props.value = newValue;
-         if (newValue) {
-            this.enableForm();
-         }
-     },
 
      successFormRequest(response){
 

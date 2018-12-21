@@ -31,12 +31,12 @@ export default {
               var field_props = field_structure.props,
               name = field_structure._n
 
-              if (!field_props.value) {
-                this.$set(field_props, 'value', '');
+              if (!field_structure.value) {
+                this.$set(field_structure, 'value', '');
               }
 
-              if (!field_props.defaultValue) {
-                this.$set(field_props, 'defaultValue', '');
+              if (!field_structure.defaultValue) {
+                this.$set(field_structure, 'defaultValue', '');
               }
 
               this.connectCommonProps(field_props, name);
@@ -75,7 +75,7 @@ export default {
          connect label (l) and description (d) from i18n chunk
       */
       createFieldI18n(field_props, name) {
-          
+
           this.$set( field_props, 'label', this.$i18n_t('content.'+name+'.l'));
           this.$set( field_props, 'hint',  this.$i18n_t('content.'+name+'.d'));
       },
