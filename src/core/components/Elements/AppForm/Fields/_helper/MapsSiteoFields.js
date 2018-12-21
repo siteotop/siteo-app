@@ -2,36 +2,49 @@
 const validatorName = {required: true, min: 2, max: 100, alpha_spaces: true}
 
 const fieldsMap = {
-  name:  {
-    c:'AppFieldPlainText',
-    v: validatorName,
-    p: {prependIcon:'person'}
-  } ,
-  lastname : {
-    c:'AppFieldPlainText',
-    v: validatorName,
-    p: {prependIcon:'person'}
-  },
-  email:{
-    c:'AppFieldPlainText',
-    v:{required: true, email:true},
-    p: {prependIcon: 'email'}
-  } ,
-  phone :{
-    c:'AppFieldPlainText',
-    v:{required: true, numeric:true, min:10,  max:14},
-    p:{'prefix': '+', prependIcon: 'phone'}
+  name ()  {
+    return {
+      c:'AppFieldPlainText',
+      v: validatorName,
+      p: {prependIcon:'person'}
+    }
   },
 
-  services: {
-    c: 'AppFieldServices',
-    v: {required: true},
-    p: {prependIcon:'add_shopping_cart'}
+  lastname () {
+    return {
+      c:'AppFieldPlainText',
+      v: validatorName,
+      p: {prependIcon:'person'}
+    }
+  },
+  email(){
+    return {
+      c:'AppFieldPlainText',
+      v:{required: true, email:true},
+      p: {prependIcon: 'email'}
+    }
+  } ,
+  phone (){
+    return {
+      c:'AppFieldPlainText',
+      v:{required: true, numeric:true, min:10,  max:14},
+      p:{'prefix': '+', prependIcon: 'phone'}
+    }
+  },
+
+  services() {
+    return {
+      c: 'AppFieldServices',
+      v: {required: true},
+      p: {prependIcon:'add_shopping_cart'}
+    }
   },   //'AppFieldServices',
 
-  dateorder: {
-    c: 'AppFieldDate',
-    v: {required: true}
+  dateorder () {
+    return {
+      c: 'AppFieldDate',
+      v: {required: true}
+    }
   }
 
 }
@@ -39,11 +52,12 @@ const fieldsMap = {
 export const  getStructureForField = function (fieldName) {
 
   if (fieldsMap[fieldName]) {
+    var field = fieldsMap[fieldName]();
     return {
-      name: fieldsMap[fieldName].c,
-      validators: fieldsMap[fieldName].v,
+      name: field.c,
+      validators: field.v,
       _n: fieldName,
-      props: fieldsMap[fieldName].p||{}
+      props: field.p||{}
     }
   } else {
     return false;
@@ -55,6 +69,7 @@ export const mergeStructureFields = function (fieldStructure) {
      var strucute = getStructureForField(fieldStructure.role);
      return {...strucute, ...fieldStructure.component};
    } else {
+      if (!fieldStructure.props) {fieldStructure.props={};}
       return fieldStructure;
    }
 
