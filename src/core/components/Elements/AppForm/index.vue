@@ -9,9 +9,10 @@
        <v-layout row wrap align-end>
           <v-flex xs12 v-for="(field, index) in formStructure" :key="index">
               <component :is="field.name"
-                    :name="field._n" v-model="field.value"  v-bind="field.props"
-
-              > </component>
+                  :name="field._n"
+                  v-model="field.value"
+                  v-bind="field.name[0]=='v'? field.props: {vComp: field.props}"
+              ></component>
           </v-flex>
        </v-layout>
        <v-layout v-show="!isLoaderActive&&buttonSubmit"
