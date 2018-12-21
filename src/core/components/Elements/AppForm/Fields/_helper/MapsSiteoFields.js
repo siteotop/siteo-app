@@ -26,7 +26,7 @@ const fieldsMap = {
   } ,
   phone (){
     return {
-      c:'AppFieldPlainText',
+      c:'AppFieldPhone',
       v:{required: true, numeric:true, min:10,  max:14},
       p:{'prefix': '+', prependIcon: 'phone'}
     }
