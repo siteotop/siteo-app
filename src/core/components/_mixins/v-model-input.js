@@ -22,6 +22,11 @@ export default {
 
 
   watch: {
+      value(newValue){
+         if (this.valueData!=newValue) {
+           this.valueData = newValue;
+         }
+      },
       valueData(newValue) {
           this.inputValue(newValue);
       }

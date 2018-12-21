@@ -1,5 +1,5 @@
 <template>
-  <v-card flat fluid>
+  <v-card flat fluid @click="enableForm()">
     <slot name="title"><v-subheader>{{$i18n_t('title')}}</v-subheader>
     </slot>
     <v-container class='grid-list-sm mt-0 pt-0'>
@@ -390,7 +390,8 @@ export default {
           console.log('form is disabled');
     },
     enableForm(){
-      //  console.log(this.formStructure);
+
+       console.log('enable');
         if (!this.formActive&& Object.keys(this.formStructure).length >0)  {
             console.log('form is enabled');
           this.formActive = true;

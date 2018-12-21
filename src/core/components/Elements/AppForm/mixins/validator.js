@@ -50,17 +50,17 @@ export default {
           var self = this;
           //var key = ;
           this.$watch( 'formStructure.' +index+'.value', function (value) {
-                console.log(fieldName + ' = '+value  );
-                if (element.defaultValue!=value) {
-                    if (self.fields[fieldName]) {
-                      self.validateOneElement(fieldName, fieldProps, value);
-                    }
-                   // enable form if we start change fields
-
-                } else {
-
-                   self.nulledState(fieldProps);
+            console.log(fieldName + ' = '+value  );
+            if (element.defaultValue!=value) {
+                if (self.fields[fieldName]) {
+                  self.validateOneElement(fieldName, fieldProps, value);
                 }
+               // enable form if we start change fields
+
+            } else {
+
+               self.nulledState(fieldProps);
+            }
 
             })
         },

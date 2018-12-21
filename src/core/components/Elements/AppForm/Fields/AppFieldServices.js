@@ -9,7 +9,7 @@ export default {
     });
 
     return h('v-select',  {
-      props: { items: items, multiple: true, chips:true, deletableChips: true,   ...context.props.vComp} ,
+      props: { items: items, multiple: true, chips:true, deletableChips: true, value: context.props.value ,   ...context.props.vComp} ,
       on:context.listeners,
       attrs: context.data.attrs
 

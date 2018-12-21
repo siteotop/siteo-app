@@ -15,10 +15,10 @@ export default {
         console.log('need create filtering for phone number ')
     }
     return h('v-text-field',  {
-      props: context.props.vComp,
+      props: {...context.props.vComp, value:context.props.value  },
       on: context.listeners ,
       attrs: context.data.attrs});
-    
+
 
   }
 

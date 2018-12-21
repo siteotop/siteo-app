@@ -17,7 +17,6 @@ export default {
 
         this.formStructure.map(function(element) {
              element.value = element.defaultValue;
-
         });
       //  console.log(this.formStructure);
         this.clearMessagesForm();
