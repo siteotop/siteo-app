@@ -11,7 +11,7 @@
               <component :is="field.name"
                   :name="field._n"
                   v-model="field.value"
-                  v-bind="field.name[0]=='v'? field.props: {vComp: field.props}"
+                  v-bind="field.name[0]=='v'? field.props: { vComp: field.props, propsNative: field.propsNative  }"
               ></component>
           </v-flex>
        </v-layout>
