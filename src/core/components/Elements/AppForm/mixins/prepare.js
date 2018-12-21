@@ -56,9 +56,9 @@ export default {
            // this.initFormStructure();
       },
 
-      connectCommonProps(field, name) {
+      connectCommonProps(field_props, name) {
         if (this.typeInput) {
-          field[this.typeInput] = true;
+          field_props[this.typeInput] = true;
         }
 
         //field['prependIcon'] = name
@@ -74,10 +74,10 @@ export default {
          @param {Object} field
          connect label (l) and description (d) from i18n chunk
       */
-      createFieldI18n(field, name) {
-
-          this.$set( field, 'label', this.$i18n_t('content.'+name+'.l'));
-          this.$set( field, 'hint',  this.$i18n_t('content.'+name+'.d'));
+      createFieldI18n(field_props, name) {
+          
+          this.$set( field_props, 'label', this.$i18n_t('content.'+name+'.l'));
+          this.$set( field_props, 'hint',  this.$i18n_t('content.'+name+'.d'));
       },
 
     }
