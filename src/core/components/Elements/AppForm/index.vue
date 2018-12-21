@@ -1,9 +1,55 @@
+<template>
+  <v-card flat fluid>
+    <v-container class='grid-list-sm'>
+        <AppMessagesBlock
+          :messages="LocalMessages" block="v-alert">
+        </AppMessagesBlock>
+       <v-layout row wrap align-end>
+          <v-flex xs12 v-for="(field, index) in formStructure" :key="index">
+              <component :is="field.name"
+                  v-bind="field.props"  :name="field._n" :value="field.props.value"
+                  @input="(event)=>{changeValue(event, field)}"
+              > </component>
+          </v-flex>
+       </v-layout>
+       <v-layout v-show="!isLoaderActive&&buttonSubmit"
+        row
+        wrap
+        clas="my-3"
+        >
+          <v-flex class="xs10 text-xs-left">
+            <v-btn :disabled="!this.formActive" @click="onSubmit">{{submitElement.label}}</v-btn>
+          </v-flex>
+          <v-flex>
+            <v-tooltip top lazy>
+              <v-btn slot="activator" icon :disabled="!formActive" @click="leaveform = clearForm">
+                <AppIcon name='si-clear'></AppIcon>
+              </v-btn>
+              <span>{{$t('commonForm.reset')}}</span>
+            </v-tooltip>
+          </v-flex>
+       </v-layout>
+       <v-layout v-if="$te(i18nkey + '.footer.text')" class="pt-2 grey--text">
+          <slot name="footer">
+            {{$i18n_t('footer.text')}}
+          </slot>
+       </v-layout>
+       <AppConfirm v-if="leaveform"
+          :dialog="true"
+          :func="leaveform"
+          :title="$t('commonForm.leave')"
+          :description="$t('commonForm.leave_desc')"
+          @hideDialog="()=>{this.leaveform=false}"
+       ></AppConfirm>
+       <app-pulse-loader v-if="isLoaderActive" :loading="isLoaderActive"></app-pulse-loader>
+
+    </v-container>
+  </v-card>
+</template>
+
+<script>
 
 var _Values = require('lodash/values');   // get values as array and object
-
-
-
-
 
 import Loader from '../../_mixins/component-loading.js';
 import ChunkLoader from '../../_mixins/loader-i18-chunk.js';
@@ -11,18 +57,26 @@ import ChunkLoader from '../../_mixins/loader-i18-chunk.js';
 import StoreDefault from './mixins/store.js';
 import Validator from './mixins/validator.js';
 import FormPrepare from './mixins/prepare.js';
-import FormRender from './mixins/render.js';
+import MixinLocalMessages from '../../_mixins/LocalMessages.js';
 
-
-
-
+import AppFieldPlainText from './Fields/AppFieldPlainText';
+import AppFieldPhone from './Fields/AppFieldPhone';
+import AppFieldServices from './Fields/AppFieldServices';
+import AppFieldDate from './Fields/AppFieldDate.vue';
 
 export default {
   //extends: [],
+
   mixins: [
-       FormRender, Loader, ChunkLoader,  FormPrepare, StoreDefault,  Validator
+    MixinLocalMessages,  Loader, ChunkLoader,  FormPrepare, StoreDefault,  Validator
   ],
 
+  components: {
+    AppFieldPlainText,
+    AppFieldPhone,
+    AppFieldServices,
+    AppFieldDate
+    },
 
   props: {
 
@@ -140,7 +194,12 @@ export default {
 
   methods: {
 
-
+     changeValue(newValue, field) {
+       field.props.value = newValue;
+         if (newValue) {
+            this.enableForm();
+         }
+     },
 
      successFormRequest(response){
 
@@ -374,3 +433,4 @@ export default {
 
 
 };
+</script>
