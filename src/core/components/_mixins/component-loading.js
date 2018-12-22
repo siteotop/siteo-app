@@ -3,23 +3,12 @@ export default {
   data () {
     return {
 
-        statusLoading: false // false or true only 
+        statusLoading: false // false or true only
     }
 
   },
 
-   computed: {
-
-      isLoaderActive() {
-
-         return this.statusLoading;
-      }
-
-   },
-
-
-
-   methods: {
+  methods: {
        /*
          start spinner, hide button, clear mesagges from server
        */

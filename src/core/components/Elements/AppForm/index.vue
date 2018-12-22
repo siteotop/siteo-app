@@ -15,7 +15,7 @@
               ></component>
           </v-flex>
        </v-layout>
-       <v-layout v-show="!isLoaderActive&&buttonSubmit"
+       <v-layout v-show="!statusLoading&&buttonSubmit"
         row
         wrap
         clas="my-3"
@@ -44,7 +44,7 @@
           :description="$t('commonForm.leave_desc')"
           @hideDialog="()=>{this.leaveform=false}"
        ></AppConfirm>
-       <app-pulse-loader v-if="isLoaderActive" :loading="isLoaderActive"></app-pulse-loader>
+       <app-pulse-loader v-if="statusLoading" :loading="statusLoading"></app-pulse-loader>
 
     </v-container>
   </v-card>
