@@ -14,6 +14,9 @@
                   v-bind="field.name[0]=='v'? field.props: { vComp: field.props, propsNative: field.propsNative  }"
               ></component>
           </v-flex>
+          <v-flex v-if="recaptcha&&formActive" xs12>
+            <AppFieldRecaptcha v-if="$store.state.APP_INSTANCE.configs.recaptcha"  :token="$store.state.APP_INSTANCE.configs.recaptcha"></AppFieldRecaptcha>
+          </v-flex>
        </v-layout>
        <v-layout v-show="!statusLoading&&buttonSubmit"
         row
@@ -21,7 +24,7 @@
         clas="my-3"
         >
           <v-flex class="xs10 text-xs-left">
-            <v-btn :disabled="!this.formActive" @click="onSubmit">{{submitElement.label}}</v-btn>
+            <v-btn :disabled="!formActive" @click="onSubmit">{{submitElement.label}}</v-btn>
           </v-flex>
           <v-flex>
             <v-tooltip top lazy>
@@ -66,6 +69,7 @@ import AppFieldPlainText from './Fields/AppFieldPlainText';
 import AppFieldPhone from './Fields/AppFieldPhone';
 import AppFieldServices from './Fields/AppFieldServices';
 import AppFieldDate from './Fields/AppFieldDate.vue';
+import AppFieldRecaptcha from './Fields/AppFieldRecaptcha.vue';
 
 export default {
   //extends: [],
@@ -78,7 +82,8 @@ export default {
     AppFieldPlainText,
     AppFieldPhone,
     AppFieldServices,
-    AppFieldDate
+    AppFieldDate,
+    AppFieldRecaptcha
     },
 
   props: {
@@ -102,7 +107,6 @@ export default {
 
       },
 
-
       successDestroy: {
           type: Boolean,
           default: false
@@ -119,6 +123,11 @@ export default {
         type: String,
         default: '', // solo, box, outline
 
+      },
+
+      recaptcha: {
+        type: Boolean,
+        default: false
       }
 
 
