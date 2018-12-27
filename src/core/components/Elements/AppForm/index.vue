@@ -2,11 +2,12 @@
   <v-card flat fluid @click="enableForm()">
     <slot name="title"><v-subheader>{{$i18n_t('title')}}</v-subheader>
     </slot>
+    <AppErrorResponse v-if="errorResponse"
+      :errorResponse="errorResponse" :i18nkey="i18nkey" >
+    </AppErrorResponse>
     <v-container class='grid-list-sm mt-0 pt-0'>
-        <AppMessagesBlock
-          :messages="LocalMessages" block="v-alert">
-        </AppMessagesBlock>
-       <v-layout row wrap align-end>
+
+        <v-layout row wrap align-end>
           <v-flex xs12 v-for="(field, index) in formStructure" :key="index" v-show="!field.hide" :class="field.class?field.class:''" >
               <component :is="field.name"
                   :name="field._n"
@@ -47,7 +48,6 @@
           @hideDialog="()=>{this.leaveform=false}"
        ></AppConfirm>
        <app-pulse-loader v-if="statusLoading" :loading="statusLoading"></app-pulse-loader>
-
     </v-container>
   </v-card>
 </template>
@@ -62,7 +62,6 @@ import ChunkLoader from '../../_mixins/loader-i18-chunk.js';
 import StoreDefault from './mixins/store.js';
 import Validator from './mixins/validator.js';
 import FormPrepare from './mixins/prepare.js';
-import MixinLocalMessages from '../../_mixins/LocalMessages.js';
 
 import AppFieldPlainText from './Fields/AppFieldPlainText';
 import AppFieldPhone from './Fields/AppFieldPhone';
@@ -74,7 +73,7 @@ export default {
   //extends: [],
 
   mixins: [
-    MixinLocalMessages,  Loader, ChunkLoader,  FormPrepare, StoreDefault,  Validator
+    Loader, ChunkLoader,  FormPrepare, StoreDefault,  Validator
   ],
 
   components: {
@@ -152,6 +151,7 @@ export default {
 
 
 
+
   },
 
 
@@ -167,11 +167,9 @@ export default {
         },
         formActive: false,
         leaveform: false,
-
-        //i18n: {},
         formStructure: [],
-        keysUnWatch: {}
-        //valueStructure: {names:''}
+        errorResponse: false
+
 
       }
   },
@@ -258,7 +256,7 @@ export default {
     */
     clearMessagesForm(){
       this.$store.commit('clearAllMessages');
-      this.$_LocalMessages_clear();
+      this.errorResponse = false;
       this.formStructure.map((element)=>{
         this.nulledState(element.props)
       });
@@ -347,11 +345,11 @@ export default {
         }).catch(error=>{
               console.log(error);
               self.stopFormLoader(true);
-              self.catchFormValidation(error);
 
-              // commit('setMessages', messages);
-
-
+              self.errorResponse = error.response;
+              if (error.response.status ==400&&error.response.validatorMessages) {
+                 self.catchFormValidation(error.messages);
+              }
 
         });
 
@@ -359,11 +357,10 @@ export default {
 
     },
 
-    catchFormValidation(error) {
+    catchFormValidation(error_messages) {
         //console.log(message);
         var self = this;
-        if (error.validatorMessages) {
-        _Values( error.messages).map(function (message, key){
+        _Values( error_messages).map(function (message, key){
 
               let string_message = [];
               for (let keyMessage in  message.messages ) {
@@ -377,7 +374,7 @@ export default {
 
               }
               string_message = string_message.shift();
-              self.$_LocalMessages_add( string_message, 'error');
+              //self.$_LocalMessages_add( string_message, 'error');
 
 
               if (self.formStructure&&self.formStructure[message.field]!==undefined) {
@@ -387,28 +384,10 @@ export default {
               }
 
          });
-       } else {
 
-
-         self.addLocalMessageFromResponse(error, 'error' );
-
-       }
     },
 
-    addLocalMessageFromResponse(error, type ) {
-
-      var keyError = error.error_code;
-      var message  = error.error_description;
-
-      var translation_key = this.i18nkey+'.errors.'+keyError;
-      if (this.$te(translation_key)) {
-         message = this.$t(translation_key);
-      }
-      this.$_LocalMessages_add( message,  type );
-    },
-
-
-    disableForm(){
+   disableForm(){
           this.formActive = false;
           console.log('form is disabled');
     },

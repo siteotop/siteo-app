@@ -1,5 +1,6 @@
 import Vuex from 'vuex';
 import {createRESTApi} from 'core/http/rest-api.js';
+import {checkObjectResponse} from 'core/http/error-handling.js';
 import SystemMessages from './messages.js';
 
 //import i18n from './i18n.js';
@@ -74,17 +75,33 @@ export default function (Vue, APP_INSTANCE)  {
                 headers: {'common': { 'Authorization':"Bearer "+ APIconfig.access_token }},
                 params: APIconfig.params,
                 withCredentials: true
-               //  responseType:'stream'
-             }).catch (error=>{
 
-                   console.log(error);
-                   dispatch('generateSystemMessageRespone', error, { root: true });
-              });
+             })/*.catch (error=>{
+                console.log(error);
+                dispatch('generateSystemMessageRespone', error, { root: true });
+              });*/
 
            }
          }
        });
 
+
+       RESTApi.interceptors.response.use(
+         function (response) {
+            if (response.status==200) {
+                checkObjectResponse(error.response, store)
+            }
+            return response;
+         },
+
+         function (error) {
+           if (!checkObjectResponse(error.response, store)) {
+
+           } else {
+              return Promise.reject(error);
+           }
+
+       });
 
 
        return store;
