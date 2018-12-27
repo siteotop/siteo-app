@@ -7,7 +7,7 @@
           :messages="LocalMessages" block="v-alert">
         </AppMessagesBlock>
        <v-layout row wrap align-end>
-          <v-flex xs12 v-for="(field, index) in formStructure" :key="index">   
+          <v-flex xs12 v-for="(field, index) in formStructure" :key="index" v-show="!field.hide" :class="field.class?field.class:''" >
               <component :is="field.name"
                   :name="field._n"
                   v-model="field.value"
@@ -108,7 +108,8 @@ export default {
               props: {'prop_for_ComponentName': 'some_value' }
             },
             {
-
+              role: 'name_for_MapsSiteoFields',
+              component: {name: '', validators: {}, _n: '', props:{}}
             }
           ]
       */
@@ -225,12 +226,6 @@ export default {
 
   methods: {
 
-     successFormRequest(response){
-
-         //this.destroyForm();
-        // this.setMessageSuccessAfterRequest();
-
-     },
 
      getSuccessMessage(type){
 
@@ -338,7 +333,7 @@ export default {
               self.stopFormLoader(true);
               self.disableForm();
               self.updateDefaultsValues();
-              self.successFormRequest(response);
+
               if (self.successDestroy) {
                  self.$_LocalMessages_add( suc__mess, 'success');
                  self.destroyForm();
@@ -346,7 +341,7 @@ export default {
                 self.$store.dispatch('generateSystemMessage', {text: suc__mess, type: 'success'});
               }
 
-              self.$emit('successForm', suc__mess);
+              self.$emit('successForm', 1);
 
 
         }).catch(error=>{
