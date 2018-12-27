@@ -7,11 +7,11 @@
           :messages="LocalMessages" block="v-alert">
         </AppMessagesBlock>
        <v-layout row wrap align-end>
-          <v-flex xs12 v-for="(field, index) in formStructure" :key="index">
+          <v-flex xs12 v-for="(field, index) in formStructure" :key="index">   
               <component :is="field.name"
                   :name="field._n"
                   v-model="field.value"
-                  v-bind="field.name[0]=='v'? field.props: { vComp: field.props, propsNative: field.propsNative  }"
+                  v-bind="field.name[0]=='v'? field.props: Object.assign({vComp: field.props}, field.propsNative)"
               ></component>
           </v-flex>
           <v-flex v-if="recaptcha&&formActive" xs12>
@@ -35,9 +35,8 @@
             </v-tooltip>
           </v-flex>
        </v-layout>
-       <v-layout v-if="$te(i18nkey + '.footer.text')" class="pt-2 grey--text">
+       <v-layout v-if="footer" class="pt-2 grey--text">
           <slot name="footer">
-            {{$i18n_t('footer.text')}}
           </slot>
        </v-layout>
        <AppConfirm v-if="leaveform"
@@ -97,6 +96,22 @@ export default {
         default: ''
       },
 
+      /**
+        collection
+        @example #1
+          [
+            'name_for_MapsSiteoFields',
+            {
+              name: 'ComponentName', //String or Object
+              validators: {'required': true, max:40},
+              _n: 'name_for_field',
+              props: {'prop_for_ComponentName': 'some_value' }
+            },
+            {
+
+            }
+          ]
+      */
       propsStructure: {
           type: Array
         //  default: function () { return {sdfs:true}}
@@ -107,6 +122,10 @@ export default {
 
       },
 
+      footer: {
+        type: Boolean,
+        default: false
+      },
       successDestroy: {
           type: Boolean,
           default: false

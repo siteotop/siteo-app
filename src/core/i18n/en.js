@@ -26,7 +26,7 @@ export default {
       chat: 'Write message by',
       links: '{company_name} in'
     },
-    
+
     // написать через
     // подзвонить через
     // Перейти на / ми в / {company name}
@@ -84,8 +84,8 @@ export default {
           l: 'Send',
           d: '',
         }
-      },
-      footer: {text:'Footer Order' }
+      }
+      
 
     },
 
