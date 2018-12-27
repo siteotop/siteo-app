@@ -15,7 +15,7 @@
               ></component>
           </v-flex>
           <v-flex v-if="recaptcha&&formActive" xs12>
-            <AppFieldRecaptcha v-if="$store.state.APP_INSTANCE.configs.recaptcha"  :token="$store.state.APP_INSTANCE.configs.recaptcha"></AppFieldRecaptcha>
+            <AppFieldRecaptcha  v-if="$store.state.APP_INSTANCE.configs.recaptcha"  :token="$store.state.APP_INSTANCE.configs.recaptcha"></AppFieldRecaptcha>
           </v-flex>
        </v-layout>
        <v-layout v-show="!statusLoading&&buttonSubmit"
@@ -260,14 +260,14 @@ export default {
       const self = this;
 
       const form_data = {};
-      this.formStructure.map((element)=>{ form_data[element._n] = element.props.value  });
+      this.formStructure.map((element)=>{ form_data[element._n] = element.value  });
 
       console.log(form_data);
        this.$validator.validateAll(form_data).then(result => {
             if (!result) {
               self.stopFormLoader();
               self.formStructure.map(function(element) {
-                  self.validateOneElement(element._n, element.props, element.props.value);
+                  self.validateOneElement(element._n, element.props, element.value);
               });
 
             } else {

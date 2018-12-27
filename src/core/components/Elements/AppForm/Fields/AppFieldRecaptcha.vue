@@ -124,7 +124,7 @@ export default {
       //  console.log(window.onloadCallback2);
 
       //  var element = document.getElementById(self.id);
-      //  console.log(element);
+        console.log('captcha loading');
 
        var recaptcha_options = {
           'sitekey' : self.token,
