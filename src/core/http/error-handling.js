@@ -5,12 +5,20 @@
  */
 
 export const checkObjectResponse = function (response, store){
-    if (!response||!response.data||typeof(error.response.data)!='object') {
-      console.log(response);
+    console.log(typeof(response.data));
+    if (!response||!response.data||(typeof(response.data)!='object')) {
+
       var error='API Error: Response content is null or non Object'
       store.dispatch('generateSystemMessage', {text:  error, type: 'error'});
-      throw { response :{ error_code: '500' , error_description:  error}};
-      return false;
+      throw {
+        response: {
+          data: {
+            error_code: '500' ,
+            error_description:  error
+          }
+      }
+    };
+
     } else {
       return true;
     }

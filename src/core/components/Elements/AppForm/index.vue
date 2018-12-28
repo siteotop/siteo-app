@@ -343,13 +343,13 @@ export default {
 
 
         }).catch(error=>{
-              console.log(error);
-              self.stopFormLoader(true);
+          console.log(error);
+          self.stopFormLoader(true);
 
-              self.errorResponse = error.response;
-              if (error.response.status ==400&&error.response.validatorMessages) {
-                 self.catchFormValidation(error.messages);
-              }
+          self.errorResponse = error.response.data;
+          if (error.response.status ==400&&error.response.data.error_code) {
+             self.catchFormValidation(error.response.data.error_description);
+          }
 
         });
 
