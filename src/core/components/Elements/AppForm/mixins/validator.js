@@ -49,7 +49,7 @@ export default {
           fieldProps.error = null;
           var self = this;
           //var key = ;
-          this.$watch( 'formStructure.' +index+'.value', function (value) {
+          this.$watch( 'dataValues.'+element._n, function (value) {
             console.log(fieldName + ' = '+value  );
             if (element.defaultValue!=value) {
                 if (self.fields[fieldName]) {

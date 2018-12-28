@@ -1,5 +1,4 @@
 
-var _Values = require('lodash/values');   // get values as array and object
 //import moment from 'moment';
 var _Clone = require('lodash/clone');
 
@@ -15,16 +14,18 @@ export default {
     clearForm(){
 
 
-        this.formStructure.map(function(element) {
-             element.value = element.defaultValue;
+        this.formStructure.map((element)=>{
+            this.setDataValue(element._n, element.defaultValue );
         });
-      //  console.log(this.formStructure);
         this.clearMessagesForm();
         this.disableForm();
 
 
     },
 
+    setDataValue(name, value) {
+      this.dataValues[name] = value;
+    },
 
     /**
       Set default values to every element from formStructure
@@ -46,9 +47,9 @@ export default {
 
      setNewValueForElement(newValue, element) {
 
-
-       element.value =  newValue;   //this.filter(element, newValue);
-       element.defaultValue = newValue;
+      this.setDataValue(element._n, newValue);
+      // element.value =  newValue;   //this.filter(element, newValue);
+      element.defaultValue = newValue;
 
      },
 
@@ -63,13 +64,13 @@ export default {
                value = element.unFilteredFunc(element.value, element);
 
            } else {
-              value = element.value;
+              value = self.dataValues[element._n];
            }
            //data_clone[element.name] = value;
            data_clone[element._n] = value;
 
            // if present defaultValues it means that change (put) event
-           if ( self.defaultValues && element.defaultValue == value) {
+           if ( self.defaultValues && self.defaultValues[element._n] == value) {
               delete data_clone[element._n];
            }
 
@@ -81,8 +82,8 @@ export default {
 
     updateDefaultsValues() {
 
-        this.formStructure.map(function(element) {
-              element.defaultValue = element.value;
+        this.formStructure.map((element)=>{
+              element.defaultValue = this.dataValues[element._n];
 
          });
 

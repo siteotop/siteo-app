@@ -32,7 +32,9 @@ export default {
               name = field_structure._n
 
               if (!field_structure.value) {
-                this.$set(field_structure, 'value', '');
+                this.$set(this.dataValues, name, '');
+              } else {
+                this.$set(this.dataValues, name, field_structure.value);
               }
 
               if (!field_structure.defaultValue) {

@@ -11,7 +11,7 @@
           <v-flex xs12 v-for="(field, index) in formStructure" :key="index" v-show="!field.hide" :class="field.class?field.class:''" >
               <component :is="field.name"
                   :name="field._n"
-                  v-model="field.value"
+                  v-model="dataValues[field._n]"
                   v-bind="field.name[0]=='v'? field.props: Object.assign({vComp: field.props}, field.propsNative)"
               ></component>
           </v-flex>
@@ -54,7 +54,7 @@
 
 <script>
 
-var _Values = require('lodash/values');   // get values as array and object
+//var _Values = require('lodash/values');   // get values as array and object
 
 import Loader from '../../_mixins/component-loading.js';
 import ChunkLoader from '../../_mixins/loader-i18-chunk.js';
@@ -168,6 +168,7 @@ export default {
         formActive: false,
         leaveform: false,
         formStructure: [],
+        dataValues: {},
         errorResponse: false
 
 
@@ -271,20 +272,20 @@ export default {
       this.startFormLoader();
       const self = this;
 
-      const form_data = {};
-      this.formStructure.map((element)=>{ form_data[element._n] = element.value  });
+      //const form_data = {};
+      //this.formStructure.map((element)=>{ form_data[element._n] = element.value  });
 
-      console.log(form_data);
-       this.$validator.validateAll(form_data).then(result => {
+     //  console.log(form_data);
+       this.$validator.validateAll(self.dataValues).then(result => {
             if (!result) {
               self.stopFormLoader();
               self.formStructure.map(function(element) {
-                  self.validateOneElement(element._n, element.props, element.value);
+                  self.validateOneElement(element._n, element.props, self.dataValues[element._n]);
               });
 
             } else {
               //  console.log(form_data);
-                self.sendRequest(form_data);
+                self.sendRequest(self.dataValues);
             }
 
             // success stuff.
@@ -379,7 +380,7 @@ export default {
 
         });
 
-        
+
 
     },
 
