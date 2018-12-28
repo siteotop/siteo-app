@@ -347,7 +347,7 @@ export default {
           self.stopFormLoader(true);
 
           self.errorResponse = error.response.data;
-          if (error.response.status ==400&&error.response.data.error_code) {
+          if (error.response.status ==400&&error.response.data.error_code =='validatorMessages') {
              self.catchFormValidation(error.response.data.error_description);
           }
 
@@ -360,30 +360,26 @@ export default {
     catchFormValidation(error_messages) {
         //console.log(message);
         var self = this;
-        _Values( error_messages).map(function (message, key){
-
-              let string_message = [];
-              for (let keyMessage in  message.messages ) {
-
-              var keyError = message.field+keyMessage;
-              if (self.$i18n_te('errors.'+keyError)) {
-                  string_message.push(self.$i18n_t('errors.'+keyError));
-                } else {
-                  string_message.push(message.messages[keyMessage]);
+        this.formStructure.map((element)=>{
+            let string_message = [];
+            if (error_messages[element._n]) {
+                var messages = error_messages[element._n].messages;
+                for (let keyMessage in  messages ) {
+                  var keyError = 'errors.'+element._n+'.'+keyMessage;
+                  console.log(keyError);
+                  if (self.$i18n_te(keyError)) {
+                      string_message.push(self.$i18n_t(keyError));
+                    } else {
+                      string_message.push(messages[keyMessage]);
+                    }
                 }
+                string_message = string_message.shift();
+                self.setErrorForElement(element.props, string_message);
+            }
 
-              }
-              string_message = string_message.shift();
-              //self.$_LocalMessages_add( string_message, 'error');
+        });
 
-
-              if (self.formStructure&&self.formStructure[message.field]!==undefined) {
-                  //label = self.formStructure[message.field].label+'": ';
-
-                  self.setErrorForElement(self.formStructure[message.field], string_message);
-              }
-
-         });
+        
 
     },
 
