@@ -4,7 +4,7 @@
       transition= "scale-transition"
       v-model="message.state"
       :color="message.type"
-      dismissible
+      v-bind="vAlert"
     >
         {{message.text}}
     </v-alert>
@@ -18,7 +18,10 @@ export default {
     errorResponse: {
        type: Object
     },
-
+    vAlert: {
+       type: Object,
+       default: ()=>{return {dismissible:true}}
+    },
     i18nkey: {
       type:String
     }
