@@ -46,7 +46,8 @@ export default {
       reset: 'Reset Form',
       success: 'Success response form',
       leave: 'Ви желаете прервать заполнение формы?',
-      leave_desc: 'Все заполненные данные будут утеряны.'
+      leave_desc: 'Все заполненные данные будут утеряны.',
+      no_valid: 'Форма не прошла валидацию на сервере'
     },
 
     formOrder: {
@@ -85,7 +86,7 @@ export default {
           d: '',
         }
       }
-      
+
 
     },
 

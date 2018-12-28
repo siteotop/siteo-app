@@ -4,6 +4,7 @@
       transition= "scale-transition"
       v-model="message.state"
       :color="message.type"
+      icon="warning"
       v-bind="vAlert"
     >
         {{message.text}}
@@ -44,8 +45,15 @@ export default {
   methods: {
     filterResponse() {
         console.log(this.errorResponse);
-        if (typeof(this.errorResponse.error_description) =='string') {
-            this.addMessageFromResponse(this.errorResponse.error_code, this.errorResponse.error_description)
+        var error_code = this.errorResponse.error_code;
+        var error_description = this.errorResponse.error_description;
+        if (typeof(error_description) =='string') {
+            this.addMessageFromResponse(error_code, error_description);
+        } else {
+            if (error_code == 'validatorMessages') {
+              this.addMessageFromResponse('validatorMessages', this.$t('commonForm.no_valid'));
+            }
+
         }
     },
 
