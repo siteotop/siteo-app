@@ -39,7 +39,7 @@ export default {
     ['services', 'experts',  'posts'].map(function(ListOption) {
       if ($pluginOptions.instance[ListOption]&&$pluginOptions.instance[ListOption].items) {
          var name = 'APP_'+ListOption.toUpperCase();
-         $coreVue.registerStoreModule(name, StoreModules[ListOption]('WEBSITE_API_URL'));
+         $coreVue.registerStoreModule(name, StoreModules[ListOption]('WEBSITE_API_URL'), true);
          $coreVue.store.commit(name+'/saveList', $pluginOptions.instance[ListOption].items );
       }
     })

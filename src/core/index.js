@@ -104,7 +104,7 @@ export default function (APP, plugins ) {
       locale: APP.options.instance.data.lang, // app lang
       messages: APP.options.messages // set locale messages
     });
-  
+
 
 
     // connect  vee-validator
@@ -121,8 +121,8 @@ export default function (APP, plugins ) {
      }
     );
 
-    CoreVue.registerStoreModule = function (name, module) {
-          CoreVue.store.registerModule(name, createModelCRUD(module))
+    CoreVue.registerStoreModule = function (name, module, turnOnList) {
+          CoreVue.store.registerModule(name, createModelCRUD(module, turnOnList))
     };
 
     CoreVue.IconsRegister= IconsRegister;
