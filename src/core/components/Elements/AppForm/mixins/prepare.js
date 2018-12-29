@@ -25,30 +25,17 @@ export default {
               } else {
                 field_structure = mergeStructureFields(propsStructure[index_component]) ;
               }
-
+              var field_props = field_structure.props,
+              name = field_structure._n;
+              this.createFieldValues(field_structure, name);
+              this.connectCommonProps(field_props, name);
+              this.createFieldI18n(field_props, name);
               formStructure.push(field_structure);
 
-              var field_props = field_structure.props,
-              name = field_structure._n
-
-              if (!field_structure.value) {
-                this.$set(this.dataValues, name, '');
-              } else {
-                this.$set(this.dataValues, name, field_structure.value);
-              }
-
-              if (!field_structure.defaultValue) {
-                this.$set(field_structure, 'defaultValue', '');
-              }
-
-              this.connectCommonProps(field_props, name);
-              // connect i18n
-              this.createFieldI18n(field_props, name);
-
            }
+           this.createRecaptcha(formStructure);
           // console.log(this.formStructure);
            this.createSubmit();
-
 
            this.setDefaultValuesFromStore(formStructure);
            this.createValidation(formStructure);
@@ -58,12 +45,44 @@ export default {
            // this.initFormStructure();
       },
 
+      createFieldValues(field_structure) {
+
+
+        if (!field_structure.value) {
+          this.$set(this.dataValues, field_structure._n, '');
+        } else {
+          this.$set(this.dataValues, field_structure._n, field_structure.value);
+        }
+
+        if (!field_structure.defaultValue) {
+          this.$set(field_structure, 'defaultValue', '');
+        }
+
+      },
+
+      /**
+        props for all element
+      */
       connectCommonProps(field_props, name) {
         if (this.typeInput) {
           field_props[this.typeInput] = true;
         }
+      },
 
-        //field['prependIcon'] = name
+      createRecaptcha(formStructure){
+         if (this.recaptcha) {
+
+            var r_structure = {
+              _n: 'captcha',
+              validators: {required: true},
+              props: {
+                label:this.$t('commonForm.captcha.l'),
+                hint: this.$t('commonForm.captcha.d')
+              }
+            }
+            this.createFieldValues(r_structure);
+            formStructure.push(r_structure);
+         }
 
       },
 

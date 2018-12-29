@@ -1,42 +1,42 @@
 <template>
+  <v-card flat color="grey lighten-3" class="pa-4 my-2">
 
-  <div>
     <AppPulseLoader :loading="loading" ></AppPulseLoader>
-    <div :id="id"></div>
-  </div>
+    <div :id="id" class="justify-center"></div>
+    <v-card-text v-if="error">
+      <div class="red--text" v-for="(message, index) in errorMessages" :key="index">
+          {{message}}
+      </div>
+    </v-card-text>
+  </v-card>
 
 </template>
 
 
 <script>
 
-//import {recaptcha} from 'core/config.js';
+import VModelInput from '../../../_mixins/v-model-input';
 
 //https://developers.google.com/recaptcha/docs/display
 //https://developers.google.com/recaptcha/docs/language
 export default {
-  name: 'google-recaptcha',
+
+  mixins: [VModelInput],
   props: {
-      status: {
-        default: 0,
-        type: Number
-
-      },
-
-      token: {
-        type: String,
-        default: ''
-
-      }
-
+    error: {
+      type: Boolean
+    },
+    errorMessages: {
+      type: [Boolean, Array]
+    }
   },
 
   data(){
       return {
           id: "recaptcha" + new Date().getTime(),
-          response: '',
           recaptcha: null,
-          loading: true
+          loading: true,
+          token: this.$store.state.APP_INSTANCE.configs.recaptcha
 
       }
 
@@ -44,13 +44,6 @@ export default {
   },
 
   watch: {
-      status: function(val, oldVal) {
-
-          if (val !== 0 && val !==oldVal ) {
-              this.resetCaptcha();
-          }
-
-      },
 
       recaptcha: function (val, oldVal) {
 
@@ -83,33 +76,20 @@ export default {
 
   methods: {
       resetCaptcha() {
-
         grecaptcha.reset(
           this.recaptcha
         );
-
         this.expiredResponse();
-
-
       },
 
 
       getResponse(response){
-
-          this.response = response;
-
-          this.$emit('changeCaptcha', this.response );
-          console.log(this.response);
-
+          this.valueData = response;
       },
 
 
       expiredResponse(){
-
-          this.response = '';
-          this.$emit('changeCaptcha', this.response );
-          console.log(this.response);
-
+          tthis.valueData = '';
       },
 
 
@@ -122,6 +102,11 @@ export default {
   mounted(){
         var self = this;
       //  console.log(window.onloadCallback2);
+       if (!this.token) {
+          this.loading = false;
+          return;
+       }
+
 
       //  var element = document.getElementById(self.id);
         console.log('captcha loading');
@@ -141,6 +126,9 @@ export default {
               self.recaptcha = window.grecaptcha.render(self.id, recaptcha_options );
 
              }
+          }).catch((error)=>{
+            this.loading = false;
+            console.log(error);
           });
 
 

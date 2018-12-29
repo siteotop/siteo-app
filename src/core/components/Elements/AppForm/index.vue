@@ -6,19 +6,20 @@
       :errorResponse="errorResponse" :i18nkey="i18nkey" >
     </AppErrorResponse>
     <v-container class='grid-list-sm mt-0 pt-0'>
-
-        <v-layout row wrap align-end>
+      <v-layout row wrap align-end>
           <v-flex xs12 v-for="(field, index) in formStructure" :key="index" v-show="!field.hide" :class="field.class?field.class:''" >
-              <component :is="field.name"
+              <component v-if="field._n!='captcha'" :is="field.name"
                   :name="field._n"
                   v-model="dataValues[field._n]"
+
                   v-bind="field.name[0]=='v'? field.props: Object.assign({vComp: field.props}, field.propsNative)"
               ></component>
+              <AppFieldRecaptcha v-if="(field._n=='captcha'&&formActive)"       
+                  v-model="dataValues[field._n]"
+                  v-bind="field.props"
+              ></AppFieldRecaptcha>
           </v-flex>
-          <v-flex v-if="recaptcha&&formActive" xs12>
-            <AppFieldRecaptcha  v-if="$store.state.APP_INSTANCE.configs.recaptcha"  :token="$store.state.APP_INSTANCE.configs.recaptcha"></AppFieldRecaptcha>
-          </v-flex>
-       </v-layout>
+         </v-layout>
        <v-layout v-show="!statusLoading&&buttonSubmit"
         row
         wrap
@@ -272,11 +273,7 @@ export default {
       this.startFormLoader();
       const self = this;
 
-      //const form_data = {};
-      //this.formStructure.map((element)=>{ form_data[element._n] = element.value  });
-
-     //  console.log(form_data);
-       this.$validator.validateAll(self.dataValues).then(result => {
+      this.$validator.validateAll(self.dataValues).then(result => {
             if (!result) {
               self.stopFormLoader();
               self.formStructure.map(function(element) {
@@ -301,8 +298,8 @@ export default {
     */
     clearCaptcha() {
       //console.log(this.formStructure.captcha);
-      if (this.formStructure.captcha!==undefined) {
-          this.formStructure.captcha.reload ++;
+      if (this.dataValues.captcha!==undefined) {
+          this.dataValues.captcha ='';
       }
 
     },
@@ -331,6 +328,7 @@ export default {
 
               self.stopFormLoader(true);
               self.disableForm();
+              self.clearCaptcha();
               self.updateDefaultsValues();
 
               if (self.successDestroy) {
@@ -411,13 +409,7 @@ export default {
       stop loader before send request
     */
     stopFormLoader(captcha) {
-
         this.stopLoading();
-
-        if (captcha) {
-          this.clearCaptcha();
-        }
-
     },
 
 

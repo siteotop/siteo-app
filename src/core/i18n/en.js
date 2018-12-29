@@ -47,7 +47,8 @@ export default {
       success: 'Success response form',
       leave: 'Ви желаете прервать заполнение формы?',
       leave_desc: 'Все заполненные данные будут утеряны.',
-      no_valid: 'Форма не прошла валидацию на сервере'
+      no_valid: 'Форма не прошла валидацию на сервере',
+      captcha: {l: 'Captcha', d: 'Check the robot'}
     },
 
     formOrder: {

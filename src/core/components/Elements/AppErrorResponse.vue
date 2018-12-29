@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-card>
     <v-alert v-for="(message, index) in LocalMessages" :key="index"
       transition= "scale-transition"
       v-model="message.state"
@@ -10,19 +10,31 @@
         {{message.text}}
     </v-alert>
 
-  </div>
+  </v-card>
 </template>
 <script>
 export default {
 
   props: {
+
+    /**
+      error.response.data from axios
+    */
     errorResponse: {
        type: Object
     },
+
+    /**
+      props for v-alert
+    */
     vAlert: {
        type: Object,
        default: ()=>{return {dismissible:true}}
     },
+
+    /**
+      current i18n key for object
+    */
     i18nkey: {
       type:String
     }
