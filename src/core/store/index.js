@@ -89,7 +89,7 @@ export default function (Vue, APP_INSTANCE)  {
        RESTApi.interceptors.response.use(
          function (response) {
             if (response.status==200) {
-                checkObjectResponse(error.response, store)
+                checkObjectResponse(response, store)
             }
             return response;
          },
