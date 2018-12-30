@@ -65,6 +65,13 @@ export default {
             })
         },
 
+        detachValidator() {
+           for (var name in  this.dataValues) {
+             this.$validator.detach(name);
+           }
+           this.errors.clear();
+        },
+
 
         /**
           Make null state for element which has  validation true (validate OK)
@@ -108,7 +115,7 @@ export default {
         */
         setErrorForElement(fieldProps, message){
            fieldProps.error = true;
-           fieldProps.errorMessages =[ message];
+           fieldProps.errorMessages =[message];
         },
 
 

@@ -5,7 +5,14 @@
     <AppErrorResponse v-if="errorResponse"
       :errorResponse="errorResponse" :i18nkey="i18nkey" >
     </AppErrorResponse>
-    <v-container class='grid-list-sm mt-0 pt-0'>
+    <div v-if="successResult">
+        <v-alert type="success" v-model="successResult">
+          {{getSuccessMessage()}}
+        </v-alert>
+      <slot name="success">
+      </slot>
+    </div>
+    <v-container v-if="showForm" class='grid-list-sm mt-0 pt-0'>
       <v-layout row wrap align-end>
           <v-flex xs12 v-for="(field, index) in formStructure" :key="index" v-show="!field.hide" :class="field.class?field.class:''" >
               <component v-if="field._n!='captcha'" :is="field.name"
@@ -14,13 +21,13 @@
 
                   v-bind="field.name[0]=='v'? field.props: Object.assign({vComp: field.props}, field.propsNative)"
               ></component>
-              <AppFieldRecaptcha v-if="(field._n=='captcha'&&formActive)"       
+              <AppFieldRecaptcha v-if="(field._n=='captcha'&&formActive)"
                   v-model="dataValues[field._n]"
                   v-bind="field.props"
               ></AppFieldRecaptcha>
           </v-flex>
          </v-layout>
-       <v-layout v-show="!statusLoading&&buttonSubmit"
+       <v-layout v-show="!statusLoading"
         row
         wrap
         clas="my-3"
@@ -30,7 +37,7 @@
           </v-flex>
           <v-flex>
             <v-tooltip top lazy>
-              <v-btn slot="activator" icon :disabled="!formActive" @click="leaveform = clearForm">
+              <v-btn slot="activator" icon :disabled="!formActive" @click="leaveform = resetForm">
                 <AppIcon name='si-clear'></AppIcon>
               </v-btn>
               <span>{{$t('commonForm.reset')}}</span>
@@ -70,6 +77,24 @@ import AppFieldServices from './Fields/AppFieldServices';
 import AppFieldDate from './Fields/AppFieldDate.vue';
 import AppFieldRecaptcha from './Fields/AppFieldRecaptcha.vue';
 
+const startFormData = function () {
+  return {
+      showForm: true,
+      submitElement: {
+         name:'submit',
+         label: 'Submit',
+         hint: ''
+      },
+      successResult: false,
+      formActive: false,
+      leaveform: false,
+      formStructure: [],
+      dataValues: {},
+      errorResponse: false
+
+    }
+}
+
 export default {
   //extends: [],
 
@@ -83,7 +108,7 @@ export default {
     AppFieldServices,
     AppFieldDate,
     AppFieldRecaptcha
-    },
+  },
 
   props: {
 
@@ -155,46 +180,29 @@ export default {
 
   },
 
-
-
-
-  data () {
-    return {
-        buttonSubmit: false,
-        submitElement: {
-           name:'submit',
-           label: 'Submit',
-           hint: ''
-        },
-        formActive: false,
-        leaveform: false,
-        formStructure: [],
-        dataValues: {},
-        errorResponse: false
-
-
-      }
-  },
+  data: startFormData,
 
 
   watch: {
     propsStructure(newValue, oldValue) {
 
       if (newValue.length != oldValue.length ) {
-          var self = this;
-          console.log(this.errors);
 
-          //console.log(this.$validator.fields);
-          this.$validator.fields
-          this.formStructure.map(function(element, index) {
-            self.$validator.detach(element._n);
-            self.$delete(self.formStructure, index);
-          });
-        this.destroyForm();
-        this.formStructure  = this.prepareFormStructure(newValue);
-        console.log(this.errors.count());
-        this.errors.clear();
-        this.clearMessagesForm();
+          var self = this;
+
+
+          //this.formStructure.map(function(element, index) {
+          //  self.$validator.detach(element._n);
+          //  self.$delete(self.formStructure, index);
+          //});
+
+
+
+          this.resetForm();
+      //  this.formStructure  = this.prepareFormStructure(newValue);
+      //  console.log(this.errors.count());
+
+          //this.clearMessagesForm();
       }
 
     }
@@ -211,23 +219,32 @@ export default {
   },
 
   beforeRouteLeave(to, from, next) {
-
       if (this.formActive) {
           //console.log(this.formActive);
           this.leaveform = next;
       } else {
         next();
       }
-
-
   },
 
 
 
   methods: {
 
+    resetForm() {
+      console.log(this);
+      this.detachValidator();
+      var start_data = startFormData();
+        for (var i in start_data) {
+          this[i] = start_data[i];
+        }
 
-     getSuccessMessage(type){
+      this.formStructure  = this.prepareFormStructure(this.propsStructure);
+      this.clearMessagesForm();
+    },
+
+
+    getSuccessMessage(type){
 
        if (!type) {
          type = 'submit';
@@ -249,8 +266,8 @@ export default {
     */
     destroyForm(){
       this.disableForm();
-      this.formStructure = [];
-      this.buttonSubmit = false;
+      //this.formStructure = [];
+      this.showForm = false
     },
 
     /**
@@ -281,14 +298,15 @@ export default {
               });
 
             } else {
-              //  console.log(form_data);
+                //console.log(self.dataValues);
                 self.sendRequest(self.dataValues);
             }
 
             // success stuff.
           }).catch(() => {
+            //
             self.stopFormLoader();
-             //console.log('fucking shert');
+
             // something went wrong (non-validation related).
           });
     },
@@ -312,7 +330,7 @@ export default {
        var self = this;
        if (!this.formAction) {
              self.$store.dispatch('generateSystemMessage', {text: 'No Action', type: 'error'});
-             self.stopFormLoader(true);
+             self.stopFormLoader();
              return false;
        }
 
@@ -324,26 +342,25 @@ export default {
         //var dispatch = this.$options.$storeForValues + '/' + this.$options.$method;
         //var apidata = {data: data}
      return self.$store.dispatch(this.formAction, data).then(response=>{
-              var suc__mess = self.getSuccessMessage();
+              //var suc__mess = self.getSuccessMessage();
 
-              self.stopFormLoader(true);
+              self.stopFormLoader();
               self.disableForm();
               self.clearCaptcha();
               self.updateDefaultsValues();
 
               if (self.successDestroy) {
-                 self.$_LocalMessages_add( suc__mess, 'success');
                  self.destroyForm();
-              } else {
-                self.$store.dispatch('generateSystemMessage', {text: suc__mess, type: 'success'});
               }
-
-              self.$emit('successForm', 1);
+              this.successResult = true;
+              self.$emit('successForm', response);
 
 
         }).catch(error=>{
           console.log(error);
-          self.stopFormLoader(true);
+          //self.disableForm();
+          self.clearCaptcha();
+          self.stopFormLoader();
 
           self.errorResponse = error.response.data;
           if (error.response.status ==400&&error.response.data.error_code =='validatorMessages') {
@@ -382,13 +399,13 @@ export default {
 
     },
 
-   disableForm(){
-          this.formActive = false;
-          console.log('form is disabled');
+    disableForm(){
+        this.formActive = false;
+        console.log('form is disabled');
     },
-    enableForm(){
 
-       console.log('enable');
+    enableForm(){
+        console.log('enable');
         if (!this.formActive&& Object.keys(this.formStructure).length >0)  {
             console.log('form is enabled');
           this.formActive = true;
@@ -408,7 +425,7 @@ export default {
     /**
       stop loader before send request
     */
-    stopFormLoader(captcha) {
+    stopFormLoader() {
         this.stopLoading();
     },
 

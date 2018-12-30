@@ -8,21 +8,6 @@ export default {
 
   methods: {
 
-    /**
-      Clear all values from all formStructure elements
-    */
-    clearForm(){
-
-
-        this.formStructure.map((element)=>{
-            this.setDataValue(element._n, element.defaultValue );
-        });
-        this.clearMessagesForm();
-        this.disableForm();
-
-
-    },
-
     setDataValue(name, value) {
       this.dataValues[name] = value;
     },

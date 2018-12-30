@@ -21,7 +21,7 @@ export default {
       error.response.data from axios
     */
     errorResponse: {
-       type: Object
+       type: [Object, Boolean]
     },
 
     /**

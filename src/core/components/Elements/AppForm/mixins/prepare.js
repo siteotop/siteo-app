@@ -87,7 +87,6 @@ export default {
       },
 
       createSubmit() {
-         this.buttonSubmit = true;
          this.createFieldI18n(this.submitElement, 'submit');
       },
 
