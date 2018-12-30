@@ -1,5 +1,5 @@
 <template>
-  <v-card flat fluid @click="enableForm()">
+  <v-card flat fluid @click="enableForm()" @keyup.ctrl.enter="onSubmit">
     <slot name="title"><v-subheader>{{$i18n_t('title')}}</v-subheader>
     </slot>
     <AppErrorResponse v-if="errorResponse"
