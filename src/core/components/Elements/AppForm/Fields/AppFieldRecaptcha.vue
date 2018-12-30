@@ -44,7 +44,12 @@ export default {
   },
 
   watch: {
-
+      value(newValue, OldValue) {
+          console.log('recaptcha value='+newValue);
+          if (!newValue) {
+              this.resetCaptcha();
+          }
+      },
       recaptcha: function (val, oldVal) {
 
       //console.log(val);
@@ -79,7 +84,6 @@ export default {
         grecaptcha.reset(
           this.recaptcha
         );
-        this.expiredResponse();
       },
 
 
@@ -89,7 +93,7 @@ export default {
 
 
       expiredResponse(){
-          tthis.valueData = '';
+          this.valueData = '';
       },
 
 
