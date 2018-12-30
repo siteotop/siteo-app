@@ -66,6 +66,7 @@
 
 import Loader from '../../_mixins/component-loading.js';
 import ChunkLoader from '../../_mixins/loader-i18-chunk.js';
+import {helperValidationError} from '../AppErrorResponse/error-helper.js';
 
 import StoreDefault from './mixins/store.js';
 import Validator from './mixins/validator.js';
@@ -373,30 +374,20 @@ export default {
 
     },
 
+    /**
+     @param error_messages is error.response.data.error_description
+
+    */
     catchFormValidation(error_messages) {
         //console.log(message);
-        var self = this;
-        this.formStructure.map((element)=>{
-            let string_message = [];
-            if (error_messages[element._n]) {
-                var messages = error_messages[element._n].messages;
-                for (let keyMessage in  messages ) {
-                  var keyError = 'errors.'+element._n+'.'+keyMessage;
-                  console.log(keyError);
-                  if (self.$i18n_te(keyError)) {
-                      string_message.push(self.$i18n_t(keyError));
-                    } else {
-                      string_message.push(messages[keyMessage]);
-                    }
-                }
-                string_message = string_message.shift();
-                self.setErrorForElement(element.props, string_message);
-            }
+      var self = this;
+      this.formStructure.map((element)=>{
+        if (error_messages[element._n]) {
+          var string_message = helperValidationError(error_messages, element._n, self ).shift();
+          self.setErrorForElement(element.props, string_message);
+        }
 
-        });
-
-
-
+      });
     },
 
     disableForm(){

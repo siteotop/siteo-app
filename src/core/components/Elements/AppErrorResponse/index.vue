@@ -1,5 +1,6 @@
 <template>
-  <v-card>
+  <v-card flat>
+    <v-toolbar  dense flat class="error--text" ><v-toolbar-title>{{errorTitle}} </v-toolbar-title></v-toolbar>
     <v-alert v-for="(message, index) in LocalMessages" :key="index"
       transition= "scale-transition"
       v-model="message.state"
@@ -13,8 +14,12 @@
   </v-card>
 </template>
 <script>
-export default {
 
+import {helperValidationError} from './error-helper';
+import Loaderi18nHelper from '../../_mixins/loader-i18-chunk.js';
+
+export default {
+  mixins: [Loaderi18nHelper],
   props: {
 
     /**
@@ -30,20 +35,15 @@ export default {
     vAlert: {
        type: Object,
        default: ()=>{return {dismissible:true}}
-    },
-
-    /**
-      current i18n key for object
-    */
-    i18nkey: {
-      type:String
     }
+
 
   },
 
   data() {
     return {
-      LocalMessages: []
+      LocalMessages: [],
+      valid_all: true
     }
   },
 
@@ -51,6 +51,15 @@ export default {
       this.filterResponse();
 
       setTimeout(()=>{this.LocalMessages.map(function(message){message.state = true})}, 20);
+
+  },
+
+  computed: {
+    errorTitle() {
+        if (this.errorResponse.error_code == 'validatorMessages') {
+            return this.$t('commonForm.error.no_valid');
+        }
+    }
 
   },
 
@@ -63,7 +72,12 @@ export default {
             this.addMessageFromResponse(error_code, error_description);
         } else {
             if (error_code == 'validatorMessages') {
-              this.addMessageFromResponse('validatorMessages', this.$t('commonForm.no_valid'));
+              for (var name_field in error_description) {
+
+                this.$_add(helperValidationError(error_description, name_field, this).shift(), 'error');
+
+              }
+              //this.addMessageFromResponse('validatorMessages', );
             }
 
         }
@@ -71,9 +85,9 @@ export default {
 
     addMessageFromResponse(keyError,  message) {
 
-      var translation_key = this.i18nkey+'.errors.'+keyError;
-      if (this.$te(translation_key)) {
-         message = this.$t(translation_key);
+      var translation_key = 'errors.'+keyError;
+      if (this.$i18n_te(translation_key)) {
+         message = this.$i18n_t(translation_key);
       }
       this.$_add( message,  'error' );
     },
