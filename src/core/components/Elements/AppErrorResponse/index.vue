@@ -10,7 +10,8 @@
     >
         {{message.text}}
     </v-alert>
-
+    
+    <slot name="footer"></slot>
   </v-card>
 </template>
 <script>
