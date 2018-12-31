@@ -24,7 +24,7 @@ export default function (Vue, APP_INSTANCE)  {
            pageLoader: false,
            public_token: APP_INSTANCE.configs.public_token,
            usePablicToken: true,
-           dispatchGetToken: 'NAME_MODULE/action' // for example "account/refreshToken"
+           getterToken: 'NAME_MODULE/action' // for example "account/refreshToken"
          },
 
          mutations: {
@@ -42,7 +42,12 @@ export default function (Vue, APP_INSTANCE)  {
 
             closeDrawer(state) {
                  state.drawer = false;
-             }
+            },
+
+            newGetterToken(state, value) {
+                state.usePablicToken = false;
+                state.getterToken = value;
+            }
          },
          modules: {
            APP_INSTANCE: createInstance (APP_INSTANCE),
@@ -59,10 +64,13 @@ export default function (Vue, APP_INSTANCE)  {
 
               if (state.usePablicToken) {
                 APIconfig.access_token = state.public_token;
-                return  dispatch('callCoreApi', APIconfig );
               } else {
-                console.log(state.dispatchGetToken);
+                  console.log(state.getterToken);
+                APIconfig.access_token = rootGetters[state.getterToken];
+
               }
+
+              return  dispatch('callCoreApi', APIconfig );
 
            },
 
