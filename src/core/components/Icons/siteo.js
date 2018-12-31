@@ -30,7 +30,7 @@ Icon.register({
 })
 
 Icon.register({
-  'siteo-plain': {
+  'si-logo-plain': {
     width: 640,
     height: 640,
     paths:    [
