@@ -10,8 +10,7 @@
      >
        <v-text-field
          slot="activator"
-         v-bind="$options.propsData"
-         :error = "error"
+         v-bind="vComp"
          :value="currentDateInput"
          name="date"
          prepend-inner-icon="event"
@@ -40,7 +39,7 @@ export default {
 
   mixins: [VModelInput],
 
-  props: ['hint', 'label', 'solo', 'error', 'errorMessages'],
+  props: ['vComp'],
 
   data() {
     return {

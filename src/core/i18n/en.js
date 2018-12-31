@@ -46,7 +46,12 @@ export default {
       reset: 'Reset Form',
       success: 'Success response form',
       leave: 'Ви желаете прервать заполнение формы?',
-      leave_desc: 'Все заполненные данные будут утеряны.'
+      leave_desc: 'Все заполненные данные будут утеряны.',
+
+      error: {
+         no_valid: 'Ошибки валидации'
+      },
+      captcha: {l: 'Captcha', d: 'Check the robot'}
     },
 
     formOrder: {
@@ -84,8 +89,8 @@ export default {
           l: 'Send',
           d: '',
         }
-      },
-      footer: {text:'Footer Order' }
+      }
+
 
     },
 

@@ -18,11 +18,6 @@ const prepareData = function (data) {
 
 const createModelCRUD = function (object, turnOnList) {
 
-    if (turnOnList!==false) {
-        turnOnList = true;
-    }
-
-
     if (!object.api.nameId) {
        object.api.nameId = '_id';
     }
@@ -102,7 +97,7 @@ const createModelCRUD = function (object, turnOnList) {
                     }
                );
             },
-            
+
 
             /**
                 upadete  object in model APi  and update in store

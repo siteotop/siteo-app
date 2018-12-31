@@ -191,7 +191,7 @@ var _PRERENDER = {
                   },
 
                   {
-                    $$: 'AutoServices',
+                    $$: 'WiServices',
                     _n: 'Services',
                     _i: 'si-services',
 
@@ -229,7 +229,7 @@ var _PRERENDER = {
 
       {
 
-        $$: 'AutoServices',
+        $$: 'WiServices',
         _props: {
           _t: 'Services ',  //
           _d: 'If all services or items which you sell',  //
@@ -241,7 +241,7 @@ var _PRERENDER = {
 
       {
 
-        $$: 'AutoExperts',
+        $$: 'WiExperts',
         _props: {
           _t: 'Experts from company',  //
           _d: 'Description Header Block',  //
@@ -292,7 +292,7 @@ var _PRERENDER = {
            $bl: 'align-center row wrap ',
            $bls: [
              {
-               $$:'BInstagram',
+               $$:'WiInstagram',
                 $bf: 'text-xs-center ',
                _props: {
                  _url: 'https://www.instagram.com/p/BpPnezuAZjr',
@@ -341,7 +341,7 @@ var _PRERENDER = {
           $bf: 'md6 text-xs-center align-center',
           $bls: [
             {
-              $$: 'AutoContacts',
+              $$: 'WiContacts',
               _props: {
                 $type: 'call',
                 $clp: {
@@ -351,7 +351,7 @@ var _PRERENDER = {
             },
 
             {
-              $$: 'AutoContacts',
+              $$: 'WiContacts',
 
             },
 
@@ -369,7 +369,7 @@ var _PRERENDER = {
           $bf: 'md12 text-xs-center',
           $bls: [
             {
-              $$: 'AutoLinks'
+              $$: 'WiLinks'
             }
           ]
         }

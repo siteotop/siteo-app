@@ -6,47 +6,9 @@ export default {
       i18nkey: {
         type: String,
         default: ''
-      },
-
-      needUpdateMeta: {
-          type:Boolean,
-          default: false,
-      },
-
-      needToolbar: {
-        type: Boolean,
-        default: true
       }
 
-
   },
-
-
-  computed: {
-    iconTitle() {
-       return '';
-    }
-
-  },
-
-
-
-  metaInfo () {
-
-    if (!this.needUpdateMeta) {
-       return {};
-    }
-
-    return {
-      title: this.$i18n_t('title'),
-      titleTemplate: '%s  - ' + this.$store.state.APP_INSTANCE.data.name,
-      meta: [
-        {name: 'description', vmid: 'description', content:  this.$i18n_t('description')}
-      ]
-
-    }
-  },
-
 
   methods: {
     /**

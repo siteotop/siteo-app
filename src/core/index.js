@@ -21,8 +21,7 @@ Vue.use(VueI18n);
 */
 import CoreVue from './components/App.vue';
 
-/**Basic routes*/
-import basicRoutes from './components/routes'
+
 
 import * as CoreComponents from  './components';
 for (let NameComponent in CoreComponents) {
@@ -38,7 +37,7 @@ import RouterInstall from './router';
   Storing all data from backend
 */
 import StoreInstall from './store';
-
+import {createModelCRUD} from './store/helpers/model-events'
 /**SYNC router with store
   in Vue store we can get 'route' property
 */
@@ -60,17 +59,6 @@ require('./style/common.css')
 /**ICONS*/
 import IconsRegister from  './components/Icons/register.js';
 
-/** SiteoInstall Function  */
-
-/**
-@example  options = {
-    stores: {},
-    router: { routes:  {}, components: {} },
-    Vue: {}
-}
-
-*/
-
 import axios from 'axios';
 
 import VS2 from 'vue-script2';
@@ -78,12 +66,12 @@ import VS2 from 'vue-script2';
 import VeeValidate from 'vee-validate';
 
 
-export default function (APP_INSTANCE, messages, template,    plugins ) {
+export default function (APP, plugins ) {
 
 
    //start Vuetify
    Vue.use(Vuetify, {
-     theme:  APP_INSTANCE.design? APP_INSTANCE.design.theme.colors:{}
+     theme:  APP.options.instance.design? APP.options.instance.design.theme.colors:{}
    });
 
 
@@ -96,9 +84,9 @@ export default function (APP_INSTANCE, messages, template,    plugins ) {
 
 
    // create store
-   CoreVue.store = StoreInstall(Vue, APP_INSTANCE);
+   CoreVue.store = StoreInstall(Vue, APP.options.instance);
    // create router
-   CoreVue.router = RouterInstall(Vue, CoreVue.store, APP_INSTANCE.configs.path, basicRoutes(template.routes) )
+   CoreVue.router = RouterInstall(Vue, CoreVue.store, APP.options.instance.configs.path )
 
    //sync router with store for access route from store
    sync(CoreVue.store, CoreVue.router );
@@ -109,13 +97,15 @@ export default function (APP_INSTANCE, messages, template,    plugins ) {
 
 
    // connect routes translating to all messages
-   messages[APP_INSTANCE.data.lang].routes = APP_INSTANCE.routes;
+   //APP.options.messages[APP.options.instance.data.lang].routes = APP.options.instance.routes;
    // Create VueI18n instance with options
    CoreVue.i18n = new VueI18n({
       silentTranslationWarn: process.env.NODE_ENV === 'development'? false: true, // silent log
-      locale: APP_INSTANCE.data.lang, // app lang
-      messages: messages // set locale messages
+      locale: APP.options.instance.data.lang, // app lang
+      messages: APP.options.messages // set locale messages
     });
+
+
 
     // connect  vee-validator
     Vue.use(VeeValidate, {
@@ -126,22 +116,28 @@ export default function (APP_INSTANCE, messages, template,    plugins ) {
       */
       inject: false,
 
-      dictionary: messages.validation||false,
-      local: APP_INSTANCE.data.lang
+      dictionary: APP.options.messages.validation||false,
+      local: APP.options.instance.data.lang
      }
     );
 
-
+    CoreVue.registerStoreModule = function (name, module, turnOnList) {
+          CoreVue.store.registerModule(name, createModelCRUD(module, turnOnList))
+    };
 
     CoreVue.IconsRegister= IconsRegister;
     // add plugins
     CoreVue.SiteoAddPlugin = function (plugin) {
-      Vue.use(plugin, {coreVue:CoreVue, pluginOptions: plugin.options });
-    };
-    // CoreVue._siteoPlugins = {};
-    // Vue.use(template);
-    CoreVue.SiteoAddPlugin(template);
 
+      Vue.use(plugin, {$coreVue:CoreVue, $pluginOptions: plugin.options });
+      if (plugin.siteoInstall) {
+        plugin.siteoInstall(CoreVue, plugin.options)
+      }
+
+    };
+
+
+    CoreVue.SiteoAddPlugin(APP);
     if (plugins&&plugins.length) {
        for (var i in plugins ) {
           CoreVue.SiteoAddPlugin(plugins[i]);

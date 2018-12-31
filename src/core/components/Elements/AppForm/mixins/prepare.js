@@ -1,5 +1,5 @@
 
-import {getStructureForField} from '../Fields/_helper/MapsSiteoFields';
+import {getStructureForField, mergeStructureFields} from '../Fields/_helper/MapsSiteoFields';
 
 export default {
 
@@ -23,29 +23,19 @@ export default {
               if (typeof(propsStructure[index_component]) == 'string') {
                 field_structure = getStructureForField(propsStructure[index_component]);
               } else {
-                field_structure = propsStructure[index_component];
+                field_structure = mergeStructureFields(propsStructure[index_component]) ;
               }
+              var field_props = field_structure.props,
+              name = field_structure._n;
+              this.createFieldValues(field_structure, name);
+              this.connectCommonProps(field_props, name);
+              this.createFieldI18n(field_props, name);
               formStructure.push(field_structure);
 
-              var field = field_structure.props,
-              name = field_structure._n
-
-              if (!field.value) {
-                this.$set(field, 'value', '');
-              }
-
-              if (!field.defaultValue) {
-                this.$set(field, 'defaultValue', '');
-              }
-              
-              this.connectCommonProps(field, name);
-              // connect i18n
-              this.createFieldI18n(field, name);
-
            }
+           this.createRecaptcha(formStructure);
           // console.log(this.formStructure);
            this.createSubmit();
-
 
            this.setDefaultValuesFromStore(formStructure);
            this.createValidation(formStructure);
@@ -55,17 +45,48 @@ export default {
            // this.initFormStructure();
       },
 
-      connectCommonProps(field, name) {
-        if (this.typeInput) {
-          field[this.typeInput] = true;
+      createFieldValues(field_structure) {
+
+
+        if (!field_structure.value) {
+          this.$set(this.dataValues, field_structure._n, '');
+        } else {
+          this.$set(this.dataValues, field_structure._n, field_structure.value);
         }
 
-        field['prependIcon'] =name
+        if (!field_structure.defaultValue) {
+          this.$set(field_structure, 'defaultValue', '');
+        }
+
+      },
+
+      /**
+        props for all element
+      */
+      connectCommonProps(field_props, name) {
+        if (this.typeInput) {
+          field_props[this.typeInput] = true;
+        }
+      },
+
+      createRecaptcha(formStructure){
+         if (this.recaptcha) {
+
+            var r_structure = {
+              _n: 'captcha',
+              validators: {required: true},
+              props: {
+                label:this.$t('commonForm.captcha.l'),
+                hint: this.$t('commonForm.captcha.d')
+              }
+            }
+            this.createFieldValues(r_structure);
+            formStructure.push(r_structure);
+         }
 
       },
 
       createSubmit() {
-         this.buttonSubmit = true;
          this.createFieldI18n(this.submitElement, 'submit');
       },
 
@@ -73,10 +94,10 @@ export default {
          @param {Object} field
          connect label (l) and description (d) from i18n chunk
       */
-      createFieldI18n(field, name) {
+      createFieldI18n(field_props, name) {
 
-          this.$set( field, 'label', this.$i18n_t('content.'+name+'.l'));
-          this.$set( field, 'hint',  this.$i18n_t('content.'+name+'.d'));
+          this.$set( field_props, 'label', this.$i18n_t('content.'+name+'.l'));
+          this.$set( field_props, 'hint',  this.$i18n_t('content.'+name+'.d'));
       },
 
     }

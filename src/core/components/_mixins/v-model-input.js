@@ -22,6 +22,12 @@ export default {
 
 
   watch: {
+      value(newValue){
+          console.log('watch from mixin');
+         if (this.valueData!=newValue) {
+           this.valueData = newValue;
+         }
+      },
       valueData(newValue) {
           this.inputValue(newValue);
       }

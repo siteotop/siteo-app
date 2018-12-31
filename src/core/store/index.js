@@ -1,11 +1,12 @@
 import Vuex from 'vuex';
 import {createRESTApi} from 'core/http/rest-api.js';
+import {checkObjectResponse} from 'core/http/error-handling.js';
 import SystemMessages from './messages.js';
 
 //import i18n from './i18n.js';
 
 import createInstance from './appInstance.js';
-import {createStorePage, createServices, createExperts, createPosts} from './models.js';
+
 //import { actions}  from './helpers/api-actions';
 
 /**
@@ -23,7 +24,7 @@ export default function (Vue, APP_INSTANCE)  {
            pageLoader: false,
            public_token: APP_INSTANCE.configs.public_token,
            usePablicToken: true,
-           dispatchGetToken: 'NAME_MODULE/action' // for example "account/refreshToken"
+           getterToken: 'NAME_MODULE/action' // for example "account/refreshToken"
          },
 
          mutations: {
@@ -41,11 +42,16 @@ export default function (Vue, APP_INSTANCE)  {
 
             closeDrawer(state) {
                  state.drawer = false;
-             }
+            },
+
+            newGetterToken(state, value) {
+                state.usePablicToken = false;
+                state.getterToken = value;
+            }
          },
          modules: {
            APP_INSTANCE: createInstance (APP_INSTANCE),
-           APP_PAGE: createStorePage('WEBSITE_API_URL'),
+
 
            //APP_EXPERTS: createExperts ('WEBSITE_API_URL'),
            SystemMessages,
@@ -58,10 +64,13 @@ export default function (Vue, APP_INSTANCE)  {
 
               if (state.usePablicToken) {
                 APIconfig.access_token = state.public_token;
-                return  dispatch('callCoreApi', APIconfig );
               } else {
-                console.log(state.dispatchGetToken);
+                  console.log(state.getterToken);
+                APIconfig.access_token = rootGetters[state.getterToken];
+
               }
+
+              return  dispatch('callCoreApi', APIconfig );
 
            },
 
@@ -74,32 +83,34 @@ export default function (Vue, APP_INSTANCE)  {
                 headers: {'common': { 'Authorization':"Bearer "+ APIconfig.access_token }},
                 params: APIconfig.params,
                 withCredentials: true
-               //  responseType:'stream'
-             }).catch (error=>{
 
-                   console.log(error);
-                   dispatch('generateSystemMessageRespone', error, { root: true });
-              });
+             })/*.catch (error=>{
+                console.log(error);
+                dispatch('generateSystemMessageRespone', error, { root: true });
+              });*/
 
            }
          }
        });
 
 
-       //connect and fill additional stores
+       RESTApi.interceptors.response.use(
+         function (response) {
+            if (response.status==200) {
+                checkObjectResponse(response, store)
+            }
+            return response;
+         },
 
-       [
-         {n:'services', f:createServices},
-         {n:'experts', f:createExperts},
-         {n:'posts', f:createPosts }
-        // {n: 'locations',f:createLocations}
-       ].map(function(ListOption) {
-         if (APP_INSTANCE[ListOption.n]&&APP_INSTANCE[ListOption.n].items) {
-            var name = 'APP_'+ListOption.n.toUpperCase();
-            store.registerModule(name, createServices('WEBSITE_API_URL'));
-            store.commit(name+'/saveList', APP_INSTANCE[ListOption.n].items );
-         }
-       })
+         function (error) {
+           if (!checkObjectResponse(error.response, store)) {
+
+           } else {
+              return Promise.reject(error);
+           }
+
+       });
+
 
        return store;
 

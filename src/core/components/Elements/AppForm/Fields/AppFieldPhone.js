@@ -14,10 +14,11 @@ export default {
         */
         console.log('need create filtering for phone number ')
     }
-    return h('v-text-field',  context.data);
-    /*return textField(h, context,
-      {numeric:true, min: 10,  max:14}
-    );*/
+    return h('v-text-field',  {
+      props: {...context.props.vComp, value:context.props.value  },
+      on: context.listeners ,
+      attrs: context.data.attrs});
+
 
   }
 

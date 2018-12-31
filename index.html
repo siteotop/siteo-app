@@ -24,10 +24,11 @@
 
     <script>
         _APP_INSTANCE.configs.path = '/siteo-template'
+        Siteo_app.options.template = Siteo_template;
+        Siteo_app.options.instance = _APP_INSTANCE;
+        Siteo_app.options.messages = Siteo_en;
         var app=Siteo_core(
-          _APP_INSTANCE,
-          Siteo_en,
-          Siteo_template
+          Siteo_app
         ).$mount('#app');
     </script>
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
