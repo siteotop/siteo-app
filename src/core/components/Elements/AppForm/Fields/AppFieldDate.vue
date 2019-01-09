@@ -13,15 +13,20 @@
          v-bind="vComp"
          :value="currentDateInput"
          name="date"
+         mask="##/##/####"
+         return-masked-value
+         clearable
+
          prepend-inner-icon="event"
-         readonly
+         @input="formatDateFromInput"
        ></v-text-field>
 
-       <v-date-picker color="primary" :min="currentDate" v-model="valueData" scrollable>
+       <v-date-picker color="primary"
+ v-bind="vPicker" v-model="datepickerValue" scrollable>
          <v-btn flat color="primary" @click="clear()"><AppIcon name="si-clear"></AppIcon></v-btn>
          <v-spacer></v-spacer>
          <v-btn flat color="primary" @click="modal = false">Cancel</v-btn>
-         <v-btn flat color="primary" @click="$refs.dialog.save(valueData)">OK</v-btn>
+         <v-btn flat color="primary" @click="$refs.dialog.save(datepickerValue)">OK</v-btn>
        </v-date-picker>
      </v-dialog>
 </template>
@@ -39,11 +44,29 @@ export default {
 
   mixins: [VModelInput],
 
-  props: ['vComp'],
+  props: {
+    vComp: {
+      type: Object
+    },
+
+    /**
+      Formt in App
+    */
+    formatDate: {
+      type: String,
+      default:'DD/MM/YYYY'
+    },
+
+    vPicker: {
+      type: Object
+    }
+
+  },
 
   data() {
     return {
-      modal: false
+      modal: false,
+      datepickerValue: (this.value&&this.value!='0000-00-00' )? this.value:  ''
     }
   },
 
@@ -55,6 +78,20 @@ export default {
     clear() {
       this.modal = false;
       this.valueData='';
+    },
+
+    formatDateFromInput(inputValue) {
+        console.log(inputValue);
+        if (inputValue=='') {
+            this.valueData = '';
+            return;
+        }
+
+        if (inputValue.length == this.formatDate.length ) {
+            this.valueData = unFormat(inputValue, this.formatDate, 'YYYY-MM-DD');
+        }
+
+
     }
   },
   computed: {
@@ -72,13 +109,13 @@ export default {
     /**
       return format date  for v-text-field
       @return {String}
-      @example return  "05/09/2018"
+      @example return  "12/12/1987" using this.formatDate
     */
     currentDateInput() {
       if (!this.valueData || this.valueData == '0000-00-00') {
         return '';
       }
-      return format(this.valueData, 'DD/MM/YYYY', 'YYYY-MM-DD')
+      return format(this.valueData, this.formatDate, 'YYYY-MM-DD')
     }
   }
 
