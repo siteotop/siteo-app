@@ -5,7 +5,7 @@
  */
 
 export const checkObjectResponse = function (response, store){
-    console.log(typeof(response.data));
+    console.log(typeof(response));
     if (!response||!response.data||(typeof(response.data)!='object')) {
 
       var error='API Error: Response content is null or non Object'
