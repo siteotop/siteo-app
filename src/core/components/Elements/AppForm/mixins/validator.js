@@ -44,12 +44,14 @@ export default {
           @param {Number} index  - index of element
         */
         atachValidator(fieldName, element, index) {
+
           //create param error for fieldProps
           var fieldProps = element.props;
           fieldProps.error = null;
           var self = this;
           //var key = ;
           this.$watch( 'dataValues.'+element._n, function (value) {
+              this.enableForm();
             console.log(fieldName + ' = '+value  );
             if (element.defaultValue!=value) {
                 if (self.fields[fieldName]) {

@@ -1,5 +1,5 @@
 <template>
-  <v-card flat fluid @click="enableForm()" @keyup.ctrl.enter="onSubmit">
+  <v-card flat fluid  @keyup.ctrl.enter="onSubmit">
     <slot name="title"><v-subheader>{{$i18n_t('title')}}</v-subheader>
     </slot>
     <AppErrorResponse v-if="errorResponse"
@@ -186,26 +186,10 @@ export default {
 
   watch: {
     propsStructure(newValue, oldValue) {
-
       if (newValue.length != oldValue.length ) {
-
           var self = this;
-
-
-          //this.formStructure.map(function(element, index) {
-          //  self.$validator.detach(element._n);
-          //  self.$delete(self.formStructure, index);
-          //});
-
-
-
           this.resetForm();
-      //  this.formStructure  = this.prepareFormStructure(newValue);
-      //  console.log(this.errors.count());
-
-          //this.clearMessagesForm();
       }
-
     }
   },
 
@@ -277,6 +261,8 @@ export default {
     clearMessagesForm(){
       this.$store.commit('clearAllMessages');
       this.errorResponse = false;
+      this.successResult = false;
+
       this.formStructure.map((element)=>{
         this.nulledState(element.props)
       });
@@ -293,19 +279,22 @@ export default {
 
       this.$validator.validateAll(self.dataValues).then(result => {
             if (!result) {
+              console.log('error validation');
               self.stopFormLoader();
               self.formStructure.map(function(element) {
                   self.validateOneElement(element._n, element.props, self.dataValues[element._n]);
               });
 
             } else {
+                console.log('validation ok');
                 //console.log(self.dataValues);
                 self.sendRequest(self.dataValues);
             }
 
             // success stuff.
-          }).catch(() => {
+          }).catch((error) => {
             //
+            console.log(error);
             self.stopFormLoader();
 
             // something went wrong (non-validation related).
@@ -396,8 +385,7 @@ export default {
     },
 
     enableForm(){
-        console.log('enable');
-        if (!this.formActive&& Object.keys(this.formStructure).length >0)  {
+        if (!this.formActive)  {
             console.log('form is enabled');
           this.formActive = true;
         }
