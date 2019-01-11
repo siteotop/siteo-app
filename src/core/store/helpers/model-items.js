@@ -75,18 +75,11 @@ const createItems = function (items) {
           get list from model  by paramtrs
         */
         getList({dispatch, commit, getters, state}, data) {
-
-
            var  config = {data: data};
            config.method = 'GET';
            config.url = getters.urlWithoutId;
            return   dispatch('callAPI', config, {root:true}).then(response=>{
-                //commit('updateModel', config.data);
-
                 commit('saveList', response.data.items);
-
-
-                // save in Api list
                 return state.objects;
            });
 
@@ -97,13 +90,10 @@ const createItems = function (items) {
         */
 
          createObjectInList({dispatch, commit}, data) {
-
-              return  dispatch('createObject', data).then(response=>{
-                  commit('addItem', response.data);
-                  return response;
-                });
-
-
+           return  dispatch('createObject', data).then(response=>{
+              commit('addItem', response.data);
+              return response;
+            });
          },
 
          updateObjectInList({dispatch, state, getters,  commit}, data) {

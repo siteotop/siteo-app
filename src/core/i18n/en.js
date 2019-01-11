@@ -31,17 +31,7 @@ export default {
     // подзвонить через
     // Перейти на / ми в / {company name}
 
-    commonList: {
-      edit: 'Редактировать',
-      delete: 'Удалить',
-      add: 'Добавить',
-      del_check_one: 'Действительно удалить?',
-      del_check: 'Удалить выбранные',
-      checked: 'Выбрано',
-      confirm_title: 'Удаление',
-      confirm_desc: 'Ви действительно желаете удалить данные?'
-    },
-
+    
     commonForm: {
       reset: 'Reset Form',
       success: 'Success response form',
