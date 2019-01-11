@@ -2,10 +2,10 @@
 
 
 
-export default function (parent) {
+export default function (parentGetterUrl) {
 
   return  {
-    api: {url: '/services', parent: parent},
+    api: {url: '/services', parentGetterUrl: parentGetterUrl},
     state () {
         return {
           _id: '',
@@ -20,5 +20,5 @@ export default function (parent) {
           picture: ''
       }
     }
-  } 
+  }
 };

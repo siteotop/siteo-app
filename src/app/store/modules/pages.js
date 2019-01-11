@@ -1,6 +1,6 @@
-export default function (parent) {
+export default function (parentGetterUrl) {
   return {
-    api: {url: '/pages',  parent: parent},
+    api: {url: '/pages',  parentGetterUrl: parentGetterUrl},
     state () {
         return {
           _id: '',

@@ -25,7 +25,7 @@ const createModelCRUD = function (object, turnOnList) {
     var modules = {};
     modules.api = API(object.api);
     if (turnOnList) {
-      modules.items = createItems((object.items||{}));
+      modules.items = createItems();
     }
 
     return {

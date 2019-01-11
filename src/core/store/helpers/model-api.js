@@ -4,7 +4,7 @@ const  API = function (api ) {
         //namespaced: true,
 
         state: {
-          parent: api.parent||'', // parent module  where we get prefix for urlID
+        //  parent: , // parent module  where we get prefix for urlID
           url: api.url,
           public: api.public||false,
           nameId: api.nameId||'',
@@ -30,8 +30,8 @@ const  API = function (api ) {
         getters: {
            urlWithoutId(state, getters, rootState, rootGetters) {
              var prefixurl = '';
-             if (state.parent) {
-                prefixurl=  rootGetters[state.parent];
+             if (api.parentGetterUrl) {
+                prefixurl=  rootGetters[api.parentGetterUrl];
              }
              return  prefixurl + state.url;
            },

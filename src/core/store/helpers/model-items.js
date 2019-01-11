@@ -3,7 +3,7 @@ import  _findIndex from 'lodash/findIndex';
 import  _maxBy from 'lodash/maxBy';
 //ar _maxBy = require('lodash/maxBy');
 
-const createItems = function (items) {
+const createItems = function () {
 
   return  {
       //namespaced: true,
@@ -19,7 +19,7 @@ const createItems = function (items) {
         /**
           scipt needs send request for getting full object from server
         */
-        getfullObjectFromServer: items.getfullObjectFromServer|| false
+        getfullObjectFromServer: false
       },
 
 
