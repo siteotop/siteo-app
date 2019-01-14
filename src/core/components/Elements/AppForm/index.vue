@@ -76,6 +76,7 @@ import AppFieldPlainText from './Fields/AppFieldPlainText';
 import AppFieldPhone from './Fields/AppFieldPhone';
 import AppFieldServices from './Fields/AppFieldServices';
 import AppFieldDate from './Fields/AppFieldDate.vue';
+import AppFieldWorldApi from './Fields/AppFieldWorldApi.vue';
 import AppFieldRecaptcha from './Fields/AppFieldRecaptcha.vue';
 
 const startFormData = function () {
@@ -108,6 +109,7 @@ export default {
     AppFieldPhone,
     AppFieldServices,
     AppFieldDate,
+    AppFieldWorldApi,
     AppFieldRecaptcha
   },
 
