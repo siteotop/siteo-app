@@ -16,10 +16,10 @@ export default {
           const attrs = {};
           //console.log(self.$validator);
           formStructure.map(function(element, index) {
-              self.$validator.attach(element._n, element.validators )
-              self.atachValidator(element._n, element, index);
+              self.$validator.attach(element.name, element.validators )
+              self.atachValidator(element.name, element, index);
               // create attribs attr for method createAttrDictionary()
-              attrs[element._n] = element.props.label;
+              attrs[element.name] = element.props.label;
           });
 
           this.createAttrDictionary(attrs);
@@ -50,7 +50,7 @@ export default {
           fieldProps.error = null;
           var self = this;
           //var key = ;
-          this.$watch( 'dataValues.'+element._n, function (value) {
+          this.$watch( 'dataValues.'+element.name, function (value) {
               this.enableForm();
             console.log(fieldName + ' = '+value  );
             if (element.defaultValue!=value) {

@@ -15,14 +15,14 @@
     <v-container v-if="showForm" class='grid-list-sm mt-0 pt-0'>
       <v-layout row wrap align-end>
           <v-flex xs12 v-for="(field, index) in formStructure" :key="index" v-show="!field.hide" :class="field.class?field.class:''" >
-              <component v-if="field._n!='captcha'" :is="field.name"
-                  :name="field._n"
-                  v-model="dataValues[field._n]"
+              <component v-if="field.name!='captcha'" :is="field.component"
+                  :name="field.name"
+                  v-model="dataValues[field.name]"
 
-                  v-bind="field.name[0]=='v'? field.props: Object.assign({vComp: field.props}, field.propsNative)"
+                  v-bind="field.component[0]=='v'? field.props: Object.assign({vComp: field.props}, field.propsNative)"
               ></component>
-              <AppFieldRecaptcha v-if="(field._n=='captcha'&&formActive)"
-                  v-model="dataValues[field._n]"
+              <AppFieldRecaptcha v-if="(field.name=='captcha'&&formActive)"
+                  v-model="dataValues[field.name]"
                   v-bind="field.props"
               ></AppFieldRecaptcha>
           </v-flex>
@@ -132,12 +132,12 @@ export default {
             {
               name: 'ComponentName', //String or Object
               validators: {'required': true, max:40},
-              _n: 'name_for_field',
+              name: 'name_for_field',
               props: {'prop_for_ComponentName': 'some_value' }
             },
             {
               role: 'name_for_MapsSiteoFields',
-              component: {name: '', validators: {}, _n: '', props:{}}
+              component: {name: '', validators: {}, name: '', props:{}}
             }
           ]
       */
@@ -284,7 +284,7 @@ export default {
               console.log('error validation');
               self.stopFormLoader();
               self.formStructure.map(function(element) {
-                  self.validateOneElement(element._n, element.props, self.dataValues[element._n]);
+                  self.validateOneElement(element.name, element.props, self.dataValues[element.name]);
               });
 
             } else {
@@ -373,8 +373,8 @@ export default {
         //console.log(message);
       var self = this;
       this.formStructure.map((element)=>{
-        if (error_messages[element._n]) {
-          var string_message = helperValidationError(error_messages, element._n, self ).shift();
+        if (error_messages[element.name]) {
+          var string_message = helperValidationError(error_messages, element.name, self ).shift();
           self.setErrorForElement(element.props, string_message);
         }
 

@@ -54,9 +54,9 @@ export const  getStructureForField = function (fieldName) {
   if (fieldsMap[fieldName]) {
     var field = fieldsMap[fieldName]();
     return {
-      name: field.c,
+      component: field.c,
       validators: field.v,
-      _n: fieldName,
+      name: fieldName,
       props: field.p||{}
     }
   } else {

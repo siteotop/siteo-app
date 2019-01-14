@@ -24,15 +24,15 @@ export default {
         var self = this;
         formStructure.map(function(element) {
             //var field = element.props;
-            if (self.defaultValues[element._n]&&  !element.skipStartValue ){
-               self.setNewValueForElement( self.defaultValues[element._n], element);
+            if (self.defaultValues[element.name]&&  !element.skipStartValue ){
+               self.setNewValueForElement( self.defaultValues[element.name], element);
             }
         });
      },
 
      setNewValueForElement(newValue, element) {
 
-      this.setDataValue(element._n, newValue);
+      this.setDataValue(element.name, newValue);
       // element.value =  newValue;   //this.filter(element, newValue);
       element.defaultValue = newValue;
 
@@ -49,14 +49,13 @@ export default {
                value = element.unFilteredFunc(element.value, element);
 
            } else {
-              value = self.dataValues[element._n];
+              value = self.dataValues[element.name];
            }
-           //data_clone[element.name] = value;
-           data_clone[element._n] = value;
+           data_clone[element.name] = value;
 
            // if present defaultValues it means that change (put) event
-           if ( self.defaultValues && self.defaultValues[element._n] == value) {
-              delete data_clone[element._n];
+           if ( self.defaultValues && self.defaultValues[element.name] == value) {
+              delete data_clone[element.name];
            }
 
        });
@@ -68,7 +67,7 @@ export default {
     updateDefaultsValues() {
 
         this.formStructure.map((element)=>{
-              element.defaultValue = this.dataValues[element._n];
+              element.defaultValue = this.dataValues[element.name];
 
          });
 

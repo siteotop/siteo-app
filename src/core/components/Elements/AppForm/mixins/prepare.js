@@ -26,7 +26,7 @@ export default {
                 field_structure = mergeStructureFields(propsStructure[index_component]) ;
               }
               var field_props = field_structure.props,
-              name = field_structure._n;
+              name = field_structure.name;
               this.createFieldValues(field_structure, name);
               this.connectCommonProps(field_props, name);
               this.createFieldI18n(field_props, name);
@@ -49,9 +49,9 @@ export default {
 
 
         if (!field_structure.value) {
-          this.$set(this.dataValues, field_structure._n, '');
+          this.$set(this.dataValues, field_structure.name, '');
         } else {
-          this.$set(this.dataValues, field_structure._n, field_structure.value);
+          this.$set(this.dataValues, field_structure.name, field_structure.value);
         }
 
         if (!field_structure.defaultValue) {
@@ -73,7 +73,7 @@ export default {
          if (this.recaptcha) {
 
             var r_structure = {
-              _n: 'captcha',
+              name: 'captcha',
               validators: {required: true},
               props: {
                 label:this.$t('commonForm.captcha.l'),
