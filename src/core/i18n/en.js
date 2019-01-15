@@ -31,13 +31,13 @@ export default {
     // подзвонить через
     // Перейти на / ми в / {company name}
 
-    
+
     commonForm: {
       reset: 'Reset Form',
       success: 'Success response form',
       leave: 'Ви желаете прервать заполнение формы?',
       leave_desc: 'Все заполненные данные будут утеряны.',
-
+      send: 'Отправить', 
       error: {
          no_valid: 'Ошибки валидации'
       },

@@ -87,7 +87,7 @@ export default {
       },
 
       createSubmit() {
-         this.createFieldI18n(this.submitElement, 'submit');
+         this.$set( this.submitElement, 'label', this.$i18n_td('content.submit.l', 'commonForm.send'));
       },
 
       /**
