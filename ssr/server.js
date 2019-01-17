@@ -4,9 +4,19 @@ const fs = require('fs');
 
 const configsAPI = require('./configs');
 
-const renderer = require('vue-server-renderer').createRenderer({
-  template: fs.readFileSync('./ssr/index.template.html', 'utf-8')
-});
+const { createBundleRenderer } = require('vue-server-renderer');
+const template = fs.readFileSync('./ssr/index.template.html', 'utf-8');
+const serverBundle = require('./dist/vue-ssr-server-bundle.json')
+
+const renderer = createBundleRenderer(serverBundle, {
+  inject:false,
+  runInNewContext: false, // рекомендуется
+  template, // (опционально) шаблон страницы
+  //clientManifest // (опционально) манифест клиентской сборки
+})
+
+
+
 
 const NODE_ENV = process.env.NODE_ENV || "production";
 if (NODE_ENV !='production')  {
@@ -18,25 +28,27 @@ if (NODE_ENV !='production')  {
 
 server.use(express.static('static'));
 // server.js
-const createApp = require('./dist/built-server-bundle.js');
+//const createApp = require('./dist/built-server-bundle.js');
 
 server.get('*', (req, res) => {
   const context = { url: req.url, configsAPI:configsAPI};
 
-  createApp(context).then(app => {
-
-    renderer.renderToString(app, context, (err, html) => {
-      if (err) {
-        //console.log(JSON.stringify(err));
-        if (err.code === 404) {
-          res.status(404).end('404 error')
-        } else {
-          res.status(500).end('500 error')
-        }
+  renderer.renderToString(context, (err, html) => {
+    if (err) {
+      console.log(err);
+      console.log(JSON.stringify(err));
+      if (err.code === 404) {
+        res.status(404).end('404 error')
       } else {
-        res.end(html)
+        res.status(500).end('500 error')
       }
-    })
+    } else {
+      res.end(html)
+    }
+  })
+/*
+  serverBundle(context).then(app => {
+
   }).catch(error=>{
 
     if (NODE_ENV !='production')  {
@@ -51,7 +63,7 @@ server.get('*', (req, res) => {
       res.status(500).end('500 createApp error')
     }
 
-  })
+  })*/
 })
 
 
