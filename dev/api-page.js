@@ -292,12 +292,15 @@ var _PRERENDER = {
            $bl: 'align-center row wrap ',
            $bls: [
              {
-               $$:'WiInstagram',
-                $bf: 'text-xs-center ',
+               $$:'AppSiteoPlugin',
                _props: {
-                 _url: 'https://www.instagram.com/p/BpPnezuAZjr',
-                 $hc: true
+                 pluginName: 'instagram-post',
+                 pluginOptions: {
+                   _url: 'https://www.instagram.com/p/BpPnezuAZjr',
+                   $hc: true
+                 }
                }
+
              },
              {
                $$:'BTitle',
@@ -555,7 +558,7 @@ var _PRERENDER = {
         _props: {
           _t: 'Title  Header Block ',
           _d: 'If you want to prepare Borsht. See reciept bottom',  //
-          $he:400,
+          $he: 400,
           $_t: 'display-3',
           $tc: 'align-center',
           $co:'v-parallax',
@@ -571,6 +574,28 @@ var _PRERENDER = {
         }
 
       },
+
+      {
+        // name section
+        $$: 'SectionWrap',
+        // data section
+        _props: {
+          _t: 'Plugins block',
+          _d: 'Some plugins for Page',  //
+          $_t: 'display-3',
+          $bls: [
+            {
+              $$:'AppSiteoPlugin',
+              _props: {
+                 pluginName: 'example',
+                 pluginOptions: {}
+              }
+            }
+          ]
+        }
+
+      },
+
 
       {
 
