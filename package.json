@@ -60,7 +60,8 @@
     "webpack-babel-external-helpers": "^0.1.0",
     "webpack-cli": "^3.0.8",
     "webpack-manifest-plugin": "^2.0.3",
-    "webpack-merge": "^4.1.4"
+    "webpack-merge": "^4.1.4",
+    "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
