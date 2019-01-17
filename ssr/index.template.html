@@ -12,11 +12,12 @@
     {{{ meta.inject().link.text() }}}
     {{{ meta.inject().style.text() }}}
     <link rel="stylesheet" href="https://siteotop.github.io/siteo-template/dist/core.css" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
   </head>
   <body>
     <!--vue-ssr-outlet-->
   </body>
-
+  {{{ renderState() }}}
 
   <script  type="text/javascript" src="http://jstest.com/dist/siteo-core.js"></script>
   <script  type="text/javascript" src="http://jstest.com/dist/siteo-template.js"></script>
@@ -30,5 +31,5 @@
         Siteo_app
       ).$mount('#app');
   </script>
-  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+
 </html>
