@@ -39,5 +39,10 @@ https://siteotop.github.io/siteo-template/
 * WiOrderTabs
 * WiPosts
 * WiServices
-* WiInstagram
-* WiFacebook
+
+
+### Standart plugins
+
+* instagram-post
+* example
+* facebook-post
