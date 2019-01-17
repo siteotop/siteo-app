@@ -1,4 +1,5 @@
-const server = require('express')()
+var express = require('express');
+var server = express();
 const fs = require('fs');
 
 const configsAPI = require('./configs');
@@ -15,7 +16,7 @@ if (NODE_ENV !='production')  {
 
 //const { createBundleRenderer } = require('vue-server-renderer');
 
-
+server.use(express.static('static'));
 // server.js
 const createApp = require('./dist/built-server-bundle.js');
 
