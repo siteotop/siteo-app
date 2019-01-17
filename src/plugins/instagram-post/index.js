@@ -1,6 +1,6 @@
 
 
-import InstagramPost from './InstagramPost.vue';
+import InstagramPost from './component.vue';
 
 export default {
 

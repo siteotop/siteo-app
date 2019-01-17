@@ -7,10 +7,8 @@ baseConfig.entry = {};
 module.exports = merge(baseConfig, {
   // Укажите точку входа серверной части вашего приложения
   entry: {
-    'designer': './src/plugins/Designer',
-    'pager':   './src/plugins/AddPager',
     'example':   './src/plugins/example',
-    'instagram-post':   './src/plugins/instagram',
+    'instagram-post':   './src/plugins/instagram-post',
   },
 
   output: {
