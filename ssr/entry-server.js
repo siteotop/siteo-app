@@ -49,12 +49,31 @@ export default (context) => {
       app.$router.onReady(() => {
         const matchedComponents = app.$router.getMatchedComponents()
         // нет подходящих маршрутов, отклоняем с 404
+        console.log(matchedComponents);
         if (!matchedComponents.length) {
           return reject({ code: 404 })
         }
 
-        // Promise должен разрешиться экземпляром приложения, который будет отрендерен
-        resolve(app)
+
+      // вызов `asyncData()` на всех соответствующих компонентах
+      Promise.all(matchedComponents.map(Component => {
+        if (Component.asyncData) {
+          return Component.asyncData({
+            store: app.$store,
+            route: app.$router.currentRoute
+          })
+        }
+      })).then(() => {
+        // После разрешения всех preFetch хуков, наше хранилище теперь
+        // заполнено состоянием, необходимым для рендеринга приложения.
+        // Когда мы присоединяем состояние к контексту, и есть опция `template`
+        // используемая для рендерера, состояние будет автоматически
+        // сериализовано и внедрено в HTML как `window.__INITIAL_STATE__`.
+        console.log(app.$store.state);
+        context.state = app.$store.state;
+
+        resolve(app);
+      }).catch(reject)
       }, reject)
     })
   })

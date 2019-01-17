@@ -15,6 +15,9 @@ export default {
 
   },
 
+  asyncData({ store, route }) {
+
+  },
 
   data() {
     return  {
