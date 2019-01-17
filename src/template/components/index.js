@@ -29,5 +29,3 @@ export {default as WiExperts} from './Widgets/WiExperts.vue';
 export {default as WiLocations} from './Widgets/WiLocations.vue';
 export {default as WiPosts} from './Widgets/WiPosts.vue';
 export {default as WiOrderTabs} from './Widgets/WiOrderTabs.vue';
-export {default as WiInstagram} from './Widgets/BInstagram.vue';
-export {default as WiFacebook} from './Widgets/BFacebook.vue';

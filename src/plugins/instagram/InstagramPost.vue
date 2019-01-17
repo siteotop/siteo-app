@@ -3,9 +3,20 @@
 </template>
 
 <script>
-import PropsBInstagram from '../../../plugins/AddPager/BaseProps/BInstagram';
+
+
 export default {
-  extends: PropsBInstagram,
+  props: {
+    _url: {
+      type: String,
+      default: ''
+    },
+
+    $hc: { // hidecaption
+      type: Boolean,
+      default: false
+    }
+  },
 
   data() {
       return {
@@ -24,7 +35,7 @@ export default {
             $script('https://www.instagram.com/embed.js').then(function() {
                 window.instgrm.Embeds.process();
             })
-          
+
 
 
         }).catch(function(error){
