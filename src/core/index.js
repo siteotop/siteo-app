@@ -31,12 +31,12 @@ for (let NameComponent in CoreComponents) {
 /**ROUTER
    create Routing for every APP
 */
-import RouterInstall from './router';
+import createRouter from './router';
 
 /**Vue Store
   Storing all data from backend
 */
-import StoreInstall from './store';
+import createStore from './store';
 import {createModelCRUD} from './store/helpers/model-events'
 /**SYNC router with store
   in Vue store we can get 'route' property
@@ -84,9 +84,9 @@ export default function (APP, plugins ) {
 
 
    // create store
-   CoreVue.store = StoreInstall(Vue, APP.options.instance);
+   CoreVue.store = createStore(Vue, APP.options.instance);
    // create router
-   CoreVue.router = RouterInstall(Vue, CoreVue.store, APP.options.instance.configs.path )
+   CoreVue.router = createRouter(Vue, CoreVue.store, APP.options.instance.configs.path )
 
    //sync router with store for access route from store
    sync(CoreVue.store, CoreVue.router );

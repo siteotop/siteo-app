@@ -84,10 +84,7 @@ export default function (Vue, APP_INSTANCE)  {
                 params: APIconfig.params,
                 withCredentials: true
 
-             })/*.catch (error=>{
-                console.log(error);
-                dispatch('generateSystemMessageRespone', error, { root: true });
-              });*/
+             })
 
            }
          }
