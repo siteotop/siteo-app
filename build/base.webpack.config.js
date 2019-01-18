@@ -43,6 +43,7 @@ module.exports = {
     // index without template
   //  'siteo-core': './src/core.js',
     // index with template
+    'polyfill': '@babel/polyfill',
     'core': './src/client.js',
     'template': './src/template/index.js',
     'app': './src/app/index.js',
