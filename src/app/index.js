@@ -35,8 +35,8 @@ export default {
     // register  module order to  instance
 
     $coreVue.registerStoreModule(
-      ['APP_INSTANCE', 'order'],
-      StoreModules.orders()
+      ['APP_ORDER'],
+      StoreModules.orders('WEBSITE_API_URL')
     );
 
     // merge messages from instance

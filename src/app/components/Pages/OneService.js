@@ -26,7 +26,8 @@ export default {
   methods: {
 
     afterFetching() {
-      this.$store.state.APP_INSTANCE.order.services = [this.objectService._id];
+      console.log(this.$store.state);
+      this.$store.state.APP_ORDER.services = [this.objectService._id];
 
 
     }
@@ -34,7 +35,7 @@ export default {
   },
 
   beforeRouteLeave(to, from, next) {
-    this.$store.state.APP_INSTANCE.order.services = [];
+    this.$store.state.APP_ORDER.services = [];
     next();
   },
 

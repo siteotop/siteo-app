@@ -7,7 +7,7 @@ export default {
     return  h('AppForm', {
       props: {
         i18nkey: 'formEmail',
-        defaultValues: context.parent.$store.state.APP_INSTANCE.order,
+        defaultValues: context.parent.$store.state.APP_ORDER,
         formAction: context.props.formAction || 'makeSubscribe',
         propsStructure: ['name', 'email'],
         typeInput: 'outline'

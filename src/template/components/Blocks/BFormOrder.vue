@@ -8,9 +8,9 @@ export default {
       var structure =  context.parent.$store.state.APP_INSTANCE.design.AppFormOrder.children;
       var props =   context.parent.$store.state.APP_INSTANCE.design.AppFormOrder.props||{};
       props.propsStructure = structure;
-      props.defaultValues = context.parent.$store.state.APP_INSTANCE.order;
+      props.defaultValues = context.parent.$store.state.APP_ORDER;
       props.i18nkey = "formOrder";
-      props.formAction = context.props.formAction || 'order/createObject';
+      props.formAction = context.props.formAction || 'APP_ORDER/createObject';
       return  h('AppForm', {props:  props})
   }
 

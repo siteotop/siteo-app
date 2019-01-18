@@ -21,26 +21,3 @@ export default function (parentGetterUrl) {
   }
 
 };
-
-/**
-{
-   state() {
-       var properties = {};
-         for ( var i in APP_INSTANCE.design.AppFormOrder.children) {
-           properties[APP_INSTANCE.design.AppFormOrder.children[i]] = '';
-         }
-       return properties;
-   },
-
-   actions: {
-     makeOrder({dispatch, getters}, data) {
-       var config = {data:data};
-        config.method = 'POST';
-        config.url = getters.WEBSITE_API_URL + '/orders';
-        return  dispatch('callAPI', config, {root:true});
-
-     }
-   }
-
-}
-*/
