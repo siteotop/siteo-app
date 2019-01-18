@@ -66,12 +66,12 @@ import VS2 from 'vue-script2';
 import VeeValidate from 'vee-validate';
 
 
-export default function (APP, plugins ) {
+export default function ({configs, APP, messages, template, plugins} ) {
 
 
    //start Vuetify
    Vue.use(Vuetify, {
-     theme:  APP.options.instance.design? APP.options.instance.design.theme.colors:{}
+     //theme:  APP.options.instance.design? APP.options.instance.design.theme.colors:{}
    });
 
 
@@ -84,9 +84,11 @@ export default function (APP, plugins ) {
 
 
    // create store
-   CoreVue.store = createStore(Vue, APP.options.instance);
+   CoreVue.store = createStore(Vue, configs);
+   //CoreVue.store.commit('saveInstanse', APP.options.instance);
+
    // create router
-   CoreVue.router = createRouter(Vue, CoreVue.store, APP.options.instance.configs.path )
+   CoreVue.router = createRouter(Vue, CoreVue.store, configs.path )
 
    //sync router with store for access route from store
    sync(CoreVue.store, CoreVue.router );
@@ -101,8 +103,8 @@ export default function (APP, plugins ) {
    // Create VueI18n instance with options
    CoreVue.i18n = new VueI18n({
       silentTranslationWarn: process.env.NODE_ENV === 'development'? false: true, // silent log
-      locale: APP.options.instance.data.lang, // app lang
-      messages: APP.options.messages // set locale messages
+      locale: configs.lang, // app lang
+      messages: messages // set locale messages
     });
 
 
@@ -116,8 +118,8 @@ export default function (APP, plugins ) {
       */
       inject: false,
 
-      dictionary: APP.options.messages.validation||false,
-      local: APP.options.instance.data.lang
+      dictionary: messages.validation||false,
+      local: configs.lang
      }
     );
 
@@ -136,7 +138,7 @@ export default function (APP, plugins ) {
 
     };
 
-
+    APP.options.template = template;
     CoreVue.SiteoAddPlugin(APP);
     if (plugins&&plugins.length) {
        for (var i in plugins ) {

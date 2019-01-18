@@ -8,19 +8,21 @@ export default {
      //componentsPage: componentsPage,
      components: {...AppStructure},
 
+
      data() {
           return {
            startdrawer: false,
           }
      },
 
-     created(){
-        //console.log(JSON.stringify(this.$vuetify.breakpoint));
-        if (this.$vuetify.breakpoint.width>this.mobileBreakPoint ) {
-          if (this.instanceDesign.AppDrawer.props&&this.instanceDesign.AppDrawer.props.startmdAndUp) {
-            this.$store.state.drawer = this.instanceDesign.AppDrawer.props.startmdAndUp;
-          }
-       }
+
+
+     mounted() {
+      /* if (this.$vuetify.breakpoint.width>this.mobileBreakPoint ) {
+         if (this.instanceDesign.AppDrawer.props&&this.instanceDesign.AppDrawer.props.startmdAndUp) {
+           this.$store.state.drawer = this.instanceDesign.AppDrawer.props.startmdAndUp;
+         }
+      }*/
      },
 
 
@@ -37,14 +39,14 @@ export default {
 
     computed: {
 
-        mobileBreakPoint() {
+        /*mobileBreakPoint() {
             if (this.instanceDesign.AppDrawer && this.instanceDesign.AppDrawer.props && this.instanceDesign.AppDrawer.props.mobileBreakPoint) {
                 return this.instanceDesign.AppDrawer.props.mobileBreakPoint;
             } else {
               return 1000;
             }
 
-        },
+        },*/
 
         instanceDesign() {
           return this.$store.state.APP_INSTANCE.design;

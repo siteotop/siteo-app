@@ -8,4 +8,5 @@ module.exports= {
   path:"",
   // website host https://siteo.top
   host:"",
+  lang: ''
 }

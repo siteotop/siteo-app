@@ -14,15 +14,15 @@ import createInstance from './appInstance.js';
   @param APP_INSTANCE - website structure
 
 */
-export default function (Vue, APP_INSTANCE)  {
+export default function (Vue, configs)  {
 
        Vue.use(Vuex);
-       var RESTApi = createRESTApi(APP_INSTANCE.configs.api_url);
+       var RESTApi = createRESTApi(configs.api_url);
        var store =  new Vuex.Store({
          state: {
            drawer: false,
            pageLoader: false,
-           public_token: APP_INSTANCE.configs.public_token,
+           recaptcha: configs.recaptcha,
            usePablicToken: true,
            getterToken: 'NAME_MODULE/action' // for example "account/refreshToken"
          },
@@ -49,21 +49,26 @@ export default function (Vue, APP_INSTANCE)  {
                 state.getterToken = value;
             }
          },
+
          modules: {
-           APP_INSTANCE: createInstance (APP_INSTANCE),
+           APP_INSTANCE: createInstance (),
 
 
            //APP_EXPERTS: createExperts ('WEBSITE_API_URL'),
            SystemMessages,
 
          },
-
+         getters: {
+           CORE_HOST() {
+             return  configs.host+configs.path;
+           },
+         },
          actions: {
 
            callAPI({dispatch, state, getters, rootGetters}, APIconfig) {
 
               if (state.usePablicToken) {
-                APIconfig.access_token = state.public_token;
+                APIconfig.access_token = configs.public_token;
               } else {
                   console.log(state.getterToken);
                 APIconfig.access_token = rootGetters[state.getterToken];

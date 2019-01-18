@@ -17,6 +17,12 @@ export default {
 
   siteoInstall: function ($coreVue, $pluginOptions) {
     // add routes
+    var routes =  {
+      services: {route: '/services', title:'Services'},
+      experts: {route: '/experts', title:'People'},
+      posts: {route: '/blog', title:'Blog'},
+      objectService: {title: '{title} - Order item', description: '{actionText} {title}, Price {price}'},
+    };
     $coreVue.router.addRoutes(SiteoRoutes($pluginOptions.template.routes));
     // add templates
     $coreVue.SiteoAddPlugin($pluginOptions.template);
@@ -27,27 +33,26 @@ export default {
       StoreModules.pages('WEBSITE_API_URL')
     );
     // register  module order to  instance
+
     $coreVue.registerStoreModule(
       ['APP_INSTANCE', 'order'],
       StoreModules.orders()
     );
 
     // merge messages from instance
-    $coreVue.i18n.mergeLocaleMessage($pluginOptions.instance.data.lang, {routes: $pluginOptions.instance.routes} );
+    $coreVue.i18n.mergeLocaleMessage($coreVue.i18n.locale, {routes: routes} );
 
 
-    ['services', 'experts',  'posts'].map(function(ListOption) {
+    /*['services', 'experts',  'posts'].map(function(ListOption) {
       if ($pluginOptions.instance[ListOption]&&$pluginOptions.instance[ListOption].items) {
          var name = 'APP_'+ListOption.toUpperCase();
          $coreVue.registerStoreModule(name, StoreModules[ListOption]('WEBSITE_API_URL'), true);
          $coreVue.store.commit(name+'/saveList', $pluginOptions.instance[ListOption].items );
       }
-    })
+    }) */
   },
 
   options: {
-    instance: {},
-    messages: {},
     template:{}
   }
 

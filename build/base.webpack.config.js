@@ -43,10 +43,10 @@ module.exports = {
     // index without template
   //  'siteo-core': './src/core.js',
     // index with template
-    'core': './src/core/index.js',
+    'core': './src/client.js',
     'template': './src/template/index.js',
     'app': './src/app/index.js',
-    'en': './src/core/i18n/en.js',
+    'locale-en': './src/core/i18n/en.js',
     // index with template admin
   //  'siteo-template-admin': './src/template-admin.js',
 
@@ -56,7 +56,7 @@ module.exports = {
     path: path.resolve(__dirname, '../' + DIR_RESOURCE),
     publicPath: '/dist/',
     filename: 'siteo-[name].js',
-    library: "Siteo_[name]",
+    library: "siteo-[name]",
 		libraryTarget: "umd",
     libraryExport: 'default'
 

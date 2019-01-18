@@ -19,17 +19,10 @@
   </body>
   {{{ renderState() }}}
 
-  <script  type="text/javascript" src="http://jstest.com/dist/siteo-core.js"></script>
+
   <script  type="text/javascript" src="http://jstest.com/dist/siteo-template.js"></script>
   <script  type="text/javascript" src="http://jstest.com/dist/siteo-app.js"></script>
-  <script  type="text/javascript" src="http://jstest.com/dist/siteo-en.js"></script>
-  <script>
-      Siteo_app.options.template = Siteo_template;
-      Siteo_app.options.messages = Siteo_en;
-      Siteo_app.options.instance = {{{JSON.stringify(_APP_INSTANCE)}}};
-      var app=Siteo_core(
-        Siteo_app
-      ).$mount('#app');
-  </script>
+  <script  type="text/javascript" src="http://jstest.com/dist/siteo-locale-en.js"></script>
+  <script  type="text/javascript" src="http://jstest.com/dist/siteo-core.js"></script>
 
 </html>

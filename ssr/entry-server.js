@@ -27,7 +27,7 @@ export default (context) => {
     }
       //console.log(response.data);
       // connect configs to public file
-      response.data.configs = context.configsAPI;
+
 
       // if design not found connect default design
       if (!response.data.design) {
@@ -40,7 +40,8 @@ export default (context) => {
 
       siteoApp.options.instance = response.data;
       siteoApp.options.messages = SiteoLocalEN;
-      var app = createApp(siteoApp);
+      var app = createApp(context.configsAPI, siteoApp);
+      app.$store.commit('saveInstanse', response.data);
       context.meta = app.$meta();
       // устанавливаем маршрут для маршрутизатора серверной части
       app.$router.push(context.url)
@@ -69,7 +70,7 @@ export default (context) => {
         // Когда мы присоединяем состояние к контексту, и есть опция `template`
         // используемая для рендерера, состояние будет автоматически
         // сериализовано и внедрено в HTML как `window.__INITIAL_STATE__`.
-        console.log(app.$store.state);
+        //console.log(app.$store.state);
         context.state = app.$store.state;
 
         resolve(app);

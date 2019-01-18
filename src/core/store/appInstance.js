@@ -1,21 +1,40 @@
-export default function ( APP_INSTANCE) {
+export default function () {
   return  {
 
     state: function() {
        return {
-         data: APP_INSTANCE.data,
-         configs: APP_INSTANCE.configs,
-         contacts: APP_INSTANCE.contacts,
-         design: APP_INSTANCE.design|| {},
-         menu: APP_INSTANCE.menu||[],
-         links: APP_INSTANCE.links||[],
-         locations: APP_INSTANCE.locations||[]
-       }
-      return ;
-    },
-   
-   mutations: {
+         data: {
+           _id:0,
+           pid:"",
+           name:"",
+           title:"",
+           slogan:"",
+           actionText:"",
+           description:"",
+           domain:"",
+           templates_id:"",
+           pages_id: '',
+           countryAlpha2:"",
+           lang:"",
+           currency: '',
+           design:false
+         }, //   APP_INSTANCE.data,
 
+         contacts: [], // APP_INSTANCE.contacts,
+         design:{}, // APP_INSTANCE.design|| {},
+         menu:[] ,  // APP_INSTANCE.menu||[],
+         links:[],  //APP_INSTANCE.links||[],
+         locations: []// APP_INSTANCE.locations||[]
+       }
+
+    },
+
+   mutations: {
+      saveInstanse(state, instance) {
+          for( var i in state) {
+            state[i] = instance[i];
+          }
+      },
       /**
          change state  bRender
          @param state
@@ -45,9 +64,7 @@ export default function ( APP_INSTANCE) {
         return '/websites/' +state.data._id;
       },
 
-      CORE_HOST(state) {
-        return  state.configs.host+state.configs.path;
-      },
+
 
       LANG_PORTAL(state){
           return state.data.lang;
