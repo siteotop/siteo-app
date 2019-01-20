@@ -1,22 +1,18 @@
 
 
 import Loader from '../../../../core/components/_mixins/component-loading.js';
+import mixinsAsyncdata from '../../_mixins/asyncData';
+
 export default {
 
-  mixins: [ Loader],
+  mixins: [Loader, mixinsAsyncdata],
+
 
   props: {
       objectId: {
         type: String,
         default: '',
       }
-
-
-
-  },
-
-  asyncData({ store, route }) {
-
   },
 
   data() {
@@ -43,27 +39,17 @@ export default {
   },
 
 
-  created() {
-
-      this.fetchDataFromApi();
-  },
 
   watch: {
 
       objectId(newValue, OldValue) {
         console.log('change objectId');
-        this.onLeave();
-        this.fetchDataFromApi();
+
       }
 
   },
 
 
-  beforeRouteLeave(to, from, next) {
-      console.log('leave');
-       this.onLeave();
-       next();
-  },
 
   methods: {
 
@@ -72,17 +58,8 @@ export default {
     },
 
 
-    onLeave() {
-      this.error = false;
-      this.$store.commit(this.$options.storeName+'/clearModel');
 
-    },
-
-
-    preFetch(){
-      return false;
-    },
-
+    /*
     fetchDataFromApi() {
 
       if (this.preFetch()) {
@@ -111,7 +88,7 @@ export default {
           self.stopLoading();
       });
     }
-
+ */
 
   },
 

@@ -1,14 +1,22 @@
 import CorePage from './_extends/page.js';
 import { mapState } from 'vuex'
+import services from  '../../store/modules/services';
 
 export default {
   extends: CorePage,
-  storeName: 'APP_SERVICES',
+
+  asyncData({ store, route }) {
+      store.registerApiModule( 'service', services('WEBSITE_API_URL'));
+      if (store.state.allowAsyncLoad) {
+        return store.dispatch('service/getObject', route.params.objectId);
+      }
+  },
 
   computed: {
     ...mapState({
        objectService: function (state) {
-         return this.$store.state.APP_SERVICES.objectActive;
+         return state.service? state.service.objectActive: {};
+
        }
     }),
     meta_title() {
