@@ -4,15 +4,18 @@ export default {
   name: 'BFormEmail',
   props: ['formAction'],
   render(h, context) {
-    return  h('AppForm', {
+    return  h('AppSiteoPlugin', {
       props: {
-        i18nkey: 'formEmail',
-        defaultValues: context.parent.$store.state.APP_ORDER,
-        formAction: context.props.formAction || 'makeSubscribe',
-        propsStructure: ['name', 'email'],
-        typeInput: 'outline'
-      }
-    })
+        pluginName: 'app-form',
+        pluginOptions: {
+          i18nkey: 'formEmail',
+          defaultValues: context.parent.$store.state.APP_ORDER,
+          formAction: context.props.formAction || 'makeSubscribe',
+          propsStructure: ['name', 'email'],
+          typeInput: 'outline'
+        }
+      } })
+
   }
 
 }
