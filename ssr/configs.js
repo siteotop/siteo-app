@@ -3,6 +3,6 @@ module.exports= {
   api_url: 'https://api.siteo.top/api/v1',
   siteo_id: '152774684316952',
   path:"",
-  host:"https://siteo.top",
+  host: process.env.NODE_ENV =='production'? "https://siteo.top":'http://localhost:8080',
   lang: 'en'
 }

@@ -1,11 +1,12 @@
 
 // PageHelper
+
 import PageSchema from './components/Pages/Schema/index';
 import SectionWrap from './components/Pages/Schema/SectionWrap.vue';
 import SectionListWrap from './components/Pages/Schema/SectionListWrap.vue';
 import SiteoRoutes from './routes';
-import * as StoreModules from  './store/modules';
 
+import moduleOrder from './store/modules/orders';
 //import {createStorePage, createServices, createExperts, createPosts} from './models.js';
 
 export default {
@@ -13,6 +14,7 @@ export default {
       Vue.component('PageSchema', PageSchema);
       Vue.component('SectionWrap', SectionWrap);
       Vue.component('SectionListWrap', SectionListWrap);
+
   },
 
   siteoInstall: function ($coreVue, $pluginOptions) {
@@ -27,29 +29,16 @@ export default {
     // add templates
     $coreVue.SiteoAddPlugin($pluginOptions.template);
 
-    // register main module for Page
-    $coreVue.registerStoreModule(
-      'APP_PAGE',
-      StoreModules.pages('WEBSITE_API_URL')
-    );
     // register  module order to  instance
 
-    $coreVue.registerStoreModule(
+     $coreVue.store.registerApiModule(
       ['APP_ORDER'],
-      StoreModules.orders('WEBSITE_API_URL')
+       moduleOrder('WEBSITE_API_URL')
     );
 
     // merge messages from instance
     $coreVue.i18n.mergeLocaleMessage($coreVue.i18n.locale, {routes: routes} );
 
-
-    /*['services', 'experts',  'posts'].map(function(ListOption) {
-      if ($pluginOptions.instance[ListOption]&&$pluginOptions.instance[ListOption].items) {
-         var name = 'APP_'+ListOption.toUpperCase();
-         $coreVue.registerStoreModule(name, StoreModules[ListOption]('WEBSITE_API_URL'), true);
-         $coreVue.store.commit(name+'/saveList', $pluginOptions.instance[ListOption].items );
-      }
-    }) */
   },
 
   options: {

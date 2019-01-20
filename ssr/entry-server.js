@@ -1,5 +1,3 @@
-
-
 // entry-server.js
 import  createApp  from '../src/core';
 import  template  from '../src/template';
@@ -33,48 +31,56 @@ export default (context) => {
       if (!response.data.design) {
         response.data.design = defaultDesign;
       }
-     context._APP_INSTANCE = response.data;
+     //context._APP_INSTANCE = response.data;
      return new Promise((resolve, reject) => {
 
       // for getting AppInstance we need id for APP_INSTANCE
-
-      siteoApp.options.instance = response.data;
-      siteoApp.options.messages = SiteoLocalEN;
-      var app = createApp(context.configsAPI, siteoApp);
+      var app = createApp( {
+        configs:  context.configsAPI,
+        APP:siteoApp,
+        messages: SiteoLocalEN
+      });
       app.$store.commit('saveInstanse', response.data);
       context.meta = app.$meta();
+      app.$vuetify.theme = app.$store.state.APP_INSTANCE.design.theme.colors;
       // устанавливаем маршрут для маршрутизатора серверной части
       app.$router.push(context.url)
 
       // ожидаем, пока маршрутизатор разрешит возможные асинхронные компоненты и хуки
       app.$router.onReady(() => {
-        const matchedComponents = app.$router.getMatchedComponents()
+        const matchedComponents = app.$router.getMatchedComponents();
+
         // нет подходящих маршрутов, отклоняем с 404
-        console.log(matchedComponents);
         if (!matchedComponents.length) {
-          return reject({ code: 404 })
+          return reject({ code: 404, __SITEO_INSTANCE__: response.data  })
         }
 
+        // вызов `asyncData()` на всех соответствующих компонентах
+        Promise.all(matchedComponents.map(Component => {
+          if (Component.asyncData) {
+            return Component.asyncData({
+              store: app.$store,
+              route: app.$router.currentRoute
 
-      // вызов `asyncData()` на всех соответствующих компонентах
-      Promise.all(matchedComponents.map(Component => {
-        if (Component.asyncData) {
-          return Component.asyncData({
-            store: app.$store,
-            route: app.$router.currentRoute
-          })
-        }
-      })).then(() => {
-        // После разрешения всех preFetch хуков, наше хранилище теперь
-        // заполнено состоянием, необходимым для рендеринга приложения.
-        // Когда мы присоединяем состояние к контексту, и есть опция `template`
-        // используемая для рендерера, состояние будет автоматически
-        // сериализовано и внедрено в HTML как `window.__INITIAL_STATE__`.
-        //console.log(app.$store.state);
-        context.state = app.$store.state;
+            }).catch((error)=>{
+              reject({ code: 404 , __SITEO_INSTANCE__: response.data })
 
-        resolve(app);
-      }).catch(reject)
+            })
+          }
+        })).then((data) => {
+          //console.log(data);
+          // После разрешения всех preFetch хуков, наше хранилище теперь
+          // заполнено состоянием, необходимым для рендеринга приложения.
+          // Когда мы присоединяем состояние к контексту, и есть опция `template`
+          // используемая для рендерера, состояние будет автоматически
+          // сериализовано и внедрено в HTML как `window.__INITIAL_STATE__`.
+          //console.log(app.$store.state);
+          app.$store.state.allowAsyncLoad = false;
+          context.state = app.$store.state;
+
+          resolve(app);
+        }).catch(reject);
+
       }, reject)
     })
   })

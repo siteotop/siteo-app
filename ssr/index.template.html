@@ -19,10 +19,10 @@
   </body>
   {{{ renderState() }}}
 
+  <script>
+      window.__SITEO_CONFIG__= {{{JSON.stringify(configsAPI)}}}
+  </script>
 
-  <script  type="text/javascript" src="http://jstest.com/dist/siteo-template.js"></script>
-  <script  type="text/javascript" src="http://jstest.com/dist/siteo-app.js"></script>
-  <script  type="text/javascript" src="http://jstest.com/dist/siteo-locale-en.js"></script>
-  <script  type="text/javascript" src="http://jstest.com/dist/siteo-core.js"></script>
+  {{{scripts}}}
 
 </html>

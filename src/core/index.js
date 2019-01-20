@@ -37,7 +37,7 @@ import createRouter from './router';
   Storing all data from backend
 */
 import createStore from './store';
-import {createModelCRUD} from './store/helpers/model-events'
+
 /**SYNC router with store
   in Vue store we can get 'route' property
 */
@@ -66,7 +66,7 @@ import VS2 from 'vue-script2';
 import VeeValidate from 'vee-validate';
 
 
-export default function ({configs, APP, messages, template, plugins} ) {
+export default function ({configs, APP, messages, plugins} ) {
 
 
    //start Vuetify
@@ -123,9 +123,6 @@ export default function ({configs, APP, messages, template, plugins} ) {
      }
     );
 
-    CoreVue.registerStoreModule = function (name, module, turnOnList) {
-          CoreVue.store.registerModule(name, createModelCRUD(module, turnOnList))
-    };
 
     CoreVue.IconsRegister= IconsRegister;
     // add plugins
@@ -138,7 +135,8 @@ export default function ({configs, APP, messages, template, plugins} ) {
 
     };
 
-    APP.options.template = template;
+
+
     CoreVue.SiteoAddPlugin(APP);
     if (plugins&&plugins.length) {
        for (var i in plugins ) {

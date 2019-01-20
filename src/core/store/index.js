@@ -2,25 +2,30 @@ import Vuex from 'vuex';
 import {createRESTApi} from 'core/http/rest-api.js';
 import {checkObjectResponse} from 'core/http/error-handling.js';
 import SystemMessages from './messages.js';
-
+import {createModelCRUD} from './helpers/model-events'
 //import i18n from './i18n.js';
 
 import createInstance from './appInstance.js';
 
-//import { actions}  from './helpers/api-actions';
 
-/**
-  @param Vue
-  @param APP_INSTANCE - website structure
 
-*/
+const helperNameRegister = function ( name) {
+  if (typeof(name) !='string') {
+    return  name.join('/');
+  } else {
+    return name
+  }
+}
+
 export default function (Vue, configs)  {
+      const REGISTER={};
 
        Vue.use(Vuex);
        var RESTApi = createRESTApi(configs.api_url);
        var store =  new Vuex.Store({
          state: {
            drawer: false,
+           allowAsyncLoad: true,
            pageLoader: false,
            recaptcha: configs.recaptcha,
            usePablicToken: true,
@@ -112,7 +117,25 @@ export default function (Vue, configs)  {
            }
 
        });
+       var helperRegister =
+       store.registerApiModule = function (name, module, turnOnList) {
+          var _name_register = helperNameRegister(name);
+          if (!REGISTER[_name_register]) {
+                 store.registerModule(name, createModelCRUD(module, turnOnList));
+                 REGISTER[_name_register] = true;
+          } else {
 
+          }
+          console.log(REGISTER);
+
+       };
+       store.unregisterApiModule = function (name) {
+         var _name_register = helperNameRegister(name);
+         if (REGISTER[_name_register]) {
+            store.unregisterModule(name);
+            REGISTER[_name_register] = false;
+         }
+       }
 
        return store;
 
