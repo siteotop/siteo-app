@@ -1,7 +1,24 @@
+<template>
+  <v-select multiple chips deletableChips  v-bind="vComp" v-model="valueData" ></v-select>
+</template>
+
+<script>
+
+import VModelInput from '../../../_mixins/v-model-input';
+
 export default {
 
-  functional: true,
 
+  mixins: [VModelInput],
+
+  props: {
+    vComp: {
+      type: Object
+    },
+
+  },
+
+/*
   render(h, context) {
 
     var items = context.parent.$store.state.APP_SERVICES.items.objects.map(function(element) {
@@ -9,13 +26,14 @@ export default {
     });
 
     return h('v-select',  {
-      props: { items: items, multiple: true, chips:true, deletableChips: true, value: context.props.value ,   ...context.props.vComp} ,
+      props:  ,
       on:context.listeners,
       attrs: context.data.attrs
 
      });
 
   }
-
+*/
 
 }
+</script>

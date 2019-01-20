@@ -74,7 +74,7 @@ import FormPrepare from './mixins/prepare.js';
 
 import AppFieldPlainText from './Fields/AppFieldPlainText';
 import AppFieldPhone from './Fields/AppFieldPhone';
-import AppFieldServices from './Fields/AppFieldServices';
+import AppFieldItems from './Fields/AppFieldItems.vue';
 import AppFieldDate from './Fields/AppFieldDate.vue';
 import AppFieldWorldApi from './Fields/AppFieldWorldApi.vue';
 import AppFieldRecaptcha from './Fields/AppFieldRecaptcha.vue';
@@ -107,7 +107,7 @@ export default {
   components: {
     AppFieldPlainText,
     AppFieldPhone,
-    AppFieldServices,
+    AppFieldItems,
     AppFieldDate,
     AppFieldWorldApi,
     AppFieldRecaptcha

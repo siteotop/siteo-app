@@ -34,7 +34,7 @@ const fieldsMap = {
 
   services() {
     return {
-      c: 'AppFieldServices',
+      c: 'AppFieldItems',
       v: {required: true},
       p: {prependIcon:'add_shopping_cart'}
     }
