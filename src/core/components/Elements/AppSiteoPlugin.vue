@@ -11,6 +11,10 @@
 export default {
 
     props: {
+      /**
+         start name of plugin
+         if full name is siteo-plugin-app-form, that put "app-form"
+      */
       pluginName:  {
         type: String,
         default: ''

@@ -37,7 +37,7 @@
   - create filter for sceen date
   - show two buttons for close datepicker and clear
 */
-import VModelInput from '../../../_mixins/v-model-input';
+import VModelInput from './_mixins/v-model-input';
 import {format, unFormat} from './_helper/date-format';
 
 export default {

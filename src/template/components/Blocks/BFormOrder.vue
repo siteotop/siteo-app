@@ -11,7 +11,10 @@ export default {
       props.defaultValues = context.parent.$store.state.APP_ORDER;
       props.i18nkey = "formOrder";
       props.formAction = context.props.formAction || 'APP_ORDER/createObject';
-      return  h('AppForm', {props:  props})
+
+
+
+      return  h('AppSiteoPlugin', {props: {pluginName: 'app-form', pluginOptions: props } })
   }
 
 }

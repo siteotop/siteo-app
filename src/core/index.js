@@ -63,16 +63,13 @@ import axios from 'axios';
 
 import VS2 from 'vue-script2';
 
-import VeeValidate from 'vee-validate';
 
 
 export default function ({configs, APP, messages, plugins} ) {
 
 
    //start Vuetify
-   Vue.use(Vuetify, {
-     //theme:  APP.options.instance.design? APP.options.instance.design.theme.colors:{}
-   });
+   Vue.use(Vuetify, {});
 
 
    // start VueProgressBar
@@ -108,36 +105,17 @@ export default function ({configs, APP, messages, plugins} ) {
     });
 
 
-
-    // connect  vee-validator
-    Vue.use(VeeValidate, {
-      /**
-      With SSR Frameworks like Nuxt, it is recommended to disable automatic injection since it may cause memory leaks due to all the validator instances being created for every component, which is not needed and may slow down your site.
-      https://baianat.github.io/vee-validate/concepts/injections.html#injecting-parent-validator
-
-      */
-      inject: false,
-
-      dictionary: messages.validation||false,
-      local: configs.lang
-     }
-    );
-
-
     CoreVue.IconsRegister= IconsRegister;
     // add plugins
     CoreVue.SiteoAddPlugin = function (plugin) {
-
       Vue.use(plugin, {$coreVue:CoreVue, $pluginOptions: plugin.options });
       if (plugin.siteoInstall) {
         plugin.siteoInstall(CoreVue, plugin.options)
       }
-
     };
 
-
-
     CoreVue.SiteoAddPlugin(APP);
+
     if (plugins&&plugins.length) {
        for (var i in plugins ) {
           CoreVue.SiteoAddPlugin(plugins[i]);

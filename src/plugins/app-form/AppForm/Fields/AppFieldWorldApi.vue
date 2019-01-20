@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import VModelInput from '../../../_mixins/v-model-input';
+import VModelInput from './_mixins/v-model-input';
 
 export default {
   mixins: [VModelInput],

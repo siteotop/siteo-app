@@ -9,6 +9,7 @@ module.exports = merge(baseConfig, {
   entry: {
     'example':   './src/plugins/example',
     'instagram-post':   './src/plugins/instagram-post',
+    'app-form':   './src/plugins/app-form',
   },
 
   output: {

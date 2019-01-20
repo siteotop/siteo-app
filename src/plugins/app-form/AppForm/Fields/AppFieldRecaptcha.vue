@@ -15,7 +15,7 @@
 
 <script>
 
-import VModelInput from '../../../_mixins/v-model-input';
+import VModelInput from './_mixins/v-model-input';
 
 //https://developers.google.com/recaptcha/docs/display
 //https://developers.google.com/recaptcha/docs/language
