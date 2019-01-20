@@ -2,16 +2,14 @@ import PagesApi from './components/Pages/Api.js';
 import OneService from './components/Pages/OneService.js';
 import CorePage from './components/Pages/_extends/page.js';
 import RouteItems from './components/Items/index.vue';
+import RouteOrder from './components/Order.vue';
 
-export default function (templateRoutes) {
+export default function () {
 
       //https://vuejs.org/v2/api/#renderError
       CorePage.renderError = function (h, err) {
-          return h(templateRoutes.RouteError, {props: {status: err.statusError }});
+          return h('RouteError', {props: {status: err.statusError }});
       };
-
-      OneService.components = {OneService: templateRoutes.RouteOneService };
-
 
       return [
             {
@@ -53,7 +51,7 @@ export default function (templateRoutes) {
             {
               name: "order",
               path:  '/go/:typeAction(order|call|recall|chat|links|locations)?',
-              component: templateRoutes.RouteOrder,
+              component: RouteOrder,
               props: true
 
             },
@@ -69,8 +67,7 @@ export default function (templateRoutes) {
             {
                path: "*",
                name: 'PageError',
-               component: templateRoutes.RouteError,
-               props: {status:404},
+               component: { functional: true, render(h){ return h('RouteError', {props: {status:404}})} } ,
                meta:{},
             }
          ];

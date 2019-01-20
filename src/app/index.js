@@ -10,6 +10,8 @@ import moduleOrder from './store/modules/orders';
 //import {createStorePage, createServices, createExperts, createPosts} from './models.js';
 
 export default {
+  name: 'siteo-app',
+
   install: function (Vue, options) {
       Vue.component('PageSchema', PageSchema);
       Vue.component('SectionWrap', SectionWrap);
@@ -25,9 +27,9 @@ export default {
       posts: {route: '/blog', title:'Blog'},
       objectService: {title: '{title} - Order item', description: '{actionText} {title}, Price {price}'},
     };
-    $coreVue.router.addRoutes(SiteoRoutes($pluginOptions.template.routes));
+    $coreVue.router.addRoutes(SiteoRoutes());
     // add templates
-    $coreVue.SiteoAddPlugin($pluginOptions.template);
+    //$coreVue.SiteoAddPlugin($pluginOptions.template);
 
     // register  module order to  instance
 
@@ -39,10 +41,6 @@ export default {
     // merge messages from instance
     $coreVue.i18n.mergeLocaleMessage($coreVue.i18n.locale, {routes: routes} );
 
-  },
-
-  options: {
-    template:{}
   }
 
 }

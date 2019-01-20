@@ -21,9 +21,9 @@ const scripts = (function(domain){
      var html = '';
      const scripts = [
       'siteo-polyfill.js',
-      'siteo-template.js',
       'siteo-app.js',
       'siteo-locale-en.js',
+      'siteo-plugin-page-blocks.js',
       'siteo-core.js'
     ];
     for (let i in scripts) {
@@ -52,7 +52,7 @@ server.get('*', (req, res) => {
 
   renderer.renderToString(context, (err, html) => {
     if (err) {
-      //console.log(err);
+      console.log(err);
       //console.log(JSON.stringify(err));
       const templateError = compiled({
         error: '404',

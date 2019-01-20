@@ -1,8 +1,7 @@
 // entry-server.js
 import  createApp  from '../src/core';
-import  template  from '../src/template';
+import  PluginPageBlocks  from '../src/plugins/page-blocks';
 import  siteoApp  from '../src/app';
-siteoApp.options.template = template;
 import  SiteoLocalEN  from '../src/core/i18n/en';
 import  axios from 'axios';
 import  defaultDesign  from './default.design';
@@ -38,7 +37,8 @@ export default (context) => {
       var app = createApp( {
         configs:  context.configsAPI,
         APP:siteoApp,
-        messages: SiteoLocalEN
+        messages: SiteoLocalEN,
+        plugins: {pageblocks: PluginPageBlocks}
       });
       app.$store.commit('saveInstanse', response.data);
       context.meta = app.$meta();

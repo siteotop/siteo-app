@@ -1,7 +1,7 @@
 import CorePage from './_extends/page.js';
 import { mapState } from 'vuex'
 import services from  '../../store/modules/services';
-
+import OneService from './OneService.vue';
 export default {
   extends: CorePage,
 
@@ -51,7 +51,7 @@ export default {
       if (this.error) {
         this.catchError();
       }
-      return h('OneService', {props: {objectService: this.objectService, shareWindow: this.shareWindow}})
+      return h(OneService, {props: {objectService: this.objectService, shareWindow: this.shareWindow}})
 
   }
 

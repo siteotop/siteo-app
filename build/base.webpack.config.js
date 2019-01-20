@@ -45,7 +45,6 @@ module.exports = {
     // index with template
     'polyfill': '@babel/polyfill',
     'core': './src/client.js',
-    'template': './src/template/index.js',
     'app': './src/app/index.js',
     'locale-en': './src/core/i18n/en.js',
     // index with template admin
