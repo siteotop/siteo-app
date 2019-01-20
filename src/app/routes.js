@@ -1,7 +1,7 @@
 import PagesApi from './components/Pages/Api.js';
 import OneService from './components/Pages/OneService.js';
 import CorePage from './components/Pages/_extends/page.js';
-import RouteItems from './components/Items/_extends/core.vue';
+import RouteItems from './components/Items/index.vue';
 
 export default function (templateRoutes) {
 
@@ -19,6 +19,7 @@ export default function (templateRoutes) {
               path:  '/',
               component: PagesApi,
               props: true,
+              meta: {name: 'page'}
             },
 
             {
@@ -58,10 +59,11 @@ export default function (templateRoutes) {
             },
 
             {
-              name: "objectPost",
+              name: "objectPage",
               path:  '/:objectId',
               component: PagesApi,
               props: true,
+              meta: {name: 'page'}
             },
 
             {

@@ -21,17 +21,27 @@
         <AppIcon name="si-sort"></AppIcon>
    </v-btn>
   </PageItemsToolbar>
-  <component   :is="'wi-'+typeList" :_t="title" $tl="justify-center text-xs-center pt-1 pb-4" :toggleComponent="toggle_component" :$vl="toggle_component=='list'">
+  <component   :is="'wi-'+typeList" :items="$store.state[typeList].items.objects" :_t="title" $tl="justify-center text-xs-center pt-1 pb-4" :toggleComponent="toggle_component" :$vl="toggle_component=='list'">
     <v-layout slot="header"  wrap class="mb-4"> </v-layout>
   </component>
   <FunctionalButtonUp></FunctionalButtonUp>
 </div>
 </template>
 <script>
-import PageItemsToolbar from '../Functional/PageItemsToolbar.vue';
-import FunctionalButtonUp from  '../../Pages/Functional/ButtonUp.vue';
+import PageItemsToolbar from './Functional/PageItemsToolbar.vue';
+import FunctionalButtonUp from  '../Pages/Functional/ButtonUp.vue';
+import mixinsAsyncdata from '../_mixins/asyncData';
+
+import WiServices from '../Widgets/WiServices.vue';
+import WiExperts from '../Widgets/WiExperts.vue';
+import WiPosts from '../Widgets/WiPosts.vue';
+
+import * as StoreModules from  '../../store/modules';
+
 
 export default {
+
+  mixins: [mixinsAsyncdata],
 
   props: {
     typeList: {
@@ -41,8 +51,30 @@ export default {
   },
   components: {
     PageItemsToolbar,
-    FunctionalButtonUp
+    FunctionalButtonUp,
+    WiServices,
+    WiExperts,
+    WiPosts
   },
+
+  asyncData({store, route}) {
+    console.log('loaded data items from server for route:');
+    store.registerApiModule(route.name, StoreModules[route.name]('WEBSITE_API_URL'), true);
+
+    if (store.state.allowAsyncLoad) {
+       return store.dispatch(route.name+'/getList');
+    } else {
+       return new Promise((resolve, reject) => {
+          resolve({});
+       });
+    }
+  },
+
+  destroyed () {
+    console.log(this.typeList);
+    this.$store.unregisterApiModule(this.typeList);
+ },
+
   data() {
     return {
       mobile: true,
@@ -60,6 +92,12 @@ export default {
       },
 
 
+  },
+
+  watch: {
+    typeList: function (newValue){
+        this.$options.asyncData({store: this.$store, route: this.$route});
+    }
   },
 
   metaInfo () {

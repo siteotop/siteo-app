@@ -24,8 +24,7 @@ export {default as AppDialogAction} from './AppDialogAction';
 export {default as WiContacts} from './Widgets/WiContacts.vue';
 export {default as WiLinks} from './Widgets/WiLinks.vue';
 export {default as WiActions} from './Widgets/WiActions.vue';
-export {default as WiServices} from './Widgets/WiServices.vue';
-export {default as WiExperts} from './Widgets/WiExperts.vue';
+
 export {default as WiLocations} from './Widgets/WiLocations.vue';
-export {default as WiPosts} from './Widgets/WiPosts.vue';
+
 export {default as WiOrderTabs} from './Widgets/WiOrderTabs.vue';

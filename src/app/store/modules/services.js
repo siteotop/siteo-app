@@ -5,7 +5,7 @@
 export default function (parentGetterUrl) {
 
   return  {
-    api: {url: '/services', parentGetterUrl: parentGetterUrl},
+    api: {url: '/prices', parentGetterUrl: parentGetterUrl},
     state () {
         return {
           _id: '',
