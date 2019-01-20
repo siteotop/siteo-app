@@ -42,6 +42,14 @@ export default (context) => {
       });
       app.$store.commit('saveInstanse', response.data);
       context.meta = app.$meta();
+
+      // minify styles for theme
+      app.$vuetify.options.minifyTheme = function (css) {
+        return process.env.NODE_ENV === 'production'
+          ? css.replace(/[\s|\r\n|\r|\n]/g, '')
+          : css
+      }
+
       app.$vuetify.theme = app.$store.state.APP_INSTANCE.design.theme.colors;
       // устанавливаем маршрут для маршрутизатора серверной части
       app.$router.push(context.url)
