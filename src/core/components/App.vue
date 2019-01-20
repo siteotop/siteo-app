@@ -4,7 +4,7 @@ import * as AppStructure from './Structure';
 
 export default {
 
-     renderList: ['AppDrawer', 'AppToolbar',  'AppFooter', 'AppContent'],
+     renderList: ['AppDrawer', 'AppToolbar', 'AppContent', 'AppFooter'],
      //componentsPage: componentsPage,
      components: {...AppStructure},
 
