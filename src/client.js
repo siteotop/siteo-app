@@ -3,14 +3,12 @@
 import  createApp from './core';
 
 //console.log(window['siteo-app']);
-if ( window['siteo-template']) {
-    window['siteo-app'].options.template = window['siteo-template'];
-}
-
+console.log(window['siteo-plugins']);
 var app= createApp({
     configs: window.__SITEO_CONFIG__,
     APP: window['siteo-app'],
     messages: window['siteo-locale-en'],
+    plugins: window['siteo-plugins']
     //template: window['siteo-template']
 
 });

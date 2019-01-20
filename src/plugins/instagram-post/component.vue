@@ -6,6 +6,7 @@
 
 
 export default {
+
   props: {
     _url: {
       type: String,
@@ -24,7 +25,7 @@ export default {
       }
   },
 
-  created() {
+  mounted() {
       var self = this;
       if (!this._url) { return;}
       var url ='https://api.instagram.com/oembed?omitscript=true&hidecaption='+this.$hc+'&url=' + this._url;

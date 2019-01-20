@@ -1,9 +1,10 @@
 <template>
   <div v-if="loaded">
-    <component :is="fullPluginName" v-if="isPlugin" v-bind="pluginOptions"></component>
+    <div v-if="isPlugin"><component :is="component"  v-bind="pluginOptions"></component></div>
+
   </div>
   <div v-else>
-      Plugin loaded
+      Plugin not  loaded
   </div>
 </template>
 
@@ -29,10 +30,13 @@ export default {
 
     },
 
+
+
     data() {
       return {
-       loaded: false,
-       isPlugin: false
+        loaded: false,
+        isPlugin: false,
+        component: ''
        }
     },
 
@@ -51,34 +55,28 @@ export default {
         //console.log(this);
         var self = this;
         this.$root.$options.$script(filename).then((data)=>{
+            if (window['siteo-plugins']&&window['siteo-plugins'][self.pluginName]) {
+                var plugin = window['siteo-plugins'][self.pluginName];
 
-            //console.log('loaded plugin ');
-            if (window[self.fullPluginName]) {
-              self.isPlugin = true;
+                if (plugin.getComponent) {
+                    self.component = plugin.getComponent();
+                } else {
+                  self.$root.$options.SiteoAddPlugin(plugin);
+                  self.component = self.fullPluginName;
+                }
             }
-            console.log(data);
-            self.$root.$options.SiteoAddPlugin(window[self.fullPluginName]);
-            //console.log(window[self.fullPluginName]);
+
             self.loaded = true;
+            self.isPlugin = true;
         }).catch((error)=>{
             console.log(error);
-            self.loaded =false
+            self.loaded =true
         });
 
 
 
 
-    },
-
-    beforeDestroy() {
-
-        // unregister plugin and  delete all objects
-        console.log(this.fullPluginName);
-        //delete window['siteo-plugin-designer'];
-        // unload plugin
     }
-
-
 }
 
 

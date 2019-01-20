@@ -16,7 +16,7 @@ module.exports = merge(baseConfig, {
     //path: path.resolve(__dirname, '../' + DIR_RESOURCE),
     //publicPath: '/dist/',
     filename: 'siteo-plugin-[name].js',
-    library: "siteo-plugin-[name]",
+    library: ['siteo-plugins', "[name]"],
 		libraryTarget: "umd",
     libraryExport: 'default',
 

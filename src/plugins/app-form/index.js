@@ -3,9 +3,10 @@ import VeeValidate from 'vee-validate';
 import AppForm from './AppForm/index.vue';
 
 export default {
+  name: 'SiteoPluginAppForm',
 
   install: function (Vue, options) {
-      Vue.component('siteo-plugin-app-form', AppForm);
+      Vue.component(options.name, AppForm);
 
       console.log(options.$coreVue.i18n.locale);
       // connect  vee-validator
@@ -22,8 +23,6 @@ export default {
        }
       );
 
-  },
-
-
+  }
 
 }

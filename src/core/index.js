@@ -107,16 +107,34 @@ export default function ({configs, APP, messages, plugins} ) {
 
     CoreVue.IconsRegister= IconsRegister;
     // add plugins
+    var PLUGINS = {};
     CoreVue.SiteoAddPlugin = function (plugin) {
-      Vue.use(plugin, {$coreVue:CoreVue, $pluginOptions: plugin.options });
-      if (plugin.siteoInstall) {
-        plugin.siteoInstall(CoreVue, plugin.options)
+      if (!plugin.name) {
+        console.log('Plugin has not param plugin.name');
+        return ;
+      }
+      if (!PLUGINS[plugin.name]) {
+        // install for Vue
+        PLUGINS[plugin.name] = true;
+        console.log(plugin);
+        Vue.use(plugin, {$coreVue:CoreVue, $pluginOptions: plugin.options, name: plugin.name});
+
+        if (plugin.siteoInstall) {
+          // install special function for siteoInstall (using for SSR)
+          // on SSR components registering one time, but is some deals which need registered every time
+          plugin.siteoInstall(CoreVue, plugin.options);
+        }
+
+        console.log(PLUGINS);
+      } else {
+          console.log(`Plugin ${plugin.name} was loaded early`);
       }
     };
 
     CoreVue.SiteoAddPlugin(APP);
 
-    if (plugins&&plugins.length) {
+    console.log(plugins);
+    if (plugins) {
        for (var i in plugins ) {
           CoreVue.SiteoAddPlugin(plugins[i]);
        }
