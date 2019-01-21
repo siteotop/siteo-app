@@ -78,7 +78,7 @@ export default function ({configs, APP, messages, plugins} ) {
      thickness: '3px',
    });
 
-
+   CoreVue._siteo_config = configs;
    // create store
    CoreVue.store = createStore(Vue, configs);
    //CoreVue.store.commit('saveInstanse', APP.options.instance);

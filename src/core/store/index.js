@@ -27,7 +27,7 @@ export default function (Vue, configs)  {
            drawer: false,
            allowAsyncLoad: true,
            pageLoader: false,
-           recaptcha: configs.recaptcha,
+           //recaptcha: configs.recaptcha,
            usePablicToken: true,
            getterToken: 'NAME_MODULE/action' // for example "account/refreshToken"
          },

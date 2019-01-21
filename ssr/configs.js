@@ -4,5 +4,6 @@ module.exports= {
   siteo_id: '152774684316952',
   path:"",
   host: process.env.NODE_ENV =='production'? "https://siteo.top":'http://localhost:8080',
-  lang: 'en'
+  lang: 'en',
+  host_static: process.env.NODE_ENV =='production'? "https://siteo.top/dist/":'http://localhost:8080/dist/',
 }

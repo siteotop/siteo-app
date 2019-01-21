@@ -36,7 +36,7 @@ export default {
           id: "recaptcha" + new Date().getTime(),
           recaptcha: null,
           loading: true,
-          token: this.$store.state.recaptcha
+          token: this.$root.$options._siteo_config.recaptcha
 
       }
 

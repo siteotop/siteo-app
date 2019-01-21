@@ -17,20 +17,13 @@ const renderer = createBundleRenderer(serverBundle, {
   //clientManifest // (опционально) манифест клиентской сборки
 })
 
-const scripts = (function(domain){
-     var html = '';
-     const scripts = [
-      'siteo-polyfill.js',
-      'siteo-app.js',
-      'siteo-locale-en.js',
-      'siteo-plugin-page-blocks.js',
-      'siteo-core.js'
-    ];
-    for (let i in scripts) {
-      html+='<script  type="text/javascript" src="'+domain+scripts[i]+'"></script>';
-    }
-    return html;
-})( configsAPI.host+'/dist/');
+const scripts =  require ('./helper/scripts')([
+ 'siteo-polyfill.js',
+ 'siteo-app.js',
+ 'siteo-locale-en.js',
+ 'siteo-plugin-page-blocks.js',
+ 'siteo-core.js'
+], configsAPI.host_static);
 
 
 
