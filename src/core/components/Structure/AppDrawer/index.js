@@ -60,13 +60,7 @@ export default {
 
       },
       [
-
-          //slots.header? slots.header:
            helperChildren(h, design.children, StructureChildren)
-        //  h(AppMenuList, {props: {mainMenu: context.parent.$root.AppDrawerMenu }}),
-          //slots.default,
-
-
       ] )
 
   }

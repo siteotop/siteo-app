@@ -1,5 +1,5 @@
 <template>
-  <v-select multiple chips deletableChips  v-bind="vComp" v-model="valueData" ></v-select>
+  <v-select multiple chips deletableChips :items="[]"  v-bind="vComp" v-model="valueData" ></v-select>
 </template>
 
 <script>
