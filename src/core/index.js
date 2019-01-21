@@ -49,6 +49,9 @@ import { sync } from 'vuex-router-sync';
   https://vuetifyjs.com/ru/
 */
 import Vuetify from 'vuetify';
+Vue.use(Vuetify);
+
+
 import 'vuetify/dist/vuetify.min.css';
 
 /**CSS*/
@@ -66,10 +69,6 @@ import VS2 from 'vue-script2';
 
 
 export default function ({configs, APP, messages, plugins} ) {
-
-
-   //start Vuetify
-   Vue.use(Vuetify, {});
 
 
    // start VueProgressBar
