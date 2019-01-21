@@ -42,6 +42,8 @@ export default {
     render(h, context) {
       console.log(' render page ');
       return h('div', [
+
+          // pageToolbar
           context.props.pageToolbar? h(FunctionalPageToolbar, {props: {
             contentStructure:context.props.structure,
             hightUp: 300,
@@ -50,12 +52,20 @@ export default {
           on: {
               shareWindow: ()=>{ context.parent.shareWindow = true}
             }}):'',
+
+          ////////// Structure
           context.props.structure.map(function(section) {
               return h(section.$$, { props: section._props  } )
           }),
+          ////////// Structure
+
+          //speedDeal
           context.props.speedDeal? h(FunctionalSpeedDeal):'',
 
+          //shareWindow
           context.props.shareWindow? h(FunctionalShareWindow, { on: {closeShare: ()=>{ context.parent.shareWindow = false}}}):'',
+
+          //buttonUp
           context.props.buttonUp? h(FunctionalButtonUp):'',
 
 

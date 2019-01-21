@@ -12,58 +12,13 @@ export default {
      data() {
           return {
            startdrawer: false,
+           mobile: true
           }
      },
 
-
-
      mounted() {
-      /* if (this.$vuetify.breakpoint.width>this.mobileBreakPoint ) {
-         if (this.instanceDesign.AppDrawer.props&&this.instanceDesign.AppDrawer.props.startmdAndUp) {
-           this.$store.state.drawer = this.instanceDesign.AppDrawer.props.startmdAndUp;
-         }
-      }*/
+       this.mobile = this.$vuetify.breakpoint.xs;
      },
-
-
-     /*watch: {
-       '$vuetify.breakpoint': function (value) {
-           if (!this.startdrawer) {
-
-              this.startdrawer = true;
-           }
-
-       }
-
-     },*/
-
-    computed: {
-
-        /*mobileBreakPoint() {
-            if (this.instanceDesign.AppDrawer && this.instanceDesign.AppDrawer.props && this.instanceDesign.AppDrawer.props.mobileBreakPoint) {
-                return this.instanceDesign.AppDrawer.props.mobileBreakPoint;
-            } else {
-              return 1000;
-            }
-
-        },*/
-
-        instanceDesign() {
-          return this.$store.state.APP_INSTANCE.design;
-        },
-
-        AppToolbarMenu() {
-            return this.$store.state.APP_INSTANCE.menu;
-        },
-
-        AppDrawerMenu() {
-          //console.log('start');
-          return this.$store.state.APP_INSTANCE.menu;
-        }
-
-
-     },
-
 
      render(h) {
 

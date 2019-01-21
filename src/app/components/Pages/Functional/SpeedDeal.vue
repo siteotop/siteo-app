@@ -13,7 +13,7 @@
          v-model="fab"
          :color="fab? 'secondary': 'accent'"
          dark
-         :large="$vuetify.breakpoint.smAndUp"
+         :large="$root.mobile"
          fab
        >
           <AppIcon v-if="!fab" name="si-order"></AppIcon>

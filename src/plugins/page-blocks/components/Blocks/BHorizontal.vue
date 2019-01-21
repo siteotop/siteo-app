@@ -16,7 +16,7 @@
             <component :is="'h'+(props.$ht||3)"  :class="props.$_t||'title'">{{props._t}}</component>
             <span :class="props.$_s||' grey--text'">{{props._s}}</span>
           </v-card-text>
-          <v-card-text  :class="(props.$_d||'body-1')+ (parent.$root.$vuetify.breakpoint.xs?' text-truncate':'')" >
+          <v-card-text  :class="(props.$_d||'body-1')+ (parent.$root.mobile?' text-truncate':'')" >
             {{props._d}}
           </v-card-text>
         </v-card>

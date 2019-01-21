@@ -8,7 +8,7 @@
        :fab="true"
        :large="false"
        :color="item.color"
-       :small="parent.$vuetify.breakpoint.xs"
+       :small="parent.$root.mobile"
        :siicon="'si-'+ item.name"
        :outline="props.active ==item.name? true: false"
        :to="{name:'order',params: {typeAction: item.name}}"

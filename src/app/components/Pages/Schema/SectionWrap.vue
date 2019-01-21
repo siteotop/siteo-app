@@ -1,5 +1,5 @@
 <template functional>
-  <component :is="props.$co||'v-container'" :id="props._$" fluid  v-bind="{'v-container': { tag: 'section'}, 'v-img':{height:props.$he||600, src: props._p, gradient: props.$gr||'to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)'  }, 'v-parallax':{height:props.$he, alt:props._t, src: props._p}}[props.$co]"  :class="(props.$tc||'')+(parent.$vuetify.breakpoint.smAndDown? (props.$tcm||' px-1'): '' )" >
+  <component :is="props.$co||'v-container'" :id="props._$" fluid  v-bind="{'v-container': { tag: 'section'}, 'v-img':{height:props.$he||600, src: props._p, gradient: props.$gr||'to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)'  }, 'v-parallax':{height:props.$he, alt:props._t, src: props._p}}[props.$co]"  :class="(props.$tc||'')+(parent.$root.mobile? (props.$tcm||' px-1'): '' )" >
     <v-layout
       v-if="props._t||props._d"
       column
@@ -9,8 +9,8 @@
         <component
            v-if="props._t"
            :is="'h'+(props.$ht||2)"
-           :class="(props.$_t||'display-1 secondary--text')+  (parent.$vuetify.breakpoint.smAndDown?' display-1': '' )">{{props._t}}</component>
-        <span v-if="props._d" :class="(props.$_d||'title font-weight-medium')+(parent.$vuetify.breakpoint.smAndDown?' subheading': '' )">
+           :class="(props.$_t||'display-1 secondary--text')+  (parent.$root.mobile?' display-1': '' )">{{props._t}}</component>
+        <span v-if="props._d" :class="(props.$_d||'title font-weight-medium')+(parent.$root.mobile?' subheading': '' )">
           {{props._d}}
         </span>
       </v-container>

@@ -7,7 +7,7 @@
   </v-card-text>
   <v-card-text>
       <v-layout  >
-        <v-flex v-if="!parent.$vuetify.breakpoint.xs"  class=" align-start grey--text">
+        <v-flex v-if="!parent.$root.mobile"  class=" align-start grey--text">
             <AppIcon scale="6" name="si-quote"></AppIcon>
         </v-flex>
         <v-flex :class="props.$_d||'headline font-weight-thin font-italic'">

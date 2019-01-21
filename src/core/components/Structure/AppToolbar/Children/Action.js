@@ -10,7 +10,7 @@ export default {
   },
 
   render(h, context) {
-        var mobile = context.parent.$root.$vuetify.breakpoint.xs;
+        var mobile = context.parent.$root.mobile;
         if (mobile)  {
             return h('AppAction', {props: {fab: true, large:false, small: true}});
         } else {

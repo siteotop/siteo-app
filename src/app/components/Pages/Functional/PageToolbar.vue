@@ -20,7 +20,7 @@
     </v-menu>
 
       <v-spacer></v-spacer>
-        <v-toolbar-items v-if="$vuetify.breakpoint.mdAndUp">
+        <v-toolbar-items v-if="mdAndUp">
 
             <v-btn v-for="(item, i) in pageMenu" :key="i"
               :title="item._ti"
@@ -52,6 +52,16 @@ export default {
     }
 
 
+  },
+
+  data() {
+    return {
+      mdAndUp: false
+    }
+  },
+
+  mounted() {
+      this.mdAndUp = this.$vuetify.breakpoint.mdAndUp;
   },
 
   computed: {

@@ -10,7 +10,7 @@
       <v-btn flat value="cards">
           <AppIcon name="si-view-cards"></AppIcon>
       </v-btn>
-      <v-btn v-if="!mobile" flat value="card">
+      <v-btn v-if="!$root.mobile" flat value="card">
          <AppIcon name="si-view-card"></AppIcon>
       </v-btn>
       <v-btn flat value="list">
@@ -77,13 +77,8 @@ export default {
 
   data() {
     return {
-      mobile: true,
       toggle_component: 'cards'
     }
-  },
-
-  mounted() {
-    this.mobile = this.$vuetify.breakpoint.xs;
   },
 
   computed: {

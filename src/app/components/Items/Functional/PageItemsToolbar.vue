@@ -18,7 +18,6 @@ export default {
          app: false,
          flat: false,
          fixed: false,
-        // dense: this.$vuetify.breakpoint.smAndDown
         }
         if (this.needShowAction) {
          //  props.app =true;
