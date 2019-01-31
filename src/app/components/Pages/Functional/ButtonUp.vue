@@ -3,7 +3,7 @@
       <v-btn
         v-scroll="onScroll" v-show="needShow"
         fixed
-        :large="$vuetify.breakpoint.smAndUp"
+        :large="$root.mobile"
         bottom
         left
         fab

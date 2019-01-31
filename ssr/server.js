@@ -1,11 +1,31 @@
-const server = require('express')()
+var express = require('express');
+var server = express();
 const fs = require('fs');
 
 const configsAPI = require('./configs');
 
-const renderer = require('vue-server-renderer').createRenderer({
-  template: fs.readFileSync('./ssr/index.template.html', 'utf-8')
-});
+const { createBundleRenderer } = require('vue-server-renderer');
+const template = fs.readFileSync('./ssr/index.template.html', 'utf-8');
+const templateIndex = fs.readFileSync('./ssr/index.html', 'utf-8');
+const serverBundle = require('./dist/vue-ssr-server-bundle.json')
+const lodashTemplate = require ('lodash/template');
+const compiled = lodashTemplate(templateIndex);
+const renderer = createBundleRenderer(serverBundle, {
+  inject:false,
+  runInNewContext: false, // рекомендуется
+  template, // (опционально) шаблон страницы
+  //clientManifest // (опционально) манифест клиентской сборки
+})
+
+const scripts =  require ('./helper/scripts')([
+ 'siteo-polyfill.js',
+ 'siteo-app.js',
+ 'siteo-locale-en.js',
+ 'siteo-plugin-page-blocks.js',
+ 'siteo-core.js'
+], configsAPI.host_static);
+
+
 
 const NODE_ENV = process.env.NODE_ENV || "production";
 if (NODE_ENV !='production')  {
@@ -15,42 +35,34 @@ if (NODE_ENV !='production')  {
 
 //const { createBundleRenderer } = require('vue-server-renderer');
 
-
+server.use(express.static('static'));
+server.use(express.static('dev'));
 // server.js
-const createApp = require('./dist/built-server-bundle.js');
+//const createApp = require('./dist/built-server-bundle.js');
 
 server.get('*', (req, res) => {
-  const context = { url: req.url, configsAPI:configsAPI};
+  const context = { url: req.url, scripts: scripts, configsAPI:configsAPI};
 
-  createApp(context).then(app => {
-
-    renderer.renderToString(app, context, (err, html) => {
-      if (err) {
-        //console.log(JSON.stringify(err));
-        if (err.code === 404) {
-          res.status(404).end('404 error')
-        } else {
-          res.status(500).end('500 error')
-        }
+  renderer.renderToString(context, (err, html) => {
+    if (err) {
+      console.log(err);
+      //console.log(JSON.stringify(err));
+      const templateError = compiled({
+        error: '404',
+        __SITEO_INSTANCE__: JSON.stringify(err.__SITEO_INSTANCE__),
+        configs:JSON.stringify(configsAPI),
+        scripts:scripts
+      });
+      if (err.code === 404) {
+        res.status(404).end(templateError);
       } else {
-        res.end(html)
+        res.status(500).end(templateError);
       }
-    })
-  }).catch(error=>{
-
-    if (NODE_ENV !='production')  {
-      var return_error = '';
-      console.log(error);
-      if (error.response) {
-         return_error = JSON.stringify(error.response.data);
-      }
-
-      res.status(500).end('<div>Error: '+ (return_error||JSON.stringify(error)) +'</div>');
     } else {
-      res.status(500).end('500 createApp error')
+      res.end(html)
     }
-
   })
+
 })
 
 

@@ -1,23 +1,8 @@
 
 var _APP_INSTANCE = {
 
-  configs: {
-     "host":"https://siteo.top",
-     "path":"",
-      public_token: 'public_token_is_no_user_token_for_access_api_siteo',
-      api_url: 'https://api.siteo.top/api/v1/',
-      recaptcha: '6LdRBCAUAAAAAD1G95xZfHvPD_-3VLijXfa-48Xm'
-   },
-
-    routes: {
-      services: {route: '/services', title:'Services'},
-      experts: {route: '/experts', title:'People'},
-      posts: {route: '/blog', title:'Blog'},
-      objectService: {title: '{title} - Order item', description: '{actionText} {title}, Price {price}'},
-    },
-
-   data:{
-     _id:152710249031417,
+   data: {
+     _id:152774684316952,
      pid:"7rL5Q4LRdk",
      name:"Site Name",
      title:"Title Website",

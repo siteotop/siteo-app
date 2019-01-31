@@ -8,4 +8,6 @@ module.exports= {
   path:"",
   // website host https://siteo.top
   host:"",
+  lang: '',
+  host_static: ''  // full url host/dir/ where are statics files like js, css 
 }

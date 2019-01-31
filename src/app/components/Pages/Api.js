@@ -1,49 +1,52 @@
 
 import CorePage from './_extends/page.js';
+import { mapState } from 'vuex';
+import pages from  '../../store/modules/pages';
+
 export default {
-  storeName: 'APP_PAGE',
+
   extends: CorePage,
+
+  asyncData({ store, route }) {
+      store.registerApiModule( 'page', pages('WEBSITE_API_URL'));
+      if (store.state.allowAsyncLoad) {
+        return store.dispatch('page/getObject', 'id_for_page');
+      }
+  },
 
   computed: {
         meta_title() {
-            return this.$store.state.APP_PAGE.objectActive.meta_title? this.$store.state.APP_PAGE.objectActive.meta_title:
-            this.$store.state.APP_PAGE.objectActive.title ;
+          return this.helperCreateMeta('meta_title', 'title');
         },
 
         meta_description() {
-            return this.$store.state.APP_PAGE.objectActive.meta_description?
-            this.$store.state.APP_PAGE.objectActive.meta_description:  this.$store.state.APP_PAGE.objectActive.description;
+          return this.helperCreateMeta('meta_description', 'description');
         },
 
         canonical() {
-          return this.$store.getters.CORE_HOST + this.$store.state.APP_PAGE.objectActive.url;
-        }
+
+          return this.$store.getters.CORE_HOST + this.postObject.url;
+        },
+
+        ...mapState({
+            postObject (state) {
+                return state.page? state.page.objectActive: {};
+            }
+        })
 
 
 
     },
 
-
     methods: {
-      preFetch() {
-        var post_id;
-        if (!this.objectId) {
-          post_id = this.$store.state.APP_INSTANCE.data.pages_id;
-        } else {
-          post_id = this.objectId;
-        }
-        //console.log(post_id);
-        //console.log(_PRERENDER._id);
-
-        if ( _PRERENDER._id == post_id) {
-            this.$store.commit('APP_PAGE/setApiId',_PRERENDER._id);
-            //this.$store.commit('APP_PAGE/updateModel', _PRERENDER);
-            this.$store.commit('APP_PAGE/updateModel', _PRERENDER);
-            return true;
-        } else {
-          return false;
-        }
-      }
+       helperCreateMeta(sourceField, mainField ) {
+         if (this.postObject[mainField]) {
+           return this.postObject[sourceField]? this.postObject[sourceField]:
+           this.postObject[mainField] ;
+         } else {
+            return '';
+         }
+       }
     },
 
     /**
@@ -67,13 +70,15 @@ export default {
           this.catchError();
         }
           //return h(PageError, { props: {status: this.error}  }  )
-
+        if (!this.postObject.contentStructure) {
+           return h('div', ['loaded']);//h('div',  'not loaded');
+        }
 
         return h('PageSchema', {
             props: {
               pageToolbar: true,
               speedDeal: true,
-              structure: this.$store.state.APP_PAGE.objectActive.contentStructure,
+              structure: this.postObject.contentStructure,
               sharing: true,
               shareWindow: this.shareWindow,
               buttonUp: true

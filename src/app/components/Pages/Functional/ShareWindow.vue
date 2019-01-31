@@ -93,7 +93,7 @@ export default {
   computed: {
     canonicalUrl () {
 
-      
+
       var link =_find(this.$parent.$metaInfo.link, function(o) { return o['rel'] == 'canonical'; })
        return  link.href;
     }

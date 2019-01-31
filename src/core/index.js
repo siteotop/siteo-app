@@ -31,13 +31,13 @@ for (let NameComponent in CoreComponents) {
 /**ROUTER
    create Routing for every APP
 */
-import RouterInstall from './router';
+import createRouter from './router';
 
 /**Vue Store
   Storing all data from backend
 */
-import StoreInstall from './store';
-import {createModelCRUD} from './store/helpers/model-events'
+import createStore from './store';
+
 /**SYNC router with store
   in Vue store we can get 'route' property
 */
@@ -49,6 +49,9 @@ import { sync } from 'vuex-router-sync';
   https://vuetifyjs.com/ru/
 */
 import Vuetify from 'vuetify';
+Vue.use(Vuetify);
+
+
 import 'vuetify/dist/vuetify.min.css';
 
 /**CSS*/
@@ -63,16 +66,9 @@ import axios from 'axios';
 
 import VS2 from 'vue-script2';
 
-import VeeValidate from 'vee-validate';
 
 
-export default function (APP, plugins ) {
-
-
-   //start Vuetify
-   Vue.use(Vuetify, {
-     theme:  APP.options.instance.design? APP.options.instance.design.theme.colors:{}
-   });
+export default function ({configs, APP, messages, plugins} ) {
 
 
    // start VueProgressBar
@@ -82,11 +78,13 @@ export default function (APP, plugins ) {
      thickness: '3px',
    });
 
-
+   CoreVue._siteo_config = configs;
    // create store
-   CoreVue.store = StoreInstall(Vue, APP.options.instance);
+   CoreVue.store = createStore(Vue, configs);
+   //CoreVue.store.commit('saveInstanse', APP.options.instance);
+
    // create router
-   CoreVue.router = RouterInstall(Vue, CoreVue.store, APP.options.instance.configs.path )
+   CoreVue.router = createRouter(Vue, CoreVue.store, configs.path )
 
    //sync router with store for access route from store
    sync(CoreVue.store, CoreVue.router );
@@ -101,44 +99,41 @@ export default function (APP, plugins ) {
    // Create VueI18n instance with options
    CoreVue.i18n = new VueI18n({
       silentTranslationWarn: process.env.NODE_ENV === 'development'? false: true, // silent log
-      locale: APP.options.instance.data.lang, // app lang
-      messages: APP.options.messages // set locale messages
+      locale: configs.lang, // app lang
+      messages: messages // set locale messages
     });
 
 
-
-    // connect  vee-validator
-    Vue.use(VeeValidate, {
-      /**
-      With SSR Frameworks like Nuxt, it is recommended to disable automatic injection since it may cause memory leaks due to all the validator instances being created for every component, which is not needed and may slow down your site.
-      https://baianat.github.io/vee-validate/concepts/injections.html#injecting-parent-validator
-
-      */
-      inject: false,
-
-      dictionary: APP.options.messages.validation||false,
-      local: APP.options.instance.data.lang
-     }
-    );
-
-    CoreVue.registerStoreModule = function (name, module, turnOnList) {
-          CoreVue.store.registerModule(name, createModelCRUD(module, turnOnList))
-    };
-
     CoreVue.IconsRegister= IconsRegister;
     // add plugins
+    var PLUGINS = {};
     CoreVue.SiteoAddPlugin = function (plugin) {
-
-      Vue.use(plugin, {$coreVue:CoreVue, $pluginOptions: plugin.options });
-      if (plugin.siteoInstall) {
-        plugin.siteoInstall(CoreVue, plugin.options)
+      if (!plugin.name) {
+        console.log('Plugin has not param plugin.name');
+        return ;
       }
+      if (!PLUGINS[plugin.name]) {
+        // install for Vue
+        PLUGINS[plugin.name] = true;
+        console.log(plugin);
+        Vue.use(plugin, {$coreVue:CoreVue, $pluginOptions: plugin.options, name: plugin.name});
 
+        if (plugin.siteoInstall) {
+          // install special function for siteoInstall (using for SSR)
+          // on SSR components registering one time, but is some deals which need registered every time
+          plugin.siteoInstall(CoreVue, plugin.options);
+        }
+
+        console.log(PLUGINS);
+      } else {
+          console.log(`Plugin ${plugin.name} was loaded early`);
+      }
     };
 
-
     CoreVue.SiteoAddPlugin(APP);
-    if (plugins&&plugins.length) {
+
+    console.log(plugins);
+    if (plugins) {
        for (var i in plugins ) {
           CoreVue.SiteoAddPlugin(plugins[i]);
        }

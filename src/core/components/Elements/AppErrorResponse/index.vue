@@ -10,7 +10,7 @@
     >
         {{message.text}}
     </v-alert>
-    
+
     <slot name="footer"></slot>
   </v-card>
 </template>
@@ -40,6 +40,8 @@ export default {
 
 
   },
+
+  helperValidationError: helperValidationError,
 
   data() {
     return {
@@ -75,7 +77,7 @@ export default {
             if (error_code == 'validatorMessages') {
               for (var name_field in error_description) {
 
-                this.$_add(helperValidationError(error_description, name_field, this).shift(), 'error');
+                this.$_add(this.$options.helperValidationError(error_description, name_field, this).shift(), 'error');
 
               }
               //this.addMessageFromResponse('validatorMessages', );

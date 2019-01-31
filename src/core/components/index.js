@@ -5,4 +5,4 @@ export {default as AppPulseLoader} from './Elements/AppPulseLoader.vue';
 export {default as AppErrorResponse} from './Elements/AppErrorResponse/index.vue';
 export {default as AppMessagesBlock} from './Elements/AppMessagesBlock.js';
 export {default as AppConfirm} from './Elements/AppConfirm.vue';
-export {default as AppForm} from './Elements/AppForm/index.vue';
+export {default as AppSiteoPlugin} from './Elements/AppSiteoPlugin.vue';

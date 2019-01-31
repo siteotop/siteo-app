@@ -1,14 +1,22 @@
 import CorePage from './_extends/page.js';
 import { mapState } from 'vuex'
-
+import services from  '../../store/modules/services';
+import OneService from './OneService.vue';
 export default {
   extends: CorePage,
-  storeName: 'APP_SERVICES',
+
+  asyncData({ store, route }) {
+      store.registerApiModule( 'service', services('WEBSITE_API_URL'));
+      if (store.state.allowAsyncLoad) {
+        return store.dispatch('service/getObject', route.params.objectId);
+      }
+  },
 
   computed: {
     ...mapState({
        objectService: function (state) {
-         return this.$store.state.APP_SERVICES.objectActive;
+         return state.service? state.service.objectActive: {};
+
        }
     }),
     meta_title() {
@@ -26,7 +34,8 @@ export default {
   methods: {
 
     afterFetching() {
-      this.$store.state.APP_INSTANCE.order.services = [this.objectService._id];
+      console.log(this.$store.state);
+      this.$store.state.APP_ORDER.services = [this.objectService._id];
 
 
     }
@@ -34,7 +43,7 @@ export default {
   },
 
   beforeRouteLeave(to, from, next) {
-    this.$store.state.APP_INSTANCE.order.services = [];
+    this.$store.state.APP_ORDER.services = [];
     next();
   },
 
@@ -42,7 +51,7 @@ export default {
       if (this.error) {
         this.catchError();
       }
-      return h('OneService', {props: {objectService: this.objectService, shareWindow: this.shareWindow}})
+      return h(OneService, {props: {objectService: this.objectService, shareWindow: this.shareWindow}})
 
   }
 

@@ -60,7 +60,8 @@
     "webpack-babel-external-helpers": "^0.1.0",
     "webpack-cli": "^3.0.8",
     "webpack-manifest-plugin": "^2.0.3",
-    "webpack-merge": "^4.1.4"
+    "webpack-merge": "^4.1.4",
+    "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
@@ -82,7 +83,7 @@
     "vue-spinner": "^1.0.3",
     "vue2-animate": "^2.0.0",
     "vuedraggable": "^2.16.0",
-    "vuetify": "^1.3.15",
+    "vuetify": "^1.4.2",
     "vuex": "^3.0.1",
     "vuex-router-sync": "^5.0.0"
   },
@@ -93,8 +94,11 @@
   "scripts": {
     "dev": "webpack --config build/base.webpack.config.js",
     "dist": "NODE_ENV=production DIR_RESOURCE=dist   webpack --config build/base.webpack.config.js",
-    "build-server": "webpack --config build/server.webpack.config.js",
     "dist-dev": "NODE_ENV=production DIR_RESOURCE=dev/dist webpack --config build/base.webpack.config.js",
+    "dev-plugins": "webpack --config build/plugins.webpack.config.js",
+    "dist-plugins": "NODE_ENV=production DIR_RESOURCE=dist   webpack --config build/plugins.webpack.config.js",
+    "dist-dev-plugins": "NODE_ENV=production DIR_RESOURCE=dev/dist webpack --config build/plugins.webpack.config.js",
+    "build-server-dev": "webpack --config build/server.webpack.config.js",
     "version-patch": "npm run dist && git add -A && git commit -m \"Compile dist files\"  &&  npm version patch -m 'Upgrade patch  to %s ' && npm publish && git push"
   }
 }

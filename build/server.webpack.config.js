@@ -1,9 +1,11 @@
 
 const path = require('path');
 const merge = require('webpack-merge')
-//const nodeExternals = require('webpack-node-externals')
+const nodeExternals = require('webpack-node-externals')
 const baseConfig = require('./base.webpack.config.js')
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
+
+baseConfig.plugins.push(  new VueSSRServerPlugin());
 
 module.exports = merge(baseConfig, {
   // Укажите точку входа серверной части вашего приложения
@@ -15,7 +17,7 @@ module.exports = merge(baseConfig, {
   target: 'node',
 
   // Для поддержки source map в bundle renderer
-  
+
   // Это сообщает что в серверной сборке следует использовать экспорты в стиле Node
   output: {
     path: path.resolve(__dirname, '../ssr/dist'),
@@ -32,13 +34,11 @@ module.exports = merge(baseConfig, {
     // не выделяйте зависимости, которые должны обрабатываться Webpack.
     // здесь вы можете добавить больше типов файлов, например сырые *.vue файлы
     // нужно также указывать белый список зависимостей изменяющих `global` (например, полифиллы)
-  //  whitelist: /\.css$/
-  //}),
+    // whitelist: /\.css$/
+  //})
 
   // Этот плагин преобразует весь результат серверной сборки
   // в один JSON-файл. Имя по умолчанию будет
   // `vue-ssr-server-bundle.json`
-  //plugins: [
-  //  new VueSSRServerPlugin()
-  //]
+
 })
