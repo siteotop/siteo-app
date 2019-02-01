@@ -41,15 +41,13 @@ module.exports = {
   watch: NODE_ENV ==  'development',  // наблюдение за изменяемыми файлами
 
   entry: {
-    // index without template
-  //  'siteo-core': './src/core.js',
-    // index with template
+
     'polyfill': '@babel/polyfill',
-    'core': './src/client.js',
     'app': './src/app/index.js',
     'locale-en': './src/core/i18n/en.js',
-    // index with template admin
-  //  'siteo-template-admin': './src/template-admin.js',
+    'pages': './src/plugins/pages',
+    'core': './src/client.js',
+
 
   },
 

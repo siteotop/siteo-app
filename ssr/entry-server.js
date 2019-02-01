@@ -1,6 +1,6 @@
 // entry-server.js
 import  createApp  from '../src/core';
-import  PluginPageBlocks  from '../src/plugins/page-blocks';
+import  PluginPageBlocks  from '../src/plugins/pages';
 import  siteoApp  from '../src/app';
 import  SiteoLocalEN  from '../src/core/i18n/en';
 import  axios from 'axios';
