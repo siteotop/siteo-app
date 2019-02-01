@@ -5,8 +5,8 @@ const fs = require('fs');
 const configsAPI = require('./configs');
 
 const { createBundleRenderer } = require('vue-server-renderer');
-const template = fs.readFileSync('./ssr/index.template.html', 'utf-8');
-const templateIndex = fs.readFileSync('./ssr/index.html', 'utf-8');
+const template = fs.readFileSync('./ssr/index.ssr.html', 'utf-8');
+const templateIndex = fs.readFileSync('./ssr/index.ssr.plain.html', 'utf-8');
 const serverBundle = require('./dist/vue-ssr-server-bundle.json')
 const lodashTemplate = require ('lodash/template');
 const compiled = lodashTemplate(templateIndex);
@@ -16,16 +16,6 @@ const renderer = createBundleRenderer(serverBundle, {
   template, // (опционально) шаблон страницы
   //clientManifest // (опционально) манифест клиентской сборки
 })
-
-const scripts =  require ('./helper/scripts')([
- 'siteo-polyfill.js',
- 'siteo-app.js',
- 'siteo-locale-en.js',
- 'siteo-plugin-page-blocks.js',
- 'siteo-core.js'
-], configsAPI.host_static);
-
-
 
 const NODE_ENV = process.env.NODE_ENV || "production";
 if (NODE_ENV !='production')  {
@@ -41,18 +31,17 @@ server.use(express.static('dist'));
 //const createApp = require('./dist/built-server-bundle.js');
 
 server.get('*', (req, res) => {
-  const context = { url: req.url, scripts: scripts, configsAPI:configsAPI};
+  console.log(req.url);
+  const context = { url: req.url, configsAPI:configsAPI};
 
   renderer.renderToString(context, (err, html) => {
     if (err) {
-       console.log(err);
-
+      //console.log(err);
       //console.log(JSON.stringify(err));
       console.log(err.code);
       const templateError = compiled({
         __SITEO_INSTANCE__: JSON.stringify(err.__SITEO_INSTANCE__||{}),
         configs:JSON.stringify(configsAPI),
-        scripts:scripts
       });
 
 

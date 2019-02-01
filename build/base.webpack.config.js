@@ -4,12 +4,12 @@
 */
 
 const path = require('path');
-
 const webpack = require('webpack');
 
 const VERSION = process.env.npm_package_version;
 const NODE_ENV = process.env.NODE_ENV || "development";
 const DIR_RESOURCE = (NODE_ENV == "development")? '/dev': ('/v'+VERSION);
+const SITEO_CONFIG = require(path.resolve(__dirname, '../ssr/configs.js'));
 
 /**
   From 15 version  of vue-loader, we need use  VueLoaderPlugin
@@ -25,6 +25,7 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
   minimization plugin
 */
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 /**
   Cpoy files
@@ -129,23 +130,70 @@ optimization: {
 
       plugins: [
 
+        /**
+          index.html for siteo without ssr rendering
+        */
+        new HtmlWebpackPlugin({
+          template: 'build/template.html',
+          filename: path.resolve(__dirname, "../public")+ '/index.html',
+          //inject: false,
+          templateParameters: {
+              title: "siteo-template",
+              body_content: '<div id="app"></div>',
+              body_state: '',
+              siteo_config: JSON.stringify(SITEO_CONFIG),
+              siteo_instance: ''
+          }
+        }),
 
+        /**
+          index.ssr.html for siteo which is genereting using ssr
+        */
+        new HtmlWebpackPlugin({
+          template: 'build/template.html',
+          filename: path.resolve(__dirname, "../ssr")+ '/index.ssr.html',
+          //inject: false,
+          templateParameters: {
+              title: "siteo-template",
+              body_content: '<!--vue-ssr-outlet-->',
+              body_state: '{{{renderState()}}}',
+              siteo_config: '{{{JSON.stringify(configsAPI)}}}',
+              siteo_instance: ''
+          }
+        }),
 
-            new webpack.DefinePlugin({
-              'process.env': {
-                NODE_ENV: JSON.stringify(NODE_ENV),
-                VERSION: JSON.stringify(VERSION)
-              }
-            }),
-            /**Vue Loader */
-            new VueLoaderPlugin(),
+        /**
+          index.ssr.plain.html for siteo which is genereting using ssr and start how plain index html
+        */
+        new HtmlWebpackPlugin({
+          template: 'build/template.html',
+          filename: path.resolve(__dirname, "../ssr")+ '/index.ssr.plain.html',
+          //inject: false,
+          templateParameters: {
+              title: "siteo-template",
+              body_content: '<div id="app"></div>',
+              body_state: '',
+              siteo_config: '<%= configs %>',
+              siteo_instance: 'window.__SITEO_INSTANCE__ = <%= __SITEO_INSTANCE__ %>'
 
-            new MiniCssExtractPlugin({
-                // Options similar to the same options in webpackOptions.output
-                // both options are optional
-                filename: "[name].css",
-                chunkFilename: "[id].css"
-              }),
+          }
+        }),
+
+        new webpack.DefinePlugin({
+          'process.env': {
+            NODE_ENV: JSON.stringify(NODE_ENV),
+            VERSION: JSON.stringify(VERSION)
+          }
+        }),
+        /**Vue Loader */
+        new VueLoaderPlugin(),
+
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: "[name].css",
+            chunkFilename: "[id].css"
+          }),
 
 
 

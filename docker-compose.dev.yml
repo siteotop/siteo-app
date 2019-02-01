@@ -11,6 +11,8 @@ services:
         - ./dist:/app/dist
         - ./src:/app/src
         - ./build:/app/build
+        - ./public:/app/public
+        - ./ssr:/app/ssr
         #- ./dist:/app/dist
       entrypoint:
         - npm
@@ -50,6 +52,7 @@ services:
         - ./src:/app/src
         - ./build:/app/build
         - ./ssr:/app/ssr
+        - ./public:/app/public
         #- ./dist:/app/dist
       depends_on:
         - webpackdevserver
