@@ -7,8 +7,9 @@ const path = require('path');
 
 const webpack = require('webpack');
 
+const VERSION = process.env.npm_package_version;
 const NODE_ENV = process.env.NODE_ENV || "development";
-const DIR_RESOURCE = process.env.DIR_RESOURCE || 'dev/dist';
+const DIR_RESOURCE = (NODE_ENV == "development")? '/dev': ('/v'+VERSION);
 
 /**
   From 15 version  of vue-loader, we need use  VueLoaderPlugin
@@ -53,8 +54,8 @@ module.exports = {
   },
 
   output: {
-    path: path.resolve(__dirname, '../' + DIR_RESOURCE),
-    publicPath: '/dist/',
+    path: path.resolve(__dirname, '../dist' + DIR_RESOURCE),
+    publicPath: DIR_RESOURCE +'/',
     filename: 'siteo-[name].js',
     library: "siteo-[name]",
 		libraryTarget: "umd",
@@ -135,8 +136,7 @@ optimization: {
             new webpack.DefinePlugin({
               'process.env': {
                 NODE_ENV: JSON.stringify(NODE_ENV),
-                //DIR_RESOURCE: JSON.stringify(DIR_RESOURCE)
-              //  REQUIRED_VUE: JSON.stringify('2.5.8')
+                VERSION: JSON.stringify(VERSION)
               }
             }),
             /**Vue Loader */
