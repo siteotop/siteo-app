@@ -41,7 +41,7 @@
     "file-loader": "^1.1.11",
     "lodash.startcase": "^4.4.0",
     "mini-css-extract-plugin": "^0.4.5",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.11.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^2.1.5",
     "precss": "^3.1.2",
@@ -98,7 +98,7 @@
     "dev-plugins": "webpack --config build/plugins.webpack.config.js",
     "dist-plugins": "NODE_ENV=production DIR_RESOURCE=dist   webpack --config build/plugins.webpack.config.js",
     "dist-dev-plugins": "NODE_ENV=production DIR_RESOURCE=dev/dist webpack --config build/plugins.webpack.config.js",
-    "build-server-dev": "webpack --config build/server.webpack.config.js",
+    "dev-server": "webpack --config build/server.webpack.config.js",
     "version-patch": "npm run dist && git add -A && git commit -m \"Compile dist files\"  &&  npm version patch -m 'Upgrade patch  to %s ' && npm publish && git push"
   }
 }
