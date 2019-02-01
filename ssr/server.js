@@ -5,8 +5,8 @@ const fs = require('fs');
 const configsAPI = require('./configs');
 
 const { createBundleRenderer } = require('vue-server-renderer');
-const template = fs.readFileSync('./ssr/index.ssr.html', 'utf-8');
-const templateIndex = fs.readFileSync('./ssr/index.ssr.plain.html', 'utf-8');
+const template = fs.readFileSync('./ssr/template/index.ssr.html', 'utf-8');
+const templateIndex = fs.readFileSync('./ssr/template/index.ssr.plain.html', 'utf-8');
 const serverBundle = require('./dist/vue-ssr-server-bundle.json')
 const lodashTemplate = require ('lodash/template');
 const compiled = lodashTemplate(templateIndex);

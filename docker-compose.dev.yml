@@ -55,6 +55,7 @@ services:
         - ./public:/app/public
         #- ./dist:/app/dist
       depends_on:
+        - webpackdev
         - webpackdevserver
 
       entrypoint:

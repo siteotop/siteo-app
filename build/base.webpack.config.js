@@ -35,13 +35,13 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 //var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var PluginsHtml= [];
-
+const html_template= 'build/template.html';
 /**
   index.html for siteo without ssr rendering
 */
 if (!SITEO_CONFIG.ssr) {
     PluginsHtml.push(new HtmlWebpackPlugin({
-     template: 'build/template.html',
+     template:html_template,
      filename: path.resolve(__dirname, "../public")+ '/index.html',
      //inject: false,
      templateParameters: {
@@ -58,8 +58,8 @@ if (!SITEO_CONFIG.ssr) {
     index.ssr.html for siteo which is genereting using ssr
   */
   PluginsHtml.push(new HtmlWebpackPlugin({
-    template: 'build/template.html',
-    filename: path.resolve(__dirname, "../ssr")+ '/index.ssr.html',
+    template: html_template,
+    filename: path.resolve(__dirname, "../ssr/template")+ '/index.ssr.html',
     //inject: false,
     templateParameters: {
         title: `{{{ meta.inject().title.text() }}}
@@ -77,8 +77,8 @@ if (!SITEO_CONFIG.ssr) {
     index.ssr.plain.html for siteo which is genereting using ssr and start how plain index html
   */
   PluginsHtml.push(new HtmlWebpackPlugin({
-    template: 'build/template.html',
-    filename: path.resolve(__dirname, "../ssr")+ '/index.ssr.plain.html',
+    template: html_template,
+    filename: path.resolve(__dirname, "../ssr/template")+ '/index.ssr.plain.html',
     //inject: false,
     templateParameters: {
         title: "<title>siteo-template</title>",
