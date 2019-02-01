@@ -34,6 +34,65 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 //var HtmlWebpackPlugin = require('html-webpack-plugin');
 
+var PluginsHtml= [];
+
+/**
+  index.html for siteo without ssr rendering
+*/
+if (!SITEO_CONFIG.ssr) {
+    PluginsHtml.push(new HtmlWebpackPlugin({
+     template: 'build/template.html',
+     filename: path.resolve(__dirname, "../public")+ '/index.html',
+     //inject: false,
+     templateParameters: {
+         title: "<title>siteo-template</title>",
+         body_content: '<div id="app"></div>',
+         body_state: '',
+         siteo_config: JSON.stringify(SITEO_CONFIG),
+         siteo_instance: ''
+     }
+   }));
+} else {
+
+  /**
+    index.ssr.html for siteo which is genereting using ssr
+  */
+  PluginsHtml.push(new HtmlWebpackPlugin({
+    template: 'build/template.html',
+    filename: path.resolve(__dirname, "../ssr")+ '/index.ssr.html',
+    //inject: false,
+    templateParameters: {
+        title: `{{{ meta.inject().title.text() }}}
+          {{{ meta.inject().meta.text() }}}
+          {{{ meta.inject().link.text() }}}
+          {{{ meta.inject().style.text() }}}`,
+        body_content: '<!--vue-ssr-outlet-->',
+        body_state: '{{{renderState()}}}',
+        siteo_config: '{{{JSON.stringify(configsAPI)}}}',
+        siteo_instance: ''
+    }
+  }));
+
+  /**
+    index.ssr.plain.html for siteo which is genereting using ssr and start how plain index html
+  */
+  PluginsHtml.push(new HtmlWebpackPlugin({
+    template: 'build/template.html',
+    filename: path.resolve(__dirname, "../ssr")+ '/index.ssr.plain.html',
+    //inject: false,
+    templateParameters: {
+        title: "<title>siteo-template</title>",
+        body_content: '<div id="app"></div>',
+        body_state: '',
+        siteo_config: '<%= configs %>',
+        siteo_instance: 'window.__SITEO_INSTANCE__ = <%= __SITEO_INSTANCE__ %>'
+
+    }
+  }));
+
+}
+
+
 
 
 module.exports = {
@@ -130,54 +189,9 @@ optimization: {
 
       plugins: [
 
-        /**
-          index.html for siteo without ssr rendering
-        */
-        new HtmlWebpackPlugin({
-          template: 'build/template.html',
-          filename: path.resolve(__dirname, "../public")+ '/index.html',
-          //inject: false,
-          templateParameters: {
-              title: "siteo-template",
-              body_content: '<div id="app"></div>',
-              body_state: '',
-              siteo_config: JSON.stringify(SITEO_CONFIG),
-              siteo_instance: ''
-          }
-        }),
 
-        /**
-          index.ssr.html for siteo which is genereting using ssr
-        */
-        new HtmlWebpackPlugin({
-          template: 'build/template.html',
-          filename: path.resolve(__dirname, "../ssr")+ '/index.ssr.html',
-          //inject: false,
-          templateParameters: {
-              title: "siteo-template",
-              body_content: '<!--vue-ssr-outlet-->',
-              body_state: '{{{renderState()}}}',
-              siteo_config: '{{{JSON.stringify(configsAPI)}}}',
-              siteo_instance: ''
-          }
-        }),
+        ...PluginsHtml,
 
-        /**
-          index.ssr.plain.html for siteo which is genereting using ssr and start how plain index html
-        */
-        new HtmlWebpackPlugin({
-          template: 'build/template.html',
-          filename: path.resolve(__dirname, "../ssr")+ '/index.ssr.plain.html',
-          //inject: false,
-          templateParameters: {
-              title: "siteo-template",
-              body_content: '<div id="app"></div>',
-              body_state: '',
-              siteo_config: '<%= configs %>',
-              siteo_instance: 'window.__SITEO_INSTANCE__ = <%= __SITEO_INSTANCE__ %>'
-
-          }
-        }),
 
         new webpack.DefinePlugin({
           'process.env': {

@@ -7,9 +7,10 @@ module.exports= {
   // siteo id for example 152710249031417
   siteo_id: '152774684316952',
   path:"",
+  ssr: false,
   // website host https://siteo.top
   host: process.env.NODE_ENV =='production'? "https://siteo.top":'http://localhost:8080',
   lang: 'en',
-  // host static curent or 
+  // host static curent or
   host_static: process.env.NODE_ENV =='production'? "https://siteo.top/dist/":'/',
 }
