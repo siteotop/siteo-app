@@ -1,0 +1,61 @@
+## YAML Template.
+#docker run --rm  -v /var/www/account/siteo-account/public:/app/public -v /var/www/account/siteo-account/dist:/app/dist  account
+version: '3.7'
+services:
+    webpackdev:
+      build:
+        context: ./
+      #  dockerfile: ./docker/Dockerfile-webpack-dev
+      volumes:
+      #  - ../siteo_public/account:/app/public
+        - ./dist:/app/dist
+        - ./src:/app/src
+        - ./build:/app/build
+        #- ./dist:/app/dist
+      entrypoint:
+        - npm
+        - run
+        - dev
+    ########
+    webpackdevserver:
+      #container_name: devserver
+      build:
+        context: ./
+      #  dockerfile: ./docker/Dockerfile-webpack-dev
+      volumes:
+      #  - ../siteo_public/account:/app/public
+        - ./dist:/app/dist
+        - ./src:/app/src
+        - ./build:/app/build
+        - ./ssr:/app/ssr
+        #- ./dist:/app/dist
+      entrypoint:
+        - npm
+        - run
+        - dev-server
+
+############### SERVER
+    devserver:
+      container_name: devserver
+      build:
+        context: ./
+      #  dockerfile: ./docker/Dockerfile-webpack-dev
+      expose:
+        - 8080
+      ports:
+        - "8080:8080"
+      volumes:
+      #  - ../siteo_public/account:/app/public
+        - ./dist:/app/dist
+        - ./src:/app/src
+        - ./build:/app/build
+        - ./ssr:/app/ssr
+        #- ./dist:/app/dist
+      depends_on:
+        - webpackdevserver
+
+      entrypoint:
+        - node
+        - ssr/server.js
+      environment:
+        - NODE_ENV=development
