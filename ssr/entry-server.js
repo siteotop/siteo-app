@@ -6,9 +6,11 @@ import  SiteoLocalEN  from '../src/core/i18n/en';
 import  axios from 'axios';
 import  defaultDesign  from './default.design';
 
+
+
 const get_APP_INSTANCE = (configsAPI)=>{
     //console.log(configsAPI.api_url+'/websites/'+configsAPI.siteo_id);
-    return axios.get(configsAPI.api_url+'/websites/'+configsAPI.siteo_id+'/instance', {
+    return axios.get(configsAPI.api_url+'/websites/'+configsAPI.siteo_id+'/instance', {timeout:500}, {
       headers: {'common': { 'Authorization':"Bearer "+ configsAPI.public_token }}
     });
 }

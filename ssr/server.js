@@ -35,8 +35,8 @@ if (NODE_ENV !='production')  {
 
 //const { createBundleRenderer } = require('vue-server-renderer');
 
-server.use(express.static('static'));
-server.use(express.static('dev'));
+server.use(express.static('public'));
+server.use(express.static('dist'));
 // server.js
 //const createApp = require('./dist/built-server-bundle.js');
 
@@ -45,14 +45,17 @@ server.get('*', (req, res) => {
 
   renderer.renderToString(context, (err, html) => {
     if (err) {
-      console.log(err);
+       console.log(err);
+
       //console.log(JSON.stringify(err));
+      console.log(err.code);
       const templateError = compiled({
-        error: '404',
-        __SITEO_INSTANCE__: JSON.stringify(err.__SITEO_INSTANCE__),
+        __SITEO_INSTANCE__: JSON.stringify(err.__SITEO_INSTANCE__||{}),
         configs:JSON.stringify(configsAPI),
         scripts:scripts
       });
+
+
       if (err.code === 404) {
         res.status(404).end(templateError);
       } else {
@@ -64,8 +67,8 @@ server.get('*', (req, res) => {
   })
 
 })
+const PORT = 8080;
+const HOST = '0.0.0.0';
 
-
-server.listen(8080, function() {
-
-});
+server.listen(PORT, HOST);
+console.log(`Running on http://${HOST}:${PORT}`);
