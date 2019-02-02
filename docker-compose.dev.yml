@@ -19,6 +19,23 @@ services:
         - run
         - dev
     ########
+    webpackdevplugins:
+      build:
+        context: ./
+      #  dockerfile: ./docker/Dockerfile-webpack-dev
+      volumes:
+      #  - ../siteo_public/account:/app/public
+        - ./dist:/app/dist
+        - ./src:/app/src
+        - ./build:/app/build
+        - ./public:/app/public
+        - ./ssr:/app/ssr
+        #- ./dist:/app/dist
+      entrypoint:
+        - npm
+        - run
+        - dev-plugins
+    ########
     webpackdevserver:
       #container_name: devserver
       build:
