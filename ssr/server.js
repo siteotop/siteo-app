@@ -5,6 +5,7 @@ const fs = require('fs');
 const configsAPI = require('./configs');
 
 const { createBundleRenderer } = require('vue-server-renderer');
+const defaultInstance =JSON.stringify( require('./default/instance'));
 const template = fs.readFileSync('./ssr/template/index.ssr.html', 'utf-8');
 const templateIndex = fs.readFileSync('./ssr/template/index.ssr.plain.html', 'utf-8');
 const serverBundle = require('./dist/vue-ssr-server-bundle.json')
@@ -38,18 +39,34 @@ server.get('*', (req, res) => {
     if (err) {
       //console.log(err);
       //console.log(JSON.stringify(err));
-      console.log(err.code);
+      console.log(err.code||err.ssr_error_code);
+      if (err.code =='ECONNABORTED') {
+        res.status(500).end(compiled({
+          __SITEO_INSTANCE__: defaultInstance,
+          configs:JSON.stringify(configsAPI),
+        }));
+
+      }
+
+      if (err.ssr_error_code =='no_data_in_response') {
+          res.status(404).end(compiled({
+            __SITEO_INSTANCE__: defaultInstance,
+            configs:JSON.stringify(configsAPI),
+          }));
+
+      }
+
       const templateError = compiled({
-        __SITEO_INSTANCE__: JSON.stringify(err.__SITEO_INSTANCE__||{}),
+        __SITEO_INSTANCE__: JSON.stringify(err.__SITEO_INSTANCE__),
         configs:JSON.stringify(configsAPI),
       });
 
-
-      if (err.code === 404) {
+      
+      if (err.ssr_error_code === 404) {
         res.status(404).end(templateError);
-      } else {
-        res.status(500).end(templateError);
       }
+      res.status(500).end(templateError);
+
     } else {
       res.end(html)
     }

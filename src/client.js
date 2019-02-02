@@ -4,6 +4,14 @@ import  createApp from './core';
 
 //console.log(window['siteo-app']);
 console.log(window['siteo-plugins']);
+
+if (window['siteo-pages']) {
+  if (!window['siteo-plugins']) {
+      window['siteo-plugins'] = {};
+  }
+  window['siteo-plugins']['siteo-pages'] = window['siteo-pages'];
+}
+
 var app= createApp({
     configs: window.__SITEO_CONFIG__,
     APP: window['siteo-app'],

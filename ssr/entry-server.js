@@ -4,7 +4,7 @@ import  PluginPageBlocks  from '../src/plugins/pages';
 import  siteoApp  from '../src/app';
 import  SiteoLocalEN  from '../src/core/i18n/en';
 import  axios from 'axios';
-import  defaultDesign  from './default.design';
+import  defaultDesign  from './default/design';
 
 
 
@@ -22,7 +22,7 @@ export default (context) => {
   // пока всё не будет готово к рендерингу.
   return get_APP_INSTANCE (context.configsAPI).then(response=>{
     if (!response.data.data) {
-       throw response.data;
+       throw {ssr_error_code: 'no_data_in_response' , response: response.data};
     }
       //console.log(response.data);
       // connect configs to public file
@@ -62,7 +62,7 @@ export default (context) => {
 
         // нет подходящих маршрутов, отклоняем с 404
         if (!matchedComponents.length) {
-          return reject({ code: 404, __SITEO_INSTANCE__: response.data  })
+          return reject({ssr_error_code: 404, __SITEO_INSTANCE__: response.data  })
         }
 
         // вызов `asyncData()` на всех соответствующих компонентах
@@ -73,7 +73,7 @@ export default (context) => {
               route: app.$router.currentRoute
 
             }).catch((error)=>{
-              reject({ code: 404 , __SITEO_INSTANCE__: response.data })
+              reject({ ssr_error_code: 404,  __SITEO_INSTANCE__: response.data })
 
             })
           }

@@ -63,9 +63,9 @@ if (!SITEO_CONFIG.ssr) {
     //inject: false,
     templateParameters: {
         title: `{{{ meta.inject().title.text() }}}
-          {{{ meta.inject().meta.text() }}}
-          {{{ meta.inject().link.text() }}}
-          {{{ meta.inject().style.text() }}}`,
+        {{{ meta.inject().meta.text() }}}
+        {{{ meta.inject().link.text() }}}
+        {{{ meta.inject().style.text() }}}`,
         body_content: '<!--vue-ssr-outlet-->',
         body_state: '{{{renderState()}}}',
         siteo_config: '{{{JSON.stringify(configsAPI)}}}',
