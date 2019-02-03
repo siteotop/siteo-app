@@ -2,7 +2,7 @@ var express = require('express');
 var server = express();
 const fs = require('fs');
 
-const configsAPI = require('./configs');
+const configsAPI = require('../build/configs');
 
 const { createBundleRenderer } = require('vue-server-renderer');
 const defaultInstance =JSON.stringify( require('./default/instance'));

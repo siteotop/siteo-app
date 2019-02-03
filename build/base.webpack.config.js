@@ -9,7 +9,7 @@ const webpack = require('webpack');
 const VERSION = process.env.npm_package_version;
 const NODE_ENV = process.env.NODE_ENV || "development";
 const DIR_RESOURCE = (NODE_ENV == "development")? '/dev': ('/v'+VERSION);
-const SITEO_CONFIG = require(path.resolve(__dirname, '../ssr/configs.js'));
+const SITEO_CONFIG = require(path.resolve(__dirname, './configs.js'));
 
 /**
   From 15 version  of vue-loader, we need use  VueLoaderPlugin
@@ -39,7 +39,7 @@ const html_template= 'build/template.html';
 /**
   index.html for siteo without ssr rendering
 */
-if (!SITEO_CONFIG.ssr) {
+if (!SITEO_CONFIG.backend.ssr) {
     PluginsHtml.push(new HtmlWebpackPlugin({
      template:html_template,
      filename: path.resolve(__dirname, "../public")+ '/index.html',
@@ -48,7 +48,7 @@ if (!SITEO_CONFIG.ssr) {
          title: "<title>siteo-template</title>",
          body_content: '<div id="app"></div>',
          body_state: '',
-         siteo_config: JSON.stringify(SITEO_CONFIG),
+         siteo_config: JSON.stringify(SITEO_CONFIG.frontend),
          siteo_instance: ''
      }
    }));
@@ -68,7 +68,7 @@ if (!SITEO_CONFIG.ssr) {
         {{{ meta.inject().style.text() }}}`,
         body_content: '<!--vue-ssr-outlet-->',
         body_state: '{{{renderState()}}}',
-        siteo_config: '{{{JSON.stringify(configsAPI)}}}',
+        siteo_config: '{{{JSON.stringify(configsAPI.frontend)}}}',
         siteo_instance: ''
     }
   }));
