@@ -2,7 +2,8 @@ FROM node:8.15.0-alpine
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY package.json ./
+#VOLUME /app package-lock.json
 COPY *.js ./
 
 RUN npm install

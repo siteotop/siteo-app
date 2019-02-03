@@ -26,8 +26,6 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
   Cpoy files
 */
 
-//const CopyWebpackPlugin = require('copy-webpack-plugin');
-
 
 const siteoConfigs = require(path.resolve(__dirname, './configs.js')).backend;
 

@@ -26,6 +26,7 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+*.sh
 /public/index.html
 /public/assets/*
 /public/plugins/*
