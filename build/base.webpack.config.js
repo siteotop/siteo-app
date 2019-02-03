@@ -4,7 +4,7 @@
 */
 
 const path = require('path');
-const webpack = require('webpack');
+
 
 
 /**
@@ -29,14 +29,14 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 //const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 
-const NODE_ENV = process.env.NODE_ENV || "development";
+const siteoConfigs = require(path.resolve(__dirname, './configs.js')).backend;
 
 
 
 module.exports = {
-  mode:  NODE_ENV,
-  devtool:  NODE_ENV ==  'development' ? "source-map" : false,
-  watch: NODE_ENV ==  'development',  // наблюдение за изменяемыми файлами
+  mode:  siteoConfigs.NODE_ENV,
+  devtool:  siteoConfigs.NODE_ENV ==  'development' ? "source-map" : false,
+  watch: siteoConfigs.NODE_ENV ==  'development',  // наблюдение за изменяемыми файлами
 
 
 
@@ -109,12 +109,7 @@ optimization: {
       plugins: [
 
 
-        new webpack.DefinePlugin({
-          'process.env': {
-             NODE_ENV: JSON.stringify(NODE_ENV),
-            // VERSION: JSON.stringify(VERSION)
-          }
-        }),
+
         /**Vue Loader */
         new VueLoaderPlugin(),
 
@@ -162,7 +157,7 @@ optimization: {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-          NODE_ENV !== 'production'
+          siteoConfigs.NODE_ENV !== 'production'
            ? 'vue-style-loader'
            : MiniCssExtractPlugin.loader,
           'css-loader',
@@ -179,7 +174,7 @@ optimization: {
         use: [
 
           // https://vue-loader.vuejs.org/guide/extract-css.html#webpack-4
-          NODE_ENV !== 'production'
+          siteoConfigs.NODE_ENV !== 'production'
            ? 'vue-style-loader'
            : MiniCssExtractPlugin.loader,
           'css-loader',

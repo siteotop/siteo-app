@@ -19,8 +19,7 @@ const renderer = createBundleRenderer(serverBundle, {
   //clientManifest // (опционально) манифест клиентской сборки
 })
 
-const NODE_ENV = process.env.NODE_ENV || "production";
-if (NODE_ENV !='production')  {
+if (configsAPI.backend.NODE_ENV !='production')  {
    // SSL sertificate not work on local development
     process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 }
@@ -28,7 +27,7 @@ if (NODE_ENV !='production')  {
 //const { createBundleRenderer } = require('vue-server-renderer');
 
 server.use(express.static('public'));
-server.use(express.static('dist'));
+//server.use(express.static('dist'));
 // server.js
 //const createApp = require('./dist/built-server-bundle.js');
 

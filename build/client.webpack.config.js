@@ -4,17 +4,16 @@ const path = require('path');
 const merge = require('webpack-merge');
 const baseConfig = require('./base.webpack.config.js');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-
-const SITEO_CONFIG = require(path.resolve(__dirname, './configs.js'));
-
 const html_template= 'build/template.html';
 
+const siteoConfigs = require(path.resolve(__dirname, './configs.js'));
+const webpack = require('webpack');
 
 
 /**
   index.html for siteo without ssr rendering
 */
-if (!SITEO_CONFIG.backend.ssr) {
+if (!siteoConfigs.backend.ssr) {
     baseConfig.plugins.push(new HtmlWebpackPlugin({
      template:html_template,
      filename: path.resolve(__dirname, "../public")+ '/index.html',
@@ -23,7 +22,7 @@ if (!SITEO_CONFIG.backend.ssr) {
          title: "<title>siteo-template</title>",
          body_content: '<div id="app"></div>',
          body_state: '',
-         siteo_config: JSON.stringify(SITEO_CONFIG.frontend),
+         siteo_config: JSON.stringify(siteoConfigs.frontend),
          siteo_instance: ''
      }
    }));
@@ -67,13 +66,23 @@ if (!SITEO_CONFIG.backend.ssr) {
 
 }
 
+const createDirResource = require('./helper/dirResource');
+const DIR_RESOURCE=createDirResource('assets');
 
-const DIR_RESOURCE=require('./helper/dirResource')('assets');
+
+
+baseConfig.plugins.push(
+ new webpack.DefinePlugin({
+  'process.env': {
+     NODE_ENV: JSON.stringify(siteoConfigs.backend.NODE_ENV),
+     STATIC_PLUGINS: JSON.stringify(siteoConfigs.backend.host_plugins+ createDirResource('plugins') +'/' )
+  }
+}));
 
 module.exports = merge(baseConfig, {
   output: {
     path: path.resolve(__dirname, '../public' + DIR_RESOURCE),
-    publicPath: DIR_RESOURCE +'/',
+    publicPath: siteoConfigs.backend.host_app_js + DIR_RESOURCE +'/',
     filename: 'siteo-[name].js',
     library: "siteo-[name]",
 		libraryTarget: "umd",
