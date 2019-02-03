@@ -13,7 +13,7 @@ export default function (Vue, store, path,  routes) {
           our path is without last "/"
           "" or "/app"
         */
-        base: path+'/',
+        base: path||'/',
         mode: 'history',
         fallback: false,  // для браузеров где нет History Api  (IE9) будет просто открывать новую страницу
         routes: routes,
