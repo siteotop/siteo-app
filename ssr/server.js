@@ -5,7 +5,8 @@ const fs = require('fs');
 const configsAPI = require('../build/configs');
 
 const { createBundleRenderer } = require('vue-server-renderer');
-const defaultInstance =JSON.stringify( require('./default/instance'));
+const defaultInstance = require('./default/instance');
+//const pageExample = require('./default/page-example');
 const template = fs.readFileSync('./ssr/template/index.ssr.html', 'utf-8');
 const templateIndex = fs.readFileSync('./ssr/template/index.ssr.plain.html', 'utf-8');
 const serverBundle = require('./dist/vue-ssr-server-bundle.json')
@@ -37,31 +38,36 @@ server.get('*', (req, res) => {
 
   renderer.renderToString(context, (err, html) => {
     if (err) {
-      //console.log(err);
-      //console.log(JSON.stringify(err));
       console.log(err.code||err.ssr_error_code);
-      if (err.code =='ECONNABORTED') {
-        res.status(500).end(compiled({
-          __SITEO_INSTANCE__: defaultInstance,
-          configs:JSON.stringify(configsAPI),
-        }));
+      var params_template = {
+        __SITEO_INSTANCE__: JSON.stringify({'saveInstanse': err.__SITEO_INSTANCE__|| defaultInstance, 'page/updateModel': { contentStructure: [{
+            $$:'SectionWrap',
+            _props: {
+              _t: 'Error_Title',
+              _d: 'description sdjhfg jasgfd kjgasjkdfg jasg dfjgkasjgdf kgasdf askdfgka',
+              $tc: 'primary',
+              $_t: 'white--text display-4',
+              $_d: 'ma-2 display-1 white--text',
+              $bls: [
+                {
+                  $$:'AppAction',
+                  $bf:'text-xs-center'
 
+                },
+              ]
+            }
+          } ] }}),
+        configs: JSON.stringify(configsAPI.frontend),
+      };
+      const templateError = compiled(params_template);
+
+      if (err.code =='ECONNABORTED') {
+        res.status(500).end(templateError);
       }
 
       if (err.ssr_error_code =='no_data_in_response') {
-          res.status(404).end(compiled({
-            __SITEO_INSTANCE__: defaultInstance,
-            configs:JSON.stringify(configsAPI),
-          }));
-
+          res.status(404).end(templateError);
       }
-
-      const templateError = compiled({
-        __SITEO_INSTANCE__: JSON.stringify(err.__SITEO_INSTANCE__),
-        configs:JSON.stringify(configsAPI),
-      });
-
-      
       if (err.ssr_error_code === 404) {
         res.status(404).end(templateError);
       }
