@@ -1,4 +1,4 @@
-var _PRERENDER = {
+module.exports = {
     _id: '1532775891',
     pid: 'sjh234kjhsdf',
     title: 'Title for  lists and  meta title', //  title for  lists and  meta title
