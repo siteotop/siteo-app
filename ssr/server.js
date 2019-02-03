@@ -32,7 +32,9 @@ server.use(express.static('public'));
 //const createApp = require('./dist/built-server-bundle.js');
 
 server.get('*', (req, res) => {
-  console.log(req.url);
+  //console.log(req.headers);
+  //console.log(configsAPI);
+
   const context = { url: req.url, configsAPI:configsAPI};
 
   renderer.renderToString(context, (err, html) => {

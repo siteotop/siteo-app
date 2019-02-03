@@ -17,15 +17,15 @@ module.exports={
 
    frontend: {
       //public_token: 'env_frontend_public_token',
-      api_url:process.env.HOST_API: 'https://api.siteo.top/v1',
-
+      api_url:process.env.HOST_API || 'https://api.siteo.top/v1',
+      
       /**
         path for vue router
         https://router.vuejs.org/api/#base
       */
       path: "/",
       lang: 'en',
-      host: process.env.NODE_ENV =='production'? "https://siteo.top":'',
+      //host: process.env.NODE_ENV =='production'? "https://siteo.top":'',
 
    }
 }
