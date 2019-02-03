@@ -37,6 +37,7 @@ server.get('*', (req, res) => {
 
   renderer.renderToString(context, (err, html) => {
     if (err) {
+      //console.log(err);
       console.log(err.code||err.ssr_error_code);
       var params_template = {
         __SITEO_INSTANCE__: JSON.stringify({'saveInstanse': err.__SITEO_INSTANCE__|| defaultInstance, 'page/updateModel': { contentStructure: [{
@@ -60,7 +61,7 @@ server.get('*', (req, res) => {
       };
       const templateError = compiled(params_template);
 
-      if (err.code =='ECONNABORTED') {
+      if (err.code =='ECONNABORTED'|| err.code=='ENOTFOUND') {
         res.status(500).end(templateError);
       }
 

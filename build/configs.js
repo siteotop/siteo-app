@@ -1,25 +1,31 @@
 module.exports={
    backend: {
-      token: 'env_ssr_token',
-      domen: 'siteo.top', // domen for "siteo" or "multisiteo"
-      ssr: true,
-      multisiteo: true, // true or false
-      siteo_id: '152774684316952',
-      // full host for static app js example https://static.siteo.top
+      token: process.env.SSR_TOKEN,
+      //// example  'siteo.top'  host for "siteo" or "multisiteo"
+    //  domen: process.env.CORE_HOST,
+      ssr: process.env.SSR,
+      multisiteo: process.env.MULTISITEO || false, // true or false
+     // siteo_id: '',
+
       NODE_ENV:  process.env.NODE_ENV || "development",
-      host_app_js: process.env.NODE_ENV =='production'? "https://static.siteo.top":'',
-      host_plugins: process.env.NODE_ENV =='production'? "https://static.siteo.top":'',
+      // format with https:// example (https://static.siteo.top)
+      host_app_js: process.env.HOST_STATIC || "",
+
+      //format with https:// example (https://static.siteo.top)
+      host_plugins: process.env.HOST_PLUGIN ||'',
    },
 
-
-
-
    frontend: {
-      public_token: 'env_frontend_public_token',
-      api_url: 'https://api.siteo.top/v1',
-      path:"",
+      //public_token: 'env_frontend_public_token',
+      api_url:process.env.HOST_API: 'https://api.siteo.top/v1',
+
+      /**
+        path for vue router
+        https://router.vuejs.org/api/#base
+      */
+      path: "/",
       lang: 'en',
-      host: process.env.NODE_ENV =='production'? "https://siteo.top":'http://localhost:8080',
+      host: process.env.NODE_ENV =='production'? "https://siteo.top":'',
 
    }
 }
