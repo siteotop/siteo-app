@@ -6,10 +6,6 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const VERSION = process.env.npm_package_version;
-const NODE_ENV = process.env.NODE_ENV || "development";
-const DIR_RESOURCE = (NODE_ENV == "development")? '/dev': ('/v'+VERSION);
-const SITEO_CONFIG = require(path.resolve(__dirname, './configs.js'));
 
 /**
   From 15 version  of vue-loader, we need use  VueLoaderPlugin
@@ -25,73 +21,15 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
   minimization plugin
 */
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 /**
   Cpoy files
 */
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-//var HtmlWebpackPlugin = require('html-webpack-plugin');
+//const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-var PluginsHtml= [];
-const html_template= 'build/template.html';
-/**
-  index.html for siteo without ssr rendering
-*/
-if (!SITEO_CONFIG.backend.ssr) {
-    PluginsHtml.push(new HtmlWebpackPlugin({
-     template:html_template,
-     filename: path.resolve(__dirname, "../public")+ '/index.html',
-     //inject: false,
-     templateParameters: {
-         title: "<title>siteo-template</title>",
-         body_content: '<div id="app"></div>',
-         body_state: '',
-         siteo_config: JSON.stringify(SITEO_CONFIG.frontend),
-         siteo_instance: ''
-     }
-   }));
-} else {
 
-  /**
-    index.ssr.html for siteo which is genereting using ssr
-  */
-  PluginsHtml.push(new HtmlWebpackPlugin({
-    template: html_template,
-    filename: path.resolve(__dirname, "../ssr/template")+ '/index.ssr.html',
-    //inject: false,
-    templateParameters: {
-        title: `{{{ meta.inject().title.text() }}}
-        {{{ meta.inject().meta.text() }}}
-        {{{ meta.inject().link.text() }}}
-        {{{ meta.inject().style.text() }}}`,
-        body_content: '<!--vue-ssr-outlet-->',
-        body_state: '{{{renderState()}}}',
-        siteo_config: '{{{JSON.stringify(configsAPI.frontend)}}}',
-        siteo_instance: ''
-    }
-  }));
-
-  /**
-    index.ssr.plain.html for siteo which is genereting using ssr and start how plain index html
-  */
-  PluginsHtml.push(new HtmlWebpackPlugin({
-    template: html_template,
-    filename: path.resolve(__dirname, "../ssr/template")+ '/index.ssr.plain.html',
-    //inject: false,
-    templateParameters: {
-        title: "<title>siteo-template</title>",
-        body_content: '<div id="app"></div>',
-        body_state: '',
-        siteo_config: '<%= configs %>',
-        siteo_instance: 'window.__SITEO_INSTANCE__ = <%= __SITEO_INSTANCE__ %>'
-
-    }
-  }));
-
-}
-
+const NODE_ENV = process.env.NODE_ENV || "development";
 
 
 
@@ -100,26 +38,7 @@ module.exports = {
   devtool:  NODE_ENV ==  'development' ? "source-map" : false,
   watch: NODE_ENV ==  'development',  // наблюдение за изменяемыми файлами
 
-  entry: {
 
-    'polyfill': '@babel/polyfill',
-    'app': './src/app/index.js',
-    'locale-en': './src/core/i18n/en.js',
-    'pages': './src/plugins/pages',
-    'core': './src/client.js',
-
-
-  },
-
-  output: {
-    path: path.resolve(__dirname, '../dist' + DIR_RESOURCE),
-    publicPath: DIR_RESOURCE +'/',
-    filename: 'siteo-[name].js',
-    library: "siteo-[name]",
-		libraryTarget: "umd",
-    libraryExport: 'default'
-
-  },
 
   watchOptions: {
       aggregateTimeout: 500,
@@ -190,13 +109,10 @@ optimization: {
       plugins: [
 
 
-        ...PluginsHtml,
-
-
         new webpack.DefinePlugin({
           'process.env': {
-            NODE_ENV: JSON.stringify(NODE_ENV),
-            VERSION: JSON.stringify(VERSION)
+             NODE_ENV: JSON.stringify(NODE_ENV),
+            // VERSION: JSON.stringify(VERSION)
           }
         }),
         /**Vue Loader */
@@ -208,10 +124,6 @@ optimization: {
             filename: "[name].css",
             chunkFilename: "[id].css"
           }),
-
-
-
-            // new HtmlWebpackPlugin()
 
       ],
 
@@ -236,7 +148,7 @@ optimization: {
         include: [
             path.resolve(__dirname, '../src'),
             path.resolve(__dirname, '../node_modules/vue-awesome'),
-          //  path.resolve(__dirname, 'node_modules/vuetify/src'),
+           //  path.resolve(__dirname, 'node_modules/vuetify/src'),
             path.resolve(__dirname, '../node_modules/vuetify/es5/components'),
           ]
       },

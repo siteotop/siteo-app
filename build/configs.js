@@ -5,6 +5,8 @@ module.exports={
       ssr: true,
       multisiteo: true, // true or false
       siteo_id: '152774684316952',
+      folder_client: 'public',
+      host_app_js: process.env.NODE_ENV =='production'? "https://static.siteo.top":'',
    },
 
    frontend: {
@@ -13,6 +15,6 @@ module.exports={
       path:"",
       lang: 'en',
       host: process.env.NODE_ENV =='production'? "https://siteo.top":'http://localhost:8080',
-      host_static: process.env.NODE_ENV =='production'? "https://static.siteo.top":'',
+
    }
 }

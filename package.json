@@ -94,9 +94,9 @@
     "IE 11"
   ],
   "scripts": {
-    "dev": "webpack --config build/base.webpack.config.js",
-    "dist": "NODE_ENV=production DIR_RESOURCE=dist   webpack --config build/base.webpack.config.js",
-    "dist-dev": "NODE_ENV=production DIR_RESOURCE=dev/dist webpack --config build/base.webpack.config.js",
+    "dev": "webpack --config build/client.webpack.config.js",
+    "dist": "NODE_ENV=production DIR_RESOURCE=dist   webpack --config build/client.webpack.config.js",
+    "dist-dev": "NODE_ENV=production DIR_RESOURCE=dev/dist webpack --config build/client.webpack.config.js",
     "dev-plugins": "webpack --config build/plugins.webpack.config.js",
     "dist-plugins": "NODE_ENV=production DIR_RESOURCE=dist   webpack --config build/plugins.webpack.config.js",
     "dist-dev-plugins": "NODE_ENV=production DIR_RESOURCE=dev/dist webpack --config build/plugins.webpack.config.js",

@@ -4,6 +4,10 @@ const merge = require('webpack-merge')
 //const nodeExternals = require('webpack-node-externals')
 const baseConfig = require('./base.webpack.config.js')
 baseConfig.entry = {};
+
+const DIR_RESOURCE=require('./helper/dirResource')('plugins');
+
+
 module.exports = merge(baseConfig, {
   // Укажите точку входа серверной части вашего приложения
   entry: {
@@ -14,8 +18,8 @@ module.exports = merge(baseConfig, {
   },
 
   output: {
-    //path: path.resolve(__dirname, '../' + DIR_RESOURCE),
-    //publicPath: '/dist/',
+    path: path.resolve(__dirname, '../public' + DIR_RESOURCE),
+    publicPath: DIR_RESOURCE +'/',
     filename: 'siteo-plugin-[name].js',
     library: ['siteo-plugins', "[name]"],
 		libraryTarget: "umd",

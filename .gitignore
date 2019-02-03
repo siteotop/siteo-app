@@ -3,6 +3,7 @@ node_modules
 /dist/dev
 /dist/*/*
 
+
 # SSR
 /ssr/dist
 
@@ -26,4 +27,8 @@ yarn-error.log*
 *.sln
 *.sw*
 /public/index.html
+/public/assets/*
+/public/plugins/*
+
+
 /ssr/*.html
