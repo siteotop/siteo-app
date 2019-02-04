@@ -7,7 +7,7 @@ services:
     siteotemplate:
       container_name: siteotemplate
       networks:
-        siteo_api_network:
+        siteo_template_network:
          aliases:
           - siteotemplate.siteo_template_network
 

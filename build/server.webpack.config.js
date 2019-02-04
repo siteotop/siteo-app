@@ -4,7 +4,7 @@ const merge = require('webpack-merge')
 const nodeExternals = require('webpack-node-externals')
 const baseConfig = require('./base.webpack.config.js')
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
-const webpack = require('webpack');
+
 // Этот плагин преобразует весь результат серверной сборки
 // в один JSON-файл. Имя по умолчанию будет
 // `vue-ssr-server-bundle.json`
@@ -12,11 +12,6 @@ const configsBackend = require(path.resolve(__dirname, './configs.js')).backend;
 
 
 baseConfig.plugins.push( new VueSSRServerPlugin());
-baseConfig.plugins.push( new webpack.DefinePlugin({
-  'process.env': {
-     NODE_ENV: JSON.stringify(configsBackend.NODE_ENV)
-  }
-}));
 
 module.exports = merge(baseConfig, {
   // Укажите точку входа серверной части вашего приложения

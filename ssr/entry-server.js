@@ -22,7 +22,7 @@ export default (context) => {
   // пока всё не будет готово к рендерингу.
 
   return get_APP_INSTANCE (
-      context.configsAPI.frontend.api_url,
+      context.configsAPI.backend.api_url,
       context.configsAPI.backend.siteo_id,
       context.configsAPI.backend.token)
       .then(response=>{

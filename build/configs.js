@@ -13,12 +13,12 @@ module.exports={
 
       //format with https:// example (https://static.siteo.top)
       host_plugins: process.env.HOST_PLUGIN ||'',
+
+      api_url:process.env.HOST_API || 'https://api.siteo.top/v1',
    },
 
    frontend: {
-      //public_token: 'env_frontend_public_token',
-      api_url:process.env.HOST_API || 'https://api.siteo.top/v1',
-
+        
       /**
         path for vue router
         https://router.vuejs.org/api/#base
