@@ -26,15 +26,13 @@ if (configsAPI.backend.NODE_ENV !='production')  {
 
 //const { createBundleRenderer } = require('vue-server-renderer');
 
-server.use(express.static('public'));
+server.use(express.static('dist'));
 //server.use(express.static('dist'));
 // server.js
 //const createApp = require('./dist/built-server-bundle.js');
 
 server.get('*', (req, res) => {
-  //console.log(req.headers);
-  //console.log(configsAPI);
-
+  //console.log(r);
   const context = { url: req.url, configsAPI:configsAPI};
 
   renderer.renderToString(context, (err, html) => {
@@ -85,4 +83,5 @@ const PORT = 8080;
 const HOST = '0.0.0.0';
 
 server.listen(PORT, HOST);
+console.log(`Running with ${configsAPI.backend.NODE_ENV} mode`);
 console.log(`Running on http://${HOST}:${PORT}`);

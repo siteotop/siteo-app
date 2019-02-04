@@ -17,7 +17,9 @@ services:
       entrypoint:
         - npm
         - run
-        - dev
+        - frontend
+      env_file: ../siteo_configs/siteo-template/main.env
+
     ########
     webpackdevplugins:
       build:
@@ -34,7 +36,8 @@ services:
       entrypoint:
         - npm
         - run
-        - dev-plugins
+        - plugins
+      env_file: ../siteo_configs/siteo-template/main.env
     ########
     webpackdevserver:
       #container_name: devserver
@@ -51,8 +54,8 @@ services:
       entrypoint:
         - npm
         - run
-        - dev-server
-
+        - backend
+      env_file: ../siteo_configs/siteo-template/main.env
 ############### SERVER
     devserver:
       container_name: devserver
@@ -76,7 +79,8 @@ services:
         - webpackdevserver
 
       entrypoint:
-        - node
-        - ssr/server.js
-      environment:
-        - NODE_ENV=development
+        - npm
+        - run
+        - server
+
+      env_file: ../siteo_configs/siteo-template/main.env

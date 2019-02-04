@@ -1,7 +1,7 @@
 
-module.exports = function generateDirResource(folder) {
+module.exports = function generateDirResource(folder, NODE_ENV) {
 
   const VERSION = process.env.npm_package_version;
-  const NODE_ENV = process.env.NODE_ENV || "development";
-  return  (NODE_ENV == "development")? `/${folder}/dev`: `/${folder}/v${VERSION}`;
+
+  return  (NODE_ENV == "production")? `/${folder}/v${VERSION}`:`/${folder}/dev`;
 }

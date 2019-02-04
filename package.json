@@ -93,13 +93,10 @@
     "IE 11"
   ],
   "scripts": {
-    "dev": "webpack --config build/client.webpack.config.js",
-    "dist": "NODE_ENV=production DIR_RESOURCE=dist   webpack --config build/client.webpack.config.js",
-    "dist-dev": "NODE_ENV=production DIR_RESOURCE=dev/dist webpack --config build/client.webpack.config.js",
-    "dev-plugins": "webpack --config build/plugins.webpack.config.js",
-    "dist-plugins": "NODE_ENV=production DIR_RESOURCE=dist   webpack --config build/plugins.webpack.config.js",
-    "dist-dev-plugins": "NODE_ENV=production DIR_RESOURCE=dev/dist webpack --config build/plugins.webpack.config.js",
-    "dev-server": "webpack --config build/server.webpack.config.js",
+    "frontend": "webpack --config build/client.webpack.config.js",
+    "plugins": "webpack --config build/plugins.webpack.config.js",
+    "backend": "webpack --config build/server.webpack.config.js",
+    "server": "node ssr/server.js",
     "version-patch": "npm run dist && git add -A && git commit -m \"Compile dist files\"  &&  npm version patch -m 'Upgrade patch  to %s ' && npm publish && git push"
   }
 }

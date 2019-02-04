@@ -6,7 +6,7 @@ const baseConfig = require('./base.webpack.config.js')
 
 
 const configsBackend = require(path.resolve(__dirname, './configs.js')).backend;
-const DIR_RESOURCE=require('./helper/dirResource')('plugins');
+const DIR_RESOURCE=require('./helper/dirResource')('plugins', configsBackend.NODE_ENV);
 
 
 module.exports = merge(baseConfig, {
@@ -19,7 +19,7 @@ module.exports = merge(baseConfig, {
   },
 
   output: {
-    path: path.resolve(__dirname, '../public' + DIR_RESOURCE),
+    path: path.resolve(__dirname, '../dist' + DIR_RESOURCE),
     publicPath: configsBackend.host_plugins + DIR_RESOURCE +'/',
     filename: 'siteo-plugin-[name].js',
     library: ['siteo-plugins', "[name]"],
