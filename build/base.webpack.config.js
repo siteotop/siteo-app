@@ -110,7 +110,7 @@ optimization: {
          new webpack.DefinePlugin({
           'process.env': {
              NODE_ENV: JSON.stringify(siteoConfigs.NODE_ENV),
-             HOST_API: JSON.stringify(siteoConfigs.HOST_API),
+             HOST_API: JSON.stringify(siteoConfigs.api_url),
              STATIC_PLUGINS: JSON.stringify(siteoConfigs.host_plugins+ createDirResource('plugins', siteoConfigs.NODE_ENV) +'/' )
           }
         }),

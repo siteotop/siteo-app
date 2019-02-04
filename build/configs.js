@@ -18,7 +18,7 @@ module.exports={
    },
 
    frontend: {
-        
+
       /**
         path for vue router
         https://router.vuejs.org/api/#base
