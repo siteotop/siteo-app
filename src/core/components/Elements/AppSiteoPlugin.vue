@@ -51,7 +51,7 @@ export default {
         // load plugin
         console.log(this.pluginName);
         // https://some-domen.com/plugins/+this.pluginName
-        var filename = this.$root.$options._siteo_config.host_static+this.fullPluginName+'.js';
+        var filename = process.env.STATIC_PLUGINS + this.fullPluginName+'.js';
         //console.log(this);
         var self = this;
         this.$root.$options.$script(filename).then((data)=>{

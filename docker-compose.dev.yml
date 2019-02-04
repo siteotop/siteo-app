@@ -1,0 +1,86 @@
+## YAML Template.
+#docker run --rm  -v /var/www/account/siteo-account/public:/app/public -v /var/www/account/siteo-account/dist:/app/dist  account
+version: '3.7'
+services:
+    webpackdev:
+      build:
+        context: ./
+      #  dockerfile: ./docker/Dockerfile-webpack-dev
+      volumes:
+      #  - ../siteo_public/account:/app/public
+        - ./dist:/app/dist
+        - ./src:/app/src
+        - ./build:/app/build
+        - ./public:/app/public
+        - ./ssr:/app/ssr
+        #- ./dist:/app/dist
+      entrypoint:
+        - npm
+        - run
+        - frontend
+      env_file: ../siteo_configs/siteo-template/main.env
+
+    ########
+    webpackdevplugins:
+      build:
+        context: ./
+      #  dockerfile: ./docker/Dockerfile-webpack-dev
+      volumes:
+      #  - ../siteo_public/account:/app/public
+        - ./dist:/app/dist
+        - ./src:/app/src
+        - ./build:/app/build
+        - ./public:/app/public
+        - ./ssr:/app/ssr
+        #- ./dist:/app/dist
+      entrypoint:
+        - npm
+        - run
+        - plugins
+      env_file: ../siteo_configs/siteo-template/main.env
+    ########
+    webpackdevserver:
+      #container_name: devserver
+      build:
+        context: ./
+      #  dockerfile: ./docker/Dockerfile-webpack-dev
+      volumes:
+      #  - ../siteo_public/account:/app/public
+        - ./dist:/app/dist
+        - ./src:/app/src
+        - ./build:/app/build
+        - ./ssr:/app/ssr
+        #- ./dist:/app/dist
+      entrypoint:
+        - npm
+        - run
+        - backend
+      env_file: ../siteo_configs/siteo-template/main.env
+############### SERVER
+    devserver:
+      container_name: devserver
+      build:
+        context: ./
+      #  dockerfile: ./docker/Dockerfile-webpack-dev
+      expose:
+        - 8080
+      ports:
+        - "8080:8080"
+      volumes:
+      #  - ../siteo_public/account:/app/public
+        - ./dist:/app/dist
+        - ./src:/app/src
+        - ./build:/app/build
+        - ./ssr:/app/ssr
+        - ./public:/app/public
+        #- ./dist:/app/dist
+      depends_on:
+        - webpackdev
+        - webpackdevserver
+
+      entrypoint:
+        - npm
+        - run
+        - server
+
+      env_file: ../siteo_configs/siteo-template/main.env

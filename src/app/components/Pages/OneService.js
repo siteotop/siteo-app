@@ -28,7 +28,7 @@ export default {
     },
 
     canonical() {
-      return this.$store.getters.CORE_HOST + '/p/'+ this.objectService._id;
+      return this.$store.getters.CORE_HOST + 'p/'+ this.objectService._id;
     }
   },
   methods: {

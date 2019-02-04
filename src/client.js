@@ -4,6 +4,14 @@ import  createApp from './core';
 
 //console.log(window['siteo-app']);
 console.log(window['siteo-plugins']);
+
+if (window['siteo-pages']) {
+  if (!window['siteo-plugins']) {
+      window['siteo-plugins'] = {};
+  }
+  window['siteo-plugins']['siteo-pages'] = window['siteo-pages'];
+}
+
 var app= createApp({
     configs: window.__SITEO_CONFIG__,
     APP: window['siteo-app'],
@@ -16,10 +24,10 @@ var app= createApp({
 
 app.$router.onReady(() => {
 
-  if (window.__INITIAL_STATE__) {
+
     const matchedComponents = app.$router.getMatchedComponents();
-    console.log(matchedComponents);
-    console.log(app.$router.currentRoute);
+
+    // registers all stores for components  
     app.$store.state.allowAsyncLoad = false;
     matchedComponents.map(Component => {
       if (Component.asyncData) {
@@ -31,22 +39,25 @@ app.$router.onReady(() => {
         })
       }
     });
-    app.$store.replaceState(window.__INITIAL_STATE__);
 
-  } else {
-    // fetch _APP_INSTANCE
-    //  app.$store.state.allowAsyncLoad = true;
-    console.log(__SITEO_INSTANCE__);
-    app.$store.commit('saveInstanse', __SITEO_INSTANCE__);
 
+   if (window.__INITIAL_STATE__) {
+        app.$store.replaceState(window.__INITIAL_STATE__);
+   } else {
+    // if no window.__INITIAL_STATE__
+    //all modules from store  are available after $mount()
+    for( var mutation in __SITEO_INSTANCE__) {
+      app.$store.commit(mutation, __SITEO_INSTANCE__[mutation]);
+    }
+
+   }
+
+  // update theme
+  if (app.$store.state.APP_INSTANCE.design.theme
+      &&app.$store.state.APP_INSTANCE.design.theme.colors) {
+    app.$vuetify.theme = app.$store.state.APP_INSTANCE.design.theme.colors;
   }
-
-  app.$vuetify.theme = app.$store.state.APP_INSTANCE.design.theme.colors;
-  // Добавляем хук маршрута для обработки asyncData.
-  // Выполняем его после разрешения первоначального маршрута,
-  // чтобы дважды не загружать данные, которые у нас уже есть.
-  // Используем `router.beforeResolve()`, чтобы все асинхронные компоненты были разрешены.
-  //console.log(app);
   app.$mount('#app');
+  // allow use async load in beforeMount
   app.$store.state.allowAsyncLoad = true;
 })

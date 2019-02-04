@@ -2,11 +2,13 @@ var express = require('express');
 var server = express();
 const fs = require('fs');
 
-const configsAPI = require('./configs');
+const configsAPI = require('../build/configs');
 
 const { createBundleRenderer } = require('vue-server-renderer');
-const template = fs.readFileSync('./ssr/index.template.html', 'utf-8');
-const templateIndex = fs.readFileSync('./ssr/index.html', 'utf-8');
+const defaultInstance = require('./default/instance');
+//const pageExample = require('./default/page-example');
+const template = fs.readFileSync('./ssr/template/index.ssr.html', 'utf-8');
+const templateIndex = fs.readFileSync('./ssr/template/index.ssr.plain.html', 'utf-8');
 const serverBundle = require('./dist/vue-ssr-server-bundle.json')
 const lodashTemplate = require ('lodash/template');
 const compiled = lodashTemplate(templateIndex);
@@ -17,55 +19,69 @@ const renderer = createBundleRenderer(serverBundle, {
   //clientManifest // (опционально) манифест клиентской сборки
 })
 
-const scripts =  require ('./helper/scripts')([
- 'siteo-polyfill.js',
- 'siteo-app.js',
- 'siteo-locale-en.js',
- 'siteo-plugin-page-blocks.js',
- 'siteo-core.js'
-], configsAPI.host_static);
-
-
-
-const NODE_ENV = process.env.NODE_ENV || "production";
-if (NODE_ENV !='production')  {
+if (configsAPI.backend.NODE_ENV !='production')  {
    // SSL sertificate not work on local development
     process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 }
 
 //const { createBundleRenderer } = require('vue-server-renderer');
 
-server.use(express.static('static'));
-server.use(express.static('dev'));
+server.use(express.static('dist'));
+//server.use(express.static('dist'));
 // server.js
 //const createApp = require('./dist/built-server-bundle.js');
 
 server.get('*', (req, res) => {
-  const context = { url: req.url, scripts: scripts, configsAPI:configsAPI};
+  //console.log(r);
+  const context = { url: req.url, configsAPI:configsAPI};
 
   renderer.renderToString(context, (err, html) => {
     if (err) {
-      console.log(err);
-      //console.log(JSON.stringify(err));
-      const templateError = compiled({
-        error: '404',
-        __SITEO_INSTANCE__: JSON.stringify(err.__SITEO_INSTANCE__),
-        configs:JSON.stringify(configsAPI),
-        scripts:scripts
-      });
-      if (err.code === 404) {
-        res.status(404).end(templateError);
-      } else {
+      //console.log(err);
+      console.log(err.code||err.ssr_error_code);
+      var params_template = {
+        __SITEO_INSTANCE__: JSON.stringify({'saveInstanse': err.__SITEO_INSTANCE__|| defaultInstance, 'page/updateModel': { contentStructure: [{
+            $$:'SectionWrap',
+            _props: {
+              _t: 'Error_Title',
+              _d: 'description sdjhfg jasgfd kjgasjkdfg jasg dfjgkasjgdf kgasdf askdfgka',
+              $tc: 'primary',
+              $_t: 'white--text display-4',
+              $_d: 'ma-2 display-1 white--text',
+              $bls: [
+                {
+                  $$:'AppAction',
+                  $bf:'text-xs-center'
+
+                },
+              ]
+            }
+          } ] }}),
+        configs: JSON.stringify(configsAPI.frontend),
+      };
+      const templateError = compiled(params_template);
+
+      if (err.code =='ECONNABORTED'|| err.code=='ENOTFOUND') {
         res.status(500).end(templateError);
       }
+
+      if (err.ssr_error_code =='no_data_in_response') {
+          res.status(404).end(templateError);
+      }
+      if (err.ssr_error_code === 404) {
+        res.status(404).end(templateError);
+      }
+      res.status(500).end(templateError);
+
     } else {
       res.end(html)
     }
   })
 
 })
+const PORT = 8080;
+const HOST = '0.0.0.0';
 
-
-server.listen(8080, function() {
-
-});
+server.listen(PORT, HOST);
+console.log(`Running with ${configsAPI.backend.NODE_ENV} mode`);
+console.log(`Running on http://${HOST}:${PORT}`);

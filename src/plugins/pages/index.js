@@ -7,7 +7,7 @@ import RouteError from './components/Routes/Error.vue';
 
 export default {
 
-  name: 'siteo-plugin-page-blocks',
+  name: 'siteo-pages',
 
   install: function (Vue, options) {
     Vue.component('RouteError', RouteError);

@@ -65,7 +65,7 @@ export default function (Vue, configs)  {
          },
          getters: {
            CORE_HOST() {
-             return  configs.host+configs.path;
+             return  configs.path||'/';
            },
          },
          actions: {
