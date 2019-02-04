@@ -7,7 +7,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const html_template= 'build/template.html';
 
 const siteoConfigs = require(path.resolve(__dirname, './configs.js'));
-const webpack = require('webpack');
 
 
 /**
@@ -69,13 +68,7 @@ const DIR_RESOURCE=createDirResource('assets', siteoConfigs.backend.NODE_ENV);
 
 
 
-baseConfig.plugins.push(
- new webpack.DefinePlugin({
-  'process.env': {
-     NODE_ENV: JSON.stringify(siteoConfigs.backend.NODE_ENV),
-     STATIC_PLUGINS: JSON.stringify(siteoConfigs.backend.host_plugins+ createDirResource('plugins', siteoConfigs.backend.NODE_ENV) +'/' )
-  }
-}));
+
 
 module.exports = merge(baseConfig, {
   output: {
