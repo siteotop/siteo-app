@@ -4,7 +4,7 @@ version: '3.7'
 services:
 
     ############### SERVER
-    siteotemplate:
+    ssrserver:
       container_name: siteotemplate
       networks:
         siteo_template_network:
@@ -31,7 +31,7 @@ services:
         - run
         - server
 
-      env_file: ../siteo_configs/siteo-template/template.env
+      env_file: ./main.env
 
 
 
