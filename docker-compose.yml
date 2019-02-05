@@ -15,9 +15,9 @@ services:
         context: ./
       #  dockerfile: ./docker/Dockerfile-webpack-dev
       expose:
-        - 8080
-      ports:
-        - "8080:8080"
+        - "8080"
+      #ports:
+      #  - "8080:8080"
       volumes:
       #  - ../siteo_public/account:/app/public
         - ./dist:/app/dist
