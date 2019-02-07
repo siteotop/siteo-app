@@ -15,7 +15,7 @@ module.exports={
       host_plugins: process.env.HOST_PLUGIN ||'',
 
       // api with api siteo version
-      api_url:(process.env.HOST_API||'https://api.siteo.top/')+'v1',
+      api_url:(process.env.HOST_API||'https://api.siteo.top')+'/v1',
    },
 
    frontend: {
