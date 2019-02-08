@@ -24,12 +24,11 @@ if (configsAPI.backend.NODE_ENV !='production')  {
     process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 }
 
-//const { createBundleRenderer } = require('vue-server-renderer');
 
+// how turn off x-powered-by
+//https://stackoverflow.com/questions/10717685/how-to-remove-x-powered-by-in-expressjs
+server.disable('x-powered-by');
 server.use(express.static('dist'));
-//server.use(express.static('dist'));
-// server.js
-//const createApp = require('./dist/built-server-bundle.js');
 
 server.get('*', (req, res) => {
   //console.log(r);
