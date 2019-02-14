@@ -186,7 +186,7 @@ const createItems = function () {
 
       getters: {
 
-        lastTid(state, getters) {
+      /*  lastTid(state, getters) {
             var result;
             if (getters.countItems>0) {
               result = _maxBy(state.objects,  getters.nameId);
@@ -196,7 +196,7 @@ const createItems = function () {
             }
 
 
-        },
+        },*/
 
         countItems (state) {
           //console.log(state);
