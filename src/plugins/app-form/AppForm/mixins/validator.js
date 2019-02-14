@@ -14,9 +14,14 @@ export default {
         createValidation(formStructure) {
           var self = this;
           const attrs = {};
+
+
+
           //console.log(self.$validator);
           formStructure.map(function(element, index) {
-              self.$validator.attach(element.name, element.validators )
+
+          // documentation:https://baianat.github.io/vee-validate/api/field.html#api
+              self.$validator.attach( {name: element.name, rules: element.validators } )
               self.atachValidator(element.name, element, index);
               // create attribs attr for method createAttrDictionary()
               attrs[element.name] = element.props.label;
@@ -52,7 +57,7 @@ export default {
           //var key = ;
           this.$watch( 'dataValues.'+element.name, function (value) {
               this.enableForm();
-            console.log(fieldName + ' = '+value  );
+            //console.log(fieldName + ' = '+value  );
             if (element.defaultValue!=value) {
                 if (self.fields[fieldName]) {
                   self.validateOneElement(fieldName, fieldProps, value);
