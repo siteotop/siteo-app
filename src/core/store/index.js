@@ -111,9 +111,14 @@ export default function (Vue, configs)  {
 
          function (error) {
            if (checkObjectResponse(error.response, store)) {
-             // common error 
-             store.dispatch('generateSystemMessage', {text: `Error ${error.response.data.status
-       }: ${error.response.data.error_description}` , type: 'error'});
+             // common error
+             if (error.response.data.error_code=='validatorMessages') {
+
+             } else {
+                store.dispatch('generateSystemMessage', {text: `Error ${error.response.data.status
+         }: ${error.response.data.error_description}` , type: 'error'});
+             }
+
               return Promise.reject(error);
            }
 
