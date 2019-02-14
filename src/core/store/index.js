@@ -110,9 +110,10 @@ export default function (Vue, configs)  {
          },
 
          function (error) {
-           if (!checkObjectResponse(error.response, store)) {
-
-           } else {
+           if (checkObjectResponse(error.response, store)) {
+             // common error 
+             store.dispatch('generateSystemMessage', {text: `Error ${error.response.data.status
+       }: ${error.response.data.error_description}` , type: 'error'});
               return Promise.reject(error);
            }
 
