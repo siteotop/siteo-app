@@ -27,7 +27,7 @@ app.$router.onReady(() => {
 
     const matchedComponents = app.$router.getMatchedComponents();
 
-    // registers all stores for components  
+    // registers all stores for components
     app.$store.state.allowAsyncLoad = false;
     matchedComponents.map(Component => {
       if (Component.asyncData) {
@@ -57,6 +57,7 @@ app.$router.onReady(() => {
       &&app.$store.state.APP_INSTANCE.design.theme.colors) {
     app.$vuetify.theme = app.$store.state.APP_INSTANCE.design.theme.colors;
   }
+  //about  devide code client and SSR  https://bit.ly/2tnfDa4 
   app.$mount('#app');
   // allow use async load in beforeMount
   app.$store.state.allowAsyncLoad = true;

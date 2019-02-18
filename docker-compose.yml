@@ -34,7 +34,7 @@ services:
       env_file: ./main.env
 
 
-
+# network siteo_network must be  created
 networks:
   siteo_template_network:
     external:
