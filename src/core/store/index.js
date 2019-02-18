@@ -29,7 +29,7 @@ export default function (Vue, configs)  {
            pageLoader: false,
            //recaptcha: configs.recaptcha,
            usePablicToken: true,
-           getterToken: 'NAME_MODULE/action' // for example "account/refreshToken"
+           dispacthToken: 'defaultToken' // for example "account/refreshToken"
          },
 
          mutations: {
@@ -49,9 +49,9 @@ export default function (Vue, configs)  {
                  state.drawer = false;
             },
 
-            newGetterToken(state, value) {
-                state.usePablicToken = false;
-                state.getterToken = value;
+            newDispatchToken(state, value) {
+
+                state.dispacthToken = value;
             }
          },
 
@@ -70,17 +70,20 @@ export default function (Vue, configs)  {
          },
          actions: {
 
+           // default place public token for siteo-template
+           defaultToken() {
+              return configs.public_token
+           },
+
+           /**
+            @param APIconfig configs for callCoreApi
+           */
            callAPI({dispatch, state, getters, rootGetters}, APIconfig) {
 
-              if (state.usePablicToken) {
-                APIconfig.access_token = configs.public_token;
-              } else {
-                  console.log(state.getterToken);
-                APIconfig.access_token = rootGetters[state.getterToken];
-
-              }
-
-              return  dispatch('callCoreApi', APIconfig );
+              return dispatch(state.dispacthToken).then(access_token=>{
+                    APIconfig.access_token = access_token;
+                    return  dispatch('callCoreApi', APIconfig );
+              })
 
            },
 
