@@ -64,6 +64,9 @@ export const  getStructureForField = function (fieldName) {
   }
 }
 
+/**
+  @param fieldStructure - structure for  field
+*/
 export const mergeStructureFields = function (fieldStructure) {
    if (fieldStructure.role&&fieldStructure.component) {
      var strucute = getStructureForField(fieldStructure.role);

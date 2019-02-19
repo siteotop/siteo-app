@@ -1,6 +1,5 @@
 <template>
  <v-select v-bind="vComp" v-model="valueData" :items="items">
-
  </v-select>
 </template>
 

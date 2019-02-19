@@ -129,12 +129,14 @@ export default {
         @example #1
           [
             'name_for_MapsSiteoFields',
+
             {
-              name: 'ComponentName', //String or Object
+              component: 'ComponentName', //String or Object
               validators: {'required': true, max:40},
               name: 'name_for_field',
               props: {'prop_for_ComponentName': 'some_value' }
             },
+
             {
               role: 'name_for_MapsSiteoFields',
               component: {name: '', validators: {}, name: '', props:{}}
