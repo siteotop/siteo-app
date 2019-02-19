@@ -19,13 +19,7 @@ services:
       #ports:
       #  - "8080:8080"
       volumes:
-      #  - ../siteo_public/account:/app/public
-        - ./dist:/app/dist
-        - ./src:/app/src
-        - ./build:/app/build
-        - ./ssr:/app/ssr
-        - ./public:/app/public
-        #- ./dist:/app/dist
+        - ./:/app
       entrypoint:
         - npm
         - run

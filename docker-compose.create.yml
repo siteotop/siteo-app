@@ -7,32 +7,24 @@ services:
         context: ./
       #  dockerfile: ./docker/Dockerfile-webpack-dev
       volumes:
-      #  - ../siteo_public/account:/app/public
-        - ./dist:/app/dist
-        - ./src:/app/src
-        - ./build:/app/build
-        - ./public:/app/public
-        - ./ssr:/app/ssr
-        #- ./dist:/app/dist
+        - ./:/app
+        - /app/node_modules
       entrypoint:
         - npm
         - run
         - frontend
       env_file: ./main.env
 
-    ########
+#############################
+  ########
     webpackplugins:
       build:
         context: ./
       #  dockerfile: ./docker/Dockerfile-webpack-dev
       volumes:
-      #  - ../siteo_public/account:/app/public
-        - ./dist:/app/dist
-        - ./src:/app/src
-        - ./build:/app/build
-        - ./public:/app/public
-        - ./ssr:/app/ssr
-        #- ./dist:/app/dist
+        - ./:/app
+        - /app/node_modules
+
       entrypoint:
         - npm
         - run
@@ -45,12 +37,8 @@ services:
         context: ./
       #  dockerfile: ./docker/Dockerfile-webpack-dev
       volumes:
-      #  - ../siteo_public/account:/app/public
-        - ./dist:/app/dist
-        - ./src:/app/src
-        - ./build:/app/build
-        - ./ssr:/app/ssr
-        #- ./dist:/app/dist
+        - ./:/app
+        - /app/node_modules
       entrypoint:
         - npm
         - run
