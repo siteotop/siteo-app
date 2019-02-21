@@ -98,6 +98,8 @@ export default {
 
           this.$set( field_props, 'label', this.$i18n_t('content.'+name+'.l'));
           this.$set( field_props, 'hint',  this.$i18n_t('content.'+name+'.d'));
+          this.$set( field_props, 'error', null);
+          this.$set( field_props, 'errorMessages', []);
       },
 
     }

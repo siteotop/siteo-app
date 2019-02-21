@@ -192,6 +192,7 @@ export default {
     propsStructure(newValue, oldValue) {
       if (newValue.length != oldValue.length ) {
           var self = this;
+          console.log('watch structure');
           this.resetForm();
       }
     }
@@ -222,7 +223,7 @@ export default {
 
     resetForm() {
       console.log(this);
-      this.detachValidator();
+
       var start_data = startFormData();
         for (var i in start_data) {
           this[i] = start_data[i];
@@ -282,11 +283,12 @@ export default {
       const self = this;
 
       this.$validator.validateAll(self.dataValues).then(result => {
+        console.log(result);
             if (!result) {
               console.log('error validation');
               self.stopFormLoader();
               self.formStructure.map(function(element) {
-                  self.validateOneElement(element.name, element.props, self.dataValues[element.name]);
+                  self.validateOneElement(element.name, element.props, self.dataValues[element.name], element.validators);
               });
 
             } else {

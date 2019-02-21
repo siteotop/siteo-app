@@ -1,9 +1,9 @@
 
+
+import { Validator } from 'vee-validate';
+
 export default {
       //$validator: null,
-      $_veeValidate: {
-          validator: 'new'
-      },
 
 
       methods: {
@@ -15,12 +15,12 @@ export default {
           var self = this;
           const attrs = {};
 
+          self.$validator = new Validator();
 
-
-          //console.log(self.$validator);
+          console.log(self.$validator);
           formStructure.map(function(element, index) {
 
-          // documentation:https://baianat.github.io/vee-validate/api/field.html#api
+              // documentation:https://baianat.github.io/vee-validate/api/field.html#api
               self.$validator.attach( {name: element.name, rules: element.validators } )
               self.atachValidator(element.name, element, index);
               // create attribs attr for method createAttrDictionary()
@@ -57,11 +57,12 @@ export default {
           //var key = ;
           this.$watch( 'dataValues.'+element.name, function (value) {
               this.enableForm();
-            //console.log(fieldName + ' = '+value  );
+
             if (element.defaultValue!=value) {
-                if (self.fields[fieldName]) {
-                  self.validateOneElement(fieldName, fieldProps, value);
-                }
+                console.log(fieldName + ' = '+value  );
+
+                  self.validateOneElement(fieldName, fieldProps, value, element.validators);
+
                // enable form if we start change fields
 
             } else {
@@ -70,13 +71,6 @@ export default {
             }
 
             })
-        },
-
-        detachValidator() {
-           for (var name in  this.dataValues) {
-             this.$validator.detach(name);
-           }
-           this.errors.clear();
         },
 
 
@@ -94,13 +88,14 @@ export default {
           validate one element
           @param {Object} fieldProps - element is  formStructure.element.props
         */
-        validateOneElement(fieldName, fieldProps, value){
-          const self = this;
+        validateOneElement(fieldName, fieldProps, value, validators){
+          var self = this;
           //console.log(this.errors);
-          this.$validator.validate(fieldName,  value).then(function(result) {
-             if (!result) {
+          self.$validator.verify(value,  validators, {name: fieldName}).then(function(result) {
+
+            if (!result.valid) {
                 // validation NO
-                self.setErrorForElement(fieldProps,  self.errors.first(fieldName))
+                self.setErrorForElement(fieldProps, result.errors)
               } else {
                  // validation OK
                  self.nulledState(fieldProps);
@@ -110,9 +105,6 @@ export default {
 
             // something went wrong (non-validation related).
           })
-
-
-
         },
 
 
@@ -121,8 +113,12 @@ export default {
            @param {Object} fieldProps - formStructure.element.props
         */
         setErrorForElement(fieldProps, message){
+          console.log(message);
+           //fieldProps.label=message;
+
            fieldProps.error = true;
-           fieldProps.errorMessages =[message];
+           fieldProps.errorMessages =message;
+          // fieldProps.errorMessages.push(message);
         },
 
 
