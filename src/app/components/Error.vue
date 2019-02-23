@@ -23,7 +23,9 @@
 export default {
 
   props : {
-      status: [Number, Object]
+      status: [Number, Object],
+      error_code: String,
+      error_description: String
   },
 
   computed: {
