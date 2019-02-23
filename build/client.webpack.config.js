@@ -5,13 +5,16 @@ const merge = require('webpack-merge');
 const baseConfig = require('./base.webpack.config.js');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const html_template= 'build/template.html';
-
+const webpack = require('webpack');
 const siteoConfigs = require(path.resolve(__dirname, './configs.js'));
 
 
 /**
   index.html for siteo without ssr rendering
 */
+
+const createDirResource = require('./helper/dirResource');
+const DIR_RESOURCE=createDirResource('assets', siteoConfigs.backend.NODE_ENV);
 
 baseConfig.plugins.push(new HtmlWebpackPlugin({
  template:html_template,
@@ -63,10 +66,15 @@ baseConfig.plugins.push(new HtmlWebpackPlugin({
 }));
 
 
-const createDirResource = require('./helper/dirResource');
-const DIR_RESOURCE=createDirResource('assets', siteoConfigs.backend.NODE_ENV);
 
 
+baseConfig.plugins.push( new webpack.DefinePlugin({
+  'process.env': {
+     NODE_ENV: JSON.stringify(siteoConfigs.backend.NODE_ENV),
+     HOST_API: JSON.stringify(siteoConfigs.backend.HOST_API),
+     STATIC_PLUGINS: JSON.stringify(siteoConfigs.host_plugins+ createDirResource('plugins', siteoConfigs.NODE_ENV) +'/' )
+  }
+}));
 
 
 

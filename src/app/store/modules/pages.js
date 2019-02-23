@@ -12,6 +12,7 @@ export default function (parentGetterUrl) {
           meta_og_title: '',
           meta_robots: '',
           url: '',
+          error: false,
           contentStructure: []
       }
     }

@@ -25,8 +25,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 /**
   Cpoy files
 */
-const webpack = require('webpack');
-const createDirResource = require('./helper/dirResource');
+
+
 const siteoConfigs = require(path.resolve(__dirname, './configs.js')).backend;
 
 
@@ -107,13 +107,7 @@ optimization: {
       plugins: [
 
 
-         new webpack.DefinePlugin({
-          'process.env': {
-             NODE_ENV: JSON.stringify(siteoConfigs.NODE_ENV),
-             HOST_API: JSON.stringify(siteoConfigs.api_url),
-             STATIC_PLUGINS: JSON.stringify(siteoConfigs.host_plugins+ createDirResource('plugins', siteoConfigs.NODE_ENV) +'/' )
-          }
-        }),
+
 
         /**Vue Loader */
         new VueLoaderPlugin(),

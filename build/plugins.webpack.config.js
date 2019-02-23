@@ -3,10 +3,9 @@ const path = require('path');
 const merge = require('webpack-merge')
 //const nodeExternals = require('webpack-node-externals')
 const baseConfig = require('./base.webpack.config.js')
-
-
 const configsBackend = require(path.resolve(__dirname, './configs.js')).backend;
 const DIR_RESOURCE=require('./helper/dirResource')('plugins', configsBackend.NODE_ENV);
+
 
 
 module.exports = merge(baseConfig, {

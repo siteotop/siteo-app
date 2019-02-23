@@ -5,7 +5,7 @@ const fs = require('fs');
 const configsAPI = require('../build/configs');
 
 const { createBundleRenderer } = require('vue-server-renderer');
-const generateTemplateError = require('./template-error');
+const generateTemplateError = require('./errors/template');
 const template = fs.readFileSync('./ssr/template/index.ssr.html', 'utf-8');
 const serverBundle = require('./dist/vue-ssr-server-bundle.json')
 
@@ -33,26 +33,9 @@ server.get('*', (req, res) => {
 
   renderer.renderToString(context, (err, html) => {
     if (err) {
-      //console.log(err);
-      console.log(err.code||err.ssr_error_code);
-
-
-      const templateError = generateTemplateError( err.__SITEO_INSTANCE__, configsAPI.frontend );
-
-      if (err.code =='ECONNABORTED'|| err.code=='ENOTFOUND') {
-        res.status(500).end(templateError);
-      }
-
-      if (err.ssr_error_code =='no_data_in_response') {
-          res.status(404).end(templateError);
-      }
-      if (err.ssr_error_code === 404) {
-        res.status(404).end(templateError);
-      }
-      res.status(500).end(templateError);
-
-    } else {
-      res.end(html)
+        const templateError = generateTemplateError(res, err , configsAPI.frontend );
+      } else {
+        res.end(html)
     }
   })
 

@@ -8,10 +8,17 @@ import  defaultDesign  from './default/design';
 
 
 
-const get_APP_INSTANCE = (api_url, siteo_id, public_token )=>{
-
-    return axios.get(api_url+'/websites/'+siteo_id+'/instance', {timeout:500}, {
+const get_APP_INSTANCE = ( siteo_id, public_token )=>{
+    //process.env.HOST_API
+    return axios.get(process.env.HOST_API +'/websites/'+siteo_id+'/instance', {timeout:1500}, {
       headers: {'common': { 'Authorization':"Bearer "+ public_token }}
+    }).catch(function(error){
+      //  console.log(error);
+       if (!error.response) {
+          throw {ssr_error_code: 'AXIOS_ERR_INNER_'+error.code };
+       } else {
+          throw {ssr_error_code: 'AXIOS_ERR_RESPONSE' , response: error.response.data};
+       }
     });
 }
 
@@ -22,12 +29,11 @@ export default (context) => {
   // пока всё не будет готово к рендерингу.
 
   return get_APP_INSTANCE (
-      context.configsAPI.backend.api_url,
       context.configsAPI.backend.siteo_id,
       context.configsAPI.backend.token)
       .then(response=>{
         if (!response.data.data) {
-           throw {ssr_error_code: 'no_data_in_response' , response: response.data};
+           throw {ssr_error_code: 'NO_APP_INSTANCE' , response: response.data};
         }
       // if design not found connect default design
         if (!response.data.design) {
@@ -62,7 +68,7 @@ export default (context) => {
 
           // нет подходящих маршрутов, отклоняем с 404
           if (!matchedComponents.length) {
-            return reject({ssr_error_code: 404, __SITEO_INSTANCE__: response.data  })
+            return reject({ssr_error_code: 'NOT_FOUND_COMPONENTS', __SITEO_INSTANCE__: response.data  })
           }
 
           // вызов `asyncData()` на всех соответствующих компонентах
@@ -73,7 +79,7 @@ export default (context) => {
                 route: app.$router.currentRoute
 
               }).catch((error)=>{
-                reject({ ssr_error_code: 404,  __SITEO_INSTANCE__: response.data })
+                reject({ ssr_error_code: 'NOT_ASYNC_DATA',  __SITEO_INSTANCE__: response.data })
 
               })
             }

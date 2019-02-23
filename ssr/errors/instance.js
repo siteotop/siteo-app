@@ -1,5 +1,5 @@
 
-const design= require('./design');
+const design= require('../default/design');
 
 module.exports= {
 

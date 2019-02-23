@@ -1,6 +1,11 @@
 
 
-module.exports = function(title, description) {
+module.exports = function(error) {
+
+  return {
+      error: error
+  }
+  /*
   return  {
      contentStructure: [{
         $$:'SectionWrap',
@@ -20,6 +25,6 @@ module.exports = function(title, description) {
         }
       }]
 
-  }
+  }*/
 
 }

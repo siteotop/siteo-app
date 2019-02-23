@@ -107,13 +107,13 @@ export default {
 
       render(h ) {
 
-        
-        if (this.error) {
-            return h('RouteError', {props: {status: err.statusError }});
-
-        }
         if (!this.postObject.contentStructure) {
            return h('div', ['loaded']);//h('div',  'not loaded');
+        }
+
+        if (this.postObject.error) {
+          console.log('sdf');
+            return h('RouteError', {props: this.postObject.error});
         }
 
         return h('PageSchema', {
