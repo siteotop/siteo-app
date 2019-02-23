@@ -1,11 +1,54 @@
 
-import CorePage from './_extends/page.js';
+import Loader from '../../../core/components/_mixins/component-loading.js';
+import mixinsAsyncdata from '../_mixins/asyncData';
+
 import { mapState } from 'vuex';
 import pages from  '../../store/modules/pages';
 
 export default {
+  mixins: [Loader, mixinsAsyncdata],
 
-  extends: CorePage,
+  props: {
+      objectId: {
+        type: String,
+        default: '',
+      }
+  },
+
+  data() {
+    return  {
+      error: false,
+      //offsetTop: 0,
+      shareWindow: false
+    }
+  },
+
+
+  watch: {
+
+      objectId(newValue, OldValue) {
+        console.log('change objectId');
+
+      }
+
+  },
+
+
+
+  metaInfo () {
+
+   return {
+      title: this.meta_title,
+      titleTemplate: '%s  - ' + this.$store.state.APP_INSTANCE.data.name,
+      meta: [
+        {name: 'description', vmid: 'description', content: this.meta_description }
+      ],
+      link: [
+      { rel: 'canonical', href: this.canonical },
+      ]
+
+    }
+  },
 
   asyncData({ store, route }) {
       store.registerApiModule( 'page', pages('WEBSITE_API_URL'));
@@ -64,12 +107,11 @@ export default {
 
       render(h ) {
 
-        //console.log('Page ');
-
+        
         if (this.error) {
-          this.catchError();
+            return h('RouteError', {props: {status: err.statusError }});
+
         }
-          //return h(PageError, { props: {status: this.error}  }  )
         if (!this.postObject.contentStructure) {
            return h('div', ['loaded']);//h('div',  'not loaded');
         }
@@ -83,16 +125,16 @@ export default {
               shareWindow: this.shareWindow,
               buttonUp: true
             }
-
-
           })
 
 
 
+      },
+
+
+      renderError (h, err) {
+            return h('RouteError', {props: {status: 500 }});
       }
-
-
-
 
 
 

@@ -1,68 +1,59 @@
-import PagesApi from './components/Pages/Api.js';
-import CorePage from './components/Pages/_extends/page.js';
+import Pages from './components/Pages';
 import RouteItems from './components/Items/index.vue';
 import RouteOrder from './components/Order.vue';
 
 export default function () {
+    return [
+        {
+          name: "indexPage",
+          path:  '/',
+          component: Pages,
+          props: true,
+          meta: {name: 'page'}
+        },
 
-      //https://vuejs.org/v2/api/#renderError
-      CorePage.renderError = function (h, err) {
-          return h('RouteError', {props: {status: err.statusError }});
-      };
+        {
+          name: "services",
+          path:  '/services',
+          component: RouteItems,
+          props: { typeList: 'services' }
+        },
+        {
+          name: "experts",
+          path:  '/experts',
+          component: RouteItems,
+          props: { typeList: 'experts' }
+        },
 
-      return [
-            {
-              name: "indexPage",
-              path:  '/',
-              component: PagesApi,
-              props: true,
-              meta: {name: 'page'}
-            },
+        {
+          name: "posts",
+          path:  '/posts',
+          component: RouteItems,
+          props: { typeList: 'posts' }
+        },
 
-            {
-              name: "services",
-              path:  '/services',
-              component: RouteItems,
-              props: { typeList: 'services' }
-            },
-            {
-              name: "experts",
-              path:  '/experts',
-              component: RouteItems,
-              props: { typeList: 'experts' }
-            },
+        {
+          name: "order",
+          path:  '/go/:typeAction(order|call|recall|chat|links|locations)?',
+          component: RouteOrder,
+          props: true
 
-            {
-              name: "posts",
-              path:  '/posts',
-              component: RouteItems,
-              props: { typeList: 'posts' }
-            },
+        },
 
+        {
+          name: "objectPage",
+          path:  '/:objectId',
+          component: Pages,
+          props: true,
+          meta: {name: 'page'}
+        },
 
-
-            {
-              name: "order",
-              path:  '/go/:typeAction(order|call|recall|chat|links|locations)?',
-              component: RouteOrder,
-              props: true
-
-            },
-
-            {
-              name: "objectPage",
-              path:  '/:objectId',
-              component: PagesApi,
-              props: true,
-              meta: {name: 'page'}
-            },
-
-            {
-               path: "*",
-               name: 'PageError',
-               component: { functional: true, render(h){ return h('RouteError', {props: {status:404}})} } ,
-               meta:{},
-            }
-         ];
+        {
+           path: "*",
+           name: 'PageError',
+           component: { functional: true, render(h){ return h('RouteError', {props: {status:404}})} } ,
+           meta:{},
+        }
+      ];
 
 }
