@@ -56,7 +56,7 @@ baseConfig.plugins.push(new HtmlWebpackPlugin({
       title: "<title>siteo-template</title>",
       body_content: '<div id="app"></div>',
       body_state: '',
-      siteo_config: '<%= configs %>',
+      siteo_config: '<%= __SITEO_CONFIG__ %>',
       siteo_instance: 'window.__SITEO_INSTANCE__ = <%= __SITEO_INSTANCE__ %>'
 
   }

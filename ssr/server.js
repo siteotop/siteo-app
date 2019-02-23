@@ -5,13 +5,10 @@ const fs = require('fs');
 const configsAPI = require('../build/configs');
 
 const { createBundleRenderer } = require('vue-server-renderer');
-const defaultInstance = require('./default/instance');
-//const pageExample = require('./default/page-example');
+const generateTemplateError = require('./template-error');
 const template = fs.readFileSync('./ssr/template/index.ssr.html', 'utf-8');
-const templateIndex = fs.readFileSync('./ssr/template/index.ssr.plain.html', 'utf-8');
 const serverBundle = require('./dist/vue-ssr-server-bundle.json')
-const lodashTemplate = require ('lodash/template');
-const compiled = lodashTemplate(templateIndex);
+
 const renderer = createBundleRenderer(serverBundle, {
   inject:false,
   runInNewContext: false, // рекомендуется
@@ -38,27 +35,9 @@ server.get('*', (req, res) => {
     if (err) {
       //console.log(err);
       console.log(err.code||err.ssr_error_code);
-      var params_template = {
-        __SITEO_INSTANCE__: JSON.stringify({'saveInstanse': err.__SITEO_INSTANCE__|| defaultInstance, 'page/updateModel': { contentStructure: [{
-            $$:'SectionWrap',
-            _props: {
-              _t: 'Error_Title',
-              _d: 'description sdjhfg jasgfd kjgasjkdfg jasg dfjgkasjgdf kgasdf askdfgka',
-              $tc: 'primary',
-              $_t: 'white--text display-4',
-              $_d: 'ma-2 display-1 white--text',
-              $bls: [
-                {
-                  $$:'AppAction',
-                  $bf:'text-xs-center'
 
-                },
-              ]
-            }
-          } ] }}),
-        configs: JSON.stringify(configsAPI.frontend),
-      };
-      const templateError = compiled(params_template);
+
+      const templateError = generateTemplateError( err.__SITEO_INSTANCE__, configsAPI.frontend );
 
       if (err.code =='ECONNABORTED'|| err.code=='ENOTFOUND') {
         res.status(500).end(templateError);

@@ -66,7 +66,7 @@ module.exports = {
        ]
      },
 
-     "AppFooter":{
+     /*"AppFooter":{
        "name":"AppFooter",
        "props":{absolute:true,  inset:true, dark:true, color: 'secondary'},
        "class":[],
@@ -100,6 +100,7 @@ module.exports = {
          }
        ]
      },
+     */
      "AppContent":{
        "name":"AppContent",
        "props":{},
