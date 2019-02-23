@@ -1,5 +1,4 @@
 import PagesApi from './components/Pages/Api.js';
-import OneService from './components/Pages/OneService.js';
 import CorePage from './components/Pages/_extends/page.js';
 import RouteItems from './components/Items/index.vue';
 import RouteOrder from './components/Order.vue';
@@ -40,13 +39,7 @@ export default function () {
               props: { typeList: 'posts' }
             },
 
-            {
-              name: "objectService",
-              path:  '/p/:objectId',
-              component: OneService,
-              props: true
 
-            },
 
             {
               name: "order",
