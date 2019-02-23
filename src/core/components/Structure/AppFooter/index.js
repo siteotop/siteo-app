@@ -20,6 +20,10 @@ export default {
           props: {
             app: true,
             height:'auto',
+            absolute:true,
+            inset:true,
+            dark:true,
+            color: 'secondary',
             ...design.props
           },
           class: design.class
