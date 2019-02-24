@@ -9,7 +9,7 @@ const defaultInstance = require('./instance');
 //get templateError
 module.exports = function (res, err, configs) {
 
-  var error_response = baseErrors(err.code_error);
+  var error_response = baseErrors(err.ssr_error_code);
 
   var params_template = {
     __SITEO_INSTANCE__: JSON.stringify({
@@ -20,5 +20,5 @@ module.exports = function (res, err, configs) {
   };
 
 
-   res.status(error.status).end(compiled(params_template));
+   res.status(error_response.status).end(compiled(params_template));
 }

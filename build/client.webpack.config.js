@@ -72,7 +72,7 @@ baseConfig.plugins.push( new webpack.DefinePlugin({
   'process.env': {
      NODE_ENV: JSON.stringify(siteoConfigs.backend.NODE_ENV),
      HOST_API: JSON.stringify(siteoConfigs.backend.HOST_API),
-     STATIC_PLUGINS: JSON.stringify(siteoConfigs.host_plugins+ createDirResource('plugins', siteoConfigs.NODE_ENV) +'/' )
+     STATIC_PLUGINS: JSON.stringify(siteoConfigs.backend.host_plugins+ createDirResource('plugins', siteoConfigs.backend.NODE_ENV) +'/' )
   }
 }));
 
