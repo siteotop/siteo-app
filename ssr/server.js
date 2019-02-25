@@ -16,35 +16,68 @@ const renderer = createBundleRenderer(serverBundle, {
   //clientManifest // (опционально) манифест клиентской сборки
 })
 
-if (configsAPI.backend.NODE_ENV !='production')  {
-   // SSL sertificate not work on local development
-    process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
+/*
+//SSL sertificate not work on local development
+if (process.env.NODE_ENV =='development')  {
+     process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
+}
+*/
+
+/*
+ how turn off x-powered-by
+ https://stackoverflow.com/questions/10717685/how-to-remove-x-powered-by-in-expressjs
+*/
+server.disable('x-powered-by');
+if (process.env.NODE_ENV=='development') {
+  server.use(express.static('dist'));
 }
 
 
-// how turn off x-powered-by
-//https://stackoverflow.com/questions/10717685/how-to-remove-x-powered-by-in-expressjs
-server.disable('x-powered-by');
-server.use(express.static('dist'));
-
-server.get('*', (req, res) => {
-  //console.log(req);
+const commonResolve = function (req, res, path) {
   console.log(`req.originalUrl=${req.originalUrl}`);
   console.log(`req.baseUrl=${req.baseUrl}`);
-  console.log(`req.path=${req.path}`);
   console.log(`req.hostname=${req.hostname}`);
 
-  const context = { url: req.url, configsAPI:configsAPI, server_token: process.env.SSR_TOKEN};
+  var siteo_id = req.hostname+path ;
+
+  const context = {
+    url: req.url,
+    configsAPI:configsAPI,
+    configs_frontend: {
+      path: path||"/",
+      lang: 'en',
+    },
+    siteo_id:siteo_id,
+    server_token: process.env.SSR_TOKEN
+  };
 
   renderer.renderToString(context, (err, html) => {
     if (err) {
-        const templateError = generateTemplateError(res, err , configsAPI.frontend );
+        const templateError = generateTemplateError(res, err ,context.configs_frontend );
       } else {
         res.end(html)
     }
   })
+}
 
-})
+if (process.env.MULTISITEO) {
+  // many projects  on one hosts
+  server.get('/', (req, res) => {
+    commonResolve(req, res, '')
+  })
+
+  server.get('/:siteoid/*|/:siteoid', (req, res) => {
+     var path = '/'+req.params.siteoid;
+    commonResolve(req, res, path)
+  })
+
+} else {
+   // one project on one host
+    server.get('*', (req, res) => {
+        commonResolve(req, res, '')
+    })
+}
+
 const PORT = 8080;
 const HOST = '0.0.0.0';
 

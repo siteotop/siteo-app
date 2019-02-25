@@ -1,12 +1,7 @@
 module.exports={
    backend: {
-      
-      //// example  'siteo.top'  host for "siteo" or "multisiteo"
-    //  domen: process.env.CORE_HOST,
-      ssr: process.env.SSR,
-      multisiteo: process.env.MULTISITEO || false, // true or false
-     // siteo_id: '',
 
+      
       NODE_ENV:  process.env.NODE_ENV || "production",
       // format with https:// example (https://static.siteo.top)
       host_app_js: process.env.HOST_STATIC || "",

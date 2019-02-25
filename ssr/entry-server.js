@@ -14,7 +14,6 @@ const get_APP_INSTANCE = (siteo_id, server_token)=>{
     if (!server_token) {
         throw {ssr_error_code: 'APP_INSTANCE_ERR_NO_SSR_TOKEN' };
     }
-    console.log(server_token);
 
     if (!siteo_id) {
         throw {ssr_error_code: 'APP_INSTANCE_ERR_NO_SITEO_ID' };
@@ -39,7 +38,7 @@ export default (context) => {
   // пока всё не будет готово к рендерингу.
 
   return get_APP_INSTANCE (
-      context.configsAPI.backend.siteo_id,
+      context.siteo_id,
       context.server_token
       )
       .then(response=>{
@@ -54,7 +53,7 @@ export default (context) => {
 
         // for getting AppInstance we need id for APP_INSTANCE
         var app = createApp( {
-          configs: context.configsAPI.frontend,
+          configs: context.configs_frontend,
           APP:siteoApp,
           messages: SiteoLocalEN,
           plugins: {pageblocks: PluginPageBlocks}
