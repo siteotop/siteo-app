@@ -6,7 +6,6 @@ const baseConfig = require('./base.webpack.config.js');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const html_template= 'build/template.html';
 const webpack = require('webpack');
-const siteoConfigs = require(path.resolve(__dirname, './configs.js'));
 
 
 /**
@@ -14,7 +13,7 @@ const siteoConfigs = require(path.resolve(__dirname, './configs.js'));
 */
 
 const createDirResource = require('./helper/dirResource');
-const DIR_RESOURCE=createDirResource('assets', siteoConfigs.backend.NODE_ENV);
+const DIR_RESOURCE=createDirResource('assets', process.env.NODE_ENV);
 
 baseConfig.plugins.push(new HtmlWebpackPlugin({
  template:html_template,
@@ -24,7 +23,7 @@ baseConfig.plugins.push(new HtmlWebpackPlugin({
      title: "<title>siteo-template</title>",
      body_content: '<div id="app"></div>',
      body_state: '',
-     siteo_config: JSON.stringify(siteoConfigs.frontend),
+     siteo_config: JSON.stringify({path: '/', lang: 'en'}),
      siteo_instance: ''
  }
 }));
@@ -43,7 +42,7 @@ baseConfig.plugins.push(new HtmlWebpackPlugin({
       {{{ meta.inject().style.text() }}}`,
       body_content: '<!--vue-ssr-outlet-->',
       body_state: '{{{renderState()}}}',
-      siteo_config: '{{{JSON.stringify(configsAPI.frontend)}}}',
+      siteo_config: '{{{JSON.stringify(configs_frontend)}}}',
       siteo_instance: ''
   }
 }));
@@ -70,9 +69,9 @@ baseConfig.plugins.push(new HtmlWebpackPlugin({
 
 baseConfig.plugins.push( new webpack.DefinePlugin({
   'process.env': {
-     NODE_ENV: JSON.stringify(siteoConfigs.backend.NODE_ENV),
-     HOST_API: JSON.stringify(siteoConfigs.backend.HOST_API),
-     STATIC_PLUGINS: JSON.stringify(siteoConfigs.backend.host_plugins+ createDirResource('plugins', siteoConfigs.backend.NODE_ENV) +'/' )
+     NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+     HOST_API: JSON.stringify(process.env.HOST_API),
+     STATIC_PLUGINS: JSON.stringify(process.env.HOST_PLUGIN+ createDirResource('plugins', process.env.NODE_ENV) +'/' )
   }
 }));
 
@@ -81,7 +80,7 @@ baseConfig.plugins.push( new webpack.DefinePlugin({
 module.exports = merge(baseConfig, {
   output: {
     path: path.resolve(__dirname, '../dist' + DIR_RESOURCE),
-    publicPath: siteoConfigs.backend.host_app_js + DIR_RESOURCE +'/',
+    publicPath: process.env.HOST_STATIC + DIR_RESOURCE +'/',
     filename: 'siteo-[name].js',
     library: "siteo-[name]",
 		libraryTarget: "umd",

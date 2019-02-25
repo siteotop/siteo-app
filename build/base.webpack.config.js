@@ -5,8 +5,6 @@
 
 const path = require('path');
 
-
-
 /**
   From 15 version  of vue-loader, we need use  VueLoaderPlugin
 */
@@ -27,14 +25,10 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 */
 
 
-const siteoConfigs = require(path.resolve(__dirname, './configs.js')).backend;
-
-
-
 module.exports = {
-  mode:  siteoConfigs.NODE_ENV,
-  devtool:  siteoConfigs.NODE_ENV ==  'development' ? "source-map" : false,
-  watch: siteoConfigs.NODE_ENV ==  'development',  // наблюдение за изменяемыми файлами
+  mode:  process.env.NODE_ENV,
+  devtool:  process.env.NODE_ENV ==  'development' ? "source-map" : false,
+  watch: process.env.NODE_ENV ==  'development',  // наблюдение за изменяемыми файлами
 
 
 
@@ -156,7 +150,7 @@ optimization: {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-          siteoConfigs.NODE_ENV !== 'production'
+          process.env.NODE_ENV !== 'production'
            ? 'vue-style-loader'
            : MiniCssExtractPlugin.loader,
           'css-loader',
@@ -173,7 +167,7 @@ optimization: {
         use: [
 
           // https://vue-loader.vuejs.org/guide/extract-css.html#webpack-4
-          siteoConfigs.NODE_ENV !== 'production'
+          process.env.NODE_ENV !== 'production'
            ? 'vue-style-loader'
            : MiniCssExtractPlugin.loader,
           'css-loader',

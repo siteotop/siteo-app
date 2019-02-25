@@ -5,21 +5,21 @@ const nodeExternals = require('webpack-node-externals')
 const baseConfig = require('./base.webpack.config.js')
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
 const webpack = require('webpack');
-// Этот плагин преобразует весь результат серверной сборки
-// в один JSON-файл. Имя по умолчанию будет
-// `vue-ssr-server-bundle.json`
-const configsBackend = require(path.resolve(__dirname, './configs.js')).backend;
 
 
-const server_host_api = configsBackend.NODE_ENV =='production'? configsBackend.HOST_API: 'http://siteoapi:80/v1' ;
+const server_host_api = process.env.NODE_ENV =='production'? process.env.HOST_API: 'http://siteoapi:80/v1' ;
 
 baseConfig.plugins.push( new webpack.DefinePlugin({
   'process.env': {
-     NODE_ENV: JSON.stringify(configsBackend.NODE_ENV),
+     NODE_ENV: JSON.stringify(process.env.NODE_ENV),
      HOST_API: JSON.stringify(server_host_api),
 
   }
 }));
+
+// Этот плагин преобразует весь результат серверной сборки
+// в один JSON-файл. Имя по умолчанию будет
+// `vue-ssr-server-bundle.json`
 baseConfig.plugins.push( new VueSSRServerPlugin());
 
 

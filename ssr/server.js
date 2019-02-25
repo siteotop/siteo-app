@@ -2,7 +2,6 @@ var express = require('express');
 var server = express();
 const fs = require('fs');
 
-const configsAPI = require('../build/configs');
 
 const { createBundleRenderer } = require('vue-server-renderer');
 const generateTemplateError = require('./errors/template');
@@ -42,7 +41,6 @@ const commonResolve = function (req, res, path) {
 
   const context = {
     url: req.url,
-    configsAPI:configsAPI,
     configs_frontend: {
       path: path||"/",
       lang: 'en',
@@ -82,5 +80,5 @@ const PORT = 8080;
 const HOST = '0.0.0.0';
 
 server.listen(PORT, HOST);
-console.log(`Running with ${configsAPI.backend.NODE_ENV} mode`);
+console.log(`Running with ${process.env.NODE_ENV} mode`);
 console.log(`Running on http://${HOST}:${PORT}`);
