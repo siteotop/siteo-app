@@ -6,7 +6,7 @@
         _d: description,
         $tc: 'primary',
         $_t: 'white--text display-4',
-        $_d: 'ma-2 display-1 white--text',
+        $_d: 'headline white--text',
         $bls: [
           {
             $$:'AppAction',
@@ -25,36 +25,26 @@ export default {
   props : {
       status: [Number, Object],
       error_code: String,
-      error_description: String
+      error_description: String,
+      action: {
+        type: Boolean,
+        default: false
+      }
   },
 
   computed: {
 
-      // this code described in lang file
-      isTitle() {
-        if ( typeof (this.status) =='object')  {
-            return false;
-        }  else {
-          return true;
-        }
-
-      },
-
       title () {
-
-          if (this.isTitle) {
-              return  this.$t('page'+this.status+'.title')
-          } else {
-            return 'Server Error ' + this.status.status;
-          }
+         return `Error: ${this.status}`
       },
 
       description() {
-          if (this.isTitle) {
-            return this.$t('page'+this.status+'.description');
-         } else {
-           return this.status.message;
+         if (this.error_description) {
+          return `${this.error_description}; Error code: ${this.error_code};`;
          }
+
+         return  this.$t('error'+this.status);
+
       }
 
   }

@@ -37,7 +37,7 @@ export default {
       success: 'Success response form',
       leave: 'Ви желаете прервать заполнение формы?',
       leave_desc: 'Все заполненные данные будут утеряны.',
-      send: 'Отправить', 
+      send: 'Отправить',
       error: {
          no_valid: 'Ошибки валидации'
       },
@@ -130,20 +130,7 @@ export default {
       }
     },
 
-    gpsFixed: {
-      country_code: 'Country code',
-      ip: 'IP adress'
-    },
+    error404: 'Sorry, but the page you are looking for was either not found or does not exist. Try refreshing the page or click the button below to go back to the Homepage.',
 
-    page404: {
-
-        title:'404',
-        description:' Sorry, but the page you are looking for was either not found or does not exist. Try refreshing the page or click the button below to go back to the Homepage.'
-      },
-
-     page503: {
-          title:'503 Service Unavailable',
-          description:' Message'
-        }
  }
 }

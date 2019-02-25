@@ -112,8 +112,7 @@ export default {
         }
 
         if (this.postObject.error) {
-          console.log('sdf');
-            return h('RouteError', {props: this.postObject.error});
+          return h('RouteError', {props: this.postObject.error});
         }
 
         return h('PageSchema', {
