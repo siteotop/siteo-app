@@ -8,10 +8,20 @@ import  defaultDesign  from './default/design';
 
 
 
-const get_APP_INSTANCE = ( siteo_id, public_token )=>{
+const get_APP_INSTANCE = (siteo_id, server_token)=>{
     //process.env.HOST_API
+
+    if (!server_token) {
+        throw {ssr_error_code: 'APP_INSTANCE_ERR_NO_SSR_TOKEN' };
+    }
+    console.log(server_token);
+
+    if (!siteo_id) {
+        throw {ssr_error_code: 'APP_INSTANCE_ERR_NO_SITEO_ID' };
+    }
+
     return axios.get(process.env.HOST_API +'/websites/'+siteo_id+'/instance', {timeout:1500}, {
-      headers: {'common': { 'Authorization':"Bearer "+ public_token }}
+      headers: {'common': { 'Authorization':`Bearer ${server_token}`}}
     }).catch(function(error){
       //  console.log(error);
        if (!error.response) {
@@ -30,7 +40,8 @@ export default (context) => {
 
   return get_APP_INSTANCE (
       context.configsAPI.backend.siteo_id,
-      context.configsAPI.backend.token)
+      context.server_token
+      )
       .then(response=>{
         if (!response.data.data) {
            throw {ssr_error_code: 'NO_APP_INSTANCE' , response: response.data};

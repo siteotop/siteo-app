@@ -1,6 +1,6 @@
 module.exports={
    backend: {
-      token: process.env.SSR_TOKEN,
+      
       //// example  'siteo.top'  host for "siteo" or "multisiteo"
     //  domen: process.env.CORE_HOST,
       ssr: process.env.SSR,

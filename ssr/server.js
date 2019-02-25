@@ -28,8 +28,13 @@ server.disable('x-powered-by');
 server.use(express.static('dist'));
 
 server.get('*', (req, res) => {
-  //console.log(r);
-  const context = { url: req.url, configsAPI:configsAPI};
+  //console.log(req);
+  console.log(`req.originalUrl=${req.originalUrl}`);
+  console.log(`req.baseUrl=${req.baseUrl}`);
+  console.log(`req.path=${req.path}`);
+  console.log(`req.hostname=${req.hostname}`);
+
+  const context = { url: req.url, configsAPI:configsAPI, server_token: process.env.SSR_TOKEN};
 
   renderer.renderToString(context, (err, html) => {
     if (err) {
