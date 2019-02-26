@@ -4,7 +4,7 @@
 import VueRouter from 'router';
 
 
-export default function (Vue, store, path,  routes) {
+export default function (Vue, store, baseUrl,  routes) {
     Vue.use(VueRouter);
     var router;
     router = new VueRouter({
@@ -13,7 +13,7 @@ export default function (Vue, store, path,  routes) {
           our path is without last "/"
           "" or "/app"
         */
-        base: path||'/',
+        base: baseUrl||'/',
         mode: 'history',
         fallback: false,  // для браузеров где нет History Api  (IE9) будет просто открывать новую страницу
         routes: routes,

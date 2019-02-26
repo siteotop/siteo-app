@@ -32,17 +32,19 @@ if (process.env.NODE_ENV=='development') {
 }
 
 
-const commonResolve = function (req, res, path) {
+const commonResolve = function (req, res, baseUrl, path) {
   console.log(`req.originalUrl=${req.originalUrl}`);
   console.log(`req.baseUrl=${req.baseUrl}`);
   console.log(`req.hostname=${req.hostname}`);
+  console.log(`baseUrl=${baseUrl}`);
+  console.log(`path=${path}`);
 
-  var siteo_id = req.hostname+path ;
+  var siteo_id = req.hostname+baseUrl;
 
   const context = {
-    url: req.url,
+    url: path,
     configs_frontend: {
-      path: path||"/",
+      baseUrl: baseUrl||"/",
       lang: 'en',
     },
     siteo_id:siteo_id,
@@ -58,22 +60,22 @@ const commonResolve = function (req, res, path) {
   })
 }
 
+
+var siteo = express.Router();
+siteo.get('*', function(req,res){
+    commonResolve(req,res, req.baseUrl, req.path )
+});
+
 if (process.env.MULTISITEO) {
   // many projects  on one hosts
+  server.use('/:siteoId', siteo);
   server.get('/', (req, res) => {
-    commonResolve(req, res, '')
-  })
-
-  server.get('/:siteoid/*|/:siteoid', (req, res) => {
-     var path = '/'+req.params.siteoid;
-    commonResolve(req, res, path)
-  })
+    commonResolve(req, res, '', '');
+  });
 
 } else {
    // one project on one host
-    server.get('*', (req, res) => {
-        commonResolve(req, res, '')
-    })
+    server.use('/', siteo);
 }
 
 const PORT = 8080;

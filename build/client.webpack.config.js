@@ -23,7 +23,7 @@ baseConfig.plugins.push(new HtmlWebpackPlugin({
      title: "<title>siteo-template</title>",
      body_content: '<div id="app"></div>',
      body_state: '',
-     siteo_config: JSON.stringify({path: '/', lang: 'en'}),
+     siteo_config: JSON.stringify({baseUrl: '/', lang: 'en'}),
      siteo_instance: ''
  }
 }));

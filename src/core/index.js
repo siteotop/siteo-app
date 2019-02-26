@@ -84,7 +84,7 @@ export default function ({configs, APP, messages, plugins} ) {
    //CoreVue.store.commit('saveInstanse', APP.options.instance);
 
    // create router
-   CoreVue.router = createRouter(Vue, CoreVue.store, configs.path )
+   CoreVue.router = createRouter(Vue, CoreVue.store, configs.baseUrl )
 
    //sync router with store for access route from store
    sync(CoreVue.store, CoreVue.router );
