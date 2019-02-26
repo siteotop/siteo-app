@@ -3,7 +3,7 @@ const baseErrors={
 
   'APP_INSTANCE_ERR_NO_SSR_TOKEN': {
     status: 500,
-    error_description: ''
+    error_description: 'Please, set up the ssr token on your server'
   },
 
   'APP_INSTANCE_ERR_NO_SITEO_ID': {
@@ -11,19 +11,19 @@ const baseErrors={
     error_description: 'Server not resolved siteo_id'
   },
 
-  'NO_APP_INSTANCE': {
+  'APP_INSTANCE_NOT_VALID': {
     status: 400,
-    error_description: ''
+    error_description: 'Response from API is not valid'
   },
 
   'NOT_FOUND_COMPONENTS': {
     status: 404,
-    error_description: ''
+    error_description: 'Not found components for this route'
   },
 
   'NOT_ASYNC_DATA': {
     status: 404,
-    error_description: ''
+    error_description: 'Not async data inside components'
   },
 
   'AXIOS_ERR_INNER_ECONNABORTED': {
@@ -38,22 +38,30 @@ const baseErrors={
 
   'AXIOS_ERR_RESPONSE': {
     status: 500,
-    error_description: 'Conection server axios return error response'
+    error_description: 'API throught server return error  response in body: '
   }
 
 }
 
 module.exports=function (error_code) {
 
+
+    var code, status, description;
+
     if (baseErrors[error_code]) {
-        baseErrors[error_code].error_code = error_code;
-        return  baseErrors[error_code];
+      status=baseErrors[error_code].status;
+      code= error_code;
+      description = baseErrors[error_code].error_description
     } else {
-      return {
-        status: 500,
-        error_code: `ErrorCode:${error_code}`,
-        error_description: 'Error code not found in base'
-      }
+      status=500;
+      code=`ErrorCode:${error_code}`;
+      description= 'Error code not found in base'
+    }
+
+    return {
+      status: status,
+      error_code: code,
+      error_description: description
     }
 
 }

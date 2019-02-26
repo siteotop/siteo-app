@@ -19,14 +19,19 @@ const get_APP_INSTANCE = (siteo_id, server_token)=>{
         throw {ssr_error_code: 'APP_INSTANCE_ERR_NO_SITEO_ID' };
     }
 
-    return axios.get(process.env.HOST_API +'/websites/'+siteo_id+'/instance', {timeout:1500}, {
+    return axios.get(process.env.HOST_API +'/apps', {
+      timeout:1500,
+      params: {
+        siteo_id: siteo_id
+      },
       headers: {'common': { 'Authorization':`Bearer ${server_token}`}}
     }).catch(function(error){
       //  console.log(error);
        if (!error.response) {
           throw {ssr_error_code: 'AXIOS_ERR_INNER_'+error.code };
        } else {
-          throw {ssr_error_code: 'AXIOS_ERR_RESPONSE' , response: error.response.data};
+          // error response from api
+          throw {ssr_error_code: 'AXIOS_ERR_RESPONSE' , response_data_api: error.response.data};
        }
     });
 }
@@ -42,8 +47,9 @@ export default (context) => {
       context.server_token
       )
       .then(response=>{
+
         if (!response.data.data) {
-           throw {ssr_error_code: 'NO_APP_INSTANCE' , response: response.data};
+           throw {ssr_error_code: 'APP_INSTANCE_NOT_VALID' , response_data_api: response.data};
         }
       // if design not found connect default design
         if (!response.data.design) {
@@ -78,7 +84,7 @@ export default (context) => {
 
           // нет подходящих маршрутов, отклоняем с 404
           if (!matchedComponents.length) {
-            return reject({ssr_error_code: 'NOT_FOUND_COMPONENTS', __SITEO_INSTANCE__: response.data  })
+            return reject({ssr_error_code: 'NOT_FOUND_COMPONENTS',  __SITEO_INSTANCE__: response.data  })
           }
 
           // вызов `asyncData()` на всех соответствующих компонентах
@@ -89,7 +95,13 @@ export default (context) => {
                 route: app.$router.currentRoute
 
               }).catch((error)=>{
-                reject({ ssr_error_code: 'NOT_ASYNC_DATA',  __SITEO_INSTANCE__: response.data })
+                reject({
+                  ssr_error_code: 'NOT_ASYNC_DATA',
+                  response_data_api: {
+                    configs: error.config,
+                    response_data: error.response&&error.response.data? error.response.data:false
+                  } ,
+                  __SITEO_INSTANCE__: response.data })
 
               })
             }
