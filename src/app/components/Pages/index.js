@@ -24,19 +24,7 @@ export default {
   },
 
 
-  watch: {
-
-      objectId(newValue, OldValue) {
-        console.log('change objectId');
-
-      }
-
-  },
-
-
-
   metaInfo () {
-
    return {
       title: this.meta_title,
       titleTemplate: '%s  - ' + this.$store.state.APP_INSTANCE.data.name,
@@ -51,9 +39,12 @@ export default {
   },
 
   asyncData({ store, route }) {
+
+      console.log(route);
       store.registerApiModule( 'page', pages('WEBSITE_API_URL'));
       if (store.state.allowAsyncLoad) {
-        return store.dispatch('page/getObject', 'id_for_page');
+
+        return store.dispatch('page/getObject', route.params.objectId);
       }
   },
 
