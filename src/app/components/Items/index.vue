@@ -14,7 +14,7 @@
          <AppIcon name="si-view-card"></AppIcon>
       </v-btn>
       <v-btn flat value="list">
-         <AppIcon name="si-services"></AppIcon>
+         <AppIcon name="si-values"></AppIcon>
       </v-btn>
    </v-btn-toggle>
    <v-btn  small fab flat>
@@ -32,7 +32,7 @@ import PageItemsToolbar from './Functional/PageItemsToolbar.vue';
 import FunctionalButtonUp from  '../Pages/Functional/ButtonUp.vue';
 import mixinsAsyncdata from '../_mixins/asyncData';
 
-import WiServices from '../Widgets/WiServices.vue';
+import WiValues from '../Widgets/WiValues.vue';
 import WiExperts from '../Widgets/WiExperts.vue';
 import WiPosts from '../Widgets/WiPosts.vue';
 
@@ -52,7 +52,7 @@ export default {
   components: {
     PageItemsToolbar,
     FunctionalButtonUp,
-    WiServices,
+    WiValues,
     WiExperts,
     WiPosts
   },

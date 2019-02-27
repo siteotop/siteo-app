@@ -13,10 +13,10 @@ export default function () {
         },
 
         {
-          name: "services",
-          path:  '/services',
+          name: "values",
+          path:  '/values',
           component: RouteItems,
-          props: { typeList: 'services' }
+          props: { typeList: 'values' }
         },
         {
           name: "experts",

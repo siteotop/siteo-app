@@ -66,14 +66,14 @@ export default {
           d: "Tap your phone"
         },
 
-        services: {
-          l:"Services" ,
-          d: "Tap your Services"
+        values: {
+          l:"Values" ,
+          d: "Tap your Values"
         },
 
         dateorder: {
           l:"Date" ,
-          d: "Tap your Services"
+          d: "Tap your Values"
         },
         submit: {
           l: 'Send',
@@ -88,9 +88,9 @@ export default {
       title: 'We recall you',
       description:'We recall you',
       content: {
-        services: {
-          l: '@:formOrder.content.services.l',
-          d: '@:formOrder.content.services.d',
+        values: {
+          l: '@:formOrder.content.values.l',
+          d: '@:formOrder.content.values.d',
         },
         name: {
           l: '@:formOrder.content.name.l',

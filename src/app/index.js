@@ -8,7 +8,6 @@ import SiteoRoutes from './routes';
 import RouteError from './components/Error.vue';
 
 import moduleOrder from './store/modules/orders';
-//import {createStorePage, createServices, createExperts, createPosts} from './models.js';
 
 export default {
   name: 'siteo-app',
@@ -23,7 +22,7 @@ export default {
   siteoInstall: function ($coreVue, $pluginOptions) {
     // add routes
     var routes =  {
-      services: {route: '/services', title:'Services'},
+      values: {route: '/values', title:'Values'},
       experts: {route: '/experts', title:'People'},
       posts: {route: '/blog', title:'Blog'},
       objectService: {title: '{title} - Order item', description: '{actionText} {title}, Price {price}'},

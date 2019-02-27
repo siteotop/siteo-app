@@ -128,7 +128,7 @@ module.exports = {
 
      "AppFormOrder": {
        props: {typeInput:''},
-       children: ['services', 'name', 'lastname', 'email', 'phone',  'dateorder'
+       children: ['values', 'name', 'lastname', 'email', 'phone',  'dateorder'
         /**
           was before create fieldsMap
          {

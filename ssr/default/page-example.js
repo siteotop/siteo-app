@@ -44,7 +44,7 @@ module.exports = {
                 _at: 'Non Default Text',  //
                 color: 'red',
                 dark: true,
-                to: '/services',  //
+                to: '/values',  //
               }
             },
 
@@ -54,7 +54,7 @@ module.exports = {
                 _at: 'Dialog Action',  //
                 color: 'red',
                 dark: true,
-                to: '/services',  //
+                to: '/values',  //
               }
             }
           ]
@@ -193,7 +193,7 @@ module.exports = {
                   {
                     $$: 'WiServices',
                     _n: 'Services',
-                    _i: 'si-services',
+                    _i: 'si-values',
 
 
                   }
@@ -232,7 +232,7 @@ module.exports = {
         $$: 'WiServices',
         _props: {
           _t: 'Services ',  //
-          _d: 'If all services or items which you sell',  //
+          _d: 'If all values or items which you sell',  //
 
 
         }
@@ -270,7 +270,7 @@ module.exports = {
               _props: {
                 _t: 'Integrate your order form',
                 _s: 'Form is very flexible',
-                _d: 'You can use combination of fields. Base core fields are name, lastname, email, phone, date, services, experts. Some fields, such as, services, experts are integrated with your price list and your people list. Customer can select one of them when booking throught your web-app, if those fields will include at form.',
+                _d: 'You can use combination of fields. Base core fields are name, lastname, email, phone, date, values, experts. Some fields, such as, services, experts are integrated with your price list and your people list. Customer can select one of them when booking throught your web-app, if those fields will include at form.',
 
 
               }

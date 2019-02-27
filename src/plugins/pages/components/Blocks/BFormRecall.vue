@@ -13,7 +13,7 @@ export default {
             i18nkey: 'formRecall',
             defaultValues: context.parent.$store.state.APP_ORDER,
             formAction: context.props.formAction || 'APP_ORDER/createObject',
-            propsStructure: ['services', 'name', 'phone']
+            propsStructure: ['values', 'name', 'phone']
         }
     } })
   }

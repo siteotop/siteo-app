@@ -18,10 +18,10 @@ export default {
 
       collectLinks() {
         var new_array = [];
-        var services =this.$store.state.APP_INSTANCE.contacts;
+        var values =this.$store.state.APP_INSTANCE.contacts;
         var text = this.$t('auto.'+this.$type);
-        for (var i in services )  {
-           var service = services [i];
+        for (var i in values )  {
+           var service = values [i];
             if (service[this.$type]) {
 
                 new_array.push({

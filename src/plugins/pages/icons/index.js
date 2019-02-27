@@ -56,7 +56,7 @@ import {
 export default {
 
     'si-home': mdiHome,   // main link
-    'si-services': mdiViewList, // link for services
+    'si-values': mdiViewList, // link for values
     'si-locations': mdiMapMarker, // link for subjects
     'si-experts': mdiAccountSearch,
     'si-blog': mdiLibraryBooks,
@@ -108,7 +108,7 @@ export default {
     'si-bookmark': mdiBookmark,
     'si-dots-menu': mdiDotsVertical,
     'si-quote': mdiFormatQuoteOpen,
-    // services
+    // values
     'si-sort': mdiSortVariant,
     'si-filter':   mdiFilterVariant,
     'si-view-cards': mdiViewModule,

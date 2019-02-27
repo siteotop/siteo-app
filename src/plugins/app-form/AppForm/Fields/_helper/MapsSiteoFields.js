@@ -32,13 +32,13 @@ const fieldsMap = {
     }
   },
 
-  services() {
+  values() {
     return {
       c: 'AppFieldItems',
       v: {required: true},
       p: {prependIcon:'add_shopping_cart'}
     }
-  },   //'AppFieldServices',
+  },   //'AppFieldValues',
 
   dateorder () {
     return {
@@ -60,6 +60,7 @@ export const  getStructureForField = function (fieldName) {
       props: field.p||{}
     }
   } else {
+    
     return false;
   }
 }

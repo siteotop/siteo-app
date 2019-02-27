@@ -11,7 +11,7 @@ export default function (parentGetterUrl) {
           dateorder: '', // date when customer wants get servise or goods
           phone: '', // customer phone
           email: '', // customer email
-          services: [], //  services which customer have booking
+          values: [], //  values which customer have booking
           daterecall: '', // date when customer wants recall
           typeorder: '' //  queryprice, recall, order,
 
