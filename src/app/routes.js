@@ -6,7 +6,7 @@ export default function () {
     return [
         {
           name: "indexPage",
-          path:  '/',
+          path:  '',
           component: Pages,
           props: true,
           meta: {name: 'page'}

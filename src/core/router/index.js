@@ -27,7 +27,7 @@ export default function (Vue, store, baseUrl,  routes) {
             return { x: 0, y: 0 }
           }
         }
-
+      //pathToRegexpOptions: ?: Object; // настройки path-to-regexp для компиляции regex  
      });
 
      router.beforeEach(function (to, from, next) {
