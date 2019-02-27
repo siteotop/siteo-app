@@ -114,6 +114,7 @@ export default (context) => {
             // сериализовано и внедрено в HTML как `window.__INITIAL_STATE__`.
             //console.log(app.$store.state);
             app.$store.state.allowAsyncLoad = false;
+            app.$store.commit('clearAllMessages');
             context.state = app.$store.state;
 
             resolve(app);

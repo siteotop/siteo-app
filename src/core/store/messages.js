@@ -5,9 +5,11 @@ const filterMessage = function ( message) {
 };
 
 const SystemMessages = {
-  state: {
-     messages: [],
-     timeout:0
+  state: function () {
+      return {
+         messages: [],
+         timeout:0
+      }
   },
 
   mutations: {
