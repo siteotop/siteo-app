@@ -63,11 +63,7 @@ export default {
 
     if (store.state.allowAsyncLoad) {
        return store.dispatch(route.name+'/getList');
-    } else {
-       return new Promise((resolve, reject) => {
-          resolve({});
-       });
-    }
+    } 
   },
 
   destroyed () {

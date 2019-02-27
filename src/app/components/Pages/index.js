@@ -82,6 +82,12 @@ export default {
     },
 
     methods: {
+
+      asyncDataError(error_data) {
+          this.$store.commit('page/clearModel');
+          this.$store.commit('page/updateModel', {error: error_data});
+      },
+
        helperCreateMeta(sourceField, mainField ) {
          if (this.postObject[mainField]) {
            return this.postObject[sourceField]? this.postObject[sourceField]:
