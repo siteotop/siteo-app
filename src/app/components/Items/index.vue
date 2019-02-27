@@ -63,7 +63,7 @@ export default {
 
     if (store.state.allowAsyncLoad) {
        return store.dispatch(route.name+'/getList');
-    } 
+    }
   },
 
   destroyed () {
@@ -85,11 +85,6 @@ export default {
 
   },
 
-  watch: {
-    typeList: function (newValue){
-        this.$options.asyncData({store: this.$store, route: this.$route});
-    }
-  },
 
   metaInfo () {
 
@@ -103,6 +98,13 @@ export default {
     }
   },
 
+  methods: {
+    asyncDataError(error_data) {
+        console.log(error_dat);
+        // in here place we need cath error   
+        throw error_data;
+    }
+  }
 }
 
 </script>
