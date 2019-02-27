@@ -69,6 +69,7 @@ siteo.get('*', function(req,res){
 if (process.env.MULTISITEO) {
   // many projects  on one hosts
   server.use('/:siteoId', siteo);
+  
   server.get('/', (req, res) => {
     commonResolve(req, res, '', '');
   });

@@ -1,25 +1,27 @@
+/*
+Store for APP_INSTANCE from server
+
+*/
+
 export default function () {
   return  {
 
     state: function() {
        return {
          data: {
-           _id:0,
-           pid:"",
            name:"",
            title:"",
            slogan:"",
            actionText:"",
            description:"",
-           domain:"",
-           templates_id:"",
-           pages_id: '',
            countryAlpha2:"",
-           lang:"",
            currency: '',
-           design:false
+           design:false,
+           lang:'',
          }, //   APP_INSTANCE.data,
+         configs: {
 
+         },
          contacts: [], // APP_INSTANCE.contacts,
          design:{}, // APP_INSTANCE.design|| {},
          menu:[] ,  // APP_INSTANCE.menu||[],

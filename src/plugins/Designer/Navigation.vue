@@ -85,7 +85,7 @@ export default {
     // add _id for website, because templates does not work without it
     this.$store.commit('websites/setApiId', this.$store.state.APP_INSTANCE.data._id);
     // add _id for  templates
-    this.$store.commit('websites/templates/setApiId', this.$store.state.APP_INSTANCE.data.templates_id );
+  //  this.$store.commit('websites/templates/setApiId', this.$store.state.APP_INSTANCE.data.templates_id );
   },
   methods: {
 
