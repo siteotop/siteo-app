@@ -10,7 +10,7 @@ module.exports = merge(baseConfig, {
   entry: {
     'example':   './src/plugins/example',
     'instagram-post':   './src/plugins/instagram-post',
-    'app-form':   './src/plugins/app-form',
+    'forms':   './src/plugins/forms',
     //'page-blocks':   './src/plugins/page-blocks',
   },
 
@@ -18,7 +18,7 @@ module.exports = merge(baseConfig, {
     path: path.resolve(__dirname, '../dist' + DIR_RESOURCE),
     publicPath: process.env.HOST_PLUGIN + DIR_RESOURCE +'/',
     filename: 'siteo-plugin-[name].js',
-    library: ['siteo-plugins', "[name]"],
+    library: ['siteo-plugins', "siteo-plugin-[name]"],
 		libraryTarget: "umd",
     libraryExport: 'default',
 

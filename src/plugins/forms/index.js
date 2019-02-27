@@ -3,7 +3,7 @@
 import AppForm from './AppForm/index.vue';
 
 export default {
-  name: 'SiteoPluginAppForm',
+  name: 'siteo-plugin-forms',
 
   install: function (Vue, options) {
       Vue.component(options.name, AppForm);

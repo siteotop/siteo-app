@@ -13,8 +13,8 @@ export default {
 
     props: {
       /**
-         start name of plugin
-         if full name is siteo-plugin-app-form, that put "app-form"
+        plugin name like siteo-plugin-forms, siteo-plugin-instagram-posts
+
       */
       pluginName:  {
         type: String,
@@ -40,18 +40,12 @@ export default {
        }
     },
 
-    computed: {
-      fullPluginName() {
-        return  'siteo-plugin-'+this.pluginName;
-      }
-
-    },
 
     mounted() {
         // load plugin
         console.log(this.pluginName);
         // https://some-domen.com/plugins/+this.pluginName
-        var filename = process.env.STATIC_PLUGINS + this.fullPluginName+'.js';
+        var filename = process.env.STATIC_PLUGINS + this.pluginName+'.js';
         //console.log(this);
         var self = this;
         this.$root.$options.$script(filename).then((data)=>{
@@ -62,7 +56,7 @@ export default {
                     self.component = plugin.getComponent();
                 } else {
                   self.$root.$options.SiteoAddPlugin(plugin);
-                  self.component = self.fullPluginName;
+                  self.component = self.pluginName;
                 }
             }
 
