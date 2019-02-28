@@ -6,6 +6,7 @@ services:
     ############### SERVER
     ssrserver:
       container_name: siteotemplate
+      restart: always
       networks:
         siteo_template_network:
          aliases:
