@@ -4,12 +4,12 @@ const templateIndex = fs.readFileSync('./ssr/template/index.ssr.plain.html', 'ut
 const lodashTemplate = require ('lodash/template');
 const compiled = lodashTemplate(templateIndex);
 const pageError = require('./page');
-const baseErrors = require('./base');
+const errorResponse = require('./response');
 const defaultInstance = require('./instance');
 //get templateError
 module.exports = function (res, err, configs) {
 
-  var error_response = baseErrors(err.ssr_error_code);
+  var error_response = errorResponse(err.ssr_error_code);
   if (err.response_data_api) {
      //var api_error = err.response_data_api;
     //  error_response.error_description+= `(status: ${api_error.status}; error_code: ${api_error.error_code}; error_description: ${api_error.error_description} )`;

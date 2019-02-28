@@ -25,6 +25,7 @@ export default {
   props : {
       status: [Number, Object],
       error_code: String,
+      issuer: String,
       error_description: String,
       action: {
         type: Boolean,
@@ -40,7 +41,7 @@ export default {
 
       description() {
          if (this.error_description) {
-          return `${this.error_description}; Error code: ${this.error_code};`;
+          return `Description: ${this.error_description}; Error code: ${this.error_code}; Issuer: ${this.issuer}`;
          }
 
          return  this.$t('error'+this.status);

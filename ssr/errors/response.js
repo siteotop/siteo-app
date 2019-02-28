@@ -59,6 +59,7 @@ module.exports=function (error_code) {
     }
 
     return {
+      issuer: 'siteo-template-ssr',
       status: status,
       error_code: code,
       error_description: description
