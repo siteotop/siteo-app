@@ -40,7 +40,6 @@ export default {
 
   asyncData({ store, route }) {
 
-      console.log(route);
       store.registerApiModule( 'page', pages('WEBSITE_API_URL'));
       if (store.state.allowAsyncLoad) {
 

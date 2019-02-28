@@ -9,7 +9,6 @@ const defaultInstance = require('./instance');
 //get templateError
 module.exports = function (res, err, configs) {
 
-
   var error_response = baseErrors(err.ssr_error_code);
   if (err.response_data_api) {
      //var api_error = err.response_data_api;
@@ -24,7 +23,6 @@ module.exports = function (res, err, configs) {
     }),
     __SITEO_CONFIG__: JSON.stringify(configs),
   };
-
 
    res.status(error_response.status).end(compiled(params_template));
 }

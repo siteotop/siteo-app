@@ -7,12 +7,10 @@ const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
 const webpack = require('webpack');
 
 
-const server_host_api = process.env.NODE_ENV =='production'? process.env.HOST_API: 'http://siteoapi:80/v1' ;
-
 baseConfig.plugins.push( new webpack.DefinePlugin({
   'process.env': {
      NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-     HOST_API: JSON.stringify(server_host_api),
+     HOST_API: JSON.stringify(process.env.HOST_API),
 
   }
 }));

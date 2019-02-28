@@ -115,7 +115,7 @@ export default function ({configs, APP, messages, plugins} ) {
       if (!PLUGINS[plugin.name]) {
         // install for Vue
         PLUGINS[plugin.name] = true;
-        console.log(plugin);
+
         Vue.use(plugin, {$coreVue:CoreVue, $pluginOptions: plugin.options, name: plugin.name});
 
         if (plugin.siteoInstall) {
@@ -123,8 +123,6 @@ export default function ({configs, APP, messages, plugins} ) {
           // on SSR components registering one time, but is some deals which need registered every time
           plugin.siteoInstall(CoreVue, plugin.options);
         }
-
-        console.log(PLUGINS);
       } else {
           console.log(`Plugin ${plugin.name} was loaded early`);
       }
@@ -132,7 +130,7 @@ export default function ({configs, APP, messages, plugins} ) {
 
     CoreVue.SiteoAddPlugin(APP);
 
-    console.log(plugins);
+
     if (plugins) {
        for (var i in plugins ) {
           CoreVue.SiteoAddPlugin(plugins[i]);

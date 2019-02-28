@@ -21,7 +21,7 @@ export default function (Vue, configs)  {
       const REGISTER={};
 
        Vue.use(Vuex);
-       var RESTApi = createRESTApi(process.env.HOST_API);
+       var RESTApi = createRESTApi(configs.host_api||process.env.HOST_API);
        var store =  new Vuex.Store({
          state: {
            drawer: false,
