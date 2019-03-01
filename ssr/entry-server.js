@@ -59,7 +59,10 @@ export default (context) => {
             reject({
               ssr_error_code: 'NOT_ASYNC_DATA',
               response_data_api: {
-                configs: error.config,
+                axios_config:  process.env.NODE_ENV === 'production'
+                  ? ''
+                  : error.config,
+
                 response_data: error.response&&error.response.data? error.response.data:false
               } ,
               __SITEO_INSTANCE__: context.instance })
