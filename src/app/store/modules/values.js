@@ -1,11 +1,9 @@
 
 
-
-
 export default function (parentGetterUrl) {
 
   return  {
-    api: {url: '/prices', parentGetterUrl: parentGetterUrl},
+    api: {url: '/values', parentGetterUrl: parentGetterUrl},
     state () {
         return {
           _id: '',
