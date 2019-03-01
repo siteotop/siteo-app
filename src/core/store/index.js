@@ -1,10 +1,8 @@
 import Vuex from 'vuex';
-import {createRESTApi} from 'core/http/rest-api.js';
 import {checkObjectResponse} from 'core/http/error-handling.js';
 import SystemMessages from './messages.js';
 import {createModelCRUD} from './helpers/model-events'
 //import i18n from './i18n.js';
-
 import createInstance from './appInstance.js';
 
 
@@ -17,11 +15,11 @@ const helperNameRegister = function ( name) {
   }
 }
 
-export default function (Vue, configs)  {
+export default function (Vue, RESTApi, configs)  {
       const REGISTER={};
 
        Vue.use(Vuex);
-       var RESTApi = createRESTApi(configs.host_api||process.env.HOST_API);
+
        var store =  new Vuex.Store({
          state: {
            drawer: false,
@@ -65,7 +63,7 @@ export default function (Vue, configs)  {
          },
          getters: {
            CORE_HOST() {
-             return  configs.path||'/';
+             return  configs.baseUrl||'/';
            },
          },
          actions: {

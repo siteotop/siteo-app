@@ -27,7 +27,10 @@ import * as CoreComponents from  './components';
 for (let NameComponent in CoreComponents) {
    Vue.component(NameComponent, CoreComponents[NameComponent]);
 }
-//delete CoreComponents;
+
+import {createRESTApi} from './http/rest-api.js';
+
+
 /**ROUTER
    create Routing for every APP
 */
@@ -50,9 +53,8 @@ import { sync } from 'vuex-router-sync';
 */
 import Vuetify from 'vuetify';
 Vue.use(Vuetify);
-
-
 import 'vuetify/dist/vuetify.min.css';
+
 
 /**CSS*/
 require( './style/animations.scss');
@@ -79,8 +81,11 @@ export default function ({configs, APP, messages, plugins} ) {
    });
 
    CoreVue._siteo_config = configs;
+
+   // plugin for http requests
+   var RESTApi = createRESTApi(configs.host_api||process.env.HOST_API);
    // create store
-   CoreVue.store = createStore(Vue, configs);
+   CoreVue.store = createStore(Vue, RESTApi, configs);
    //CoreVue.store.commit('saveInstanse', APP.options.instance);
 
    // create router

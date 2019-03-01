@@ -4,7 +4,7 @@
 import VueRouter from 'router';
 
 
-export default function (Vue, store, baseUrl,  routes) {
+export default function (Vue, store, baseUrl, routes) {
     Vue.use(VueRouter);
     var router;
     router = new VueRouter({
@@ -27,7 +27,7 @@ export default function (Vue, store, baseUrl,  routes) {
             return { x: 0, y: 0 }
           }
         }
-      //pathToRegexpOptions: ?: Object; // настройки path-to-regexp для компиляции regex  
+      //pathToRegexpOptions: ?: Object; // настройки path-to-regexp для компиляции regex
      });
 
      router.beforeEach(function (to, from, next) {
