@@ -1,8 +1,8 @@
 
 
 <script>
-import Messengers from '../../../../core/components/_helper/messengers';
-import Colors from '../../../../core/components/_helper/colors';
+import Messengers from '../../../core/components/_helper/messengers';
+import Colors from '../../../core/components/_helper/colors';
 import ExtendLinks from './_extends/Links';
 
 export default {

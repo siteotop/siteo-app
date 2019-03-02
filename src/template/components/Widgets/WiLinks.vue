@@ -1,7 +1,7 @@
 
 
 <script>
-import Colors from '../../../../core/components/_helper/colors';
+import Colors from '../../../core/components/_helper/colors';
 import ExtendLinks from './_extends/Links';
 
 export default {
