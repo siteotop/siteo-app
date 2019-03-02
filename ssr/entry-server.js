@@ -1,6 +1,6 @@
 // entry-server.js
 import  createApp  from '../src/core';
-import  PluginPageBlocks  from '../src/plugins/pages';
+import  siteoTemplate  from '../src/template';
 import  siteoApp  from '../src/app';
 import  SiteoLocalEN  from '../src/core/i18n/en';
 import  defaultDesign  from './default/design';
@@ -23,7 +23,7 @@ export default (context) => {
       configs: context.configs_frontend,
       APP:siteoApp,
       messages: SiteoLocalEN,
-      plugins: {pageblocks: PluginPageBlocks}
+      plugins: {pageblocks: siteoTemplate}
     });
     app.$store.commit('saveInstanse', context.instance);
     context.meta = app.$meta();
