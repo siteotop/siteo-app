@@ -5,11 +5,11 @@ import  createApp from './core';
 //console.log(window['siteo-app']);
 console.log(window['siteo-plugins']);
 
-if (window['siteo-pages']) {
+if (window['siteo-template']) {
   if (!window['siteo-plugins']) {
       window['siteo-plugins'] = {};
   }
-  window['siteo-plugins']['siteo-pages'] = window['siteo-pages'];
+  window['siteo-plugins']['siteo-template'] = window['siteo-template'];
 }
 
 var app= createApp({
@@ -57,7 +57,7 @@ app.$router.onReady(() => {
       &&app.$store.state.APP_INSTANCE.design.theme.colors) {
     app.$vuetify.theme = app.$store.state.APP_INSTANCE.design.theme.colors;
   }
-  //about  devide code client and SSR  https://bit.ly/2tnfDa4 
+  //about  devide code client and SSR  https://bit.ly/2tnfDa4
   app.$mount('#app');
   // allow use async load in beforeMount
   app.$store.state.allowAsyncLoad = true;

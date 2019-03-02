@@ -6,7 +6,7 @@ import ICONS from './icons';
 
 export default {
 
-  name: 'siteo-pages',
+  name: 'siteo-template',
 
   install: function (Vue, options) {
     for (let NameComponent in components) {

@@ -30,7 +30,15 @@ module.exports=function (req, res, baseUrl, path) {
 
 
   httpApi( '/apps', {siteo_id:req.hostname+baseUrl} ).then(response=>{
-    context.instance = response.data;
+
+    if (!response.data.instance) {
+        generateTemplateError(res, 'API_NO_CONTENT_JSON' ,context.configs_frontend );
+        return 0;
+    }
+
+    context.configs_frontend = {...context.configs_frontend,  ...response.data.configs };
+    //context.configs_frontend.lang = response.data.instance.data.lang;
+    context.instance = response.data.instance;
     renderer.renderToString(context, (err, html) => {
       if (err) {
           //console.log(err);

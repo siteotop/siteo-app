@@ -141,7 +141,7 @@ export default function ({configs, APP, messages, plugins} ) {
           CoreVue.SiteoAddPlugin(plugins[i]);
        }
     }
-
+    console.log( PLUGINS);
     // start Vue instance
     let app2 = new Vue(
       CoreVue
