@@ -37,7 +37,6 @@ export default {
           recaptcha: null,
           loading: true,
           token: this.$root.$options._siteo_config.recaptcha
-
       }
 
 

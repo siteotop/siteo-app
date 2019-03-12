@@ -21,19 +21,16 @@ export default {
 
   siteoInstall: function ($coreVue, $pluginOptions) {
     // add routes
+
     var routes =  {
       values: {route: '/values', title:'Values'},
       experts: {route: '/experts', title:'People'},
       posts: {route: '/blog', title:'Blog'},
       objectService: {title: '{title} - Order item', description: '{actionText} {title}, Price {price}'},
     };
-    $coreVue.router.addRoutes(SiteoRoutes());
-    // add templates
-    //$coreVue.SiteoAddPlugin($pluginOptions.template);
+    $coreVue.router.addRoutes(SiteoRoutes($pluginOptions));
 
-    // register  module order to  instance
-
-     $coreVue.store.registerApiModule(
+    $coreVue.store.registerApiModule(
       ['APP_ORDER'],
        moduleOrder('WEBSITE_API_URL')
     );

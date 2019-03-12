@@ -15,7 +15,7 @@ const helperNameRegister = function ( name) {
   }
 }
 
-export default function (Vue, RESTApi, configs)  {
+export default function (Vue, RESTApi, baseUrl)  {
       const REGISTER={};
 
        Vue.use(Vuex);
@@ -25,7 +25,6 @@ export default function (Vue, RESTApi, configs)  {
            drawer: false,
            allowAsyncLoad: true,
            pageLoader: false,
-           //recaptcha: configs.recaptcha,
            usePablicToken: true,
            dispacthToken: 'defaultToken' // for example "account/refreshToken"
          },
@@ -63,14 +62,14 @@ export default function (Vue, RESTApi, configs)  {
          },
          getters: {
            CORE_HOST() {
-             return  configs.baseUrl||'/';
+             return  baseUrl||'/';
            },
          },
          actions: {
 
            // default place public token for siteo-template
            defaultToken() {
-              return configs.public_token
+              return  '';
            },
 
            /**

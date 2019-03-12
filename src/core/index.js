@@ -85,7 +85,7 @@ export default function ({configs, APP, messages, plugins} ) {
    // plugin for http requests
    var RESTApi = createRESTApi(configs.host_api||process.env.HOST_API);
    // create store
-   CoreVue.store = createStore(Vue, RESTApi, configs);
+   CoreVue.store = createStore(Vue, RESTApi, configs.baseUrl);
    //CoreVue.store.commit('saveInstanse', APP.options.instance);
 
    // create router
@@ -120,13 +120,14 @@ export default function ({configs, APP, messages, plugins} ) {
       if (!PLUGINS[plugin.name]) {
         // install for Vue
         PLUGINS[plugin.name] = true;
-
-        Vue.use(plugin, {$coreVue:CoreVue, $pluginOptions: plugin.options, name: plugin.name});
+        console.log(configs);
+        console.log(plugin.name);
+        Vue.use(plugin, {$coreVue:CoreVue,  name: plugin.name });
 
         if (plugin.siteoInstall) {
           // install special function for siteoInstall (using for SSR)
           // on SSR components registering one time, but is some deals which need registered every time
-          plugin.siteoInstall(CoreVue, plugin.options);
+          plugin.siteoInstall(CoreVue, configs[plugin.name] );
         }
       } else {
           console.log(`Plugin ${plugin.name} was loaded early`);

@@ -14,46 +14,47 @@ export default function (configs) {
         },
     ];
 
-    routes.push(
-      {
-        name: "values",
-        path:  '/',
-        component: RouteItems,
-        props: { typeList: 'values' }
-      },
-      {
-        name: "experts",
-        path:  '/experts',
-        component: RouteItems,
-        props: { typeList: 'experts' }
-      },
+    if (!configs.lp) {
+      routes.push(
+        {
+          name: "values",
+          path: '/' + (configs.seo_path_values?  configs.seo_path_values: 'values'),
+          component: RouteItems,
+          props: { typeList: 'values' }
+        },
+        {
+          name: "experts",
+          path:  '/' + (configs.seo_path_experts?  configs.seo_path_experts: 'experts') ,
+          component: RouteItems,
+          props: { typeList: 'experts' }
+        },
 
-      {
-        name: "posts",
-        path:  '/posts',
-        component: RouteItems,
-        props: { typeList: 'posts' }
-      },
+        {
+          name: "posts",
+          path:  '/' + (configs.seo_path_posts?  configs.seo_path_posts: 'posts'),
+          component: RouteItems,
+          props: { typeList: 'posts' }
+        },
 
-      {
-        name: "order",
-        path:  '/go/:typeAction(order|call|recall|chat|links|locations)?',
-        component: RouteOrder,
-        props: true
+        {
+          name: "order",
+          path:  '/go/:typeAction(order|call|recall|chat|links|locations)?',
+          component: RouteOrder,
+          props: true
 
-      },
+        },
 
-      {
-        name: "objectPage",
-        path:  '/:objectId',
-        component: Pages,
-        props: true,
-        meta: {name: 'page'}
-      },
+        {
+          name: "objectPage",
+          path:  '/:objectId',
+          component: Pages,
+          props: true,
+          meta: {name: 'page'}
+        },
 
 
-    );
-
+      );
+    }
     routes.push(
       {
          path: "*",
