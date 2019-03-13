@@ -10,7 +10,7 @@
         :_p="item.price"
         :_di="item.discount"
         :$vl="props.$vl"
-        :_to="{ name: 'objectService', params: { objectId: item._id }}"
+      
         ></b-service>
     </template>
   </SectionListWrap>

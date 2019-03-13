@@ -20,23 +20,22 @@ export default {
   },
 
   siteoInstall: function ($coreVue, $pluginOptions) {
-    // add routes
 
-    var routes =  {
-      values: {route: '/values', title:'Values'},
-      experts: {route: '/experts', title:'People'},
-      posts: {route: '/blog', title:'Blog'},
-      objectService: {title: '{title} - Order item', description: '{actionText} {title}, Price {price}'},
-    };
+    var routes= {
+      'routes_values_t': 'Values',
+      'routes_experts_t': 'People',
+      'routes_posts_t': 'Blog',
+    }
+
     $coreVue.router.addRoutes(SiteoRoutes($pluginOptions));
 
-    $coreVue.store.registerApiModule(
+  /*  $coreVue.store.registerApiModule(
       ['APP_ORDER'],
        moduleOrder('WEBSITE_API_URL')
     );
-
+*/
     // merge messages from instance
-    $coreVue.i18n.mergeLocaleMessage($coreVue.i18n.locale, {routes: routes} );
+    $coreVue.i18n.mergeLocaleMessage($coreVue.i18n.locale,  routes );
 
   }
 

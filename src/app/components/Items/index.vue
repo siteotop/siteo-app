@@ -79,7 +79,7 @@ export default {
 
   computed: {
       title() {
-        return this.$t('routes.'+this.typeList+'.title');
+        return this.$t('routes_'+this.typeList+'_t');
       },
 
 
@@ -101,7 +101,7 @@ export default {
   methods: {
     asyncDataError(error_data) {
         console.log(error_dat);
-        // in here place we need cath error   
+        // in here place we need cath error
         throw error_data;
     }
   }
