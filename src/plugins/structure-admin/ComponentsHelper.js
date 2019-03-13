@@ -1,5 +1,5 @@
-import {createSettComponent} from '../../components/Structure/design';
-import * as  AppStructure from '../../components/Structure';
+import {createSettComponent} from './defaultDesign';
+import * as  AppStructure from '../../core/components/Structure';
 
 
 
@@ -8,7 +8,7 @@ var childrenList = {};
 for (var parentName in AppStructure) {
      if (AppStructure[parentName].children) {
         // if component has children, get them and set options
-        var children = require(`../../components/Structure/${parentName}/Children/index.js`);
+        var children = require(`../../core/components/Structure/${parentName}/Children/index.js`);
         childrenList[parentName] = children;
 
      }

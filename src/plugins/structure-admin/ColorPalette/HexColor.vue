@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import MixinVModelInput from '../../../components/_mixins/v-model-input';
+import MixinVModelInput from '../../forms/AppForm/Fields/_mixins/v-model-input';
 import MDPalette from './MDPalette.vue'
 export default {
 

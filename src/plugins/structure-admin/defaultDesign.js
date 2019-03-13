@@ -1,5 +1,5 @@
 
-import * as  AppStructure from './index.js';
+import * as  AppStructure from '../../core/components/Structure';
 
 export const  createSettComponent = function (componentName,  componentObject ) {
 

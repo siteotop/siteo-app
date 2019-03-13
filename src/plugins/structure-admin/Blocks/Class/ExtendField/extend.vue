@@ -12,7 +12,7 @@
 
 <script>
 
-import MixinVModelInput from '../../../../../components/_mixins/v-model-input';
+import MixinVModelInput from '../../../../forms/AppForm/Fields/_mixins/v-model-input';
 import * as  HelperValues from  './helper-values';
 
 export default {
