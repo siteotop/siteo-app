@@ -3,7 +3,6 @@ export default function (parentGetterUrl) {
     api: {url: '/pages',  parentGetterUrl: parentGetterUrl},
     state () {
         return {
-          _id: '',
           title: '',
           description: '',
           meta_title: '',

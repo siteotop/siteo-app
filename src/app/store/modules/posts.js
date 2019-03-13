@@ -5,7 +5,6 @@ export default function (parentGetterUrl) {
     api: {url: '/posts',  parentGetterUrl: parentGetterUrl},
     state () {
         return {
-          _id: '',
           title: '',
           price: '',
           preview: '',

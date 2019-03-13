@@ -7,8 +7,6 @@ import SectionListWrap from './components/Pages/Schema/SectionListWrap.vue';
 import SiteoRoutes from './routes';
 import RouteError from './components/Error.vue';
 
-import moduleOrder from './store/modules/orders';
-
 export default {
   name: 'siteo-app',
 
@@ -29,7 +27,7 @@ export default {
 
     $coreVue.router.addRoutes(SiteoRoutes($pluginOptions));
 
-  
+
     // merge messages from instance
     $coreVue.i18n.mergeLocaleMessage($coreVue.i18n.locale,  routes );
 
