@@ -11,7 +11,8 @@ module.exports = merge(baseConfig, {
     'example':   './src/plugins/example',
     'instagram-post':   './src/plugins/instagram-post',
     'forms':   './src/plugins/forms',
-    //'page-blocks':   './src/plugins/page-blocks',
+    'structure-admin':   './src/plugins/structure-admin',
+    'pages-admin':   './src/plugins/pages-admin',
   },
 
   output: {
