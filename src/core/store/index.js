@@ -1,9 +1,9 @@
 import Vuex from 'vuex';
 import {checkObjectResponse} from 'core/http/error-handling.js';
 import SystemMessages from './messages.js';
-import {createModelCRUD} from './helpers/model-events'
+import {createModelCRUD} from './helpers/createModelCRUD'
 //import i18n from './i18n.js';
-import createInstance from './appInstance.js';
+import appInstance from './appInstance.js';
 
 
 
@@ -53,10 +53,7 @@ export default function (Vue, RESTApi, baseUrl)  {
          },
 
          modules: {
-           APP_INSTANCE: createInstance (),
-
-
-           //APP_EXPERTS: createExperts ('WEBSITE_API_URL'),
+           appInstance:  createModelCRUD(appInstance),
            SystemMessages,
 
          },

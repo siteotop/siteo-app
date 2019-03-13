@@ -12,7 +12,7 @@ export default {
 
   render(h, context) {
     var
-      design = context.parent.$store.state.APP_INSTANCE.design.AppAction||{};
+      design = context.parent.$store.state.appInstance.objectActive.design.AppAction||{};
 
 
 
@@ -51,7 +51,7 @@ export default {
       [
         h('AppIcon', {attrs: {name:context.props.siicon||'si-order'}}),
 
-          (!context.props.fab)? (context.props._at || context.parent.$store.state.APP_INSTANCE.data.actionText): '',
+          (!context.props.fab)? (context.props._at || context.parent.$store.state.appInstance.objectActive.actionText): '',
       ]
    )
 

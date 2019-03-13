@@ -86,7 +86,6 @@ export default function ({configs, APP, messages, plugins} ) {
    var RESTApi = createRESTApi(configs.host_api||process.env.HOST_API);
    // create store
    CoreVue.store = createStore(Vue, RESTApi, configs.baseUrl);
-   //CoreVue.store.commit('saveInstanse', APP.options.instance);
 
    // create router
    CoreVue.router = createRouter(Vue, CoreVue.store, configs.baseUrl )

@@ -14,7 +14,7 @@ export default {
     wrapped: 'VFooter',
 
     render(h, context) {
-      var design = context.parent.$store.state.APP_INSTANCE.design['AppFooter'] || {};
+      var design = context.parent.$store.state.appInstance.objectActive.design['AppFooter'] || {};
 
       return  h('v-footer', {
           props: {

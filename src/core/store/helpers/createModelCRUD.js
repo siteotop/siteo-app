@@ -2,19 +2,27 @@
 import API from 'core/store/helpers/model-api.js'
 import createItems from 'core/store/helpers/model-items.js'
 
+const stateHelper = function(state, object) {
+  for (let key in object) {
+      if (state.objectActive[key]!==undefined) {
+          state.objectActive[key] = object[key];
+     }
+  }
+}
 
 
-
-const createModelCRUD = function (object, turnOnList) {
-
-    if (!object.api.nameId) {
-       object.api.nameId = '_id';
-    }
+const createModelCRUD = function (object, turnOnList ) {
 
     var modules = {};
-    modules.api = API(object.api);
-    if (turnOnList) {
-      modules.items = createItems();
+
+    if (object.api !== undefined) {
+      if (!object.api.nameId) {
+         object.api.nameId = '_id';
+      }
+      modules.api = API(object.api);
+      if (turnOnList) {
+        modules.items = createItems();
+      }
     }
 
     return {
@@ -22,7 +30,10 @@ const createModelCRUD = function (object, turnOnList) {
         state: function () {
           //  console.log(object.state);
             var _state =  object.state();
-            _state[object.api.nameId] = 0;
+            if (object.api) {
+              _state[object.api.nameId] = 0;
+            }
+
             return { objectActive: _state } ;
         },
 
@@ -30,15 +41,14 @@ const createModelCRUD = function (object, turnOnList) {
 
         mutations: {
 
+          setModel(state, object) {
+             state.api.id = 0;
+             stateHelper(state, object);
+             state.api.id = state.objectActive[state.api.nameId];
+          },
+
           updateModel(state, object) {
-
-            //  console.log(object)
-              for (let key in object) {
-                if (state.objectActive[key]!==undefined) {
-                    state.objectActive[key] = object[key];
-
-                }
-              }
+              stateHelper(state, object);
           },
 
           clearModel(state) {

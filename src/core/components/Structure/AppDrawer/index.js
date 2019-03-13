@@ -39,7 +39,7 @@ export default {
   render (h, context) {
 
 
-      var design = context.parent.$store.state.APP_INSTANCE.design[SHORT_NAME] || {};
+      var design = context.parent.$store.state.appInstance.objectActive.design[SHORT_NAME] || {};
 
       if (design.props&& design.props.coreOff===true) {
         return '';

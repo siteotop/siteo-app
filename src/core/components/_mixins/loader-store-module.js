@@ -1,6 +1,6 @@
 //https://lodash.com/docs/4.17.5#hasIn
 var _hasIn =  require('lodash/hasIn');
-import {createModelCRUD}  from '../../../core/store/helpers/model-events.js'
+import {createModelCRUD}  from '../../../core/store/helpers/createModelCRUD.js'
 
 
 /**

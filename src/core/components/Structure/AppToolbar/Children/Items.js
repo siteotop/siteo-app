@@ -14,7 +14,7 @@ export default {
 
     render (h, context) {
     //  console.log(JSON.stringify(context.props));
-      var items =  context.parent.$store.state.APP_INSTANCE.menu ||[];
+      var items =  context.parent.$store.state.appInstance.objectActive.menu ||[];
     //  console.log(JSON.stringify(design));
       if (!items.length) {
         return '';

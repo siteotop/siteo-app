@@ -18,8 +18,8 @@ module.exports = function (res, err, configs) {
 
   var params_template = {
     __SITEO_INSTANCE__: JSON.stringify({
-        'saveInstanse':err.__SITEO_INSTANCE__|| defaultInstance,
-        'page/updateModel': pageError(error_response)
+        'appInstance/setModel':err.__SITEO_INSTANCE__|| defaultInstance,
+        'page/setModel': pageError(error_response)
     }),
     __SITEO_CONFIG__: JSON.stringify(configs),
   };

@@ -1,7 +1,7 @@
 <template functional>
   <v-list>
     <template
-        v-for="item in parent.$store.state.APP_INSTANCE.menu"
+        v-for="item in parent.$store.state.appInstance.objectActive.menu"
         v-if="item.path!='divider'">
         <v-list-group
             v-if="item.children"

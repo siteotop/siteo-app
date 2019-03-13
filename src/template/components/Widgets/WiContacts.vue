@@ -18,7 +18,7 @@ export default {
 
       collectLinks() {
         var new_array = [];
-        var values =this.$store.state.APP_INSTANCE.contacts;
+        var values =this.$store.state.appInstance.objectActive.contacts;
         var text = this.$t('auto.'+this.$type);
         for (var i in values )  {
            var service = values [i];

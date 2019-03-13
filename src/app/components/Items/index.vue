@@ -59,7 +59,7 @@ export default {
 
   asyncData({store, route}) {
     console.log('loaded data items from server for route:');
-    store.registerApiModule(route.name, StoreModules[route.name]('WEBSITE_API_URL'), true);
+    store.registerApiModule(route.name, StoreModules[route.name]('appInstance/urlID'), true);
 
     if (store.state.allowAsyncLoad) {
        return store.dispatch(route.name+'/getList');
@@ -90,7 +90,7 @@ export default {
 
    return {
       title: this.title,
-      titleTemplate: '%s  - ' + this.$store.state.APP_INSTANCE.data.name,
+      titleTemplate: '%s  - ' + this.$store.state.appInstance.objectActive.name,
       meta: [
         {name: 'description', vmid: 'description', content: '' }
       ]

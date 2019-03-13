@@ -1,63 +1,52 @@
 /*
-Store for APP_INSTANCE from server
+Store for appInstance.objectActive from server
 
 */
 
-export default function () {
-  return  {
 
-    state: function() {
-       return {
-         data: {
-           name:"",
-           title:"",
-           slogan:"",
-           actionText:"",
-           description:"",
-           countryAlpha2:"",
-           currency: '',
-           design:false,
-           lang:'',
-         }, //   APP_INSTANCE.data,
+export default {
+
+  //api:'/admins',
+  api: {url: '/apps', noActions:true},
+  state () {
+      return {
+         name:"",
+         title:"",
+         slogan:"",
+         actionText:"",
+         description:"",
          configs: {
-
          },
-         contacts: [], // APP_INSTANCE.contacts,
-         design:{}, // APP_INSTANCE.design|| {},
-         menu:[] ,  // APP_INSTANCE.menu||[],
-         links:[],  //APP_INSTANCE.links||[],
-         locations: []// APP_INSTANCE.locations||[]
-       }
-
+         contacts: [],
+         design:{},
+         menu:[] ,
+         links:[],
+         locations: []
+        }
     },
 
-   mutations: {
-      saveInstanse(state, instance) {
-          for( var i in state) {
-            state[i] = instance[i];
-          }
-      },
-      /**
-         change state  bRender
-         @param state
-         @param rules {object}  rules include blocks name which need block ()
-      */
-      setOffRender (state, nameStructure) {
-        if (!state.design[nameStructure].props ) {
-            state.design[nameStructure].props = {coreOff: true};
-        } else if(!state.design[nameStructure].props.coreOff) {
-          state.design[nameStructure].props.coreOff = true;
-        }
+  actions: {
+
+    makeOrder() {
+        
+    },
+
+    makeSubscribe({dispatch, getters}, data) {
+        var config = {data:data};
+         config.method = 'POST';
+         config.url = getters.WEBSITE_API_URL + '/subscribers';
+         return  dispatch('callAPI', config, {root:true});
 
       },
 
-      setOnRender(state, nameStructure) {
-        if (state.design[nameStructure].props&&state.design[nameStructure].props.coreOff  ) {
-            state.design[nameStructure].props.coreOff = false;
-        }
-      }
+    }
+}
 
-    },
+
+
+/*
+export default {
+
 
 
     getters: {
@@ -72,9 +61,7 @@ export default function () {
           return state.data.lang;
       },
 
-      /**
-        list  for domains lang
-      */
+
       LIST_LANG(state, getters, rootState){
         //return state.list;
         var route, langs, list;
@@ -112,5 +99,6 @@ export default function () {
     }
 
 
-  }
+
 }
+*/

@@ -27,7 +27,7 @@ export default {
   metaInfo () {
    return {
       title: this.meta_title,
-      titleTemplate: '%s  - ' + this.$store.state.APP_INSTANCE.data.name,
+      titleTemplate: '%s  - ' + this.$store.state.appInstance.objectActive.name,
       meta: [
         {name: 'description', vmid: 'description', content: this.meta_description }
       ],
@@ -40,7 +40,7 @@ export default {
 
   asyncData({ store, route }) {
 
-      store.registerApiModule( 'page', pages('WEBSITE_API_URL'));
+      store.registerApiModule( 'page', pages('appInstance/urlID'));
       if (store.state.allowAsyncLoad) {
 
         return store.dispatch('page/getObject', route.params.objectId);

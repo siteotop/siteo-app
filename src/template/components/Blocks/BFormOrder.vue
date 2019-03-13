@@ -5,8 +5,8 @@ export default {
   name: 'BFormOrder',
   props: ['formAction'],
   render(h, context) {
-      var structure =  context.parent.$store.state.APP_INSTANCE.design.AppFormOrder.children;
-      var props =   context.parent.$store.state.APP_INSTANCE.design.AppFormOrder.props||{};
+      var structure =  context.parent.$store.state.appInstance.objectActive.design.AppFormOrder.children;
+      var props =   context.parent.$store.state.appInstance.objectActive.design.AppFormOrder.props||{};
       props.propsStructure = structure;
       props.defaultValues = context.parent.$store.state.APP_ORDER;
       props.i18nkey = "formOrder";

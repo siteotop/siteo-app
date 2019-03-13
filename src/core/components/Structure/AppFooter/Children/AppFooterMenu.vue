@@ -3,7 +3,7 @@
    <v-layout >
       <v-flex xs12 text-xs-center class="subheading" >
     <v-btn
-        v-for="(item, index) in parent.$store.state.APP_INSTANCE.menu"
+        v-for="(item, index) in parent.$store.state.appInstance.objectActive.menu"
         :key="index"
         :to="item.path"
         color="white"

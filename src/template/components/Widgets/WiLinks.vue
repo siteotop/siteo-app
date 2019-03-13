@@ -12,8 +12,8 @@ export default {
 
         collectLinks() {
           var new_array = [];
-          var values= this.$store.state.APP_INSTANCE.links;
-          var text = this.$t('auto.links', {company_name: this.$store.state.APP_INSTANCE.data.name });
+          var values= this.$store.state.appInstance.objectActive.links;
+          var text = this.$t('auto.links', {company_name: this.$store.state.appInstance.objectActive.name });
           for (var i in values)  {
              var service = values[i];
               new_array.push({

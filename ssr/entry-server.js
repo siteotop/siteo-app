@@ -9,7 +9,7 @@ export default (context) => {
   // поскольку могут быть асинхронные хуки маршрута или компоненты,
   // мы будем возвращать Promise, чтобы сервер смог дожидаться
   // пока всё не будет готово к рендерингу.
-    if (!context.instance.data) {
+    if (!context.instance._id) {
        throw {ssr_error_code: 'APP_INSTANCE_NOT_VALID' , response_data_api: context.instance};
     }
   // if design not found connect default design
@@ -18,14 +18,14 @@ export default (context) => {
     }
    return new Promise((resolve, reject) => {
 
-    // for getting AppInstance we need id for APP_INSTANCE
+    // for getting AppInstance we need id for appInstance
     var app = createApp( {
       configs: context.configs_frontend,
       APP:siteoApp,
       messages: SiteoLocalEN,
       plugins: {pageblocks: siteoTemplate}
     });
-    app.$store.commit('saveInstanse', context.instance);
+    app.$store.commit('appInstance/setModel', context.instance);
     context.meta = app.$meta();
 
     // minify styles for theme
@@ -35,7 +35,7 @@ export default (context) => {
         : css
     }
 
-    app.$vuetify.theme = app.$store.state.APP_INSTANCE.design.theme.colors;
+    app.$vuetify.theme = app.$store.state.appInstance.objectActive.design.theme.colors;
     // устанавливаем маршрут для маршрутизатора серверной части
     app.$router.push(context.url)
 

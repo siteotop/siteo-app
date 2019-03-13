@@ -29,11 +29,7 @@ export default {
 
     $coreVue.router.addRoutes(SiteoRoutes($pluginOptions));
 
-  /*  $coreVue.store.registerApiModule(
-      ['APP_ORDER'],
-       moduleOrder('WEBSITE_API_URL')
-    );
-*/
+  
     // merge messages from instance
     $coreVue.i18n.mergeLocaleMessage($coreVue.i18n.locale,  routes );
 
