@@ -25,7 +25,7 @@ export default {
       'routes_posts_t': 'Blog',
     }
 
-    $coreVue.router.addRoutes(SiteoRoutes($pluginOptions));
+    $coreVue.router.addRoutes(SiteoRoutes($pluginOptions||{}));
 
 
     // merge messages from instance
