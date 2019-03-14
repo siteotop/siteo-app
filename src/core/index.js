@@ -63,16 +63,59 @@ require('./style/common.css')
 
 /**ICONS*/
 import IconsRegister from  './components/Icons/register.js';
+CoreVue.IconsRegister= IconsRegister;
 
 import axios from 'axios';
+CoreVue.axios = axios;
 
 import VS2 from 'vue-script2';
+CoreVue.$script = VS2.load;
 
 
+const coreAddPlugin = function (plugin) {
+  console.log(CoreVue._siteo_config);
+  console.log(plugin.name);
+  Vue.use(plugin, {$coreVue:CoreVue,  name: plugin.name });
+  if (plugin.siteoInstall) {
+    // install special function for siteoInstall (using for SSR)
+    // on SSR components registering one time, but is some deals which need registered every time
+    plugin.siteoInstall(CoreVue, CoreVue._siteo_config[plugin.name] );
+  }
 
-export default function ({configs, APP, messages, plugins} ) {
+}
+
+export const installSiteoTemplate = function (template) {
+   if (template) {
+      coreAddPlugin(template);
+   }
+}
+/**
+ helper for register site plugins
+*/
+
+const SiteoAddPlugin = function (plugin) {
+  console.log(CoreVue._plugins);
+  if (!plugin.name) {
+    console.log('Plugin has not param plugin.name');
+    return ;
+  }
+  if ( !CoreVue._plugins[plugin.name]) {
+    // install for Vue
+    CoreVue._plugins[plugin.name] = true;
+    coreAddPlugin(plugin);
+  } else {
+      console.log(`Plugin ${plugin.name} was loaded early`);
+  }
+};
+CoreVue.SiteoAddPlugin = SiteoAddPlugin;
 
 
+/**
+start Siteo
+*/
+export const createSiteo =  function ({configs, messages, plugins} ) {
+
+   CoreVue._plugins = {};
    // start VueProgressBar
    Vue.use(VueProgressBar, {
      color: Vue.prototype.$vuetify.theme.accent ||'rgb(106, 180, 255)',
@@ -93,10 +136,6 @@ export default function ({configs, APP, messages, plugins} ) {
    //sync router with store for access route from store
    sync(CoreVue.store, CoreVue.router );
 
-   CoreVue.$script = VS2.load;
-   CoreVue.axios = axios;
-
-
 
    // connect routes translating to all messages
    //APP.options.messages[APP.options.instance.data.lang].routes = APP.options.instance.routes;
@@ -108,45 +147,25 @@ export default function ({configs, APP, messages, plugins} ) {
     });
 
 
-    CoreVue.IconsRegister= IconsRegister;
-    // add plugins
-    var PLUGINS = {};
-    CoreVue.SiteoAddPlugin = function (plugin) {
-      if (!plugin.name) {
-        console.log('Plugin has not param plugin.name');
-        return ;
-      }
-      if (!PLUGINS[plugin.name]) {
-        // install for Vue
-        PLUGINS[plugin.name] = true;
-        console.log(configs);
-        console.log(plugin.name);
-        Vue.use(plugin, {$coreVue:CoreVue,  name: plugin.name });
+}
 
-        if (plugin.siteoInstall) {
-          // install special function for siteoInstall (using for SSR)
-          // on SSR components registering one time, but is some deals which need registered every time
-          plugin.siteoInstall(CoreVue, configs[plugin.name] );
-        }
-      } else {
-          console.log(`Plugin ${plugin.name} was loaded early`);
-      }
-    };
-
+/**
+  start app with  main app plugin and additional plugins
+*/
+export const startSiteo = function (APP, plugins) {
+  // add plugins
+  if (APP) {
     CoreVue.SiteoAddPlugin(APP);
+  }
 
+  if (plugins) {
+     for (var i in plugins ) {
+        CoreVue.SiteoAddPlugin(plugins[i]);
+     }
+  }
 
-    if (plugins) {
-       for (var i in plugins ) {
-          CoreVue.SiteoAddPlugin(plugins[i]);
-       }
-    }
-    console.log( PLUGINS);
-    // start Vue instance
-    let app2 = new Vue(
-      CoreVue
-    );
-
-    return app2;
+  return  new Vue(
+    CoreVue
+  );
 
 }

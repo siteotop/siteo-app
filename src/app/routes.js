@@ -43,6 +43,39 @@ export default function (configs) {
           props: true
 
         },
+        {
+          path: '/admin',
+          name: 'admin',
+          component: {
+            mounted(){ console.log('mounted admin');
+              var self = this;
+              function listener(event) {
+                console.log(event);
+                if (event.origin != 'https://account.siteo-dev.com') {
+                  // что-то прислали с неизвестного домена - проигнорируем..
+                  return;
+                }
+
+                //alert( "получено: " + event.data );
+
+                var recieved =  JSON.parse(event.data);
+                if (recieved.type && recieved.name ) {
+                  self.$store[recieved.type](recieved.name, recieved.data);
+                }
+
+              }
+
+              if (window.addEventListener) {
+              window.addEventListener("message", listener);
+              } else {
+              // IE8
+              window.attachEvent("onmessage", listener);
+              }
+
+            },
+
+            render(h){ return h('div'); } }
+        },
 
         {
           name: "objectPage",
@@ -56,6 +89,7 @@ export default function (configs) {
       );
     }
     routes.push(
+
       {
          path: "*",
          name: 'PageError',

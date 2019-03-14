@@ -8,7 +8,9 @@ export default {
      //componentsPage: componentsPage,
      components: {...AppStructure},
 
-
+     _siteo_config: {},
+     _plugins: {},
+     
      data() {
           return {
            startdrawer: false,

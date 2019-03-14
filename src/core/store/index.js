@@ -120,7 +120,8 @@ export default function (Vue, RESTApi, baseUrl)  {
            }
 
        });
-       var helperRegister =
+
+
        store.registerApiModule = function (name, module, turnOnList) {
           var _name_register = helperNameRegister(name);
           if (!REGISTER[_name_register]) {

@@ -1,9 +1,11 @@
 // entry-server.js
-import  createApp  from '../src/core';
+import  {installSiteoTemplate, createSiteo, startSiteo}  from '../src/core';
 import  siteoTemplate  from '../src/template';
 import  siteoApp  from '../src/app';
 import  SiteoLocalEN  from '../src/core/i18n/en';
 import  defaultDesign  from './default/design';
+
+installSiteoTemplate(siteoTemplate);
 
 export default (context) => {
   // поскольку могут быть асинхронные хуки маршрута или компоненты,
@@ -13,18 +15,20 @@ export default (context) => {
        throw {ssr_error_code: 'APP_INSTANCE_NOT_VALID' , response_data_api: context.instance};
     }
   // if design not found connect default design
-    if (!context.instance.design) {
+   if (!context.instance.design) {
       context.instance.design = defaultDesign;
-    }
+   }
+
    return new Promise((resolve, reject) => {
 
     // for getting AppInstance we need id for appInstance
-    var app = createApp( {
+    createSiteo( {
       configs: context.configs_frontend,
-      APP:siteoApp,
       messages: SiteoLocalEN,
-      plugins: {pageblocks: siteoTemplate}
     });
+
+    var app = startSiteo(siteoApp);
+
     app.$store.commit('appInstance/setModel', context.instance);
     context.meta = app.$meta();
 

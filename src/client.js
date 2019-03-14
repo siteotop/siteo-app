@@ -1,25 +1,15 @@
 // entry-client.js
 
-import  createApp from './core';
+import  {installSiteoTemplate,  createSiteo, startSiteo } from './core';
 
-//console.log(window['siteo-app']);
-console.log(window['siteo-plugins']);
+installSiteoTemplate(window['siteo-template']);
 
-if (window['siteo-template']) {
-  if (!window['siteo-plugins']) {
-      window['siteo-plugins'] = {};
-  }
-  window['siteo-plugins']['siteo-template'] = window['siteo-template'];
-}
-
-var app= createApp({
+createSiteo({
     configs: window.__SITEO_CONFIG__,
-    APP: window['siteo-app'],
     messages: window['siteo-locale-en'],
-    plugins: window['siteo-plugins']
-    //template: window['siteo-template']
-
 });
+
+var app = startSiteo(window['siteo-app'], window['siteo-plugins']);
 
 
 app.$router.onReady(() => {
