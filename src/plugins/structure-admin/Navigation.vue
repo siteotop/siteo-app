@@ -84,7 +84,13 @@ export default {
 
   name:'BDesignTemplates',
 
+  props: {
 
+    eventChangeStructure: {
+      type: Function
+    }
+
+  },
 
   data() {
     return {
@@ -94,6 +100,17 @@ export default {
 
     }
   },
+
+  watch: {
+    defaultDesign: {
+        handler: function(newDesignStructure) {
+           this.eventChangeStructure(newDesignStructure);
+
+        },
+        deep: true
+      }
+  },
+  
 
   methods: {
 
