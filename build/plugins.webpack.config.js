@@ -21,6 +21,7 @@ module.exports = merge(baseConfig, {
     'forms':   './src/plugins/forms',
     'structure-admin':   './src/plugins/structure-admin',
     'pages-admin':   './src/plugins/pages-admin',
+    'bus':   './src/plugins/bus',
   },
 
   output: {

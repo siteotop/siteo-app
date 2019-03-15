@@ -84,7 +84,7 @@ const installSiteoPlugin = function (plugin) {
   if (plugin.siteoInstall) {
     // install special function for siteoInstall (using for SSR)
     // on SSR components registering one time, but is some deals which need registered every time
-    plugin.siteoInstall(CoreVue, CoreVue._siteo_config[plugin.name] );
+    plugin.siteoInstall(CoreVue, CoreVue._siteo_config[plugin.name]||{} );
   }
 
 }
