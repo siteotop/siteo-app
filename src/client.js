@@ -1,14 +1,13 @@
 // entry-client.js
 
-import  {installSiteoTemplate,  createSiteo, startSiteo } from './core';
+import  {installVuePlugin,  createSiteo, startSiteo } from './core';
 
-installSiteoTemplate(window['siteo-template']);
-
+//  add before create siteo (on SSR same)
+installVuePlugin(window['siteo-template']);
 createSiteo({
     configs: window.__SITEO_CONFIG__,
     messages: window['siteo-locale-en'],
 });
-
 var app = startSiteo(window['siteo-app'], window['siteo-plugins']);
 
 

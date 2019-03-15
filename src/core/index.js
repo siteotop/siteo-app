@@ -71,11 +71,16 @@ CoreVue.axios = axios;
 import VS2 from 'vue-script2';
 CoreVue.$script = VS2.load;
 
+export const installVuePlugin = function(plugin) {
+    if (plugin&&plugin.install) {
+      Vue.use(plugin, {$coreVue:CoreVue,  name: plugin.name });
+    }
+}
 
-const coreAddPlugin = function (plugin) {
+const installSiteoPlugin = function (plugin) {
   console.log(CoreVue._siteo_config);
   console.log(plugin.name);
-  Vue.use(plugin, {$coreVue:CoreVue,  name: plugin.name });
+
   if (plugin.siteoInstall) {
     // install special function for siteoInstall (using for SSR)
     // on SSR components registering one time, but is some deals which need registered every time
@@ -84,11 +89,6 @@ const coreAddPlugin = function (plugin) {
 
 }
 
-export const installSiteoTemplate = function (template) {
-   if (template) {
-      coreAddPlugin(template);
-   }
-}
 /**
  helper for register site plugins
 */
@@ -102,7 +102,8 @@ const SiteoAddPlugin = function (plugin) {
   if ( !CoreVue._plugins[plugin.name]) {
     // install for Vue
     CoreVue._plugins[plugin.name] = true;
-    coreAddPlugin(plugin);
+    installVuePlugin(plugin);
+    installSiteoPlugin(plugin);
   } else {
       console.log(`Plugin ${plugin.name} was loaded early`);
   }
@@ -154,14 +155,22 @@ export const createSiteo =  function ({configs, messages, plugins} ) {
 */
 export const startSiteo = function (APP, plugins) {
   // add plugins
-  if (APP) {
-    CoreVue.SiteoAddPlugin(APP);
-  }
-
-  if (plugins) {
-     for (var i in plugins ) {
-        CoreVue.SiteoAddPlugin(plugins[i]);
-     }
+  console.log(process.env.SSR);
+  if (process.env.SSR =='on') {
+    console.log(' ssr ');
+    if (APP) {
+      installSiteoPlugin(APP);
+    }
+  } else {
+    console.log(' no ssr ');
+    if (APP) {
+      SiteoAddPlugin(APP);
+    }
+    if (plugins) {
+       for (var i in plugins ) {
+          SiteoAddPlugin(plugins[i]);
+       }
+    }
   }
 
   return  new Vue(

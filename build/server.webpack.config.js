@@ -11,7 +11,7 @@ baseConfig.plugins.push( new webpack.DefinePlugin({
   'process.env': {
      NODE_ENV: JSON.stringify(process.env.NODE_ENV),
      HOST_API: JSON.stringify(process.env.HOST_API),
-
+     SSR: JSON.stringify("on")
   }
 }));
 

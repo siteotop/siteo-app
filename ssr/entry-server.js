@@ -1,11 +1,13 @@
 // entry-server.js
-import  {installSiteoTemplate, createSiteo, startSiteo}  from '../src/core';
+import  {installVuePlugin, createSiteo, startSiteo}  from '../src/core';
 import  siteoTemplate  from '../src/template';
 import  siteoApp  from '../src/app';
 import  SiteoLocalEN  from '../src/core/i18n/en';
 import  defaultDesign  from './default/design';
 
-installSiteoTemplate(siteoTemplate);
+installVuePlugin(siteoTemplate);
+installVuePlugin(siteoApp);
+
 
 export default (context) => {
   // поскольку могут быть асинхронные хуки маршрута или компоненты,
