@@ -6,7 +6,7 @@
       app
       v-model="drawerSettings">
 
-    <v-toolbar  flat dark >
+    <v-toolbar  flat >
       <v-toolbar-title>Settings</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
@@ -72,15 +72,11 @@
 </template>
 <script>
 
-//import ChunkLoader from '../../components/_mixins/loader-i18-chunk.js';
-//import * as SettingsComponents from './Settings';
 
-//import LoadModule from '../../components/_mixins/loader-store-module.js';
 import {designDefault} from './defaultDesign';
 
 export default {
 
-  //mixins: [ChunkLoader, LoadModule],
 
   name:'BDesignTemplates',
 
@@ -110,7 +106,7 @@ export default {
         deep: true
       }
   },
-  
+
 
   methods: {
 
