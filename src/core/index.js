@@ -73,7 +73,7 @@ CoreVue.$script = VS2.load;
 
 export const installVuePlugin = function(plugin) {
     if (plugin&&plugin.install) {
-      Vue.use(plugin, {$coreVue:CoreVue,  name: plugin.name });
+      Vue.use(plugin, CoreVue);
     }
 }
 

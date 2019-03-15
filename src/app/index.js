@@ -10,7 +10,7 @@ import RouteError from './components/Error.vue';
 export default {
   name: 'siteo-app',
 
-  install: function (Vue, options) {
+  install: function (Vue) {
       Vue.component('PageSchema', PageSchema);
       Vue.component('SectionWrap', SectionWrap);
       Vue.component('SectionListWrap', SectionListWrap);

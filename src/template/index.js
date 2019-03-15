@@ -8,12 +8,12 @@ export default {
 
   name: 'siteo-template',
 
-  install: function (Vue, options) {
+  install: function (Vue, $coreVue) {
     for (let NameComponent in components) {
        Vue.component(NameComponent, components[NameComponent] );
     }
 
-    options.$coreVue.IconsRegister(ICONS);
+     $coreVue.IconsRegister(ICONS);
   }
 
 }

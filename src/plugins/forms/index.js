@@ -2,11 +2,14 @@
 //import VeeValidate from 'vee-validate';
 import AppForm from './AppForm/index.vue';
 
-export default {
-  name: 'siteo-plugin-forms',
+const pluginName = 'siteo-plugin-forms';
 
-  install: function (Vue, options) {
-      Vue.component(options.name, AppForm);
+export default {
+  name: pluginName,
+
+  install: function (Vue) {
+
+      Vue.component(pluginName, AppForm);
 
       //console.log(options.$coreVue.i18n.locale);
       // connect  vee-validator
