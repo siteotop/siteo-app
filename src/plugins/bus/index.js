@@ -2,11 +2,14 @@
 
 export default {
   name: 'siteo-plugin-bus',
+  install: function(Vue, $coreVue) {
 
-  siteoInstall: function ($coreVue, $pluginOptions) {
+      var $pluginOptions = $coreVue._siteo_config['siteo-plugin-bus'];
+
+      var $vuetify =  Vue.prototype.$vuetify;
 
       function listener(event) {
-          console.log(event);
+          console.log(event)
           if (!$pluginOptions.origin) {
               console.log('no setup origin host');
               return;
@@ -22,6 +25,11 @@ export default {
             var recieved =  JSON.parse(event.data);
             if (recieved.storeEvent && recieved.storeEventName ) {
               $coreVue.store[recieved.storeEvent](recieved.storeEventName, recieved.data);
+
+              if (recieved.data.design&&recieved.data.design.theme)  {
+                   $vuetify.theme = recieved.data.design.theme.colors;
+              }
+
             }
           } catch (err) {
             console.log(err);
@@ -34,5 +42,6 @@ export default {
         // IE8
         window.attachEvent("onmessage", listener);
       }
-   }
+
+  }
 }
