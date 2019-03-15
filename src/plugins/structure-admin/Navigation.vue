@@ -15,7 +15,7 @@
           small
           color="indigo"
           class=" white--text"
-        > <AppIcon name="si-more-vert"></AppIcon>
+        > <AppIcon name="si-arrow-left"></AppIcon>
       </v-btn>
     </v-toolbar>
 
@@ -32,14 +32,29 @@
     </v-subheader>
     <v-card tile >
       <v-card-actions>
+       <v-btn  @click="showJsonDesign=true">
+          View
+        </v-btn>
        <v-btn @click="saveDesign">
             Save
        </v-btn>
     </v-card-actions>
+
+
     </v-card>
 
 
    </v-navigation-drawer>
+
+
+   <v-dialog v-model="showJsonDesign" width="500" >
+       <v-card>
+         <v-card-text>
+               <code>{{JSON.stringify(defaultDesign, null, 4)}}</code>
+
+         </v-card-text>
+       </v-card>
+   </v-dialog>
    <v-btn
           color="pink"
           v-show="!drawerSettings"
@@ -73,7 +88,9 @@ export default {
 
   data() {
     return {
+      defaultDesign: designDefault(),
       drawerSettings: false,
+      showJsonDesign: false
 
     }
   },
@@ -88,10 +105,9 @@ export default {
 
   computed: {
 
-    preparedDesign() {
-      var defaultDesign =  designDefault();
 
-      return Object.values(defaultDesign);  
+    preparedDesign() {
+      return Object.values(this.defaultDesign);
     }
 
   }

@@ -1,9 +1,17 @@
 
 const path = require('path');
 const merge = require('webpack-merge')
+const webpack = require('webpack');
 //const nodeExternals = require('webpack-node-externals')
 const baseConfig = require('./base.webpack.config.js')
 const DIR_RESOURCE=require('./helper/dirResource')('plugins', process.env.NODE_ENV);
+
+baseConfig.plugins.push( new webpack.DefinePlugin({
+  'process.env': {
+     NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+  }
+}));
+
 
 module.exports = merge(baseConfig, {
   // Укажите точку входа серверной части вашего приложения
