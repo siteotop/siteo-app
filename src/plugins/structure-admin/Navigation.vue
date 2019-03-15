@@ -89,7 +89,7 @@ export default {
   data() {
     return {
       defaultDesign: designDefault(),
-      drawerSettings: false,
+      drawerSettings: true,
       showJsonDesign: false
 
     }

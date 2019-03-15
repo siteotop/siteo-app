@@ -1,5 +1,6 @@
 <template>
-  <v-menu z-index="1000" max-width="500" max-height="650"  :close-on-content-click="false" v-model="menuActive">
+  <v-menu lazy offset-overflow
+  right z-index="1000" nudge-right="60" max-width="500" max-height="500"  :close-on-content-click="false" v-model="menuActive">
 
         <v-btn fab slot="activator" :style="{backgroundColor:value}" ><AppIcon scale="1" name="si-settings"></AppIcon></v-btn>
         <v-card v-if="menuActive">
