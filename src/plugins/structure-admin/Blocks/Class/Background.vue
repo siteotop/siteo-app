@@ -1,5 +1,5 @@
 <template>
-  <v-menu max-width="500" max-height="650"  :close-on-content-click="false" v-model="menuActive">
+  <v-menu z-index="1000" max-width="500" max-height="650"  :close-on-content-click="false" v-model="menuActive">
         <v-btn slot="activator" icon><AppIcon name="si-settings"></AppIcon></v-btn>
 
         <v-card v-if="menuActive">

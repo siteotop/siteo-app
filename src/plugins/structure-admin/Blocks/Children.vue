@@ -6,7 +6,7 @@
         </DesignTabsBlock>
       </draggable>
     </v-expansion-panel>
-    <v-menu v-show="!startDragg" class="text-xs-center pb-3">
+    <v-menu z-index="1000" v-show="!startDragg" class="text-xs-center pb-3">
       <v-btn slot="activator"  fab >+ </v-btn>
           <v-list>
             <v-list-tile
