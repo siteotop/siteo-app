@@ -19,7 +19,7 @@
           </v-list>
         </v-menu>
         <div v-show="startDragg">
-          <v-subheader class="red--text"><AppIcon name="delete"></AppIcon> Delete Zone</v-subheader>
+          <v-subheader class="red--text"><AppIcon name="si-delete"></AppIcon> Delete Zone</v-subheader>
         <draggable  style="border:2px dotted red; width:100%; height:64px;" :value="[]" @add="startEvent($event)" :options="{group:'children', filter: '.ignore-elements'}">
 
         </draggable>
@@ -105,7 +105,7 @@ export default {
      getSettingsFromComponent(componentName) {
 
 
-       return this.$root.$options._siteoPlugins['design'].createSettComponent(componentName, this.childrenComponents[componentName]);
+       return this.$options.StructureAdminHelper.createSettComponent(componentName, this.childrenComponents[componentName]);
       /* var newObject = {name: componentName};
        var childrenComponents = this.childrenComponents;
        for (var i in this.$options.listBlock) {
@@ -123,7 +123,7 @@ export default {
   computed: {
 
     childrenComponents() {
-      return this.$root.$options._siteoPlugins['design'].getChildrenList(this.componentName);
+      return this.$options.StructureAdminHelper.getChildrenList(this.componentName);
     },
 
     // create basic components for merge with server options

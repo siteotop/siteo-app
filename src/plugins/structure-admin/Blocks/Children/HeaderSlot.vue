@@ -5,14 +5,14 @@
 
           >
             <v-flex xs2>
-              <AppIcon name="drag"> </AppIcon>
+              <AppIcon name="si-drag"> </AppIcon>
             </v-flex>
 
             <v-flex xs8>
               {{props.name}}
             </v-flex>
 
-            
+
 
           </v-layout>
 </template>

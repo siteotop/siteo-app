@@ -1,22 +1,21 @@
 <template>
   <div>
-    <v-navigation-drawer  :width="drawerWidth"  right
-   app
-   stateless
-
-   v-model="drawerSettings">
+    <v-navigation-drawer
+      left
+      stateless
+      app
+      v-model="drawerSettings">
 
     <v-toolbar  flat dark >
       <v-toolbar-title>Settings</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
           fab
-
           @click="drawerSettings = !drawerSettings"
           small
           color="indigo"
           class=" white--text"
-        > <AppIcon name="menu"></AppIcon>
+        > <AppIcon name="si-more-vert"></AppIcon>
       </v-btn>
     </v-toolbar>
 
@@ -24,7 +23,7 @@
         Main Components
     </v-subheader>
     <v-expansion-panel>
-      <DesignTabsBlock  :designStructure="arrayDesignStructure">
+      <DesignTabsBlock  :designStructure="preparedDesign">
       </DesignTabsBlock>
     </v-expansion-panel>
 
@@ -49,10 +48,10 @@
           fab
           fixed
           bottom
-          right
+          left
 
         >
-        <AppIcon name="menu"></AppIcon>
+        <AppIcon name="si-settings"></AppIcon>
    </v-btn>
  </div>
 </template>
@@ -62,7 +61,7 @@
 //import * as SettingsComponents from './Settings';
 
 //import LoadModule from '../../components/_mixins/loader-store-module.js';
-
+import {designDefault} from './defaultDesign';
 
 export default {
 
@@ -70,9 +69,7 @@ export default {
 
   name:'BDesignTemplates',
 
-  //$_LoadModule_plain: templates,
 
-  //components: SettingsComponents,
 
   data() {
     return {
@@ -81,74 +78,25 @@ export default {
     }
   },
 
-  created() {
-    // add _id for website, because templates does not work without it
-    this.$store.commit('websites/setApiId', this.$store.state.appInstance.objectActive._id);
-    // add _id for  templates
-  //  this.$store.commit('websites/templates/setApiId', this.$store.state.appInstance.objectActive.templates_id );
-  },
   methods: {
 
-      saveDesign() {
-        // update template store
-        this.$store.dispatch('websites/templates/updateObject', { designStructure: this.$store.state.appInstance.objectActive.design})
-         //this.$emit('saveDesign', {} );
-      },
-
-      /*
-      disconnectOptions(changedList) {
-       var self = this;
-       return changedList.map(function(component) {
-           console.log(JSON.stringify(component));
-           for (var  i in self.$options.listBlock ) {
-             var nameBlcok = self.$options.listBlock[i];
-             if (component[nameBlcok]) {
-                if (
-                     JSON.stringify(component[nameBlcok]) ==
-                     JSON.stringify(self.basicComponents[component.name][nameBlcok])
-                   ) {
-                   delete   component[nameBlcok];
-                }
-             }
-
-           }
-           return component;
-       })
-     }*/
-
-
-  },
-
-  watch: {
-
-    '$root.instanceDesign.theme': {
-      handler () {
-        this.$vuetify.theme = this.$root.instanceDesign.theme.colors;
-      },
-      deep: true
+    saveDesign() {
+        // something for saving design
     }
   },
 
+
   computed: {
 
-    arrayDesignStructure() {
-      return Object.values(this.$store.state.appInstance.objectActive.design);
-    },
+    preparedDesign() {
+      var defaultDesign =  designDefault();
 
-    /**
-      return  width for driver
-       @return @type Number
-    */
-     drawerWidth() {
+      return Object.values(defaultDesign);  
+    }
 
-        if (this.$vuetify.breakpoint.smAndUp) {
-          // if bigger than mobile return  this value
-          return 350;
-        } else {
-           return null;
-        }
-     }
   }
+
+
 
 }
 

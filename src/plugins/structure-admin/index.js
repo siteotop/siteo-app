@@ -5,31 +5,30 @@ import * as SettingsBlocks from './Blocks';
 import ComponentsHelper from './ComponentsHelper.js';
 
 
-const install = function (Vue, options) {
-
-
-      options.$coreVue._siteoPlugins['design'] = ComponentsHelper(Vue);
-      // if website founded
-
-      // register some component which needed for create settings navigation drawer
-      Vue.component(DesignTabsBlock.name, DesignTabsBlock);
-      Vue.component(DesignSettingsNavigation.name, DesignSettingsNavigation);
-
-      // add navigator drawer as default component in  renderList
-      if (options.$coreVue.renderList) {
-          options.$coreVue.renderList.push(DesignSettingsNavigation.name);
-      }
-      // add all settings blocks to components;
-      for (var name in SettingsBlocks ) {
-        Vue.component(name, SettingsBlocks[name]);
-      }
-
-
-
-
-}
 
 
 export default {
-  install
+
+  name: 'siteo-plugin-structure-admin',
+
+  install:function (Vue, options) {
+
+
+
+        //options.$coreVue._siteoPlugins['design'] = ComponentsHelper(Vue);
+
+
+        // register some component which needed for create settings navigation drawer
+        Vue.component(DesignTabsBlock.name, DesignTabsBlock);
+        Vue.component('siteo-plugin-structure-admin', DesignSettingsNavigation);
+
+        // add all settings blocks to components;
+        var $componentsHelper = ComponentsHelper(Vue);
+        for (var name in SettingsBlocks ) {
+          SettingsBlocks[name].StructureAdminHelper = $componentsHelper;
+          Vue.component(name, SettingsBlocks[name]);
+        }
+  }
+
+
 }

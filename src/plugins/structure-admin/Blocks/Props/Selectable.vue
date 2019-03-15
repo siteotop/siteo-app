@@ -55,7 +55,7 @@
   <v-card v-if="propsMenu" class="elevation-5" color="grey lighten-4">
     <v-toolbar dense flat card color="grey lighten-3">
 
-      <v-btn @click="propsMenu=false" color="secondary" icon ><AppIcon name="prev"></AppIcon></v-btn>
+      <v-btn @click="propsMenu=false" color="secondary" icon ><AppIcon name="si-arrow-left"></AppIcon></v-btn>
       <v-toolbar-title>Props Values</v-toolbar-title>
      </v-toolbar>
       <v-card-text>

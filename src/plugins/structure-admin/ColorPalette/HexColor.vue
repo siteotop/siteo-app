@@ -1,11 +1,11 @@
 <template>
-  <v-menu max-width="500" max-height="650"  :close-on-content-click="false" v-model="menuActive">
+  <v-menu z-index="1000" max-width="500" max-height="650"  :close-on-content-click="false" v-model="menuActive">
 
-        <v-btn fab slot="activator" :style="{backgroundColor:value}" ><AppIcon scale="1" name="settings"></AppIcon></v-btn>
+        <v-btn fab slot="activator" :style="{backgroundColor:value}" ><AppIcon scale="1" name="si-settings"></AppIcon></v-btn>
         <v-card v-if="menuActive">
           <v-toolbar dense >
 
-            <v-btn small :color="reserveColor" fab @click="valueData=reserveColor" ><AppIcon name="reload"></AppIcon></v-btn>
+            <v-btn small :color="reserveColor" fab @click="valueData=reserveColor" ><AppIcon name="si-refresh"></AppIcon></v-btn>
 
             <v-spacer></v-spacer>
 

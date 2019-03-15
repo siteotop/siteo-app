@@ -42,14 +42,31 @@
 <script>
 
 
-import * as ClassComponents from './Class';
 
-//console.log(ClassFields);
+import ClassFieldB from './Class/Background.vue';
+import ClassFieldT from './Class/TextColor';
+import ClassFieldA from './Class/TextAlign';
+import ClassFieldE from './Class/ElevationN';
+import ClassFieldV from './Class/Hidden';
+import ClassFieldP from './Class/Padding';
+import ClassFieldM from './Class/Margin';
+import ClassFieldD from './Class/Display';
+import ClassFieldH from './Class/TextSize';
+
+
 export default {
 
-  //name: 'settings-bloks-class',
-
-  components: ClassComponents,
+  components: {
+     ClassFieldB,
+     ClassFieldT,
+     ClassFieldA,
+     ClassFieldE,
+     ClassFieldV,
+     ClassFieldP,
+     ClassFieldM,
+     ClassFieldD,
+     ClassFieldH,
+  },
 
   props: {
       /**

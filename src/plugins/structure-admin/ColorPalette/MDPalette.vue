@@ -17,7 +17,7 @@
       </v-flex>
   </v-layout>
   <v-layout row wrap v-else >
-      <v-btn  @click="closeShadesPalette()" fab ><AppIcon name="prev"></AppIcon></v-btn>
+      <v-btn  @click="closeShadesPalette()" fab ><AppIcon name="si-arrow-left"></AppIcon></v-btn>
       <v-flex xs12 v-for="(colorOptions, colorName ) in colorsKebabCase[activeColor].shades" :key="colorName" >
          <v-card tile :class="colorOptions.value.name+' '+colorOptions.value.text" >
              <v-card-text :style="{cursor:'pointer'}" @click="setNewActiveClass(colorOptions.value)" >

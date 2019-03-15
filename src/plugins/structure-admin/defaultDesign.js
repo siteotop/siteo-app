@@ -38,6 +38,6 @@ export const designDefault =  function () {
     }
 
     return designDefault;
-
+    
 
 }

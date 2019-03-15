@@ -27,7 +27,7 @@ export default {
     render(h, context) {
       var self = this;
         console.log(context.props.designStructure);
-      //  return h('i', {domProps: {innerHTML:context.data.domProps.innerHTML}} ) ;
+    
         return  context.props.designStructure.map(function (component, indexComponent) {
                   //console.log( designStructure[nameOption])
               var componentSettings =[];
