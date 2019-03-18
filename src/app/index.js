@@ -1,9 +1,9 @@
 
 // PageHelper
 
-import PageSchema from './components/Pages/Schema/index';
-import SectionWrap from './components/Pages/Schema/SectionWrap.vue';
-import SectionListWrap from './components/Pages/Schema/SectionListWrap.vue';
+import PageSchema from './components/Pages/Schema.js';
+import SectionWrap from './components/Pages/Sections/SectionWrap.vue';
+import SectionListWrap from './components/Pages/Sections/SectionListWrap.vue';
 import SiteoRoutes from './routes';
 import RouteError from './components/Error.vue';
 

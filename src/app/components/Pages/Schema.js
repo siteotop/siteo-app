@@ -1,8 +1,8 @@
 
-import FunctionalSpeedDeal from '../Functional/SpeedDeal.vue';
-import FunctionalShareWindow from '../Functional/ShareWindow.vue';
-import FunctionalPageToolbar from '../Functional/PageToolbar.vue';
-import FunctionalButtonUp from  '../Functional/ButtonUp.vue';
+import FunctionalSpeedDeal from './Functional/SpeedDeal.vue';
+import FunctionalShareWindow from './Functional/ShareWindow.vue';
+import FunctionalPageToolbar from './Functional/PageToolbar.vue';
+import FunctionalButtonUp from  './Functional/ButtonUp.vue';
 
 export default {
     functional: true,
