@@ -62,7 +62,7 @@ require('./style/common.css')
 
 
 /**ICONS*/
-import IconsRegister from  './components/Icons/register.js';
+import IconsRegister from  './icons/register.js';
 CoreVue.IconsRegister= IconsRegister;
 
 import axios from 'axios';

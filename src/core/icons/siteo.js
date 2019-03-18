@@ -9,7 +9,7 @@ let paths = [
 
 Icon.register({
   'si-logo': {
-    width: 640,
+    width: 640, 
     height: 640,
     paths:paths
   }
