@@ -24,6 +24,8 @@ export default {
         return h('v-toolbar', {
             props: {
                app: true,
+               color: 'primary',
+               dark:true,
                ...design.props
             },
             class: design.class
