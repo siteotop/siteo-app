@@ -73,7 +73,7 @@
 <script>
 
 
-import {designDefault} from './defaultDesign';
+import {designDefault} from './designDefault';
 
 export default {
 

@@ -1,4 +1,4 @@
-import {createSettComponent} from './defaultDesign';
+import {createSettComponent} from './designDefault';
 import * as  AppStructure from '../../core/components/Structure';
 
 
@@ -30,13 +30,10 @@ var getComponent = function (componentName) {
 
 var connectSpecial = function(componentName, props, componentProps) {
   for (var nameProp in componentProps) {
-
       props[nameProp] = componentProps[nameProp];
-
-
-
   }
 }
+
 
 export default function (Vue) {
    return {

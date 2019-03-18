@@ -3,7 +3,9 @@ import  {installVuePlugin, createSiteo, startSiteo}  from '../src/core';
 import  siteoTemplate  from '../src/template';
 import  siteoApp  from '../src/app';
 import  SiteoLocalEN  from '../src/core/i18n/en';
-import  defaultDesign  from './default/design';
+import  {designDefault} from '../src/plugins/structure-admin/designDefault';
+
+const structureDesignDefault = designDefault();
 
 installVuePlugin(siteoTemplate);
 installVuePlugin(siteoApp);
@@ -18,7 +20,7 @@ export default (context) => {
     }
   // if design not found connect default design
    if (!context.instance.design) {
-      context.instance.design = defaultDesign;
+      context.instance.design = structureDesignDefault;
    }
 
    return new Promise((resolve, reject) => {
