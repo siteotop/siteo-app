@@ -1,7 +1,7 @@
 <template functional>
   <BLinks :items="$options.actionsList" :$clp="{fab:true}">
     <template slot-scope="{item}">
-     <AppAction slot="activator"
+     <StAction slot="activator"
        :href="item.href"
        :_at="item.name"
        :dark="true"
@@ -12,7 +12,7 @@
        :siicon="'si-'+ item.name"
        :outline="props.active ==item.name? true: false"
        :to="{name:'order',params: {typeAction: item.name}}"
-      ></AppAction>
+      ></StAction>
       <span>{{parent.$t('actions.'+item.name)}}</span>
     </template>
   </BLinks>

@@ -12,21 +12,21 @@
       {{props._zi}}
    </v-card-text>
  <v-card-actions>
-  <AppAction
+  <StAction
     block
     color="red"
     outline
     target="_blank"
     siicon="si-googlemaps" :href="'https://www.google.com/maps/dir/?api=1&destination='+props._lat+','+props._lng" _at="Direction in Google Maps" >
-  </AppAction>
+  </StAction>
  </v-card-actions>
  <v-card-actions>
-  <AppAction
+  <StAction
     block
     outline
     target="_blank"
     siicon="si-locations" :href="'geo:'+props._lat+','+props._lng" _at="Open Default Map App" >
-  </AppAction>
+  </StAction>
  </v-card-actions>
 </v-card>
 </template>

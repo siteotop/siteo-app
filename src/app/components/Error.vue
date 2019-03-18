@@ -9,7 +9,7 @@
         $_d: 'headline white--text',
         $bls: [
           {
-            $$:'AppAction',
+            $$:'StAction',
             $bf:'text-xs-center'
 
           },

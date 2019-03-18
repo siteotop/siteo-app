@@ -3,10 +3,10 @@
   Left Menu for websites like in app
 */
 
-import * as StructureChildren from './Children';
+
 import helperChildren from '../helperChildren.js';
 
-const SHORT_NAME = 'AppDrawer'
+const SHORT_NAME = 'StDrawer'
 
 
 export default {
@@ -60,7 +60,7 @@ export default {
 
       },
       [
-           helperChildren(h, design.children, StructureChildren)
+           helperChildren(h, design.children)
       ] )
 
   }

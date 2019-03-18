@@ -11,50 +11,50 @@ module.exports = {
        "info":"#2196F3",
        "success":"#4CAF50"}
      },
-     "AppDrawer":{
-       "name":"AppDrawer",
+     "StDrawer":{
+       "name":"StDrawer",
        "props":{},
        "class":[],
        "children":[
          {
-           "name":"AppDrawerHeader",
+           "name":"StDrawerToolbar",
            "props":{},
            "class":[]
          },
          {
-           "name":"AppDrawerMenu",
+           "name":"StVerMenu",
            "props":{},
            "class":[]
          }
        ]
      },
-     "AppToolbar":{
-       "name":"AppToolbar",
+     "StToolbar":{
+       "name":"StToolbar",
        "props":{"dark":true},
        "class":["primary"],
        "children":[
          {
-           "name":"AppToolbarSideIcon",
+           "name":"StDrawerToogle",
            "props":{},
            "class":[]
          },
          {
-           "name":"AppToolbarLogoIcon",
+           "name":"StLogo",
            "props":{"color":"primary lighten-5"},
            "class":['hidden-sm-and-down']
          },
          {
-           "name":"AppToolbarTitle",
+           "name":"StTitle",
            "props":{},
            "class":["mr-5","display-1"]
          },
          {
-           "name":"VSpacer",
+           "name":"StSpacer",
            "props":{},
            "class":[]
          },
          {
-           "name":"AppToolbarItems",
+           "name":"StHorMenu",
            "props":{},
            "class":['hidden-sm-and-down']
          },
@@ -101,13 +101,13 @@ module.exports = {
        ]
      },
      */
-     "AppContent":{
-       "name":"AppContent",
+     "StContent":{
+       "name":"StContent",
        "props":{},
        "class":[]
      },
 
-     /*"AppActionsList": {
+     /*"StActionsList": {
         props: { block: []},
         children: [
           {
@@ -141,8 +141,8 @@ module.exports = {
 
        ]
      }
-  /*   "AppAction":{
-       "name":"AppAction",
+  /*   "StAction":{
+       "name":"StAction",
        "props":{},
        "class":[]
      }*/

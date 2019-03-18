@@ -1,5 +1,4 @@
 
-const design= require('../default/design');
 
 module.exports= {
 
@@ -21,7 +20,6 @@ module.exports= {
 
   links: [],
   contacts: [],
-  design: design,
   locations: [],
 
  };

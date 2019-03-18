@@ -41,7 +41,7 @@ module.exports=function (req, res, baseUrl, path) {
     context.instance = response.data.instance;
     renderer.renderToString(context, (err, html) => {
       if (err) {
-
+          //console.log(err);
           generateTemplateError(res, err ,context.configs_frontend );
         } else {
           res.end(html)

@@ -1,10 +1,21 @@
 import {createSettComponent} from './designDefault';
 import * as  AppStructure from '../../core/components/Structure';
+import * as  AppStructureBlocks from '../../core/components/Structure/Blocks';
 
 
 
-var childrenList = {};
+const AllowChildrenList = {
+
+    'StToolbar': [],
+    'StContent': [],
+    'StDrawer': [],
+    'StFooter': [],
+
+
+};
 // check everything  structure's component  for availability children
+
+/*
 for (var parentName in AppStructure) {
      if (AppStructure[parentName].children) {
         // if component has children, get them and set options
@@ -13,17 +24,13 @@ for (var parentName in AppStructure) {
 
      }
 }
-
+*/
 
 var getComponent = function (componentName) {
     if (AppStructure[componentName]) {
        return AppStructure[componentName];
     } else {
-        for (var i in childrenList) {
-            if (childrenList[i][componentName]) {
-                return childrenList[i][componentName];
-            }
-        }
+       return  AppStructureBlocks[componentName];
     }
 
 }
@@ -39,7 +46,9 @@ export default function (Vue) {
    return {
       createSettComponent: createSettComponent,
       getChildrenList: function (parentName) {
-          return childrenList[parentName];
+
+          //for ()
+          return AppStructureBlocks;
       },
       getComponent: getComponent,
 

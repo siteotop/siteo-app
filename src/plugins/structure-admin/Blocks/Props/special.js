@@ -1,7 +1,7 @@
 
 export default {
 
-  'AppToolbar': {
+  'StToolbar': {
 
       height: {
           name: 'v-slider',

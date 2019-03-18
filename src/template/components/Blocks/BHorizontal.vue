@@ -26,7 +26,7 @@
         <v-card flat>
           <slot name="action" >
             <v-card-actions v-if="props._al"  :class="props.$_al">
-              <AppAction :to="props._al" :_at="props._at"  :fab="true" :large="false" v-bind="props.$aa" ></AppAction>
+              <StAction :to="props._al" :_at="props._at"  :fab="true" :large="false" v-bind="props.$aa" ></StAction>
             </v-card-actions>
           </slot>
         </v-card>

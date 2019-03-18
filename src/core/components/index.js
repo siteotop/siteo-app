@@ -1,5 +1,5 @@
 // Global Elements
-export {default as AppAction} from './Elements/AppAction/';
+export {default as StAction} from './Structure/Blocks/StAction/';
 export {default as AppIcon} from './Elements/AppIcon';
 export {default as AppPulseLoader} from './Elements/AppPulseLoader.vue';
 export {default as AppErrorResponse} from './Elements/AppErrorResponse/index.vue';

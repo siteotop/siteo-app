@@ -15,7 +15,7 @@
           {{props._d}}
         </v-card-text>
         <v-card-text v-if="props._al"  :class="props.$_al" >
-              <AppAction :to="props._al" :_at="props._at" v-bind="props.$aa"></AppAction>
+              <StAction :to="props._al" :_at="props._at" v-bind="props.$aa"></StAction>
         </v-card-text>
 </v-card>
 

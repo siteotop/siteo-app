@@ -1,6 +1,6 @@
 <template>
 <div>
-    <AppAction @click="vDialog=!vDialog" v-bind="actionProps" to=''></AppAction>
+    <StAction @click="vDialog=!vDialog" v-bind="actionProps" to=''></StAction>
     <v-dialog
       v-if="vDialog"
       v-model="vDialog"

@@ -37,7 +37,7 @@ export default {
 
       },
 
-      $aa: { // Action props for AppAction
+      $aa: { // Action props for StAction
         type: Object,
       },
 

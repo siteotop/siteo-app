@@ -8,7 +8,7 @@ export default {
   //extends: ExtendAppStructure,
 
   functional :true,
-  name: 'AppContent',
+  name: 'StContent',
 
   //props: _settingsProps,
   render (h, context) {

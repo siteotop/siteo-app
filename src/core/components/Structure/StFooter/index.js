@@ -1,7 +1,7 @@
 
 //import * as StructureChildren from './Children';
 import  AppFooterCopyright  from './Children/AppFooterCopyright.vue';
-import  BottomNav  from './Children/BottomNav.vue';
+
 import helperChildren from '../helperChildren.js';
 /**
   Footer for website
@@ -9,12 +9,12 @@ import helperChildren from '../helperChildren.js';
 export default {
     //mixins: [ExtendAppStructure],
     functional: true,
-    name: 'AppFooter',
+    name: 'StFooter',
   //  children: true,
     wrapped: 'VFooter',
 
     render(h, context) {
-      var design = context.parent.$store.state.appInstance.objectActive.design['AppFooter'] || {};
+      var design = context.parent.$store.state.appInstance.objectActive.design['StFooter'] || {};
 
       return  h('v-footer', {
           props: {

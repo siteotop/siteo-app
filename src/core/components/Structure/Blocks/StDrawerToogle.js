@@ -1,6 +1,6 @@
 
 export default  {
-  name: 'AppToolbarSideIcon',
+  name: 'StDrawerToogle',
   functional : true,
 
 

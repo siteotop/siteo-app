@@ -106,16 +106,7 @@ export default {
 
 
        return this.$options.StructureAdminHelper.createSettComponent(componentName, this.childrenComponents[componentName]);
-      /* var newObject = {name: componentName};
-       var childrenComponents = this.childrenComponents;
-       for (var i in this.$options.listBlock) {
-         var nameBlcok = this.$options.listBlock[i];
-
-         if(childrenComponents[componentName].props&&childrenComponents[componentName].props[nameBlcok]){
-           newObject[nameBlcok] = childrenComponents[componentName].props[nameBlcok].default();
-         }
-       }
-       return newObject;*/
+      
      }
 
   },

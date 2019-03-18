@@ -17,7 +17,7 @@ module.exports = function(error) {
           $_d: 'ma-2 display-1 white--text',
           $bls: [
             {
-              $$:'AppAction',
+              $$:'StAction',
               $bf:'text-xs-center'
 
             },

@@ -1,7 +1,7 @@
 
 export default {
   functional: true,
-  name: 'AppToolbarTitle',
+  name: 'StTitle',
   render(h, context) {
    return   h('v-toolbar-title',
       {

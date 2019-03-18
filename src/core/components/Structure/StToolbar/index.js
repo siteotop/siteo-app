@@ -1,11 +1,10 @@
 /**
 Top Bar Menu in APP, where is logo, site name, and top menu
 */
-import * as StructureChildren from './Children';
 
 import helperChildren from '../helperChildren.js';
 
-const SHORT_NAME = 'AppToolbar';
+const SHORT_NAME = 'StToolbar';
 
 
 export default {
@@ -32,7 +31,7 @@ export default {
 
         },
         [
-          helperChildren(h, design.children, StructureChildren)
+          helperChildren(h, design.children)
 
         ]
 

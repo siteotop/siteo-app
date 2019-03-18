@@ -1,6 +1,6 @@
 /**
   Button for all actions on Siteo
-  Default AppAction go to order  /go/order
+  Default StAction go to order  /go/order
   when sombody click to action we call  statistic event
 */
 
@@ -8,11 +8,11 @@ export default {
 
 
   functional: true,
-  name: 'AppAction',
+  name: 'StAction',
 
   render(h, context) {
     var
-      design = context.parent.$store.state.appInstance.objectActive.design.AppAction||{};
+      design = context.parent.$store.state.appInstance.objectActive.design.StAction||{};
 
 
 

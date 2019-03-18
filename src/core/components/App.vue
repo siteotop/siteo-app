@@ -1,16 +1,17 @@
 <script>
 
-import * as AppStructure from './Structure';
+import * as Structure from './Structure';
 
 export default {
 
-     renderList: ['AppDrawer', 'AppToolbar', 'AppContent', 'AppFooter'],
+     renderList: ['StDrawer', 'StToolbar', 'StContent', 'StFooter'],
      //componentsPage: componentsPage,
-     components: {...AppStructure},
+     components: {...Structure},
 
      _siteo_config: {},
      _plugins: {},
-     
+
+
      data() {
           return {
            startdrawer: false,

@@ -1,6 +1,6 @@
 
 export default {
-  name: 'AppToolbarLogoIcon',
+  name: 'StLogo',
   functional: true,
   wrapped: 'VAvatar',
 

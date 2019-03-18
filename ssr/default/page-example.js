@@ -31,7 +31,7 @@ module.exports = {
           $bls: [
 
             {
-              $$:'AppAction',
+              $$:'StAction',
               _props: {
                 _at: 'Action Text',
 
@@ -39,7 +39,7 @@ module.exports = {
             },
 
             {
-              $$:'AppAction',
+              $$:'StAction',
               _props: {
                 _at: 'Non Default Text',  //
                 color: 'red',
@@ -210,13 +210,13 @@ module.exports = {
         $$: 'SectionWrap',
         _props: {
           _t: 'Title with button',  //
-          _d: 'If you click on default AppAction button you will  go to order form  by default. Everywhere! Everytime!',  //
+          _d: 'If you click on default StAction button you will  go to order form  by default. Everywhere! Everytime!',  //
           $tc: 'primary',
           _p: '', // background image
           $bf: 'xs12 sm6 md4 text-xs-center',
           $bls: [
             {
-              $$:'AppAction',
+              $$:'StAction',
               _props: {
                 _at: 'Action Text',  //
                 //_ah: 'Action Href',  //
@@ -566,7 +566,7 @@ module.exports = {
           _p: 'https://picsum.photos/1600/600?random', // background image
           $bls: [
             {
-              $$: 'AppAction',
+              $$: 'StAction',
 
 
             }
