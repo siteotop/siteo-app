@@ -14,9 +14,9 @@ export default function (h, children) {
             return h(element);
           }
       }
-      return h(  StructureBlocks[element.name]||element.name, {
-       props: element.props,
-       class: element.class
+      return h(  StructureBlocks[element._n]||element._n, {
+       props: element._p,
+       class: element._c
 
       });
 

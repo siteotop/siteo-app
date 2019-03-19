@@ -24,15 +24,15 @@ export default {
             inset:true,
             dark:true,
             color: 'secondary',
-            ...design.props
+            ...design._p
           },
-          class: design.class
+          class: design._c
         },
         [
           h('v-container', {class: 'fluid my-0 pa-0'},
 
           [
-            design.children? h('PageSchema', {props: {structure: design.children }}):'',
+            design._ch? h('PageSchema', {props: {structure: design._ch }}):'',
 
             h(AppFooterCopyright)
           ])

@@ -1,24 +1,13 @@
 
 import * as  AppStructure from '../../core/components/Structure';
 
-export const  createSettComponent = function (componentName,  componentObject ) {
 
-   var settings = {
-    name: componentName,
-    props: {},
-    class: []
-  };
-
-  if (componentObject.children) {
-     settings.children = [];
-  }
-  return settings;
-}
+import {createSettComponent} from './_helper/components.js';
 
 export const designDefault =  function () {
     var designDefault = {
       theme: {
-        name: 'theme',
+        _n: 'theme',
         colors: {
           primary: "#1976D2",
           secondary: "#424242",

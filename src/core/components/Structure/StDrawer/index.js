@@ -41,8 +41,8 @@ export default {
 
       var design = context.parent.$store.state.appInstance.objectActive.design[SHORT_NAME] || {};
 
-      console.log(design);
-      if (design.props&& design.props.coreOff===true) {
+    //  console.log(design);
+      if (design._p&& design._p.coreOff===true) {
         return '';
       }
 
@@ -52,16 +52,16 @@ export default {
           fixed: true,
         //  value: context.parent.drawer,
           value: context.parent.$store.state.drawer,
-          ...design.props,
+          ...design._p,
         },
-          class: design.class,
+          class: design._c,
         on: {
           input:(value)=>context.parent.$store.state.drawer = value
         },
 
       },
       [
-           helperChildren(h, design.children)
+           helperChildren(h, design._ch)
       ] )
 
   }

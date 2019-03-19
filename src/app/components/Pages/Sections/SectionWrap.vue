@@ -23,7 +23,7 @@
       <v-container v-if="props.$bls!==false" :class="props.$bc||'grid-list-md'">
         <v-layout :class="props.$bl||'row wrap justify-center'">
           <v-flex :class="block.$bf?   (props.$bf||'')+' '+block.$bf: (props.$bf||'')"    v-for="(block, index) in props.$bls" :key="index">
-            <component  :is="block.$$" v-bind="block._props" > </component>
+            <component  :is="block.$$" v-bind="block._props"  > </component>
           </v-flex>
         </v-layout>
       </v-container>

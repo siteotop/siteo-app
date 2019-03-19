@@ -1,7 +1,24 @@
-import {createSettComponent} from './designDefault';
-import * as  AppStructure from '../../core/components/Structure';
-;
 
+import * as  AppStructure from '../../../core/components/Structure';
+
+
+export const  createSettComponent = function (componentName,  componentObject ) {
+   var settings = {
+     //name
+    _n: componentName,
+    //props
+    _p: {},
+    //class
+    _c: []
+  };
+
+  if (componentObject.children) {
+     //children
+     settings._ch = [];
+  }
+
+  return settings;
+}
 
 
 const AllowChildrenList = {
@@ -32,9 +49,10 @@ var connectSpecial = function(componentName, props, componentProps) {
 }
 
 
-export default function (Vue) {
+export const helperComponents =  function (Vue) {
    return {
       createSettComponent: createSettComponent,
+
       getChildrenList: function (parentName) {
 
           //for ()

@@ -32,7 +32,7 @@ export default {
         light:true,
         large: true,
         to: {name: 'order', params: {typeAction: 'order'}},
-        ...design,
+        ...design._p,
         ...context.props },
       attrs: context.data.attrs,
       on: {

@@ -15,23 +15,24 @@ export default {
 
     render (h, context) {
         var design = context.parent.$store.state.appInstance.objectActive.design[SHORT_NAME] || {};
-        if (design.props&& design.props.coreOff===true) {
+        if (design._p&& design._p.coreOff===true) {
           return '';
         }
 
+        console.log(design._ch);
 
         return h('v-toolbar', {
             props: {
                app: true,
                color: 'primary',
                dark:true,
-               ...design.props
+               ...design._p
             },
-            class: design.class
+            class: design._c
 
         },
         [
-          helperChildren(h, design.children)
+          helperChildren(h, design._ch)
 
         ]
 
