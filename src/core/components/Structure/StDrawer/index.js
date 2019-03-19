@@ -41,6 +41,7 @@ export default {
 
       var design = context.parent.$store.state.appInstance.objectActive.design[SHORT_NAME] || {};
 
+      console.log(design);
       if (design.props&& design.props.coreOff===true) {
         return '';
       }

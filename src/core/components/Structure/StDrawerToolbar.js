@@ -1,7 +1,7 @@
 
 export default {
     functional: true,
-
+    name: 'StDrawerToolbar',
     render(h, context) {
       return h('v-toolbar', {props: {flat:true}},
         [

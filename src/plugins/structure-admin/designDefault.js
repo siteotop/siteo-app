@@ -33,11 +33,11 @@ export const designDefault =  function () {
     };
 
     for ( let sectionName in AppStructure) {
-      designDefault[AppStructure[sectionName].name]  =  createSettComponent(sectionName, AppStructure[sectionName])
+      designDefault[AppStructure[sectionName].name||sectionName]  =  createSettComponent(sectionName, AppStructure[sectionName])
 
     }
 
     return designDefault;
-    
+
 
 }

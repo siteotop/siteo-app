@@ -1,12 +1,11 @@
 <script>
 
-import * as Structure from './Structure';
+import StDrawer from './Structure/StDrawer';
+import StToolbar from './Structure/StToolbar';
+import StContent from './Structure/StContent';
+import StFooter from './Structure/StFooter';
 
 export default {
-
-     renderList: ['StDrawer', 'StToolbar', 'StContent', 'StFooter'],
-     //componentsPage: componentsPage,
-     components: {...Structure},
 
      _siteo_config: {},
      _plugins: {},
@@ -28,11 +27,10 @@ export default {
         var self = this;
         return h('v-app',
           [
-            self.$options.renderList.map(function(section) {
-               return h(section);
-            }),
-
-
+            h(StDrawer),
+            h(StToolbar),
+            h(StContent),
+            h(StFooter)
           ]);
      }
 

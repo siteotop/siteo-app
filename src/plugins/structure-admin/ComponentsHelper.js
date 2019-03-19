@@ -1,6 +1,6 @@
 import {createSettComponent} from './designDefault';
 import * as  AppStructure from '../../core/components/Structure';
-import * as  AppStructureBlocks from '../../core/components/Structure/Blocks';
+;
 
 
 
@@ -13,24 +13,14 @@ const AllowChildrenList = {
 
 
 };
-// check everything  structure's component  for availability children
 
-/*
-for (var parentName in AppStructure) {
-     if (AppStructure[parentName].children) {
-        // if component has children, get them and set options
-        var children = require(`../../core/components/Structure/${parentName}/Children/index.js`);
-        childrenList[parentName] = children;
 
-     }
-}
-*/
 
 var getComponent = function (componentName) {
     if (AppStructure[componentName]) {
        return AppStructure[componentName];
     } else {
-       return  AppStructureBlocks[componentName];
+      return 'no-component';
     }
 
 }
@@ -48,7 +38,7 @@ export default function (Vue) {
       getChildrenList: function (parentName) {
 
           //for ()
-          return AppStructureBlocks;
+          return AppStructure;
       },
       getComponent: getComponent,
 

@@ -1,5 +1,5 @@
 
-import * as StructureBlocks from './Blocks';
+import * as StructureBlocks from './';
 
 
 export default function (h, children) {
