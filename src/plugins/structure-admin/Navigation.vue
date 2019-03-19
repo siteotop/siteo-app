@@ -23,7 +23,7 @@
         Main Components
     </v-subheader>
     <v-expansion-panel>
-      <DesignTabsBlock  :designStructure="preparedDesign">
+      <DesignTabsBlock  :designStructure="designStructure">
       </DesignTabsBlock>
     </v-expansion-panel>
 
@@ -52,10 +52,10 @@
          <v-card-text>
             <v-layout>
                 <v-flex>
-                   <code>{{JSON.stringify(defaultDesign, null, 4)}}</code>
+                   <code>{{JSON.stringify(treeComponents, null, 4)}}</code>
                 </v-flex>
                 <v-flex>
-                  <code>{{JSON.stringify(zipDesign(defaultDesign), null, 4)}}</code>
+                  <code>{{JSON.stringify(zippedDesign, null, 4)}}</code>
                 </v-flex>
             </v-layout>
 
@@ -84,7 +84,9 @@
 import {designDefault} from './designDefault';
 
 import _cloneDeep from 'lodash/cloneDeep';
-import {zipObjectBeforeSave} from './_helper/zipUnzip';
+import _isEmpty from 'lodash/isEmpty';
+
+import {zipObjectBeforeSave, unzipObjectBeforeUpate} from './_helper/zipUnzip';
 
 export default {
 
@@ -93,27 +95,60 @@ export default {
 
   props: {
 
+
+    mainStructure: {
+      type: [Array, Object, String, Boolean],
+      default: true
+    },
+
+    // what do if structure changing
     eventChangeStructure: {
       type: Function
+    },
+
+    // what do if structure changing
+    eventSaveStructure: {
+      type: Function
+    },
+
+    structureDesign: {
+      type: Boolean,
+      default: true
     }
 
   },
 
   data() {
     return {
-      defaultDesign: designDefault(),
+      treeComponents: {},
       drawerSettings: true,
-      showJsonDesign: false
+      showJsonDesign: false,
 
     }
   },
 
+  created() {
+
+
+      if (_isEmpty(this.mainStructure)) {
+        this.treeComponents = designDefault();
+      } else {
+        this.treeComponents=unzipObjectBeforeUpate(
+          _cloneDeep(JSON.parse(this.mainStructure)),
+          this.structureDesign
+        );
+
+      }
+
+
+
+  },
+
   watch: {
-    defaultDesign: {
-        handler: function(newDesignStructure) {
+    treeComponents: {
+        handler: function(treeComponents) {
 
-           this.eventChangeStructure(this.zipDesign(newDesignStructure));
-
+           this.eventChangeStructure(this.zippedDesign);
         },
         deep: true
       }
@@ -122,15 +157,12 @@ export default {
 
   methods: {
 
-    zipDesign(preparedDesign) {
-       var structureForSaving =   _cloneDeep(preparedDesign);
-       zipObjectBeforeSave(structureForSaving, true);
-       return structureForSaving;
-    },
+
 
     saveDesign() {
 
-
+        this.eventSaveStructure(this.zippedDesign);
+      //eventSaveStructure
         // something for saving design
     }
   },
@@ -138,10 +170,24 @@ export default {
 
   computed: {
 
+    zippedDesign() {
 
-    preparedDesign() {
-      return Object.values(this.defaultDesign);
+      var structureForSaving =   _cloneDeep(this.treeComponents);
+      zipObjectBeforeSave(structureForSaving, this.structureDesign);
+      return structureForSaving;
+
+    },
+
+    designStructure() {
+
+      if (!Array.isArray(this.treeComponents)) {
+        return  Object.values(this.treeComponents);
+      } else {
+        return this.treeComponents;
+      }
+
     }
+
 
   }
 

@@ -103,10 +103,7 @@ export default {
      },
 
      getSettingsFromComponent(componentName) {
-
-
-       return this.$options.StructureAdminHelper.createSettComponent(componentName, this.childrenComponents[componentName]);
-      
+       return this.$options.StructureAdminHelper.createSettComponent(componentName);
      }
 
   },

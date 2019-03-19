@@ -2,7 +2,36 @@
 import * as  AppStructure from '../../../core/components/Structure';
 
 
-export const  createSettComponent = function (componentName,  componentObject ) {
+const AllowChildrenList = {
+
+    'StToolbar': [],
+    'StContent': [],
+    'StDrawer': [],
+    'StFooter': [],
+
+
+};
+
+
+
+var getComponent = function (componentName) {
+    if (AppStructure[componentName]) {
+       return AppStructure[componentName];
+    } else {
+      return false;
+    }
+
+}
+
+var connectSpecial = function(componentName, props, componentProps) {
+  for (var nameProp in componentProps) {
+      props[nameProp] = componentProps[nameProp];
+  }
+}
+
+
+export const  createSettComponent = function (componentName,   ) {
+   var componentObject = getComponent(componentName);
    var settings = {
      //name
     _n: componentName,
@@ -21,35 +50,34 @@ export const  createSettComponent = function (componentName,  componentObject ) 
 }
 
 
-const AllowChildrenList = {
+export const updateSettComponent = function (issetStrucutre, componentName) {
 
-    'StToolbar': [],
-    'StContent': [],
-    'StDrawer': [],
-    'StFooter': [],
+   var componentObject = getComponent(componentName);
+   if (!componentObject) {
+     issetStrucutre._n = componentName;
+     return issetStrucutre;
+   }
 
+   var settings = {
+      _n: issetStrucutre._n||componentName,
+      _p: issetStrucutre._p||{},
+      _c: issetStrucutre._c||[]
+   }
 
-};
-
-
-
-var getComponent = function (componentName) {
-    if (AppStructure[componentName]) {
-       return AppStructure[componentName];
-    } else {
-      return 'no-component';
-    }
-
-}
-
-var connectSpecial = function(componentName, props, componentProps) {
-  for (var nameProp in componentProps) {
-      props[nameProp] = componentProps[nameProp];
-  }
+   if (componentObject.children) {
+      //children
+      if (!issetStrucutre._ch) {
+        settings._ch = [];
+      } else {
+        settings._ch = issetStrucutre._ch;
+      }
+   }
+   return settings;
 }
 
 
 export const helperComponents =  function (Vue) {
+
    return {
       createSettComponent: createSettComponent,
 

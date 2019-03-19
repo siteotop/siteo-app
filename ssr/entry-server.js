@@ -21,6 +21,14 @@ export default (context) => {
   // if design not found connect default design
    if (!context.instance.design) {
       context.instance.design = structureDesignDefault;
+   } else {
+     if (typeof context.instance.design == 'string' ) {
+        context.instance.design = JSON.parse(context.instance.design);
+     }
+   }
+
+   if (!context.instance.design.theme) {
+      context.instance.design.theme = structureDesignDefault.theme;
    }
 
    return new Promise((resolve, reject) => {
@@ -32,7 +40,7 @@ export default (context) => {
     });
 
     var app = startSiteo(siteoApp);
-
+    console.log (context.instance);
     app.$store.commit('appInstance/setModel', context.instance);
     context.meta = app.$meta();
 

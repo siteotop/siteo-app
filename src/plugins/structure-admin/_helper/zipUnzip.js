@@ -1,6 +1,7 @@
 
 import _isEmpty from 'lodash/isEmpty';
 
+import {updateSettComponent}  from './components';
 
 
 
@@ -33,7 +34,18 @@ export const zipObjectBeforeSave = function (structure, removeName) {
 }
 
 
-export const unzipObjectBeforeUpate = function (Object) {
+export const unzipObjectBeforeUpate = function (structure, removedName) {
+  for (var index in structure)  {
 
+        structure[index]= updateSettComponent(
+            structure[index],
+            removedName?index:structure[index]._n
+          );
+       
+        if (structure[index]._ch&&structure[index]._ch.length) {
+           unzipObjectBeforeUpate(structure[index]._ch)
+        }
+  }
+  return structure;
 
 }

@@ -1,9 +1,4 @@
 
-import * as  AppStructure from '../../core/components/Structure';
-
-
-import {createSettComponent} from './_helper/components.js';
-
 export const designDefault =  function () {
     var designDefault = {
       theme: {
@@ -20,13 +15,5 @@ export const designDefault =  function () {
 
       }
     };
-
-    for ( let sectionName in AppStructure) {
-      designDefault[AppStructure[sectionName].name||sectionName]  =  createSettComponent(sectionName, AppStructure[sectionName])
-
-    }
-
     return designDefault;
-
-
 }
