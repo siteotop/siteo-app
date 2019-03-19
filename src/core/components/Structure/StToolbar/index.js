@@ -2,7 +2,7 @@
 Top Bar Menu in APP, where is logo, site name, and top menu
 */
 
-import helperChildren from '../helperChildren.js';
+import helperChildren from '../_helper/childrenComponents.js';
 
 const SHORT_NAME = 'StToolbar';
 

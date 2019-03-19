@@ -2,7 +2,7 @@
 //import * as StructureChildren from './Children';
 import  AppFooterCopyright  from './Children/AppFooterCopyright.vue';
 
-import helperChildren from '../helperChildren.js';
+import helperChildren from '../_helper/childrenComponents.js';
 /**
   Footer for website
 */
