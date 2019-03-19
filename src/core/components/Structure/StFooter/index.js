@@ -23,7 +23,7 @@ export default {
             absolute:true,
             inset:true,
             dark:true,
-            color: 'secondary',
+            color: 'primary darken-4',
             ...design._p
           },
           class: design._c
