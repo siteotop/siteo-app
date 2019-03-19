@@ -47,10 +47,18 @@
    </v-navigation-drawer>
 
 
-   <v-dialog v-model="showJsonDesign" width="500" >
+   <v-dialog v-model="showJsonDesign" width="700" >
        <v-card>
          <v-card-text>
-               <code>{{JSON.stringify(defaultDesign, null, 4)}}</code>
+            <v-layout>
+                <v-flex>
+                   <code>{{JSON.stringify(defaultDesign, null, 4)}}</code>
+                </v-flex>
+                <v-flex>
+                  <code>{{JSON.stringify(zipDesign(defaultDesign), null, 4)}}</code>
+                </v-flex>
+            </v-layout>
+
 
          </v-card-text>
        </v-card>
@@ -74,6 +82,9 @@
 
 
 import {designDefault} from './designDefault';
+
+import _cloneDeep from 'lodash/cloneDeep';
+import {zipObjectBeforeSave} from './_helper/zipUnzip';
 
 export default {
 
@@ -100,7 +111,8 @@ export default {
   watch: {
     defaultDesign: {
         handler: function(newDesignStructure) {
-           this.eventChangeStructure(newDesignStructure);
+
+           this.eventChangeStructure(this.zipDesign(newDesignStructure));
 
         },
         deep: true
@@ -110,7 +122,15 @@ export default {
 
   methods: {
 
+    zipDesign(preparedDesign) {
+       var structureForSaving =   _cloneDeep(preparedDesign);
+       zipObjectBeforeSave(structureForSaving, true);
+       return structureForSaving;
+    },
+
     saveDesign() {
+
+
         // something for saving design
     }
   },

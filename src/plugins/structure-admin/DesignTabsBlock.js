@@ -44,8 +44,6 @@ export default {
 
     render(h, context) {
       var self = this;
-        console.log(context.props.designStructure);
-
         return  context.props.designStructure.map(function (component, indexComponent) {
                   //console.log( designStructure[nameOption])
               var componentSettings =[];
