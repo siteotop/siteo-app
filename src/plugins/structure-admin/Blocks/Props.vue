@@ -6,7 +6,6 @@ import SelectableProp from './Props/Selectable.vue'
 
 export default {
 
-  //name: 'settings-bloks-props',
   props: {
 
       componentName: {

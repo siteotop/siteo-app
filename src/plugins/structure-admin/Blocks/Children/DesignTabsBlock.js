@@ -1,6 +1,6 @@
 
 
-import ChildrenHeaderSlot from './Blocks/Children/HeaderSlot.vue';
+import ChildrenHeaderSlot from './HeaderSlot.vue';
 
 const MAP_NAMES = {
   '_n': 'name',
@@ -52,7 +52,8 @@ export default {
 
               }
                 //console.log(componentSettings);
-                return h('v-expansion-panel-content', {props: {disabled: (componentSettings.length-1?false: true), hideActions: (componentSettings.length-1?false: true) }}, [
+                return h('v-expansion-panel-content', {props: {lazy
+:true, disabled: (componentSettings.length-1?false: true), hideActions: (componentSettings.length-1?false: true) }}, [
                       !context.props.children? h('div', { slot: 'header'},  [
                         component._n,
                       ])  : h(ChildrenHeaderSlot, {props: {name: component._n, ...context.props}  }),
@@ -73,7 +74,7 @@ export default {
                               return '';
                             }
                             // return settings block
-                            return h('v-tab-item', [
+                            return h('v-tab-item', {props: {lazy:true}},  [
                               h('settings-'+nameSettingBlock, {props: {
 
                                 value:component[shortNameSettingBlock],

@@ -22,10 +22,8 @@
     <v-subheader>
         Main Components
     </v-subheader>
-    <v-expansion-panel>
-      <DesignTabsBlock  :designStructure="designStructure">
-      </DesignTabsBlock>
-    </v-expansion-panel>
+    <SettingsChildren  v-model="treeComponents">
+    </SettingsChildren>
 
     <v-subheader>
         Save
@@ -123,22 +121,30 @@ export default {
       treeComponents: {},
       drawerSettings: true,
       showJsonDesign: false,
-
+      isTreeWasObject: false,
     }
   },
 
   created() {
 
-
+      var structure;
       if (_isEmpty(this.mainStructure)) {
-        this.treeComponents = designDefault();
+        structure = designDefault();
       } else {
-        this.treeComponents=unzipObjectBeforeUpate(
+        structure= unzipObjectBeforeUpate(
           _cloneDeep(JSON.parse(this.mainStructure)),
           this.structureDesign
         );
 
       }
+
+      if (!Array.isArray(structure)) {
+         this.isTreeWasObject = true;
+         this.treeComponents=  Object.values(structure);
+      } else {
+        this.treeComponents = structure;
+      }
+
 
 
 
@@ -156,14 +162,8 @@ export default {
 
 
   methods: {
-
-
-
     saveDesign() {
-
         this.eventSaveStructure(this.zippedDesign);
-      //eventSaveStructure
-        // something for saving design
     }
   },
 
@@ -172,21 +172,21 @@ export default {
 
     zippedDesign() {
 
-      var structureForSaving =   _cloneDeep(this.treeComponents);
+      if (this.isTreeWasObject) {
+        var structureForSaving = {};
+        for (var name in this.treeComponents) {
+          structureForSaving[this.treeComponents[name]._n] = _cloneDeep(this.treeComponents[name]);
+        }
+      } else {
+        var structureForSaving = _cloneDeep(this.treeComponents);
+      }
+
       zipObjectBeforeSave(structureForSaving, this.structureDesign);
       return structureForSaving;
 
-    },
-
-    designStructure() {
-
-      if (!Array.isArray(this.treeComponents)) {
-        return  Object.values(this.treeComponents);
-      } else {
-        return this.treeComponents;
-      }
-
     }
+
+
 
 
   }

@@ -1,9 +1,7 @@
 
 import DesignSettingsNavigation from './Navigation.vue';
-import DesignTabsBlock from './DesignTabsBlock.js';
 import * as SettingsBlocks from './Blocks';
-import {helperComponents} from './_helper/components.js';
-
+import {helperComponents} from './_helper/components.js'
 
 
 
@@ -13,7 +11,6 @@ export default {
 
   install:function (Vue) {
       // register some component which needed for create settings navigation drawer
-      Vue.component(DesignTabsBlock.name, DesignTabsBlock);
       Vue.component('siteo-plugin-structure-admin', DesignSettingsNavigation);
 
       // add all settings blocks to components;

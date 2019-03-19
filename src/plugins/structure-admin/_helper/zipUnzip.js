@@ -23,6 +23,11 @@ export const zipObjectBeforeSave = function (structure, removeName) {
              delete settForComponent[property];
           }
 
+
+        }
+
+        if (Object.keys(structure[index]).length ==1&&structure[index]._n ) {
+          structure[index] = structure[index]._n;
         }
 
         if (_isEmpty(settForComponent)) {
@@ -35,16 +40,21 @@ export const zipObjectBeforeSave = function (structure, removeName) {
 
 
 export const unzipObjectBeforeUpate = function (structure, removedName) {
-  for (var index in structure)  {
+    for (var index in structure)  {
+      if (typeof structure[index] == 'string') {
+        structure[index] = {
+            _n:structure[index]
+        };
+      }
 
-        structure[index]= updateSettComponent(
+      structure[index]= updateSettComponent(
             structure[index],
             removedName?index:structure[index]._n
           );
-       
-        if (structure[index]._ch&&structure[index]._ch.length) {
-           unzipObjectBeforeUpate(structure[index]._ch)
-        }
+
+      if (structure[index]._ch&&structure[index]._ch.length) {
+         unzipObjectBeforeUpate(structure[index]._ch)
+      }
   }
   return structure;
 

@@ -1,6 +1,6 @@
 <template>
 <div class="mt-3">
-    <v-expansion-panel focusable inset>
+    <v-expansion-panel focusable >
       <draggable v-model='childrenList' style="width:100%;" :options="{group:'children'}" @start="startDragg=true" @end="startDragg=false">
         <DesignTabsBlock :children="true"  :designStructure="childrenList">
         </DesignTabsBlock>
@@ -32,21 +32,21 @@
 <script>
 import draggable from 'vuedraggable'
 import  _merge from 'lodash/merge';
-
+import DesignTabsBlock from './Children/DesignTabsBlock.js';
 export default {
 
   listBlock: ['props', 'class'],
 
   components: {
     draggable,
-
+    DesignTabsBlock
   },
 
   props: {
 
 
     //it is name for  parent component, which need for  merge settings child component
-    componentName: {
+    parentComponentName: {
       type: String,
       default: ''
     },
@@ -76,7 +76,6 @@ export default {
   watch: {
     childrenList: {
         handler: function (newList) {
-
           this.$emit('input', newList);
         },
         deep: true
@@ -111,7 +110,7 @@ export default {
   computed: {
 
     childrenComponents() {
-      return this.$options.StructureAdminHelper.getChildrenList(this.componentName);
+      return this.$options.StructureAdminHelper.getChildrenList(this.parentComponentName);
     },
 
     // create basic components for merge with server options

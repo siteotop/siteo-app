@@ -31,7 +31,7 @@
 import HexColor from '../ColorPalette/HexColor.vue'
 
 export default {
-    //name: 'settings-bloks-color',
+  
     components: {
       HexColor
     },
