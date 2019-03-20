@@ -5,9 +5,12 @@ export default {
     functional: true,
 
     render(h, context) {
+
+      console.log(context);
+      console.log(context.props.parentDesign);
       return helperCreateStDesign(
-        h,context,
-        'StDrawerToolbar',
+        h, context,
+        context.props.parentDesign,
         'v-toolbar',
       );
     }

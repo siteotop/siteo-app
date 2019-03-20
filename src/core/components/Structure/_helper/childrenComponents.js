@@ -3,7 +3,10 @@ import * as StructureBlocks from '../';
 
 
 export default function (h, children) {
+
+  console.log(children);
   return children.map(function(element){
+
       if (typeof(element) =='string') {
           if (StructureBlocks[element]) {
             return h(StructureBlocks[element]);
@@ -11,11 +14,19 @@ export default function (h, children) {
             return h(element);
           }
       }
-      return h(  StructureBlocks[element._n]||element._n, {
-       props: element._p,
-       class: element._c
+      var createdComponent = StructureBlocks[element._n]||element._n;
+      //console.log(element)
+      return !element._ch?
+         h(createdComponent , {
+          props: element._p,
+          class: element._c
 
-      });
+        })
+      :  h(createdComponent, {
+          props: {...element._p||{}, ...{parentDesign:{_ch:element._ch}}},
+          class: element._c
+
+        })
 
   })
 }

@@ -7,7 +7,7 @@ export const allowChildrenList = {
     'StToolbar': {
       _p: {},
       _c: [],
-      _ch: ['StTitle', 'StLogo', 'StAction', 'StSpacer', 'StHorMenu']
+      _ch: ['StTitle', 'StDrawerToogle', 'StLogo', 'StAction', 'StSpacer', 'StHorMenu']
     },
 
     'StRoot': {
@@ -17,8 +17,14 @@ export const allowChildrenList = {
     'StDrawer': {
       _ch: ['StDrawerToolbar', 'StVerMenu']
     },
+
     'StFooter': {
 
     },
+
+    'StDrawerToolbar': {
+          _ch: ['StTitle', 'StLogo', 'StAction', 'StSpacer', 'StDrawerToogle']
+    }
+
 
 };
