@@ -24,7 +24,7 @@ export default {
       'StAction',
       'v-btn',
       {
-        color: 'accent',
+        color: 'secondary',
         light:true,
         large: true,
         to: {name: 'order', params: {typeAction: 'order'}}

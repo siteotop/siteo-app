@@ -4,7 +4,6 @@ import * as StructureBlocks from '../';
 
 export default function (h, children) {
 
-  console.log(children);
   return children.map(function(element){
 
       if (typeof(element) =='string') {
