@@ -6,16 +6,25 @@ export default {
 
   render(h, context) {
 
-      var website = context.parent.$store.state.appInstance.objectActive.data|| {};
+      var website = context.parent.$store.state.appInstance.objectActive|| {};
 
-      if (!website.src&&!website.name ) {
-        return '';
-      }
-      return h('router-link', {props: {to:{name: 'indexPage'}}, class: context.data.class },
-      [h('v-avatar', {props: context.props, }, [
-           website.src?
+      return h('v-avatar', {
+        props: {...{color: 'primary lighten-2', size: 38},  ...context.props},
+        style: {
+          cursor: 'pointer'
+        },
+        on: {
+          click: ()=>{
+            context.parent.$router.push({name: 'indexPage'})
+          }
+        }
+
+       },
+       [
+          website.src?
             h('img', {attrs: {src: website.src, alt:website.name}}):
             h('span', [website.name[0]])
-      ])]);
+      ])
+
     }
 }

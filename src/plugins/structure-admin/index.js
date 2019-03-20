@@ -1,8 +1,8 @@
 
 import DesignSettingsNavigation from './Navigation.vue';
 import * as SettingsBlocks from './Blocks';
-import {helperComponents} from './_helper/components.js'
-
+import {helperComponents} from './_helper/components'
+import {allowChildrenList} from './validator/allowChildren';
 
 
 export default {

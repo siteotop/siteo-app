@@ -75,18 +75,19 @@ export default {
                             }
                             // return settings block
                             return h('v-tab-item', {props: {lazy:true}},  [
-                              h('settings-'+nameSettingBlock, {props: {
+                              h('settings-'+nameSettingBlock, {
+                                props: {
 
-                                value:component[shortNameSettingBlock],
-                                componentName: component._n
-                              },
-                              on: {
-                                // input if changed value for settings block (props, class, or children)
-                                input: function (value) {
-                                  component[shortNameSettingBlock]=value;
-                                  //self.$emit('input', )
+                                  value:component[shortNameSettingBlock],
+                                  componentName: component._n
+                                },
+                                on: {
+                                  // input if changed value for settings block (props, class, or children)
+                                  input: function (value) {
+                                    component[shortNameSettingBlock]=value;
+                                    //self.$emit('input', )
+                                  }
                                 }
-                              }
                             })
                             ]);
                         })

@@ -10,10 +10,10 @@ const SHORT_NAME = 'StToolbar';
 export default {
     functional :true,
     name: SHORT_NAME,
-    children: true,
     wrapped: 'VToolbar',
 
     render (h, context) {
+      
         var design = context.parent.$store.state.appInstance.objectActive.design[SHORT_NAME] || {};
         if (design._p&& design._p.coreOff===true) {
           return '';

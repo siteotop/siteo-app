@@ -6,24 +6,29 @@
         </DesignTabsBlock>
       </draggable>
     </v-expansion-panel>
-    <v-menu z-index="1000" v-show="!startDragg" class="text-xs-center pb-3">
+    <v-menu lazy z-index="1000" v-show="!startDragg" class="text-xs-center pb-3">
       <v-btn slot="activator"  fab >+ </v-btn>
-          <v-list>
-            <v-list-tile
-              v-for="(children, indexComponent) in childrenComponents"
-              :key="indexComponent"
-              @click="addComponentToList(indexComponent)"
-            >
-              <v-list-tile-title>{{children.name||indexComponent}}</v-list-tile-title>
-            </v-list-tile>
-          </v-list>
-        </v-menu>
-        <div v-show="startDragg">
-          <v-subheader class="red--text"><AppIcon name="si-delete"></AppIcon> Delete Zone</v-subheader>
-        <draggable  style="border:2px dotted red; width:100%; height:64px;" :value="[]" @add="startEvent($event)" :options="{group:'children', filter: '.ignore-elements'}">
-
+      <v-list>
+        <v-list-tile
+          v-for="(children, indexComponent) in childrenComponents"
+          :key="indexComponent"
+          @click="addComponentToList(indexComponent)"
+        >
+          <v-list-tile-title>{{children.name||indexComponent}}</v-list-tile-title>
+        </v-list-tile>
+      </v-list>
+    </v-menu>
+    <div v-show="startDragg">
+        <v-subheader class="red--text">
+          <AppIcon name="si-delete"></AppIcon> Delete Zone
+        </v-subheader>
+        <draggable
+          style="border:2px dotted red; width:100%; height:64px;"
+          :value="[]"
+          @add="startEvent($event)"
+          :options="{group:'children', filter: '.ignore-elements'}">
         </draggable>
-      </div>
+    </div>
 
 
 </div>
@@ -46,7 +51,7 @@ export default {
 
 
     //it is name for  parent component, which need for  merge settings child component
-    parentComponentName: {
+    componentName: {
       type: String,
       default: ''
     },
@@ -110,7 +115,7 @@ export default {
   computed: {
 
     childrenComponents() {
-      return this.$options.StructureAdminHelper.getChildrenList(this.parentComponentName);
+       return this.$options.StructureAdminHelper.getChildrenList(this.componentName);
     },
 
     // create basic components for merge with server options

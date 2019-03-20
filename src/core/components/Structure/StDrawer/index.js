@@ -8,34 +8,12 @@ import helperChildren from '../_helper/childrenComponents.js';
 
 const SHORT_NAME = 'StDrawer'
 
-
 export default {
-  //mixins: [ExtendAppStructure],
-
-
 
   functional: true,
   name: SHORT_NAME,
   wrapped: 'VNavigationDrawer',
-  children: true,
-  /*
-  props: {
-    active: true,
-    startmdAndUp: false,  // якщо більше md (mdAndUp) drawer використовує цю опцію, а так drawer на старті false
-    mobileBreakPoint: 1000, //  мобільна точка зупинки
-    //'persistent': true,   // наполегливий, стійкий, впертий
-    //   'permanent':false, // постійний
-    miniVariant: false,
-    temporary:false
-  },
-  */
-  props: {
-    startmdAndUp: {
-      type: Boolean,
-      default: false
-    }
-  },
-  //props: _settingsProps,
+
   render (h, context) {
 
 

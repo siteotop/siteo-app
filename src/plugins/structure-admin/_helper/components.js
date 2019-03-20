@@ -1,17 +1,6 @@
 
 import * as  AppStructure from '../../../core/components/Structure';
-
-
-const AllowChildrenList = {
-
-    'StToolbar': [],
-    'StContent': [],
-    'StDrawer': [],
-    'StFooter': [],
-
-
-};
-
+import {allowChildrenList} from '../validator/allowChildren';
 
 
 var getComponent = function (componentName) {
@@ -20,7 +9,6 @@ var getComponent = function (componentName) {
     } else {
       return false;
     }
-
 }
 
 var connectSpecial = function(componentName, props, componentProps) {
@@ -30,8 +18,12 @@ var connectSpecial = function(componentName, props, componentProps) {
 }
 
 
-export const  createSettComponent = function (componentName,   ) {
-   var componentObject = getComponent(componentName);
+var isChildren = function (componentName){
+  return  ( allowChildrenList[componentName]&&allowChildrenList[componentName]._ch)
+}
+
+export const  createSettComponent = function (componentName) {
+
    var settings = {
      //name
     _n: componentName,
@@ -41,7 +33,7 @@ export const  createSettComponent = function (componentName,   ) {
     _c: []
   };
 
-  if (componentObject.children) {
+  if (isChildren(componentName)) {
      //children
      settings._ch = [];
   }
@@ -64,7 +56,7 @@ export const updateSettComponent = function (issetStrucutre, componentName) {
       _c: issetStrucutre._c||[]
    }
 
-   if (componentObject.children) {
+   if (isChildren(componentName)) {
       //children
       if (!issetStrucutre._ch) {
         settings._ch = [];
@@ -78,14 +70,29 @@ export const updateSettComponent = function (issetStrucutre, componentName) {
 
 export const helperComponents =  function (Vue) {
 
+
+
    return {
       createSettComponent: createSettComponent,
 
       getChildrenList: function (parentName) {
+          if (!parentName) {
+            parentName = 'root';
+          }
+          if (isChildren(parentName)) {
+              var allowStructure = {};
+              //allowChildrenList[parentName]._ch.sort();
+              allowChildrenList[parentName]._ch.map(function(nameComponent){
+                  allowStructure[nameComponent] = AppStructure[nameComponent];
+              });
 
-          //for ()
-          return AppStructure;
+            return allowStructure;
+          } else {
+            return false;
+          }
       },
+
+
       getComponent: getComponent,
 
       generateProps(componentName) {
