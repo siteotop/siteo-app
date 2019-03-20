@@ -2,8 +2,9 @@
 
 import StDrawer from './Structure/StDrawer';
 import StToolbar from './Structure/StToolbar';
-import StContent from './Structure/StContent';
+import StRoot from './Structure/StRoot';
 import StFooter from './Structure/StFooter';
+
 
 export default {
 
@@ -29,7 +30,7 @@ export default {
           [
             h(StDrawer),
             h(StToolbar),
-            h(StContent),
+            h(StRoot),
             h(StFooter)
           ]);
      }

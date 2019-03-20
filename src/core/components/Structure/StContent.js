@@ -5,12 +5,7 @@
 //import {ExtendAppStructure, createSettings} from './extends';
 
 export default {
-  //extends: ExtendAppStructure,
-
   functional :true,
-  name: 'StContent',
-
-  //props: _settingsProps,
   render (h, context) {
     return h('v-content', [
        //h('transition', {props: {name:''}}, [

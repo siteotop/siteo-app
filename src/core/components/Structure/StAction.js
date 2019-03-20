@@ -3,21 +3,16 @@
   Default StAction go to order  /go/order
   when sombody click to action we call  statistic event
 */
+import helperCreateStDesign from './_helper/createStDesign.js';
+
 
 export default {
 
 
   functional: true,
-  name: 'StAction',
+  //name: 'StAction',
 
   render(h, context) {
-    var
-      design = context.parent.$store.state.appInstance.objectActive.design.StAction||{};
-
-
-
-    //context.data.props.icon = mobile;
-    //console.log(context);
     if (context.props.small  ) {
       context.props.large = false;
     }
@@ -25,17 +20,16 @@ export default {
         //console.log(context);
       context.props.to = '';
     }
-
-    return   h('v-btn', {
-      props: {
+    return helperCreateStDesign(h, context,
+      'StAction',
+      'v-btn',
+      {
         color: 'accent',
         light:true,
         large: true,
-        to: {name: 'order', params: {typeAction: 'order'}},
-        ...design._p,
-        ...context.props },
-      attrs: context.data.attrs,
-      on: {
+        to: {name: 'order', params: {typeAction: 'order'}}
+      },
+      {
         click: function (event) {
           console.log(context);
              if (context.listeners&&context.listeners.click) {
@@ -43,17 +37,12 @@ export default {
              }
             console.log(' here send statistic');
         },
-
-        //...context.listeners
-
-      }
-    },
+      },
       [
         h('AppIcon', {attrs: {name:context.props.siicon||'si-order'}}),
-
-          (!context.props.fab)? (context.props._at || context.parent.$store.state.appInstance.objectActive.actionText): '',
+        (!context.props.fab)? (context.props._at || context.parent.$store.state.appInstance.objectActive.actionText): '',
       ]
-   )
+    );
 
   }
 }

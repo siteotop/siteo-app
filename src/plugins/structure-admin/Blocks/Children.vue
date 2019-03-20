@@ -14,7 +14,7 @@
           :key="indexComponent"
           @click="addComponentToList(indexComponent)"
         >
-          <v-list-tile-title>{{children.name||indexComponent}}</v-list-tile-title>
+          <v-list-tile-title>{{indexComponent}}</v-list-tile-title>
         </v-list-tile>
       </v-list>
     </v-menu>
@@ -29,8 +29,6 @@
           :options="{group:'children', filter: '.ignore-elements'}">
         </draggable>
     </div>
-
-
 </div>
 </template>
 
@@ -92,7 +90,7 @@ export default {
      connectOptions() {
       var self = this;
       this.childrenList= this.value.map(function(component){
-            var newComponent = Object.assign({}, self.basicComponents[component.name]);
+            var newComponent = Object.assign({}, self.basicComponents[component._n]);
             return  _merge(newComponent, component);
         })
 

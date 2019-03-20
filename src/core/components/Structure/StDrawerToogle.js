@@ -1,9 +1,6 @@
 
 export default  {
-  name: 'StDrawerToogle',
   functional : true,
-
-
   render(h, context) {
     return h('v-toolbar-side-icon',  {
       class: context.data.class,

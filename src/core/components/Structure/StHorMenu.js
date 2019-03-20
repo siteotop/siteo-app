@@ -2,7 +2,7 @@
 export default {
     //extends: ExtendAppStructure,
     //props: ['design'],
-    name: 'StHorMenu',
+  
     functional :true,
 
     props: {

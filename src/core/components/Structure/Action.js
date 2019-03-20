@@ -1,8 +1,7 @@
 
 export default {
 
-  name: 'AppToolbarAction',
-
+  
   functional: true,
 
   props: {
