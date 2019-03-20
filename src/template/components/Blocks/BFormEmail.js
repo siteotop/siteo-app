@@ -4,7 +4,7 @@ export default {
   name: 'BFormEmail',
   props: ['formAction'],
   render(h, context) {
-    return  h('AppSiteoPlugin', {
+    return  h('StPlugin', {
       props: {
         pluginName: 'siteo-plugin-forms',
         pluginOptions: {

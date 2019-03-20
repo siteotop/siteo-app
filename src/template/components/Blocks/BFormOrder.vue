@@ -14,7 +14,7 @@ export default {
 
 
 
-      return  h('AppSiteoPlugin', {props: {pluginName: 'siteo-plugin-forms', pluginOptions: props } })
+      return  h('StPlugin', {props: {pluginName: 'siteo-plugin-forms', pluginOptions: props } })
   }
 
 }

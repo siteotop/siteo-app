@@ -16,6 +16,7 @@ export {default as StTitle} from './StTitle';
 
 export const StAction = 'StAction';
 export const StSpacer = 'v-spacer';
+export const StPlugin = 'StPlugin';
 
 export const StDivider = {
   functional: true,

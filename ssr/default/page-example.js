@@ -292,7 +292,7 @@ module.exports = {
            $bl: 'align-center row wrap ',
            $bls: [
              {
-               $$:'AppSiteoPlugin',
+               $$:'StPlugin',
                _props: {
                  pluginName: 'instagram-post',
                  pluginOptions: {
@@ -585,7 +585,7 @@ module.exports = {
           $_t: 'display-3',
           $bls: [
             {
-              $$:'AppSiteoPlugin',
+              $$:'StPlugin',
               _props: {
                  pluginName: 'example',
                  pluginOptions: {}
