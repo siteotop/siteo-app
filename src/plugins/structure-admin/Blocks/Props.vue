@@ -1,9 +1,6 @@
 <script>
 
-import SpecialFields from './Props/special.js';
 import SelectableProp from './Props/Selectable.vue'
-
-
 export default {
 
   props: {
@@ -32,12 +29,11 @@ export default {
 
 
       generatedProps() {
-        console.log(this.$root.$options);
-        var props =
 
-        this.$options.StructureAdminHelper.generateProps(this.componentName);
+        var props = this.$options.$helperComponents.generateProps(this.componentName);
 
-
+        console.log(props);
+        /*
         for (var nameProp in  props) {
           if (SpecialFields[this.componentName]&&SpecialFields[this.componentName][nameProp]!==undefined) {
               if (SpecialFields[this.componentName][nameProp]!==false) {
@@ -47,7 +43,7 @@ export default {
               }
             }
         }
-
+        */
 
         return props;
       }

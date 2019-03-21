@@ -66,6 +66,8 @@ export default {
       return {
         //dialogChildren: false,
         startDragg: false,
+
+        //array for DesignTabsBlock
         childrenList: []
       }
   },
@@ -90,8 +92,11 @@ export default {
      connectOptions() {
       var self = this;
       this.childrenList= this.value.map(function(component){
-            var newComponent = Object.assign({}, self.basicComponents[component._n]);
-            return  _merge(newComponent, component);
+            console.log(component);
+            return  Object.assign({}, component);
+
+
+          //  return  _merge(newComponent, component);
         })
 
      },
@@ -101,11 +106,8 @@ export default {
      },
 
      addComponentToList(componentName) {
-       this.childrenList.push(this.getSettingsFromComponent(componentName));
-     },
-
-     getSettingsFromComponent(componentName) {
-       return this.$options.StructureAdminHelper.createSettComponent(componentName);
+       var settings = this.$options.$helperComponents.createSettComponent(componentName);
+       this.childrenList.push(settings );
      }
 
   },
@@ -113,18 +115,10 @@ export default {
   computed: {
 
     childrenComponents() {
-       return this.$options.StructureAdminHelper.getChildrenList(this.componentName);
-    },
-
-    // create basic components for merge with server options
-    basicComponents() {
-
-      var basicComponents ={};
-      for (var childName in this.childrenComponents) {
-          basicComponents[childName] =  this.getSettingsFromComponent(childName);
-      }
-      return basicComponents;
+       return this.$options.$helperComponents.getChildrenList(this.componentName);
     }
+
+
   }
 
 }

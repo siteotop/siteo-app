@@ -11,34 +11,22 @@ var getComponent = function (componentName) {
     }
 }
 
-var connectSpecial = function(componentName, props, componentProps) {
-  for (var nameProp in componentProps) {
-      props[nameProp] = componentProps[nameProp];
-  }
-}
-
 
 var isChildren = function (componentName){
   return  ( allowChildrenList[componentName]&&allowChildrenList[componentName]._ch)
 }
 
 export const  createSettComponent = function (componentName) {
+   var settings = {};
+   if (isChildren(componentName)) {
+      //children
+      settings._ch = [];
+   }
 
-   var settings = {
-     //name
-    _n: componentName,
-    //props
-    _p: {},
-    //class
-    _c: []
-  };
-
-  if (isChildren(componentName)) {
-     //children
-     settings._ch = [];
-  }
-
-  return settings;
+   settings._n = componentName;
+   settings._p = {};
+   settings._c = [];
+   return settings;
 }
 
 
@@ -50,12 +38,7 @@ export const updateSettComponent = function (issetStrucutre, componentName) {
      return issetStrucutre;
    }
 
-   var settings = {
-      _n: issetStrucutre._n||componentName,
-      _p: issetStrucutre._p||{},
-      _c: issetStrucutre._c||[]
-   }
-
+   var settings = {};
    if (isChildren(componentName)) {
       //children
       if (!issetStrucutre._ch) {
@@ -64,7 +47,10 @@ export const updateSettComponent = function (issetStrucutre, componentName) {
         settings._ch = issetStrucutre._ch;
       }
    }
-   return settings;
+    settings._n = issetStrucutre._n||componentName,
+    settings._p = issetStrucutre._p||{},
+    settings._c = issetStrucutre._c||[]
+    return settings;
 }
 
 
@@ -75,6 +61,9 @@ export const helperComponents =  function (Vue) {
    return {
       createSettComponent: createSettComponent,
 
+      /**
+        get allowed children list for component
+      */
       getChildrenList: function (parentName) {
           if (!parentName) {
             parentName = 'root';
@@ -96,21 +85,22 @@ export const helperComponents =  function (Vue) {
       getComponent: getComponent,
 
       generateProps(componentName) {
-         var props = {},  component = getComponent(componentName);
+         var props;//  component = getComponent(componentName);
 
+          if ( allowChildrenList[componentName]&&allowChildrenList[componentName]._p) {
+            props = allowChildrenList[componentName]._p;
 
-          if (component.props) {
-            connectSpecial(componentName, props, component.props);
           }
 
-          if (component.wrapped) {
+        /*  if (component.wrapped) {
              // component Wrapped must be in "CamelCase" naming
-             var wrappedComponent =  Vue.component(component.wrapped);
+             var wrappedComponent =  Vue.component('VToolbar');
+             console.log(wrappedComponent);
              var instanceComponent = new wrappedComponent();
              connectSpecial(componentName, props, instanceComponent.$options.props);
 
           }
-
+          */
         return props;
 
       }

@@ -10,9 +10,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/siteotop/siteo-template"
+    "url": "https://github.com/siteotop/siteo"
   },
-  "homepage": "http://template.siteo.top/",
+  "homepage": "http://siteo.top/",
   "keywords": [
     "siteo",
     "template",

@@ -22,8 +22,6 @@ export const zipObjectBeforeSave = function (structure, removeName) {
           if (property=='_n'&&removeName) {
              delete settForComponent[property];
           }
-
-
         }
 
         if (Object.keys(structure[index]).length ==1&&structure[index]._n ) {

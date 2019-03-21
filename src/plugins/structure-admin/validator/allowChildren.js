@@ -10,7 +10,9 @@ export const allowChildrenList = {
 
     'StToolbar': {
       _p: {
-
+          height: {
+            default:48  
+          }
       },
       _c: [],
       _ch: ['StTitle', 'StDrawerToogle', 'StLogo', 'StAction', 'StSpacer', 'StHorMenu']
