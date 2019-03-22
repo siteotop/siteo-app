@@ -1,108 +1,127 @@
 
-import * as  AppStructure from '../../../core/components/Structure';
-import {allowChildrenList} from '../validator/allowChildren';
+import * as allowChildrenList from '../validator/allowChildren';
 
+var isProperty=function(componentName, propertyName) {
 
-var getComponent = function (componentName) {
-    if (AppStructure[componentName]) {
-       return AppStructure[componentName];
-    } else {
-      return false;
-    }
+    return allowChildrenList[componentName]&&allowChildrenList[componentName][propertyName]
 }
-
 
 var isChildren = function (componentName){
-  return  ( allowChildrenList[componentName]&&allowChildrenList[componentName]._ch)
+  return isProperty(componentName, '_ch');
 }
+
+// properties and default
+const _PROPERTIES = {
+    _ch: [],
+    _n: '',
+    _p: {},
+    _c: [],
+    colors: allowChildrenList['theme'].colors
+};
 
 export const  createSettComponent = function (componentName) {
    var settings = {};
-   if (isChildren(componentName)) {
-      //children
-      settings._ch = [];
+   for (var property in _PROPERTIES) {
+      if (isProperty(componentName, property)) {
+        settings[property] = _PROPERTIES[property];
+      }
    }
-
    settings._n = componentName;
-   settings._p = {};
-   settings._c = [];
    return settings;
 }
 
 
 export const updateSettComponent = function (issetStrucutre, componentName) {
 
-   var componentObject = getComponent(componentName);
-   if (!componentObject) {
+   //var componentObject = getComponent(componentName);
+   if (!allowChildrenList[componentName]) {
      issetStrucutre._n = componentName;
      return issetStrucutre;
    }
 
    var settings = {};
-   if (isChildren(componentName)) {
-      //children
-      if (!issetStrucutre._ch) {
-        settings._ch = [];
-      } else {
-        settings._ch = issetStrucutre._ch;
+   for (var property in _PROPERTIES) {
+      if (isProperty(componentName, property)) {
+         if (!issetStrucutre[property]) {
+            settings[property] = _PROPERTIES[property];
+         } else {
+            settings[property] = issetStrucutre[property];
+         }
       }
    }
-    settings._n = issetStrucutre._n||componentName,
-    settings._p = issetStrucutre._p||{},
-    settings._c = issetStrucutre._c||[]
-    return settings;
+   settings._n = issetStrucutre._n||componentName;
+   return settings;
 }
 
+const createSettProps =  function(propsName, componentName){
+      if ( allowChildrenList[componentName]) {
+         var propsSettings = allowChildrenList[componentName]._p[propsName];
+         return {
+          ...propsSettings,
+          _n: propsName,
+          value: propsSettings.default,
+        };
+      } else {
+        return false;
+      }
+  }
 
-export const helperComponents =  function (Vue) {
 
 
 
-   return {
-      createSettComponent: createSettComponent,
+export const helperComponents = {
 
-      /**
-        get allowed children list for component
-      */
-      getChildrenList: function (parentName) {
-          if (!parentName) {
-            parentName = 'root';
-          }
-          if (isChildren(parentName)) {
-              var allowStructure = {};
-              //allowChildrenList[parentName]._ch.sort();
-              allowChildrenList[parentName]._ch.map(function(nameComponent){
-                  allowStructure[nameComponent] = AppStructure[nameComponent];
-              });
-
-            return allowStructure;
-          } else {
-            return false;
-          }
+      component: {
+        unZip: function (inputList) {
+          return inputList;
+        },
+        zip: function (inputList) {
+          return inputList;
+        },
+        createSettings: createSettComponent,
+        getAllowList: function (parentName) {
+            if (!parentName) {
+              parentName = 'root';
+            }
+            if (isChildren(parentName)) {
+                var allowStructure = {};
+                return   allowChildrenList[parentName]._ch;
+            } else {
+              return [];
+            }
+        },
       },
 
-
-      getComponent: getComponent,
-
-      generateProps(componentName) {
-         var props;//  component = getComponent(componentName);
-
-          if ( allowChildrenList[componentName]&&allowChildrenList[componentName]._p) {
-            props = allowChildrenList[componentName]._p;
+      props: {
+        /**
+          @Object inputList is Object like  {nameprop: 1, nameprop:2}
+          @String componentName
+        */
+         unZip: function (inputList, componentName) {
+           var newList = [];
+           for (var propName in inputList) {
+             var settProps = createSettProps(propName, componentName);
+             settProps.value = inputList[propName];
+             newList.push(settProps);
+           }
+           return newList;
+         },
+         zip: function (propsArray) {
+             var objectProps = {};
+             for (var i in propsArray) {
+                 objectProps[propsArray[i]._n] = propsArray[i].value;
+             }
+             return objectProps;
+         },
+         createSettings: createSettProps,
+         getAllowList: function(componentName) {
+             var props;
+             if ( allowChildrenList[componentName]&&allowChildrenList[componentName]._p) {
+                return Object.keys(allowChildrenList[componentName]._p);
+              } else {
+                return [];
+              }
 
           }
-
-        /*  if (component.wrapped) {
-             // component Wrapped must be in "CamelCase" naming
-             var wrappedComponent =  Vue.component('VToolbar');
-             console.log(wrappedComponent);
-             var instanceComponent = new wrappedComponent();
-             connectSpecial(componentName, props, instanceComponent.$options.props);
-
-          }
-          */
-        return props;
-
       }
-    }
-}
+  }

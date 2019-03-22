@@ -1,7 +1,16 @@
 
 import _isEmpty from 'lodash/isEmpty';
 
+
 import {updateSettComponent}  from './components';
+
+/**
+  @input @Array  [{
+    name: 'propName',
+    value: '',
+  }]
+  @return Object
+*/
 
 
 

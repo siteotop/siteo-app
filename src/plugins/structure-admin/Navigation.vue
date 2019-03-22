@@ -22,13 +22,9 @@
     <v-subheader>
         Main Components
     </v-subheader>
-    <SettingsChildren  v-model="treeComponents">
+    <SettingsChildren  :noDublicateChild="true"  v-model="treeComponents">
     </SettingsChildren>
-
-    <v-subheader>
-        Save
-    </v-subheader>
-    <v-card tile >
+   <v-card tile flat  >
       <v-card-actions>
        <v-btn  @click="showJsonDesign=true">
           View
@@ -78,18 +74,17 @@
 </template>
 <script>
 
-
-import {designDefault} from './designDefault';
-
 import _cloneDeep from 'lodash/cloneDeep';
 import _isEmpty from 'lodash/isEmpty';
-
 import {zipObjectBeforeSave, unzipObjectBeforeUpate} from './_helper/zipUnzip';
+import SettingsChildren from './Blocks/Children.vue';
 
 export default {
-
-
   name:'BDesignTemplates',
+
+  components: {
+    SettingsChildren
+  },
 
   props: {
 
@@ -129,7 +124,7 @@ export default {
 
       var structure;
       if (_isEmpty(this.mainStructure)) {
-        structure = designDefault();
+        structure = {};
       } else {
         structure= unzipObjectBeforeUpate(
           _cloneDeep(JSON.parse(this.mainStructure)),

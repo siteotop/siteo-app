@@ -43,6 +43,9 @@ const SystemMessages = {
         this action filter message and commit
     */
     generateSystemMessage({commit, state}, message) {
+        if (typeof message == 'string') {
+          message = {text: message, type: 'error'};
+        }
         commit('setMessage', filterMessage(message));
     }
 

@@ -3,9 +3,7 @@ import  {installVuePlugin, createSiteo, startSiteo}  from '../src/core';
 import  siteoTemplate  from '../src/template';
 import  siteoApp  from '../src/app';
 import  SiteoLocalEN  from '../src/core/i18n/en';
-import  {designDefault} from '../src/plugins/structure-admin/designDefault';
 
-const structureDesignDefault = designDefault();
 
 installVuePlugin(siteoTemplate);
 installVuePlugin(siteoApp);
@@ -19,16 +17,12 @@ export default (context) => {
        throw {ssr_error_code: 'APP_INSTANCE_NOT_VALID' , response_data_api: context.instance};
     }
   // if design not found connect default design
-   if (!context.instance.design) {
-      context.instance.design = structureDesignDefault;
-   } else {
+   if (context.instance.design) {
      if (typeof context.instance.design == 'string' ) {
         context.instance.design = JSON.parse(context.instance.design);
      }
-   }
-
-   if (!context.instance.design.theme) {
-      context.instance.design.theme = structureDesignDefault.theme;
+   } else {
+     context.instance.design = {};
    }
 
    return new Promise((resolve, reject) => {
@@ -51,7 +45,10 @@ export default (context) => {
         : css
     }
 
-    app.$vuetify.theme = app.$store.state.appInstance.objectActive.design.theme.colors;
+    if (context.instance.design.theme&&context.instance.design.theme.colors) {
+      app.$vuetify.theme = app.$store.state.appInstance.objectActive.design.theme.colors;
+    }
+
     // устанавливаем маршрут для маршрутизатора серверной части
     app.$router.push(context.url)
 

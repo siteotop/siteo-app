@@ -1,24 +1,49 @@
 <template>
 <div class="mt-3">
-    <v-expansion-panel focusable >
-      <draggable v-model='childrenList' style="width:100%;" :options="{group:'children'}" @start="startDragg=true" @end="startDragg=false">
+    <v-expansion-panel v-if="typeHelper=='component'" focusable >
+      <draggable v-model='childrenList' style="width:100%;" :options="{group:'children', handle:'.draggable'}" @start="startDragg=true" @end="startDragg=false">
         <DesignTabsBlock :children="true"  :designStructure="childrenList">
         </DesignTabsBlock>
       </draggable>
     </v-expansion-panel>
-    <v-menu lazy z-index="1000" v-show="!startDragg" class="text-xs-center pb-3">
-      <v-btn slot="activator"  fab >+ </v-btn>
-      <v-list>
-        <v-list-tile
-          v-for="(children, indexComponent) in childrenComponents"
-          :key="indexComponent"
-          @click="addComponentToList(indexComponent)"
-        >
-          <v-list-tile-title>{{indexComponent}}</v-list-tile-title>
-        </v-list-tile>
-      </v-list>
+    <PropsSettingsList v-else  :objectProps="childrenList" ></PropsSettingsList>
+    <v-menu v-model="menu" :close-on-content-click="false" lazy z-index="1000" min-width="300" v-show="!startDragg" class="text-xs-center pb-3">
+      <v-btn slot="activator"  block flat>+ Add {{typeHelper}} </v-btn>
+      <v-card>
+        <v-toolbar dense >
+
+          <v-toolbar-title> {{typeHelper}} </v-toolbar-title>
+          <v-spacer></v-spacer>
+
+          <v-btn :disabled="!childrenList.length"   icon v-if="typeHelper=='props'" @click="eventAll('addDefaultValue')"><AppIcon name="si-clear"></AppIcon></v-btn>
+          <v-btn :disabled="!childrenList.length"  icon  @click="eventAll('removeComponentFromList')"><AppIcon name="si-delete"></AppIcon></v-btn>
+          <v-btn icon ><AppIcon @click="menu=false" name="si-close"> </AppIcon></v-btn>
+        </v-toolbar>
+
+        <v-list>
+          <v-list-tile
+            v-for="(name, indexComponent) in childrenComponents()"
+            :key="indexComponent"
+          >
+            <v-list-tile-content>
+                <v-list-tile-title>{{name}}</v-list-tile-title>
+            </v-list-tile-content>
+
+            <v-list-tile-action>
+              <v-btn icon :disabled="noDublicateChild&&issetNames[name]"   @click="addComponentToList(name)"><AppIcon name="si-add"></AppIcon></v-btn>
+            </v-list-tile-action>
+            <v-list-tile-action v-if="typeHelper=='props'">
+              <v-btn icon :disabled="!issetNames[name]"   @click="addDefaultValue(name)"><AppIcon name="si-clear"></AppIcon></v-btn>
+            </v-list-tile-action>
+            <v-list-tile-action>
+              <v-btn  icon :disabled="!issetNames[name]"  @click="removeComponentFromList(name)"><AppIcon name="si-delete"></AppIcon></v-btn>
+            </v-list-tile-action>
+
+          </v-list-tile>
+        </v-list>
+     </v-card>
     </v-menu>
-    <div v-show="startDragg">
+    <div v-if="draggable" v-show="startDragg">
         <v-subheader class="red--text">
           <AppIcon name="si-delete"></AppIcon> Delete Zone
         </v-subheader>
@@ -34,19 +59,22 @@
 
 <script>
 import draggable from 'vuedraggable'
-import  _merge from 'lodash/merge';
+import  _cloneDeep from 'lodash/cloneDeep';
+import {helperComponents} from '../_helper/components';
 import DesignTabsBlock from './Children/DesignTabsBlock.js';
-export default {
+import PropsSettingsList from './Props/SettingsList.js';
 
-  listBlock: ['props', 'class'],
+import  _findIndex from 'lodash/findIndex';
+
+export default {
 
   components: {
     draggable,
-    DesignTabsBlock
+    DesignTabsBlock,
+    PropsSettingsList
   },
 
   props: {
-
 
     //it is name for  parent component, which need for  merge settings child component
     componentName: {
@@ -55,10 +83,33 @@ export default {
     },
 
     value: {
-        type: Array,
+        type: [Array, Object],
         default : function() {
           return [];
         }
+    },
+    typeHelper: {
+        type: String,
+        default: 'component',
+        validator: function (value) {
+           return ['component', 'props'].indexOf(value)!==-1
+        }
+    },
+
+    noDublicateChild: {
+      type: Boolean,
+      default: false
+    },
+
+    draggable: {
+      type: Boolean,
+      default: true
+    },
+
+    cloning: {
+      type: Boolean,
+      default:false
+
     }
   },
 
@@ -66,7 +117,7 @@ export default {
       return {
         //dialogChildren: false,
         startDragg: false,
-
+        menu: false,
         //array for DesignTabsBlock
         childrenList: []
       }
@@ -75,13 +126,15 @@ export default {
   created() {
      //this.childrenList = this.value;
      console.log('created list ');
-     this.connectOptions();
+     this.connectChildrenList();
+
   },
 
   watch: {
     childrenList: {
         handler: function (newList) {
-          this.$emit('input', newList);
+          ;
+          this.$emit('input', helperComponents[this.typeHelper].zip(newList));
         },
         deep: true
     }
@@ -89,15 +142,13 @@ export default {
   methods: {
 
      // connect default options to every child element
-     connectOptions() {
-      var self = this;
-      this.childrenList= this.value.map(function(component){
-            console.log(component);
-            return  Object.assign({}, component);
+     connectChildrenList() {
+       var inputList = this.value;
+       if (this.cloning) {
+        inputList=_cloneDeep(inputList);
+       }
 
-
-          //  return  _merge(newComponent, component);
-        })
+       this.childrenList=helperComponents[this.typeHelper].unZip(inputList, this.componentName);
 
      },
 
@@ -105,20 +156,63 @@ export default {
         console.log($event);
      },
 
-     addComponentToList(componentName) {
-       var settings = this.$options.$helperComponents.createSettComponent(componentName);
-       this.childrenList.push(settings );
+     addComponentToList(NameOfList) {
+       var settings = helperComponents[this.typeHelper].createSettings(NameOfList, this.componentName);
+
+       if (this.noDublicateChild) {
+           var index = this.findIndexOfElement(NameOfList);
+           if (index !== -1) {
+             this.$store.dispatch('generateSystemMessage', NameOfList + ' added early');
+             return;
+           }
+       }
+       this.childrenList.push(settings);
+
+
+     },
+
+     findIndexOfElement(name) {
+        return _findIndex (this.childrenList, {_n:name});
+     },
+
+     removeComponentFromList(name) {
+       var index = this.findIndexOfElement(name);
+       if (index !==-1) {
+           this.childrenList.splice(index, 1);
+           this.removeComponentFromList(name);
+       }
+
+     },
+
+     childrenComponents() {
+        return helperComponents[this.typeHelper].getAllowList(this.componentName);
+     },
+
+     addDefaultValue(name) {
+        var index = this.findIndexOfElement(name);
+        if (index !==-1) {
+            this.childrenList[index].value = this.childrenList[index].default;
+        }
+     },
+
+     eventAll(functionOne) {
+       var list = this.childrenList.slice(0);
+       list.map((element)=>{
+          this[functionOne](element._n);
+       })
      }
 
   },
 
   computed: {
 
-    childrenComponents() {
-       return this.$options.$helperComponents.getChildrenList(this.componentName);
+    issetNames() {
+      var names = {};
+      for (var i in this.childrenList) {
+          names[this.childrenList[i]._n] = true;
+      }
+      return names;
     }
-
-
   }
 
 }

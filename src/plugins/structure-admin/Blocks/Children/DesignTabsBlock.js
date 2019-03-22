@@ -1,23 +1,22 @@
 
-
+import * as SettingsBlocks from '../';
 import ChildrenHeaderSlot from './HeaderSlot.vue';
-
-const MAP_NAMES = {
-  '_n': 'name',
-  '_p': 'props',
-  '_c': 'class',
-  '_d': 'data',
-  '_ch': 'children'
-}
 
 
 const resolvePropertyName = function(shortName) {
+   var  MAP_NAMES = {
+      '_n': 'name',
+      '_p': 'Props',
+      '_c': 'Class',
+      '_d': 'Data',
+      '_ch': 'Children',
+      'colors':'Colors'
+    }
     if (MAP_NAMES[shortName]) {
       return MAP_NAMES[shortName];
     } else {
       return shortName;
     }
-
 
 }
 
@@ -53,7 +52,7 @@ export default {
               }
                 //console.log(componentSettings);
                 return h('v-expansion-panel-content', {props: {lazy
-:true, disabled: (componentSettings.length-1?false: true), hideActions: (componentSettings.length-1?false: true) }}, [
+:true, /*disabled: (componentSettings.length-1?false: true),*/ hideActions: (componentSettings.length-1?false: true) }}, [
                       !context.props.children? h('div', { slot: 'header'},  [
                         component._n,
                       ])  : h(ChildrenHeaderSlot, {props: {name: component._n, ...context.props}  }),
@@ -75,9 +74,8 @@ export default {
                             }
                             // return settings block
                             return h('v-tab-item', {props: {lazy:true}},  [
-                              h('settings-'+nameSettingBlock, {
+                              h(SettingsBlocks[nameSettingBlock], {
                                 props: {
-
                                   value:component[shortNameSettingBlock],
                                   componentName: component._n
                                 },
