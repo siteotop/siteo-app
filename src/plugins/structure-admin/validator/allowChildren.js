@@ -23,20 +23,42 @@ export const StRoot = {
 export const StToolbar = {
   _p: {
       height: {
-        $comp: {
-          name: 'v-slider',
-          props: {
-            min: 30,
-            max: 80,
-            thumbLabel: true,
-            inverseLabel: true,
-            //thumbSize: 24,
-            alwaysDirty: true,
-          },
-        },
-
+        $comp: 'PropHeight',
+        validators: {min:30, max:80},
+        type: Number,
         default:48
+      },
+
+      dark: {
+        $comp: 'PropBoolean',
+        type: Boolean,
+        default: false
+      },
+
+      clippedLeft: {
+        $comp: 'PropBoolean',
+        type: Boolean,
+        default: false
+      },
+
+      clippedRight: {
+        $comp: 'PropBoolean',
+        type: Boolean,
+        default: false
+      },
+
+      dense: {
+        $comp: 'PropBoolean',
+        type: Boolean,
+        default: false
+      },
+
+      color: {
+        $comp: 'PropColor',
+        type: String,
+        default: 'primary'
       }
+
   },
 
   _c: [],

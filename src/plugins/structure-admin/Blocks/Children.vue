@@ -7,7 +7,7 @@
       </draggable>
     </v-expansion-panel>
     <PropsSettingsList v-else  :objectProps="childrenList" ></PropsSettingsList>
-    <v-menu v-model="menu" :close-on-content-click="false" lazy z-index="1000" min-width="300" v-show="!startDragg" class="text-xs-center pb-3">
+    <v-menu v-model="menu" :close-on-content-click="false" lazy z-index="1000" min-width="300" v-show="!startDragg" offset-x class="text-xs-center pb-3">
       <v-btn slot="activator"  block flat>+ Add {{typeHelper}} </v-btn>
       <v-card>
         <v-toolbar dense >
@@ -20,23 +20,28 @@
           <v-btn icon ><AppIcon @click="menu=false" name="si-close"> </AppIcon></v-btn>
         </v-toolbar>
 
-        <v-list>
+        <v-list >
           <v-list-tile
             v-for="(name, indexComponent) in childrenComponents()"
             :key="indexComponent"
+            @click=""
           >
             <v-list-tile-content>
                 <v-list-tile-title>{{name}}</v-list-tile-title>
+                <v-list-tile-sub-title v-if="issetNames[name]" v-html="issetNames[name].value"></v-list-tile-sub-title>
             </v-list-tile-content>
 
             <v-list-tile-action>
-              <v-btn icon :disabled="noDublicateChild&&issetNames[name]"   @click="addComponentToList(name)"><AppIcon name="si-add"></AppIcon></v-btn>
+              <v-btn icon :disabled="noDublicateChild&&issetNames[name]!=undefined"   @click="addComponentToList(name)"><AppIcon name="si-add"></AppIcon></v-btn>
             </v-list-tile-action>
             <v-list-tile-action v-if="typeHelper=='props'">
-              <v-btn icon :disabled="!issetNames[name]"   @click="addDefaultValue(name)"><AppIcon name="si-clear"></AppIcon></v-btn>
+              <v-tooltip lazy top>
+                <v-btn slot="activator" icon :disabled="issetNames[name]==undefined||(issetNames[name]&&issetNames[name].default==issetNames[name].value)"   @click="addDefaultValue(name)"><AppIcon name="si-clear"></AppIcon></v-btn>
+                <span v-if="issetNames[name]" v-html="issetNames[name].default"></span>
+              </v-tooltip>
             </v-list-tile-action>
             <v-list-tile-action>
-              <v-btn  icon :disabled="!issetNames[name]"  @click="removeComponentFromList(name)"><AppIcon name="si-delete"></AppIcon></v-btn>
+              <v-btn  icon :disabled="issetNames[name]==undefined"  @click="removeComponentFromList(name)"><AppIcon name="si-delete"></AppIcon></v-btn>
             </v-list-tile-action>
 
           </v-list-tile>
@@ -209,7 +214,9 @@ export default {
     issetNames() {
       var names = {};
       for (var i in this.childrenList) {
-          names[this.childrenList[i]._n] = true;
+          names[this.childrenList[i]._n] = {
+            default:this.childrenList[i].default,
+            value:this.childrenList[i].value };
       }
       return names;
     }

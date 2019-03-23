@@ -9,7 +9,7 @@
                     {{colorOptions.value.name}}
                   </v-flex>
                   <v-flex xs1>
-                       <AppIcon name="check" scale="1" v-if="value==colorOptions.value.name"></AppIcon>
+                       <AppIcon name="si-check" scale="1" v-if="value==colorOptions.value.name"></AppIcon>
                   </v-flex>
               </v-layout>
           </v-card-text>
@@ -29,7 +29,7 @@
                        {{colorOptions.value.hex}}
                      </v-flex>
                      <v-flex xs1>
-                        <AppIcon name="check" scale="1" v-if="value==colorOptions.value.name"></AppIcon>
+                        <AppIcon name="si-check" scale="1" v-if="value==colorOptions.value.name"></AppIcon>
                      </v-flex>
                  </v-layout>
              </v-card-text>

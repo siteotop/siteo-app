@@ -1,7 +1,16 @@
 <template>
   <v-menu z-index="1000" max-width="500" max-height="650"  :close-on-content-click="false" v-model="menuActive">
-        <v-btn slot="activator" icon><AppIcon name="si-settings"></AppIcon></v-btn>
 
+        <v-text-field
+          label="color"
+          outline
+          slot="activator"
+          readonly
+          v-model="valueData">
+          <v-btn slot="append" small fab :color="valueData">
+            <AppIcon  name="si-settings"></AppIcon>
+          </v-btn>
+        </v-text-field>
         <v-card v-if="menuActive">
           <v-toolbar dense >
 
@@ -10,7 +19,7 @@
             <v-spacer></v-spacer>
             <v-toolbar-title v-if ="valueData">{{valueData}}</v-toolbar-title>
             <v-toolbar-title v-else >no selected</v-toolbar-title>
-            <v-btn small :class="classActiveButton" fab  @click="closeMenu()" > <AppIcon name="check"></AppIcon> </v-btn>
+            <v-btn small :class="classActiveButton" fab  @click="closeMenu()" > <AppIcon name="si-check"></AppIcon> </v-btn>
             <v-btn small  fab  @click="menuActive=false" > <AppIcon name="si-close"></AppIcon> </v-btn>
 
         </v-toolbar>
@@ -23,10 +32,10 @@
                 Material Design Palette
             </v-tab>
             <v-tab-item >
-                <ThemePalette :typeName="$options.$type" :value="valueData" @input="setNameColor($event)" ></ThemePalette>
+                <ThemePalette :typeName="$options.$type" :value="eventResult" @input="setNameColor($event)" ></ThemePalette>
             </v-tab-item>
             <v-tab-item >
-                <MDPalette :typeName="$options.$type" :value="valueData" @input="setNameColor($event)"></MDPalette>
+                <MDPalette :typeName="$options.$type" :value="eventResult" @input="setNameColor($event)"></MDPalette>
             </v-tab-item>
           </v-tabs>
 
@@ -43,7 +52,7 @@
 
 import MDPalette from '../../ColorPalette/MDPalette.vue'
 import ThemePalette from '../../ColorPalette/ThemePalette.vue'
-import MixinVModelInput from '../../../forms/AppForm/Fields/_mixins/v-model-input';;
+import MixinVModelInput from '../../../forms/AppForm/Fields/_mixins/v-model-input';
 export default {
 
     $type: 'background',
@@ -85,16 +94,14 @@ export default {
         selected color
         */
         classActiveButton() {
-           return this.valueData+' '+this.eventResult.text;
+           return this.eventResult.name+' '+this.eventResult.text;
         }
 
     },
 
     methods: {
-        closeMenu(nameClass) {
-            if (nameClass) {
-              this.valueData= nameClass;
-            }
+        closeMenu() {
+
 
             this.menuActive=false;
 
@@ -106,7 +113,6 @@ export default {
 
 
         setNameColor($event) {
-            //console.log($event);
             this.valueData= $event.name;
             this.eventResult = $event;
         }

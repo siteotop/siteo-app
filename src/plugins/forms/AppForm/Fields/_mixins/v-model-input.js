@@ -2,16 +2,7 @@
 
 export default {
 
-  props: {
-
-     /**
-        v-model (value)
-     */
-     value: {
-        type: String,
-        default: '',
-     }
-  },
+  props: ['value'],
 
 
   data() {

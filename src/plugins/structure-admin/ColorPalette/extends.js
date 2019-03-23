@@ -95,6 +95,8 @@ export default {
         }
       */
       setNewActiveClass(newColor) {
+         console.log('newColor:');
+         console.log(newColor);
          this.valueData = newColor;
       },
 
