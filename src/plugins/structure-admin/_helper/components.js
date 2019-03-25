@@ -79,6 +79,13 @@ export const helperComponents = {
           return inputList;
         },
         createSettings: createSettComponent,
+
+        /**
+          @return @array of components
+          [
+            { _n:'',_p:'', _ch: []}
+          ]
+        */
         getAllowList: function (parentName) {
             if (!parentName) {
               parentName = 'root';
@@ -96,6 +103,7 @@ export const helperComponents = {
         /**
           @Object inputList is Object like  {nameprop: 1, nameprop:2}
           @String componentName
+          @return @array
         */
          unZip: function (inputList, componentName) {
            var newList = [];
@@ -114,6 +122,10 @@ export const helperComponents = {
              return objectProps;
          },
          createSettings: createSettProps,
+
+         /**
+           @return array
+         */
          getAllowList: function(componentName) {
              var props;
              if ( allowChildrenList[componentName]&&allowChildrenList[componentName]._p) {
@@ -123,5 +135,24 @@ export const helperComponents = {
               }
 
           }
+      },
+
+      class: {
+          unZip:function() {
+            return [];
+          },
+
+          zip: function() {
+
+          },
+
+          createSettings: function () {
+              
+          },
+
+          getAllowList: function() {
+            return [];
+          }
+
       }
   }

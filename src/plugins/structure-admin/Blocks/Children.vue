@@ -64,15 +64,16 @@
 
 <script>
 import draggable from 'vuedraggable'
-import  _cloneDeep from 'lodash/cloneDeep';
+import _cloneDeep from 'lodash/cloneDeep';
 import {helperComponents} from '../_helper/components';
-import DesignTabsBlock from './Children/DesignTabsBlock.js';
+import DesignTabsBlock from './ChildrenTabs/DesignTabsBlock.js';
 import PropsSettingsList from './Props/SettingsList.js';
-
 import  _findIndex from 'lodash/findIndex';
+
 
 export default {
 
+  name: 'SettingsChildren',
   components: {
     draggable,
     DesignTabsBlock,
@@ -97,7 +98,7 @@ export default {
         type: String,
         default: 'component',
         validator: function (value) {
-           return ['component', 'props'].indexOf(value)!==-1
+           return ['component', 'props', 'class'].indexOf(value)!==-1
         }
     },
 

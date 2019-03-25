@@ -60,7 +60,6 @@ export const StToolbar = {
       }
 
   },
-
   _c: [],
   _ch: ['StTitle', 'StDrawerToogle', 'StLogo', 'StAction', 'StSpacer', 'StHorMenu']
 };

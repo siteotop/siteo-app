@@ -1,5 +1,7 @@
 <template>
-  <v-list>
+
+  <SettingsChildren v-if="true"></SettingsChildren>
+  <v-list v-else>
       <template v-for="(valueClass, nameSett) in defaultClass" >
       <v-list-tile v-if="nameSett=='b'||nameSett=='t'" two-line >
         <v-list-tile-content>
@@ -49,9 +51,11 @@ import ClassFieldM from './Margin';
 import ClassFieldD from './Display';
 import ClassFieldH from './TextSize';
 
-
+import SettingsChildren from '../Children.vue';
+console.log(SettingsChildren);
 export default {
   components: {
+    SettingsChildren,
      ClassFieldB,
      ClassFieldT,
      ClassFieldA,
