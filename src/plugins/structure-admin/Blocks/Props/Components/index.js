@@ -25,10 +25,19 @@ export const PropBoolean = function() {
 }
 
 import {default as Background} from '../../Class/Background.vue';
+
 export const PropColor = function () {
   return {
     name: Background,
     props: {}
+  }
+
+}
+
+import {default as Elevation} from '../../Class/ElevationN.js';
+export const PropClassElevation = function () {
+  return {
+    name: Elevation,
   }
 
 }

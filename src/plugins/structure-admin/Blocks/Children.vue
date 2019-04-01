@@ -1,6 +1,6 @@
 <template>
 <div class="mt-3">
-    <v-expansion-panel v-if="typeHelper=='component'" focusable >
+    <v-expansion-panel v-if="isTypeComponents" focusable >
       <draggable v-model='childrenList' style="width:100%;" :options="{group:'children', handle:'.draggable'}" @start="startDragg=true" @end="startDragg=false">
         <DesignTabsBlock :children="true"  :designStructure="childrenList">
         </DesignTabsBlock>
@@ -15,7 +15,7 @@
           <v-toolbar-title> {{typeHelper}} </v-toolbar-title>
           <v-spacer></v-spacer>
 
-          <v-btn :disabled="!childrenList.length"   icon v-if="typeHelper=='props'" @click="eventAll('addDefaultValue')"><AppIcon name="si-clear"></AppIcon></v-btn>
+          <v-btn :disabled="!childrenList.length"   icon v-if="!isTypeComponents" @click="eventAll('addDefaultValue')"><AppIcon name="si-clear"></AppIcon></v-btn>
           <v-btn :disabled="!childrenList.length"  icon  @click="eventAll('removeComponentFromList')"><AppIcon name="si-delete"></AppIcon></v-btn>
           <v-btn icon ><AppIcon @click="menu=false" name="si-close"> </AppIcon></v-btn>
         </v-toolbar>
@@ -34,7 +34,7 @@
             <v-list-tile-action>
               <v-btn icon :disabled="noDublicateChild&&issetNames[name]!=undefined"   @click="addComponentToList(name)"><AppIcon name="si-add"></AppIcon></v-btn>
             </v-list-tile-action>
-            <v-list-tile-action v-if="typeHelper=='props'">
+            <v-list-tile-action v-if="!isTypeComponents">
               <v-tooltip lazy top>
                 <v-btn slot="activator" icon :disabled="issetNames[name]==undefined||(issetNames[name]&&issetNames[name].default==issetNames[name].value)"   @click="addDefaultValue(name)"><AppIcon name="si-clear"></AppIcon></v-btn>
                 <span v-if="issetNames[name]" v-html="issetNames[name].default"></span>
@@ -65,10 +65,12 @@
 <script>
 import draggable from 'vuedraggable'
 import _cloneDeep from 'lodash/cloneDeep';
-import {helperComponents} from '../_helper/components';
+import * as helperComponents from '../_helper/components';
 import DesignTabsBlock from './ChildrenTabs/DesignTabsBlock.js';
 import PropsSettingsList from './Props/SettingsList.js';
 import  _findIndex from 'lodash/findIndex';
+import  _isEqual from 'lodash/isEqual';
+
 
 
 export default {
@@ -96,9 +98,9 @@ export default {
     },
     typeHelper: {
         type: String,
-        default: 'component',
+        default: 'components',
         validator: function (value) {
-           return ['component', 'props', 'class'].indexOf(value)!==-1
+           return ['components', 'props', 'classes'].indexOf(value)!==-1
         }
     },
 
@@ -115,8 +117,14 @@ export default {
     cloning: {
       type: Boolean,
       default:false
+    },
 
+    watchValue: {
+      type: Boolean,
+      default: false
     }
+
+
   },
 
   data() {
@@ -139,11 +147,21 @@ export default {
   watch: {
     childrenList: {
         handler: function (newList) {
-          ;
           this.$emit('input', helperComponents[this.typeHelper].zip(newList));
         },
         deep: true
+    },
+
+    value: function(newValue, oldValue) {
+        if (this.watchValue) {
+          if(!_isEqual(newValue, oldValue )) {
+            this.connectChildrenList();
+          }
+
+        }
     }
+
+
   },
   methods: {
 
@@ -164,7 +182,7 @@ export default {
 
      addComponentToList(NameOfList) {
        var settings = helperComponents[this.typeHelper].createSettings(NameOfList, this.componentName);
-
+       if (!settings) return;
        if (this.noDublicateChild) {
            var index = this.findIndexOfElement(NameOfList);
            if (index !== -1) {
@@ -211,8 +229,12 @@ export default {
   },
 
   computed: {
+    isTypeComponents() {
+        return this.typeHelper=='components';
+    },
 
     issetNames() {
+
       var names = {};
       for (var i in this.childrenList) {
           names[this.childrenList[i]._n] = {

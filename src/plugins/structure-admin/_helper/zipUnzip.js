@@ -4,18 +4,8 @@ import _isEmpty from 'lodash/isEmpty';
 
 import {updateSettComponent}  from './components';
 
-/**
-  @input @Array  [{
-    name: 'propName',
-    value: '',
-  }]
-  @return Object
-*/
-
-
 
 export const zipObjectBeforeSave = function (structure, removeName) {
-
     for (var index in structure) {
         var settForComponent = structure[index ];
 

@@ -16,7 +16,12 @@
       <AppIcon  name="si-settings"></AppIcon>
     </v-btn>
     <v-card>
-      <SettingsChildren typeHelper="class" ></SettingsChildren>
+      <SettingsChildren
+        :componentName="props.componentName"
+        :value="props.value"
+        :watchValue="true"
+        @input="listeners.input"
+        typeHelper="classes" ></SettingsChildren>
     </v-card>
   </v-menu>
 </v-combobox>
