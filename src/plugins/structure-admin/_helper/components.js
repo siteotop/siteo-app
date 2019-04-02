@@ -139,9 +139,7 @@ export const props = {
     }
 };
 
-const REGEXES_FOR_CLASS = {
-  elevation: /elevation-([0-2]?[0-9])/
-}
+
 
 const createClassesProps = function (className, componentName){
   return {
@@ -152,17 +150,7 @@ const createClassesProps = function (className, componentName){
   }
 }
 
-const findClassInRegex = function (className, componentName) {
-  for (var regex_name in REGEXES_FOR_CLASS) {
-     var result = REGEXES_FOR_CLASS[regex_name].test(className);
-     if (result) {
-        return createClassesProps(regex_name);
-     } else {
-       return false;
-     }
-  }
-}
-
+import {findClassInRegex} from  '../Blocks/Class/ExtendField/helper-values.js';
 
 export const classes = {
 
@@ -173,8 +161,10 @@ export const classes = {
        console.log(arrayClass);
        var componentList = [];
        for (var i in arrayClass ) {
-          var class_props = findClassInRegex(arrayClass[i], componentName);
-          if (class_props !== false) {
+          var name_class =  findClassInRegex(arrayClass[i], componentName);
+          //console.log(name_class);
+          if (name_class !== false) {
+              var class_props = createClassesProps(name_class, componentName);
               class_props.value = arrayClass[i];
               componentList.push(class_props);
           }

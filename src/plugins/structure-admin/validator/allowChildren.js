@@ -64,12 +64,20 @@ export const StToolbar = {
   _ch: ['StTitle', 'StDrawerToogle', 'StLogo', 'StAction', 'StSpacer', 'StHorMenu']
 };
 
+export const StTitle = {
+  _c: ['hidden', 'textsize', 'margin', 'padding', 'textcolor']
+}
+
 export const StDrawer = {
   _ch: ['StDrawerToolbar', 'StVerMenu']
 };
 
 export const StFooter = {
 };
+
+export const StLogo = {
+
+}
 
 export const StDrawerToolbar =  {
       _ch: ['StTitle', 'StLogo', 'StAction', 'StSpacer', 'StDrawerToogle']

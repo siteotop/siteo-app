@@ -3,7 +3,7 @@ import ExtendField from './ExtendField/extend.vue';
 
 export default {
   extends: ExtendField,
-  $type: 'display',
+  $type: 'd',
 
 
   computed: {
