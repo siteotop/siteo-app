@@ -82,3 +82,8 @@ export const StLogo = {
 export const StDrawerToolbar =  {
       _ch: ['StTitle', 'StLogo', 'StAction', 'StSpacer', 'StDrawerToogle']
 };
+
+
+export const rootPage = {
+  _ch: []
+};

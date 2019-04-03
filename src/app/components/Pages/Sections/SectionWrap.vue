@@ -17,7 +17,7 @@
       </v-flex>
 
   </v-layout>
-  <v-layout >
+  <v-layout>
     <v-flex>
       <slot></slot>
       <v-container v-if="props.$bls!==false" :class="props.$bc||'grid-list-md'">
