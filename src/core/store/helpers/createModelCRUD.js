@@ -42,9 +42,13 @@ const createModelCRUD = function (object, turnOnList ) {
         mutations: {
 
           setModel(state, object) {
-             state.api.id = 0;
+
              stateHelper(state, object);
-             state.api.id = state.objectActive[state.api.nameId];
+             if (state.api) {
+                state.api.id = 0;
+                state.api.id = state.objectActive[state.api.nameId];
+             }
+
           },
 
           updateModel(state, object) {
@@ -58,8 +62,11 @@ const createModelCRUD = function (object, turnOnList ) {
                   state.objectActive[key] = _plainState[key];
             }
             // clear from module Api
-            state.api.id = 0;
-            state.objectActive[state.api.nameId]  = 0;
+            if (state.api) {
+              state.api.id = 0;
+              state.objectActive[state.api.nameId]  = 0;
+            }
+
           }
 
 

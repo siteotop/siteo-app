@@ -103,7 +103,7 @@ export default {
 
       render(h ) {
 
-        if (!this.postObject.contentStructure) {
+        if (!this.postObject.jsonStructure) {
            return h('div', ['loaded']);//h('div',  'not loaded');
         }
 
@@ -115,7 +115,7 @@ export default {
             props: {
               pageToolbar: true,
               speedDeal: true,
-              structure: this.postObject.contentStructure,
+              structure: this.postObject.jsonStructure,
               sharing: true,
               shareWindow: this.shareWindow,
               buttonUp: true

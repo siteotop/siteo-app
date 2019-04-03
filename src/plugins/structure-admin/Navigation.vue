@@ -22,7 +22,7 @@
     <v-subheader>
         Main Components
     </v-subheader>
-    <SettingsChildren  :noDublicateChild="true"  v-model="treeComponents">
+    <SettingsChildren :componentName="typeStructure"  :noDublicateChild="true"  v-model="treeComponents">
     </SettingsChildren>
    <v-card tile flat  >
       <v-card-actions>
@@ -88,6 +88,10 @@ export default {
 
   props: {
 
+    typeStructure: {
+      type: String,
+      default: 'rootDesign'
+    },
 
     mainStructure: {
       type: [Array, Object, String, Boolean],

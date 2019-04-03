@@ -47,6 +47,7 @@ export default {
       type: Boolean,
       default: false
     },
+    
     contentStructure: {
       type: [Array, Boolean]
     }

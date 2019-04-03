@@ -16,6 +16,7 @@ const GETTERS = {
 
    urlWithoutId(state, getters, rootState, rootGetters) {
      var prefixurl = '';
+     console.log(state);
      if (state.parentGetterUrl) {
         prefixurl=  rootGetters[state.parentGetterUrl];
      }

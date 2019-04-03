@@ -1,6 +1,6 @@
 
 
-export const root = {
+export const rootDesign = {
   _ch: ['theme', 'StToolbar', 'StDrawer',  'StRoot', 'StFooter', 'StAction']
 };
 
