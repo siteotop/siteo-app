@@ -40,10 +40,10 @@ export default {
 
   asyncData({ store, route }) {
 
-      store.registerApiModule( 'page', pages('appInstance/urlID'));
+      store.registerApiModule( 'pages', pages('appInstance/urlID'));
       if (store.state.allowAsyncLoad) {
 
-        return store.dispatch('page/getObject', route.params.objectId);
+        return store.dispatch('pages/getObject', route.params.objectId);
       }
   },
 
@@ -63,7 +63,7 @@ export default {
 
         ...mapState({
             postObject (state) {
-                return state.page? state.page.objectActive: {};
+                return state.pages? state.pages.objectActive: {};
             }
         })
 
@@ -74,8 +74,8 @@ export default {
     methods: {
 
       asyncDataError(error_data) {
-          this.$store.commit('page/clearModel');
-          this.$store.commit('page/updateModel', {error: error_data});
+          this.$store.commit('pages/clearModel');
+          this.$store.commit('pages/updateModel', {error: error_data});
       },
 
        helperCreateMeta(sourceField, mainField ) {
