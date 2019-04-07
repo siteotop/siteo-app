@@ -1,5 +1,5 @@
 <template functional>
-<SectionWrap >
+<StpSection >
   <v-container >
    <v-layout >
       <v-flex xs12 text-xs-center class="subheading" >
@@ -7,7 +7,7 @@
       </v-flex>
     </v-layout>
   </v-container>
-</SectionWrap>
+</StpSection>
 </template>
 
 <script>

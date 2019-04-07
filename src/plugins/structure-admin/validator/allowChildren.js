@@ -25,37 +25,31 @@ export const StToolbar = {
       height: {
         $comp: 'PropHeight',
         validators: {min:30, max:80},
-        type: Number,
         default:48
       },
 
       dark: {
         $comp: 'PropBoolean',
-        type: Boolean,
         default: false
       },
 
       clippedLeft: {
         $comp: 'PropBoolean',
-        type: Boolean,
         default: false
       },
 
       clippedRight: {
         $comp: 'PropBoolean',
-        type: Boolean,
         default: false
       },
 
       dense: {
         $comp: 'PropBoolean',
-        type: Boolean,
         default: false
       },
 
       color: {
         $comp: 'PropColor',
-        type: String,
         default: 'primary'
       }
 
@@ -80,10 +74,33 @@ export const StLogo = {
 }
 
 export const StDrawerToolbar =  {
-      _ch: ['StTitle', 'StLogo', 'StAction', 'StSpacer', 'StDrawerToogle']
+  _ch: ['StTitle', 'StLogo', 'StAction', 'StSpacer', 'StDrawerToogle']
 };
 
 
 export const rootPage = {
-  _ch: []
+  _ch: ['StpSection']
 };
+
+/**
+
+*/
+
+export const StpSection = {
+  _c: ['background'],
+  _ch: ['StpSectionTitle']
+}
+
+export const StpSectionTitle = {
+  _d: {
+    t: {
+      $comp: 'PropTitle',
+      default:''
+    },
+    d: {
+      $comp: 'PropTitle',
+      default:''
+    }
+  },
+  _c: ['padding', 'margin', 'textalign', 'textcolor']
+}

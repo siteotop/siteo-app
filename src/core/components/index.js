@@ -6,3 +6,4 @@ export {default as AppPulseLoader} from './Elements/AppPulseLoader.vue';
 export {default as AppErrorResponse} from './Elements/AppErrorResponse/index.vue';
 export {default as AppMessagesBlock} from './Elements/AppMessagesBlock.js';
 export {default as AppConfirm} from './Elements/AppConfirm.vue';
+export {default as StChildrenHelper} from './Structure/_helper/childrenComponents';

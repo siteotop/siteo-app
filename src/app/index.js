@@ -2,8 +2,8 @@
 // PageHelper
 
 import PageSchema from './components/Pages/Schema.js';
-import SectionWrap from './components/Pages/Sections/SectionWrap.vue';
-import SectionListWrap from './components/Pages/Sections/SectionListWrap.vue';
+import StpSection from './components/Pages/Sections/StpSection.vue';
+import StpListSection from './components/Pages/Sections/StpListSection.vue';
 import SiteoRoutes from './routes';
 import RouteError from './components/Error.vue';
 
@@ -12,8 +12,8 @@ export default {
 
   install: function (Vue) {
       Vue.component('PageSchema', PageSchema);
-      Vue.component('SectionWrap', SectionWrap);
-      Vue.component('SectionListWrap', SectionListWrap);
+      Vue.component('StpSection', StpSection);
+      Vue.component('StpListSection', StpListSection);
       Vue.component('RouteError', RouteError);
   },
 

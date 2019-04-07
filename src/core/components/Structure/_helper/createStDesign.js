@@ -1,5 +1,4 @@
-import helperChildren from './childrenComponents.js';
-
+import * as StructureBlocks from '../';
 export  default function (h, context, nameStDesign, nameComponent, startProps, events, childrenAfter ){
     var design;
     if (typeof nameStDesign == 'string') {
@@ -14,7 +13,7 @@ export  default function (h, context, nameStDesign, nameComponent, startProps, e
 
     var children = [];
     if (design._ch) {
-       children = helperChildren(h, design._ch);
+       children = h('StChildrenHelper', {props: {children:design._ch, structure:StructureBlocks }});
     }
 
     if (childrenAfter) {

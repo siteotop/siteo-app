@@ -1,5 +1,5 @@
 <template functional >
-  <SectionListWrap v-bind="props"
+  <StpListSection v-bind="props"
    :$bf="(props.toggleComponent == 'list'||props.toggleComponent == 'card')? '  xs12 ': 'd-flex xs12 sm6 md4'">
     <template slot-scope="{item}">
        <b-expert
@@ -12,7 +12,7 @@
         _at="Order in Expert"
         ></b-expert>
     </template>
-  </SectionListWrap>
+  </StpListSection>
 </template>
 
 <script>

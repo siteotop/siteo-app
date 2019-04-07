@@ -1,6 +1,6 @@
 
 /**
- Props for  Pages/SectionWrap
+ Props for  Pages/StpSection
 */
 export default {
 

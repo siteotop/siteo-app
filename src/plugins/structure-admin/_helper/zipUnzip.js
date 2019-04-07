@@ -17,7 +17,7 @@ export const zipObjectBeforeSave = function (structure, removeName) {
           if (_isEmpty(settForComponent[property])) {
              delete settForComponent[property];
           }
-
+          //console.log(removeName);
           if (property=='_n'&&removeName) {
              delete settForComponent[property];
           }
@@ -46,8 +46,8 @@ export const unzipObjectBeforeUpate = function (structure, removedName) {
 
       structure[index]= updateSettComponent(
             structure[index],
-            removedName?index:structure[index]._n
-          );
+            removedName? index:structure[index]._n
+      );
 
       if (structure[index]._ch&&structure[index]._ch.length) {
          unzipObjectBeforeUpate(structure[index]._ch)

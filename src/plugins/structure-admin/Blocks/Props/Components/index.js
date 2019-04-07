@@ -1,14 +1,35 @@
 
 
-export const PropHeight = function(validators) {
+export const PropHeight = function(settings) {
   return {
     name: 'v-slider',
     props: {
-      min: validators.min||0,
-      max: validators.max||100,
+      min: settings.validators.min||0,
+      max: settings.validators.max||100,
       thumbLabel: true,
       inverseLabel: true,
       alwaysDirty: true,
+    },
+  }
+}
+
+export const PropTitle = function () {
+  return {
+    name: 'v-text-field',
+    props: {
+    },
+  }
+}
+
+export const PropSelect = function (settings) {
+  //console.log(settings);
+  return {
+    name: 'v-select',
+    props: {
+      items: settings.items,
+      menuProps: {
+        zIndex:999
+      }
     },
   }
 }
@@ -33,6 +54,8 @@ export const PropClassBackground = function () {
   }
 
 }
+
+export const PropColor = PropClassBackground;
 
 import {default as Elevation} from '../../Class/ElevationN.js';
 export const PropClassElevation = function () {
@@ -61,6 +84,13 @@ import {default as Textcolor} from '../../Class/TextColor.js';
 export const PropClassTextcolor = function () {
   return {
     name: Textcolor
+  }
+}
+
+import {default as Textalign} from '../../Class/TextAlign.js';
+export const PropClassTextalign = function () {
+  return {
+    name: Textalign
   }
 }
 

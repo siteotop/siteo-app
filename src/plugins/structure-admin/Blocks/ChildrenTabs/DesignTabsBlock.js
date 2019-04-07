@@ -77,7 +77,8 @@ export default {
                               h(SettingsBlocks[nameSettingBlock], {
                                 props: {
                                   value:component[shortNameSettingBlock],
-                                  componentName: component._n
+                                  componentName: component._n,
+                                  typeHelper: 'helper'+nameSettingBlock
                                 },
                                 on: {
                                   // input if changed value for settings block (props, class, or children)

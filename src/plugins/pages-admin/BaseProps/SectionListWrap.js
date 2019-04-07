@@ -1,8 +1,8 @@
 
-import SectionWrap from './SectionWrap';
+import StpSection from './StpSection';
 
 export default {
-  extends: SectionWrap,
+  extends: StpSection,
   props: {
     $cl: { // component list. component  which using in all $bls list (only this component)
       type: [Boolean, String],

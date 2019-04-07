@@ -21,7 +21,8 @@ export default {
         if (typeof PropsComponents[propSettings.$comp] !='function') {
           throw 'No Function';
         }
-        var component = PropsComponents[propSettings.$comp](propSettings.validators);
+        var component = PropsComponents[propSettings.$comp](propSettings);
+        
          return h(component.name,
          {
            props: {

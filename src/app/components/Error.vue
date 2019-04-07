@@ -1,6 +1,6 @@
 <template>
   <PageSchema :structure="[{
-      $$:'SectionWrap',
+      $$:'StpSection',
       _props: {
         _t: title,
         _d: description,

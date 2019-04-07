@@ -1,5 +1,5 @@
 <template functional>
-  <SectionListWrap  v-bind="props"
+  <StpListSection  v-bind="props"
   :$bf="(props.toggleComponent == 'list'||props.toggleComponent == 'card')? '  xs12 ': 'd-flex xs12 sm6 md4'" $bl="row wrap fill-height">
     <template slot-scope="{item}">
        <b-service
@@ -10,10 +10,10 @@
         :_p="item.price"
         :_di="item.discount"
         :$vl="props.$vl"
-      
+
         ></b-service>
     </template>
-  </SectionListWrap>
+  </StpListSection>
 </template>
 
 <script>

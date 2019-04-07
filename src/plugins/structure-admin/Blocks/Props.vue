@@ -12,7 +12,7 @@ export default {
           draggable: false,
           noDublicateChild: true,
           //cloning: true,
-          typeHelper: 'props',
+          //typeHelper: 'helperProps',
           ... context.props
         },
         on: context.listeners

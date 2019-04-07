@@ -22,7 +22,7 @@
     <v-subheader>
         Main Components
     </v-subheader>
-    <SettingsChildren :componentName="typeStructure"  :noDublicateChild="true"  v-model="treeComponents">
+    <SettingsChildren :componentName="typeStructure"  :noDublicateChild="structureDesign"  v-model="treeComponents">
     </SettingsChildren>
    <v-card tile flat  >
       <v-card-actions>
@@ -108,10 +108,7 @@ export default {
       type: Function
     },
 
-    structureDesign: {
-      type: Boolean,
-      default: true
-    }
+
 
   },
 
@@ -128,7 +125,14 @@ export default {
 
       var structure;
       if (_isEmpty(this.mainStructure)) {
-        structure = {};
+        if (this.structureDesign) {
+          // if structure  we need create Object
+            structure = {};
+        } else {
+          // if page we need create array
+          structure = [];
+        }
+
       } else {
         structure= unzipObjectBeforeUpate(
           _cloneDeep(JSON.parse(this.mainStructure)),
@@ -168,6 +172,10 @@ export default {
 
 
   computed: {
+
+    structureDesign() {
+      return this.typeStructure =='rootDesign';
+    },
 
     zippedDesign() {
 

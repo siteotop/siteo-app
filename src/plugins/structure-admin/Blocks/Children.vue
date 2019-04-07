@@ -8,7 +8,7 @@
     </v-expansion-panel>
     <PropsSettingsList v-else  :objectProps="childrenList" ></PropsSettingsList>
     <v-menu v-model="menu" :close-on-content-click="false" lazy z-index="1000" min-width="300" v-show="!startDragg" offset-x class="text-xs-center pb-3">
-      <v-btn slot="activator"  block flat>+ Add {{typeHelper}} </v-btn>
+      <v-btn slot="activator" flat>+ Add {{typeHelper}} </v-btn>
       <v-card>
         <v-toolbar dense >
 
@@ -98,9 +98,9 @@ export default {
     },
     typeHelper: {
         type: String,
-        default: 'components',
+        default: 'helperChildren',
         validator: function (value) {
-           return ['components', 'props', 'classes'].indexOf(value)!==-1
+           return ['helperChildren', 'helperProps', 'helperClass', 'helperData'].indexOf(value)!==-1
         }
     },
 
@@ -230,7 +230,7 @@ export default {
 
   computed: {
     isTypeComponents() {
-        return this.typeHelper=='components';
+        return this.typeHelper=='helperChildren';
     },
 
     issetNames() {

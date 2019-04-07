@@ -22,7 +22,7 @@
           :value="props.value"
           :watchValue="true"
           @input="listeners.input"
-          typeHelper="classes" >
+          typeHelper="helperClass" >
         </SettingsChildren>
      </v-card-text>
     </v-card>
@@ -30,8 +30,6 @@
 </v-combobox>
 </template>
 <script>
-
-
 
 
 export default {

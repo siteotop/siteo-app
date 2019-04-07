@@ -1,31 +1,34 @@
 
-import * as StructureBlocks from '../';
+export default {
+  functional: true,
 
+  render(h, context) {
 
-export default function (h, children) {
-
-  return children.map(function(element){
-
-      if (typeof(element) =='string') {
-          if (StructureBlocks[element]) {
-            return h(StructureBlocks[element]);
+    return context.props.children.map(function(element){
+        var createdComponent;
+        if (typeof(element) =='string') {
+          if (context.props.structure[element]) {
+            createdComponent = context.props.structure[element];
           } else {
-            return h(element);
+              createdComponent = element;
           }
-      }
-      var createdComponent = StructureBlocks[element._n]||element._n;
-      //console.log(element)
-      return !element._ch?
-         h(createdComponent , {
-          props: element._p,
-          class: element._c
+        } else {
+           createdComponent = context.props.structure[element._n]||element._n;
+        }
 
-        })
-      :  h(createdComponent, {
-          props: {...element._p||{}, ...{parentDesign:{_ch:element._ch}}},
-          class: element._c
+        return h(createdComponent , {
+         props: {
+           ...element._p,
+           $data: element._d||{},
+           $children: element._ch
+         },
+         class: element._c
 
-        })
+       })
 
-  })
+
+    })
+
+  }
+
 }

@@ -1,5 +1,5 @@
 <template functional>
-  <SectionListWrap  v-bind="props" :items="parent.$store.state.appInstance.objectActive.locations" :$bf="flexClass" $bl="row wrap fill-height">
+  <StpListSection  v-bind="props" :items="parent.$store.state.appInstance.objectActive.locations" :$bf="flexClass" $bl="row wrap fill-height">
     <template slot-scope="{item}">
        <b-location
         :_t="item.title"
@@ -11,7 +11,7 @@
         :_lng="item.lng"
         ></b-location>
     </template>
-  </SectionListWrap>
+  </StpListSection>
 </template>
 
 <script>

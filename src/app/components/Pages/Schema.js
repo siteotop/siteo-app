@@ -54,9 +54,7 @@ export default {
             }}):'',
 
           ////////// Structure
-          context.props.structure.map(function(section) {
-              return h(section.$$, { props: section._props  } )
-          }),
+          h('StChildrenHelper', {props: { children:context.props.structure, structure: {} }}),
           ////////// Structure
 
           //speedDeal

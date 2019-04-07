@@ -14,6 +14,7 @@ var isChildren = function (componentName){
 const getPropterties = function () {
   return {
       _ch: [],
+      _d: {},
       _n: '',
       _p: {},
       _c: [],
@@ -57,9 +58,9 @@ export const updateSettComponent = function (issetStrucutre, componentName) {
    return settings;
 }
 
-const createSettProps =  function(propsName, componentName){
+const createSettProps =  function(propsName, componentName, type){
       if ( allowChildrenList[componentName]) {
-         var propsSettings = allowChildrenList[componentName]._p[propsName];
+         var propsSettings = allowChildrenList[componentName][type][propsName];
          return {
           ...propsSettings,
           _n: propsName,
@@ -71,7 +72,7 @@ const createSettProps =  function(propsName, componentName){
   }
 
 
-export const components = {
+export const helperChildren = {
   unZip: function (inputList) {
     return inputList;
   },
@@ -88,7 +89,7 @@ export const components = {
   */
   getAllowList: function (parentName) {
       if (!parentName) {
-        parentName = 'root';
+         parentName = 'root';
       }
       if (isChildren(parentName)) {
           var allowStructure = {};
@@ -99,7 +100,7 @@ export const components = {
   },
 };
 
-export const props = {
+export const helperProps = {
   /**
     @Object inputList is Object like  {nameprop: 1, nameprop:2}
     @String componentName
@@ -108,7 +109,7 @@ export const props = {
    unZip: function (inputList, componentName) {
      var newList = [];
      for (var propName in inputList) {
-       var settProps = createSettProps(propName, componentName);
+       var settProps = createSettProps(propName, componentName, '_p');
        settProps.value = inputList[propName];
        newList.push(settProps);
      }
@@ -123,7 +124,9 @@ export const props = {
        return objectProps;
    },
 
-   createSettings: createSettProps,
+   createSettings: function (propName, componentName) {
+      return createSettProps(propName, componentName,  '_p');
+   },
 
    /**
      @return array
@@ -152,7 +155,7 @@ const createClassesProps = function (className, componentName){
 
 import {findClassInRegex} from  '../Blocks/Class/ExtendField/helper-values.js';
 
-export const classes = {
+export const helperClass = {
 
     /**
       @example inputList = ["elevation-12", 'pa-3']
@@ -193,5 +196,47 @@ export const classes = {
        } else {
          return [];
        }
+    }
+};
+
+
+export const helperData = {
+  /**
+    @Object inputList is Object like  {nameprop: 1, nameprop:2}
+    @String componentName
+    @return @array
+  */
+   unZip: function (inputList, componentName) {
+     var newList = [];
+     for (var propName in inputList) {
+       var settProps = createSettProps(propName, componentName, '_d');
+       settProps.value = inputList[propName];
+       newList.push(settProps);
+     }
+     return newList;
+   },
+
+   zip: function (propsArray) {
+       var objectProps = {};
+       for (var i in propsArray) {
+           objectProps[propsArray[i]._n] = propsArray[i].value;
+       }
+       return objectProps;
+   },
+
+   createSettings: function (propName, componentName) {
+      return createSettProps(propName, componentName,  '_d');
+   },
+   /**
+     @return array
+   */
+   getAllowList: function(componentName) {
+       var props;
+       if (isProperty(componentName, '_d')) {
+          return Object.keys(allowChildrenList[componentName]._d);
+        } else {
+          return [];
+        }
+
     }
 };
