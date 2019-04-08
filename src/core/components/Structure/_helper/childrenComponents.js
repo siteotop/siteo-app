@@ -1,6 +1,20 @@
 
 export default {
   functional: true,
+  props: {
+    children: {
+      type: Array
+    },
+    structure: {
+      default: function () {
+        return {};
+      }
+    },
+
+    wrapper: {
+      type: String
+    }
+  },
 
   render(h, context) {
 
@@ -16,7 +30,7 @@ export default {
            createdComponent = context.props.structure[element._n]||element._n;
         }
 
-        return h(createdComponent , {
+        var el =  h(createdComponent, {
          props: {
            ...element._p,
            $data: element._d||{},
@@ -25,6 +39,17 @@ export default {
          class: element._c
 
        })
+
+       if (context.props.wrapper) {
+         return h(context.props.wrapper,
+           {class: element._p? element._p.pc: ''},
+           [el]
+         );
+       } else {
+         return el;
+       }
+
+
 
 
     })
