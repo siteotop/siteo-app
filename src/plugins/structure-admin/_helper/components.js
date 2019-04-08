@@ -17,7 +17,7 @@ const getPropterties = function () {
       _d: {}, // data
       _n: '', // name
       _p: {}, // props
-    //  _c: [], // class
+      _c: [], // class
       colors: allowChildrenList['theme'].colors
   };
 };
@@ -189,8 +189,8 @@ export const helperClass = {
 
     getAllowList: function(componentName) {
       console.log(componentName);
-      if (isProperty(componentName, '_p')) {
-         var result =  allowChildrenList[componentName]._p;
+      if (isProperty(componentName, '_c')) {
+         var result =  allowChildrenList[componentName]._c;
          console.log(result);
          return result;
        } else {
