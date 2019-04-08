@@ -80,7 +80,7 @@ export const textwrap=[
   'text-no-wrap',
 ];
 
-export const blockalgin = [
+export const blockwrap = [
   'align-baseline',
   'align-center',
   'align-end',
@@ -89,14 +89,19 @@ export const blockalgin = [
   'align-content-center',
   'align-content-end',
   'align-content-space-around',
-  'align-content-space-between'
-];
-
-export const blockjustify = [
+  'align-content-space-between',
   'justify-start',
   'justify-center',
   'justify-end',
   'justify-space-around',
   'justify-space-between',
+  'fill-height'
+];
+
+export const blocklayout = [
+  'column',
+  'row',
+  'reverse',
+  'wrap'
 
 ];

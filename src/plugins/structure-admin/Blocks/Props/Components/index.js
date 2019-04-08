@@ -50,10 +50,11 @@ export const PropBoolean = function() {
 import {default as ClassComponent} from '../Class.vue';
 
 export const PropClass = function (settings) {
+  var helper_class = ['background', 'display', 'elevation', 'hidden', 'margin', 'padding',  'textalign', 'textcolor', 'textsize', 'texttransform',  'textweight', 'textwrap'];
   return {
     name: ClassComponent,
     props: {
-      allow: settings.allow || ['background', 'display', 'elevation', 'hidden', 'margin', 'padding',  'textalign', 'textcolor', 'textsize', 'texttransform',  'textweight', 'textwrap']
+      allow: settings.allow? settings.allow: !settings.additional?  helper_class:  [...settings.additional, ...helper_class ]
     }
   }
 
@@ -150,5 +151,26 @@ import {default as Margin} from '../../Class/Margin.js';
 export const PropClassMargin = function () {
   return {
     name: Margin
+  }
+}
+
+import {default as Blockwrap} from '../../Class/Blockwrap.js';
+export const PropClassBlockwrap = function () {
+  return {
+    name: Blockwrap
+  }
+}
+
+import {default as Blocklayout} from '../../Class/Blocklayout.js';
+export const PropClassBlocklayout = function () {
+  return {
+    name: Blocklayout
+  }
+}
+
+import {default as Gridlist} from '../../Class/GridList.js';
+export const PropClassGridlist = function () {
+  return {
+    name: Gridlist
   }
 }

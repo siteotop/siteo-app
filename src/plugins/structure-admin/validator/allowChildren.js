@@ -108,7 +108,7 @@ export const StpCtT = {
   },
 
   _p: {
-    cc: readyProps['classForContainer'],
+    cc: readyProps['classCommon'],
     /**
       number for <h{tag}>
     */

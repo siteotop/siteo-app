@@ -1,7 +1,7 @@
 <template functional>
 <v-layout
     column
-    :class="props.cc||'justify-center text-xs-center pt-5 pb-4'">
+    :class="props.cc">
   <v-flex>
     <v-container>
       <component
@@ -20,7 +20,6 @@
 
 <script>
 export default  {
-
 
 }
 </script>
