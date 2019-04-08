@@ -4,7 +4,6 @@
    :items="items"
    v-model="valueData"
    :label="$options.$type"
-
  ></v-select>
 
 </template>
@@ -24,7 +23,6 @@ export default {
 
       return {
           menuActive: false,
-
       }
 
   },

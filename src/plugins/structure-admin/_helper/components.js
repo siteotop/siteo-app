@@ -153,7 +153,7 @@ const createClassesProps = function (className, componentName){
   }
 }
 
-import {findClassInRegex} from  '../Blocks/Class/ExtendField/helper-values.js';
+import {findClassInRegex} from  '../Blocks/Class/ExtendField/validators.js';
 
 export const helperClass = {
 

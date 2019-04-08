@@ -109,6 +109,28 @@ export const PropClassTextalign = function () {
   }
 }
 
+import {default as Textweight} from '../../Class/TextWeight.js';
+export const PropClassTextweight = function () {
+  return {
+    name: Textweight
+  }
+}
+
+import {default as Texttransform} from '../../Class/TextTransform.js';
+export const PropClassTexttransform = function () {
+  return {
+    name: Texttransform
+  }
+}
+
+import {default as Textwrap} from '../../Class/TextWrap.js';
+export const PropClassTextwrap = function () {
+  return {
+    name: Textwrap
+  }
+}
+
+
 
 import {default as Padding} from '../../Class/Padding.js';
 export const PropClassPadding = function () {

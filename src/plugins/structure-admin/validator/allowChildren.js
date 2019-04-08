@@ -129,7 +129,7 @@ export const StpCtT = {
     */
     tc: {
       $comp: 'PropClass',
-      allow: ['textsize', 'textcolor', 'textalign'],
+      allow: ['textsize', 'textcolor', 'textalign', 'texttransform'],
       default: []
     },
     /**
@@ -137,7 +137,7 @@ export const StpCtT = {
     */
     dc: {
       $comp: 'PropClass',
-      allow: ['textsize', 'textcolor', 'textalign'],
+      allow: ['textsize', 'textcolor', 'textalign', 'textweight', 'textwrap'],
       default: []
     }
 

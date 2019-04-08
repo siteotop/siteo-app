@@ -8,7 +8,7 @@ import {updateSettComponent}  from './components';
 export const zipObjectBeforeSave = function (structure, removeName) {
     for (var index in structure) {
         var settForComponent = structure[index ];
-
+        
         for (var property in settForComponent ) {
           var valueProperty = settForComponent[property];
           if (property =='_ch') {
