@@ -22,7 +22,9 @@
           :value="props.value"
           :watchValue="true"
           @input="listeners.input"
-          typeHelper="helperClass" >
+          typeHelper="helperClass"
+          :allowChildren="props.allow"
+         >
         </SettingsChildren>
      </v-card-text>
     </v-card>

@@ -13,6 +13,8 @@ export const PropHeight = function(settings) {
   }
 }
 
+
+
 export const PropTitle = function () {
   return {
     name: 'v-text-field',
@@ -44,6 +46,19 @@ export const PropBoolean = function() {
     }
   }
 }
+
+import {default as ClassComponent} from '../Class.vue';
+
+export const PropClass = function (settings) {
+  return {
+    name: ClassComponent,
+    props: {
+      allow: settings.allow
+    }
+  }
+
+}
+
 
 import {default as Background} from '../../Class/Background.vue';
 

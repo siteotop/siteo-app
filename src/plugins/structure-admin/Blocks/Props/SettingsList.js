@@ -22,8 +22,8 @@ export default {
           throw 'No Function';
         }
         var component = PropsComponents[propSettings.$comp](propSettings);
-        
-         return h(component.name,
+
+         return h('div', [ h(component.name,
          {
            props: {
              ...component.props,
@@ -35,7 +35,8 @@ export default {
              input: (value)=>{propSettings.value=value},
              change: (value)=>{propSettings.value=value},
            }
-         });
+         })
+         ]);
        }
 
       /* if (propSettings._n =='color') {

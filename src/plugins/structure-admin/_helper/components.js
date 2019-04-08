@@ -13,11 +13,11 @@ var isChildren = function (componentName){
 // properties and default
 const getPropterties = function () {
   return {
-      _ch: [],
-      _d: {},
-      _n: '',
-      _p: {},
-      _c: [],
+      _ch: [], // children
+      _d: {}, // data
+      _n: '', // name
+      _p: {}, // props
+    //  _c: [], // class
       colors: allowChildrenList['theme'].colors
   };
 };
@@ -188,9 +188,9 @@ export const helperClass = {
     createSettings: createClassesProps,
 
     getAllowList: function(componentName) {
-
-      if (isProperty(componentName, '_c')) {
-         var result =  allowChildrenList[componentName]._c;
+      console.log(componentName);
+      if (isProperty(componentName, '_p')) {
+         var result =  allowChildrenList[componentName]._p;
          console.log(result);
          return result;
        } else {
@@ -201,11 +201,7 @@ export const helperClass = {
 
 
 export const helperData = {
-  /**
-    @Object inputList is Object like  {nameprop: 1, nameprop:2}
-    @String componentName
-    @return @array
-  */
+
    unZip: function (inputList, componentName) {
      var newList = [];
      for (var propName in inputList) {

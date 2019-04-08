@@ -2,7 +2,7 @@
 // PageHelper
 
 import PageSchema from './components/Pages/Schema.js';
-import StpSection from './components/Pages/Sections/StpSection.vue';
+import StpCt from './components/Pages/Sections/StpCt.vue';
 import StpListSection from './components/Pages/Sections/StpListSection.vue';
 import SiteoRoutes from './routes';
 import RouteError from './components/Error.vue';
@@ -12,7 +12,7 @@ export default {
 
   install: function (Vue) {
       Vue.component('PageSchema', PageSchema);
-      Vue.component('StpSection', StpSection);
+      Vue.component('StpCt', StpCt);
       Vue.component('StpListSection', StpListSection);
       Vue.component('RouteError', RouteError);
   },

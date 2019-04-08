@@ -13,7 +13,7 @@ export default {
         attrs: {
           fluid: true,
         },
-        class: context.data.class
+        class: context.props.cc
       },
 
       [

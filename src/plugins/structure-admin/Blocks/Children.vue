@@ -104,6 +104,11 @@ export default {
         }
     },
 
+    allowChildren: {
+      type: [Array, Boolean],
+      default: false
+    },
+
     noDublicateChild: {
       type: Boolean,
       default: false
@@ -209,7 +214,12 @@ export default {
      },
 
      childrenComponents() {
-        return helperComponents[this.typeHelper].getAllowList(this.componentName);
+       if (Array.isArray(this.allowChildren)) {
+         return this.allowChildren;
+       } else {
+           return helperComponents[this.typeHelper].getAllowList(this.componentName);
+       }
+
      },
 
      addDefaultValue(name) {
