@@ -53,7 +53,7 @@ export const PropClass = function (settings) {
   return {
     name: ClassComponent,
     props: {
-      allow: settings.allow
+      allow: settings.allow || ['background', 'display', 'elevation', 'hidden', 'margin', 'padding',  'textalign', 'textcolor', 'textsize', 'texttransform',  'textweight', 'textwrap']
     }
   }
 

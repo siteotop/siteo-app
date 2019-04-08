@@ -1,4 +1,6 @@
 
+import * as  readyProps from './readyProps';
+
 
 export const rootDesign = {
   _ch: ['theme', 'StToolbar', 'StDrawer',  'StRoot', 'StFooter', 'StAction']
@@ -88,11 +90,7 @@ export const rootPage = {
 
 export const StpCt = {
   _p: {
-    cc: {
-      $comp: 'PropClass',
-      allow: ['background', 'textcolor'],
-      default: []
-    },
+    cc: readyProps['classForContainer']
   },
   _ch: ['StpCtT']
 }
@@ -110,36 +108,21 @@ export const StpCtT = {
   },
 
   _p: {
-    cc: {
-      $comp: 'PropClass',
-      allow: ['padding', 'margin', 'textalign', 'textcolor'],
-      default: ['justify-center', 'text-xs-center', 'pt-5', 'pb-4']
-    },
+    cc: readyProps['classForContainer'],
     /**
       number for <h{tag}>
     */
-    tt: {
-      $comp: 'PropSelect',
-      items: ['h1','h2','h3','h4','h5','h6'],
-      default: 'h1'
-    },
+    tt: readyProps['tagH'],
 
     /*
       title class
     */
-    tc: {
-      $comp: 'PropClass',
-      allow: ['textsize', 'textcolor', 'textalign', 'texttransform'],
-      default: []
-    },
+    tc: readyProps['classForText'],
+
     /**
       description class
     */
-    dc: {
-      $comp: 'PropClass',
-      allow: ['textsize', 'textcolor', 'textalign', 'textweight', 'textwrap'],
-      default: []
-    }
+    dc: readyProps['classForText']
 
   }
 

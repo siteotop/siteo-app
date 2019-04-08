@@ -79,3 +79,24 @@ export const textwrap=[
   'text-truncate',
   'text-no-wrap',
 ];
+
+export const blockalgin = [
+  'align-baseline',
+  'align-center',
+  'align-end',
+  'align-start',
+  'align-content-start',
+  'align-content-center',
+  'align-content-end',
+  'align-content-space-around',
+  'align-content-space-between'
+];
+
+export const blockjustify = [
+  'justify-start',
+  'justify-center',
+  'justify-end',
+  'justify-space-around',
+  'justify-space-between',
+
+];
