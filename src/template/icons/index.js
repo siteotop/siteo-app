@@ -47,7 +47,7 @@ import {
   mdiDotsVertical,
   mdiGithubBox,
   mdiFormatQuoteOpen,
-  mdiViewAgenda
+  mdiViewAgenda,
 
  } from '@mdi/js'
 

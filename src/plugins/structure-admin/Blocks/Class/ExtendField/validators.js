@@ -107,7 +107,7 @@ const FINDER_FOR_CLASS = {
   */
   background: function (className) {
 
-
+    
     var color_classes = className.split(' ');
     var color_name = color_classes[0].replace(/-([a-z])/g, function (g) { return g[1].toUpperCase(); });
     if (!colors[color_name]) {

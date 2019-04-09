@@ -99,7 +99,13 @@ export const StpCtCh = {
   _p: {
     cc: readyProps['classForContainer']
   },
-  _ch: ['StpCt']
+  _ch: [ 'StAction', 'StpCt']
+}
+
+export const StAction = {
+  _p: {
+    
+  }
 }
 
 export const StpCtT = {
