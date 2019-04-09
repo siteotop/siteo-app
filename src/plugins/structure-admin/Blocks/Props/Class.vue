@@ -17,7 +17,7 @@
     </v-btn>
     <v-card>
       <v-card-text>
-        <SettingsChildren
+        <BlockProps
           :componentName="props.componentName"
           :value="props.value"
           :watchValue="true"
@@ -25,7 +25,7 @@
           typeHelper="helperClass"
           :allowChildren="props.allow"
          >
-        </SettingsChildren>
+        </BlockProps>
      </v-card-text>
     </v-card>
   </v-menu>
