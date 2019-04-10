@@ -23,7 +23,7 @@
                   <v-toolbar tabs dense>
                     <v-toolbar-title>{{component._n}}</v-toolbar-title>
                     <v-spacer></v-spacer>
-                    <v-btn icon ><AppIcon @click="menuList[indexComponent].activeEdit=false" name="si-close"> </AppIcon></v-btn>
+                    <v-btn icon @click="menuList[indexComponent].activeEdit=false"><AppIcon  name="si-close"> </AppIcon></v-btn>
                     <template v-slot:extension>
                         <v-tabs
                           v-model="menuList[indexComponent].activeTabEdit"
@@ -52,6 +52,7 @@
                             :is="'Block'+getHelperName(shortNameSettingBlock)"
                             v-model="component[shortNameSettingBlock]"
                             :componentName="component._n"
+                            :noDublicateChild="true"
                             :typeHelper="'helper'+getHelperName(shortNameSettingBlock)"
                             ></component>
                           </v-card-text>
@@ -62,21 +63,7 @@
 
                 </v-card>
               </v-menu>
-              <v-menu  :nudge-width="100" min-width="300"  lazy z-index="999">
-                <template slot="activator">
-                  <v-btn icon>
-                      <AppIcon  name="si-more-vert" > </AppIcon>
-                  </v-btn>
-                </template>
-                <v-list>
-                  <v-list-tile  @click="removeComponentFromList(indexComponent)">
-                    <v-list-tile-title>Remove</v-list-tile-title>
-                    <v-list-tile-action>
-                      <v-btn  icon ><AppIcon name="si-delete"></AppIcon></v-btn>
-                    </v-list-tile-action>
-                  </v-list-tile>
-                </v-list>
-              </v-menu>
+            <HelperMenuEdit :indexComponent="indexComponent"></HelperMenuEdit>
 
             </v-toolbar>
             <v-card-text v-if="menuList[indexComponent].activeContent" class="pa-0 ma-0 pl-1">
@@ -90,32 +77,7 @@
       </draggable>
     </v-layout>
 
-    <v-menu v-model="menu" :close-on-content-click="false" lazy z-index="1000" min-width="300" v-show="!startDragg" offset-x class="text-xs-center pb-3">
-      <v-flex class="text-xs-center" slot="activator"><v-btn small  icon fab>+ </v-btn></v-flex>
-      <v-card>
-        <v-toolbar dense >
-          <v-toolbar-title> {{typeHelper}} </v-toolbar-title>
-          <v-spacer></v-spacer>
-          <v-btn icon ><AppIcon @click="menu=false" name="si-close"> </AppIcon></v-btn>
-        </v-toolbar>
-        <v-list >
-          <v-list-tile
-            v-for="(name, indexComponent) in childrenComponents()"
-            :key="indexComponent"
-            @click=""
-          >
-            <v-list-tile-content>
-                <v-list-tile-title>{{name}}</v-list-tile-title>
-                <v-list-tile-sub-title v-if="issetNames[name]" v-html="issetNames[name].value"></v-list-tile-sub-title>
-            </v-list-tile-content>
-
-            <v-list-tile-action>
-              <v-btn icon :disabled="noDublicateChild&&issetNames[name]!=undefined"   @click="addComponentToList(name)"><AppIcon name="si-add"></AppIcon></v-btn>
-            </v-list-tile-action>
-          </v-list-tile>
-        </v-list>
-     </v-card>
-    </v-menu>
+    <HelperMenuAdd></HelperMenuAdd>
     <div v-if="draggable" v-show="startDragg">
         <v-subheader class="red--text">
           <AppIcon name="si-delete"></AppIcon> Delete Zone
@@ -134,17 +96,13 @@
 import draggable from 'vuedraggable'
 
 
-//import DesignTabsBlock from './ChildrenTabs/DesignList.vue';
-
-import  _findIndex from 'lodash/findIndex';
-
 
 import BlockProps from   './Props.vue';
 import BlockData from   './Props.vue';
 import BlockClass from   './Props/Class.vue';
 import BlockColors from   './Colors.vue';
 
-import ExtendsBlock from './_extends/block.js';
+import ExtendsBlock  from './_extends/block.js';
 
 export default {
   extends: ExtendsBlock,
@@ -179,7 +137,6 @@ export default {
         startDragg: false,
       }
   },
-
 
 
 

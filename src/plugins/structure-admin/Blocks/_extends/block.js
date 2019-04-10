@@ -2,8 +2,15 @@
 import * as helperComponents from '../../_helper/components';
 import  _isEqual from 'lodash/isEqual';
 import _cloneDeep from 'lodash/cloneDeep';
-
+import  _findIndex from 'lodash/findIndex';
+import HelperMenuEdit from './_helper/menu-edit.vue';
+import HelperMenuAdd from './_helper/menu-add.vue';
 export default {
+
+  components: {
+    HelperMenuEdit,
+    HelperMenuAdd
+  },
 
   props: {
     //it is name for  parent component, which need for  merge settings child component
@@ -96,6 +103,9 @@ export default {
       this.createMenuList();
     },
 
+    findIndexOfElement(name) {
+       return _findIndex (this.childrenList, {_n:name});
+    },
     createMenuList(childrenList) {
        this.menuList = this.childrenList.map(function(element) {
          return {
@@ -145,6 +155,10 @@ export default {
        }
 
      },
+
+     menuAddClose() {
+       this.menu = false;
+     }
 
   },
 
