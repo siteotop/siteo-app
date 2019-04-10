@@ -6,34 +6,34 @@
       app
       v-model="drawerSettings">
 
-    <v-toolbar  flat >
+    <v-toolbar>
       <v-toolbar-title>Settings</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
-          fab
+
           @click="drawerSettings = !drawerSettings"
           small
+          icon
           color="indigo"
           class=" white--text"
         > <AppIcon name="si-arrow-left"></AppIcon>
+      </v-btn>
+      <v-btn :disabled="!this.treeHistory.length" slot="extension" icon @click="backHistory">
+           Back
+      </v-btn>
+      <v-btn slot="extension" icon  @click="showJsonDesign=true">
+         View
+       </v-btn>
+      <v-btn slot="extension" icon @click="saveDesign">
+           Save
       </v-btn>
     </v-toolbar>
 
     <v-subheader>
         Main Components
     </v-subheader>
-    <SettingsChildren :componentName="typeStructure"  :noDublicateChild="structureDesign"  v-model="treeComponents">
+    <SettingsChildren :componentName="typeStructure"  :noDublicateChild="structureDesign"  v-model="treeComponents" :watchValue="true">
     </SettingsChildren>
-   <v-card tile flat  >
-      <v-card-actions>
-       <v-btn  @click="showJsonDesign=true">
-          View
-        </v-btn>
-       <v-btn @click="saveDesign">
-            Save
-       </v-btn>
-    </v-card-actions>
-
 
     </v-card>
 
@@ -112,6 +112,8 @@ export default {
 
   data() {
     return {
+      treeHistory: [],
+      historyBlock: false,
       treeComponents: {},
       drawerSettings: true,
       showJsonDesign: false,
@@ -121,8 +123,40 @@ export default {
 
   created() {
 
+
+
+      this.createTreeStructure(this.mainStructure);
+
+
+
+  },
+
+  watch: {
+    treeComponents: {
+        handler: function(treeComponents, oldTree) {
+          this.eventChangeStructure(this.zippedDesign);
+        },
+        deep: true
+    },
+
+    zippedDesign: function (newDesign, oldDesign){
+        var old = JSON.stringify(oldDesign);
+        if (JSON.stringify(newDesign) !=  old) {
+          this.addToHistory(old);
+          console.log('changed');
+        } else {
+          console.log('not changed');
+        }
+
+    }
+  },
+
+
+  methods: {
+
+    createTreeStructure(mainStructure) {
       var structure;
-      if (_isEmpty(this.mainStructure)) {
+      if (_isEmpty(mainStructure)) {
         if (this.structureDesign) {
           // if structure  we need create Object
             structure = {};
@@ -133,7 +167,7 @@ export default {
 
       } else {
         structure= unzipObjectBeforeUpate(
-          _cloneDeep(JSON.parse(this.mainStructure)),
+          _cloneDeep(JSON.parse(mainStructure)),
           this.structureDesign
         );
 
@@ -145,27 +179,36 @@ export default {
       } else {
         this.treeComponents = structure;
       }
+    },
 
-
-
-
-  },
-
-  watch: {
-    treeComponents: {
-        handler: function(treeComponents) {
-
-           this.eventChangeStructure(this.zippedDesign);
-        },
-        deep: true
+    addToHistory(oldTree) {
+      if (this.historyBlock ) {
+          this.historyBlock = false;
+          return;
       }
-  },
+
+      if (oldTree !='{}') {
+        this.treeHistory.push(oldTree);
+      }
+
+      if (this.treeHistory.length>2) {
+        this.treeHistory.shift();
+      }
 
 
-  methods: {
+    },
+
     saveDesign() {
+        this.treeHistory = [];
         this.eventSaveStructure(this.zippedDesign);
+    },
+
+    backHistory() {
+      //console.log(JSON.parse(this.treeHistory));
+       this.createTreeStructure(this.treeHistory.pop())
+       this.historyBlock = true;
     }
+
   },
 
 

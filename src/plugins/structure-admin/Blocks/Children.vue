@@ -1,5 +1,5 @@
 <template>
-<div class="mt-3">
+<div>
     <v-layout >
       <draggable v-model='childrenList' style="width:100%;" :options="{group:'children', handle:'.'+dragClass}" @start="startDragg=true" @end="startDragg=false">
         <v-flex v-for="(component, indexComponent) in childrenList" :key="indexComponent">

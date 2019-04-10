@@ -11,7 +11,7 @@
         <v-list-tile
           v-for="(name, indexComponent) in parent.childrenComponents()"
           :key="indexComponent"
-          @click=""
+          @click="parent.addComponentToList(name)"
         >
           <v-list-tile-content>
               <v-list-tile-title>{{name}}</v-list-tile-title>
@@ -19,7 +19,7 @@
           </v-list-tile-content>
 
           <v-list-tile-action>
-            <v-btn icon :disabled="parent.noDublicateChild&&parent.issetNames[name]!=undefined"   @click="parent.addComponentToList(name)"><AppIcon name="si-add"></AppIcon></v-btn>
+            <v-btn icon :disabled="parent.noDublicateChild&&parent.issetNames[name]!=undefined"   ><AppIcon name="si-add"></AppIcon></v-btn>
           </v-list-tile-action>
         </v-list-tile>
       </v-list>
