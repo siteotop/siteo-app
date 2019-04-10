@@ -44,7 +44,7 @@
    <v-dialog v-model="showJsonDesign" width="700" >
        <v-card>
          <v-card-text>
-            <v-layout>
+          <v-layout>
                 <v-flex>
                    <code>{{JSON.stringify(treeComponents, null, 4)}}</code>
                 </v-flex>
@@ -52,9 +52,7 @@
                   <code>{{JSON.stringify(zippedDesign, null, 4)}}</code>
                 </v-flex>
             </v-layout>
-
-
-         </v-card-text>
+          </v-card-text>
        </v-card>
    </v-dialog>
    <v-btn

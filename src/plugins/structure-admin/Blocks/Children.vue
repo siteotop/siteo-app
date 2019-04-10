@@ -1,16 +1,17 @@
 <template>
 <div class="mt-3">
     <v-layout >
-      <draggable v-model='childrenList' style="width:100%;" :options="{group:'children', handle:'.draggable'}" @start="startDragg=true" @end="startDragg=false">
+      <draggable v-model='childrenList' style="width:100%;" :options="{group:'children', handle:'.'+dragClass}" @start="startDragg=true" @end="startDragg=false">
         <v-flex v-for="(component, indexComponent) in childrenList" :key="indexComponent">
-          <v-card :class="'ml-'+treeIndex">
-            <v-toolbar dense flat>
-              <v-btn small  icon class="draggable">
+          <v-card :class="'ml-'+treeIndex+' ' +activeColor">
+            <v-toolbar dense flat :color="activeColor">
+              <v-btn small :disabled="childrenActive" :style="{cursor:'move'}"  icon :class="dragClass">
                 <AppIcon  name="si-drag" > </AppIcon>
               </v-btn>
-              <v-toolbar-title class="pl-0 ml-0 subheading">{{component._n}} {{indexComponent}}</v-toolbar-title>
+              <v-toolbar-title class="pl-0 ml-0 subheading">{{component._n}} {{indexComponent}}
+              </v-toolbar-title>
               <v-spacer></v-spacer>
-              <v-btn v-if="component._ch" @click="menuList[indexComponent].activeContent=!menuList[indexComponent].activeContent"  small  icon  class="draggable">
+              <v-btn v-if="component._ch" @click="menuList[indexComponent].activeContent=!menuList[indexComponent].activeContent"  small  icon >
                 <AppIcon scale="1.2" :name="menuList[indexComponent].activeContent?'si-list-expand':'si-list-split'" > </AppIcon>
               </v-btn>
               <v-menu v-model="menuList[indexComponent].activeEdit"  :nudge-width="100" min-width="500"  max-width="500" :close-on-content-click="false"  :close-on-click="false" lazy z-index="777">
@@ -76,8 +77,8 @@
         </v-flex>
       </draggable>
     </v-layout>
+    <v-layout class="justify-center " ><HelperMenuAdd></HelperMenuAdd></v-layout>
 
-    <HelperMenuAdd></HelperMenuAdd>
     <div v-if="draggable" v-show="startDragg">
         <v-subheader class="red--text">
           <AppIcon name="si-delete"></AppIcon> Delete Zone
@@ -169,6 +170,30 @@ export default {
          }
 
      }
+
+  },
+
+  computed: {
+    childrenActive() {
+        for (var i in this.menuList) {
+          if (this.menuList[i].activeContent) return true;
+        }
+        return false;
+    },
+
+    activeColor() {
+       var color = 'blue-grey';
+       if (this.treeIndex) {
+         return  `${color} lighten-${this.treeIndex}`;
+       } else {
+          return color;
+       }
+
+    },
+
+    dragClass() {
+      return 'draggable-'+this.treeIndex;
+    }
 
   }
 
