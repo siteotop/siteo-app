@@ -6,6 +6,12 @@
     </v-btn>
   </template>
   <v-list>
+    <v-list-tile v-if="!parent.noDublicateChild" @click="parent.cloneComponent(props.indexComponent)">
+      <v-list-tile-title>Clone</v-list-tile-title>
+      <v-list-tile-action>
+        <v-btn  icon ><AppIcon name="si-dublicate"></AppIcon></v-btn>
+      </v-list-tile-action>
+    </v-list-tile>
     <v-list-tile  @click="parent.removeComponentFromList(props.indexComponent)">
       <v-list-tile-title>Remove</v-list-tile-title>
       <v-list-tile-action>

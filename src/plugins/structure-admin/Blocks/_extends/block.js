@@ -133,6 +133,12 @@ export default {
 
     },
 
+    cloneComponent(index) {
+        var cloning = _cloneDeep(this.childrenList[index]);
+        this.childrenList.push(cloning);
+        this.createMenuList();
+    },
+
     removeComponentFromList(index) {
       /*var index = this.findIndexOfElement(name);
       if (index !==-1) {
