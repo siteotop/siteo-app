@@ -7,13 +7,6 @@
 </template>
 <script>
 export default {
-
+// Children component
 }
-
-/**
-<v-flex :class="block.$bf?   (props.$bf||'')+' '+block.$bf: (props.$bf||'')"    v-for="(block, index) in props.$children" :key="index">
-  bind
-  <component  :is="block._n" v-bind="block._props"  > </component>
-</v-flex>
-*/
 </script>
