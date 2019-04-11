@@ -1,13 +1,7 @@
 export const StpCtT = {
   _d: {
-    t: {
-      $comp: 'PropTitle',
-      default:''
-    },
-    d: {
-      $comp: 'PropTitle',
-      default:''
-    }
+    t: 'readyPropDataTitle',
+    d: 'readyPropDataTitle'
   },
 
   _p: {

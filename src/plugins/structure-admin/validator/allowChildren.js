@@ -5,9 +5,9 @@ export const rootDesign = {
   _ch: ['theme', 'StToolbar', 'StDrawer',  'StRoot', 'StFooter', 'StAction']
 };
 
+export {theme} from './Template/theme';
 export {StToolbar} from './Template/StToolbar';
 export {StAction} from './Template/StAction';
-export {theme} from './Template/theme';
 export {StpCt, StpPrl, StpImg} from './Template/StpCt';
 export {StpCtT} from './Template/StpCtT';
 export {StpCtCh} from './Template/StpCtCh';

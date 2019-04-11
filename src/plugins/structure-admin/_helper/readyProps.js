@@ -7,6 +7,11 @@ export const readyPropClassCommon = {
   default: []
 };
 
+export const readyPropDataTitle = {
+  $comp: 'PropTitle',
+  default:''
+}
+
 export const readyPropClassForContainer = {
   $comp: 'PropClass',
 //  allow: ['padding', 'margin', 'textalign', 'textcolor'],
@@ -32,3 +37,8 @@ export const readyPropTagH = {
   items: ['h1','h2','h3','h4','h5','h6'],
   default: 'h1'
 };
+
+export const readyPropBoolean = {
+  $comp: 'PropBoolean',
+  default: true
+}

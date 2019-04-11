@@ -7,25 +7,13 @@ export const StToolbar = {
         default:48
       },
 
-      dark: {
-        $comp: 'PropBoolean',
-        default: false
-      },
+      dark: 'readyPropBoolean',
 
-      clippedLeft: {
-        $comp: 'PropBoolean',
-        default: false
-      },
+      clippedLeft: 'readyPropBoolean',
 
-      clippedRight: {
-        $comp: 'PropBoolean',
-        default: false
-      },
+      clippedRight: 'readyPropBoolean',
 
-      dense: {
-        $comp: 'PropBoolean',
-        default: false
-      },
+      dense: 'readyPropBoolean',
 
       color: {
         $comp: 'PropColor',
