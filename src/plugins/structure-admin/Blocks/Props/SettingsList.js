@@ -17,6 +17,7 @@ export default {
   render(h, context ) {
     //var self =context.props.objectProps;
      return context.props.objectProps.map(function(propSettings, indexSettings) {
+       console.log(propSettings);
        if (propSettings.$comp&&PropsComponents[propSettings.$comp]) {
         if (typeof PropsComponents[propSettings.$comp] !='function') {
           throw 'No Function';
@@ -47,23 +48,7 @@ export default {
          ]);
        }
 
-      /* if (propSettings._n =='color') {
-           return h(BackgroundColor, {props: {value: self.value[nameSettings]}, on: {
-             input: function($event) {
-                 self.value[nameSettings] = $event;
-             }
-           }});
-       }*/
-
-       /*
-       if (typeof(self.value[nameSettings]) == 'boolean') {
-         return h('v-switch', {props: {inputValue: self.value[nameSettings], label: nameSettings }, on: {
-           change: function ($event) {
-             self.value[nameSettings] = $event;
-           }
-         }})
-       }*/
-
+      
       })
   }
 

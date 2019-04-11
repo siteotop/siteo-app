@@ -1,5 +1,6 @@
 
 import * as allowChildrenList from '../validator/allowChildren';
+import * as  readyProps from './readyProps';
 
 var isProperty=function(componentName, propertyName) {
 
@@ -61,6 +62,9 @@ export const updateSettComponent = function (issetStrucutre, componentName) {
 const createSettProps =  function(propsName, componentName, type){
       if ( allowChildrenList[componentName]) {
          var propsSettings = allowChildrenList[componentName][type][propsName];
+         if (typeof(propsSettings) == 'string') {
+           propsSettings =readyProps[propsSettings];
+         }
          return {
           ...propsSettings,
           _n: propsName,
