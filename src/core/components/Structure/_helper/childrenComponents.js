@@ -10,9 +10,13 @@ export default {
         return {};
       }
     },
-
     wrapper: {
       type: String
+    },
+
+    wrapperclass: {
+      type: [Boolean, Array],
+      default: false
     }
   },
 
@@ -42,7 +46,9 @@ export default {
 
        if (context.props.wrapper) {
          return h(context.props.wrapper,
-           {class: element._p? element._p.pc: ''},
+           {
+             class: context.props.wrapperclass? context.props.wrapperclass: element._p? element._p.pc: ''
+           },
            [el]
          );
        } else {

@@ -26,6 +26,13 @@ export const readyPropClassForLayout = {
   default: []
 };
 
+export const readyPropClassForFlex = {
+  $comp: 'PropClass',
+//  allow: ['padding', 'margin', 'textalign', 'textcolor'],
+  additional: [],
+  default: []
+};
+
 export const readyPropClassForText = {
   $comp: 'PropClass',
   allow: ['textsize', 'textcolor', 'textalign', 'texttransform'],

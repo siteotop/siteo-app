@@ -1,7 +1,9 @@
 export const StpCtCh = {
   _p: {
 
-    cc: 'readyPropClassForContainer'
+    cc: 'readyPropClassForContainer',
+    lc: 'readyPropClassForLayout',
+    fc: 'readyPropClassForContainer'
   },
-  _ch: [ 'StAction', 'StpCt', 'StpVideo']
+  _ch: [ 'StAction', 'StpCt', 'StpVideo', 'StpImg']
 }
