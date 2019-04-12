@@ -10,6 +10,7 @@ export {StToolbar} from './Template/StToolbar';
 export {StAction} from './Template/StAction';
 export {StpCt, StpPrl, StpImg} from './Template/StpCt';
 export {StpCtT} from './Template/StpCtT';
+export {StpVideo} from './Template/StpVideo';
 export {StpCtCh} from './Template/StpCtCh';
 
 export const StRoot = {
@@ -37,7 +38,7 @@ export const StDrawerToolbar =  {
 
 
 export const rootPage = {
-  _ch: ['StpCt', 'StpPrl', 'StpImg' ]
+  _ch: ['StpCt', 'StpPrl', 'StpImg', 'StpVideo' ]
 };
 
 /**

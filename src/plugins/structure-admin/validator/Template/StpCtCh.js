@@ -3,5 +3,5 @@ export const StpCtCh = {
 
     cc: 'readyPropClassForContainer'
   },
-  _ch: [ 'StAction', 'StpCt']
+  _ch: [ 'StAction', 'StpCt', 'StpVideo']
 }
