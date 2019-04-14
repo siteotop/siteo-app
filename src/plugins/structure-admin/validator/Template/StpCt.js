@@ -23,7 +23,7 @@ export const StpCt = {
     lc: 'readyPropClassForLayout',
     fc: 'readyPropClassForFlex'
   },
-  _ch: ['StpTitle', 'StAction', 'StpAvt']
+  _ch: ['StpTitle', 'StAction', 'StpAvt', 'StpTxt']
 }
 
 

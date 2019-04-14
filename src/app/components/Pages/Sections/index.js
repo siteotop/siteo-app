@@ -5,3 +5,4 @@ export {default as StpImg}  from  './StpImg.vue';
 export {default as StpVideo}  from  './StpVideo.vue';
 export {default as StpTitle}  from  './StpTitle.vue';
 export {default as StpAvt}  from  './StpAvt.vue';
+export {default as StpTxt}  from  './StpTxt.vue';

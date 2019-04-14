@@ -12,6 +12,7 @@ export {StpCt, StpPrl, StpImg} from './Template/StpCt';
 export {StpVideo} from './Template/StpVideo';
 export {StpTitle} from './Template/StpTitle';
 export {StpAvt} from './Template/StpAvt';
+export {StpTxt} from './Template/StpTxt';
 
 export const StRoot = {
 
