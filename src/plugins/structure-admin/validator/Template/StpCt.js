@@ -1,3 +1,23 @@
+export const StpLay = {
+
+  _p: {
+
+    lc: 'readyPropClassForLayout',
+    fc: 'readyPropClassForFlex',
+    e: {
+      $comp: 'PropSelect',
+      items: ['v-flex', 'div'],
+      default: 'div'
+    },
+
+  },
+
+  _ch: ['StpLay', 'StpTitle', 'StAction', 'StpAvt', 'StpTxt']
+
+
+}
+
+
 export const StpCt = {
   _p: {
     // height
@@ -7,11 +27,7 @@ export const StpCt = {
       default:300
     },
     // element  tag
-    e: {
-      $comp: 'PropSelect',
-      items: ['v-flex', 'div'],
-      default: 'div'
-    },
+
 
     //background
     b: 'readyPropColor',
@@ -20,10 +36,10 @@ export const StpCt = {
     i: 'readyPropImage',
 
     cc: 'readyPropClassForContainer',
-    lc: 'readyPropClassForLayout',
-    fc: 'readyPropClassForFlex'
+    ...StpLay._p
   },
-  _ch: ['StpTitle', 'StAction', 'StpAvt', 'StpTxt']
+
+  _ch: StpLay._ch
 }
 
 
