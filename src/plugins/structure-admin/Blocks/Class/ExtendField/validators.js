@@ -103,11 +103,20 @@ const FINDER_FOR_CLASS = {
   },
 
   /**
+    @example xs2, lg5
+  */
+  flexsize: function(className) {
+    var regeg_string = new RegExp('('+baseClasses.breakpoint.join('|')+')([0-9]{1,2})');
+    return  regeg_string.test(className);
+  },
+
+
+  /**
     @example red, blue, light-green
   */
   background: function (className) {
 
-    
+
     var color_classes = className.split(' ');
     var color_name = color_classes[0].replace(/-([a-z])/g, function (g) { return g[1].toUpperCase(); });
     if (!colors[color_name]) {

@@ -9,12 +9,12 @@ export {theme} from './Template/theme';
 export {StToolbar} from './Template/StToolbar';
 export {StAction} from './Template/StAction';
 export {StpCt, StpPrl, StpImg} from './Template/StpCt';
-export {StpCtT} from './Template/StpCtT';
 export {StpVideo} from './Template/StpVideo';
-export {StpCtCh} from './Template/StpCtCh';
+export {StpTitle} from './Template/StpTitle';
+export {StpAvt} from './Template/StpAvt';
 
 export const StRoot = {
-  
+
 };
 
 

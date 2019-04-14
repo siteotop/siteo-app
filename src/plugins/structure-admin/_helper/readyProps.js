@@ -22,14 +22,15 @@ export const readyPropClassForContainer = {
 export const readyPropClassForLayout = {
   $comp: 'PropClass',
 //  allow: ['padding', 'margin', 'textalign', 'textcolor'],
-  additional: ['blockwrap', 'blocklayout', 'gridlist'],
+  additional: ['blockwrap', 'layout'],
   default: []
 };
 
+
 export const readyPropClassForFlex = {
   $comp: 'PropClass',
-//  allow: ['padding', 'margin', 'textalign', 'textcolor'],
-  additional: [],
+  allow: ['flexsize'],
+
   default: []
 };
 
@@ -45,7 +46,23 @@ export const readyPropTagH = {
   default: 'h1'
 };
 
+export const readyPropImage = {
+  $comp: 'PropTitle',
+  default:'https://picsum.photos/1500/600?random'
+};
+
+export const readyPropIcon = {
+  $comp: 'PropTitle',
+  default:'si-close'
+};
+
+
 export const readyPropBoolean = {
   $comp: 'PropBoolean',
   default: true
+}
+
+export const readyPropColor = {
+  $comp: 'PropClassBackground',
+  default: 'primary'
 }

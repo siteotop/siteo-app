@@ -1,22 +1,29 @@
 export const StpCt = {
   _p: {
-    // tag
-    // image background
-    i: {
-      $comp: 'PropTitle',
-      default:'https://picsum.photos/1500/600?random'
-    },
-
     // height
     h: {
       $comp: 'PropHeight',
       validators: {min:200, max:1000},
       default:300
     },
+    // element  tag
+    e: {
+      $comp: 'PropSelect',
+      items: ['v-flex', 'div'],
+      default: 'div'
+    },
 
-    cc: 'readyPropClassForContainer'
+    //background
+    b: 'readyPropColor',
+
+    // image background
+    i: 'readyPropImage',
+
+    cc: 'readyPropClassForContainer',
+    lc: 'readyPropClassForLayout',
+    fc: 'readyPropClassForFlex'
   },
-  _ch: ['StpCtT', 'StpCtCh']
+  _ch: ['StpTitle', 'StAction', 'StpAvt']
 }
 
 

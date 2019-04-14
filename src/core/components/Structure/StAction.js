@@ -10,6 +10,9 @@ export default {
     if (context.props.href) {
       context.props.to = '';
     }
+    if (!context.props.$data){
+      context.props.$data = {};
+    }
     return helperCreateStDesign(h, context,
       'StAction',
       'v-btn',
@@ -28,7 +31,7 @@ export default {
       },
       [
         h('AppIcon', {attrs: {name:context.props.siicon||'si-order'}}),
-        (!context.props.fab)? (context.props.$data.t || context.parent.$store.state.appInstance.objectActive.actionText): '',
+        (!context.props.fab)? (context.props.$data.t || context.props._at|| context.parent.$store.state.appInstance.objectActive.actionText): '',
       ]
     );
 

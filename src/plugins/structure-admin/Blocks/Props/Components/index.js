@@ -54,6 +54,7 @@ export const PropClass = function (settings) {
   return {
     name: ClassComponent,
     props: {
+      forProp: settings._n,
       allow: settings.allow? settings.allow: !settings.additional?  helper_class:  [...settings.additional, ...helper_class ]
     }
   }
@@ -66,7 +67,9 @@ import {default as Background} from '../../Class/Background.vue';
 export const PropClassBackground = function () {
   return {
     name: Background,
-    props: {}
+    props: {
+      
+    }
   }
 
 }
@@ -128,6 +131,13 @@ import {default as Textwrap} from '../../Class/TextWrap.js';
 export const PropClassTextwrap = function () {
   return {
     name: Textwrap
+  }
+}
+
+import {default as Flexsize} from '../../Class/Flexsize.js';
+export const PropClassFlexsize = function () {
+  return {
+    name: Flexsize
   }
 }
 

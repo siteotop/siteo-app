@@ -22,6 +22,8 @@ export default {
         if (typeof PropsComponents[propSettings.$comp] !='function') {
           throw 'No Function';
         }
+
+        console.log(propSettings);
         var component = PropsComponents[propSettings.$comp](propSettings);
 
          return h('v-layout', {class: 'row'} ,  [
@@ -48,7 +50,7 @@ export default {
          ]);
        }
 
-      
+
       })
   }
 

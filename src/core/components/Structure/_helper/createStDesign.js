@@ -13,7 +13,9 @@ export  default function (h, context, nameStDesign, nameComponent, startProps, e
 
     var children = [];
     if (design._ch) {
-       children = h('StChildrenHelper', {props: {children:design._ch, structure:StructureBlocks }});
+       children = design._ch.map(function(element){
+         return  h('StChildrenHelper', {props: {element:element, structure:StructureBlocks }});
+       });
     }
 
     if (childrenAfter) {

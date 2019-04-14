@@ -1,29 +1,26 @@
-<script>
-//import * as SectionsBlocks from './Sections/index.js';
-export default {
-  functional: true,
+<template functional>
+<v-container
+  fluid
+  tag="section"
+  :class="props.b"
+>
+ <v-container :class="props.cc" :style="{minHeight:props.h? props.h+'px': undefined}">
+  <v-layout :class="props.lc">
+    <component
+      :is="props.e||'v-flex'"
+      :class="props.fc" v-for="(element, index) in props.$children||[]"
+      :key="index"
+    >
+      <StChildrenHelper :element="element">
+      </StChildrenHelper>
+    </component>
+  </v-layout>
+ </v-container>
+</v-container>
+</template>
 
-  render(h, context) {
-     return h('v-container',
-     {
-       props: {
-         tag: 'section'
-       },
-       style: {
-         height: context.props.h? context.props.h+'px': undefined
-       },
-       attrs: {
-         fluid: true,
-       },
-       class:context.props.cc
-     },
-      [
-        h('StChildrenHelper', {props: {children: context.props.$children||[], structure: {} }}),
-      ]
-     )
-  }
+<script>
+export default {
 
 }
-
-
 </script>

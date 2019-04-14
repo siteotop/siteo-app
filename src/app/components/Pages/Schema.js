@@ -54,7 +54,9 @@ export default {
             }}):'',
 
           ////////// Structure
-          h('StChildrenHelper', {props: { children:context.props.structure, structure: {} }}),
+          context.props.structure.map(function(element){
+            return h('StChildrenHelper', {props: { element:element, structure: {} }})
+          }),
           ////////// Structure
 
           //speedDeal
