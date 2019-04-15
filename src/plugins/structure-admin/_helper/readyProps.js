@@ -12,6 +12,24 @@ export const readyPropDataTitle = {
   default:''
 }
 
+export const readyPropTransition = {
+  $comp: 'PropSelect',
+  items: [
+    'slide-x-transition',
+    'slide-x-reverse-transition',
+    'slide-y-transition',
+    'slide-y-reverse-transition',
+    'scale-transition',
+    'fade-transition',
+    'expand-x-transition',
+    'scroll-x-transition',
+    'scroll-x-reverse-transition',
+    'scroll-y-transition',
+    'scroll-y-reverse-transition'
+  ],
+  default: 'h1'
+}
+
 export const readyPropClassForContainer = {
   $comp: 'PropClass',
 //  allow: ['padding', 'margin', 'textalign', 'textcolor'],
