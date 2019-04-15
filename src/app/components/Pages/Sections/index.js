@@ -8,3 +8,4 @@ export {default as SpAvt}  from  './SpAvt.vue';
 export {default as SpTxt}  from  './SpTxt.vue';
 export {default as SpLay}  from  './SpLay.vue';
 export {default as SpCrd}  from  './SpCrd.vue';
+export {default as SpCrs}  from  './SpCrs.vue';

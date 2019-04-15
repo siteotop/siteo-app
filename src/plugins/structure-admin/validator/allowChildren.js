@@ -13,7 +13,7 @@ export {SpVid} from './Template/SpVid';
 export {SpTtl} from './Template/SpTtl';
 export {SpAvt} from './Template/SpAvt';
 export {SpTxt} from './Template/SpTxt';
-
+export {SpCrs, SpCrsi} from './Template/SpCrs';
 export const StRoot = {
 
 };
@@ -40,7 +40,7 @@ export const StDrawerToolbar =  {
 
 
 export const rootPage = {
-  _ch: ['SpCt', 'SpPrl', 'SpImg', 'SpVid' ]
+  _ch: ['SpCt', 'SpPrl', 'SpImg', 'SpVid', 'SpCrs' ]
 };
 
 /**
