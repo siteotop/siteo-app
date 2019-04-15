@@ -12,8 +12,17 @@ export const StpLay = {
 
   },
 
-  _ch: ['StpLay', 'StpTitle', 'StAction', 'StpAvt', 'StpTxt']
+  _ch: ['StpLay', 'StpTitle', 'StAction', 'StpAvt', 'StpTxt', 'StpImg', 'StpCrd']
 
+
+}
+
+export const StpCrd = {
+  _p: {
+    cc: 'readyPropClassCommon'
+  },
+
+  _ch: ['StpLay', 'StpTitle', 'StAction', 'StpAvt', 'StpTxt', 'StpImg']
 
 }
 

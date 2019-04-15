@@ -8,7 +8,7 @@ export const rootDesign = {
 export {theme} from './Template/theme';
 export {StToolbar} from './Template/StToolbar';
 export {StAction} from './Template/StAction';
-export {StpCt, StpLay,  StpPrl, StpImg} from './Template/StpCt';
+export {StpCt, StpLay,  StpPrl, StpImg, StpCrd} from './Template/StpCt';
 export {StpVideo} from './Template/StpVideo';
 export {StpTitle} from './Template/StpTitle';
 export {StpAvt} from './Template/StpAvt';
