@@ -1,8 +1,8 @@
 <template functional>
-<v-layout :class="props.lc">
+<v-layout :class="props.cnf.lc">
   <component
-    :is="props.e||'v-flex'"
-    :class="props.fc" v-for="(element, index) in props.$children||[]"
+    :is="props.cnf.e||'v-flex'"
+    :class="props.cnf.fc" v-for="(element, index) in props.chldrn||[]"
     :key="index"
   >
     <StChildrenHelper :element="element">

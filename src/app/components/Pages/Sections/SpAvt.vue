@@ -1,13 +1,13 @@
 <template functional>
 <v-avatar
-   :tile="props.t"
-   :size="props.s"
-   :color="props.c"
+   :tile="props.cnf.t"
+   :size="props.cnf.s"
+   :color="props.cnf.c"
  >
-   <img v-if="props.$data.p" :src="props.$data.p" :alt="props.$data.pt">
+   <img v-if="props.cntnt.p" :src="props.cntnt.p" :alt="props.cntnt.pt">
    <span v-else class="white--text headline">
-     <AppIcon v-if="props.$data.i" :name="props.$data.i"></AppIcon>
-     <span v-else>{{props.$data.t}}</span>
+     <AppIcon v-if="props.cntnt.i" :name="props.cntnt.i"></AppIcon>
+     <span v-else>{{props.cntnt.t}}</span>
    </span>
 </v-avatar>
 </template>

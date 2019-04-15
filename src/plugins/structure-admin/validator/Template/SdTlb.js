@@ -1,5 +1,5 @@
 
-export const StToolbar = {
+export const SdTlb = {
   _p: {
       height: {
         $comp: 'PropHeight',
@@ -22,5 +22,5 @@ export const StToolbar = {
 
   },
   _c: ['elevation'],
-  _ch: ['StTitle', 'StDrawerToogle', 'StLogo', 'StAction', 'StSpacer', 'StHorMenu']
+  _ch: ['SdTtl', 'SdTgl', 'SdLgo', 'StAction', 'VSpacer', 'StHorMenu']
 };

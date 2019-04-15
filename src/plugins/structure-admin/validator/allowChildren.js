@@ -2,11 +2,11 @@
 
 
 export const rootDesign = {
-  _ch: ['theme', 'StToolbar', 'StDrawer',  'StRoot', 'StFooter', 'StAction']
+  _ch: ['theme', 'SdTlb', 'SdDrw',  'SdRoot', 'SdFtr', 'StAction']
 };
 
 export {theme} from './Template/theme';
-export {StToolbar} from './Template/StToolbar';
+export {SdTlb} from './Template/SdTlb';
 export {StAction} from './Template/StAction';
 export {SpCt, SpLay,  SpPrl, SpImg, SpCrd} from './Template/SpCt';
 export {SpVid} from './Template/SpVid';
@@ -14,29 +14,25 @@ export {SpTtl} from './Template/SpTtl';
 export {SpAvt} from './Template/SpAvt';
 export {SpTxt} from './Template/SpTxt';
 export {SpCrs, SpCrsi} from './Template/SpCrs';
-export const StRoot = {
+export const SdRoot = {
 
 };
 
 
-export const StTitle = {
+export const SdTtl = {
   _c: ['hidden', 'textsize', 'margin', 'padding', 'textcolor']
 }
 
-export const StDrawer = {
-  _ch: ['StDrawerToolbar', 'StVerMenu']
+export const SdDrw = {
+  _ch: ['SdTlb', 'StVerMenu']
 };
 
-export const StFooter = {
+export const SdFtr = {
 };
 
-export const StLogo = {
+export const SdLgo = {
 
 }
-
-export const StDrawerToolbar =  {
-  _ch: ['StTitle', 'StLogo', 'StAction', 'StSpacer', 'StDrawerToogle']
-};
 
 
 export const rootPage = {

@@ -1,8 +1,8 @@
 <template functional>
-<v-card :class="props.cc">
+<v-card :class="props.cnf.cc">
   <component
-    :is="props.e||'v-card-text'"
-    :class="props.fc" v-for="(element, index) in props.$children||[]"
+    :is="props.cnf.e||'v-card-text'"
+    :class="props.cnf.fc" v-for="(element, index) in props.chldrn||[]"
     :key="index"
   >
     <StChildrenHelper :element="element">

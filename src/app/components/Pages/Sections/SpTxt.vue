@@ -1,6 +1,6 @@
 <template functional>
 <p :class="data.class">
-  {{props.$data.t}}
+  {{props.cntnt.t}}
 </p>
 </template>
 <script>

@@ -1,11 +1,11 @@
 <template functional>
 <v-parallax
  fluid
- :height="props.h||'100%'"
- :src="props.i"
- :class="props.b"
+ :height="props.cnf.h||'100%'"
+ :src="props.cnf.i"
+ :class="props.cnf.b"
 >
-<v-container :class="props.cc" :style="{height:props.h? props.h+'px': undefined}">
+<v-container :class="props.cnf.cc" :style="{height:props.cnf.h? props.cnf.h+'px': undefined}">
   <SpLay v-bind="props">
   </SpLay>
 </v-container>
