@@ -5,8 +5,8 @@
   :class="props.b"
 >
  <v-container :class="props.cc" :style="{minHeight:props.h? props.h+'px': undefined}">
-  <StpLay v-bind="props">
-  </StpLay>
+  <SpLay v-bind="props">
+  </SpLay>
  </v-container>
 </v-container>
 </template>

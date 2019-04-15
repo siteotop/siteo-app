@@ -1,5 +1,5 @@
 
-export const StpAvt = {
+export const SpAvt = {
   _d: {
     // title content
     p: 'readyPropImage',

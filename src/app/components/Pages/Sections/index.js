@@ -1,10 +1,10 @@
 
-export {default as StpCt}  from  './StpCt.vue';
-export {default as StpPrl}  from  './StpPrl.vue';
-export {default as StpImg}  from  './StpImg.vue';
-export {default as StpVideo}  from  './StpVideo.vue';
-export {default as StpTitle}  from  './StpTitle.vue';
-export {default as StpAvt}  from  './StpAvt.vue';
-export {default as StpTxt}  from  './StpTxt.vue';
-export {default as StpLay}  from  './StpLay.vue';
-export {default as StpCrd}  from  './StpCrd.vue';
+export {default as SpCt}  from  './SpCt.vue';
+export {default as SpPrl}  from  './SpPrl.vue';
+export {default as SpImg}  from  './SpImg.vue';
+export {default as SpVid}  from  './SpVid.vue';
+export {default as SpTtl}  from  './SpTtl.vue';
+export {default as SpAvt}  from  './SpAvt.vue';
+export {default as SpTxt}  from  './SpTxt.vue';
+export {default as SpLay}  from  './SpLay.vue';
+export {default as SpCrd}  from  './SpCrd.vue';

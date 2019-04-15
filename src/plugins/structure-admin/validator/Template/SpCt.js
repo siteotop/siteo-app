@@ -1,4 +1,4 @@
-export const StpLay = {
+export const SpLay = {
 
   _p: {
 
@@ -12,22 +12,22 @@ export const StpLay = {
 
   },
 
-  _ch: ['StpLay', 'StpTitle', 'StAction', 'StpAvt', 'StpTxt', 'StpImg', 'StpCrd']
+  _ch: ['SpLay', 'SpTtl', 'StAction', 'SpAvt', 'SpTxt', 'SpImg', 'SpCrd']
 
 
 }
 
-export const StpCrd = {
+export const SpCrd = {
   _p: {
     cc: 'readyPropClassCommon'
   },
 
-  _ch: ['StpLay', 'StpTitle', 'StAction', 'StpAvt', 'StpTxt', 'StpImg']
+  _ch: ['SpLay', 'SpTtl', 'StAction', 'SpAvt', 'SpTxt', 'SpImg']
 
 }
 
 
-export const StpCt = {
+export const SpCt = {
   _p: {
     // height
     h: {
@@ -45,12 +45,12 @@ export const StpCt = {
     i: 'readyPropImage',
 
     cc: 'readyPropClassForContainer',
-    ...StpLay._p
+    ...SpLay._p
   },
 
-  _ch: StpLay._ch
+  _ch: SpLay._ch
 }
 
 
-export const StpPrl = StpCt;
-export const StpImg = StpCt;
+export const SpPrl = SpCt;
+export const SpImg = SpCt;

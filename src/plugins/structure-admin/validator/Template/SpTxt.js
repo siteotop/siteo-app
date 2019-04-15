@@ -1,12 +1,8 @@
 
-export const StpTitle = {
+export const SpTxt = {
   _d: {
     // title content
     t: 'readyPropDataTitle'
-  },
-  _p: {
-  //  tag for h
-    h:'readyPropTagH'
   },
 
   _c: ['textsize', 'textcolor', 'textalign', 'texttransform'],

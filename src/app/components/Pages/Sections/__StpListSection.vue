@@ -1,5 +1,5 @@
 <template functional>
-<StpSection v-bind="props">
+<SpSection v-bind="props">
     <slot v-if="props.header" name="header"></slot>
 
     <v-container :class="props.$bc||'grid-list-md'">
@@ -26,7 +26,7 @@
     </v-flex>
    </v-layout>
  </slot>
-</StpSection>
+</SpSection>
 </template>
 
 <script>

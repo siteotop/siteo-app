@@ -8,11 +8,11 @@ export const rootDesign = {
 export {theme} from './Template/theme';
 export {StToolbar} from './Template/StToolbar';
 export {StAction} from './Template/StAction';
-export {StpCt, StpLay,  StpPrl, StpImg, StpCrd} from './Template/StpCt';
-export {StpVideo} from './Template/StpVideo';
-export {StpTitle} from './Template/StpTitle';
-export {StpAvt} from './Template/StpAvt';
-export {StpTxt} from './Template/StpTxt';
+export {SpCt, SpLay,  SpPrl, SpImg, SpCrd} from './Template/SpCt';
+export {SpVid} from './Template/SpVid';
+export {SpTtl} from './Template/SpTtl';
+export {SpAvt} from './Template/SpAvt';
+export {SpTxt} from './Template/SpTxt';
 
 export const StRoot = {
 
@@ -40,7 +40,7 @@ export const StDrawerToolbar =  {
 
 
 export const rootPage = {
-  _ch: ['StpCt', 'StpPrl', 'StpImg', 'StpVideo' ]
+  _ch: ['SpCt', 'SpPrl', 'SpImg', 'SpVid' ]
 };
 
 /**

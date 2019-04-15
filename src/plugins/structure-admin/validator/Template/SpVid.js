@@ -1,4 +1,4 @@
-export const StpVideo = {
+export const SpVid = {
   _d: {
     // code video from youtube
     v: {
