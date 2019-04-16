@@ -34,7 +34,7 @@ export default {
 
       [
         h('AppIcon', {attrs: {name:context.props.siicon||'si-order'}}),
-        (!context.props.fab)? (context.props.cntnt.t || context.props.cnf._at|| context.parent.$store.state.appInstance.objectActive.actionText): '',
+        (!context.props.fab)? (context.props.cntnt.t ||  context.parent.$store.state.appInstance.objectActive.actionText): '',
       ]
 
     );
