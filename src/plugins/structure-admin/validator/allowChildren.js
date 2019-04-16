@@ -14,6 +14,7 @@ export {SpTtl} from './Template/SpTtl';
 export {SpAvt} from './Template/SpAvt';
 export {SpTxt} from './Template/SpTxt';
 export {SpCrs, SpCrsi} from './Template/SpCrs';
+export {SpExp, SpExpi} from './Template/SpExp';
 export const SdRoot = {
 
 };
