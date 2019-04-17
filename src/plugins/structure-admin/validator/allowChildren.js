@@ -16,6 +16,8 @@ export {SpTxt} from './Template/SpTxt';
 export {SpCrs, SpCrsi} from './Template/SpCrs';
 export {SpExp, SpExpi} from './Template/SpExp';
 export {SpTbs, SpTbsi} from './Template/SpTbs';
+export {SpLst, LsA, LsC, LsI, LsT} from './Template/SpLst';
+
 export const SdRoot = {
 
 };
