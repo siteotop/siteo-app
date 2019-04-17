@@ -42,7 +42,6 @@ export default {
 
      render(h) {
 
-        var self = this;
         return h('v-app',
 
         [

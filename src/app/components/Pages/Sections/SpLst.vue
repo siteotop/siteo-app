@@ -37,7 +37,7 @@ const tileStructure = {
 export default {
   functional: true,
   render(h, context) {
-
+    console.log(context.parent.$root.mobile);  
     return h('v-list', {props: context.props.cnf||{}, class: context.data.class}, [
         (context.props.chldrn||[]).map(function(element){
           return h('v-list-tile', {props: {tag:'li', ...(element._p||{})}, class:element._c}, [

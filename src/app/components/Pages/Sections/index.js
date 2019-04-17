@@ -12,3 +12,4 @@ export {default as SpCrs}  from  './SpCrs.vue';
 export {default as SpExp}  from  './SpExp.vue';
 export {default as SpTbs}  from  './SpTbs.vue';
 export {default as SpLst}  from  './SpLst.vue';
+export {default as SpTml}  from  './SpTml.vue';
