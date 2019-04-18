@@ -17,14 +17,7 @@ export const SpLay = {
 
 }
 
-export const SpCrd = {
-  _p: {
-    cc: 'readyPropClassCommon'
-  },
 
-  _ch: ['SpLay', 'SpTtl', 'StAction', 'SpAvt', 'SpTxt', 'SpImg']
-
-}
 
 
 export const SpCt = {

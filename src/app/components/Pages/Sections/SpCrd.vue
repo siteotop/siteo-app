@@ -1,17 +1,54 @@
-<template functional>
-<v-card :class="props.cnf.cc">
-  <component
-    :is="props.cnf.e||'v-card-text'"
-    :class="props.cnf.fc" v-for="(element, index) in props.chldrn||[]"
-    :key="index"
-  >
-    <StChildrenHelper :element="element">
-    </StChildrenHelper>
-  </component>
-</v-card>
-</template>
 <script>
-export default {
 
+const cardStructure = {
+  // v-card-title
+  Cti: {
+    functional: true,
+    render(h, context) {
+       return h('v-card-title', {class: context.data.class} ,  [
+         (context.props.chldrn||[]).map(function(element){
+           return h('StChildrenHelper', {props: {element:element}})
+         })
+       ])
+    }
+  },
+
+ // v-card-text
+  Cte: {
+    functional: true,
+    render(h, context) {
+       return h('v-card-text',  {class: context.data.class} , [
+         (context.props.chldrn||[]).map(function(element){
+           return h('StChildrenHelper', {props: {element:element}})
+         })
+       ])
+    }
+  },
+
+  Cac: {
+    functional: true,
+    render(h, context) {
+       return h('v-card-action',  {class: context.data.class} , [
+         (context.props.chldrn||[]).map(function(element){
+           return h('StChildrenHelper', {props: {element:element}})
+         })
+       ])
+    }
+  },
+
+
+}
+
+export default {
+  functional: true,
+  render(h, context) {
+
+    return h('v-card', {props: context.props.cnf||{}, class: context.data.class}, [
+        (context.props.chldrn||[]).map(function(element){
+          return h('StChildrenHelper', {props: {element:element, structure: cardStructure}})
+        })
+    ])
+
+  }
 }
 </script>

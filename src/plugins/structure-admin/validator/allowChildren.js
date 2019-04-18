@@ -8,7 +8,7 @@ export const rootDesign = {
 export {theme} from './Template/theme';
 export {SdTlb} from './Template/SdTlb';
 export {StAction} from './Template/StAction';
-export {SpCt, SpLay,  SpPrl, SpImg, SpCrd} from './Template/SpCt';
+export {SpCt, SpLay,  SpPrl, SpImg} from './Template/SpCt';
 export {SpVid} from './Template/SpVid';
 export {SpTtl} from './Template/SpTtl';
 export {SpAvt} from './Template/SpAvt';
@@ -17,7 +17,9 @@ export {SpCrs, SpCrsi} from './Template/SpCrs';
 export {SpExp, SpExpi} from './Template/SpExp';
 export {SpTbs, SpTbsi} from './Template/SpTbs';
 export {SpLst, LsA, LsC, LsI, LsT} from './Template/SpLst';
+export {SpCrd, Cti, Cte, Cac } from './Template/SpCrd';
 export {SpTml, Tml } from './Template/SpTml';
+
 
 export const SdRoot = {
 
