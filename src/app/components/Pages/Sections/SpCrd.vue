@@ -1,15 +1,19 @@
 <script>
 
+const helperContext = function(componentName,h,context) {
+  return h(componentName, {class: context.data.class} ,  [
+    (context.props.chldrn||[]).map(function(element){
+      return h('StChildrenHelper', {props: {element:element}})
+    })
+  ])
+}
+
 const cardStructure = {
   // v-card-title
   Cti: {
     functional: true,
     render(h, context) {
-       return h('v-card-title', {class: context.data.class} ,  [
-         (context.props.chldrn||[]).map(function(element){
-           return h('StChildrenHelper', {props: {element:element}})
-         })
-       ])
+        return helperContext('v-card-title',h, context);
     }
   },
 
@@ -17,22 +21,14 @@ const cardStructure = {
   Cte: {
     functional: true,
     render(h, context) {
-       return h('v-card-text',  {class: context.data.class} , [
-         (context.props.chldrn||[]).map(function(element){
-           return h('StChildrenHelper', {props: {element:element}})
-         })
-       ])
+      return helperContext('v-card-text',h, context);
     }
   },
 
   Cac: {
     functional: true,
     render(h, context) {
-       return h('v-card-actions',  {class: context.data.class} , [
-         (context.props.chldrn||[]).map(function(element){
-           return h('StChildrenHelper', {props: {element:element}})
-         })
-       ])
+      return helperContext('v-card-actions',h, context);
     }
   },
 

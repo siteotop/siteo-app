@@ -37,10 +37,10 @@ const tileStructure = {
 export default {
   functional: true,
   render(h, context) {
-    
+
     return h('v-list', {props: context.props.cnf||{}, class: context.data.class}, [
         (context.props.chldrn||[]).map(function(element){
-          return h('v-list-tile', {props: {tag:'li', ...(element._p||{})}, class:element._c}, [
+          return h('v-list-tile', {props: {tag:'li', ...(element._p||{})}, class:element._c} , [
             (element._ch||[]).map(function(tileElement){
                return h('StChildrenHelper', {props: {element:tileElement, structure: tileStructure}})
             })
