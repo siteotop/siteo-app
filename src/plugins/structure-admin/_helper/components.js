@@ -14,11 +14,11 @@ var isChildren = function (componentName){
 // properties and default
 const getPropterties = function () {
   return {
-      _ch: [], // children
       _d: {}, // data
       _n: '', // name
       _p: {}, // props
       _c: [], // class
+      _ch: [], // children
       colors: allowChildrenList['theme'].colors
   };
 };

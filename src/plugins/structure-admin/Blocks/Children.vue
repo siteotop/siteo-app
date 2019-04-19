@@ -32,7 +32,7 @@
                           <v-tab
                             v-for="(shortNameSettingBlock, indexTab) in Object.keys(component)"
                             :key="indexTab"
-                            v-if="shortNameSettingBlock!='_ch'&&shortNameSettingBlock!='_n'"
+                            v-if="shortNameSettingBlock!='_n'"
 
                           >
                               {{getHelperName(shortNameSettingBlock)}}
@@ -45,12 +45,12 @@
                       <v-tab-item
                         v-for="(shortNameSettingBlock, indexBlock) in Object.keys(component)"
                         :key="indexBlock"
-                        v-if="shortNameSettingBlock!='_ch'&&shortNameSettingBlock!='_n'"
+                        v-if="shortNameSettingBlock!='_n'"
                       >
                         <v-card flat>
                           <v-card-text>
                             <component
-                            :is="'Block'+getHelperName(shortNameSettingBlock)"
+                            :is="'Settings'+getHelperName(shortNameSettingBlock)"
                             v-model="component[shortNameSettingBlock]"
                             :componentName="component._n"
                             :noDublicateChild="true"
@@ -98,10 +98,10 @@ import draggable from 'vuedraggable'
 
 
 
-import BlockProps from   './Props.vue';
-import BlockData from   './Props.vue';
-import BlockClass from   './Props/Class.vue';
-import BlockColors from   './Colors.vue';
+import SettingsProps from   './Props.vue';
+import SettingsData from   './Props.vue';
+import SettingsClass from   './Props/Class.vue';
+import SettingsColors from   './Colors.vue';
 
 import ExtendsBlock  from './_extends/block.js';
 
@@ -112,10 +112,10 @@ export default {
     draggable,
   //  DesignTabsBlock,
 
-    BlockProps,
-    BlockData,
-    BlockClass,
-    BlockColors
+    SettingsProps,
+    SettingsData,
+    SettingsClass,
+    SettingsColors
   },
 
   props: {

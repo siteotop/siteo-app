@@ -28,7 +28,7 @@ const cardStructure = {
   Cac: {
     functional: true,
     render(h, context) {
-       return h('v-card-action',  {class: context.data.class} , [
+       return h('v-card-actions',  {class: context.data.class} , [
          (context.props.chldrn||[]).map(function(element){
            return h('StChildrenHelper', {props: {element:element}})
          })

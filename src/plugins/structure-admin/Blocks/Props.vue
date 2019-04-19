@@ -18,14 +18,14 @@ import ExtendsBlock from './_extends/block.js';
 import PropsSettingsList from './Props/SettingsList.js';
 export default {
   extends: ExtendsBlock,
-  name: 'BlockProps',
+  name: 'SettingsProps',
   components: {
       PropsSettingsList
   },
 
   methods: {
 
-    
+
 
      addDefaultValue(name) {
         var index = this.findIndexOfElement(name);
