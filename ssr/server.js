@@ -22,6 +22,7 @@ if (process.env.NODE_ENV=='development') {
   server.use(express.static('dist'));
 }
 
+// common routing
 var siteoRouter = express.Router();
 siteoRouter.get('*', function(req,res){
     siteoTemplate(req,res, req.baseUrl, req.path )

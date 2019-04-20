@@ -1,21 +1,29 @@
 <template>
   <PageSchema :structure="[{
-      $$:'StpSection',
-      _props: {
-        _t: title,
-        _d: description,
-        $tc: 'primary',
-        $_t: 'white--text display-4',
-        $_d: 'headline white--text',
-        $bls: [
-          {
-            $$:'StAction',
-            $bf:'text-xs-center'
 
-          },
-        ]
-      }
-    } ]"></PageSchema>
+      _n: 'SpCt',
+      _p: {
+        lc: ['column']
+      },
+      _ch: [
+         {
+           _n: 'SpTtl',
+           _d: {
+             t: title
+           },
+           _p: {
+             h: 'h1'
+           }
+         },
+         {
+           _n: 'SpTxt',
+           _d: {
+             t: description
+           },
+
+         }
+      ]
+   } ]"></PageSchema>
 </template>
 
 <script>
