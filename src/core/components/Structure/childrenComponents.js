@@ -1,3 +1,4 @@
+import * as baseChildren from './index';
 
 export default {
   functional: true,
@@ -24,14 +25,16 @@ export default {
 
     if (typeof(element) =='string') {
       name = element;
-      if (context.props.structure[element]) {
-        createdComponent = context.props.structure[element];
-      } else {
-          createdComponent = element;
-      }
     } else {
        name = element._n;
-       createdComponent = context.props.structure[element._n]||element._n;
+    }
+
+    if (baseChildren[name]) {
+      createdComponent = baseChildren[name];
+    }else if(  context.props.structure[name]) {
+      createdComponent = context.props.structure[name];
+    } else {
+        createdComponent = name;
     }
 
     var props = element._p;

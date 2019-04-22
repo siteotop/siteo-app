@@ -1,19 +1,32 @@
-/**
-  Main components for Page structure
-*/
 
-//export {default as StDrawer} from './StDrawer';
-//export {default as StToolbar}  from './StToolbar';
-//export {default as StRoot} from './StRoot';
-//export {default as StFooter} from './StFooter';
+//STRUCTURE
+export {default as SdDrw} from './SdDrw.vue';
+export {default as SdTlb} from './SdTlb.vue';
+export {default as SdRoot} from './SdRoot';
+export {default as SdFtr} from './SdFtr.vue';
+export {default as SdTtl} from './SdTtl';
+export {default as SdTgl} from './SdTgl';
+export {default as SdLgo}  from './SdLgo.vue';
+export {default as SdMnv} from './SdMnv.vue';
+export {default as SdMnh} from './SdMnh';
+
+// PAGE
+export {default as SpCt}  from  './SpCt.vue';
+export {default as SpPrl}  from  './SpPrl.vue';
+export {default as SpImg}  from  './SpImg.vue';
+export {default as SpVid}  from  './SpVid.vue';
+export {default as SpTtl}  from  './SpTtl.vue';
+export {default as SpAvt}  from  './SpAvt.vue';
+export {default as SpTxt}  from  './SpTxt.vue';
+
+export {default as SpCrd}  from  './SpCrd.vue';
+export {default as SpCrs}  from  './SpCrs.vue';
+export {default as SpExp}  from  './SpExp.vue';
+export {default as SpTbs}  from  './SpTbs.vue';
+export {default as SpLst}  from  './SpLst.vue';
+export {default as SpTml}  from  './SpTml.vue';
 
 
-//export {default as StLogo} from './StLogo';
-//export {default as StDrawerToogle} from './StDrawerToogle';
-
-
-//export const StAction = 'StAction';
-//export const StSpacer = 'v-spacer';
 export const StPlugin = 'StPlugin';
 
 export const StDivider = {

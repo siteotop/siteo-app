@@ -1,33 +1,13 @@
 <script>
 
-import SdDrw from './Structure/SdDrw.vue';
-import SdTlb from './Structure/SdTlb.vue';
-import SdRoot from './Structure/SdRoot';
-import SdFtr from './Structure/SdFtr.vue';
-import SdTtl from './Structure/SdTtl';
-import SdTgl from './Structure/SdTgl';
-import SdCopy  from './Structure/SdCopy.vue';
-import SdLgo  from './Structure/SdLgo.vue';
-import SdMnv from './Structure/SdMnv.vue';
-import SdMnh from './Structure/SdMnh';
+import  SdCopy  from './Structure/SdCopy.vue';
 
 export default {
-
+    components: {
+      SdCopy
+    },
      _siteo_config: {},
      _plugins: {},
-
-     components: {
-       SdDrw,
-       SdTlb,
-       SdRoot,
-       SdFtr,
-       SdTtl,
-       SdTgl,
-       SdCopy,
-       SdLgo,
-       SdMnv,
-       SdMnh
-     },
 
      data() {
           return {

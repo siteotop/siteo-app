@@ -1,8 +1,6 @@
 /*
 Store for appInstance.objectActive from server
-
 */
-
 
 export default {
 
@@ -15,8 +13,6 @@ export default {
          slogan:"",
          actionText:"",
          description:"",
-         configs: {
-         },
          contacts: [],
          design:{},
          menu:[] ,
@@ -28,7 +24,7 @@ export default {
   actions: {
 
     makeOrder() {
-        
+
     },
 
     makeSubscribe({dispatch, getters}, data) {

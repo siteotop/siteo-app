@@ -2,10 +2,9 @@
 // PageHelper
 
 import PageSchema from './components/Pages/Schema.js';
-//import StpListSection from './components/Pages/Sections/StpListSection.vue';
 import SiteoRoutes from './routes';
 import RouteError from './components/Error.vue';
-import * as PageBlocks from './components/Pages/Sections';
+
 
 export default {
   name: 'siteo-app',
@@ -13,9 +12,7 @@ export default {
   install: function (Vue) {
       Vue.component('PageSchema', PageSchema);
       Vue.component('RouteError', RouteError);
-      for (let NameComponent in PageBlocks) {
-         Vue.component(NameComponent, PageBlocks[NameComponent] );
-      }
+
   },
 
   siteoInstall: function ($coreVue, $pluginOptions) {
