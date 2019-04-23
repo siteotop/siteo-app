@@ -17,7 +17,8 @@ export default {
          design:{},
          menu:[] ,
          links:[],
-         locations: []
+         locations: [],
+         _websites_page: ''
         }
     },
 

@@ -12,7 +12,7 @@ export default function (parentGetterUrl) {
           meta_robots: '',
           url: '',
           error: false,
-          jsonStructure: []
+          jsonStructure: ''
       }
     }
   }

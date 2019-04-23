@@ -70,10 +70,8 @@ const ACTIONS =  {
     config.method = 'GET';
     config.url =  getters.urlWithoutId+ '/'+ id;  // '/users/me';
     return   dispatch('callAPI', config, {root:true}).then(response=>{
-            //commit('setApiId', id);
             commit('setModel', response.data);
-            return state.objectActive;
-            //return response.data;
+            return response.data;
          }
     );
  },

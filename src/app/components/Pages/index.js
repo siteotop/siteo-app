@@ -42,8 +42,26 @@ export default {
 
       store.registerApiModule( 'pages', pages('appInstance/urlID'));
       if (store.state.allowAsyncLoad) {
+        var id;
+        if (route.params.objectId) {
+           id = route.params.objectId;
+        } else {
+           id = store.state.appInstance.objectActive._websites_page;
+        }
 
-        return store.dispatch('pages/getObject', route.params.objectId);
+        return new Promise ((resolve, reject)=>{
+             store.dispatch('pages/getObject', id).then((result)=>{
+
+                var newStructure = {
+                  jsonStructure:   JSON.parse(result.jsonStructure)
+                }
+                store.commit('pages/updateModel', newStructure  );
+                resolve(result);
+             }).catch(error=>{
+               reject(error);
+             });
+        });
+
       }
   },
 
