@@ -1,17 +1,17 @@
 <template functional>
-<v-footer app v-bind="props.cnf">
+<v-toolbar app v-bind="props.cnf">
   <StChildrenHelper v-for="(element, index) in props.chldrn||[]"
     :element="element"
     :key="index"
   >
   </StChildrenHelper>
-<SdCopy></SdCopy>
-</v-footer>
+</v-toolbar>
 </template>
 
 <script>
+
 /**
-  Footer for website
+others toolbar
 */
 
 export default {

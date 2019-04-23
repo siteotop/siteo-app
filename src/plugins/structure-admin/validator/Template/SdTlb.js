@@ -24,3 +24,5 @@ export const SdTlb = {
   _c: ['elevation'],
   _ch: ['SdTtl', 'SdTgl', 'SdLgo', 'StAction', 'VSpacer', 'StHorMenu']
 };
+
+export const SpTlb = SdTlb;

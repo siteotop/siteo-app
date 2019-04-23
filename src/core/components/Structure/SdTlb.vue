@@ -1,5 +1,5 @@
 <template functional>
-<v-toolbar v-bind="props.cnf">
+<v-toolbar app v-bind="props.cnf">
   <StChildrenHelper v-for="(element, index) in props.chldrn||[]"
     :element="element"
     :key="index"
@@ -11,6 +11,7 @@
 <script>
 
 /**
+Main App toolbar
 Top Bar Menu in APP, where is logo, site name, and top menu
 */
 

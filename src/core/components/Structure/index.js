@@ -1,9 +1,7 @@
 
 //STRUCTURE
-export {default as SdDrw} from './SdDrw.vue';
-export {default as SdTlb} from './SdTlb.vue';
-export {default as SdRoot} from './SdRoot';
-export {default as SdFtr} from './SdFtr.vue';
+
+
 export {default as SdTtl} from './SdTtl';
 export {default as SdTgl} from './SdTgl';
 export {default as SdLgo}  from './SdLgo.vue';
@@ -12,6 +10,7 @@ export {default as SdMnh} from './SdMnh';
 
 // PAGE
 export {default as SpCt}  from  './SpCt.vue';
+export {default as SpTlb}  from  './SpTlb.vue';
 export {default as SpPrl}  from  './SpPrl.vue';
 export {default as SpImg}  from  './SpImg.vue';
 export {default as SpVid}  from  './SpVid.vue';

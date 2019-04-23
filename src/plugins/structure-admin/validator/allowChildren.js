@@ -6,7 +6,7 @@ export const rootDesign = {
 };
 
 export {theme} from './Template/theme';
-export {SdTlb} from './Template/SdTlb';
+export {SdTlb, SpTlb} from './Template/SdTlb';
 export {StAction} from './Template/StAction';
 export {SpCt, SpLay,  SpPrl, SpImg} from './Template/SpCt';
 export {SpVid} from './Template/SpVid';
@@ -31,7 +31,7 @@ export const SdTtl = {
 }
 
 export const SdDrw = {
-  _ch: ['SdTlb', 'StVerMenu']
+  _ch: ['SpTlb', 'StVerMenu']
 };
 
 export const SdFtr = {
