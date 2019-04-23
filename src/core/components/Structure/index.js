@@ -28,9 +28,9 @@ export {default as SpTml}  from  './SpTml.vue';
 
 export const StPlugin = 'StPlugin';
 
-export const StDivider = {
+export const SpDvd = 'VDivider'
+export const SpDvv = {
   functional: true,
-  name: "StDivider",
   render(h) {
     return h('v-divider', {props: {vertical: true}});
   }

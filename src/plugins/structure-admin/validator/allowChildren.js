@@ -35,6 +35,7 @@ export const SdDrw = {
 };
 
 export const SdFtr = {
+  _ch: ['SpDvd', 'SpCrd']
 };
 
 export const SdLgo = {
