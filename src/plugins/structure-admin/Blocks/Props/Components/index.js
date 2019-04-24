@@ -23,6 +23,14 @@ export const PropTitle = function () {
   }
 }
 
+export const PropDescription = function () {
+  return {
+    name: 'v-textarea',
+    props: {
+    },
+  }
+}
+
 export const PropSelect = function (settings) {
   //console.log(settings);
   return {
@@ -68,7 +76,7 @@ export const PropClassBackground = function () {
   return {
     name: Background,
     props: {
-      
+
     }
   }
 

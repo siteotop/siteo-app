@@ -2,7 +2,7 @@
 export const SpTxt = {
   _d: {
     // title content
-    t: 'readyPropDataTitle'
+    t: 'readyPropDataDesc'
   },
 
   _c: ['textsize', 'textcolor', 'textalign', 'texttransform'],

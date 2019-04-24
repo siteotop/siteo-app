@@ -12,6 +12,13 @@ export const readyPropDataTitle = {
   default:''
 }
 
+export const readyPropDataDesc = {
+  $comp: 'PropDescription',
+  default:''
+}
+
+
+
 export const readyPropTransition = {
   $comp: 'PropSelect',
   items: [

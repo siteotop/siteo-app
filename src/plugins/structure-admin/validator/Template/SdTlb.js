@@ -14,7 +14,7 @@ export const SdTlb = {
       clippedRight: 'readyPropBoolean',
 
       dense: 'readyPropBoolean',
-
+      
       color: {
         $comp: 'PropColor',
         default: 'primary'
@@ -22,7 +22,7 @@ export const SdTlb = {
 
   },
   _c: ['elevation'],
-  _ch: ['SdTtl', 'SdTgl', 'SdLgo', 'StAction', 'VSpacer', 'StHorMenu']
+  _ch: ['SdTtl', 'SdTgl', 'SdLgo', 'StAction', 'VSpacer', 'SpDvv', 'StHorMenu']
 };
 
 export const SpTlb = SdTlb;
