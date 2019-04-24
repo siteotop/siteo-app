@@ -47,7 +47,7 @@ export const readyPropClassForLayout = {
 
 export const readyPropClassForFlex = {
   $comp: 'PropClass',
-  allow: ['flexsize'],
+  additional: ['flexsize'],
 
   default: []
 };

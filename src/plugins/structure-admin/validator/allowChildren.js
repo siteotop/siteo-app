@@ -5,7 +5,7 @@ export {theme} from './Template/theme';
 export {rootDesign, SdFtr} from './Template/SdRoot';
 export {SdTlb, SpTlb} from './Template/SdTlb';
 export {StAction} from './Template/StAction';
-export {SpCt, SpLay,  SpPrl, SpImg} from './Template/SpCt';
+export {SpCt, Flx, SpLay,  SpPrl, SpImg} from './Template/SpCt';
 export {SpVid} from './Template/SpVid';
 export {SpTtl} from './Template/SpTtl';
 export {SpAvt} from './Template/SpAvt';

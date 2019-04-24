@@ -1,3 +1,11 @@
+
+export const Flx =  {
+   _c: [],     
+   _ch: ['SpLay', 'SpTtl', 'StAction', 'SpAvt', 'SpTxt', 'SpImg', 'SpCrd', 'SpCrs', 'SpExp', 'SpTbs', 'SpLst', 'SpTml']
+}
+
+
+
 export const SpLay = {
 
   _p: {
@@ -12,10 +20,11 @@ export const SpLay = {
 
   },
 
-  _ch: ['SpLay', 'SpTtl', 'StAction', 'SpAvt', 'SpTxt', 'SpImg', 'SpCrd', 'SpCrs', 'SpExp', 'SpTbs', 'SpLst', 'SpTml']
+  _ch: ['Flx', ...Flx._ch]
 
 
 }
+
 
 
 
