@@ -1,5 +1,5 @@
 <template functional>
-<v-toolbar app v-bind="props.cnf">
+<v-toolbar v-bind="props.cnf">
   <StChildrenHelper v-for="(element, index) in props.chldrn||[]"
     :element="element"
     :key="index"

@@ -1,6 +1,5 @@
 <script>
 
-import  SdCopy  from './Structure/SdCopy.vue';
 import  SdRoot from './Structure/SdRoot';
 import  SdDrw from './Structure/SdDrw.vue';
 import  SdTlb from './Structure/SdTlb.vue';
@@ -12,7 +11,7 @@ export default {
       SdDrw,
       SdTlb,
       SdFtr,
-      SdCopy
+
     },
      _siteo_config: {},
      _plugins: {},
@@ -46,11 +45,6 @@ export default {
             _n:'SdFtr',
             _p: {
               
-              height:'auto',
-              absolute:true,
-              inset:true,
-              dark:true,
-              color: 'primary darken-4',
             }
           }
         ].map(function(element){

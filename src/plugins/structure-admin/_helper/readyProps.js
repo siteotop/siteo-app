@@ -40,7 +40,7 @@ export const readyPropClassForContainer = {
 export const readyPropClassForLayout = {
   $comp: 'PropClass',
 //  allow: ['padding', 'margin', 'textalign', 'textcolor'],
-  additional: ['blockwrap', 'layout'],
+  additional: ['blockwrap', 'blocklayout'],
   default: []
 };
 

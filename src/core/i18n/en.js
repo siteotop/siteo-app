@@ -10,7 +10,7 @@ export default {
     m: 'Content',
     rm: 'Read More',
     no_data: 'Данных для отображения нет',
-    copyright:'Website created on app "{template}" and hosted on platform',
+    copyright:'Website created using "{template}" app and hosted on platform {url}',
 
     actions: {
         order: 'Заказать',

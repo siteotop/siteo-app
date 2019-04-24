@@ -1,11 +1,8 @@
 
 
 
-export const rootDesign = {
-  _ch: ['theme', 'SdTlb', 'SdDrw',  'SdRoot', 'SdFtr', 'StAction']
-};
-
 export {theme} from './Template/theme';
+export {rootDesign, SdFtr} from './Template/SdRoot';
 export {SdTlb, SpTlb} from './Template/SdTlb';
 export {StAction} from './Template/StAction';
 export {SpCt, SpLay,  SpPrl, SpImg} from './Template/SpCt';
@@ -34,9 +31,7 @@ export const SdDrw = {
   _ch: ['SpTlb', 'StVerMenu']
 };
 
-export const SdFtr = {
-  _ch: ['SpDvd', 'SpCrd']
-};
+
 
 export const SdLgo = {
 

@@ -8,6 +8,7 @@
     <StChildrenHelper :element="element">
     </StChildrenHelper>
   </component>
+  <slot></slot>
 </v-layout>
 </template>
 
