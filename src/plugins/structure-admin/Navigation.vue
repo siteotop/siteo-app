@@ -74,9 +74,9 @@
 
 import _cloneDeep from 'lodash/cloneDeep';
 import _isEmpty from 'lodash/isEmpty';
-import {zipObjectBeforeSave, unzipObjectBeforeUpate} from './_helper/zipUnzip';
+import {zipObjectBeforeSave, unzipObjectBeforeUpate} from './validator/zipUnzip';
 import SettingsChildren from './Blocks/Children.vue';
-console.log(SettingsChildren);
+
 export default {
   name:'BDesignTemplates',
 

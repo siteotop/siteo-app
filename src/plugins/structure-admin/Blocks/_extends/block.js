@@ -1,5 +1,5 @@
 
-import * as helperComponents from '../../_helper/components';
+import * as helperComponents from '../../validator/components';
 import  _isEqual from 'lodash/isEqual';
 import _cloneDeep from 'lodash/cloneDeep';
 import  _findIndex from 'lodash/findIndex';

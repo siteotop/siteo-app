@@ -104,6 +104,11 @@ export const helperChildren = {
   },
 };
 
+/**
+
+For Props Settings 
+
+*/
 export const helperProps = {
   /**
     @Object inputList is Object like  {nameprop: 1, nameprop:2}
