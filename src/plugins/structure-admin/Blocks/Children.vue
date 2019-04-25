@@ -79,16 +79,16 @@
     </v-layout>
     <v-layout class="justify-center " ><HelperMenuAdd></HelperMenuAdd></v-layout>
 
-    <div v-if="draggable" v-show="startDragg">
-        <v-subheader class="red--text">
-          <AppIcon name="si-delete"></AppIcon> Delete Zone
-        </v-subheader>
-        <draggable
-          style="border:2px dotted red; width:100%; height:64px;"
-          :value="[]"
-          @add="startEvent($event)"
-          :options="{group:'children', filter: '.ignore-elements'}">
-        </draggable>
+  <div v-if="draggable" v-show="startDragg">
+    <v-subheader class="red--text">
+      <AppIcon name="si-delete"></AppIcon> Delete Zone
+    </v-subheader>
+    <draggable
+      style="border:2px dotted red; width:100%; height:64px;"
+      :value="[]"
+      @add="startEvent($event)"
+      :options="{group:'children', filter: '.ignore-elements'}">
+    </draggable>
   </div>
 </div>
 </template>

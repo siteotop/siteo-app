@@ -1,11 +1,9 @@
 <template>
-
 <v-select
    :items="items"
    v-model="valueData"
    :label="$options.$type"
  ></v-select>
-
 </template>
 
 

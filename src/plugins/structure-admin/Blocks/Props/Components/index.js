@@ -186,6 +186,13 @@ export const PropClassBlocklayout = function () {
   }
 }
 
+import {default as Blockflex} from '../../Class/Blockflex.js';
+export const PropClassBlockflex = function () {
+  return {
+    name: Blockflex
+  }
+}
+
 import {default as Gridlist} from '../../Class/GridList.js';
 export const PropClassGridlist = function () {
   return {

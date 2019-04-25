@@ -105,3 +105,13 @@ export const blocklayout = [
   'wrap'
 
 ];
+
+export const blockflex = [
+  'align-self-baseline',
+  'align-self-center',
+  'align-self-end',
+  'align-self-start',
+  'grow',
+  'shrink'
+
+];

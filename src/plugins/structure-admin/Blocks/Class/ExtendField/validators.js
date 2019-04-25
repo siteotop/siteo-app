@@ -97,6 +97,10 @@ const FINDER_FOR_CLASS = {
     return baseClasses.blockwrap.find((element)=>element==className);
   },
 
+  blockflex: function(className) {
+    return baseClasses.blockflex.find((element)=>element==className);
+  },
+
   gridlist: function(className) {
     var regeg_string = new RegExp('grid-list-('+baseClasses.breakpoint.join('|')+')');
     return  regeg_string.test(className);
