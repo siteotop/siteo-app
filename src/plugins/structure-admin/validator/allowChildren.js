@@ -11,6 +11,7 @@ export {SpTtl} from './Template/SpTtl';
 export {SpAvt} from './Template/SpAvt';
 export {SpTxt} from './Template/SpTxt';
 export {SpAlr} from './Template/SpAlr';
+export {SpDlg} from './Template/SpDlg';
 export {SpCrs, SpCrsi} from './Template/SpCrs';
 export {SpExp, SpExpi} from './Template/SpExp';
 export {SpTbs, SpTbsi} from './Template/SpTbs';

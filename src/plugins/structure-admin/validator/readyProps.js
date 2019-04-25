@@ -1,5 +1,6 @@
 
 
+
 export const readyPropClassCommon = {
   $comp: 'PropClass',
 //  allow: ['padding', 'margin', 'textalign', 'textcolor'],
@@ -34,7 +35,7 @@ export const readyPropTransition = {
     'scroll-y-transition',
     'scroll-y-reverse-transition'
   ],
-  default: 'h1'
+  default: 'slide-x-transition'
 }
 
 export const readyPropClassForContainer = {
@@ -54,8 +55,7 @@ export const readyPropClassForLayout = {
 
 export const readyPropClassForFlex = {
   $comp: 'PropClass',
-  additional: ['flexsize'],
-
+  additional: ['flexsize', 'blockflex', 'offset', 'order'],
   default: []
 };
 

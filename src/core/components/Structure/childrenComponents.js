@@ -20,8 +20,10 @@ export default {
   },
 
   render(h, context) {
+
     var createdComponent, name,  element = context.props.element;
-    
+
+    console.log(element);
 
     if (typeof(element) =='string') {
       name = element;

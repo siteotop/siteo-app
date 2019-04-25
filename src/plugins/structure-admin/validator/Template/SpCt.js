@@ -1,7 +1,11 @@
 
+//import {readyPropClassForFlex} from '../readyProps.js';
+
 export const Flx =  {
-   _c: [],
-   _ch: ['SpLay', 'SpTtl', 'StAction', 'SpAvt', 'SpTxt', 'SpImg', 'SpCrd', 'SpCrs', 'SpExp', 'SpTbs', 'SpLst', 'SpTml', 'SpDvd', 'SpAlr']
+   _p: {
+      fc: 'readyPropClassForFlex',
+   },
+   _ch: ['SpLay', 'SpTtl', 'StAction', 'SpAvt', 'SpTxt', 'SpImg', 'SpCrd', 'SpCrs', 'SpExp', 'SpTbs', 'SpLst', 'SpTml', 'SpDvd', 'SpAlr','SpVid', 'SpDlg']
 }
 
 

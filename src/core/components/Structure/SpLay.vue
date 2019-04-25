@@ -5,7 +5,6 @@
    >
     <component
       v-if="element._n!='Flx'"
-      :key="index"
       :is="props.cnf.e||'v-flex'"
       :class="props.cnf.fc"
     >
@@ -16,9 +15,9 @@
     <component
       v-else
       :is="props.cnf.e||'v-flex'"
-      :class="element._c||props.cnf.fc"
+      :class="(element._p? element._p.fc:false)||props.cnf.fc"
     >
-      <StChildrenHelper :element="flxchild" v-for="(flxchild, index) in element._ch||[]" >
+      <StChildrenHelper :element="flxchild" :key="appx" v-for="(flxchild, appx) in element._ch||[]" >
       </StChildrenHelper>
     </component>
   </template>
