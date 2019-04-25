@@ -107,6 +107,22 @@ const FINDER_FOR_CLASS = {
   },
 
   /**
+    @example offset-xs12
+  */
+  offset: function(className) {
+    var regeg_string = new RegExp('offset-('+baseClasses.breakpoint.join('|')+')([0-9]{1,2})');
+    return  regeg_string.test(className);
+  },
+
+  /**
+    @example order-xs12
+  */
+  order: function(className) {
+    var regeg_string = new RegExp('order-('+baseClasses.breakpoint.join('|')+')([0-9]{1,2})');
+    return  regeg_string.test(className);
+  },
+
+  /**
     @example xs2, lg5
   */
   flexsize: function(className) {

@@ -149,6 +149,19 @@ export const PropClassFlexsize = function () {
   }
 }
 
+import {default as Offset} from '../../Class/Offset.js';
+export const PropClassOffset = function () {
+  return {
+    name: Offset
+  }
+}
+
+import {default as Order} from '../../Class/Order.js';
+export const PropClassOrder = function () {
+  return {
+    name: Order
+  }
+}
 
 
 import {default as Padding} from '../../Class/Padding.js';
