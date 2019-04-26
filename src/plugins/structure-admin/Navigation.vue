@@ -122,13 +122,24 @@ export default {
   },
 
   created() {
-
-
-
       this.createTreeStructure(this.mainStructure);
+  },
 
+  beforeMount() {
+    var  $lang = 'en';
+    var self = this;
+    import( /* webpackChunkName: "admin-[request]" */  './i18n/'+$lang).then(function(module) {
+        self.$i18n.mergeLocaleMessage($lang, module.default);
+        console.log( self.$i18n.getLocaleMessage($lang));
+    }).catch((error)=>{
+      console.log(error);
+    })
+  },
 
-
+  beforeDestroy() {
+      var  $lang = 'en';
+      this.$i18n.mergeLocaleMessage($lang, {admin: undefined });
+      console.log( this.$i18n.getLocaleMessage($lang));
   },
 
   watch: {

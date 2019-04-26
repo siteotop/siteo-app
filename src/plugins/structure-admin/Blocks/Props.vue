@@ -1,6 +1,5 @@
 <template>
 <div>
-
   <PropsSettingsList  :objectProps="childrenList" ></PropsSettingsList>
   <HelperMenuAdd></HelperMenuAdd>
 </div>
@@ -24,9 +23,6 @@ export default {
   },
 
   methods: {
-
-
-
      addDefaultValue(name) {
         var index = this.findIndexOfElement(name);
         if (index !==-1) {

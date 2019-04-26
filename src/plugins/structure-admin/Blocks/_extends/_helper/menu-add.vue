@@ -14,7 +14,7 @@
           @click="parent.addComponentToList(name)"
         >
           <v-list-tile-content>
-              <v-list-tile-title>{{name}}</v-list-tile-title>
+              <v-list-tile-title>{{parent.getText(name)}}</v-list-tile-title>
               <v-list-tile-sub-title v-if="parent.issetNames[name]" v-html="parent.issetNames[name].value"></v-list-tile-sub-title>
           </v-list-tile-content>
 

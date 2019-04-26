@@ -164,7 +164,13 @@ export default {
 
      menuAddClose() {
        this.menu = false;
+     },
+
+     getText(name) {
+       return this.$t(`admins.${this.componentName}.${this.typeHelper}.${name}.t`);
      }
+
+
 
   },
 
