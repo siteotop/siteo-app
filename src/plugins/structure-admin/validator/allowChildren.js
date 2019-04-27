@@ -18,6 +18,7 @@ export {SpTbs, SpTbsi} from './Template/SpTbs';
 export {SpLst, LsA, LsC, LsI, LsT} from './Template/SpLst';
 export {SpCrd, Cti, Cte, Cac } from './Template/SpCrd';
 export {SpTml, Tml } from './Template/SpTml';
+export {SdDrw} from './Template/SdDrw';
 
 
 export const SdRoot = {
@@ -29,9 +30,7 @@ export const SdTtl = {
   _c: ['hidden', 'textsize', 'margin', 'padding', 'textcolor']
 }
 
-export const SdDrw = {
-  _ch: ['SpTlb', 'StVerMenu']
-};
+
 
 
 

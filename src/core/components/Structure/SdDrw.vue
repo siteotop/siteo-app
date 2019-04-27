@@ -1,11 +1,31 @@
 <template functional>
 <v-navigation-drawer
-  app
-  fixed
-  :disable-route-watcher="true"
-  :disable-resize-watcher="true"
+ app
+ fixed
+ :disable-route-watcher="true"
+ :disable-resize-watcher="true"
  :value="parent.$store.state.drawer"
- @input="(value)=>parent.$store.state.drawer = value">
+ @input="(value)=>parent.$store.state.drawer = value"
+ v-bind="{
+   clipped: props.cnf.c,
+   dark: props.cnf.d,
+   light: props.cnf.l,
+   disableResizeWatcher: props.cnf.ds,
+   disableRouteWatcher: props.cnf.dr,
+   fixed: props.cnf.f,
+   floating: props.cnf.g,
+   hideOverlay: props.cnf.h,
+   miniVariant: props.cnf.m,
+   miniVariantWidth: props.cnf.mw,
+   mobileBreakPoint: props.cnf.mb,
+   permanent: props.cnf.p,
+   right: props.cnf.r,
+   stateless: props.cnf.s,
+   temporary: props.cnf.t,
+   touchless: props.cnf.o,
+   width: props.cnf.w
+ }"
+ >
   <StChildrenHelper v-for="(element, index) in props.chldrn||[]"
     :element="element"
     :key="index"
