@@ -3,7 +3,7 @@
   :value="props.value"
   :items="possibleClass"
   hide-selected
-  :label="props.forProp||'For class'"
+  :label="parent.getText(props.forProp)||'For class'"
   @input="listeners.input"
   multiple
   outline
