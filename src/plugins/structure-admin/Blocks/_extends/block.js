@@ -166,8 +166,14 @@ export default {
        this.menu = false;
      },
 
-     getText(name) {
-       return this.$t(`admins.${this.componentName}.${this.typeHelper}.${name}.t`);
+     getText(name, type) {
+       type = type?type: 't';
+       if (this.typeHelper=='helperChildren') {
+         return this.$t(`admins.${name}.${type}`);
+       } else {
+         return this.$t(`admins.${this.componentName}.${this.typeHelper}.${name}.${type}`);
+       }
+
      }
 
 

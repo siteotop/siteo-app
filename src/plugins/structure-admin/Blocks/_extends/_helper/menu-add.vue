@@ -1,5 +1,5 @@
 <template functional>
-  <v-menu :value="parent.menu" @input="(value)=>parent.menu=value" lazy z-index="1000" min-width="300" v-show="!parent.startDragg" offset-x class="text-xs-center pb-3">
+  <v-menu :value="parent.menu" @input="(value)=>parent.menu=value" lazy z-index="1000" min-width="350" max-width="350" v-show="!parent.startDragg"  offset-x class="text-xs-center pb-3">
     <v-flex  slot="activator"><v-btn small :color="parent.activeColor" icon >+ </v-btn></v-flex>
     <v-card>
       <v-toolbar dense >
@@ -7,7 +7,8 @@
         <v-spacer></v-spacer>
         <v-btn icon @click="parent.menuAddClose()"><AppIcon  name="si-close"> </AppIcon></v-btn>
       </v-toolbar>
-      <v-list >
+      <v-card-text class="pa-0" :style="{maxHeight:'400px', overflowY: 'scroll'}">
+      <v-list two-line>
         <v-list-tile
           v-for="(name, indexComponent) in parent.childrenComponents()"
           :key="indexComponent"
@@ -15,7 +16,8 @@
         >
           <v-list-tile-content>
               <v-list-tile-title>{{parent.getText(name)}}</v-list-tile-title>
-              <v-list-tile-sub-title v-if="parent.issetNames[name]" v-html="parent.issetNames[name].value"></v-list-tile-sub-title>
+              <v-list-tile-sub-title >{{parent.getText(name, 'd')}}</v-list-tile-sub-title>
+              <v-list-tile-sub-title v-if="false" v-html="parent.issetNames[name].value"></v-list-tile-sub-title>
           </v-list-tile-content>
 
           <v-list-tile-action>
@@ -23,6 +25,7 @@
           </v-list-tile-action>
         </v-list-tile>
       </v-list>
+    </v-card-text>
    </v-card>
   </v-menu>
 </template>
