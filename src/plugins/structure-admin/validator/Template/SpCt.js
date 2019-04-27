@@ -5,7 +5,7 @@ export const Flx =  {
    _p: {
       fc: 'readyPropClassForFlex',
    },
-   _ch: ['SpLay', 'SpTtl', 'StAction', 'SpAvt', 'SpTxt', 'SpImg', 'SpCrd', 'SpCrs', 'SpExp', 'SpTbs', 'SpLst', 'SpTml', 'SpDvd', 'SpAlr','SpVid', 'SpDlg']
+   _ch: ['SpLay', 'SpTtl', 'StAction', 'SpAvt', 'SpTxt', 'SpImg', 'SpCrd', 'SpCrs', 'SpExp', 'SpTbs', 'SpLst', 'SpTml', 'SpDvd', 'SpAlr','SpVid', 'SpDlg', 'SpHtm']
 }
 
 
@@ -41,17 +41,21 @@ export const SpCt = {
       validators: {min:200, max:1000},
       default:300
     },
-    // element  tag
 
 
     //background
     b: 'readyPropColor',
 
-    // image background
-    i: 'readyPropImage',
+
+
 
     cc: 'readyPropClassForContainer',
     ...SpLay._p
+  },
+
+  _d: {
+    // image background
+    i: 'readyPropImage',
   },
 
   _ch: SpLay._ch

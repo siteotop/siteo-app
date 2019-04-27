@@ -2,7 +2,8 @@
 
 export const SpAlr = {
   _d: {
-      d: 'readyPropDataDesc'
+      d: 'readyPropDataDesc',
+      i: 'readyPropIcon',
   },
   _p: {
     //color: props.cnf.c,
@@ -11,7 +12,7 @@ export const SpAlr = {
     //outline: props.cnf.o,
     o: 'readyPropBoolean',
     //icon: props.cnf.i,
-    i: 'readyPropIcon',
+
     //type: props.cnf.t,
     t: {
       $comp: 'PropSelect',

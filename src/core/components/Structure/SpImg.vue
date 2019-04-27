@@ -2,7 +2,7 @@
 <v-img
  fluid
  :height="props.cnf.h||'100%'"
- :src="props.cnf.i"
+ :src="props.cntnt.i"
  :gradient="props.cnf.gr||'to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)'"
  :class="props.cnf.b"
 >

@@ -4,7 +4,7 @@
     v-bind="{
       color: props.cnf.c,
       outline: props.cnf.o,
-      icon: props.cnf.i,
+      icon: props.cntnt.i,
       type: props.cnf.t,
     }"
     :class="data.class"
