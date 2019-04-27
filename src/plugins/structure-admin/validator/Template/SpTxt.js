@@ -9,3 +9,6 @@ export const SpTxt = {
 
 
 }
+
+
+export const SpHtm = SpTxt;

@@ -26,6 +26,7 @@ export {default as SpLst}  from  './SpLst.vue';
 export {default as SpTml}  from  './SpTml.vue';
 export {default as SpAlr}  from  './SpAlr.vue';
 export {default as SpDlg}  from  './SpDlg.vue';
+export {default as SpHtm}  from  './SpHtm.vue';
 
 
 export const StPlugin = 'StPlugin';
