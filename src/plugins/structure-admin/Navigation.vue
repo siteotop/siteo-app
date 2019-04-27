@@ -128,7 +128,7 @@ export default {
   beforeMount() {
     var  $lang = 'en';
     var self = this;
-    import( /* webpackChunkName: "admin-[request]" */  './i18n/'+$lang).then(function(module) {
+    import( /* webpackChunkName: "admin-[request]" */  './i18n/'+$lang+'/').then(function(module) {
         self.$i18n.mergeLocaleMessage($lang, module.default);
         console.log( self.$i18n.getLocaleMessage($lang));
     }).catch((error)=>{
