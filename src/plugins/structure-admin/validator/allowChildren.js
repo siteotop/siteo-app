@@ -6,7 +6,7 @@ export {rootDesign, RFt, RCt} from './Template/RootDesign';
 export {RTb, TTl, SpTlb} from './Template/RTb';
 export {StAction} from './Template/StAction';
 export {PCt, Flx, PLt,  PPx, PIm} from './Template/PCt';
-export {SpVid} from './Template/SpVid';
+export {PYv} from './Template/PYv';
 export {SpTtl} from './Template/SpTtl';
 export {SpAvt, RLg} from './Template/SpAvt';
 export {SpTxt, SpHtm} from './Template/SpTxt';
@@ -31,7 +31,7 @@ export {RDw} from './Template/RDw';
 
 
 export const rootPage = {
-  _ch: ['PCt', 'PPx', 'PIm', 'SpVid', 'SpCrs' ]
+  _ch: ['PCt', 'PPx', 'PIm', 'PYv', 'SpCrs' ]
 };
 
 /**

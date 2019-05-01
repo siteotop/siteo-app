@@ -15,7 +15,7 @@ export {default as PIm}  from  './PageImage.vue';
 export {default as SpTlb}  from  './SpTlb.vue';
 
 
-export {default as SpVid}  from  './SpVid.vue';
+export {default as PYv}  from  './PageVideo.vue';
 export {default as SpTtl}  from  './SpTtl.vue';
 export {default as SpAvt}  from  './SpAvt.vue';
 export {default as SpTxt}  from  './SpTxt.vue';

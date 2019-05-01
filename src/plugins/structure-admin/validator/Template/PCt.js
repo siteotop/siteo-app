@@ -5,7 +5,7 @@ export const Flx =  {
    _p: {
       fc: 'readyPropClassForFlex',
    },
-   _ch: ['PLt', 'SpTtl', 'StAction', 'SpAvt', 'SpTxt', 'PIm', 'SpCrd', 'SpCrs', 'SpExp', 'SpTbs', 'SpLst', 'SpTml', 'SpDvd', 'SpAlr','SpVid', 'SpDlg', 'SpHtm']
+   _ch: ['PLt', 'SpTtl', 'StAction', 'SpAvt', 'SpTxt', 'PIm', 'SpCrd', 'SpCrs', 'SpExp', 'SpTbs', 'SpLst', 'SpTml', 'SpDvd', 'SpAlr','PYv', 'SpDlg', 'SpHtm']
 }
 
 

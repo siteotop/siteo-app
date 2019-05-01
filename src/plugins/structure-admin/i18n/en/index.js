@@ -5,6 +5,7 @@ import {RFt} from './RFt';
 import {RLg} from './RLg';
 import {RTb, TTl, TTg} from './RTb';
 import {PCt, PLt, Flx, PPx, PIm} from './PCt';
+import {PYv} from './PYv';
 export default {
 
   admins: {
@@ -26,6 +27,7 @@ export default {
     Flx,
     PPx,
     PIm,
+    PYv,
     SpTml: {
       helperProps: {
         d: {

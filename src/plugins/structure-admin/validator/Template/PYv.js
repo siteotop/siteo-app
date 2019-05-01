@@ -1,4 +1,4 @@
-export const SpVid = {
+export const PYv = {
   _d: {
     // code video from youtube
     v: {
