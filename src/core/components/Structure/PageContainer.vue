@@ -4,7 +4,7 @@
   tag="section"
   :class="props.cnf.b"
 >
- <v-container :class="props.cnf.cc" :style="{minHeight:props.cnf.h? props.cnf.h+'px': undefined}">
+ <v-container :class="props.cnf.c" :style="{minHeight:props.cnf.h? props.cnf.h+'px': undefined}">
   <SpLay v-bind="props">
   </SpLay>
  </v-container>

@@ -1,5 +1,5 @@
 
-import {SpLay} from './SpCt';
+import {SpLay} from './PCt';
 
 export const SpTbs = {
   _p: {

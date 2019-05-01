@@ -4,6 +4,7 @@ import {RDw} from './RDw';
 import {RFt} from './RFt';
 import {RLg} from './RLg';
 import {RTb, TTl, TTg} from './RTb';
+import {PCt} from './PCt';
 export default {
 
   admins: {
@@ -20,6 +21,7 @@ export default {
     RTb,
     TTl,
     TTg,
+    PCt,
     SpTml: {
       helperProps: {
         d: {

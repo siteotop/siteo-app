@@ -5,7 +5,7 @@ export {theme} from './Template/theme';
 export {rootDesign, RFt} from './Template/RootDesign';
 export {RTb, SpTlb} from './Template/RTb';
 export {StAction} from './Template/StAction';
-export {SpCt, Flx, SpLay,  SpPrl, SpImg} from './Template/SpCt';
+export {PCt, Flx, SpLay,  SpPrl, SpImg} from './Template/PCt';
 export {SpVid} from './Template/SpVid';
 export {SpTtl} from './Template/SpTtl';
 export {SpAvt, RLg} from './Template/SpAvt';
@@ -38,7 +38,7 @@ export const TTl = {
 
 
 export const rootPage = {
-  _ch: ['SpCt', 'SpPrl', 'SpImg', 'SpVid', 'SpCrs' ]
+  _ch: ['PCt', 'SpPrl', 'SpImg', 'SpVid', 'SpCrs' ]
 };
 
 /**

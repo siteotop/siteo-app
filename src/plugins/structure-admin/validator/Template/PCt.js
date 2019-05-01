@@ -16,7 +16,7 @@ export const SpLay = {
 
     lc: 'readyPropClassForLayout',
     fc: 'readyPropClassForFlex',
-    e: {
+    ft: {
       $comp: 'PropSelect',
       items: ['v-flex', 'div'],
       default: 'div'
@@ -33,7 +33,7 @@ export const SpLay = {
 
 
 
-export const SpCt = {
+export const PCt = {
   _p: {
     // height
     h: {
@@ -46,10 +46,7 @@ export const SpCt = {
     //background
     b: 'readyPropColor',
 
-
-
-
-    cc: 'readyPropClassForContainer',
+    c: 'readyPropClassForContainer',
     ...SpLay._p
   },
 
@@ -62,5 +59,5 @@ export const SpCt = {
 }
 
 
-export const SpPrl = SpCt;
-export const SpImg = SpCt;
+export const SpPrl = PCt;
+export const SpImg = PCt;

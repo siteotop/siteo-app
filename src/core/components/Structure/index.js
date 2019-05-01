@@ -8,7 +8,7 @@ export {default as SdMnv} from './SdMnv.vue';
 export {default as SdMnh} from './SdMnh';
 
 // PAGE
-export {default as SpCt}  from  './SpCt.vue';
+export {default as PCt}  from  './PageContainer.vue';
 export {default as SpTlb}  from  './SpTlb.vue';
 export {default as SpPrl}  from  './SpPrl.vue';
 export {default as SpImg}  from  './SpImg.vue';
