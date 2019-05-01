@@ -4,7 +4,7 @@
 
 export {default as SdTtl} from './SdTtl';
 export {default as SdTgl} from './SdTgl';
-export {default as SdLgo}  from './SdLgo.vue';
+export {default as RLg}  from './RootLogo.vue';
 export {default as SdMnv} from './SdMnv.vue';
 export {default as SdMnh} from './SdMnh';
 

@@ -25,3 +25,10 @@ export const SpAvt = {
 
 
 }
+
+//RootLogo
+export const RLg ={
+  //_d: SpAvt._d,
+  _p: SpAvt._p,
+  _c: SpAvt._c,
+}

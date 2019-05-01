@@ -8,7 +8,7 @@ export {StAction} from './Template/StAction';
 export {SpCt, Flx, SpLay,  SpPrl, SpImg} from './Template/SpCt';
 export {SpVid} from './Template/SpVid';
 export {SpTtl} from './Template/SpTtl';
-export {SpAvt} from './Template/SpAvt';
+export {SpAvt, RLg} from './Template/SpAvt';
 export {SpTxt, SpHtm} from './Template/SpTxt';
 export {SpAlr} from './Template/SpAlr';
 export {SpDlg} from './Template/SpDlg';
@@ -34,9 +34,7 @@ export const SdTtl = {
 
 
 
-export const SdLgo = {
 
-}
 
 
 export const rootPage = {
