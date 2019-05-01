@@ -8,7 +8,7 @@
               <v-btn small :disabled="childrenActive" :style="{cursor:'move'}"  icon :class="dragClass">
                 <AppIcon  name="si-drag" > </AppIcon>
               </v-btn>
-              <v-toolbar-title class="pl-0 ml-0 subheading">{{component._n}} {{indexComponent}}
+              <v-toolbar-title class="pl-0 ml-0 subheading">{{getText(component._n) }} 
               </v-toolbar-title>
               <v-spacer></v-spacer>
               <v-btn v-if="component._ch" @click="menuList[indexComponent].activeContent=!menuList[indexComponent].activeContent"  small  icon >
@@ -22,7 +22,7 @@
                 </template>
                 <v-card v-if="menuList[indexComponent].activeEdit" >
                   <v-toolbar tabs dense>
-                    <v-toolbar-title>{{component._n}}</v-toolbar-title>
+                    <v-toolbar-title>{{getText(component._n)}}</v-toolbar-title>
                     <v-spacer></v-spacer>
                     <v-btn icon @click="menuList[indexComponent].activeEdit=false"><AppIcon  name="si-close"> </AppIcon></v-btn>
                     <template v-slot:extension>
