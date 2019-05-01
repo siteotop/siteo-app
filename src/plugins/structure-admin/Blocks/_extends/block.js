@@ -170,8 +170,10 @@ export default {
        type = type?type: 't';
        if (this.typeHelper=='helperChildren') {
          return this.$t(`admins.${name}.${type}`);
+       } else if (this.typeHelper=='helperClass') {
+         return this.$t(`admins.ClassTitles.${name}.${type}`);
        } else {
-         return this.$t(`admins.${this.componentName}.${this.typeHelper}.${name}.${type}`);
+          return this.$t(`admins.${this.componentName}.${this.typeHelper}.${name}.${type}`);
        }
 
      }
