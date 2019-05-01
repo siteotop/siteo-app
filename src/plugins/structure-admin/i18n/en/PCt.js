@@ -63,3 +63,9 @@ export const PPx = {
   d: 'Parallax container'
 
 }
+
+export const PIm = {
+  ...PCt,
+  t: 'Image',
+  d: 'Image container'
+}

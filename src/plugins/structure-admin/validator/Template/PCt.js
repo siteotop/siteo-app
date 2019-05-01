@@ -5,7 +5,7 @@ export const Flx =  {
    _p: {
       fc: 'readyPropClassForFlex',
    },
-   _ch: ['PLt', 'SpTtl', 'StAction', 'SpAvt', 'SpTxt', 'SpImg', 'SpCrd', 'SpCrs', 'SpExp', 'SpTbs', 'SpLst', 'SpTml', 'SpDvd', 'SpAlr','SpVid', 'SpDlg', 'SpHtm']
+   _ch: ['PLt', 'SpTtl', 'StAction', 'SpAvt', 'SpTxt', 'PIm', 'SpCrd', 'SpCrs', 'SpExp', 'SpTbs', 'SpLst', 'SpTml', 'SpDvd', 'SpAlr','SpVid', 'SpDlg', 'SpHtm']
 }
 
 
@@ -60,4 +60,4 @@ export const PCt = {
 
 // PageParallax
 export const PPx = PCt;
-export const SpImg = PCt;
+export const PIm = PCt;
