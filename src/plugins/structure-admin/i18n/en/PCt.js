@@ -1,5 +1,33 @@
 
 
+export const PLt = {
+  t: 'Layout',
+  d: 'Layout for flexbox',
+  helperProps: {
+    lc: {
+      t: 'Layout class',
+      d: ''
+    },
+    fc: {
+      t: 'Flex class',
+      d: ''
+    },
+    ft: {
+      t: 'Flex tag',
+      d: ''
+    }
+  }
+}
+
+export const Flx = {
+  t: 'Flex box',
+  d: 'Flex element for <Layout>',
+  helperProps: {
+    fc: PLt.helperProps.fc
+  }
+
+}
+
 export const PCt = {
  t: 'Container',
  d: 'Container for page. Use <section> tag',
@@ -16,18 +44,7 @@ export const PCt = {
       t: 'Container class',
       d: ''
     },
-    lc: {
-      t: 'Layout class',
-      d: ''
-    },
-    fc: {
-      t: 'Flex class',
-      d: ''
-    },
-    ft: {
-      t: 'Flex tag',
-      d: ''
-    }
+    ...PLt.helperProps
 
 
   },

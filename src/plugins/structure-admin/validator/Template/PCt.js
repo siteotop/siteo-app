@@ -5,12 +5,12 @@ export const Flx =  {
    _p: {
       fc: 'readyPropClassForFlex',
    },
-   _ch: ['SpLay', 'SpTtl', 'StAction', 'SpAvt', 'SpTxt', 'SpImg', 'SpCrd', 'SpCrs', 'SpExp', 'SpTbs', 'SpLst', 'SpTml', 'SpDvd', 'SpAlr','SpVid', 'SpDlg', 'SpHtm']
+   _ch: ['PLt', 'SpTtl', 'StAction', 'SpAvt', 'SpTxt', 'SpImg', 'SpCrd', 'SpCrs', 'SpExp', 'SpTbs', 'SpLst', 'SpTml', 'SpDvd', 'SpAlr','SpVid', 'SpDlg', 'SpHtm']
 }
 
 
 
-export const SpLay = {
+export const PLt = {
 
   _p: {
 
@@ -47,7 +47,7 @@ export const PCt = {
     b: 'readyPropColor',
 
     c: 'readyPropClassForContainer',
-    ...SpLay._p
+    ...PLt._p
   },
 
   _d: {
@@ -55,7 +55,7 @@ export const PCt = {
     i: 'readyPropImage',
   },
 
-  _ch: SpLay._ch
+  _ch: PLt._ch
 }
 
 

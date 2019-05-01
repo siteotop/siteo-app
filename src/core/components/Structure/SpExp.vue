@@ -7,8 +7,8 @@
     <template v-slot:header>
       <div v-if="element._d">{{element._d.t}}</div>
     </template>
-    <SpLay v-if="element._ch" v-bind="{cnf: element._p||{}, chldrn:element._ch}">
-    </SpLay>
+    <PLt v-if="element._ch" v-bind="{cnf: element._p||{}, chldrn:element._ch}">
+    </PLt>
   </v-expansion-panel-content>
 </v-expansion-panel>
 </template>

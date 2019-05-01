@@ -1,4 +1,4 @@
-import {SpLay} from './PCt';
+import {PLt} from './PCt';
 
 export const SpCrs = {
   _p: {
@@ -25,13 +25,13 @@ export const SpCrsi = {
   _p: {
     trn: 'readyPropTransition',
     rtrn: 'readyPropTransition',
-    ...SpLay._p,
+    ...PLt._p,
   },
 
   _d: {
     i: 'readyPropImage',
   },
 
-  _ch: SpLay._ch
+  _ch: PLt._ch
 
 }

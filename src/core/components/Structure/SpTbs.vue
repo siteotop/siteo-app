@@ -18,8 +18,8 @@
         reverseTransition: element._p.rtrn
       }:{}"
   >
-  <SpLay v-if="element._ch" v-bind="{cnf: element._p||{}, chldrn:element._ch}">
-  </SpLay>
+  <PLt v-if="element._ch" v-bind="{cnf: element._p||{}, chldrn:element._ch}">
+  </PLt>
   </v-tab-item>
 </v-tabs>
 </template>

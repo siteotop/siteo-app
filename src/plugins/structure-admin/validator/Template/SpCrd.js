@@ -5,8 +5,8 @@ export const SpCrd = {
     cc: 'readyPropClassCommon'
   },
   _c: ['background'],
-  //_ch: ['SpLay', 'SpTtl', 'StAction', 'SpAvt', 'SpTxt', 'SpImg']
-  _ch: ['Cti', 'Cte', 'Cac', 'SpLay', 'SpImg']
+  //_ch: ['PLt', 'SpTtl', 'StAction', 'SpAvt', 'SpTxt', 'SpImg']
+  _ch: ['Cti', 'Cte', 'Cac', 'PLt', 'SpImg']
 
 }
 

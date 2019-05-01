@@ -1,5 +1,5 @@
 
-import {SpLay} from './PCt';
+import {PLt} from './PCt';
 
 export const SpTbs = {
   _p: {
@@ -28,13 +28,13 @@ export const SpTbsi = {
   _p: {
     trn: 'readyPropTransition',
     rtrn: 'readyPropTransition',
-    ...SpLay._p,
+    ...PLt._p,
   },
 
   _d: {
     t: 'readyPropDataTitle'
   },
 
-  _ch: SpLay._ch
+  _ch: PLt._ch
 
 }

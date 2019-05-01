@@ -7,8 +7,8 @@
  :class="props.cnf.b"
 >
 <v-container :class="props.cnf.cc" :style="{height:props.cnf.h? props.cnf.h+'px': undefined}">
-  <SpLay v-bind="props">
-  </SpLay>
+  <PLt v-bind="props">
+  </PLt>
 </v-container>
 </v-img>
 </template>

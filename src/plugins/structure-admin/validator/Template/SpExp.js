@@ -1,5 +1,5 @@
 
-import {SpLay} from './PCt';
+import {PLt} from './PCt';
 
 export const SpExp = {
   _p: {
@@ -18,13 +18,13 @@ export const SpExp = {
 
 export const SpExpi = {
   _p: {
-    ...SpLay._p,
+    ...PLt._p,
   },
 
   _d: {
     t: 'readyPropDataTitle'
   },
 
-  _ch: SpLay._ch
+  _ch: PLt._ch
 
 }

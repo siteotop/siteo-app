@@ -9,8 +9,8 @@
           reverseTransition: element._p.rtrn
         }:{}"
     >
-    <SpLay v-bind="{cnf: element._p||{}, chldrn:element._ch}">
-    </SpLay>
+    <PLt v-bind="{cnf: element._p||{}, chldrn:element._ch}">
+    </PLt>
   </v-carousel-item>
  </v-carousel>
 </template>

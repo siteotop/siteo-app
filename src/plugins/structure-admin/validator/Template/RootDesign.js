@@ -1,4 +1,4 @@
-import {SpLay} from './PCt';
+import {PLt} from './PCt';
 
 
 export const rootDesign = {
@@ -20,8 +20,8 @@ export const RFt = {
       //color
       c: 'readyPropColor',
 
-      ...SpLay._p,
+      ...PLt._p,
     },
 
-    _ch: SpLay._ch
+    _ch: PLt._ch
 };
