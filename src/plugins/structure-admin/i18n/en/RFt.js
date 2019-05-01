@@ -1,5 +1,5 @@
 
-export const SdFtr = {
+export const RFt = {
   t: 'Footer',
   d: 'Footer for app',
   helperProps: {

@@ -2,10 +2,10 @@ import {SpLay} from './SpCt';
 
 
 export const rootDesign = {
-  _ch: ['theme', 'SdTlb', 'RDw',  'SdRoot', 'SdFtr', 'StAction']
+  _ch: ['theme', 'SdTlb', 'RDw',  'RCt', 'RFt', 'StAction']
 };
 
-export const SdFtr = {
+export const RFt = {
     _p: {
       //absolute
       a: 'readyPropBoolean',

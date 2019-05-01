@@ -1,16 +1,16 @@
 <script>
 
-import  SdRoot from './Structure/SdRoot';
+import  RCt from './Structure/RootContent';
 import  RDw from './Structure/RootDrawer.vue';
 import  SdTlb from './Structure/SdTlb.vue';
-import  SdFtr from './Structure/SdFtr.vue';
+import  RFt from './Structure/RootFooter.vue';
 
 export default {
     components: {
-      SdRoot,
+      RCt,
       RDw,
       SdTlb,
-      SdFtr,
+      RFt,
 
     },
      _siteo_config: {},
@@ -39,9 +39,9 @@ export default {
                 dark: true
               }
           },
-          'SdRoot',
+          'RCt',
           {
-            _n:'SdFtr',
+            _n:'RFt',
             _p: {
 
             }

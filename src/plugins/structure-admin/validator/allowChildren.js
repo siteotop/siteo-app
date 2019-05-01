@@ -2,7 +2,7 @@
 
 
 export {theme} from './Template/theme';
-export {rootDesign, SdFtr} from './Template/SdRoot';
+export {rootDesign, RFt} from './Template/RootDesign';
 export {SdTlb, SpTlb} from './Template/SdTlb';
 export {StAction} from './Template/StAction';
 export {SpCt, Flx, SpLay,  SpPrl, SpImg} from './Template/SpCt';
@@ -21,7 +21,7 @@ export {SpTml, Tml } from './Template/SpTml';
 export {RDw} from './Template/RDw';
 
 
-export const SdRoot = {
+export const RCt = {
 
 };
 

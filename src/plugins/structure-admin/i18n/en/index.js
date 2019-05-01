@@ -1,12 +1,12 @@
 
 import {RDw} from './RDw';
-import {SdFtr} from './SdFtr';
+import {RFt} from './RFt';
 import {RLg} from './RLg';
 export default {
 
   admins: {
     RDw,
-    SdFtr,
+    RFt,
     RLg,
     SpTml: {
       helperProps: {
