@@ -41,11 +41,11 @@ export const RTb = {
 }
 
 export const TTl = {
-  t: 'Title website',
-  d: '',
+  t: 'Title',
+  d: 'Website title',
 }
 
 export const TTg = {
-  t: 'Toogle Drawer',
-  d: '',
+  t: 'Toogle',
+  d: 'Toogle for <Drawer>',
 }

@@ -7,13 +7,19 @@ import {RTb, TTl, TTg} from './RTb';
 export default {
 
   admins: {
+    theme: {
+      t: 'Colors for theme'
+    },
+    RCt: {
+      t: 'Content'
+    },
     ClassTitles,
     RDw,
     RFt,
     RLg,
     RTb,
     TTl,
-    TTg, 
+    TTg,
     SpTml: {
       helperProps: {
         d: {
