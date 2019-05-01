@@ -18,7 +18,6 @@ export default {
 
      data() {
           return {
-           startdrawer: false,
            mobile: true
           }
      },
@@ -44,7 +43,7 @@ export default {
           {
             _n:'SdFtr',
             _p: {
-              
+
             }
           }
         ].map(function(element){
