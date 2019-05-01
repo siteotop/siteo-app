@@ -2,14 +2,14 @@
 
 import  RCt from './Structure/RootContent';
 import  RDw from './Structure/RootDrawer.vue';
-import  SdTlb from './Structure/SdTlb.vue';
+import  RTb from './Structure/RootToolbar.vue';
 import  RFt from './Structure/RootFooter.vue';
 
 export default {
     components: {
       RCt,
       RDw,
-      SdTlb,
+      RTb,
       RFt,
 
     },
@@ -32,20 +32,9 @@ export default {
 
         [
           'RDw',
-          {
-            _n:'SdTlb',
-            _p:{
-                color: 'primary',
-                dark: true
-              }
-          },
+          'RTb',
           'RCt',
-          {
-            _n:'RFt',
-            _p: {
-
-            }
-          }
+          'RFt'
         ].map(function(element){
          return  h('StChildrenHelper', {props: {element:element, defDesign:true }});
        })

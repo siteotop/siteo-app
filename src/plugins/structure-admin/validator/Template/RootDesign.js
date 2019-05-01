@@ -2,7 +2,7 @@ import {SpLay} from './SpCt';
 
 
 export const rootDesign = {
-  _ch: ['theme', 'SdTlb', 'RDw',  'RCt', 'RFt', 'StAction']
+  _ch: ['theme', 'RTb', 'RDw',  'RCt', 'RFt', 'StAction']
 };
 
 export const RFt = {

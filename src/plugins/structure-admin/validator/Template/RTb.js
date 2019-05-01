@@ -1,21 +1,21 @@
 
-export const SdTlb = {
+export const RTb = {
   _p: {
-      height: {
+      h: {
         $comp: 'PropHeight',
         validators: {min:30, max:80},
         default:48
       },
 
-      dark: 'readyPropBoolean',
+      d: 'readyPropBoolean',
 
-      clippedLeft: 'readyPropBoolean',
+      l: 'readyPropBoolean',
 
-      clippedRight: 'readyPropBoolean',
+      r: 'readyPropBoolean',
 
-      dense: 'readyPropBoolean',
+      e: 'readyPropBoolean',
 
-      color: {
+      c: {
         $comp: 'PropColor',
         default: 'primary'
       }
@@ -25,4 +25,4 @@ export const SdTlb = {
   _ch: ['SdTtl', 'SdTgl', 'RLg', 'StAction', 'VSpacer', 'SpDvv', 'StHorMenu']
 };
 
-export const SpTlb = SdTlb;
+export const SpTlb = RTb;

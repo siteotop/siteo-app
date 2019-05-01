@@ -3,7 +3,7 @@
 
 export {theme} from './Template/theme';
 export {rootDesign, RFt} from './Template/RootDesign';
-export {SdTlb, SpTlb} from './Template/SdTlb';
+export {RTb, SpTlb} from './Template/RTb';
 export {StAction} from './Template/StAction';
 export {SpCt, Flx, SpLay,  SpPrl, SpImg} from './Template/SpCt';
 export {SpVid} from './Template/SpVid';

@@ -1,5 +1,13 @@
 <template functional>
-<v-toolbar app v-bind="props.cnf">
+<v-toolbar app v-bind="{
+    height: props.cnf.h,
+    dark: props.cnf.d,
+    clippedLeft: props.cnf.l,
+    clippedRight: props.cnf.r,
+    dense: props.cnf.e,
+    color: props.cnf.c||'primary'
+
+  }">
   <StChildrenHelper v-for="(element, index) in props.chldrn||[]"
     :element="element"
     :key="index"
@@ -7,7 +15,6 @@
   </StChildrenHelper>
 </v-toolbar>
 </template>
-
 <script>
 
 /**
