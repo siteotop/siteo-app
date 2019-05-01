@@ -39,3 +39,13 @@ export const RTb = {
 
   }
 }
+
+export const TTl = {
+  t: 'Title website',
+  d: '',
+}
+
+export const TTg = {
+  t: 'Toogle Drawer',
+  d: '',
+}

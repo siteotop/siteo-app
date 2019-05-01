@@ -22,7 +22,7 @@ export const RTb = {
 
   },
   _c: ['elevation'],
-  _ch: ['SdTtl', 'SdTgl', 'RLg', 'StAction', 'VSpacer', 'SpDvv', 'StHorMenu']
+  _ch: ['TTl', 'TTg', 'RLg', 'StAction', 'VSpacer', 'SpDvv', 'StHorMenu']
 };
 
 export const SpTlb = RTb;

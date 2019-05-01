@@ -3,7 +3,7 @@ import {ClassTitles} from './ClassTitles';
 import {RDw} from './RDw';
 import {RFt} from './RFt';
 import {RLg} from './RLg';
-import {RTb} from './RTb';
+import {RTb, TTl, TTg} from './RTb';
 export default {
 
   admins: {
@@ -12,6 +12,8 @@ export default {
     RFt,
     RLg,
     RTb,
+    TTl,
+    TTg, 
     SpTml: {
       helperProps: {
         d: {

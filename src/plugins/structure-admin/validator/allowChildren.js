@@ -26,7 +26,7 @@ export const RCt = {
 };
 
 
-export const SdTtl = {
+export const TTl = {
   _c: ['hidden', 'textsize', 'margin', 'padding', 'textcolor']
 }
 
