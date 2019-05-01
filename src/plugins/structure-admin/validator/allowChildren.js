@@ -18,7 +18,7 @@ export {SpTbs, SpTbsi} from './Template/SpTbs';
 export {SpLst, LsA, LsC, LsI, LsT} from './Template/SpLst';
 export {SpCrd, Cti, Cte, Cac } from './Template/SpCrd';
 export {SpTml, Tml } from './Template/SpTml';
-export {SdDrw} from './Template/SdDrw';
+export {RDw} from './Template/RDw';
 
 
 export const SdRoot = {

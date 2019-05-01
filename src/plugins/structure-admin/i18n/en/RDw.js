@@ -1,6 +1,6 @@
 
-
-export const SdDrw = {
+//RootDrawer
+export const RDw = {
   t: 'Drawer',
   d: 'Description drawer',
   helperProps: {

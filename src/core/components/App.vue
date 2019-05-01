@@ -1,14 +1,14 @@
 <script>
 
 import  SdRoot from './Structure/SdRoot';
-import  SdDrw from './Structure/SdDrw.vue';
+import  RDw from './Structure/RootDrawer.vue';
 import  SdTlb from './Structure/SdTlb.vue';
 import  SdFtr from './Structure/SdFtr.vue';
 
 export default {
     components: {
       SdRoot,
-      SdDrw,
+      RDw,
       SdTlb,
       SdFtr,
 
@@ -31,7 +31,7 @@ export default {
         return h('v-app',
 
         [
-          'SdDrw',
+          'RDw',
           {
             _n:'SdTlb',
             _p:{

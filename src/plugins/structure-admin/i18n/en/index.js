@@ -1,11 +1,11 @@
 
-import {SdDrw} from './SdDrw';
+import {RDw} from './RDw';
 import {SdFtr} from './SdFtr';
 import {RLg} from './RLg';
 export default {
 
   admins: {
-    SdDrw,
+    RDw,
     SdFtr,
     RLg,
     SpTml: {
