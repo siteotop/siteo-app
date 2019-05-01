@@ -11,17 +11,19 @@ export {default as SdMnh} from './SdMnh';
 export {default as PCt}  from  './PageContainer.vue';
 export {default as PPx}  from  './PageParallax.vue';
 export {default as PIm}  from  './PageImage.vue';
+export {default as PYv}  from  './PageVideo.vue';
+export {default as PCs}  from  './PageCarusel.vue';
 
 export {default as SpTlb}  from  './SpTlb.vue';
 
 
-export {default as PYv}  from  './PageVideo.vue';
+
 export {default as SpTtl}  from  './SpTtl.vue';
 export {default as SpAvt}  from  './SpAvt.vue';
 export {default as SpTxt}  from  './SpTxt.vue';
 
 export {default as SpCrd}  from  './SpCrd.vue';
-export {default as SpCrs}  from  './SpCrs.vue';
+
 export {default as SpExp}  from  './SpExp.vue';
 export {default as SpTbs}  from  './SpTbs.vue';
 export {default as SpLst}  from  './SpLst.vue';
