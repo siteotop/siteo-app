@@ -9,7 +9,7 @@ export const Flx =  {
 }
 
 
-
+// PageLayout
 export const PLt = {
 
   _p: {
@@ -32,7 +32,7 @@ export const PLt = {
 
 
 
-
+// PageContainer
 export const PCt = {
   _p: {
     // height
@@ -58,6 +58,6 @@ export const PCt = {
   _ch: PLt._ch
 }
 
-
-export const SpPrl = PCt;
+// PageParallax
+export const PPx = PCt;
 export const SpImg = PCt;

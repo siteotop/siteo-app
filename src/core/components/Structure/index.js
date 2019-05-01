@@ -9,8 +9,10 @@ export {default as SdMnh} from './SdMnh';
 
 // PAGE
 export {default as PCt}  from  './PageContainer.vue';
+export {default as PPx}  from  './PageParallax.vue';
+
 export {default as SpTlb}  from  './SpTlb.vue';
-export {default as SpPrl}  from  './SpPrl.vue';
+
 export {default as SpImg}  from  './SpImg.vue';
 export {default as SpVid}  from  './SpVid.vue';
 export {default as SpTtl}  from  './SpTtl.vue';

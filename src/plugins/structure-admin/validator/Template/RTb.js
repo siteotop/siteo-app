@@ -25,4 +25,8 @@ export const RTb = {
   _ch: ['TTl', 'TTg', 'RLg', 'StAction', 'VSpacer', 'SpDvv', 'StHorMenu']
 };
 
+export const TTl = {
+  _c: ['hidden', 'textsize', 'margin', 'padding', 'textcolor']
+}
+
 export const SpTlb = RTb;

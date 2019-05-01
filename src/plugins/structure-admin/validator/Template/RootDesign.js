@@ -1,8 +1,13 @@
 import {PLt} from './PCt';
 
 
+
 export const rootDesign = {
   _ch: ['theme', 'RTb', 'RDw',  'RCt', 'RFt', 'StAction']
+};
+
+export const RCt = {
+
 };
 
 export const RFt = {

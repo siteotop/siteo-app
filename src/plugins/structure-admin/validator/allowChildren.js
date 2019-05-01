@@ -2,10 +2,10 @@
 
 
 export {theme} from './Template/theme';
-export {rootDesign, RFt} from './Template/RootDesign';
-export {RTb, SpTlb} from './Template/RTb';
+export {rootDesign, RFt, RCt} from './Template/RootDesign';
+export {RTb, TTl, SpTlb} from './Template/RTb';
 export {StAction} from './Template/StAction';
-export {PCt, Flx, PLt,  SpPrl, SpImg} from './Template/PCt';
+export {PCt, Flx, PLt,  PPx, SpImg} from './Template/PCt';
 export {SpVid} from './Template/SpVid';
 export {SpTtl} from './Template/SpTtl';
 export {SpAvt, RLg} from './Template/SpAvt';
@@ -21,14 +21,7 @@ export {SpTml, Tml } from './Template/SpTml';
 export {RDw} from './Template/RDw';
 
 
-export const RCt = {
 
-};
-
-
-export const TTl = {
-  _c: ['hidden', 'textsize', 'margin', 'padding', 'textcolor']
-}
 
 
 
@@ -38,7 +31,7 @@ export const TTl = {
 
 
 export const rootPage = {
-  _ch: ['PCt', 'SpPrl', 'SpImg', 'SpVid', 'SpCrs' ]
+  _ch: ['PCt', 'PPx', 'SpImg', 'SpVid', 'SpCrs' ]
 };
 
 /**

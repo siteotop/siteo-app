@@ -55,3 +55,11 @@ export const PCt = {
     }
   }
 }
+
+
+export const PPx = {
+  ...PCt,
+  t: 'Parallax',
+  d: 'Parallax container'
+
+}
