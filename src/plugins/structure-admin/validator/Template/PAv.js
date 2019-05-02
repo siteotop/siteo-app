@@ -1,5 +1,5 @@
 
-export const SpAvt = {
+export const PAv = {
   _d: {
     // title content
     p: 'readyPropImage',
@@ -28,7 +28,7 @@ export const SpAvt = {
 
 //RootLogo
 export const RLg ={
-  //_d: SpAvt._d,
-  _p: SpAvt._p,
-  _c: SpAvt._c,
+  //_d: PAv._d,
+  _p: PAv._p,
+  _c: PAv._c,
 }

@@ -1,6 +1,8 @@
 
 
-export const SAv = {
+export const PAv = {
+  t: 'Avatar',
+  d: 'Image like avatar, logo,  or icon',  
   helperData: {
     p: {
       t: 'Image',
@@ -18,13 +20,8 @@ export const SAv = {
       t: 'Title text',
       d: 'Text for avatar'
     }
-  }
-}
+  },
 
-// RootLogo
-export const RLg = {
-  t: 'Logo',
-  d: 'Website logo',
   helperProps: {
     t:{
       t: 'Tile',
@@ -38,7 +35,14 @@ export const RLg = {
       t: 'Color',
       d: 'Background color'
     },
-  },
+  }
+}
 
+// RootLogo
+export const RLg = {
+  t: 'Logo',
+  d: 'Website logo',
+
+  helperProps:  PAv.helperProps
 
 }

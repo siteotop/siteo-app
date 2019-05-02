@@ -5,7 +5,7 @@ export const SpCrd = {
     cc: 'readyPropClassCommon'
   },
   _c: ['background'],
-  //_ch: ['PLt', 'PTl', 'PAc', 'SpAvt', 'SpTxt', 'PIm']
+  //_ch: ['PLt', 'PTl', 'PAc', 'PAv', 'SpTxt', 'PIm']
   _ch: ['Cti', 'Cte', 'Cac', 'PLt', 'PIm']
 
 }
@@ -13,15 +13,15 @@ export const SpCrd = {
 // v-card-title
 export const Cti = {
   _c: ['background'],
-  _ch: ['PTl', 'SpTxt', 'SpAvt', 'VSpacer']
+  _ch: ['PTl', 'SpTxt', 'PAv', 'VSpacer']
 }
 
 // v-card-
 export const Cte = {
-  _ch: ['SpTxt', 'SpAvt']
+  _ch: ['SpTxt', 'PAv']
 }
 
 
 export const Cac = {
-  _ch: ['SpTxt', 'SpAvt']
+  _ch: ['SpTxt', 'PAv']
 }

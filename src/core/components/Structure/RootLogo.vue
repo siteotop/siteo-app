@@ -1,6 +1,6 @@
 <template functional>
 <StChildrenHelper :element="{
-    _n : 'SpAvt',
+    _n : 'PAv',
     _p: {
        t:props.cnf.t,
        s: props.cnf.s||'38',
