@@ -16,7 +16,7 @@
            }
          },
          {
-           _n: 'SpTxt',
+           _n: 'PTx',
            _d: {
              t: description
            },

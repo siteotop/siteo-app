@@ -24,5 +24,5 @@ export const Tml={
 
   },
 
-  _ch: ['PLt',  'PAv', 'SpTxt', 'PIm', 'SpCrd', 'PCs', 'SpExp', 'SpTbs', 'SpLst', 'PAl', 'PYv', 'SpDlg']
+  _ch: ['PLt',  'PAv', 'PTx', 'PIm', 'SpCrd', 'PCs', 'SpExp', 'SpTbs', 'SpLst', 'PAl', 'PYv', 'SpDlg']
 }

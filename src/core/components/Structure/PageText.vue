@@ -1,7 +1,7 @@
 <template functional>
-<p :class="data.class">
+<div :class="data.class">
   {{props.cntnt.t}}
-</p>
+</div>
 </template>
 <script>
 export default {

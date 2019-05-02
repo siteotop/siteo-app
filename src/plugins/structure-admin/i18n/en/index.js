@@ -6,7 +6,7 @@ import {RLg, PAv} from './RLg';
 import {RTb, TTl, TTg} from './RTb';
 import {PCt, PLt, Flx, PPx, PIm} from './PCt';
 import {PYv} from './PYv';
-import {PTl} from './PTl';
+import {PTl, PTx} from './PTl';
 import {PAc} from './PAc';
 import {PAl} from './PAl';
 import {PCs, CSe} from './PCs';
@@ -36,6 +36,7 @@ export default {
     PCs,
     CSe,
     PTl,
+    PTx,
     PAc,
     PAl,
     SpTml: {

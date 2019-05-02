@@ -1,5 +1,5 @@
 
-export const SpTxt = {
+export const PTx = {
   _d: {
     // title content
     t: 'readyPropDataDesc'
@@ -11,4 +11,4 @@ export const SpTxt = {
 }
 
 
-export const SpHtm = SpTxt;
+export const SpHtm = PTx;

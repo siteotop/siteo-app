@@ -20,7 +20,7 @@ export {default as SpTlb}  from  './SpTlb.vue';
 
 export {default as PTl}  from  './PageTitle.vue';
 export {default as PAv}  from  './PageAvatar.vue';
-export {default as SpTxt}  from  './SpTxt.vue';
+export {default as PTx}  from  './PageText.vue';
 
 export {default as SpCrd}  from  './SpCrd.vue';
 

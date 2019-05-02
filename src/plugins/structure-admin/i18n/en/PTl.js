@@ -16,3 +16,16 @@ export const PTl = {
     }
   }
 }
+
+
+//PageText
+export const PTx = {
+  t: 'Text',
+  d: 'Plain text without html. One paragraph text',
+  helperData: {
+    t:  {
+      t: 'Text',
+      d: 'Text or description'
+    }
+  }
+}

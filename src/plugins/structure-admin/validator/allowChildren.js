@@ -7,7 +7,7 @@ export {PCt, Flx, PLt,  PPx, PIm} from './Template/PCt';
 export {PYv} from './Template/PYv';
 export {PTl} from './Template/PTl';
 export {PAv, RLg} from './Template/PAv';
-export {SpTxt, SpHtm} from './Template/SpTxt';
+export {PTx, SpHtm} from './Template/PTx';
 export {PAl} from './Template/PAl';
 export {SpDlg} from './Template/SpDlg';
 export {PCs, CSe} from './Template/PCs';
