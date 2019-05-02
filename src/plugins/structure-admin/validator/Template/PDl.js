@@ -1,7 +1,7 @@
 
 
-
-export const SpDlg = {
+//PageDialog
+export const PDl = {
 
   _p: {
     //dark
@@ -10,19 +10,19 @@ export const SpDlg = {
     l:'readyPropBoolean',
 
     //fullWidth
-    fw: 'readyPropBoolean',
+    f: 'readyPropBoolean',
 
     //fullscreen
-    fs:'readyPropBoolean',
+    e:'readyPropBoolean',
 
     //hideOverlay
-    ho:'readyPropBoolean',
+    h:'readyPropBoolean',
 
     //lazy
-    lz:'readyPropBoolean',
+    z:'readyPropBoolean',
 
     //maxWidth
-    mw:{
+    m:{
       $comp: 'PropHeight',
       validators: {min:200, max:1500},
       default:500
@@ -42,10 +42,10 @@ export const SpDlg = {
     p: 'readyPropBoolean',
 
     //scrollable
-    sc: 'readyPropBoolean',
+    s: 'readyPropBoolean',
 
     //transition
-    tr: 'readyPropTransition',
+    r: 'readyPropTransition',
 
     //width
     w:{

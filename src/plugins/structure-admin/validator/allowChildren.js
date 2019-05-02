@@ -9,7 +9,7 @@ export {PTl} from './Template/PTl';
 export {PAv, RLg} from './Template/PAv';
 export {PTx, SpHtm} from './Template/PTx';
 export {PAl} from './Template/PAl';
-export {SpDlg} from './Template/SpDlg';
+export {PDl} from './Template/PDl';
 export {PCs, CSe} from './Template/PCs';
 export {SpExp, SpExpi} from './Template/SpExp';
 export {SpTbs, SpTbsi} from './Template/SpTbs';

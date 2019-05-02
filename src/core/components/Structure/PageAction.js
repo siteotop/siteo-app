@@ -10,7 +10,7 @@ export default {
     if (!context.props.cntnt){
       context.props.cntnt = {};
     }
-    var cnf = context.props.cnf;
+    var cnf = context.props.cnf||{};
     return h('v-btn',
       {
         props: {

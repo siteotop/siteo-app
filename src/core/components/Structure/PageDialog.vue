@@ -4,15 +4,15 @@
   v-bind="{
       dark: cnf.d,
       light: cnf.l,
-      fullWidth: cnf.fw,
-      fullscreen: cnf.fs,
-      hideOverlay: cnf.ho,
-      lazy: cnf.lz,
-      maxWidth:cnf.mw,
+      fullWidth: cnf.f,
+      fullscreen: cnf.e,
+      hideOverlay: cnf.h,
+      lazy: cnf.z,
+      maxWidth:cnf.m,
       origin: cnf.o,
       persistent: cnf.p,
-      scrollable: cnf.sc,
-      transition: cnf.tr,
+      scrollable: cnf.s,
+      transition: cnf.r,
       width: cnf.w,
     }"
 >
@@ -36,6 +36,7 @@ export default {
         return [];
       }
     },
+
     cnf: {
       default: function () {
         return {};

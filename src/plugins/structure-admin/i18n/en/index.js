@@ -9,6 +9,7 @@ import {PYv} from './PYv';
 import {PTl, PTx} from './PTl';
 import {PAc} from './PAc';
 import {PAl} from './PAl';
+import {PDl} from './PDl';
 import {PCs, CSe} from './PCs';
 import {PCd, Cti, Cte, Cac} from './PCd';
 export default {
@@ -40,6 +41,7 @@ export default {
     PTx,
     PAc,
     PAl,
+    PDl,
     PCd, Cti, Cte, Cac,
     SpTml: {
       helperProps: {
