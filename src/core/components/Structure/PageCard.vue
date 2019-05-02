@@ -38,8 +38,25 @@ const cardStructure = {
 export default {
   functional: true,
   render(h, context) {
-
-    return h('v-card', {props: context.props.cnf||{}, class: context.data.class}, [
+    var cnf = context.props.cnf;
+    return h('v-card', {
+      props: {
+        color: cnf.c,
+        dark: cnf.d,
+        light: cnf.l,
+        elevation: cnf.e,
+        flat: cnf.f,
+        height: cnf.h,
+        hover: cnf.o,
+        img: cnf.i,
+        maxHeight: cnf.m,
+        maxWidth: cnf.a,
+        minHeight: cnf.n,
+        minWidth: cnf.w,
+        raised: cnf.r,
+        tile: cnf.t,
+        width: cnf.q
+      }, class: context.data.class}, [
         (context.props.chldrn||[]).map(function(element){
           return h('StChildrenHelper', {props: {element:element, structure: cardStructure}})
         })

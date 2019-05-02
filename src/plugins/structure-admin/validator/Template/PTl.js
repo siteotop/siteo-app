@@ -9,7 +9,7 @@ export const PTl = {
     h:'readyPropTagH'
   },
 
-  _c: ['textsize', 'textcolor', 'textalign', 'texttransform'],
+  _c: ['textsize', 'textcolor', 'textalign', 'texttransform', 'textweight', 'textwrap'],
 
 
 }

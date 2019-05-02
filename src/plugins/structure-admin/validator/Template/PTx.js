@@ -5,7 +5,7 @@ export const PTx = {
     t: 'readyPropDataDesc'
   },
 
-  _c: ['textsize', 'textcolor', 'textalign', 'texttransform'],
+  _c: ['textsize', 'textcolor', 'textalign', 'texttransform', 'textweight', 'textwrap'],
 
 
 }

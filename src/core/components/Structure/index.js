@@ -22,7 +22,7 @@ export {default as PTl}  from  './PageTitle.vue';
 export {default as PAv}  from  './PageAvatar.vue';
 export {default as PTx}  from  './PageText.vue';
 
-export {default as SpCrd}  from  './SpCrd.vue';
+export {default as PCd}  from  './PageCard.vue';
 
 export {default as SpExp}  from  './SpExp.vue';
 export {default as SpTbs}  from  './SpTbs.vue';

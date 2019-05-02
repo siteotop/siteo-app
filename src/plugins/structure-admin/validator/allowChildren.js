@@ -14,7 +14,7 @@ export {PCs, CSe} from './Template/PCs';
 export {SpExp, SpExpi} from './Template/SpExp';
 export {SpTbs, SpTbsi} from './Template/SpTbs';
 export {SpLst, LsA, LsC, LsI, LsT} from './Template/SpLst';
-export {SpCrd, Cti, Cte, Cac } from './Template/SpCrd';
+export {PCd, Cti, Cte, Cac } from './Template/PCd';
 export {SpTml, Tml } from './Template/SpTml';
 export {RDw} from './Template/RDw';
 

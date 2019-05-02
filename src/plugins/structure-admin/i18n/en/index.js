@@ -10,6 +10,7 @@ import {PTl, PTx} from './PTl';
 import {PAc} from './PAc';
 import {PAl} from './PAl';
 import {PCs, CSe} from './PCs';
+import {PCd, Cti, Cte, Cac} from './PCd';
 export default {
 
   admins: {
@@ -39,6 +40,7 @@ export default {
     PTx,
     PAc,
     PAl,
+    PCd, Cti, Cte, Cac,
     SpTml: {
       helperProps: {
         d: {

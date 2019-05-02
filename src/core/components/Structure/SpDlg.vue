@@ -23,7 +23,7 @@
  </template>
 
  <template v-if="chldrn.length&&chldrn[1]" #default>
-   <StChildrenHelper v-if="chldrn[1]._n=='SpCrd'" :element="chldrn[1]">
+   <StChildrenHelper v-if="chldrn[1]._n=='PCd'" :element="chldrn[1]">
    </StChildrenHelper>
 </template>
 </v-dialog>
