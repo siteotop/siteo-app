@@ -8,7 +8,7 @@ export {PYv} from './Template/PYv';
 export {PTl} from './Template/PTl';
 export {SpAvt, RLg} from './Template/SpAvt';
 export {SpTxt, SpHtm} from './Template/SpTxt';
-export {SpAlr} from './Template/SpAlr';
+export {PAl} from './Template/PAl';
 export {SpDlg} from './Template/SpDlg';
 export {PCs, CSe} from './Template/PCs';
 export {SpExp, SpExpi} from './Template/SpExp';

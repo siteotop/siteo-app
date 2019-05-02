@@ -8,6 +8,7 @@ import {PCt, PLt, Flx, PPx, PIm} from './PCt';
 import {PYv} from './PYv';
 import {PTl} from './PTl';
 import {PAc} from './PAc';
+import {PAl} from './PAl';
 import {PCs, CSe} from './PCs';
 export default {
 
@@ -35,6 +36,7 @@ export default {
     CSe,
     PTl,
     PAc,
+    PAl,
     SpTml: {
       helperProps: {
         d: {

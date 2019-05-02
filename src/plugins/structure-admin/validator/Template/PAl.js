@@ -1,6 +1,6 @@
 
 
-export const SpAlr = {
+export const PAl = {
   _d: {
       d: 'readyPropDataDesc',
       i: 'readyPropIcon',
