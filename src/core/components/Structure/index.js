@@ -25,7 +25,7 @@ export {default as PTx}  from  './PageText.vue';
 export {default as PCd}  from  './PageCard.vue';
 
 export {default as PEx}  from  './PageExpansion.vue';
-export {default as SpTbs}  from  './SpTbs.vue';
+export {default as PTb}  from  './PageTabs.vue';
 export {default as PLs}  from  './PageList.vue';
 export {default as SpTml}  from  './SpTml.vue';
 export {default as PAl}  from  './PageAlert.vue';

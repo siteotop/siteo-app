@@ -12,7 +12,7 @@ export {PAl} from './Template/PAl';
 export {PDl} from './Template/PDl';
 export {PCs, CSe} from './Template/PCs';
 export {PEx, Exi} from './Template/PEx';
-export {SpTbs, SpTbsi} from './Template/SpTbs';
+export {PTb, TCt} from './Template/PTb';
 export {PLs, LAv, LCt, LAc, LTi} from './Template/PLs';
 export {PCd, Cti, Cte, Cac } from './Template/PCd';
 export {SpTml, Tml } from './Template/SpTml';
