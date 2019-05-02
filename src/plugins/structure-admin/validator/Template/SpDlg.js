@@ -54,7 +54,7 @@ export const SpDlg = {
       default:500
     },
   },
-  _ch: ['StAction', 'SpCrd']
+  _ch: ['PAc', 'SpCrd']
 
 
 }

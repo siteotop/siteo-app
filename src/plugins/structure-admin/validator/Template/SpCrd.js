@@ -5,7 +5,7 @@ export const SpCrd = {
     cc: 'readyPropClassCommon'
   },
   _c: ['background'],
-  //_ch: ['PLt', 'PTl', 'StAction', 'SpAvt', 'SpTxt', 'PIm']
+  //_ch: ['PLt', 'PTl', 'PAc', 'SpAvt', 'SpTxt', 'PIm']
   _ch: ['Cti', 'Cte', 'Cac', 'PLt', 'PIm']
 
 }

@@ -18,7 +18,7 @@
                   <div v-else class="align-center ">
                         <BPrice class="headline font-weight-bold " :discount="props._di" :price="props._p"></BPrice>
                       <div>
-                        <StAction  :to="props._to"></StAction>
+                        <PAc  :to="props._to"></PAc>
 
                       </div>
                   </div>
@@ -31,7 +31,7 @@
 
               <BPrice class="headline font-weight-medium" :discount="props._di" :price="props._p"></BPrice>
             <v-spacer></v-spacer>
-            <StAction :to="props._to" :fab="true" :large="false"></StAction>
+            <PAc :to="props._to" :fab="true" :large="false"></PAc>
 
           </v-card-title>
           <v-card-text>
@@ -53,7 +53,7 @@
             <BPrice :discount="props._di" :price="props._p"></BPrice>
           </v-card-text>
           <v-card-actions>
-            <StAction :to="props._to"  :fab="true" :large="false"></StAction>
+            <PAc :to="props._to"  :fab="true" :large="false"></PAc>
           </v-card-actions>
     </template>
   </b-horizontal>

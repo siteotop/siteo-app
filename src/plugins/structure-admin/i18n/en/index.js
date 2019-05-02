@@ -7,6 +7,7 @@ import {RTb, TTl, TTg} from './RTb';
 import {PCt, PLt, Flx, PPx, PIm} from './PCt';
 import {PYv} from './PYv';
 import {PTl} from './PTl';
+import {PAc} from './PAc';
 import {PCs, CSe} from './PCs';
 export default {
 
@@ -33,6 +34,7 @@ export default {
     PCs,
     CSe,
     PTl,
+    PAc,
     SpTml: {
       helperProps: {
         d: {

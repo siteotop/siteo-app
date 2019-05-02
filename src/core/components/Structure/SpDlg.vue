@@ -18,8 +18,8 @@
 >
 
 <template v-if="chldrn.length" #activator="{ on }">
-  <StAction v-if="chldrn[0]._n=='StAction'"  v-on="on" v-bind="{cntnt:chldrn[0]._d, cnf: chldrn[0]._p }">
-  </StAction>
+  <PAc v-if="chldrn[0]._n=='PAc'"  v-on="on" v-bind="{cntnt:chldrn[0]._d, cnf: chldrn[0]._p }">
+  </PAc>
  </template>
 
  <template v-if="chldrn.length&&chldrn[1]" #default>
