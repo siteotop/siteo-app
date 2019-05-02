@@ -11,7 +11,7 @@ export {PTx, SpHtm} from './Template/PTx';
 export {PAl} from './Template/PAl';
 export {PDl} from './Template/PDl';
 export {PCs, CSe} from './Template/PCs';
-export {SpExp, SpExpi} from './Template/SpExp';
+export {PEx, Exi} from './Template/PEx';
 export {SpTbs, SpTbsi} from './Template/SpTbs';
 export {SpLst, LsA, LsC, LsI, LsT} from './Template/SpLst';
 export {PCd, Cti, Cte, Cac } from './Template/PCd';
