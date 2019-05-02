@@ -7,7 +7,7 @@
       },
       _ch: [
          {
-           _n: 'SpTtl',
+           _n: 'PTl',
            _d: {
              t: title
            },

@@ -1,5 +1,5 @@
 
-export const SpTtl = {
+export const PTl = {
   _d: {
     // title content
     t: 'readyPropDataTitle'

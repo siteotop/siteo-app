@@ -5,7 +5,7 @@ export {RTb, TTl, SpTlb} from './Template/RTb';
 export {StAction} from './Template/StAction';
 export {PCt, Flx, PLt,  PPx, PIm} from './Template/PCt';
 export {PYv} from './Template/PYv';
-export {SpTtl} from './Template/SpTtl';
+export {PTl} from './Template/PTl';
 export {SpAvt, RLg} from './Template/SpAvt';
 export {SpTxt, SpHtm} from './Template/SpTxt';
 export {SpAlr} from './Template/SpAlr';

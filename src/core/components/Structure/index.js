@@ -18,7 +18,7 @@ export {default as SpTlb}  from  './SpTlb.vue';
 
 
 
-export {default as SpTtl}  from  './SpTtl.vue';
+export {default as PTl}  from  './PageTitle.vue';
 export {default as SpAvt}  from  './SpAvt.vue';
 export {default as SpTxt}  from  './SpTxt.vue';
 
