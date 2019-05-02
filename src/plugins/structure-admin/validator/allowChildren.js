@@ -13,7 +13,7 @@ export {PDl} from './Template/PDl';
 export {PCs, CSe} from './Template/PCs';
 export {PEx, Exi} from './Template/PEx';
 export {SpTbs, SpTbsi} from './Template/SpTbs';
-export {SpLst, LsA, LsC, LsI, LsT} from './Template/SpLst';
+export {PLs, LAv, LCt, LAc, LTi} from './Template/PLs';
 export {PCd, Cti, Cte, Cac } from './Template/PCd';
 export {SpTml, Tml } from './Template/SpTml';
 export {RDw} from './Template/RDw';

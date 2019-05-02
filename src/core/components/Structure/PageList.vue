@@ -2,7 +2,7 @@
 
 const tileStructure = {
   // avatar
-  LsA: {
+  LAv: {
     functional:true,
     render(h, context) {
        return h('v-list-tile-avatar', [
@@ -11,7 +11,7 @@ const tileStructure = {
     }
   },
   // content
-  LsC: {
+  LCt: {
     functional:true,
     render(h, context) {
        return h('v-list-tile-content', [
@@ -22,7 +22,7 @@ const tileStructure = {
     }
   },
 
-  LsI: {
+  LAc: {
     functional: true,
     render(h, context) {
       return h('v-list-tile-action', [
@@ -37,10 +37,22 @@ const tileStructure = {
 export default {
   functional: true,
   render(h, context) {
-
-    return h('v-list', {props: context.props.cnf||{}, class: context.data.class}, [
+    var cnf = context.props.cnf;
+    return h('v-list', {props: {
+      dense: cnf.d,
+      subheader: cnf.s,
+      threeLine: cnf.t,
+      twoLine: cnf.w,
+      light:cnf.l,
+      dark: cnf.a,
+    }, class: context.data.class}, [
         (context.props.chldrn||[]).map(function(element){
-          return h('v-list-tile', {props: {tag:'li', ...(element._p||{})}, class:element._c} , [
+          var el_c = element._p||{};
+          return h('v-list-tile', {props: {
+            tag:'li',
+            avatar: el_c.a,
+            color: el_c.c
+          }, class:element._c} , [
             (element._ch||[]).map(function(tileElement){
                return h('StChildrenHelper', {props: {element:tileElement, structure: tileStructure}})
             })

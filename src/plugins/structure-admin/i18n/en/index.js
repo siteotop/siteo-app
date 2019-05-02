@@ -12,6 +12,7 @@ import {PAl} from './PAl';
 import {PDl} from './PDl';
 import {PEx, Exi} from './PEx';
 import {PCs, CSe} from './PCs';
+import {PLs, LAv, LCt, LAc, LTi} from './PLs';
 import {PCd, Cti, Cte, Cac} from './PCd';
 export default {
 
@@ -44,6 +45,7 @@ export default {
     PDl,
     PEx, Exi,
     PCd, Cti, Cte, Cac,
+    PLs, LAv, LCt, LAc, LTi,
     SpTml: {
       helperProps: {
         d: {
