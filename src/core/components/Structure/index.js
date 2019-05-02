@@ -30,7 +30,7 @@ export {default as SpLst}  from  './SpLst.vue';
 export {default as SpTml}  from  './SpTml.vue';
 export {default as PAl}  from  './PageAlert.vue';
 export {default as PDl}  from  './PageDialog.vue';
-export {default as SpHtm}  from  './SpHtm.vue';
+export {default as PHt}  from  './PageHtml.vue';
 
 
 export const StPlugin = 'StPlugin';

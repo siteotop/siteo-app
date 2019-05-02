@@ -11,4 +11,4 @@ export const PTx = {
 }
 
 
-export const SpHtm = PTx;
+export const PHt = PTx;

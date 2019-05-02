@@ -29,3 +29,15 @@ export const PTx = {
     }
   }
 }
+
+//PageText
+export const PHt = {
+  t: 'Html block',
+  d: 'Content with html tags',
+  helperData: {
+    t:  {
+      t: 'Html content',
+      d: 'Content with html tags'
+    }
+  }
+}

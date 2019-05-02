@@ -6,7 +6,7 @@ import {RLg, PAv} from './RLg';
 import {RTb, TTl, TTg} from './RTb';
 import {PCt, PLt, Flx, PPx, PIm} from './PCt';
 import {PYv} from './PYv';
-import {PTl, PTx} from './PTl';
+import {PTl, PTx, PHt} from './PTl';
 import {PAc} from './PAc';
 import {PAl} from './PAl';
 import {PDl} from './PDl';
@@ -38,8 +38,7 @@ export default {
     PYv,
     PCs,
     CSe,
-    PTl,
-    PTx,
+    PTl, PTx, PHt,
     PAc,
     PAl,
     PDl,
