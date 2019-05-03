@@ -15,6 +15,7 @@ import {PCs, CSe} from './PCs';
 import {PLs, LAv, LCt, LAc, LTi} from './PLs';
 import {PCd, Cti, Cte, Cac} from './PCd';
 import {PTb, TCt} from './PTb';
+import {PTm, TEp} from './PTm';
 export default {
 
   admins: {
@@ -48,15 +49,7 @@ export default {
     PCd, Cti, Cte, Cac,
     PLs, LAv, LCt, LAc, LTi,
     PTb, TCt,
-    SpTml: {
-      helperProps: {
-        d: {
-          t: 'Title'
-        }
-      }
-    }
-
-
+    PTm, TEp,
   }
 
 

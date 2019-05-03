@@ -15,7 +15,7 @@ export {PEx, Exi} from './Template/PEx';
 export {PTb, TCt} from './Template/PTb';
 export {PLs, LAv, LCt, LAc, LTi} from './Template/PLs';
 export {PCd, Cti, Cte, Cac } from './Template/PCd';
-export {SpTml, Tml } from './Template/SpTml';
+export {PTm, TEp } from './Template/PTm';
 export {RDw} from './Template/RDw';
 
 export const rootPage = {
