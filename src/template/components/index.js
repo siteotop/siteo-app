@@ -1,10 +1,7 @@
 // BLOCKS FOR PAGE
-export {default as BHtmlText} from './Blocks/BHtmlText.vue';
-export {default as BImage} from './Blocks/BImage.vue';
-export {default as BTitle} from './Blocks/BTitle.vue';
-export {default as BList} from './Blocks/BList.vue';
-export {default as BQa} from './Blocks/BQa.vue';
-export {default as BVideo} from './Blocks/BVideo.vue';
+
+
+
 
 export {default as BQuote} from './Blocks/BQuote.vue';
 export {default as BExpert} from './Blocks/BExpert.js';
@@ -19,7 +16,6 @@ export {default as BLinks} from './Blocks/BLinks.vue';
 export {default as BHorizontal} from './Blocks/BHorizontal.vue';
 export {default as BTabs} from './Blocks/BTabs.vue';
 export {default as BPrice} from './Blocks/BPrice.vue';
-export {default as AppDialogAction} from './AppDialogAction';
 //AUTO BLOCKS FOR PAGE
 export {default as WiContacts} from './Widgets/WiContacts.vue';
 export {default as WiLinks} from './Widgets/WiLinks.vue';
