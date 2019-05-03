@@ -40,12 +40,20 @@ export const RAb = {
   }
 }
 
+//toolbar title
 export const TTl = {
   t: 'Title',
   d: 'Website title',
 }
-
+// toolbar toogle
 export const TTg = {
   t: 'Toogle',
   d: 'Toogle for <Drawer>',
+}
+
+
+export const PTr = {
+  t: 'Toolbar',
+  d: 'Toolbar for <card> or <drawer>',
+  helperProps: RAb.helperProps
 }

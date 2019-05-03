@@ -1,6 +1,6 @@
 
 // RootToolbar
-export const RAb = {
+export const PTr = {
   _p: {
       h: {
         $comp: 'PropHeight',
@@ -9,10 +9,6 @@ export const RAb = {
       },
 
       d: 'readyPropBoolean',
-
-      l: 'readyPropBoolean',
-
-      r: 'readyPropBoolean',
 
       e: 'readyPropBoolean',
 
@@ -31,4 +27,14 @@ export const TTl = {
   _c: ['hidden', 'textsize', 'margin', 'padding', 'textcolor']
 }
 
-export const SpTlb = RAb;
+export const  RAb= {
+  p: {
+    //clippedLeft
+    l: 'readyPropBoolean',
+    //clippedRight
+    r: 'readyPropBoolean',
+    ...PTr._p
+  },
+  _c: ['elevation'],
+  _ch: PTr._ch
+}

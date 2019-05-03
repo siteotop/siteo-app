@@ -45,5 +45,5 @@ export const RDw = {
       default:300
     }
   },
-  _ch: ['SpTlb', 'StVerMenu']
+  _ch: ['PTr', 'StVerMenu']
 };
