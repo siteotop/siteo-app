@@ -30,8 +30,8 @@ export const RSp = 'VSpacer';
 
 export const StPlugin = 'StPlugin';
 
-export const SpDvd = 'VDivider'
-export const SpDvv = {
+export const RDh = 'VDivider'
+export const RDv = {
   functional: true,
   render(h) {
     return h('v-divider', {props: {vertical: true}});

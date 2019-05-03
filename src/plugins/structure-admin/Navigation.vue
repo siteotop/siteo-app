@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-navigation-drawer
+      v-if="loadedi18n"
       left
       stateless
       app
@@ -112,6 +113,7 @@ export default {
 
   data() {
     return {
+      loadedi18n: false,
       treeHistory: [],
       historyBlock: false,
       treeComponents: {},
@@ -131,6 +133,7 @@ export default {
     import( /* webpackChunkName: "admin-[request]" */  './i18n/'+$lang+'/').then(function(module) {
         self.$i18n.mergeLocaleMessage($lang, module.default);
         console.log( self.$i18n.getLocaleMessage($lang));
+        self.loadedi18n = true;
     }).catch((error)=>{
       console.log(error);
     })

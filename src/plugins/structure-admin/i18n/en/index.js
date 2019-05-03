@@ -51,6 +51,14 @@ export default {
     RSp: {
       t: 'Spacer',
       d: 'Same <v-spacer>'
+    },
+    RDv: {
+      t: 'Divider Vertical',
+      d: 'Same VDivider with prop vertical'
+    },
+    RDh: {
+      t: 'Divider',
+      d: 'Same VDivider'
     }
   }
 
