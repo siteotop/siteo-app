@@ -3,7 +3,7 @@ import {ClassTitles} from './ClassTitles';
 import {RDw} from './RDw';
 import {RFt} from './RFt';
 import {RLg, PAv} from './RLg';
-import {RTb, TTl, TTg} from './RTb';
+import {RAb, TTl, TTg} from './RAb';
 import {PCt, PLt, Flx, PPx, PIm} from './PCt';
 import {PYv} from './PYv';
 import {PTl, PTx, PHt} from './PTl';
@@ -30,7 +30,7 @@ export default {
     RFt,
     RLg,
     PAv,
-    RTb,
+    RAb,
     TTl,
     TTg,
     PCt,

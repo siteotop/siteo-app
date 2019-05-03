@@ -1,5 +1,6 @@
 
-export const RTb = {
+// RootToolbar
+export const RAb = {
   _p: {
       h: {
         $comp: 'PropHeight',
@@ -22,11 +23,12 @@ export const RTb = {
 
   },
   _c: ['elevation'],
-  _ch: ['TTl', 'TTg', 'RLg', 'PAc', 'VSpacer', 'SpDvv', 'StHorMenu']
+  _ch: ['TTl', 'TTg', 'RLg', 'PAc', 'RSp', 'SpDvv', 'StHorMenu']
 };
 
+//ToolbarTitle
 export const TTl = {
   _c: ['hidden', 'textsize', 'margin', 'padding', 'textcolor']
 }
 
-export const SpTlb = RTb;
+export const SpTlb = RAb;

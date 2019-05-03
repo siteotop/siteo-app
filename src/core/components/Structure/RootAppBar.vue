@@ -1,7 +1,7 @@
 
 <script>
 
-const tlbr = {
+export const ToolbarElements = {
    TTl: {
      functional: true,
      render(h, context) {
@@ -35,7 +35,7 @@ const tlbr = {
 
 
 /**
-Main App toolbar
+Main App toolbar (Future Vuetify 2.0 v-app-bar
 Top Bar Menu in APP, where is logo, site name, and top menu
 */
 
@@ -57,7 +57,7 @@ export default {
         }
     }, [
       (context.props.chldrn||[]).map(function(element){
-        return h('StChildrenHelper', {props: {element:element, structure: tlbr}})
+        return h('StChildrenHelper', {props: {element:element, structure: ToolbarElements}})
       })
     ]);
 

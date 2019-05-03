@@ -2,14 +2,14 @@
 
 import  RCt from './Structure/RootContent';
 import  RDw from './Structure/RootDrawer.vue';
-import  RTb from './Structure/RootToolbar.vue';
+import  RAb from './Structure/RootAppBar.vue';
 import  RFt from './Structure/RootFooter.vue';
 
 export default {
     components: {
       RCt,
       RDw,
-      RTb,
+      RAb,
       RFt,
 
     },
@@ -32,7 +32,7 @@ export default {
 
         [
           'RDw',
-          'RTb',
+          'RAb',
           'RCt',
           'RFt'
         ].map(function(element){
