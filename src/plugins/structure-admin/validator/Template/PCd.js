@@ -55,7 +55,7 @@ export const PCd = {
 // v-card-title
 export const Cti = {
   _c: ['background'],
-  _ch: ['PTl', 'PTx', 'PAv', 'VSpacer']
+  _ch: ['PTl', 'PTx', 'PAv', 'RSp']
 }
 
 // v-card-

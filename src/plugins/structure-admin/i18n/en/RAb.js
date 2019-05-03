@@ -2,7 +2,7 @@
 
 //RootToolbar
 export const RAb = {
-  t: 'Toolbar',
+  t: 'App bar',
   d: 'Toolbar for app (RootToolbar)',
   helperProps: {
 

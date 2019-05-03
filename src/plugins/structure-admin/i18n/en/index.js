@@ -50,6 +50,10 @@ export default {
     PLs, LAv, LCt, LAc, LTi,
     PTb, TCt,
     PTm, TEp,
+    RSp: {
+      t: 'Spacer',
+      d: 'Same <v-spacer>'
+    }
   }
 
 

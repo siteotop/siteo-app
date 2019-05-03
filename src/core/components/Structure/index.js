@@ -24,8 +24,9 @@ export {default as PTm}  from  './PageTimeline.vue';
 export {default as PAl}  from  './PageAlert.vue';
 export {default as PDl}  from  './PageDialog.vue';
 export {default as PHt}  from  './PageHtml.vue';
-export {default as SpTlb}  from  './SpTlb.vue';
+export {default as SpTlb} from  './SpTlb.vue';
 
+export const RSp = 'VSpacer';
 
 export const StPlugin = 'StPlugin';
 
