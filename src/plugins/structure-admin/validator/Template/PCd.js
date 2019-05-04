@@ -65,5 +65,5 @@ export const Cte = {
 
 
 export const Cac = {
-  _ch: ['PTx', 'PAv', 'PAc']
+  _ch: ['PTx', 'PAv', 'RBt']
 }

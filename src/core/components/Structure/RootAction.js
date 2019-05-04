@@ -3,7 +3,7 @@
 export default {
   functional: true,
   render (h, context){
-      return h('PAc', {props: {
+      return h('RBt', {props: {
         cnf: context.props.cnf,
         cntnt: context.props.cntnt
       }});

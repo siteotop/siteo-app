@@ -5,7 +5,7 @@
 
 export {default as RLg}  from './RootLogo.vue';
 export {default as SdMnv} from './SdMnv.vue';
-export {default as SdMnh} from './SdMnh';
+export {default as PMn} from './PageMenu.vue';
 
 // PAGE
 export {default as PCt}  from  './PageContainer.vue';

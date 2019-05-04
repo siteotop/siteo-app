@@ -1,5 +1,5 @@
 // Global Elements
-export {default as PAc} from './Structure/PageAction.js';
+export {default as RBt} from './Structure/RootButton.js';
 export {default as StPlugin} from './Structure/StPlugin.vue';
 export {default as PLt}  from  './Structure/PageLayout.vue';
 export {default as AppIcon} from './Elements/AppIcon';

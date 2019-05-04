@@ -17,12 +17,12 @@
             </v-list-tile-content>
 
             <v-list-tile-action >
-              <PAc :fab="true"
+              <RBt :fab="true"
                 :href="LINK.href"
                 :_at="LINK.title"
                 v-bind="Object.assign({fab:true, large:false} , props.$clp)"
                 >
-              </PAc>
+              </RBt>
 
             </v-list-tile-action>
           </v-list-tile>
@@ -31,9 +31,9 @@
     <v-tooltip top lazy
  v-for="(LINK, index) in  props.items" :key="index">
     <slot v-bind:item="LINK">
-      <PAc slot="activator"
+      <RBt slot="activator"
         v-bind="Object.assign({_at:LINK.title,  href:LINK.href, color:LINK.color, dark: true, siicon:'si-'+LINK.icon  }, props.$clp)"
-        ></PAc>
+        ></RBt>
         <span>{{LINK.title}}</span>
       </slot>
     </v-tooltip>

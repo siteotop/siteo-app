@@ -19,7 +19,7 @@ export const PTr = {
 
   },
   _c: ['elevation'],
-  _ch: ['TTl', 'TTg', 'RLg', 'RAc', 'PAc', 'RSp', 'RDv', 'StHorMenu']
+  _ch: ['TTl', 'TTg', 'RLg', 'RAc', 'RBt', 'RSp', 'RDv', 'StHorMenu']
 };
 
 //ToolbarTitle

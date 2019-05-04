@@ -1,6 +1,6 @@
 /**
   Button for all actions on Siteo
-  Default PAc go to order  /go/order
+  Default RBt go to order  /go/order
   when sombody click to action we call  statistic event
 */
 export default {

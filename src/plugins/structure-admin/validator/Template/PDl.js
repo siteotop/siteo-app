@@ -54,7 +54,7 @@ export const PDl = {
       default:500
     },
   },
-  _ch: ['PAc', 'PCd']
+  _ch: ['RBt', 'PCd']
 
 
 }

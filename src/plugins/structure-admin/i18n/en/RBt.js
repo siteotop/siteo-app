@@ -1,8 +1,8 @@
 
-
-export const PAc = {
-  t:'Action',
-  d:'Action for page',
+//RootButton
+export const RBt = {
+  t:'Button',
+  d:'Button for link or action',
   helperProps: {
     s: {
       t: 'Small',
@@ -113,7 +113,7 @@ export const PAc = {
 export const RAc = {
   t: 'Main Action',
   d: 'Action for App',
-  helperData: PAc.helperData,
-  helperProps: PAc.helperProps,
+  helperData: RBt.helperData,
+  helperProps: RBt.helperProps,
 
 } ;

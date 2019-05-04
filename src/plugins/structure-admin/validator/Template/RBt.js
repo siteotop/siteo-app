@@ -1,6 +1,6 @@
 
-
-export const PAc =  {
+//RootButton
+export const RBt =  {
   _p: {
     s: 'readyPropBoolean',
     l: 'readyPropBoolean',
@@ -39,4 +39,4 @@ export const PAc =  {
   _c: ['padding', 'textsize', 'texttransform']
 }
 
-export const RAc = PAc; 
+export const RAc = RBt;

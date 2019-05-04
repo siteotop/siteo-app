@@ -7,7 +7,7 @@ import {RAb, TTl, TTg, PTr} from './RAb';
 import {PCt, PLt, Flx, PPx, PIm} from './PCt';
 import {PYv} from './PYv';
 import {PTl, PTx, PHt} from './PTl';
-import {PAc, RAc} from './PAc';
+import {RBt, RAc} from './RBt';
 import {PAl} from './PAl';
 import {PDl} from './PDl';
 import {PEx, Exi} from './PEx';
@@ -40,7 +40,7 @@ export default {
     PCs,
     CSe,
     PTl, PTx, PHt,
-    PAc,RAc,
+    RBt,RAc,
     PAl,
     PDl,
     PEx, Exi,
