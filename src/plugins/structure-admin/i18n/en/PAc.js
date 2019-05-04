@@ -109,3 +109,11 @@ export const PAc = {
     },
   }
 }
+
+export const RAc = {
+  t: 'Main Action',
+  d: 'Action for App',
+  helperData: PAc.helperData,
+  helperProps: PAc.helperProps,
+
+} ;

@@ -12,7 +12,7 @@
     }"
 >
  <PLt v-bind="props">
-   <v-flex text-xs-center class="pa-1" >
+   <v-flex xs12 text-xs-center class="pa-1 "  >
     <v-btn target="_blank" :title="parent.$t('copyright', { template: 'siteo', url:'https://siteo.top'})" dark flat href="https://siteo.top"><AppIcon  name="si-logo-grey"></AppIcon>siteo.top </v-btn>
    </v-flex>
  </PLt>

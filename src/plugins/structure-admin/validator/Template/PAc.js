@@ -38,3 +38,5 @@ export const PAc =  {
 
   _c: ['padding', 'textsize', 'texttransform']
 }
+
+export const RAc = PAc; 

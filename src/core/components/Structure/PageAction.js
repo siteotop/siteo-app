@@ -15,7 +15,7 @@ export default {
       {
         props: {
           tag: 'a',
-          color: cnf.c||'primary',
+          color: cnf.c||'secondary',
           small: cnf.s,
           large: cnf.l,
           absolute: cnf.a,
@@ -55,7 +55,7 @@ export default {
 
       [
         context.props.cntnt.i? h('AppIcon', {attrs: {name:context.props.cntnt.i}}):'',
-        (!cnf.f)? (context.props.cntnt.t ||  context.parent.$store.state.appInstance.objectActive.actionText): '',
+        (!cnf.f)? context.props.cntnt.t: '',
       ]
 
     );

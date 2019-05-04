@@ -3,7 +3,7 @@ import {PLt} from './PCt';
 
 
 export const rootDesign = {
-  _ch: ['theme', 'RAb', 'RDw',  'RCt', 'RFt', 'PAc']
+  _ch: ['theme', 'RAb', 'RDw',  'RCt', 'RFt', 'RAc']
 };
 
 export const RCt = {
