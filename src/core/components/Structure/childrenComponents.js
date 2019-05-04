@@ -37,26 +37,34 @@ export default {
         createdComponent = name;
     }
 
-    var props = element._p;
-    var cls = element._c;
-    var cld = element._ch;
 
-    if (context.props.defDesign) {
-      var design = context.parent.$store.state.appInstance.objectActive.design[name]||false;
-      if (design!==false) {
-        props = {...(design._p||{}), ...(element._p||{})};
-        cls = element._c? element._c: design._c;
-        cld = element._ch? element._ch: design._ch;
-      }
+    var _p, _c, _ch, _d;
+
+    var design = context.parent.$store.state.appInstance.objectActive.design[name];
+    if (design) {
+        if (design._p) {
+          _p = {...design._p, ...(element._p||{})};
+        }
+        if (design._d) {
+          _d = {...design._d, ...(element._d||{})};
+        }
+        _c = element._c? element._c: design._c;
+        _ch = element._ch? element._ch: design._ch;
+    } else {
+       _p = element._p;
+       _c = element._c;
+       _d = element._d;
+       _ch = element._ch;
     }
+
 
     return h(createdComponent, {
      props: {
-       cnf: props||{},
-       cntnt: element._d||{},
-       chldrn: cld
+       cnf: _p||{},
+       cntnt: _d||{},
+       chldrn: _ch||[]
      },
-     class: cls
+     class: _c
 
    })
 
