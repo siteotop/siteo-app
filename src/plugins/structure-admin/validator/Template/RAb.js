@@ -19,7 +19,7 @@ export const PTr = {
 
   },
   _c: ['elevation'],
-  _ch: ['TTl', 'TTg', 'RLg', 'RAc', 'RBt', 'RSp', 'RDv', 'StHorMenu']
+  _ch: ['TTl', 'TTg', 'RLg', 'RAc', 'RBt', 'RSp', 'RDv', 'RMn']
 };
 
 //ToolbarTitle
@@ -28,7 +28,7 @@ export const TTl = {
 }
 
 export const  RAb= {
-  p: {
+  _p: {
     //clippedLeft
     l: 'readyPropBoolean',
     //clippedRight

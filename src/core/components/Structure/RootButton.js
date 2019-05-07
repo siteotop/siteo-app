@@ -11,11 +11,13 @@ export default {
       context.props.cntnt = {};
     }
     var cnf = context.props.cnf||{};
+
+
     return h('v-btn',
       {
         props: {
           tag: 'a',
-          color: cnf.c||'secondary',
+          color: cnf.c,
           small: cnf.s,
           large: cnf.l,
           absolute: cnf.a,
@@ -55,7 +57,7 @@ export default {
 
       [
         context.props.cntnt.i? h('AppIcon', {attrs: {name:context.props.cntnt.i}}):'',
-        (!cnf.f)? context.props.cntnt.t: '',
+        (!cnf.f&&!cnf.i)? context.props.cntnt.t: '',
       ]
 
     );

@@ -40,6 +40,10 @@ export const RBt = {
       t: 'Dark',
       d: ''
     },
+    i: {
+      t: 'Icon',
+      d: ''
+    },
     g: {
       t: 'Light',
       d: ''
@@ -117,3 +121,25 @@ export const RAc = {
   helperProps: RBt.helperProps,
 
 } ;
+
+
+// PageMenu
+export const RMn = {
+ t: 'Menu ',
+ d: 'Menu with buttons',
+ helperProps: {
+   ti: {
+     t: 'Toolbar Menu',
+     d: 'When menu is using in toolbar'
+
+   },
+   ...RBt.helperProps
+ }
+}
+
+// MenuButton
+export const MBt = {
+  t: 'Menu Button',
+  d: 'Data for menu position ',
+  helperData: RBt.helperData
+}

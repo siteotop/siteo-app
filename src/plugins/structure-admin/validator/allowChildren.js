@@ -2,7 +2,7 @@
 export {theme} from './Template/theme';
 export {rootDesign, RFt, RCt} from './Template/RootDesign';
 export {RAb, TTl, PTr} from './Template/RAb';
-export {RBt, RAc} from './Template/RBt';
+export {RBt, RAc, RMn, MBt} from './Template/RBt';
 export {PCt, Flx, PLt,  PPx, PIm} from './Template/PCt';
 export {PYv} from './Template/PYv';
 export {PTl} from './Template/PTl';

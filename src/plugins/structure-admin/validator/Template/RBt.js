@@ -11,12 +11,15 @@ export const RBt =  {
     e: 'readyPropBoolean',
     r: 'readyPropBoolean',
     d: 'readyPropBoolean',
+    i: 'readyPropBoolean',
     g: 'readyPropBoolean',
     y: 'readyPropBoolean',
     x: 'readyPropBoolean',
     f: 'readyPropBoolean',
     j: 'readyPropBoolean',
     v: 'readyPropBoolean',
+    u: 'readyPropBoolean',
+    m: 'readyPropBoolean',
     w: 'readyPropBoolean',
     q: {
       $comp: 'PropSelect',
@@ -36,7 +39,24 @@ export const RBt =  {
     h: 'readyPropDataTitle',
   },
 
-  _c: ['padding', 'textsize', 'texttransform']
+  _c: ['padding', 'textsize', 'texttransform', 'background', 'textcolor', 'hidden']
 }
 
 export const RAc = RBt;
+
+
+// PageMenu
+export const RMn = {
+  _p: {
+    ti:  'readyPropBoolean',
+    ...RBt._p
+  } ,
+  _c: RBt._c,
+  _ch: ['MBt']
+}
+
+// MenuButton
+export const MBt = {
+   _c: RBt._c,
+   _d: RBt._d,
+}

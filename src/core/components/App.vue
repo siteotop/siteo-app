@@ -5,6 +5,7 @@ import  RDw from './Structure/RootDrawer.vue';
 import  RAb from './Structure/RootAppBar.vue';
 import  RFt from './Structure/RootFooter.vue';
 import  RAc from './Structure/RootAction';
+import  RMn from './Structure/RootMenu.vue';
 
 export default {
     components: {
@@ -13,6 +14,7 @@ export default {
       RAb,
       RFt,
       RAc,
+      RMn
 
     },
      _siteo_config: {},
