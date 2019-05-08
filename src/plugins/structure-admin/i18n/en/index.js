@@ -10,6 +10,7 @@ import {PTl, PTx, PHt} from './PTl';
 import {RBt, RAc, RMn, MBt} from './RBt';
 import {PAl} from './PAl';
 import {PDl} from './PDl';
+import {PDm} from './PDm';
 import {PEx, Exi} from './PEx';
 import {PCs, CSe} from './PCs';
 import {PLs, LAv, LCt, LAc, LTi} from './PLs';
@@ -43,6 +44,7 @@ export default {
     RBt,RAc,RMn, MBt,
     PAl,
     PDl,
+    PDm,
     PEx, Exi,
     PCd, Cti, Cte, Cac,
     PLs, LAv, LCt, LAc, LTi,

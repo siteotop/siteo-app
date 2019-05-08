@@ -64,8 +64,8 @@ export default {
        cntnt: _d||{},
        chldrn: _ch||[]
      },
-     class: _c
-
+     class: _c,
+     on:  context.listeners
    })
 
 

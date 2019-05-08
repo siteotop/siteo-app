@@ -52,7 +52,7 @@ export const RMn = {
     ...RBt._p
   } ,
   _c: RBt._c,
-  _ch: ['MBt']
+  _ch: ['MBt', 'PDm']
 }
 
 // MenuButton

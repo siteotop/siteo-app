@@ -5,6 +5,7 @@
 
 export {default as RLg}  from './RootLogo.vue';
 export {default as SdMnv} from './SdMnv.vue';
+export {default as PDm} from './PageDialogMenu';
 
 
 // PAGE
@@ -32,6 +33,13 @@ export const StPlugin = 'StPlugin';
 
 export const RDh = 'VDivider'
 export const RDv = {
+  functional: true,
+  render(h) {
+    return h('v-divider', {props: {vertical: true}});
+  }
+};
+
+export const CSl = {
   functional: true,
   render(h) {
     return h('v-divider', {props: {vertical: true}});

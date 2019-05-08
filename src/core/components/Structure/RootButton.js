@@ -45,14 +45,14 @@ export default {
           rel: cnf.q,
         },
         class: context.data.class,
-        on: {
+        on: context.listeners/* {
           click: function (event) {
              if (context.listeners&&context.listeners.click) {
                context.listeners.click(event);
              }
             console.log(' here send statistic');
           }
-        }
+        }*/
       },
 
       [
