@@ -47,10 +47,10 @@
          <v-card-text>
           <v-layout>
                 <v-flex>
-                   <code>{{JSON.stringify(treeComponents, null, 4)}}</code>
+                   <code>{{JSON.stringify(treeComponents, null, 1)}}</code>
                 </v-flex>
                 <v-flex>
-                  <code>{{JSON.stringify(zippedDesign, null, 4)}}</code>
+                  <code>{{JSON.stringify(zippedDesign, null, 1)}}</code>
                 </v-flex>
             </v-layout>
           </v-card-text>
@@ -107,6 +107,13 @@ export default {
       type: Function
     },
 
+    // call eventChangeStructure when start
+    loadWhenStart: {
+      type: Boolean,
+      default: false
+
+    }
+
 
 
   },
@@ -146,6 +153,13 @@ export default {
   },
 
   watch: {
+
+    loadWhenStart: function (newValue, oldValue) {
+       if (newValue && newValue!== oldValue) {
+            this.eventChangeStructure(this.zippedDesign);
+       }
+     },
+
     treeComponents: {
         handler: function(treeComponents, oldTree) {
           this.eventChangeStructure(this.zippedDesign);
