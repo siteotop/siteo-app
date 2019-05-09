@@ -6,7 +6,6 @@
       stateless
       app
       v-model="drawerSettings">
-
     <v-toolbar>
       <v-toolbar-title>Settings</v-toolbar-title>
       <v-spacer></v-spacer>
