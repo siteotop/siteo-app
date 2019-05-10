@@ -5,10 +5,11 @@ export {PAl} from './PAlert';
 export {PAv, RLg} from './PAvatar';
 export {PCd, Cti, Cte, Cac } from './PCard';
 export {PCs, CSe} from './PCarusel';
+export {PCt, Flx, PLt,  PPx, PIm} from './PContainer';
 
 export {RAb, TTl, PTr} from './RAb';
 export {RBt, RAc, RMn, MBt} from './RBt';
-export {PCt, Flx, PLt,  PPx, PIm} from './PCt';
+
 export {PYv} from './PYv';
 export {PTl} from './PTl';
 

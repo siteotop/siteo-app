@@ -12,7 +12,7 @@ export {default as PAl}  from  './PAlert.vue';
 export {default as PAv}  from  './PAvatar.vue';
 export {default as PCd}  from  './PCard.vue';
 export {default as PCs}  from  './PCarusel.vue';
-export {default as PCt}  from  './PageContainer.vue';
+export {default as PCt}  from  './PContainer.vue';
 export {default as PPx}  from  './PageParallax.vue';
 export {default as PIm}  from  './PageImage.vue';
 export {default as PYv}  from  './PageVideo.vue';

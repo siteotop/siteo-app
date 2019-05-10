@@ -1,5 +1,5 @@
 
-import {PLt} from './PCt';
+import {PLt} from './PContainer';
 
 //PageTabs
 export const PTb = {

@@ -1,4 +1,4 @@
-import {PLt} from './PCt';
+import {PLt} from './PContainer';
 
 //PageCarusel
 export const PCs = {
