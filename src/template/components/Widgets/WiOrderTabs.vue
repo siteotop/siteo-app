@@ -17,7 +17,7 @@
 
      </v-tab>
 
-     <v-tab-item v-if="onlyTabs" lazy
+     <v-tab-item v-if="onlyTabs" eager
        v-for="(BComponent) in getTabsActions"  :key="BComponent.index"
       >
        <component :is="BComponent.$$" ></component>

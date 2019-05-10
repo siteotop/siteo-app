@@ -21,11 +21,13 @@
 
          <v-card-text>
            <v-text-field id="shareElementInputLink"   outline :value="canonicalUrl" readonly>
+             <template v-slot:append>
+               <v-btn :icon="$vuetify.breakpoint.xs"   @click="copyText()" >
+                 <AppIcon name="si-copy"></AppIcon>
+                  <span v-if="!$vuetify.breakpoint.xs">{{$t('copy')}}</span>
+               </v-btn>
+            </template>
 
-             <v-btn :icon="$vuetify.breakpoint.xs"   @click="copyText()" slot="append">
-               <AppIcon name="si-copy"></AppIcon>
-                <span v-if="!$vuetify.breakpoint.xs">{{$t('copy')}}</span>
-             </v-btn>
 
            </v-text-field>
 
@@ -45,8 +47,7 @@
            <v-spacer></v-spacer>
            <v-btn
              color="primary"
-             flat
-             @click="shareWindow = false"
+             text @click="shareWindow = false"
            >
              {{$t('close')}}
            </v-btn>
@@ -62,7 +63,7 @@
         Link Copied
       <v-btn
         dark
-        flat
+        text
         @click="snackbar = false"
       >
         {{$t('close')}}

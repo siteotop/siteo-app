@@ -36,10 +36,13 @@
             <v-btn :disabled="!formActive" @click="onSubmit">{{submitElement.label}}</v-btn>
           </v-flex>
           <v-flex>
-            <v-tooltip top lazy>
-              <v-btn slot="activator" icon :disabled="!formActive" @click="leaveform = resetForm">
-                <AppIcon name='si-clear'></AppIcon>
-              </v-btn>
+            <v-tooltip top eager>
+              <template v-slot:activator="{ on }">
+                <v-btn v-on="on" icon :disabled="!formActive" @click="leaveform = resetForm">
+                  <AppIcon name='si-clear'></AppIcon>
+                </v-btn>
+              </template>
+
               <span>{{$t('commonForm.reset')}}</span>
             </v-tooltip>
           </v-flex>

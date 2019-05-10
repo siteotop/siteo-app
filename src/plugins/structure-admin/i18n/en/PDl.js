@@ -33,9 +33,9 @@ export const PDl = {
       d: ''
     },
 
-    //lazy
+    //eager
     z:{
-      t: 'lazy',
+      t: 'eager',
       d: ''
     },
 

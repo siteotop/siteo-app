@@ -6,7 +6,7 @@ export default {
 
       var $pluginOptions = $coreVue._siteo_config['siteo-plugin-bus'];
 
-      var $vuetify =  Vue.prototype.$vuetify;
+      console.log('bus inherit')
 
       function listener(event) {
           console.log(event)
@@ -26,8 +26,9 @@ export default {
             if (recieved.storeEvent && recieved.storeEventName ) {
               $coreVue.store[recieved.storeEvent](recieved.storeEventName, recieved.data);
 
-              if (recieved.data.design&&recieved.data.design.theme)  {
-                   $vuetify.theme = recieved.data.design.theme.colors;
+              if (recieved.data.design)  {
+                  var $vuetify =  $coreVue.vuetify.framework.theme.vueInstance.$vuetify;
+                  $coreVue.updateVuetifyOptions($vuetify, recieved.data.design.theme);
               }
 
             }

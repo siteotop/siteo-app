@@ -4,29 +4,31 @@
        v-model="modal"
        :return-value.sync="valueData"
        persistent
-       lazy
+       eager
        full-width
        width="290px"
      >
-       <v-text-field
-         slot="activator"
-         v-bind="vComp"
-         :value="currentDateInput"
-         name="date"
-         mask="##/##/####"
-         return-masked-value
-         clearable
+      <template v-slot:activator="{ on }">
+        <v-text-field
+        v-on="on"
+        v-bind="vComp"
+        :value="currentDateInput"
+        name="date"
+        mask="##/##/####"
+        return-masked-value
+        clearable
 
-         prepend-inner-icon="event"
-         @input="formatDateFromInput"
-       ></v-text-field>
+        prepend-inner-icon="event"
+        @input="formatDateFromInput"
+      ></v-text-field></template>
+
 
        <v-date-picker color="primary"
  v-bind="vPicker" v-model="datepickerValue" scrollable>
-         <v-btn flat color="primary" @click="clear()"><AppIcon name="si-clear"></AppIcon></v-btn>
+         <v-btn text color="primary" @click="clear()"><AppIcon name="si-clear"></AppIcon></v-btn>
          <v-spacer></v-spacer>
-         <v-btn flat color="primary" @click="modal = false">Cancel</v-btn>
-         <v-btn flat color="primary" @click="$refs.dialog.save(datepickerValue)">OK</v-btn>
+         <v-btn text color="primary" @click="modal = false">Cancel</v-btn>
+         <v-btn text color="primary" @click="$refs.dialog.save(datepickerValue)">OK</v-btn>
        </v-date-picker>
      </v-dialog>
 </template>

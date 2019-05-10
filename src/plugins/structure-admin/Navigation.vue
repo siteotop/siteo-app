@@ -18,15 +18,18 @@
           class=" white--text"
         > <AppIcon name="si-arrow-left"></AppIcon>
       </v-btn>
-      <v-btn :disabled="!this.treeHistory.length" slot="extension" icon @click="backHistory">
-           Back
-      </v-btn>
-      <v-btn slot="extension" icon  @click="showJsonDesign=true">
-         View
-       </v-btn>
-      <v-btn slot="extension" icon @click="saveDesign">
-           Save
-      </v-btn>
+      <template v-slot:extension>
+        <v-btn :disabled="!this.treeHistory.length"  icon @click="backHistory">
+             Back
+        </v-btn>
+        <v-btn  icon  @click="showJsonDesign=true">
+           View
+         </v-btn>
+        <v-btn  icon @click="saveDesign">
+             Save
+        </v-btn>
+      </template>
+
     </v-toolbar>
 
     <v-subheader>

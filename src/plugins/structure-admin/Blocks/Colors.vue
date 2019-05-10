@@ -2,25 +2,25 @@
 
 
             <v-list>
-              <v-list-tile  active-class="grey lighten-4"
+              <v-list-item  active-class="grey lighten-4"
 
                v-for="(name, key, i) in value"
                :key="i"
 
                >
 
-                <v-list-tile-content>
-                  <v-list-tile-title v-text="key"></v-list-tile-title>
+                <v-list-item-content>
+                  <v-list-item-title v-text="key"></v-list-item-title>
 
-                </v-list-tile-content>
-                <v-list-tile-action>
+                </v-list-item-content>
+                <v-list-item-action>
 
                       <HexColor :value="value[key]"  @input="value[key]=$event" ></HexColor>
 
 
-                </v-list-tile-action>
+                </v-list-item-action>
 
-             </v-list-tile>
+             </v-list-item>
            </v-list>
 
 

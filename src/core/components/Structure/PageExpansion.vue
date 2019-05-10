@@ -1,5 +1,5 @@
 <template functional>
-<v-expansion-panel v-bind="{
+<v-expansion-panels v-bind="{
     inset: props.cnf.i,
     popout: props.cnf.p,
     focusable: props.cnf.f,
@@ -7,7 +7,7 @@
     dark: props.cnf.d,
     light: props.cnf.l
   }" :class="data.class">
-  <v-expansion-panel-content
+  <v-expansion-panel
     v-for="(element, i) in props.chldrn||[]"
     :key="i"
    >
@@ -16,8 +16,8 @@
     </template>
     <PLt v-if="element._ch" v-bind="{cnf: element._p||{}, chldrn:element._ch}">
     </PLt>
-  </v-expansion-panel-content>
-</v-expansion-panel>
+  </v-expansion-panel>
+</v-expansion-panels>
 </template>
 <script>
 export default {

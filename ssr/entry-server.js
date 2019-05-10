@@ -39,15 +39,15 @@ export default (context) => {
     context.meta = app.$meta();
 
     // minify styles for theme
-    app.$vuetify.options.minifyTheme = function (css) {
+  /*  app.$vuetify.options.minifyTheme = function (css) {
       return process.env.NODE_ENV === 'production'
         ? css.replace(/[\s|\r\n|\r|\n]/g, '')
         : css
     }
+*/
+    // update $vuetify.theme
+    app.$options.updateVuetifyOptions(app.$vuetify, context.instance.design);
 
-    if (context.instance.design.theme&&context.instance.design.theme.colors) {
-      app.$vuetify.theme = app.$store.state.appInstance.objectActive.design.theme.colors;
-    }
 
     // устанавливаем маршрут для маршрутизатора серверной части
     app.$router.push(context.url)

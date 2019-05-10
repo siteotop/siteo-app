@@ -22,14 +22,14 @@
         </v-card>
   </v-hover>
   <b-horizontal v-else  v-bind="props">
-    <template slot="image" slot-scope="name">
+    <template v-slot:image >
       <v-img
          aspect-ratio="1"
         :src="props._m"
         :alt="props._t"
       ></v-img>
     </template>
-    <template slot="action" slot-scope="name">
+    <template v-slot:action>
       <v-card-actions>
         <v-btn :to="props._u">{{parent.$t('rm')}}</v-btn>
       </v-card-actions>
@@ -43,6 +43,6 @@
 export default {
   // extends: BTitleProps,
 
-  
+
 }
 </script>

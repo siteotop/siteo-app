@@ -1,23 +1,23 @@
 <template functional>
-<v-menu   min-width="300" :nudge-width="100"  lazy z-index="999">
-  <template slot="activator">
-    <v-btn icon>
+<v-menu   min-width="300" :nudge-width="100"  eager z-index="999">
+  <template v-slot:activator="{ on }">
+    <v-btn v-on="on" icon>
         <AppIcon  name="si-more-vert" > </AppIcon>
     </v-btn>
   </template>
   <v-list>
-    <v-list-tile v-if="!parent.noDublicateChild" @click="parent.cloneComponent(props.indexComponent)">
-      <v-list-tile-title>Clone</v-list-tile-title>
-      <v-list-tile-action>
+    <v-list-item v-if="!parent.noDublicateChild" @click="parent.cloneComponent(props.indexComponent)">
+      <v-list-item-title>Clone</v-list-item-title>
+      <v-list-item-action>
         <v-btn  icon ><AppIcon name="si-dublicate"></AppIcon></v-btn>
-      </v-list-tile-action>
-    </v-list-tile>
-    <v-list-tile  @click="parent.removeComponentFromList(props.indexComponent)">
-      <v-list-tile-title>Remove</v-list-tile-title>
-      <v-list-tile-action>
+      </v-list-item-action>
+    </v-list-item>
+    <v-list-item  @click="parent.removeComponentFromList(props.indexComponent)">
+      <v-list-item-title>Remove</v-list-item-title>
+      <v-list-item-action>
         <v-btn  icon ><AppIcon name="si-delete"></AppIcon></v-btn>
-      </v-list-tile-action>
-    </v-list-tile>
+      </v-list-item-action>
+    </v-list-item>
   </v-list>
 </v-menu>
 </template>

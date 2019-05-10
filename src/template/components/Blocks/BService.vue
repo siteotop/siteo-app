@@ -40,7 +40,7 @@
         </v-card>
   </v-hover>
   <b-horizontal v-else  v-bind="props">
-    <template slot="image" slot-scope="name">
+    <template v-slot:image>
             <v-img
               class="primary darken-2 white--text"
                aspect-ratio="1"
@@ -48,7 +48,7 @@
               :alt="props._t"
             ></v-img>
     </template>
-    <template slot="action" slot-scope="name">
+    <template v-slot:action >
           <v-card-text class="headline font-weight-medium">
             <BPrice :discount="props._di" :price="props._p"></BPrice>
           </v-card-text>

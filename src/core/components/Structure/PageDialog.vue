@@ -24,7 +24,7 @@ export default {
 
   render(h) {
      var cnf = this.cnf;
-
+     var self = this;
 
      var scopedSlots = {};
      var children = [];
@@ -46,7 +46,7 @@ export default {
             fullWidth: cnf.f,
             fullscreen: cnf.e,
             hideOverlay: cnf.h,
-            lazy: cnf.z,
+            eager: cnf.z,
             maxWidth:cnf.m,
             origin: cnf.o,
             persistent: cnf.p,

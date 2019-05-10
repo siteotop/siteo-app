@@ -1,8 +1,10 @@
 <template>
-  <v-menu lazy offset-overflow
+  <v-menu eager offset-overflow
   right z-index="1000" nudge-right="60" max-width="500" max-height="500"  :close-on-content-click="false" v-model="menuActive">
+      <template v-slot:activator="{ on }">
+          <v-btn v-on="on" fab :style="{backgroundColor:value}" ><AppIcon scale="1" name="si-settings"></AppIcon></v-btn>
+      </template>
 
-        <v-btn fab slot="activator" :style="{backgroundColor:value}" ><AppIcon scale="1" name="si-settings"></AppIcon></v-btn>
         <v-card v-if="menuActive">
           <v-toolbar dense >
 

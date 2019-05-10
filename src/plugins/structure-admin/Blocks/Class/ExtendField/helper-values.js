@@ -38,17 +38,19 @@ export const display = [
 ];
 
 export const topography =  [
+  'overline',
   'caption',
   'body-1',
   'body-2',
-  'subheading',
+  'subtitle-1',
+  'subtitle-2',
   'title',
   'headline',
   'display-1',
   'display-2',
   'display-3',
   'display-4',
-  'display-5',
+
 
 ];
 

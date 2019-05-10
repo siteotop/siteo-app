@@ -52,6 +52,7 @@ import { sync } from 'vuex-router-sync';
   https://vuetifyjs.com/ru/
 */
 import Vuetify from 'vuetify';
+
 Vue.use(Vuetify);
 import 'vuetify/dist/vuetify.min.css';
 
@@ -71,11 +72,24 @@ CoreVue.axios = axios;
 import VS2 from 'vue-script2';
 CoreVue.$script = VS2.load;
 
+CoreVue.updateVuetifyOptions = function($vuetify,  designVuetify) {
+    if (!designVuetify) {
+      return;
+    }
+
+    if ( designVuetify.colors) {
+      $vuetify.themes.light = designVuetify.colors;
+    }
+}
+/**
+  install plugin to Vue throaght Vue.use
+*/
 export const installVuePlugin = function(plugin) {
     if (plugin&&plugin.install) {
       Vue.use(plugin, CoreVue);
     }
 }
+
 
 const installSiteoPlugin = function (plugin) {
   console.log(CoreVue._siteo_config);
@@ -118,13 +132,28 @@ export const createSiteo =  function ({configs, messages, plugins} ) {
 
    CoreVue._plugins = {};
    // start VueProgressBar
+
+   CoreVue.vuetify = new Vuetify({
+     icons: {
+       iconfont: 'md' // default
+     },
+
+     theme: {
+       themes: {
+
+       }
+     }
+   });
+   console.log(CoreVue.vuetify);
    Vue.use(VueProgressBar, {
-     color: Vue.prototype.$vuetify.theme.accent ||'rgb(106, 180, 255)',
+     //color: CoreVue.vuetify.theme.accent ||'rgb(106, 180, 255)',
      failedColor: 'red',
      thickness: '3px',
    });
 
    CoreVue._siteo_config = configs;
+
+
 
    // plugin for http requests
    var RESTApi = createRESTApi(configs.host_api||process.env.HOST_API);

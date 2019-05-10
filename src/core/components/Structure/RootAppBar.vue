@@ -19,7 +19,7 @@ export const ToolbarElements = {
    TTg: {
      functional : true,
      render(h, context) {
-       return h('v-toolbar-side-icon',  {
+       return h('v-app-bar-nav-icon',  {
          class: context.data.class,
          on: {
            click: ()=>context.parent.$store.state.drawer=!context.parent.$store.state.drawer
@@ -45,7 +45,7 @@ export default {
   render(h, context) {
     var cnf = context.props.cnf;
 
-    return h('v-toolbar', {
+    return h('v-app-bar', {
       props: {
           app: true,
           height: cnf.h,

@@ -5,7 +5,7 @@ const tileStructure = {
   LAv: {
     functional:true,
     render(h, context) {
-       return h('v-list-tile-avatar', [
+       return h('v-list-item-avatar', [
          h('img', {attrs: {src:context.props.cntnt.i }})
        ])
     }
@@ -14,9 +14,9 @@ const tileStructure = {
   LCt: {
     functional:true,
     render(h, context) {
-       return h('v-list-tile-content', [
-         h('v-list-tile-title', [context.props.cntnt.t]),
-         h('v-list-tile-sub-title', [context.props.cntnt.d]),
+       return h('v-list-item-content', [
+         h('v-list-item-title', [context.props.cntnt.t]),
+         h('v-list-item-subtitle', [context.props.cntnt.d]),
 
        ])
     }
@@ -25,7 +25,7 @@ const tileStructure = {
   LAc: {
     functional: true,
     render(h, context) {
-      return h('v-list-tile-action', [
+      return h('v-list-item-action', [
         h('AppIcon', {props: {name: context.props.cntnt.i }} ),
       ])
     }
@@ -48,7 +48,7 @@ export default {
     }, class: context.data.class}, [
         (context.props.chldrn||[]).map(function(element){
           var el_c = element._p||{};
-          return h('v-list-tile', {props: {
+          return h('v-list-item', {props: {
             tag:'li',
             avatar: el_c.a,
             color: el_c.c

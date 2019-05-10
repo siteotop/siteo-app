@@ -18,7 +18,7 @@ export const PDl = {
     //hideOverlay
     h:'readyPropBoolean',
 
-    //lazy
+    //eager
     z:'readyPropBoolean',
 
     //maxWidth

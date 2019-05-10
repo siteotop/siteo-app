@@ -1,16 +1,21 @@
 <template>
   <v-menu z-index="1000" max-width="500" max-height="650"  :close-on-content-click="false" v-model="menuActive">
+         <template v-slot:activator="{ on }">
+           <v-text-field
+             label="color"
+             outline
+             v-on="on"
+             readonly
+             v-model="valueData">
+             <template v-slot:append>
+               <v-btn  small fab :color="valueData">
+                 <AppIcon  name="si-settings"></AppIcon>
+               </v-btn>
+             </template>
 
-        <v-text-field
-          label="color"
-          outline
-          slot="activator"
-          readonly
-          v-model="valueData">
-          <v-btn slot="append" small fab :color="valueData">
-            <AppIcon  name="si-settings"></AppIcon>
-          </v-btn>
-        </v-text-field>
+           </v-text-field>
+         </template>
+
         <v-card v-if="menuActive">
           <v-toolbar dense >
 

@@ -44,7 +44,11 @@ app.$router.onReady(() => {
   // update theme
   if (app.$store.state.appInstance.objectActive.design.theme
       &&app.$store.state.appInstance.objectActive.design.theme.colors) {
-    app.$vuetify.theme = app.$store.state.appInstance.objectActive.design.theme.colors;
+
+   console.log('here changed colors');
+   console.log(app);
+   console.log(app.$vuetify);
+    app.$vuetify.theme.themes.light = app.$store.state.appInstance.objectActive.design.theme.colors;
   }
   //about  devide code client and SSR  https://bit.ly/2tnfDa4
   app.$mount('#app');

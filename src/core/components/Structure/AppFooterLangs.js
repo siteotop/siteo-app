@@ -11,8 +11,8 @@
 
         h('v-list',
           parent.$store.getters.LIST_LANG.map(function (li){
-              return h('v-list-tile', {attrs: {href: li.d}},  [
-                h('v-list-tile-title', [li.n])
+              return h('v-list-item', {attrs: {href: li.d}},  [
+                h('v-list-item-title', [li.n])
               ])
           })
         )

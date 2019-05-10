@@ -57,9 +57,9 @@ export const PDm = {
       t: 'fullWidth',
       d: ''
     },
-    //lazy: cnf.k,
+    //eager: cnf.k,
     k: {
-      t: 'lazy',
+      t: 'eager',
       d: ''
     },
     //maxHeight: cnf.l,

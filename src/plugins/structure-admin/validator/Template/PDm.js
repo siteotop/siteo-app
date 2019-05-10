@@ -24,7 +24,7 @@ export const PDm = {
     i: 'readyPropBoolean',
     //fullWidth: cnf.j,
     j:  'readyPropBoolean',
-    //lazy: cnf.k,
+    //eager: cnf.k,
     k:  'readyPropBoolean',
     //maxHeight: cnf.l,
     l: {

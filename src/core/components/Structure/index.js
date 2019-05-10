@@ -4,7 +4,6 @@
 
 
 export {default as RLg}  from './RootLogo.vue';
-export {default as SdMnv} from './SdMnv.vue';
 export {default as PDm} from './PageDialogMenu';
 
 

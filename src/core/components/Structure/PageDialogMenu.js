@@ -34,7 +34,7 @@ export default {
          disabled: cnf.h,
          fixed: cnf.i,
          fullWidth: cnf.j,
-         lazy: cnf.k,
+         eager: cnf.k,
          maxHeight: cnf.l,
          maxWidth: cnf.m,
          openOnClick:  cnf.n,

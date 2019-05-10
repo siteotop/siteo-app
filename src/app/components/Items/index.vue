@@ -1,23 +1,23 @@
 <template>
 <div>
   <PageItemsToolbar :hightUp="100">
-    <v-btn   fab flat>
+    <v-btn   fab text>
       <AppIcon name="si-filter"></AppIcon>
     </v-btn>
     <v-toolbar-title>{{title}}</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-btn-toggle mandatory v-model="toggle_component">
-      <v-btn flat value="cards">
+      <v-btn text value="cards">
           <AppIcon name="si-view-cards"></AppIcon>
       </v-btn>
-      <v-btn v-if="!$root.mobile" flat value="card">
+      <v-btn v-if="!$root.mobile" text value="card">
          <AppIcon name="si-view-card"></AppIcon>
       </v-btn>
-      <v-btn flat value="list">
+      <v-btn text value="list">
          <AppIcon name="si-values"></AppIcon>
       </v-btn>
    </v-btn-toggle>
-   <v-btn  small fab flat>
+   <v-btn  small fab text>
         <AppIcon name="si-sort"></AppIcon>
    </v-btn>
   </PageItemsToolbar>

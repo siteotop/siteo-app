@@ -1,21 +1,23 @@
 <template >
   <v-toolbar  v-scroll="onScroll" v-bind="tProps"  :class="tClass" :style="tStyle">
-      <v-toolbar-side-icon v-if="needShowAction" @click="$store.state.drawer=!$store.state.drawer" ></v-toolbar-side-icon>
+      <v-app-bar-nav-icon v-if="needShowAction" @click="$store.state.drawer=!$store.state.drawer" ></v-app-bar-nav-icon>
       <v-menu offset-y>
-      <v-btn slot="activator" outline ><AppIcon name="si-dots-menu"></AppIcon> {{$t('m')}} </v-btn>
+        <template v-slot:activator="{ on }">
+          <v-btn v-on="on" outline ><AppIcon name="si-dots-menu"></AppIcon> {{$t('m')}} </v-btn>
+      </template>
       <v-list>
 
-        <v-list-tile v-if="needShowAction" tag="li" @click="$vuetify.goTo(0)"
-        ><v-list-tile-title>Top</v-list-tile-title></v-list-tile>
-        <v-list-tile
+        <v-list-item v-if="needShowAction" tag="li" @click="$vuetify.goTo(0)"
+        ><v-list-item-title>Top</v-list-item-title></v-list-item>
+        <v-list-item
            tag="li"
            v-for="(item, index) in pageMenu"
            :key="index"
            :href="item.href"
            v-on:click.prevent="$vuetify.goTo(item.href, { offset: -100})"
         >
-          <v-list-tile-title>{{ item._ti }}</v-list-tile-title>
-        </v-list-tile>
+          <v-list-item-title>{{ item._ti }}</v-list-item-title>
+        </v-list-item>
       </v-list>
     </v-menu>
 
@@ -47,7 +49,7 @@ export default {
       type: Boolean,
       default: false
     },
-    
+
     contentStructure: {
       type: [Array, Boolean]
     }

@@ -11,10 +11,13 @@
   chips
   deletable-chips
 >
-  <v-menu min-width="300" slot="append" :close-on-content-click="false" lazy z-index="800" >
-    <v-btn slot="activator"  small fab >
-      <AppIcon  name="si-settings"></AppIcon>
-    </v-btn>
+ <template v-slot:append>
+  <v-menu min-width="300" :close-on-content-click="false" eager z-index="800" >
+    <template v-slot:activator="{ on }">
+      <v-btn v-on="on"  small fab >
+        <AppIcon  name="si-settings"></AppIcon>
+      </v-btn>
+    </template>
     <v-card>
       <v-card-text>
         <SettingsProps
@@ -26,9 +29,10 @@
           :allowChildren="props.allow"
          >
         </SettingsProps>
-     </v-card-text>
+      </v-card-text>
     </v-card>
   </v-menu>
+ </template>
 </v-combobox>
 </template>
 <script>

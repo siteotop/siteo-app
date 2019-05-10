@@ -8,8 +8,9 @@
        bottom
        transition="slide-y-reverse-transition"
      >
+       <template v-slot:activator="{ on }">
        <v-btn
-         slot="activator"
+         v-on="on"
          v-model="fab"
          :color="fab? 'secondary': 'accent'"
          dark
@@ -20,6 +21,7 @@
           <AppIcon v-if="fab" name="si-close"></AppIcon>
 
        </v-btn>
+     </template>
        <WiActions></WiActions>
      </v-speed-dial>
 </v-fab-transition>

@@ -8,15 +8,15 @@
               <v-btn small :disabled="childrenActive" :style="{cursor:'move'}"  icon :class="dragClass">
                 <AppIcon  name="si-drag" > </AppIcon>
               </v-btn>
-              <v-toolbar-title class="pl-0 ml-0 subheading">{{getText(component._n) }} 
+              <v-toolbar-title class="pl-0 ml-0 subtitle-1">{{getText(component._n) }}
               </v-toolbar-title>
               <v-spacer></v-spacer>
               <v-btn v-if="component._ch" @click="menuList[indexComponent].activeContent=!menuList[indexComponent].activeContent"  small  icon >
                 <AppIcon scale="1.2" :name="menuList[indexComponent].activeContent?'si-list-expand':'si-list-split'" > </AppIcon>
               </v-btn>
-              <v-menu v-model="menuList[indexComponent].activeEdit"  :nudge-width="100" min-width="500"  max-width="500" :close-on-content-click="false"  :close-on-click="false" lazy z-index="777">
-                <template slot="activator">
-                  <v-btn icon>
+              <v-menu v-model="menuList[indexComponent].activeEdit"  :nudge-width="100" min-width="500"  max-width="500" :close-on-content-click="false"  :close-on-click="false" eager z-index="777">
+                <template v-slot:activator="{ on }">
+                  <v-btn v-on="on" icon>
                       <AppIcon  name="si-edit" > </AppIcon>
                   </v-btn>
                 </template>

@@ -6,8 +6,8 @@
        <v-card-text>{{description}}</v-card-text>
        <v-card-actions>
          <v-spacer></v-spacer>
-         <v-btn color="green darken-1" flat="flat" @click="cancel()">Cancel</v-btn>
-         <v-btn color="green darken-1" flat="flat" @click="confirm()">Ok</v-btn>
+         <v-btn color="green darken-1" text @click="cancel()">Cancel</v-btn>
+         <v-btn color="green darken-1" text @click="confirm()">Ok</v-btn>
        </v-card-actions>
      </v-card>
     </v-dialog>
