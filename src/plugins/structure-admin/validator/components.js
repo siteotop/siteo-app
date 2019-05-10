@@ -1,5 +1,5 @@
 
-import * as allowChildrenList from '../validator/allowChildren';
+import * as allowChildrenList from './MapComponents';
 import * as  readyProps from './readyProps';
 
 var isProperty=function(componentName, propertyName) {
@@ -106,7 +106,7 @@ export const helperChildren = {
 
 /**
 
-For Props Settings 
+For Props Settings
 
 */
 export const helperProps = {
