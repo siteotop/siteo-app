@@ -6,7 +6,7 @@ export {RBt, RAc, RMn, MBt} from './RBt';
 export {PCt, Flx, PLt,  PPx, PIm} from './PCt';
 export {PYv} from './PYv';
 export {PTl} from './PTl';
-export {PAv, RLg} from './PAv';
+export {PAv, RLg} from './PAvatar';
 export {PTx, PHt} from './PTx';
 export {PAl} from './PAlert';
 export {PDl} from './PDl';

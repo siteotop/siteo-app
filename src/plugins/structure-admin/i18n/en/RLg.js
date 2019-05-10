@@ -1,8 +1,8 @@
 
-
+//PAvatar
 export const PAv = {
   t: 'Avatar',
-  d: 'Image like avatar, logo,  or icon',  
+  d: 'Image like avatar, logo,  or icon',
   helperData: {
     p: {
       t: 'Image',
@@ -34,6 +34,30 @@ export const PAv = {
     c:{
       t: 'Color',
       d: 'Background color'
+    },
+
+    //width
+    a: {
+      t: 'width',
+      d: ''
+    },
+
+    //height
+    b:{
+      t: 'height',
+      d: ''
+    },
+
+    //left
+    d: {
+      t: 'left',
+      d: ''
+    },
+
+    //right
+    e: {
+      t: 'right',
+      d: ''
     },
   }
 }

@@ -37,6 +37,12 @@ export const readyPropWidth = {
   default: 300
 }
 
+export const readyPropSize = {
+  $comp: 'PropHeight',
+  validators: {min:20, max:300},
+  default:45
+}
+
 
 export const readyPropTransition = {
   $comp: 'PropSelect',
@@ -69,6 +75,8 @@ export const readyPropClassForLayout = {
   additional: ['blockwrap', 'blocklayout'],
   default: []
 };
+
+
 
 
 export const readyPropClassForFlex = {

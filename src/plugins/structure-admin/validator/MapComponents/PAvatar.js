@@ -8,16 +8,27 @@ export const PAv = {
     t: 'readyPropDataTitle'
   },
   _p: {
-
+    //tile
     t:'readyPropBoolean',
-   // size
-    s: {
-      $comp: 'PropHeight',
-      validators: {min:20, max:300},
-      default:45
-    },
 
+    // size
+    s: 'readyPropSize',
+
+    //color
     c: 'readyPropColor',
+
+    //width
+    a: 'readyPropSize',
+
+    //height
+    b:'readyPropSize',
+
+    //left
+    d: 'readyPropBoolean',
+
+    //right
+    e: 'readyPropBoolean',
+
 
   },
 
