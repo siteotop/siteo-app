@@ -1,5 +1,6 @@
 import {PLt} from './PCt';
 
+//PageCarusel
 export const PCs = {
   _p: {
     c: 'readyPropBoolean',

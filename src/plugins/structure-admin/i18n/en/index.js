@@ -1,5 +1,6 @@
 
 import {ClassTitles} from './ClassTitles';
+import {PAl} from './PAlert';
 import {RDw} from './RDw';
 import {RFt} from './RFt';
 import {RLg, PAv} from './RLg';
@@ -8,7 +9,6 @@ import {PCt, PLt, Flx, PPx, PIm} from './PCt';
 import {PYv} from './PYv';
 import {PTl, PTx, PHt} from './PTl';
 import {RBt, RAc, RMn, MBt} from './RBt';
-import {PAl} from './PAl';
 import {PDl} from './PDl';
 import {PDm} from './PDm';
 import {PEx, Exi} from './PEx';

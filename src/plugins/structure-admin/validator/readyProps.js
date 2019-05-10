@@ -19,6 +19,24 @@ export const readyPropDataDesc = {
 }
 
 
+export const readyPropElevation = {
+  $comp: 'PropHeight',
+  validators: {min:0, max:24},
+  default: 3
+}
+
+export const readyPropHeight = {
+  $comp: 'PropHeight',
+  validators: {min:50, max:900},
+  default: 300
+}
+
+export const readyPropWidth = {
+  $comp: 'PropHeight',
+  validators: {min:50, max:1500},
+  default: 300
+}
+
 
 export const readyPropTransition = {
   $comp: 'PropSelect',

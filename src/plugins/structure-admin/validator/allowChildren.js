@@ -8,7 +8,7 @@ export {PYv} from './Template/PYv';
 export {PTl} from './Template/PTl';
 export {PAv, RLg} from './Template/PAv';
 export {PTx, PHt} from './Template/PTx';
-export {PAl} from './Template/PAl';
+export {PAl} from './Template/PAlert';
 export {PDl} from './Template/PDl';
 export {PDm} from './Template/PDm';
 export {PCs, CSe} from './Template/PCs';

@@ -5,24 +5,12 @@ export const PCd = {
     c:'readyPropColor',
     d:'readyPropBoolean',
     l:'readyPropBoolean',
-    e:{
-      $comp: 'PropHeight',
-      validators: {min:0, max:24},
-      default: 3
-    },
+    e:'readyPropElevation',
     f:'readyPropBoolean',
-    h: {
-      $comp: 'PropHeight',
-      validators: {min:50, max:600},
-      default: 300
-    },
+    h:'readyPropHeight',
     o:'readyPropBoolean',
     i:'readyPropImage',
-    m:{
-      $comp: 'PropHeight',
-      validators: {min:50, max:600},
-      default: 300
-    },
+    m:'readyPropHeight',
     a: {
       $comp: 'PropHeight',
       validators: {min:50, max:600},

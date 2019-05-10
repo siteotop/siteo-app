@@ -19,7 +19,7 @@
         > <AppIcon name="si-arrow-left"></AppIcon>
       </v-btn>
       <template v-slot:extension>
-        <v-btn :disabled="!this.treeHistory.length"  icon @click="backHistory">
+        <v-btn :disabled="!treeHistory.length"  icon @click="backHistory">
              Back
         </v-btn>
         <v-btn  icon  @click="showJsonDesign=true">
