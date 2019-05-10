@@ -1,14 +1,20 @@
 <template functional>
  <v-carousel
     v-bind="{
+       continuous: props.cnf.a,
        cycle: props.cnf.c,
        dark: props.cnf.d,
        light: props.cnf.l,
        height: props.cnf.h,
+       hideDelimiterBackground: props.cnf.b,
        hideControls: props.cnf.i,
        hideDelimiters: props.cnf.e,
        reverse: props.cnf.r,
-       vertical: props.cnf.v
+       vertical: props.cnf.v,
+       interval: props.cnf.f,
+       showArrows: props.cnf.g,
+       showArrowsOnHover: props.cnf.j,
+
      }"
     :class="data.class">
     <v-carousel-item

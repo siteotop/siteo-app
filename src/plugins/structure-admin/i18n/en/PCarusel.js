@@ -7,6 +7,10 @@ export const PCs = {
   d: 'Carusel section for page',
   helperProps: {
 
+    a: {
+      t: 'continuous',
+      d: ''
+    },
     c: {
       t: 'cycle',
       d: ''
@@ -23,8 +27,13 @@ export const PCs = {
       t: 'height',
       d: ''
     },
+
     i: {
       t: 'hideControls',
+      d: ''
+    },
+    b: {
+      t: 'hideDelimiterBackground',
       d: ''
     },
     e: {
@@ -37,6 +46,24 @@ export const PCs = {
     },
     v: {
       t: 'vertical',
+      d: ''
+    },
+
+    //interval
+    f: {
+      t: 'interval',
+      d: ''
+    },
+
+    //showArrows
+    g: {
+      t: 'showArrows',
+      d: ''
+    },
+
+    //showArrowsOnHover
+    j:  {
+      t: 'showArrowsOnHover',
       d: ''
     },
 

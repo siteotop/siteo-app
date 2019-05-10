@@ -1,12 +1,15 @@
 <template functional>
 <v-avatar
-   :tile="props.cnf.t"
-   :size="props.cnf.s"
-   :color="props.cnf.c"
-   :width="props.cnf.a"
-   :height="props.cnf.b"
-   :left="props.cnf.d"
-   :right="props.cnf.e"
+
+   v-bind="{
+     tile:props.cnf.t,
+     size:props.cnf.s,
+     color:props.cnf.c,
+     width:props.cnf.a,
+     height:props.cnf.b,
+     left:props.cnf.d,
+     right:props.cnf.e
+     }"
  >
    <img v-if="props.cntnt.p" :src="props.cntnt.p" :alt="props.cntnt.pt">
    <span v-else class="white--text headline">

@@ -43,6 +43,20 @@ export const readyPropSize = {
   default:45
 }
 
+export const readyPropTime = {
+  $comp: 'PropSelect',
+  items: [
+    '1000',
+    '2000',
+    '3000',
+    '4000',
+    '5000',
+    '6000',
+    '7000',
+],
+  default: '4000'
+}
+
 
 export const readyPropTransition = {
   $comp: 'PropSelect',

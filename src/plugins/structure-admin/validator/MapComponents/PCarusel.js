@@ -3,18 +3,45 @@ import {PLt} from './PCt';
 //PageCarusel
 export const PCs = {
   _p: {
+    //continuous
+    a: 'readyPropBoolean',
+
+    //cycle
     c: 'readyPropBoolean',
+
+    //dark
     d: 'readyPropBoolean',
+
+    //light
     l: 'readyPropBoolean',
-    h: {
-      $comp: 'PropHeight',
-      validators: {min:200, max:1000},
-      default:500
-    },
+
+    // height
+    h: 'readyPropHeight',
+
+    //hideControls
     i: 'readyPropBoolean',
+
+    //hideDelimiterBackground
+    b: 'readyPropBoolean',
+
+    //ideDelimiters
     e: 'readyPropBoolean',
+
+    //reverse
     r: 'readyPropBoolean',
+
+    //vertical
     v: 'readyPropBoolean',
+
+    //interval
+    f: 'readyPropTime',
+
+    //showArrows
+    g: 'readyPropBoolean',
+
+    //showArrowsOnHover
+    j:  'readyPropBoolean',
+
   },
   _c: ['background', 'elevation'],
   _ch: ['CSe']

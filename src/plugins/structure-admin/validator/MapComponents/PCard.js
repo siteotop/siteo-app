@@ -53,7 +53,7 @@ export const PCd = {
   },
   _c: ['background'],
 
-  _ch: ['Cti', 'Cte', 'Cac', 'PLt', 'PIm']
+  _ch: ['Cti', 'Cte', 'Cac', 'PLt',  'PLs', 'PIm', 'PCs', 'PYv']
 
 }
 

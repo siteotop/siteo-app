@@ -1,6 +1,8 @@
 
 import {ClassTitles} from './ClassTitles';
 import {PAl} from './PAlert';
+import {PCd, Cti, Cte, Cac} from './PCard';
+import {PCs, CSe} from './PCarusel';
 import {RDw} from './RDw';
 import {RFt} from './RFt';
 import {RLg, PAv} from './RLg';
@@ -12,9 +14,9 @@ import {RBt, RAc, RMn, MBt} from './RBt';
 import {PDl} from './PDl';
 import {PDm} from './PDm';
 import {PEx, Exi} from './PEx';
-import {PCs, CSe} from './PCs';
+
 import {PLs, LAv, LCt, LAc, LTi} from './PLs';
-import {PCd, Cti, Cte, Cac} from './PCard';
+
 import {PTb, TCt} from './PTb';
 import {PTm, TEp} from './PTm';
 export default {
