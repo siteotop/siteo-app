@@ -14,7 +14,7 @@ import {PDm} from './PDm';
 import {PEx, Exi} from './PEx';
 import {PCs, CSe} from './PCs';
 import {PLs, LAv, LCt, LAc, LTi} from './PLs';
-import {PCd, Cti, Cte, Cac} from './PCd';
+import {PCd, Cti, Cte, Cac} from './PCard';
 import {PTb, TCt} from './PTb';
 import {PTm, TEp} from './PTm';
 export default {

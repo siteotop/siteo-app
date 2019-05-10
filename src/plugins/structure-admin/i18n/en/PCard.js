@@ -4,26 +4,26 @@ export const PCd = {
   t: 'Card',
   d: '',
   helperProps: {
-  
+
     c: {
       t: 'Color',
-      d: ''
+      d: 'Background color'
     },
     d:{
       t: 'Dark',
-      d: ''
+      d: 'Applies the dark theme variant'
     },
     l:{
       t: 'Light',
-      d: ''
+      d: 'Applies the light theme variant'
     },
     e:{
       t: 'Elevation',
-      d: ''
+      d: 'Designates an elevation between 0 and 24'
     },
     f:{
       t: 'Flat',
-      d: ''
+      d: 'Removes card box shadow'
     },
     h: {
       t: 'Height',
@@ -49,7 +49,7 @@ export const PCd = {
       t: 'minHeight',
       d: ''
     },
-    v: {
+    w: {
       t: 'minWidth',
       d: ''
     },
@@ -65,6 +65,11 @@ export const PCd = {
       t: 'width',
       d: ''
     },
+    //outlined
+    v: {
+      t: 'outlined',
+      d: ''
+    }
   }
 
 }

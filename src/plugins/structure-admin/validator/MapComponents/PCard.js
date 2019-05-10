@@ -2,37 +2,54 @@
 
 export const PCd = {
   _p: {
+
+    //color
     c:'readyPropColor',
+
+    //dark
     d:'readyPropBoolean',
+
+    //light
     l:'readyPropBoolean',
+
+    //elevation
     e:'readyPropElevation',
+
+    //flat
     f:'readyPropBoolean',
+
+    //height
     h:'readyPropHeight',
+
+    //hover
     o:'readyPropBoolean',
+
+    //img
     i:'readyPropImage',
+
+    //maxHeight
     m:'readyPropHeight',
-    a: {
-      $comp: 'PropHeight',
-      validators: {min:50, max:600},
-      default: 300
-    },
-    n: {
-      $comp: 'PropHeight',
-      validators: {min:50, max:600},
-      default: 300
-    },
-    v: {
-      $comp: 'PropHeight',
-      validators: {min:50, max:600},
-      default: 300
-    },
+
+    //maxWidth
+    a: 'readyPropWidth',
+
+    //maxHeight
+    n: 'readyPropHeight',
+
+    //minWidth
+    w: 'readyPropWidth',
+
+    //raised
     r:'readyPropBoolean',
+
+    //tile
     t: 'readyPropBoolean',
-    q:{
-      $comp: 'PropHeight',
-      validators: {min:50, max:600},
-      default: 300
-    },
+
+    //width
+    q:'readyPropWidth',
+
+    //outlined
+    v: 'readyPropBoolean'
   },
   _c: ['background'],
 

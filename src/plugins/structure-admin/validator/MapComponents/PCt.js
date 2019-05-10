@@ -5,7 +5,27 @@ export const Flx =  {
    _p: {
       fc: 'readyPropClassForFlex',
    },
-   _ch: ['PLt', 'PTl', 'RBt', 'RAc', 'PAv', 'PTx', 'PIm', 'PCd', 'PCs', 'PEx', 'PTb', 'PLs', 'PTm', 'RDh', 'PAl','PYv', 'PDl', 'PHt', 'RSp', 'RMn']
+   _ch: [
+      'PAl',
+      'PAv',
+      'PLt',
+      'PTl',
+      'RBt',
+      'RAc',
+      'PTx',
+      'PIm',
+      'PCd',
+      'PCs',
+      'PEx',
+      'PTb',
+      'PLs',
+      'PTm',
+      'RDh',
+      'PYv',
+      'PDl',
+      'PHt',
+      'RSp',
+      'RMn']
 }
 
 
@@ -24,7 +44,9 @@ export const PLt = {
 
   },
 
-  _ch: ['Flx', ...Flx._ch]
+  _ch: [
+    'Flx',
+    ...Flx._ch]
 
 
 }
@@ -36,11 +58,7 @@ export const PLt = {
 export const PCt = {
   _p: {
     // height
-    h: {
-      $comp: 'PropHeight',
-      validators: {min:200, max:1000},
-      default:300
-    },
+    h: 'readyPropHeight',
 
 
     //background

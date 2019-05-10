@@ -55,7 +55,8 @@ export default {
         minWidth: cnf.w,
         raised: cnf.r,
         tile: cnf.t,
-        width: cnf.q
+        width: cnf.q,
+        outlined: cnf.v,
       }, class: context.data.class}, [
         (context.props.chldrn||[]).map(function(element){
           return h('StChildrenHelper', {props: {element:element, structure: cardStructure}})
