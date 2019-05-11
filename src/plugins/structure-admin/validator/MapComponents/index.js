@@ -7,7 +7,7 @@ export {PCd, Cti, Cte, Cac } from './PCard';
 export {PCs, CSe} from './PCarusel';
 export {PCt, Flx, PLt,  PPx, PIm} from './PContainer';
 export {PDl} from './PDialog';
-
+export {PDm} from './PDialogMenu';
 export {RAb, TTl, PTr} from './RAb';
 export {RBt, RAc, RMn, MBt} from './RBt';
 
@@ -17,7 +17,7 @@ export {PTl} from './PTl';
 export {PTx, PHt} from './PTx';
 
 
-export {PDm} from './PDm';
+
 
 export {PEx, Exi} from './PEx';
 export {PTb, TCt} from './PTb';

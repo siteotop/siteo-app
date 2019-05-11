@@ -11,6 +11,7 @@ export const Flx =  {
       'PCd',
       'PCs',
       'PDl',
+      'PDm',
       'PLt',
       'PTl',
       'RBt',
@@ -25,7 +26,9 @@ export const Flx =  {
       'PYv',
       'PHt',
       'RSp',
-      'RMn']
+      'RMn'
+
+      ]
 }
 
 

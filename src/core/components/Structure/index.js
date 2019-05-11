@@ -4,7 +4,7 @@
 
 
 export {default as RLg}  from './RootLogo.vue';
-export {default as PDm} from './PageDialogMenu';
+
 
 
 // PAGE
@@ -14,6 +14,7 @@ export {default as PCd}  from  './PCard.vue';
 export {default as PCs}  from  './PCarusel.vue';
 export {default as PCt}  from  './PContainer.vue';
 export {default as PDl}  from  './PDialog.vue';
+export {default as PDm}  from  './PDialogMenu';
 export {default as PPx}  from  './PageParallax.vue';
 export {default as PIm}  from  './PageImage.vue';
 export {default as PYv}  from  './PageVideo.vue';

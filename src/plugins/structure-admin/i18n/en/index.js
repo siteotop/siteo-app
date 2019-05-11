@@ -5,6 +5,7 @@ import {PCd, Cti, Cte, Cac} from './PCard';
 import {PCs, CSe} from './PCarusel';
 import {PCt, PLt, Flx, PPx, PIm} from './PContainer';
 import {PDl} from './PDialog';
+import {PDm} from './PDialogMenu';
 import {RDw} from './RDw';
 import {RFt} from './RFt';
 import {RLg, PAv} from './RLg';
@@ -14,7 +15,7 @@ import {PYv} from './PYv';
 import {PTl, PTx, PHt} from './PTl';
 import {RBt, RAc, RMn, MBt} from './RBt';
 
-import {PDm} from './PDm';
+
 import {PEx, Exi} from './PEx';
 
 import {PLs, LAv, LCt, LAc, LTi} from './PLs';

@@ -4,8 +4,8 @@
 
 //PageDialogMenu
 export const PDm = {
-  t: 'Menu Dialog',
-  d: 'Menu Dialog',
+  t: 'Dialog Menu ',
+  d: 'Activator and Menu dialog',
   helperProps: {
     //auto: cnf.a,
     a: {
