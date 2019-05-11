@@ -22,11 +22,7 @@ export const PDl = {
     z:'readyPropBoolean',
 
     //maxWidth
-    m:{
-      $comp: 'PropHeight',
-      validators: {min:200, max:1500},
-      default:500
-    },
+    m:'readyPropWidth',
 
     //origin
     o: {
@@ -48,11 +44,18 @@ export const PDl = {
     r: 'readyPropTransition',
 
     //width
-    w:{
-      $comp: 'PropHeight',
-      validators: {min:200, max:1500},
-      default:500
-    },
+    w:'readyPropWidth',
+
+    //noClickAnimation
+    a: 'readyPropBoolean',
+
+    //openOnHover
+    b: 'readyPropBoolean',
+
+    //openDelay
+    j: 'readyPropTime',
+
+
   },
   _ch: ['RBt', 'PCd']
 

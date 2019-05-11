@@ -52,7 +52,11 @@ export default {
             persistent: cnf.p,
             scrollable: cnf.s,
             transition: cnf.r,
-            width: cnf.w
+            width: cnf.w,
+            noClickAnimation: cnf.a,
+            openOnHover: cnf.b,
+            openDelay: cnf.j
+
           },
         model: {
             value: self.dialog,

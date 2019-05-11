@@ -80,7 +80,7 @@ export const readyPropClassForContainer = {
   $comp: 'PropClass',
 //  allow: ['padding', 'margin', 'textalign', 'textcolor'],
   additional: ['blockwrap', 'gridlist'],
-  default: ['justify-center', 'text-xs-center', 'pt-5', 'pb-4']
+  default: []
 };
 
 export const readyPropClassForLayout = {

@@ -70,10 +70,28 @@ export const PDl = {
     },
 
     //width
-    w:{
+    w: {
       t: 'width',
       d: ''
     },
+
+    //noClickAnimation
+    a: {
+      t: 'noClickAnimation',
+      d: ''
+    },
+
+    //openOnHover
+    b: {
+      t: 'openOnHover',
+      d: ''
+    },
+
+    //openDelay
+    j: {
+      t: 'openDelay',
+      d: ''
+    }
 
   },
 
