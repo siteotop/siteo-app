@@ -18,9 +18,7 @@ export const PCs = {
     // height
     h: 'readyPropHeight',
 
-    //hideControls
-    i: 'readyPropBoolean',
-
+    
     //hideDelimiterBackground
     b: 'readyPropBoolean',
 

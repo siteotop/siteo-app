@@ -28,10 +28,7 @@ export const PCs = {
       d: ''
     },
 
-    i: {
-      t: 'hideControls',
-      d: ''
-    },
+  
     b: {
       t: 'hideDelimiterBackground',
       d: ''

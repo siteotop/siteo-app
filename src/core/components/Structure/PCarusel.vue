@@ -7,7 +7,6 @@
        light: props.cnf.l,
        height: props.cnf.h,
        hideDelimiterBackground: props.cnf.b,
-       hideControls: props.cnf.i,
        hideDelimiters: props.cnf.e,
        reverse: props.cnf.r,
        vertical: props.cnf.v,
