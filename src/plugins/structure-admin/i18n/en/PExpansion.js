@@ -21,10 +21,6 @@ export const PEx = {
       t: 'focusable',
       d: ''
     },
-    e: {
-      t: 'expand',
-      d: ''
-    },
     d: {
       t: 'dark',
       d: ''

@@ -12,8 +12,7 @@ export const PEx = {
     p: 'readyPropBoolean',
     //focusable
     f: 'readyPropBoolean',
-    //expand
-    e: 'readyPropBoolean',
+    
     //dark
     d: 'readyPropBoolean',
     //light
