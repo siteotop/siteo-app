@@ -8,6 +8,7 @@ export {PCs, CSe} from './PCarusel';
 export {PCt, Flx, PLt,  PPx, PIm} from './PContainer';
 export {PDl} from './PDialog';
 export {PDm} from './PDialogMenu';
+export {PEx, Exi} from './PExpansion';
 export {RAb, TTl, PTr} from './RAb';
 export {RBt, RAc, RMn, MBt} from './RBt';
 
@@ -19,7 +20,6 @@ export {PTx, PHt} from './PTx';
 
 
 
-export {PEx, Exi} from './PEx';
 export {PTb, TCt} from './PTb';
 export {PLs, LAv, LCt, LAc, LTi} from './PLs';
 

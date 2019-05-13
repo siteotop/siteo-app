@@ -5,6 +5,10 @@ export const PEx = {
   t: 'Expansion',
   d: 'According panel',
   helperProps: {
+    a: {
+      t: 'according',
+      d: ''
+    },
     i: {
       t: 'inset',
       d: ''
@@ -27,6 +31,10 @@ export const PEx = {
     },
     l: {
       t: 'light',
+      d: ''
+    },
+    m: {
+      t: 'multiply',
       d: ''
     }
   }

@@ -15,6 +15,9 @@ export {default as PCs}  from  './PCarusel.vue';
 export {default as PCt}  from  './PContainer.vue';
 export {default as PDl}  from  './PDialog.vue';
 export {default as PDm}  from  './PDialogMenu';
+export {default as PEx}  from  './PExpansion.vue';
+
+
 export {default as PPx}  from  './PageParallax.vue';
 export {default as PIm}  from  './PageImage.vue';
 export {default as PYv}  from  './PageVideo.vue';
@@ -23,7 +26,7 @@ export {default as PTl}  from  './PageTitle.vue';
 
 export {default as PTx}  from  './PageText.vue';
 
-export {default as PEx}  from  './PageExpansion.vue';
+
 export {default as PTb}  from  './PageTabs.vue';
 export {default as PLs}  from  './PageList.vue';
 export {default as PTm}  from  './PageTimeline.vue';

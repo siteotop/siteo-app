@@ -3,12 +3,22 @@ import {PLt} from './PContainer';
 
 export const PEx = {
   _p: {
+
+    // according
+    a: 'readyPropBoolean',
+    // inset
     i: 'readyPropBoolean',
+    //poput
     p: 'readyPropBoolean',
+    //focusable
     f: 'readyPropBoolean',
+    //expand
     e: 'readyPropBoolean',
+    //dark
     d: 'readyPropBoolean',
-    l: 'readyPropBoolean'
+    //light
+    l: 'readyPropBoolean',
+    m: 'readyPropBoolean'
   },
   _c: ['background', 'elevation'],
   _ch: ['Exi']
