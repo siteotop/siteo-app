@@ -19,7 +19,7 @@ export {default as PEx}  from  './PExpansion.vue';
 
 
 export {default as PPx}  from  './PageParallax.vue';
-export {default as PIm}  from  './PageImage.vue';
+export {default as PIm}  from  './PImage.vue';
 export {default as PYv}  from  './PageVideo.vue';
 
 export {default as PTl}  from  './PageTitle.vue';
@@ -32,7 +32,7 @@ export {default as PLs}  from  './PageList.vue';
 export {default as PTm}  from  './PageTimeline.vue';
 
 
-export {default as PHt}  from  './PageHtml.vue';
+export {default as PHt}  from  './PHtml.vue';
 export {default as PTr} from  './PageToolbar.vue';
 
 export const RSp = 'VSpacer';
