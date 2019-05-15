@@ -1,6 +1,4 @@
 
-import {PLt} from './PContainer';
-
 //PageTabs
 export const PTb = {
   t: 'Tabs',
@@ -16,6 +14,10 @@ export const PTb = {
     },
     c: {
       t: 'centered',
+      d: ''
+    },
+    b: {
+      t: 'Background color',
       d: ''
     },
     o: {
@@ -36,6 +38,11 @@ export const PTb = {
     },
     g: {
       t: 'grow',
+      d: ''
+    },
+    //'height',
+    e: {
+      t: 'height',
       d: ''
     },
     s: {
@@ -70,9 +77,8 @@ export const TCt = {
     b: {
       t: 'reverseTransition',
       d: ''
-    },
+    }
 
-    ... PLt.helperProps
   },
 
   helperData: {

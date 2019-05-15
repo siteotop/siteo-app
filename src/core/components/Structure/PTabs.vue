@@ -4,11 +4,14 @@
     alignWithTitle: props.cnf.a,
     right: props.cnf.r,
     centered: props.cnf.c,
+
+    backgroundColor: props.cnf.b,
     color: props.cnf.o,
     dark: props.cnf.d,
     light: props.cnf.l,
     fixedTabs: props.cnf.f,
     grow: props.cnf.g,
+    height: props.cnf.e,
     hideSlider: props.cnf.s,
     iconsAndText: props.cnf.i,
     //mobileBreakPoint: 'readyPropBoolean',
@@ -33,8 +36,12 @@
         reverseTransition: element._p.b
       }:{}"
   >
-  <PLt v-if="element._ch" v-bind="{cnf: element._p||{}, chldrn:element._ch}">
-  </PLt>
+    <template
+      v-for="(elmt, index) in element._ch||[]"
+     >
+       <StChildrenHelper :element="elmt">
+       </StChildrenHelper>
+    </template>
   </v-tab-item>
 </v-tabs>
 </template>

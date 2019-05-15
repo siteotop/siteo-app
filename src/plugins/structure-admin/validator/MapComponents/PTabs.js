@@ -1,21 +1,25 @@
 
-import {PLt} from './PContainer';
 
 export const PTb = {
   _p: {
     a: 'readyPropBoolean',
     r: 'readyPropBoolean',
+    //backgroundColor: props.cnf.
+    b: 'readyPropColor',
     c: 'readyPropBoolean',
     o: 'readyPropColor',
     d: 'readyPropBoolean',
     l: 'readyPropBoolean',
     f: 'readyPropBoolean',
     g: 'readyPropBoolean',
+    //height: props.cnf.
+    e: 'readyPropHeight',
     s: 'readyPropBoolean',
     i: 'readyPropBoolean',
     //mobileBreakPoint: 'readyPropBoolean',
     h: 'readyPropBoolean',
-    w: 'readyPropColor'
+    w: 'readyPropColor',
+
 
   },
   _c: ['background', 'elevation'],
@@ -28,13 +32,13 @@ export const TCt = {
   _p: {
     a: 'readyPropTransition',
     b: 'readyPropTransition',
-    ...PLt._p,
+
   },
 
   _d: {
     t: 'readyPropDataTitle'
   },
 
-  _ch: PLt._ch
+  _ch: ['PCt', 'PLt', 'PCd',  'PTl', 'PTx','PYv', ]
 
 }

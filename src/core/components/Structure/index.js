@@ -28,7 +28,7 @@ export {default as PTl}  from  './PageTitle.vue';
 export {default as PTx}  from  './PageText.vue';
 
 
-export {default as PTb}  from  './PageTabs.vue';
+export {default as PTb}  from  './PTabs.vue';
 
 export {default as PTm}  from  './PageTimeline.vue';
 

@@ -12,6 +12,7 @@ export {PDm} from './PDialogMenu';
 export {PEx, Exi} from './PExpansion';
 export {PLs, LAv, LCt, LAc, LTi} from './PList';
 export {PPx} from './PParallax';
+export {PTb, TCt} from './PTabs';
 export {RAb, TTl, PTr} from './RAb';
 export {RBt, RAc, RMn, MBt} from './RBt';
 
@@ -23,7 +24,7 @@ export {PTx, PHt} from './PTx';
 
 
 
-export {PTb, TCt} from './PTb';
+
 
 
 export {PTm, TEp } from './PTm';
