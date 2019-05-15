@@ -6,6 +6,10 @@ export const PLs = {
   t: 'List',
   d: 'Items list',
   helperProps: {
+    b: {
+      t: 'color',
+      d: ''
+    },
     d: {
       t: 'dense',
       d: ''
@@ -30,6 +34,37 @@ export const PLs = {
       t: 'dark',
       d: ''
     },
+
+    //elevation: cnf.
+    c: {
+      t: 'elevation',
+      d: ''
+    },
+    //height
+    e: {
+      t: 'height',
+      d: ''
+    },
+    //rounded: cnf.
+    f:{
+      t: 'rounded',
+      d: ''
+    },
+    //shaped: cnf.
+    g:{
+      t: 'shaped',
+      d: ''
+    },
+    //tile: cnf.
+    h:{
+      t: 'tile',
+      d: ''
+    },
+    //width:
+    i: {
+      t: 'width',
+      d: ''
+    }
   }
 }
 
@@ -75,5 +110,5 @@ export const LAc = {
 export const LTi = {
   t: 'Tile',
   d: 'List element',
-  
+
 }

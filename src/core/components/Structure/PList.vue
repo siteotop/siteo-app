@@ -39,12 +39,21 @@ export default {
   render(h, context) {
     var cnf = context.props.cnf;
     return h('v-list', {props: {
+
+      color: cnf.b,
       dense: cnf.d,
       subheader: cnf.s,
       threeLine: cnf.t,
       twoLine: cnf.w,
       light:cnf.l,
       dark: cnf.a,
+      elevation: cnf.c,
+      height: cnf.e,
+      rounded: cnf.f,
+      shaped: cnf.g,
+      tile: cnf.h,
+      width: cnf.i
+
     }, class: context.data.class}, [
         (context.props.chldrn||[]).map(function(element){
           var el_c = element._p||{};

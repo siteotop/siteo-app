@@ -8,6 +8,7 @@ import {PDl} from './PDialog';
 import {PDm} from './PDialogMenu';
 import {PEx, Exi} from './PExpansion';
 import { PIm} from './PImage';
+import {PLs, LAv, LCt, LAc, LTi} from './PList';
 import {RDw} from './RDw';
 import {RFt} from './RFt';
 import {RLg, PAv} from './RLg';
@@ -20,7 +21,7 @@ import {RBt, RAc, RMn, MBt} from './RBt';
 
 
 
-import {PLs, LAv, LCt, LAc, LTi} from './PLs';
+
 
 import {PTb, TCt} from './PTb';
 import {PTm, TEp} from './PTm';

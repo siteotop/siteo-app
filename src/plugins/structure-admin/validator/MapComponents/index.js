@@ -10,6 +10,7 @@ export {PIm} from './PImage';
 export {PDl} from './PDialog';
 export {PDm} from './PDialogMenu';
 export {PEx, Exi} from './PExpansion';
+export {PLs, LAv, LCt, LAc, LTi} from './PList';
 export {RAb, TTl, PTr} from './RAb';
 export {RBt, RAc, RMn, MBt} from './RBt';
 
@@ -22,7 +23,7 @@ export {PTx, PHt} from './PTx';
 
 
 export {PTb, TCt} from './PTb';
-export {PLs, LAv, LCt, LAc, LTi} from './PLs';
+
 
 export {PTm, TEp } from './PTm';
 export {RDw} from './RDw';

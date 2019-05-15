@@ -17,7 +17,7 @@ export {default as PSc}  from  './PSection.vue';
 export {default as PDl}  from  './PDialog.vue';
 export {default as PDm}  from  './PDialogMenu';
 export {default as PEx}  from  './PExpansion.vue';
-
+export {default as PLs}  from  './PList.vue';
 
 export {default as PPx}  from  './PageParallax.vue';
 export {default as PIm}  from  './PImage.vue';
@@ -29,7 +29,7 @@ export {default as PTx}  from  './PageText.vue';
 
 
 export {default as PTb}  from  './PageTabs.vue';
-export {default as PLs}  from  './PageList.vue';
+
 export {default as PTm}  from  './PageTimeline.vue';
 
 
