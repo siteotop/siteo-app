@@ -84,6 +84,3 @@ export const PSc = {
 
   _ch: ['PCt']
 }
-
-// PageParallax
-export const PPx = PSc;

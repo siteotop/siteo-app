@@ -19,7 +19,7 @@ export {default as PDm}  from  './PDialogMenu';
 export {default as PEx}  from  './PExpansion.vue';
 export {default as PLs}  from  './PList.vue';
 
-export {default as PPx}  from  './PageParallax.vue';
+export {default as PPx}  from  './PParallax.vue';
 export {default as PIm}  from  './PImage.vue';
 export {default as PYv}  from  './PageVideo.vue';
 

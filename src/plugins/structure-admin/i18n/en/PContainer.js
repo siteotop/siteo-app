@@ -64,11 +64,3 @@ export const PSc = {
     }
   }
 }
-
-
-export const PPx = {
-  ...PSc,
-  t: 'Parallax',
-  d: 'Parallax container'
-
-}
