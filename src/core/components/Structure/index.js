@@ -5,8 +5,6 @@
 
 export {default as RLg}  from './RootLogo.vue';
 
-
-
 // PAGE
 export {default as PAl}  from  './PAlert.vue';
 export {default as PAv}  from  './PAvatar.vue';
@@ -21,6 +19,7 @@ export {default as PLs}  from  './PList.vue';
 export {default as PHt}  from  './PHtml.vue';
 export {default as PPx}  from  './PParallax.vue';
 export {default as PIm}  from  './PImage.vue';
+export {default as PSh}  from  './PSheet.vue';
 export {default as PTb}  from  './PTabs.vue';
 export {default as PTx}  from  './PText.vue';
 export {default as PTl}  from  './PTitle.vue';
@@ -36,13 +35,6 @@ export const StPlugin = 'StPlugin';
 
 export const RDh = 'VDivider'
 export const RDv = {
-  functional: true,
-  render(h) {
-    return h('v-divider', {props: {vertical: true}});
-  }
-};
-
-export const CSl = {
   functional: true,
   render(h) {
     return h('v-divider', {props: {vertical: true}});

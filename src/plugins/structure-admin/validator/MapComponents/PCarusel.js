@@ -56,6 +56,6 @@ export const CSe = {
     i: 'readyPropImage',
   },
 
-  _ch: ['PCt', 'PLt']
+  _ch: ['PCt', 'PLt', 'PSh']
 
 }

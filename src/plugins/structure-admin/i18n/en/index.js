@@ -12,6 +12,7 @@ import {PLs, LAv, LCt, LAc, LTi} from './PList';
 import {PPx} from './PParallax';
 import {PTb, TCt} from './PTabs';
 import {PTm, TEp} from './PTimeline';
+import {PSh} from './PSheet';
 import {PYv} from './PYoutubeVideo';
 import {RDw} from './RDw';
 import {RFt} from './RFt';
@@ -40,6 +41,7 @@ export default {
     PSc, PCt, PLt, Flx,
     PPx,
     PIm,
+    PSh,
     PYv,
     PCs,
     CSe,
