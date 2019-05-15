@@ -13,13 +13,14 @@ export {PEx, Exi} from './PExpansion';
 export {PLs, LAv, LCt, LAc, LTi} from './PList';
 export {PPx} from './PParallax';
 export {PTb, TCt} from './PTabs';
+export {PTl} from './PTitle';
+export {PTx, PHt} from './PText';
+
 export {RAb, TTl, PTr} from './RAb';
 export {RBt, RAc, RMn, MBt} from './RBt';
 
 export {PYv} from './PYv';
-export {PTl} from './PTl';
 
-export {PTx, PHt} from './PTx';
 
 
 

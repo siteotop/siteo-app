@@ -17,7 +17,7 @@ import {RLg, PAv} from './RLg';
 import {RAb, TTl, TTg, PTr} from './RAb';
 
 import {PYv} from './PYv';
-import {PTl, PTx, PHt} from './PTl';
+import {PTl, PTx, PHt} from './PTitle';
 import {RBt, RAc, RMn, MBt} from './RBt';
 
 

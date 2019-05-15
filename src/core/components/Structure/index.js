@@ -18,22 +18,23 @@ export {default as PDl}  from  './PDialog.vue';
 export {default as PDm}  from  './PDialogMenu';
 export {default as PEx}  from  './PExpansion.vue';
 export {default as PLs}  from  './PList.vue';
-
+export {default as PHt}  from  './PHtml.vue';
 export {default as PPx}  from  './PParallax.vue';
 export {default as PIm}  from  './PImage.vue';
+export {default as PTb}  from  './PTabs.vue';
+export {default as PTx}  from  './PText.vue';
+export {default as PTl}  from  './PTitle.vue';
+
 export {default as PYv}  from  './PageVideo.vue';
 
-export {default as PTl}  from  './PageTitle.vue';
-
-export {default as PTx}  from  './PageText.vue';
 
 
-export {default as PTb}  from  './PTabs.vue';
+
 
 export {default as PTm}  from  './PageTimeline.vue';
 
 
-export {default as PHt}  from  './PHtml.vue';
+
 export {default as PTr} from  './PageToolbar.vue';
 
 export const RSp = 'VSpacer';
