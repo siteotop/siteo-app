@@ -2,7 +2,7 @@
 <v-container
   fluid
   tag="section"
-  :class="props.cnf.b"
+  :class="'pa-0 ' + props.cnf.b"
 >
 <template
   v-for="(element, index) in props.chldrn||[]"
