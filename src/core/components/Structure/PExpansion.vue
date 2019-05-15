@@ -15,8 +15,12 @@
     <v-expansion-panel-header >{{element._d? element._d.t:'[title]'}}</v-expansion-panel-header>
 
     <v-expansion-panel-content>
-      <PLt v-if="element._ch" v-bind="{cnf: element._p||{}, chldrn:element._ch}">
-      </PLt>
+      <template
+        v-for="(elmt, index) in element._ch||[]"
+       >
+         <StChildrenHelper :element="elmt">
+         </StChildrenHelper>
+      </template>
     </v-expansion-panel-content>
   </v-expansion-panel>
 </v-expansion-panels>

@@ -1,5 +1,4 @@
 
-import {PLt} from './PContainer';
 
 export const PEx = {
   _p: {
@@ -12,7 +11,7 @@ export const PEx = {
     p: 'readyPropBoolean',
     //focusable
     f: 'readyPropBoolean',
-    
+
     //dark
     d: 'readyPropBoolean',
     //light
@@ -27,13 +26,13 @@ export const PEx = {
 
 export const Exi = {
   _p: {
-    ...PLt._p,
+
   },
 
   _d: {
     t: 'readyPropDataTitle'
   },
 
-  _ch: PLt._ch
+  _ch: ['PCt', 'PLt', 'PCd',  'PTl', 'PTx','PYv',]
 
 }
