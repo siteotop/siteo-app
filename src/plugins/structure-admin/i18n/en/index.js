@@ -3,10 +3,11 @@ import {ClassTitles} from './ClassTitles';
 import {PAl} from './PAlert';
 import {PCd, Cti, Cte, Cac} from './PCard';
 import {PCs, CSe} from './PCarusel';
-import {PCt, PLt, Flx, PPx, PIm} from './PContainer';
+import {PSc, PCt,  PLt, Flx, PPx} from './PContainer';
 import {PDl} from './PDialog';
 import {PDm} from './PDialogMenu';
 import {PEx, Exi} from './PExpansion';
+import { PIm} from './PImage';
 import {RDw} from './RDw';
 import {RFt} from './RFt';
 import {RLg, PAv} from './RLg';
@@ -38,9 +39,7 @@ export default {
     RLg,
     PAv,
     RAb, TTl, TTg, PTr,
-    PCt,
-    PLt,
-    Flx,
+    PSc, PCt, PLt, Flx,
     PPx,
     PIm,
     PYv,

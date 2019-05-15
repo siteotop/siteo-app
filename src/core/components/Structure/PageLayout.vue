@@ -21,9 +21,6 @@
       </StChildrenHelper>
     </component>
   </template>
-
-
-
   <slot></slot>
 </v-layout>
 </template>

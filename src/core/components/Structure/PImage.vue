@@ -1,15 +1,28 @@
 <template functional>
 <v-img
- fluid
- :height="props.cnf.h||'100%'"
- :src="props.cntnt.i"
- :gradient="props.cnf.gr||'to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)'"
+ v-bind="{
+    aspectRatio: props.cnf.a,
+    contain: props.cnf.b,
+    width: props.cnf.w,
+    height: props.cnf.h,
+    gradient: props.cnf.g,
+    position: props.cnf.p,
+    maxHeight: props.cnf.c,
+    maxWidth: props.cnf.d,
+    minHeight: props.cnf.e,
+    minWidth: props.cnf.f,
+    alt: props.cntnt.a,
+    lazySrc: props.cntnt.l,
+    src: props.cntnt.i,
+  }"
  :class="props.cnf.b"
 >
-<v-container :class="props.cnf.cc" :style="{height:props.cnf.h? props.cnf.h+'px': undefined}">
-  <PLt v-bind="props">
-  </PLt>
-</v-container>
+<template
+  v-for="(element, index) in props.chldrn||[]"
+ >
+   <StChildrenHelper :element="element">
+   </StChildrenHelper>
+ </template>
 </v-img>
 </template>
 

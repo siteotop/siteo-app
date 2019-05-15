@@ -28,16 +28,12 @@ export const Flx = {
 
 }
 
-export const PCt = {
- t: 'Container',
- d: 'Container for page. Use <section> tag',
+export const  PCt = {
+  t: 'Container',
+  d: 'Container from vuetify',
   helperProps: {
     h: {
       t: 'Height',
-      d: ''
-    },
-    b: {
-      t: 'Background',
       d: ''
     },
     c: {
@@ -45,6 +41,19 @@ export const PCt = {
       d: ''
     },
     ...PLt.helperProps
+
+  }
+}
+
+export const PSc = {
+ t: 'Section',
+ d: 'Container for page. Use <section> tag',
+  helperProps: {
+
+    b: {
+      t: 'Background',
+      d: ''
+    },
 
 
   },
@@ -58,14 +67,8 @@ export const PCt = {
 
 
 export const PPx = {
-  ...PCt,
+  ...PSc,
   t: 'Parallax',
   d: 'Parallax container'
 
-}
-
-export const PIm = {
-  ...PCt,
-  t: 'Image',
-  d: 'Image container'
 }

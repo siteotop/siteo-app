@@ -5,7 +5,8 @@ export {PAl} from './PAlert';
 export {PAv, RLg} from './PAvatar';
 export {PCd, Cti, Cte, Cac } from './PCard';
 export {PCs, CSe} from './PCarusel';
-export {PCt, Flx, PLt,  PPx, PIm} from './PContainer';
+export {PSc, PCt, Flx, PLt,  PPx} from './PContainer';
+export {PIm} from './PImage';
 export {PDl} from './PDialog';
 export {PDm} from './PDialogMenu';
 export {PEx, Exi} from './PExpansion';
@@ -27,7 +28,7 @@ export {PTm, TEp } from './PTm';
 export {RDw} from './RDw';
 
 export const rootPage = {
-  _ch: ['PCt', 'PPx', 'PIm', 'PYv', 'PCs' ]
+  _ch: ['PSc', 'PPx', 'PIm', 'PYv', 'PCs' ]
 };
 
 /**

@@ -46,6 +46,11 @@ export const readyPropSize = {
 export const readyPropTime = {
   $comp: 'PropSelect',
   items: [
+    '50',
+    '100',
+    '300',
+    '500',
+    '800',
     '1000',
     '2000',
     '3000',
@@ -92,7 +97,6 @@ export const readyPropClassForLayout = {
 
 
 
-
 export const readyPropClassForFlex = {
   $comp: 'PropClass',
   additional: ['flexsize', 'blockflex', 'offset', 'order'],
@@ -110,6 +114,12 @@ export const readyPropTagH = {
   items: ['h1','h2','h3','h4','h5','h6'],
   default: 'h1'
 };
+
+export const readyPropRatio = {
+  $comp: 'PropSelect',
+  items: ['0.5', '0.6', '0.8', '1', '1.2', '1.3','1.4','1.5','1.6','1.7','1.8', '1.9', '2.0'],
+  default: '1.4'
+}
 
 export const readyPropImage = {
   $comp: 'PropTitle',

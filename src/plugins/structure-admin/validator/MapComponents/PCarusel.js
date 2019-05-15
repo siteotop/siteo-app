@@ -1,5 +1,3 @@
-import {PLt} from './PContainer';
-
 //PageCarusel
 export const PCs = {
   _p: {
@@ -18,7 +16,7 @@ export const PCs = {
     // height
     h: 'readyPropHeight',
 
-    
+
     //hideDelimiterBackground
     b: 'readyPropBoolean',
 
@@ -51,13 +49,13 @@ export const CSe = {
   _p: {
     t: 'readyPropTransition',
     r: 'readyPropTransition',
-    ...PLt._p,
+
   },
 
   _d: {
     i: 'readyPropImage',
   },
 
-  _ch: PLt._ch
+  _ch: ['PCt', 'PLt']
 
 }

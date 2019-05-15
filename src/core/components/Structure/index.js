@@ -13,6 +13,7 @@ export {default as PAv}  from  './PAvatar.vue';
 export {default as PCd}  from  './PCard.vue';
 export {default as PCs}  from  './PCarusel.vue';
 export {default as PCt}  from  './PContainer.vue';
+export {default as PSc}  from  './PSection.vue';
 export {default as PDl}  from  './PDialog.vue';
 export {default as PDm}  from  './PDialogMenu';
 export {default as PEx}  from  './PExpansion.vue';

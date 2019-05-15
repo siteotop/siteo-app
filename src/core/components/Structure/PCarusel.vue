@@ -25,8 +25,12 @@
           reverseTransition: element._p.r
         }:{}"
     >
-    <PLt v-bind="{cnf: element._p||{}, chldrn:element._ch}">
-    </PLt>
+    <template
+      v-for="(elmt, index) in element._ch||[]"
+     >
+       <StChildrenHelper :element="elmt">
+       </StChildrenHelper>
+    </template>
   </v-carousel-item>
  </v-carousel>
 </template>

@@ -54,21 +54,27 @@ export const PLt = {
 
 }
 
-
-
-
-// PageContainer
 export const PCt = {
   _p: {
     // height
     h: 'readyPropHeight',
+    // container
+    c: 'readyPropClassForContainer',
+    ...PLt._p
+  },
+  _ch: PLt._ch
+}
 
+
+
+// PageSection
+export const PSc = {
+  _p: {
 
     //background
     b: 'readyPropColor',
 
-    c: 'readyPropClassForContainer',
-    ...PLt._p
+
   },
 
   _d: {
@@ -76,9 +82,8 @@ export const PCt = {
     i: 'readyPropImage',
   },
 
-  _ch: PLt._ch
+  _ch: ['PCt']
 }
 
 // PageParallax
-export const PPx = PCt;
-export const PIm = PCt;
+export const PPx = PSc;

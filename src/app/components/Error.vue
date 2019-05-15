@@ -1,7 +1,7 @@
 <template>
   <PageSchema :structure="[{
 
-      _n: 'PCt',
+      _n: 'PSc',
       _p: {
         lc: ['column']
       },
