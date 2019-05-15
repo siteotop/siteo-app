@@ -15,20 +15,11 @@ export {PPx} from './PParallax';
 export {PTb, TCt} from './PTabs';
 export {PTl} from './PTitle';
 export {PTx, PHt} from './PText';
-
+export {PTm, TEp } from './PTimeline';
 export {RAb, TTl, PTr} from './RAb';
 export {RBt, RAc, RMn, MBt} from './RBt';
 
 export {PYv} from './PYv';
-
-
-
-
-
-
-
-
-export {PTm, TEp } from './PTm';
 export {RDw} from './RDw';
 
 export const rootPage = {

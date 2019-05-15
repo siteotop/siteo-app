@@ -11,6 +11,7 @@ import { PIm} from './PImage';
 import {PLs, LAv, LCt, LAc, LTi} from './PList';
 import {PPx} from './PParallax';
 import {PTb, TCt} from './PTabs';
+import {PTm, TEp} from './PTimeline';
 import {RDw} from './RDw';
 import {RFt} from './RFt';
 import {RLg, PAv} from './RLg';
@@ -20,13 +21,6 @@ import {PYv} from './PYv';
 import {PTl, PTx, PHt} from './PTitle';
 import {RBt, RAc, RMn, MBt} from './RBt';
 
-
-
-
-
-
-
-import {PTm, TEp} from './PTm';
 export default {
 
   admins: {
