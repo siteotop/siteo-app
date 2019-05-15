@@ -18,8 +18,8 @@ export {PTx, PHt} from './PText';
 export {PTm, TEp } from './PTimeline';
 export {PYv} from './PYoutubeVideo';
 export {RAb, TTl, PTr} from './RootAppBar';
-export {RBt, RAc, RMn, MBt} from './RBt';
-export {RDw} from './RDw';
+export {RBt, RAc, RMn, MBt} from './RootButton';
+export {RDw} from './RootDrawer';
 
 export const rootPage = {
   _ch: ['PSc', 'PPx', 'PIm', 'PYv', 'PCs' ]

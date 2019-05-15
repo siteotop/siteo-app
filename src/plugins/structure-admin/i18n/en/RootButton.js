@@ -88,7 +88,33 @@ export const RBt = {
     q: {
       t: 'Rel',
       d: 'Choose correct rel attribute'
-    }
+    },
+
+    // width
+    ab: {
+      t: 'width',
+      d: 'The width of the content'
+    },
+
+    // height
+    ac: {
+      t: 'height',
+      d: 'Sets the component height'
+    },
+
+    //xSmall: cnf.
+    n: {
+      t: 'xSmall',
+      d: 'Sets the component height'
+    },
+
+    //xLarge
+    z: {
+      t: 'xLarge',
+      d: 'Sets the component height'
+    },
+
+
 
 
   },

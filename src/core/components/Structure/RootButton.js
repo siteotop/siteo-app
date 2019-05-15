@@ -18,8 +18,10 @@ export default {
         props: {
           tag: 'a',
           color: cnf.c,
+          xSmall: cnf.n,
           small: cnf.s,
           large: cnf.l,
+          xLarge:  cnf.z,
           absolute: cnf.a,
           block: cnf.b,
           bottom: cnf.t,
@@ -39,6 +41,8 @@ export default {
           target: cnf.w?'_blank':cnf.w,
           to: context.props.cntnt.r,
           href: context.props.cntnt.h,
+          width: cnf.ab,
+          height: cnf.ac,
 
         },
         attrs: {

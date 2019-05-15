@@ -2,34 +2,87 @@
 //RootButton
 export const RBt =  {
   _p: {
+
+    //xSmall: cnf.
+    n: 'readyPropBoolean',
+    // small
     s: 'readyPropBoolean',
+
+    //large
     l: 'readyPropBoolean',
+
+    //xLarge:  cnf.
+    z: 'readyPropBoolean',
+    //absolute
     a: 'readyPropBoolean',
+
+    //block
     b: 'readyPropBoolean',
+
+    //bottom
     t: 'readyPropBoolean',
+
+    //top
     p: 'readyPropBoolean',
+
+    //left
     e: 'readyPropBoolean',
+
+    //right
     r: 'readyPropBoolean',
+
+    //dark
     d: 'readyPropBoolean',
+
+    //icon
     i: 'readyPropBoolean',
+
+    //light
     g: 'readyPropBoolean',
+
+    //depressed
     y: 'readyPropBoolean',
+
+    //exact
     x: 'readyPropBoolean',
+
+    //fab
     f: 'readyPropBoolean',
+
+    //fixed
     j: 'readyPropBoolean',
+
+    //text
     v: 'readyPropBoolean',
+
+    //outlin
     u: 'readyPropBoolean',
+
+    //rounded
     m: 'readyPropBoolean',
+
+    //target
     w: 'readyPropBoolean',
+
+    //rel
     q: {
       $comp: 'PropSelect',
       items: ['nofollow', 'help', 'author', 'first', 'index', 'help', 'me', 'next', 'prefetch', 'search'],
       default: 'h1'
     },
+
+    //color
     c: {
       $comp: 'PropColor',
       default: 'secondary'
-    }
+    },
+
+    // width
+    ab: 'readyPropHeight',
+
+    // height
+    ac: 'readyPropWidth',
+
   },
 
   _d: {
