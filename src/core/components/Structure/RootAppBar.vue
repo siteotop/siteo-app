@@ -1,38 +1,7 @@
 
 <script>
 
-export const ToolbarElements = {
-   TTl: {
-     functional: true,
-     render(h, context) {
-      return   h('v-toolbar-title',
-         {
-           class:context.data.class
-         },
-         [
-           context.parent.$store.state.appInstance.objectActive.name
-         ]
-       )
-     }
-   },
-
-   TTg: {
-     functional : true,
-     render(h, context) {
-       return h('v-app-bar-nav-icon',  {
-         class: context.data.class,
-         on: {
-           click: ()=>context.parent.$store.state.drawer=!context.parent.$store.state.drawer
-         }
-       }
-       )
-     }
-  }
-
-
-
-}
-
+import {ToolbarElements, createToolbarProps} from './PToolbar.vue';
 
 /**
 Main App toolbar (Future Vuetify 2.0 v-app-bar
@@ -45,16 +14,22 @@ export default {
   render(h, context) {
     var cnf = context.props.cnf;
 
+    var props = createToolbarProps(cnf);
+    props.app = true;
+    props.clippedLeft = cnf.s;
+    props.clippedRight = cnf.t;
+    props.collapseOnScroll = cnf.y;
+    props.elevateOnScroll= cnf.v;
+    props.fadeImgOnScroll = cnf.w;
+    props.hideOnScroll = cnf.x;
+    props.invertedScroll= cnf.u;
+    props.scrollOffScreen= cnf.z;
+    props.scrollTarget= cnf.ab;
+    props.scrollThreshold = cnf.ac;
+    props.shrinkOnScroll  = cnf.ad;
+    props.color = cnf.c || 'primary';
     return h('v-app-bar', {
-      props: {
-          app: true,
-          height: cnf.h,
-          dark:cnf.d,
-          clippedLeft: cnf.l,
-          clippedRight: cnf.r,
-          dense: cnf.e,
-          color: cnf.c||'primary'
-        }
+      props: props
     }, [
       (context.props.chldrn||[]).map(function(element){
         return h('StChildrenHelper', {props: {element:element, structure: ToolbarElements}})

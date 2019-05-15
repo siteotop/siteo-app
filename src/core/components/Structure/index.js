@@ -25,9 +25,10 @@ export {default as PTb}  from  './PTabs.vue';
 export {default as PTx}  from  './PText.vue';
 export {default as PTl}  from  './PTitle.vue';
 export {default as PTm}  from  './PTimeline.vue';
+export {default as PTr} from  './PToolbar.vue';
 export {default as PYv}  from  './PageVideo.vue';
 
-export {default as PTr} from  './PageToolbar.vue';
+
 
 export const RSp = 'VSpacer';
 
