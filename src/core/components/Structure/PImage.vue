@@ -17,11 +17,11 @@
   }"
  :class="props.cnf.b"
 >
-<template
-  v-for="(element, index) in props.chldrn||[]"
- >
-   <StChildrenHelper :element="element">
-   </StChildrenHelper>
+  <template
+    v-for="(element, index) in props.chldrn||[]"
+   >
+     <StChildrenHelper :element="element">
+     </StChildrenHelper>
  </template>
 </v-img>
 </template>
