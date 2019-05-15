@@ -16,10 +16,9 @@ export {PTb, TCt} from './PTabs';
 export {PTl} from './PTitle';
 export {PTx, PHt} from './PText';
 export {PTm, TEp } from './PTimeline';
+export {PYv} from './PYoutubeVideo';
 export {RAb, TTl, PTr} from './RootAppBar';
 export {RBt, RAc, RMn, MBt} from './RBt';
-
-export {PYv} from './PYv';
 export {RDw} from './RDw';
 
 export const rootPage = {
