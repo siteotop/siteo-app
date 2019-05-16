@@ -2,8 +2,8 @@
 <v-card :style="{width: '500px'}">
   <v-layout row wrap v-if="!activeColor">
    <v-flex  xs4  v-for="(colorOptions, colorName ) in colorsKebabCase" :key="colorName" >
-      <v-card tile :class="colorOptions.value.name" >
-          <v-card-text :style="{cursor:'pointer'}"  @click="openShadesPalette(colorName, colorOptions.value)" >
+      <v-card tile :class="colorOptions.value.name" @click="openShadesPalette(colorName, colorOptions.value)" >
+          <v-card-text :style="{cursor:'pointer'}"   >
               <v-layout>
                   <v-flex xs11>
                     {{colorOptions.value.name}}
@@ -19,8 +19,8 @@
   <v-layout row wrap v-else >
       <v-btn  @click="closeShadesPalette()" fab ><AppIcon name="si-arrow-left"></AppIcon></v-btn>
       <v-flex xs12 v-for="(colorOptions, colorName ) in colorsKebabCase[activeColor].shades" :key="colorName" >
-         <v-card tile :class="colorOptions.value.name+' '+colorOptions.value.text" >
-             <v-card-text :style="{cursor:'pointer'}" @click="setNewActiveClass(colorOptions.value)" >
+         <v-card tile :class="colorOptions.value.name+' '+colorOptions.value.text" @click="setNewActiveClass(colorOptions.value)">
+             <v-card-text :style="{cursor:'pointer'}"  >
                  <v-layout>
                      <v-flex xs8>
                        {{colorOptions.value.name}}
@@ -116,6 +116,7 @@ export default {
 
     methods: {
       openShadesPalette(colorName, newClass) {
+        console.log(colorName);
          this.setNewActiveClass(newClass);
          this.activeColor = colorName;
       },
