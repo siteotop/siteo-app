@@ -8,7 +8,7 @@
              readonly
              v-model="valueData">
              <template v-slot:append>
-               <v-btn  small fab :color="valueData">
+               <v-btn  small fab :color="valueData" @click="menuActive=true">
                  <AppIcon  name="si-settings"></AppIcon>
                </v-btn>
              </template>
