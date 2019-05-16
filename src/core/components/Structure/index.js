@@ -21,11 +21,12 @@ export {default as PPx}  from  './PParallax.vue';
 export {default as PPl}  from  './PProgressLinear.vue';
 export {default as PIm}  from  './PImage.vue';
 export {default as PSh}  from  './PSheet.vue';
+export {default as PSg}  from  './PSlideGroup.vue';
 export {default as PTb}  from  './PTabs.vue';
 export {default as PTx}  from  './PText.vue';
 export {default as PTl}  from  './PTitle.vue';
 export {default as PTm}  from  './PTimeline.vue';
-export {default as PTr} from  './PToolbar.vue';
+export {default as PTr}  from  './PToolbar.vue';
 export {default as PYv}  from  './PYoutubeVideo.vue';
 
 

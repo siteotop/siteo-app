@@ -14,6 +14,7 @@ import {PPl} from './PProgressLinear';
 import {PTb, TCt} from './PTabs';
 import {PTm, TEp} from './PTimeline';
 import {PSh} from './PSheet';
+import {PSg, SGe} from './PSlideGroup';
 import {PYv} from './PYoutubeVideo';
 import {RDw} from './RDw';
 import {RFt} from './RFt';
@@ -44,6 +45,7 @@ export default {
     PPl,
     PIm,
     PSh,
+    PSg, SGe,
     PYv,
     PCs,
     CSe,

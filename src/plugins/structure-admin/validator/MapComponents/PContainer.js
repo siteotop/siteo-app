@@ -23,14 +23,14 @@ export const Flx =  {
       'PLs',
       'PTm',
       'PSh',
+      'PSg',
       'RDh',
       'PYv',
       'PHt',
       'RSp',
       'RMn',
       'PPx',
-      'PPl'
-
+      'PPl',
       ]
 }
 
