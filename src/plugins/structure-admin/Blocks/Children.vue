@@ -14,7 +14,7 @@
               <v-btn v-if="component._ch" @click="menuList[indexComponent].activeContent=!menuList[indexComponent].activeContent"  small  icon >
                 <AppIcon scale="1.2" :name="menuList[indexComponent].activeContent?'si-list-expand':'si-list-split'" > </AppIcon>
               </v-btn>
-              <v-menu v-model="menuList[indexComponent].activeEdit"  :nudge-width="100" min-width="500"  max-width="500" :close-on-content-click="false"  :close-on-click="false" eager z-index="777">
+              <v-menu v-model="menuList[indexComponent].activeEdit"  :nudge-width="100" min-width="500"  max-width="500" :close-on-content-click="false"  :close-on-click="false" eager :z-index="activeIndex">
                 <template v-slot:activator="{ on }">
                   <v-btn v-on="on" icon>
                       <AppIcon  name="si-edit" > </AppIcon>
@@ -22,7 +22,7 @@
                 </template>
                 <v-card v-if="menuList[indexComponent].activeEdit" >
                   <v-toolbar tabs dense>
-                    <v-toolbar-title>{{getText(component._n)}}</v-toolbar-title>
+                    <v-toolbar-title>{{getText(component._n)}} </v-toolbar-title>
                     <v-spacer></v-spacer>
                     <v-btn icon @click="menuList[indexComponent].activeEdit=false"><AppIcon  name="si-close"> </AppIcon></v-btn>
                     <template v-slot:extension>
@@ -52,6 +52,7 @@
                             <component
                             :is="'Settings'+getHelperName(shortNameSettingBlock)"
                             v-model="component[shortNameSettingBlock]"
+                            :treeIndex="treeIndex+1"
                             :componentName="component._n"
                             :noDublicateChild="true"
                             :typeHelper="'helper'+getHelperName(shortNameSettingBlock)"
@@ -179,6 +180,10 @@ export default {
           if (this.menuList[i].activeContent) return true;
         }
         return false;
+    },
+
+    activeIndex() {
+      return 999 + this.treeIndex;
     },
 
     activeColor() {

@@ -1,5 +1,5 @@
 <template functional>
-  <v-menu :value="parent.menu" @input="(value)=>parent.menu=value" eager z-index="1000" min-width="350" max-width="350" v-show="!parent.startDragg"  offset-x class="text-xs-center pb-3">
+  <v-menu :value="parent.menu" @input="(value)=>parent.menu=value" eager :z-index="parent.activeIndex" min-width="350" max-width="350" v-show="!parent.startDragg"  offset-x class="text-xs-center pb-3">
     <template v-slot:activator="{ on }">
       <v-flex  v-on="on"><v-btn small  :color="parent.activeColor" icon >+ </v-btn></v-flex>
     </template>

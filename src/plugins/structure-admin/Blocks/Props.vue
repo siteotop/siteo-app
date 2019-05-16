@@ -8,10 +8,6 @@
 
 <script>
 
-//import SelectableProp from './Props/Selectable.vue'
-
-//import SettingsChildren from  './Children.vue';
-//console.log(SettingsChildren);
 import * as PropsComponents from './Props/Components'
 import ExtendsBlock from './_extends/block.js';
 import PropsSettingsList from './Props/SettingsList.js';

@@ -1,5 +1,5 @@
 <template functional>
-<v-menu   min-width="300" :nudge-width="100"  eager z-index="999">
+<v-menu   min-width="300" :nudge-width="100"  eager :z-index="parent.activeIndex">
   <template v-slot:activator="{ on }">
     <v-btn v-on="on" icon>
         <AppIcon  name="si-more-vert" > </AppIcon>
