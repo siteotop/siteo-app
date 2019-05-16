@@ -12,6 +12,7 @@ import {PLs, LAv, LCt, LAc, LTi} from './PList';
 import {PPx} from './PParallax';
 import {PPl} from './PProgressLinear';
 import {PTb, TCt} from './PTabs';
+import {PTa, TTr, TTd} from './PTable';
 import {PTm, TEp} from './PTimeline';
 import {PSh} from './PSheet';
 import {PSg, SGe} from './PSlideGroup';
@@ -57,6 +58,7 @@ export default {
     PEx, Exi,
     PCd, Cti, Cte, Cac,
     PLs, LAv, LCt, LAc, LTi,
+    PTa, TTr, TTd,
     PTb, TCt,
     PTm, TEp,
     RSp: {

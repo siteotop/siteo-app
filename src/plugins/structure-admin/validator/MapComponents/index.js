@@ -14,6 +14,7 @@ export {PLs, LAv, LCt, LAc, LTi} from './PList';
 export {PPx} from './PParallax';
 export {PPl} from './PProgressLinear';
 export {PTb, TCt} from './PTabs';
+export {PTa, TTr, TTd} from './PTable';
 export {PTl} from './PTitle';
 export {PTx, PHt} from './PText';
 export {PTm, TEp } from './PTimeline';
