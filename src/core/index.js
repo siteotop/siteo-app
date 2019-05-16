@@ -149,6 +149,7 @@ export const createSiteo =  function ({configs, messages, plugins} ) {
      //color: CoreVue.vuetify.theme.accent ||'rgb(106, 180, 255)',
      failedColor: 'red',
      thickness: '3px',
+     autoFinish: false,
    });
 
    CoreVue._siteo_config = configs;

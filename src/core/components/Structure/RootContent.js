@@ -9,14 +9,12 @@ export default {
   render (h, context) {
     return h('v-content', [
        //h('transition', {props: {name:''}}, [
-         h('router-view', {
-              directives: [
-                  {name: 'show', value: !context.parent.$store.state.pageLoader}
-              ]
-          })
-       //])
-       ,
-
+       h('router-view', {
+            directives: [
+                {name: 'show', value: !context.parent.$store.state.pageLoader}
+            ]
+        }),
+       
        context.parent.$store.state.pageLoader?  h('v-container', {attrs: {fluid: '', 'fill-height': ''}}, [
           h('v-layout', {attrs: {'align-center':'', 'justify-center':''}},  [
               h('v-flex', [
@@ -36,7 +34,8 @@ export default {
           BLOCK PROGRESS BAR
         */
         h('vue-progress-bar'),
-      //  h('v-progress-linear', {props: {indeterminate:true} }),
+
+
 
 
     ]);
