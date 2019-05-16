@@ -10,6 +10,7 @@ import {PEx, Exi} from './PExpansion';
 import { PIm} from './PImage';
 import {PLs, LAv, LCt, LAc, LTi} from './PList';
 import {PPx} from './PParallax';
+import {PPl} from './PProgressLinear';
 import {PTb, TCt} from './PTabs';
 import {PTm, TEp} from './PTimeline';
 import {PSh} from './PSheet';
@@ -40,6 +41,7 @@ export default {
     RAb, TTl, TTg, PTr,
     PSc, PCt, PLt, Flx,
     PPx,
+    PPl,
     PIm,
     PSh,
     PYv,

@@ -1,7 +1,7 @@
 
 
 
-// PageYoutuvevideo
+// PageSheet
 export const PSh = {
   t: 'Sheet',
   d: 'The v-sheet is designed to power other paper components within Vuetify. It is meant to be used as a low level component.',
