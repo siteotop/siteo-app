@@ -27,8 +27,8 @@ export default {
               $coreVue.store[recieved.storeEvent](recieved.storeEventName, recieved.data);
 
               if (recieved.data.design)  {
-                  var $vuetify =  $coreVue.vuetify.framework.theme.vueInstance.$vuetify;
-                  $coreVue.updateVuetifyOptions($vuetify, recieved.data.design.theme);
+                  var $vuetify =  $coreVue.vuetify.framework;
+                  $coreVue.updateVuetifyOptions($vuetify, recieved.data.design.Vtf);
               }
 
             }

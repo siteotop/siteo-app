@@ -72,13 +72,25 @@ CoreVue.axios = axios;
 import VS2 from 'vue-script2';
 CoreVue.$script = VS2.load;
 
+/**
+   @param $vuetify Instanse Vuetify
+   @param designVuetify  structure for Vuetify settings
+   {
+     _p: {l: {primary: 'sdsdf'}, d: {}, dark: true }
+   }
+*/
 CoreVue.updateVuetifyOptions = function($vuetify,  designVuetify) {
     if (!designVuetify) {
       return;
     }
 
-    if ( designVuetify.colors) {
-      $vuetify.themes.light = designVuetify.colors;
+    if ( designVuetify._p) {
+      //console.log(designVuetify)
+      //$vuetify.themes.light = designVuetify._p.l;
+      if (designVuetify._p.dark!==undefined) {
+          $vuetify.theme.dark = designVuetify._p.dark
+      }
+
     }
 }
 /**
@@ -145,6 +157,7 @@ export const createSiteo =  function ({configs, messages, plugins} ) {
      }
    });
    console.log(CoreVue.vuetify);
+
    Vue.use(VueProgressBar, {
      //color: CoreVue.vuetify.theme.accent ||'rgb(106, 180, 255)',
      failedColor: 'red',

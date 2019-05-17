@@ -46,7 +46,7 @@ export default (context) => {
     }
 */
     // update $vuetify.theme
-    app.$options.updateVuetifyOptions(app.$vuetify, context.instance.design);
+    app.$options.updateVuetifyOptions(app.$vuetify, context.instance.design.Vtf);
 
 
     // устанавливаем маршрут для маршрутизатора серверной части
