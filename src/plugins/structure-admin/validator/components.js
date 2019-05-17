@@ -19,7 +19,7 @@ const getPropterties = function () {
       _p: {}, // props
       _c: [], // class
       _ch: [], // children
-      colors: allowChildrenList['theme'].colors
+      
   };
 };
 

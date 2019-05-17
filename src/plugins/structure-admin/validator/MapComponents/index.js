@@ -1,5 +1,6 @@
 
-export {theme} from './theme';
+
+export {Vtf} from './Vuetify';
 export {rootDesign, RFt, RCt} from './RootDesign';
 export {PAl} from './PAlert';
 export {PAv, RLg} from './PAvatar';

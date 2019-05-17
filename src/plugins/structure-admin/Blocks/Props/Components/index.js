@@ -212,3 +212,10 @@ export const PropClassGridlist = function () {
     name: Gridlist
   }
 }
+
+import {default as Colors} from '../../Colors.vue';
+export const PropColorsTheme = function () {
+  return {
+    name: Colors
+  }
+}

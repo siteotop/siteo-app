@@ -1,4 +1,5 @@
 
+import {Vtf} from './Vuetify';
 import {ClassTitles} from './ClassTitles';
 import {PAl} from './PAlert';
 import {PCd, Cti, Cte, Cac} from './PCard';
@@ -29,9 +30,7 @@ import {RBt, RAc, RMn, MBt} from './RootButton';
 export default {
 
   admins: {
-    theme: {
-      t: 'Colors for theme'
-    },
+    Vtf,
     RCt: {
       t: 'Content'
     },

@@ -12,7 +12,7 @@
   deletable-chips
 >
  <template v-slot:append>
-  <v-menu min-width="300" :close-on-content-click="false" eager z-index="800" >
+  <v-menu min-width="300" :close-on-content-click="false" eager :z-index="parent.activeIndex+1" >
     <template v-slot:activator="{ on }">
       <v-btn v-on="on"  small fab >
         <AppIcon  name="si-settings"></AppIcon>

@@ -3,7 +3,7 @@ import {PLt} from './PContainer';
 
 
 export const rootDesign = {
-  _ch: ['theme', 'RAb', 'RDw',  'RCt', 'RFt', 'RAc', 'RMn']
+  _ch: [ 'Vtf', 'RAb', 'RDw',  'RCt', 'RFt', 'RAc', 'RMn']
 };
 
 export const RCt = {
