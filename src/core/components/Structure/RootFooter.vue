@@ -5,7 +5,7 @@
   v-bind="{
       absolute: props.cnf.a,
       inset: props.cnf.i,
-      color: props.cnf.c||'primary darken-4',
+      color: props.cnf.c,
       dark: props.cnf.d,
       light: props.cnf.l,
       fixed: props.cnf.f,

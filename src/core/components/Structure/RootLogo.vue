@@ -4,7 +4,7 @@
     _p: {
        t:props.cnf.t,
        s: props.cnf.s||'38',
-       c:props.cnf.c|| 'primary lighten-2'
+       c:props.cnf.c || 'primary lighten-2'
       },
     _d: {
       p: parent.$store.state.appInstance.objectActive.src,
