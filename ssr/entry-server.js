@@ -1,11 +1,9 @@
 // entry-server.js
 import  {installVuePlugin, createSiteo, startSiteo}  from '../src/core';
-import  siteoTemplate  from '../src/template';
 import  siteoApp  from '../src/app';
 import  SiteoLocalEN  from '../src/core/i18n/en';
 
 
-installVuePlugin(siteoTemplate);
 installVuePlugin(siteoApp);
 
 
