@@ -61,6 +61,7 @@ import 'vuetify/dist/vuetify.min.css';
 require( './style/animations.scss');
 require('./style/common.css')
 
+ import {vuetifyIcons} from './icons';
 
 /**ICONS*/
 import IconsRegister from  './icons/register.js';
@@ -147,7 +148,11 @@ export const createSiteo =  function ({configs, messages, plugins} ) {
 
    CoreVue.vuetify = new Vuetify({
      icons: {
-       iconfont: 'md' // default
+       iconfont: 'md',  // default
+       values: {
+         ...vuetifyIcons
+         //'settings': 'settings'
+       }
      },
 
      theme: {
