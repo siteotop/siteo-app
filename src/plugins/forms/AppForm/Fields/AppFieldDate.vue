@@ -18,14 +18,17 @@
         return-masked-value
         clearable
 
-        prepend-inner-icon="event"
+        :prepend-inner-icon="$options._icons.calendar"
         @input="formatDateFromInput"
       ></v-text-field></template>
 
 
        <v-date-picker color="primary"
  v-bind="vPicker" v-model="datepickerValue" scrollable>
-         <v-btn text color="primary" @click="clear()"><AppIcon name="si-clear"></AppIcon></v-btn>
+         <v-btn text color="primary" @click="clear()">
+
+           <v-icon v-text="clear"></v-icon>
+         </v-btn>
          <v-spacer></v-spacer>
          <v-btn text color="primary" @click="modal = false">Cancel</v-btn>
          <v-btn text color="primary" @click="$refs.dialog.save(datepickerValue)">OK</v-btn>
@@ -41,6 +44,8 @@
 */
 import VModelInput from './_mixins/v-model-input';
 import {format, unFormat} from './_helper/date-format';
+
+import {mdiCalendar}  from '@mdi/js'
 
 export default {
 
@@ -65,6 +70,9 @@ export default {
 
   },
 
+  _icons: {
+    calendar: mdiCalendar
+  },
   data() {
     return {
       modal: false,

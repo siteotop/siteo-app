@@ -1,12 +1,14 @@
 
 const validatorName = {required: true, min: 2, max: 100, alpha_spaces: true}
 
+import {mdiAt, mdiAccount, mdiCellphone, mdiViewList}  from '@mdi/js'
+
 const fieldsMap = {
   name ()  {
     return {
       c:'AppFieldPlainText',
       v: validatorName,
-      p: {prependIcon:'person'}
+      p: {prependIcon:mdiAccount}
     }
   },
 
@@ -14,21 +16,21 @@ const fieldsMap = {
     return {
       c:'AppFieldPlainText',
       v: validatorName,
-      p: {prependIcon:'person'}
+      p: {prependIcon: mdiAccount}
     }
   },
   email(){
     return {
       c:'AppFieldPlainText',
       v:{required: true, email:true},
-      p: {prependIcon: 'email'}
+      p: {prependIcon: mdiAt}
     }
   } ,
   phone (){
     return {
       c:'AppFieldPhone',
       v:{required: true, numeric:true, min:10,  max:14},
-      p:{'prefix': '+', prependIcon: 'phone'}
+      p:{'prefix': '+', prependIcon:  mdiCellphone}
     }
   },
 
@@ -36,7 +38,7 @@ const fieldsMap = {
     return {
       c: 'AppFieldItems',
       v: {required: true},
-      p: {prependIcon:'add_shopping_cart'}
+      p: {prependIcon: mdiViewList}
     }
   },   //'AppFieldValues',
 
@@ -60,7 +62,7 @@ export const  getStructureForField = function (fieldName) {
       props: field.p||{}
     }
   } else {
-    
+
     return false;
   }
 }

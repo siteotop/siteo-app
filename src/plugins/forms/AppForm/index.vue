@@ -39,7 +39,7 @@
             <v-tooltip top eager>
               <template v-slot:activator="{ on }">
                 <v-btn v-on="on" icon :disabled="!formActive" @click="leaveform = resetForm">
-                  <AppIcon name='si-clear'></AppIcon>
+                  <v-icon>{{$options._icons.clear}}</v-icon>
                 </v-btn>
               </template>
 
@@ -81,6 +81,8 @@ import AppFieldItems from './Fields/AppFieldItems.vue';
 import AppFieldDate from './Fields/AppFieldDate.vue';
 import AppFieldWorldApi from './Fields/AppFieldWorldApi.vue';
 import AppFieldRecaptcha from './Fields/AppFieldRecaptcha.vue';
+
+import {mdiBackupRestore}  from '@mdi/js'
 
 const startFormData = function () {
   return {
@@ -186,6 +188,10 @@ export default {
 
 
 
+  },
+
+  _icons: {
+    clear: mdiBackupRestore
   },
 
   data: startFormData,
