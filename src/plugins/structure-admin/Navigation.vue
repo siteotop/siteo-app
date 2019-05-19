@@ -16,7 +16,8 @@
           icon
           color="indigo"
           class=" white--text"
-        > <AppIcon name="si-arrow-left"></AppIcon>
+        >
+        <v-icon>$vuetify.icons.prev</v-icon>
       </v-btn>
       <template v-slot:extension>
         <v-btn :disabled="!treeHistory.length"  icon @click="backHistory">
@@ -69,7 +70,7 @@
           left
 
         >
-        <AppIcon name="si-settings"></AppIcon>
+        <v-icon>{{$options._icons.settings}}</v-icon>
    </v-btn>
  </div>
 </template>
@@ -79,7 +80,7 @@ import _cloneDeep from 'lodash/cloneDeep';
 import _isEmpty from 'lodash/isEmpty';
 import {zipObjectBeforeSave, unzipObjectBeforeUpate} from './validator/zipUnzip';
 import SettingsChildren from './Blocks/Children.vue';
-
+import {mdiSettings} from '@mdi/js';
 export default {
   name:'BDesignTemplates',
 
@@ -117,6 +118,11 @@ export default {
     }
 
 
+
+  },
+
+  _icons: {
+    settings: mdiSettings
 
   },
 

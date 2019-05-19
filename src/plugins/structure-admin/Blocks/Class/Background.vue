@@ -8,8 +8,8 @@
              readonly
              v-model="valueData">
              <template v-slot:append>
-               <v-btn  small fab :color="valueData" @click="menuActive=true">
-                 <v-icon>settings</v-icon>
+               <v-btn fab outlined :color="valueData" @click="menuActive=true">
+                 <v-icon>$vuetify.icons.edit</v-icon>
                </v-btn>
              </template>
 
@@ -20,14 +20,20 @@
           <v-toolbar dense >
 
             <v-btn small :color="reserveColor" fab @click="valueData=reserveColor" >
-              <AppIcon name="si-refresh"></AppIcon>
+               <v-icon>{{$options._icons.refresh}}</v-icon>
             </v-btn>
-            <v-btn small fab @click="removeColor()" ><AppIcon name="si-delete"></AppIcon></v-btn>
+            <v-btn small fab @click="removeColor()" >
+              <v-icon>$vuetify.icons.delete</v-icon>
+            </v-btn>
             <v-spacer></v-spacer>
             <v-toolbar-title v-if ="valueData">{{valueData}}</v-toolbar-title>
             <v-toolbar-title v-else >no selected</v-toolbar-title>
-            <v-btn small :class="classActiveButton" fab  @click="closeMenu()" > <AppIcon name="si-check"></AppIcon> </v-btn>
-            <v-btn small  fab  @click="menuActive=false" > <AppIcon name="si-close"></AppIcon> </v-btn>
+            <v-btn small :class="classActiveButton" fab  @click="closeMenu()" >
+               <v-icon>{{$options._icons.check}}</v-icon>
+             </v-btn>
+            <v-btn small  fab  @click="menuActive=false" >
+              <v-icon>$vuetify.icons.close</v-icon>
+            </v-btn>
 
         </v-toolbar>
         <v-card-text class="pa-0">
@@ -60,6 +66,9 @@
 import MDPalette from '../../ColorPalette/MDPalette.vue'
 import ThemePalette from '../../ColorPalette/ThemePalette.vue'
 import MixinVModelInput from '../../../forms/AppForm/Fields/_mixins/v-model-input';
+
+import {mdiCheck, mdiRefresh} from '@mdi/js'
+
 export default {
 
     $type: 'background',
@@ -76,6 +85,11 @@ export default {
     },
 
     mixins: [MixinVModelInput],
+
+    _icons: {
+      check:mdiCheck,
+      refresh: mdiRefresh
+    },
 
     data() {
 

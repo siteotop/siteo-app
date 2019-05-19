@@ -15,7 +15,7 @@
   <v-menu min-width="300" :close-on-content-click="false" eager :z-index="parent.activeIndex+1" >
     <template v-slot:activator="{ on }">
       <v-btn v-on="on"  small fab >
-        <AppIcon  name="si-settings"></AppIcon>
+        <v-icon>$vuetify.icons.edit</v-icon>
       </v-btn>
     </template>
     <v-card>

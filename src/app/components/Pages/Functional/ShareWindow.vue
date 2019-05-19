@@ -98,7 +98,7 @@ export default {
 
   _icons: {
     copy:mdiContentCopy
-  }
+  },
 
   computed: {
     canonicalUrl () {

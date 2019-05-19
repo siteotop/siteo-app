@@ -33,6 +33,7 @@ import {
   mdiCheck,
   mdiCloseCircle,
   mdiClose,
+  mdiDelete, 
   mdiCheckCircle,
   mdiInformation,
   mdiExclamation,
@@ -66,7 +67,7 @@ export const vuetifyIcons = {
   complete: mdiCheck,
   cancel: mdiCloseCircle,
   close: mdiClose,
-  delete: mdiCloseCircle, // delete (e.g. v-chip close)
+  delete: mdiDelete, // delete (e.g. v-chip close)
   clear: mdiClose,
   success: mdiCheckCircle,
   info: mdiInformation,

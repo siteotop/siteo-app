@@ -6,18 +6,18 @@
           <v-card :class="'ml-'+treeIndex+' ' +activeColor">
             <v-toolbar dense flat :color="activeColor">
               <v-btn small :disabled="childrenActive" :style="{cursor:'move'}"  icon :class="dragClass">
-                <v-icon>drag_indicator</v-icon>
+                <v-icon>{{$options._icons.drag}}</v-icon>
               </v-btn>
               <v-toolbar-title class="pl-0 ml-0 subtitle-1">{{getText(component._n) }}
               </v-toolbar-title>
               <v-spacer></v-spacer>
               <v-btn v-if="component._ch" @click="menuList[indexComponent].activeContent=!menuList[indexComponent].activeContent"  small  icon >
-                <v-icon>{{menuList[indexComponent].activeContent?'unfold_more':'unfold_less'}}</v-icon>
+                <v-icon>{{menuList[indexComponent].activeContent?$options._icons.more:$options._icons.less}}</v-icon>
               </v-btn>
               <v-menu v-model="menuList[indexComponent].activeEdit"  :nudge-width="100" min-width="500"  max-width="500" :close-on-content-click="false"  :close-on-click="false" eager :z-index="activeIndex">
                 <template v-slot:activator="{ on }">
                   <v-btn v-on="on" icon>
-                      <v-icon>edit</v-icon>
+                      <v-icon>$vuetify.icons.edit</v-icon>
                   </v-btn>
                 </template>
                 <v-card v-if="menuList[indexComponent].activeEdit" >
@@ -25,7 +25,7 @@
                     <v-toolbar-title>{{getText(component._n)}} </v-toolbar-title>
                     <v-spacer></v-spacer>
                     <v-btn icon @click="menuList[indexComponent].activeEdit=false">
-                      <v-icon>close</v-icon>
+                      <v-icon>$vuetify.icons.close</v-icon>
                     </v-btn>
                     <template v-slot:extension>
                         <v-tabs
@@ -84,7 +84,7 @@
 
   <div v-if="draggable" v-show="startDragg">
     <v-subheader class="red--text">
-      <v-icon color="red">delete</v-icon>
+      <v-icon color="red">$vuetify.icons.delete</v-icon>
        Delete Zone
     </v-subheader>
     <draggable
@@ -136,6 +136,7 @@ export default {
 
 
   },
+
 
   data() {
       return {

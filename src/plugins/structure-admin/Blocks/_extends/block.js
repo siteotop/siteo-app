@@ -5,13 +5,29 @@ import _cloneDeep from 'lodash/cloneDeep';
 import  _findIndex from 'lodash/findIndex';
 import HelperMenuEdit from './_helper/menu-edit.vue';
 import HelperMenuAdd from './_helper/menu-add.vue';
+
+import {
+  mdiPlus,
+  mdiViewStream,
+  mdiDrag,
+  mdiUnfoldMoreHorizontal,
+  mdiUnfoldLessHorizontal,
+
+} from '@mdi/js';
+
 export default {
 
   components: {
     HelperMenuEdit,
     HelperMenuAdd
   },
-
+  _icons: {
+    add:  mdiPlus,
+    block:mdiViewStream,
+    drag: mdiDrag,
+    more: mdiUnfoldMoreHorizontal,
+    less: mdiUnfoldLessHorizontal,
+  },
   props: {
     //it is name for  parent component, which need for  merge settings child component
     componentName: {

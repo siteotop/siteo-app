@@ -40,7 +40,10 @@ import * as StoreModules from  '../../store/modules';
 
 import {
   mdiFilterVariant,
-  mdiViewModule
+  mdiViewModule,
+  mdiViewAgenda,
+  mdiViewList,
+  mdiSortVariant
 } from '@mdi/js';
 
 export default {
@@ -68,7 +71,7 @@ export default {
     values:   mdiViewList,
     sort:   mdiSortVariant,
 
-  }
+  },
 
   asyncData({store, route}) {
     console.log('loaded data items from server for route:');
