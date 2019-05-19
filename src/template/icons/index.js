@@ -56,7 +56,7 @@ import {
 export default {
 
     'si-home': mdiHome,   // main link
-    'si-values': mdiViewList, // link for values
+
     'si-locations': mdiMapMarker, // link for subjects
     'si-experts': mdiAccountSearch,
     'si-blog': mdiLibraryBooks,
@@ -73,7 +73,7 @@ export default {
     'si-clear': mdiBackupRestore,
     'si-close':mdiClose,
     // icons for actions chat and calls
-    'si-order': mdiShopping,
+    
     'si-call': mdiPhone,
     'si-recall': mdiPhoneReturn,
     'si-chat': mdiMessageText,
@@ -109,9 +109,8 @@ export default {
     'si-dots-menu': mdiDotsVertical,
     'si-quote': mdiFormatQuoteOpen,
     // values
-    'si-sort': mdiSortVariant,
-    'si-filter':   mdiFilterVariant,
-    'si-view-cards': mdiViewModule,
-    'si-view-card': mdiViewAgenda
+
+
+
 
 };

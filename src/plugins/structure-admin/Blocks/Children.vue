@@ -6,25 +6,27 @@
           <v-card :class="'ml-'+treeIndex+' ' +activeColor">
             <v-toolbar dense flat :color="activeColor">
               <v-btn small :disabled="childrenActive" :style="{cursor:'move'}"  icon :class="dragClass">
-                <AppIcon  name="si-drag" > </AppIcon>
+                <v-icon>drag_indicator</v-icon>
               </v-btn>
               <v-toolbar-title class="pl-0 ml-0 subtitle-1">{{getText(component._n) }}
               </v-toolbar-title>
               <v-spacer></v-spacer>
               <v-btn v-if="component._ch" @click="menuList[indexComponent].activeContent=!menuList[indexComponent].activeContent"  small  icon >
-                <AppIcon scale="1.2" :name="menuList[indexComponent].activeContent?'si-list-expand':'si-list-split'" > </AppIcon>
+                <v-icon>{{menuList[indexComponent].activeContent?'unfold_more':'unfold_less'}}</v-icon>
               </v-btn>
               <v-menu v-model="menuList[indexComponent].activeEdit"  :nudge-width="100" min-width="500"  max-width="500" :close-on-content-click="false"  :close-on-click="false" eager :z-index="activeIndex">
                 <template v-slot:activator="{ on }">
                   <v-btn v-on="on" icon>
-                      <AppIcon  name="si-edit" > </AppIcon>
+                      <v-icon>edit</v-icon>
                   </v-btn>
                 </template>
                 <v-card v-if="menuList[indexComponent].activeEdit" >
                   <v-toolbar tabs dense>
                     <v-toolbar-title>{{getText(component._n)}} </v-toolbar-title>
                     <v-spacer></v-spacer>
-                    <v-btn icon @click="menuList[indexComponent].activeEdit=false"><AppIcon  name="si-close"> </AppIcon></v-btn>
+                    <v-btn icon @click="menuList[indexComponent].activeEdit=false">
+                      <v-icon>close</v-icon>
+                    </v-btn>
                     <template v-slot:extension>
                         <v-tabs
                           v-model="menuList[indexComponent].activeTabEdit"
@@ -82,7 +84,8 @@
 
   <div v-if="draggable" v-show="startDragg">
     <v-subheader class="red--text">
-      <AppIcon name="si-delete"></AppIcon> Delete Zone
+      <v-icon color="red">delete</v-icon>
+       Delete Zone
     </v-subheader>
     <draggable
       style="border:2px dotted red; width:100%; height:64px;"

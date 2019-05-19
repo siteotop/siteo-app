@@ -26,7 +26,7 @@ const tileStructure = {
     functional: true,
     render(h, context) {
       return h('v-list-item-action', [
-        h('AppIcon', {props: {name: context.props.cntnt.i }} ),
+        h('v-icon', [context.props.cntnt.i] ),
       ])
     }
   }

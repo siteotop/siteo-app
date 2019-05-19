@@ -13,7 +13,7 @@
  >
    <img v-if="props.cntnt.p" :src="props.cntnt.p" :alt="props.cntnt.pt">
    <span v-else class="white--text headline">
-     <AppIcon v-if="props.cntnt.i" :name="props.cntnt.i"></AppIcon>
+     <v-icon v-if="props.cntnt.i">{{props.cntnt.i}}</v-icon>
      <span v-else>{{props.cntnt.t}}</span>
    </span>
 </v-avatar>

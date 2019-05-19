@@ -10,7 +10,7 @@
         color="secondary"
         @click="$vuetify.goTo(0, {duration: 40})"
         >
-        <AppIcon name="si-arrow-up"></AppIcon>
+        <v-icon>$vuetify.icons.up</v-icon>
       </v-btn>
   </v-fab-transition>
 </template>

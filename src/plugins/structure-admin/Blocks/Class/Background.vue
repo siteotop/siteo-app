@@ -9,7 +9,7 @@
              v-model="valueData">
              <template v-slot:append>
                <v-btn  small fab :color="valueData" @click="menuActive=true">
-                 <AppIcon  name="si-settings"></AppIcon>
+                 <v-icon>settings</v-icon>
                </v-btn>
              </template>
 
@@ -19,7 +19,9 @@
         <v-card v-if="menuActive">
           <v-toolbar dense >
 
-            <v-btn small :color="reserveColor" fab @click="valueData=reserveColor" ><AppIcon name="si-refresh"></AppIcon></v-btn>
+            <v-btn small :color="reserveColor" fab @click="valueData=reserveColor" >
+              <AppIcon name="si-refresh"></AppIcon>
+            </v-btn>
             <v-btn small fab @click="removeColor()" ><AppIcon name="si-delete"></AppIcon></v-btn>
             <v-spacer></v-spacer>
             <v-toolbar-title v-if ="valueData">{{valueData}}</v-toolbar-title>

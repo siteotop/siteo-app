@@ -13,17 +13,21 @@
            class="headline grey lighten-2"
            primary-title
          >
-          <AppIcon name="si-share"></AppIcon>
+
+            <v-icon>$vuetify.icons.share</v-icon>
             {{$t('share')}}
           <v-spacer></v-spacer>
-           <v-btn    icon   @click="shareWindow = false"><AppIcon name="si-close"></AppIcon></v-btn>
+           <v-btn    icon   @click="shareWindow = false">
+             <v-icon>$vuetify.icons.close</v-icon>
+           </v-btn>
          </v-card-title>
 
          <v-card-text>
            <v-text-field id="shareElementInputLink"   outline :value="canonicalUrl" readonly>
              <template v-slot:append>
                <v-btn :icon="$vuetify.breakpoint.xs"   @click="copyText()" >
-                 <AppIcon name="si-copy"></AppIcon>
+
+                 <v-icon>{{$options._icons.copy}}</v-icon>
                   <span v-if="!$vuetify.breakpoint.xs">{{$t('copy')}}</span>
                </v-btn>
             </template>
@@ -78,6 +82,8 @@
 import AppSharing from './Share/index.vue';
 import  _find  from 'lodash/find';
 
+import {mdiContentCopy} from '@mdi/js';
+
 export default {
 
   components: {AppSharing},
@@ -90,6 +96,9 @@ export default {
       }
   },
 
+  _icons: {
+    copy:mdiContentCopy
+  }
 
   computed: {
     canonicalUrl () {

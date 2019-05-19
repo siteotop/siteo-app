@@ -1,9 +1,10 @@
 <template >
-  <v-toolbar  v-scroll="onScroll" v-bind="tProps"  :class="tClass" :style="tStyle">
-      <v-app-bar-nav-icon v-if="needShowAction" @click="$store.state.drawer=!$store.state.drawer" ></v-app-bar-nav-icon>
+  <v-toolbar absolute color="grey"  v-scroll="onScroll" v-bind="tProps"  :class="tClass" :style="tStyle">
       <v-menu offset-y>
         <template v-slot:activator="{ on }">
-          <v-btn v-on="on" outline ><AppIcon name="si-dots-menu"></AppIcon> {{$t('m')}} </v-btn>
+          <v-btn v-on="on" outline >
+            <v-icon>$vuetify.icons.menuDots</v-icon>{{$t('m')}}
+          </v-btn>
       </template>
       <v-list>
 
@@ -32,10 +33,9 @@
             >{{item.title}}</v-btn>
         </v-toolbar-items>
       <v-spacer></v-spacer>
-      <v-btn v-if="sharing" icon @click="$emit('shareWindow')"><AppIcon name="si-share"  ></AppIcon> </v-btn>
-      <v-btn icon><AppIcon name="si-qa"></AppIcon> </v-btn>
-      <v-btn icon><AppIcon name="si-bookmark"></AppIcon> </v-btn>
-
+      <v-btn v-if="sharing" icon @click="$emit('shareWindow')">
+        <v-icon>$vuetify.icons.share</v-icon>
+      </v-btn>
   </v-toolbar>
 </template>
 

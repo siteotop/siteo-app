@@ -73,8 +73,20 @@ CoreVue.axios = axios;
 import VS2 from 'vue-script2';
 CoreVue.$script = VS2.load;
 
+
 /**
-   @param $vuetify Instanse Vuetify
+  Hot add  icons to global usage in Vuetify
+*/
+CoreVue.updateVuetifyIcons = function ($vuetify, icons) {
+
+    for (let i in icons) {
+      $vuetify.icons.values[i] = icons[i];
+    }
+}
+
+/**
+   Hot reload configs for Vuetify
+   @param $vuetify Instanse Vuetify $vuetify.framework
    @param designVuetify  structure for Vuetify settings
    {
      _p: {l: {primary: 'sdsdf'}, d: {}, dark: true }
@@ -85,13 +97,15 @@ CoreVue.updateVuetifyOptions = function($vuetify,  designVuetify) {
       return;
     }
 
+    //update themes
     if ( designVuetify._p) {
-      //console.log(designVuetify)
-      //$vuetify.themes.light = designVuetify._p.l;
       if (designVuetify._p.dark!==undefined) {
           $vuetify.theme.dark = designVuetify._p.dark
       }
-
+      // add icons
+      if (designVuetify._p.i) {
+        CoreVue.updateVuetifyIcons($vuetify, designVuetify._p.i);
+      }
     }
 }
 /**
@@ -135,6 +149,7 @@ const SiteoAddPlugin = function (plugin) {
       console.log(`Plugin ${plugin.name} was loaded early`);
   }
 };
+
 CoreVue.SiteoAddPlugin = SiteoAddPlugin;
 
 
@@ -149,10 +164,7 @@ export const createSiteo =  function ({configs, messages, plugins} ) {
    CoreVue.vuetify = new Vuetify({
      icons: {
        iconfont: 'md',  // default
-       values: {
-         ...vuetifyIcons
-         //'settings': 'settings'
-       }
+       values: vuetifyIcons
      },
 
      theme: {

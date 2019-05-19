@@ -53,7 +53,11 @@ import {
   mdiStarOutline,
   mdiStar,
   mdiStarHalf,
-
+  mdiDotsVertical,
+  mdiHome,
+  mdiShareVariant,
+  mdiChevronUp,
+ gestureTapHold
 
  } from '@mdi/js'
 
@@ -84,5 +88,10 @@ export const vuetifyIcons = {
   edit: mdiPencil,
   ratingEmpty: mdiStarOutline,
   ratingFull: mdiStar,
-  ratingHalf: mdiStarHalf
+  ratingHalf: mdiStarHalf,
+  menuDots: mdiDotsVertical,
+  home: mdiHome,
+  share: mdiShareVariant,
+  up: mdiChevronUp,
+  action: gestureTapHold
 }

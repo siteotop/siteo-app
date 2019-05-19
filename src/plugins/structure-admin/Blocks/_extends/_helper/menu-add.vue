@@ -8,7 +8,9 @@
       <v-toolbar dense >
         <v-toolbar-title> {{parent.typeHelper}} </v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn icon @click="parent.menuAddClose()"><AppIcon  name="si-close"> </AppIcon></v-btn>
+        <v-btn icon @click="parent.menuAddClose()">
+          <v-icon>close</v-icon>
+        </v-btn>
       </v-toolbar>
       <v-card-text class="pa-0" :style="{maxHeight:'400px', overflowY: 'scroll'}">
       <v-list two-line>
@@ -24,7 +26,9 @@
           </v-list-item-content>
 
           <v-list-item-action>
-            <v-btn icon :disabled="parent.noDublicateChild&&parent.issetNames[name]!=undefined"   ><AppIcon name="si-add"></AppIcon></v-btn>
+            <v-btn icon :disabled="parent.noDublicateChild&&parent.issetNames[name]!=undefined"   >
+              <v-icon>add</v-icon>
+            </v-btn>
           </v-list-item-action>
         </v-list-item>
       </v-list>

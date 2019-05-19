@@ -2,23 +2,23 @@
 <div>
   <PageItemsToolbar :hightUp="100">
     <v-btn   fab text>
-      <AppIcon name="si-filter"></AppIcon>
+      <v-icon>{{$option._icons.filter}}</v-icon>
     </v-btn>
     <v-toolbar-title>{{title}}</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-btn-toggle mandatory v-model="toggle_component">
       <v-btn text value="cards">
-          <AppIcon name="si-view-cards"></AppIcon>
+          <v-icon>{{$option._icons.cards}}</v-icon>
       </v-btn>
       <v-btn v-if="!$root.mobile" text value="card">
-         <AppIcon name="si-view-card"></AppIcon>
+          <v-icon>{{$option._icons.card}}</v-icon>
       </v-btn>
       <v-btn text value="list">
-         <AppIcon name="si-values"></AppIcon>
+         <v-icon>{{$option._icons.values}}</v-icon>
       </v-btn>
    </v-btn-toggle>
    <v-btn  small fab text>
-        <AppIcon name="si-sort"></AppIcon>
+       <v-icon>{{$option._icons.sort}}</v-icon>
    </v-btn>
   </PageItemsToolbar>
   <component   :is="'wi-'+typeList" :items="$store.state[typeList].items.objects" :_t="title" $tl="justify-center text-xs-center pt-1 pb-4" :toggleComponent="toggle_component" :$vl="toggle_component=='list'">
@@ -38,6 +38,10 @@ import WiPosts from '../Widgets/WiPosts.vue';
 
 import * as StoreModules from  '../../store/modules';
 
+import {
+  mdiFilterVariant,
+  mdiViewModule
+} from '@mdi/js';
 
 export default {
 
@@ -56,6 +60,15 @@ export default {
     WiExperts,
     WiPosts
   },
+
+  _icons: {
+    filter:   mdiFilterVariant,
+    cards:   mdiViewModule,
+    card:   mdiViewAgenda,
+    values:   mdiViewList,
+    sort:   mdiSortVariant,
+
+  }
 
   asyncData({store, route}) {
     console.log('loaded data items from server for route:');

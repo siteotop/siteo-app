@@ -17,8 +17,8 @@
          :large="$root.mobile"
          fab
        >
-          <AppIcon v-if="!fab" name="si-order"></AppIcon>
-          <AppIcon v-if="fab" name="si-close"></AppIcon>
+         <v-icon v-if="!fab">$vuetify.icons.action</v-icon>
+         <v-icon v-else>$vuetify.icons.close</v-icon>
 
        </v-btn>
      </template>

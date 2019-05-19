@@ -60,7 +60,7 @@ export default {
       },
 
       [
-        context.props.cntnt.i? h('AppIcon', {attrs: {name:context.props.cntnt.i}}):'',
+        context.props.cntnt.i? h('v-icon', [context.props.cntnt.i]):'',
         (!cnf.f&&!cnf.i)? context.props.cntnt.t: '',
       ]
 
