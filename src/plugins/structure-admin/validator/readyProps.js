@@ -53,7 +53,7 @@ export const readyPropWidth = {
 
 export const readyPropSize = {
   $comp: 'PropHeight',
-  validators: {min:20, max:300},
+  validators: {min:10, max:300},
   default:45
 }
 

@@ -12,6 +12,7 @@ import { PIm} from './PImage';
 import {PLs, LAv, LCt, LAc, LTi} from './PList';
 import {PPx} from './PParallax';
 import {PPl} from './PProgressLinear';
+import {PIc} from './PIcon';
 import {PTb, TCt} from './PTabs';
 import {PTa, TTr, TTd} from './PTable';
 import {PTm, TEp} from './PTimeline';
@@ -49,6 +50,7 @@ export default {
     PYv,
     PCs,
     CSe,
+    PIc, 
     PTl, PTx, PHt,
     RBt,RAc,RMn, MBt,
     PAl,

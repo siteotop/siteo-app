@@ -13,9 +13,9 @@
     minWidth: props.cnf.f,
     alt: props.cntnt.a,
     lazySrc: props.cntnt.l,
-    src: props.cntnt.i,
+    src: props.cntnt.i
   }"
- :class="props.cnf.b"
+
 >
   <template
     v-for="(element, index) in props.chldrn||[]"

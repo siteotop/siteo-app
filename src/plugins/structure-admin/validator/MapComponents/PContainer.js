@@ -13,6 +13,7 @@ export const Flx =  {
       'PDl',
       'PDm',
       'PLt',
+      'PIc',
       'PTl',
       'RBt',
       'RAc',

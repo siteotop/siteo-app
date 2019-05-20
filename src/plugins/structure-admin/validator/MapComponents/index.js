@@ -12,6 +12,7 @@ export {PDl} from './PDialog';
 export {PDm} from './PDialogMenu';
 export {PEx, Exi} from './PExpansion';
 export {PLs, LAv, LCt, LAc, LTi} from './PList';
+export {PIc} from './PIcon';
 export {PPx} from './PParallax';
 export {PPl} from './PProgressLinear';
 export {PTb, TCt} from './PTabs';
