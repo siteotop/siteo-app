@@ -63,9 +63,7 @@ require('./style/common.css')
 
  import {vuetifyIcons} from './icons';
 
-/**ICONS*/
-import IconsRegister from  './icons/register.js';
-CoreVue.IconsRegister= IconsRegister;
+
 
 import axios from 'axios';
 CoreVue.axios = axios;
