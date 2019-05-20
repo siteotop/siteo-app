@@ -9,7 +9,8 @@
                     {{colorOptions.value.name}}
                   </v-flex>
                   <v-flex xs1>
-                       <AppIcon name="si-check" scale="1" v-if="value==colorOptions.value.name"></AppIcon>
+                  
+                    <v-icon  small v-if="valueData&&valueData.name==colorOptions.value.name">$vuetify.icons.success</v-icon>
                   </v-flex>
               </v-layout>
           </v-card-text>
@@ -17,22 +18,25 @@
       </v-flex>
   </v-layout>
   <v-layout row wrap v-else >
-      <v-btn  @click="closeShadesPalette()" fab ><AppIcon name="si-arrow-left"></AppIcon></v-btn>
+      <v-btn  @click="closeShadesPalette()" fab >
+        <v-icon>$vuetify.icons.prev</v-icon>
+      </v-btn>
       <v-flex xs12 v-for="(colorOptions, colorName ) in colorsKebabCase[activeColor].shades" :key="colorName" >
          <v-card tile :class="colorOptions.value.name+' '+colorOptions.value.text" @click="setNewActiveClass(colorOptions.value)">
-             <v-card-text :style="{cursor:'pointer'}"  >
-                 <v-layout>
-                     <v-flex xs8>
-                       {{colorOptions.value.name}}
-                     </v-flex>
-                     <v-flex xs3>
-                       {{colorOptions.value.hex}}
-                     </v-flex>
-                     <v-flex xs1>
-                        <AppIcon name="si-check" scale="1" v-if="value==colorOptions.value.name"></AppIcon>
-                     </v-flex>
-                 </v-layout>
-             </v-card-text>
+           <v-card-text :style="{cursor:'pointer'}"  >
+             <v-layout>
+               <v-flex xs8>
+                 {{colorOptions.value.name}}
+               </v-flex>
+               <v-flex xs3>
+                 {{colorOptions.value.hex}}
+               </v-flex>
+               <v-flex xs1>
+
+                  <v-icon small  v-if="valueData&&valueData.name==colorOptions.value.name">$vuetify.icons.success</v-icon>
+               </v-flex>
+             </v-layout>
+           </v-card-text>
          </v-card>
        </v-flex>
   </v-layout>

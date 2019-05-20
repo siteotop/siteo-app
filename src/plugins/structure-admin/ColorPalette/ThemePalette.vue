@@ -12,7 +12,8 @@
                   {{shadowOptions.value.name}}
               </v-flex>
               <v-flex >
-                <AppIcon name="si-check" scale="1" v-if="value==shadowOptions.value.name"></AppIcon>
+              
+                <v-icon  v-if="valueData==shadowOptions.value.name">$vuetify.icons.success</v-icon>
               </v-flex>
             </v-layout>
           </v-card-text>
