@@ -19,7 +19,7 @@ app.$router.onReady(() => {
     // registers all stores for components
     app.$store.state.allowAsyncLoad = false;
     matchedComponents.map(Component => {
-      if (Component.asyncData) {
+      if (Component&&Component.asyncData) {
         // only register store from asyncData not allowAsyncLoad
         return Component.asyncData({
           store: app.$store,
