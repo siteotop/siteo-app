@@ -16,10 +16,14 @@ import VueI18n from 'vue-i18n';
 Vue.use(VueI18n);
 
 
+import pluginUpdateVuetify from './plugins/UpdateVuetify';
+Vue.use(pluginUpdateVuetify);
 /**
   main object for template
 */
 import CoreVue from './components/App.vue';
+
+
 
 
 
@@ -72,40 +76,7 @@ import VS2 from 'vue-script2';
 CoreVue.$script = VS2.load;
 
 
-/**
-  Hot add  icons to global usage in Vuetify
-*/
-CoreVue.updateVuetifyIcons = function ($vuetify, icons) {
 
-    for (let i in icons) {
-      $vuetify.icons.values[i] = icons[i];
-    }
-}
-
-/**
-   Hot reload configs for Vuetify
-   @param $vuetify Instanse Vuetify $vuetify.framework
-   @param designVuetify  structure for Vuetify settings
-   {
-     _p: {l: {primary: 'sdsdf'}, d: {}, dark: true }
-   }
-*/
-CoreVue.updateVuetifyOptions = function($vuetify,  designVuetify) {
-    if (!designVuetify) {
-      return;
-    }
-
-    //update themes
-    if ( designVuetify._p) {
-      if (designVuetify._p.dark!==undefined) {
-          $vuetify.theme.dark = designVuetify._p.dark
-      }
-      // add icons
-      if (designVuetify._p.i) {
-        CoreVue.updateVuetifyIcons($vuetify, designVuetify._p.i);
-      }
-    }
-}
 /**
   install plugin to Vue throaght Vue.use
 */
@@ -116,6 +87,9 @@ export const installVuePlugin = function(plugin) {
 }
 
 
+/**
+
+*/
 const installSiteoPlugin = function (plugin) {
   console.log(CoreVue._siteo_config);
   console.log(plugin.name);
@@ -213,6 +187,8 @@ export const createSiteo =  function ({configs, messages, plugins} ) {
 */
 export const startSiteo = function (APP, plugins) {
   // add plugins
+
+
   console.log(process.env.SSR);
   if (process.env.SSR =='on') {
     console.log(' ssr ');
@@ -230,9 +206,9 @@ export const startSiteo = function (APP, plugins) {
        }
     }
   }
-
-  return  new Vue(
+  var app =  new Vue(
     CoreVue
   );
+  return  app ;
 
 }

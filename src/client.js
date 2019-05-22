@@ -43,8 +43,8 @@ app.$router.onReady(() => {
 
   // update theme
   if (app.$store.state.appInstance.objectActive.design) {
-    console.log(app.$vuetify);
-    app.$options.updateVuetifyOptions(app.$vuetify, app.$store.state.appInstance.objectActive.design.Vtf);
+
+    app.updateVuetifyOptions(app.$store.state.appInstance.objectActive.design.Vtf);
   }
   //about  devide code client and SSR  https://bit.ly/2tnfDa4
   app.$mount('#app');
