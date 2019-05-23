@@ -2,7 +2,11 @@
 import DesignSettingsNavigation from './Navigation.vue';
 
 export default {
-  getComponent:function () {
-      return DesignSettingsNavigation;
+  name: 'siteo-plugin-structure-admin',
+  
+  registerComponent: function () {
+     return  {
+       component: DesignSettingsNavigation
+     }
   }
 }

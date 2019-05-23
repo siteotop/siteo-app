@@ -1,10 +1,16 @@
 <template>
   <div v-if="loaded">
-    <div v-if="isPlugin"><component :is="component"  v-bind="pluginOptions"></component></div>
+    <div v-if="component"><component :is="component"  v-bind="pluginOptions"></component></div>
 
   </div>
   <div v-else>
       Plugin not  loaded
+      <v-progress-linear
+            color="primary"
+            indeterminate
+            rounded
+            height="6"
+          ></v-progress-linear>
   </div>
 </template>
 
@@ -26,6 +32,11 @@ export default {
         default: function () {
           return {};
         }
+      },
+
+      removeOnDestroy: {
+        type: Boolean,
+        default: false
       }
 
     },
@@ -35,33 +46,30 @@ export default {
     data() {
       return {
         loaded: false,
-        isPlugin: false,
-        component: ''
+        component: false
        }
     },
 
 
     mounted() {
         // load plugin
+        console.log('Load Plugin');
         console.log(this.pluginName);
         // https://some-domen.com/plugins/+this.pluginName
+
+
         var filename = process.env.STATIC_PLUGINS + this.pluginName+'.js';
         //console.log(this);
         var self = this;
+
         this.$root.$options.$script(filename).then((data)=>{
+            console.log(data);
             if (window['siteo-plugins']&&window['siteo-plugins'][self.pluginName]) {
-                var plugin = window['siteo-plugins'][self.pluginName];
-
-                if (plugin.getComponent) {
-                    self.component = plugin.getComponent();
-                } else {
-                  self.$root.$options.SiteoAddPlugin(plugin);
-                  self.component = self.pluginName;
-                }
+                self.registerSiteoPlugin(window['siteo-plugins'][self.pluginName]);
+                self.component = this.getPluginFromStore(self.pluginName);
             }
-
             self.loaded = true;
-            self.isPlugin = true;
+
         }).catch((error)=>{
             console.log(error);
             self.loaded =true
@@ -70,6 +78,33 @@ export default {
 
 
 
+    },
+    beforeDestroy() {
+      if (this.removeOnDestroy) {
+          this.removePlugin();
+      }
+    },
+
+    methods: {
+      getPluginFromStore() {
+          var plugin = this.$root.$options._plugins[this.pluginName];
+          if (plugin) {
+              if (plugin.component) {
+                return plugin.component;
+              }
+
+          }
+          return false;
+
+      },
+
+      removePlugin() {
+
+          if ( this.$root.$options._plugins[this.pluginName]) {
+             delete this.$root.$options._plugins[this.pluginName];
+          }
+
+      }
     }
 }
 

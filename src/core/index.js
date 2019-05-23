@@ -16,8 +16,8 @@ import VueI18n from 'vue-i18n';
 Vue.use(VueI18n);
 
 
-import pluginUpdateVuetify from './plugins/UpdateVuetify';
-import pluginSiteoPlugin from './plugins/SiteoPlugin';
+import pluginUpdateVuetify from './vue-plugins/UpdateVuetify';
+import pluginSiteoPlugin from './vue-plugins/SiteoPlugin';
 Vue.use(pluginUpdateVuetify);
 Vue.use(pluginSiteoPlugin);
 /**
