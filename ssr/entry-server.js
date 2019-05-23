@@ -1,10 +1,7 @@
 // entry-server.js
-import  {installVuePlugin, createSiteo, startSiteo}  from '../src/core';
+import  {createSiteo}  from '../src/core';
 import  siteoApp  from '../src/app';
 import  SiteoLocalEN  from '../src/core/i18n/en';
-
-
-installVuePlugin(siteoApp);
 
 
 export default (context) => {
@@ -26,12 +23,12 @@ export default (context) => {
    return new Promise((resolve, reject) => {
 
     // for getting AppInstance we need id for appInstance
-    createSiteo( {
+    var app =  createSiteo( {
       configs: context.configs_frontend,
       messages: SiteoLocalEN,
+      APP: siteoApp
     });
 
-    var app = startSiteo(siteoApp);
     console.log (context.instance);
     app.$store.commit('appInstance/setModel', context.instance);
     context.meta = app.$meta();
@@ -44,7 +41,7 @@ export default (context) => {
     }
 */
     // update $vuetify.theme
-    app.$options.updateVuetifyOptions(app.$vuetify, context.instance.design.Vtf);
+    app.updateVuetifyOptions(context.instance.design.Vtf);
 
 
     // устанавливаем маршрут для маршрутизатора серверной части

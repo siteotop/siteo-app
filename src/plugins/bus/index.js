@@ -2,46 +2,54 @@
 
 export default {
   name: 'siteo-plugin-bus',
-  install: function(Vue, $coreVue) {
+
+  siteoInstall: function($coreVue) {
 
       var $pluginOptions = $coreVue._siteo_config['siteo-plugin-bus'];
 
-      console.log('bus inherit')
+      console.log('bus inherit');
 
-      function listener(event) {
-          console.log(event)
-          if (!$pluginOptions.origin) {
-              console.log('no setup origin host');
-              return;
-          }
+      $coreVue.mixins = [{
+          beforeMount: function () {
+            var VueInstanse = this;
+            function listener(event) {
+                console.log(event)
+                if (!$pluginOptions.origin) {
+                    console.log('no setup origin host');
+                    return;
+                }
 
-          if (event.origin != $pluginOptions.origin) {
-            // что-то прислали с неизвестного домена - проигнорируем..
-            return;
-          }
+                if (event.origin != $pluginOptions.origin) {
+                  // что-то прислали с неизвестного домена - проигнорируем..
+                  return;
+                }
 
-          //alert( "получено: " + event.data );
-          try{
-            var recieved =  JSON.parse(event.data);
-            if (recieved.storeEvent && recieved.storeEventName ) {
-              $coreVue.store[recieved.storeEvent](recieved.storeEventName, recieved.data);
+                //alert( "получено: " + event.data );
+                try{
+                  var recieved =  JSON.parse(event.data);
+                  if (recieved.storeEvent && recieved.storeEventName ) {
+                     VueInstanse.$store[recieved.storeEvent](recieved.storeEventName, recieved.data);
 
-              if (recieved.data.design)  {
-                  $coreVue.updateVuetifyOptions(recieved.data.design.Vtf);
-              }
+                    if (recieved.data.design)  {
+                         VueInstanse.updateVuetifyOptions(recieved.data.design.Vtf);
+                    }
 
+                  }
+                } catch (err) {
+                  console.log(err);
+                }
+           }
+
+            if (window.addEventListener) {
+              window.addEventListener("message", listener);
+            } else {
+              // IE8
+              window.attachEvent("onmessage", listener);
             }
-          } catch (err) {
-            console.log(err);
           }
-     }
+      }]
 
-      if (window.addEventListener) {
-        window.addEventListener("message", listener);
-      } else {
-        // IE8
-        window.attachEvent("onmessage", listener);
-      }
+
 
   }
 }

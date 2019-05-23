@@ -1,15 +1,15 @@
 // entry-client.js
 
-import  {installVuePlugin,  createSiteo, startSiteo } from './core';
+import  { createSiteo} from './core';
 
 //  add before create siteo (on SSR same)
-installVuePlugin(window['siteo-template']);
-createSiteo({
+
+var app = createSiteo({
     configs: window.__SITEO_CONFIG__,
     messages: window['siteo-locale-en'],
+    APP: window['siteo-app'],
+    plugins: window['siteo-plugins']
 });
-var app = startSiteo(window['siteo-app'], window['siteo-plugins']);
-
 
 app.$router.onReady(() => {
 

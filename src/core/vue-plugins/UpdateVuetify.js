@@ -11,11 +11,11 @@ const install  = function (Vue, options) {
 
 
     Vue.prototype.updateVuetifyIcons = function (icons) {
-
         for (let i in icons) {
           this.$vuetify.icons.values[i] = icons[i];
         }
     };
+
 
   /**
      Hot reload configs for Vuetify
@@ -29,7 +29,6 @@ const install  = function (Vue, options) {
         if (!designVuetify) {
           return;
         }
-
         //update themes
         if ( designVuetify._p) {
           if (designVuetify._p.dark!==undefined) {

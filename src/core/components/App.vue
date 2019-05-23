@@ -17,8 +17,8 @@ export default {
       RMn
 
     },
-     _siteo_config: {},
-     _plugins: {},
+    // _siteo_config: {},
+    // _plugins: {},
 
      data() {
           return {
