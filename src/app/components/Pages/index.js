@@ -106,19 +106,7 @@ export default {
        }
     },
 
-    /**
-
-      PLACEHOLDER EXAMPLE
-       https://codepen.io/isitannarli/pen/NdVZmL
-       https://codepen.io/yunusekim/pen/XaBoNZ
-       https://cloudcannon.com/deconstructions/2014/11/15/facebook-content-placeholder-deconstruction.html
-       https://github.com/michalsnik/vue-content-placeholders
-
-    */
-
-
-
-
+  
       render(h ) {
 
         if (!this.postObject.jsonStructure) {
@@ -146,7 +134,7 @@ export default {
 
 
       renderError (h, err) {
-            return h('RouteError', {props: {status: 500 }});
+          return h('RouteError', {props: {status: 500 }});
       }
 
 

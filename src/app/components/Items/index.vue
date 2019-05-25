@@ -75,7 +75,7 @@ export default {
 
   asyncData({store, route}) {
     console.log('loaded data items from server for route:');
-    store.registerApiModule(route.name, StoreModules[route.name]('appInstance/urlID'), true);
+    store.registerApiModule(route.name, StoreModules[route.name]('appInstance/urlID'), {moduleItems: true});
 
     if (store.state.allowAsyncLoad) {
        return store.dispatch(route.name+'/getList');

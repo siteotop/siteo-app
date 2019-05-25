@@ -53,11 +53,16 @@ export default function (Vue, RESTApi, baseUrl)  {
          },
 
          modules: {
-           appInstance:  createModelCRUD(appInstance),
+            // AppResourse
+           appInstance: createModelCRUD(appInstance),
            SystemMessages,
 
          },
          getters: {
+           /**
+            link for
+           */
+
            CORE_HOST() {
              return  baseUrl||'/';
            },
@@ -121,11 +126,13 @@ export default function (Vue, RESTApi, baseUrl)  {
 
        });
 
-
-       store.registerApiModule = function (name, module, turnOnList) {
+        /**
+          Register module with createModelCRUD
+        */
+       store.registerApiModule = function (name, module, options) {
           var _name_register = helperNameRegister(name);
           if (!REGISTER[_name_register]) {
-                 store.registerModule(name, createModelCRUD(module, turnOnList));
+                 store.registerModule(name, createModelCRUD(module, options));
                  REGISTER[_name_register] = true;
           } else {
 

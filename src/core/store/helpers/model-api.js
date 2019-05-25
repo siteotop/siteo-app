@@ -24,13 +24,8 @@ const GETTERS = {
    },
 
    urlID(state, getters) {
-     if (state.id) {
-         return  getters.urlWithoutId + '/' + state.id;
-     } else {
-       return getters.urlWithoutId + '/no_id'
-     }
-
-   },
+      return  getters.urlWithoutId + '/' + (state.id||'no_id');
+    },
 
    nameId(state){
       return state.nameId;
@@ -144,10 +139,15 @@ export default function (api ) {
               state.id = id;
           }
         },
-        getters: GETTERS
-    }
+        getters: GETTERS,
 
-    if (!api.noActions) {
+    };
+
+    if (api.getOnly) {
+       apiModule.actions =  {
+          getObject: ACTIONS.getObject
+       };
+    } else {
        apiModule.actions = ACTIONS
     }
 

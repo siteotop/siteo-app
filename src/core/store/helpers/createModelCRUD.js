@@ -11,16 +11,26 @@ const stateHelper = function(state, object) {
 }
 
 
-const createModelCRUD = function (object, turnOnList ) {
+export const createModelCRUD = function (object, options) {
 
     var modules = {};
 
-    if (object.api !== undefined) {
+    var options = {
+        moduleApi: true,
+        moduleItems: false,
+        ...options
+
+    }
+
+
+    if (object.api!==undefined) {
       if (!object.api.nameId) {
          object.api.nameId = '_id';
       }
-      modules.api = API(object.api);
-      if (turnOnList) {
+      if (options.moduleApi) {
+         modules.api = API(object.api);
+      }
+      if (options.moduleItems) {
         modules.items = createItems();
       }
     }
@@ -83,7 +93,3 @@ const createModelCRUD = function (object, turnOnList ) {
 
 
 }
-
-
-
-export {createModelCRUD}

@@ -5,7 +5,7 @@ Store for appInstance.objectActive from server
 export default {
 
   //api:'/admins',
-  api: {url: '/apps', noActions:true},
+  api: {url: '/apps',  getOnly: true },
   state () {
       return {
          name:"",
@@ -20,19 +20,18 @@ export default {
          locations: [],
          _websites_page: ''
         }
-    },
-
+  },
   actions: {
 
-    makeOrder() {
+      makeOrder() {
 
-    },
+      },
 
-    makeSubscribe({dispatch, getters}, data) {
-        var config = {data:data};
-         config.method = 'POST';
-         config.url = getters.WEBSITE_API_URL + '/subscribers';
-         return  dispatch('callAPI', config, {root:true});
+      makeSubscribe({dispatch, getters}, data) {
+          var config = {data:data};
+           config.method = 'POST';
+           config.url = getters.WEBSITE_API_URL + '/subscribers';
+           return  dispatch('callAPI', config, {root:true});
 
       },
 
