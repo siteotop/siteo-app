@@ -1,47 +1,5 @@
-# siteo-template
-Siteo-template is core design for all apps and  websites which created on https://siteo.top platform. It based on Vue + Vuetify
+# siteo-app
+Siteo-app is core app for all apps and  websites which created on https://siteo.top platform. It based on Vue + Vuetify
 
 #### Example
 is cooking...
-
-## Page structure
-
-### Functional blocks
-
-* BExpert
-* BTitle
-* BHtmlText
-* BFotmEmail
-* BFormOrder
-* BFormRecall
-* BHorizontal
-* BImage
-* BLinks
-* BList
-* BLocation
-* BPost
-* BPrice
-* BQA
-* BQuote
-* BService
-* BStep
-* BTabs
-* BVideo
-
-### Standart widgets
-
-* WiActions
-* WiContacts
-* WiExperts
-* WiLisnks
-* WiLocations
-* WiOrderTabs
-* WiPosts
-* WiServices
-
-
-### Standart plugins
-
-* instagram-post
-* example
-* facebook-post

@@ -141,6 +141,11 @@ export const createSiteo =  function ({configs, messages, APP, plugins} ) {
           Vue.prototype.registerSiteoPlugin(plugins[i], AppInstanse);
        }
     }
+
+    //
+
+
+
     AppInstanse.extends = CoreVue;
     return  new Vue( AppInstanse );
 
