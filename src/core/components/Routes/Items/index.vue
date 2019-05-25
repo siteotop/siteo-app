@@ -2,23 +2,23 @@
 <div>
   <PageItemsToolbar :hightUp="100">
     <v-btn   fab text>
-      <v-icon>{{$option._icons.filter}}</v-icon>
+      <v-icon>{{$options._icons.filter}}</v-icon>
     </v-btn>
     <v-toolbar-title>{{title}}</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-btn-toggle mandatory v-model="toggle_component">
       <v-btn text value="cards">
-          <v-icon>{{$option._icons.cards}}</v-icon>
+          <v-icon>{{$options._icons.cards}}</v-icon>
       </v-btn>
       <v-btn v-if="!$root.mobile" text value="card">
-          <v-icon>{{$option._icons.card}}</v-icon>
+          <v-icon>{{$options._icons.card}}</v-icon>
       </v-btn>
       <v-btn text value="list">
-         <v-icon>{{$option._icons.values}}</v-icon>
+         <v-icon>{{$options._icons.values}}</v-icon>
       </v-btn>
    </v-btn-toggle>
    <v-btn  small fab text>
-       <v-icon>{{$option._icons.sort}}</v-icon>
+       <v-icon>{{$options._icons.sort}}</v-icon>
    </v-btn>
   </PageItemsToolbar>
   <component   :is="'wi-'+typeList" :items="$store.state[typeList].items.objects" :_t="title" $tl="justify-center text-xs-center pt-1 pb-4" :toggleComponent="toggle_component" :$vl="toggle_component=='list'">
