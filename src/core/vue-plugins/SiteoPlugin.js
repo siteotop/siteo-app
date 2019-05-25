@@ -15,12 +15,14 @@ const install  = function (Vue, options) {
     Vue.prototype.registerSiteoPlugin = function (plugin, startCore) {
 
 
-       var instance, _pluginsStore, _configPlugin;
+       var instance, _pluginsStore, _configPlugin, func;
        if (startCore) {
+          func = 'siteoInstall';
           instance = startCore;
           _pluginsStore = startCore._plugins;
           _configPlugin = startCore._siteo_config[plugin.name]||{};
        } else {
+         func = 'liveInstall';
           instance = this;
           _pluginsStore = this.$root.$options._plugins;
           _configPlugin = this.$root.$options._siteo_config[plugin.name]||{};
@@ -35,13 +37,6 @@ const install  = function (Vue, options) {
          return false;
        }
 
-
-       console.log(` Call register Plugin Before = ${startCore?' yes': 'no'} ` );
-       console.log(instance);
-       console.log( _pluginsStore);
-
-
-
       /**
         install plugin to Vue throaght Vue.use
       */
@@ -52,8 +47,8 @@ const install  = function (Vue, options) {
       /**
          install everythings for app  in (store, router, on others)
       */
-      if (plugin.siteoInstall) {
-         plugin.siteoInstall(instance, _configPlugin );
+      if (plugin[func]) {
+         plugin[func](instance, _configPlugin );
       }
 
       // install for Vue
@@ -66,7 +61,7 @@ const install  = function (Vue, options) {
 
     }
 
-    
+
 
 
 }

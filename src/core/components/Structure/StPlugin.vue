@@ -4,13 +4,17 @@
 
   </div>
   <div v-else>
-      Plugin not  loaded
-      <v-progress-linear
-            color="primary"
-            indeterminate
-            rounded
-            height="6"
-          ></v-progress-linear>
+
+      <slot>
+        Plugin not  loaded
+        <v-progress-linear
+              color="primary"
+              indeterminate
+              rounded
+              height="6"
+         ></v-progress-linear>
+      </slot>
+
   </div>
 </template>
 

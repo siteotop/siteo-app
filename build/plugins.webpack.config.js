@@ -16,11 +16,14 @@ baseConfig.plugins.push( new webpack.DefinePlugin({
 module.exports = merge(baseConfig, {
   // Укажите точку входа серверной части вашего приложения
   entry: {
-    'example':   './src/plugins/example',
+    
     'instagram-post':   './src/plugins/instagram-post',
     'forms':   './src/plugins/forms',
     'structure-admin':   './src/plugins/structure-admin',
     'bus':   './src/plugins/bus',
+    'project-card':   './src/plugins/project-card',
+    'sharing':   './src/plugins/sharing',
+
   },
 
   output: {
