@@ -83,7 +83,7 @@ import SiteoRoutes from './routes';
 /**
 start Siteo
 */
-export const createSiteo =  function ({configs, messages, APP, plugins} ) {
+export const createSiteo =  function ({configs, messages, plugins} ) {
 
    var AppInstanse = {};
    AppInstanse._plugins = {};
@@ -131,10 +131,6 @@ export const createSiteo =  function ({configs, messages, APP, plugins} ) {
       locale: configs.lang, // app lang
       messages: messages // set locale messages
     });
-
-    if (APP) {
-      Vue.prototype.registerSiteoPlugin(APP, AppInstanse);
-    }
 
     if (plugins) {
        for (var i in plugins ) {

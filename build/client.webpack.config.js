@@ -89,7 +89,6 @@ module.exports = merge(baseConfig, {
   },
   entry: {
     'polyfill': '@babel/polyfill',
-    'app': './src/app/index.js',
     'locale-en': './src/core/i18n/en.js',
     'core': './src/client.js',
   },

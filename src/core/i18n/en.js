@@ -30,7 +30,9 @@ export default {
     // написать через
     // подзвонить через
     // Перейти на / ми в / {company name}
-
+    routes_values_t: 'Values',
+    routes_experts_t: 'People',
+    routes_posts_t: 'Blog',
 
     commonForm: {
       reset: 'Reset Form',

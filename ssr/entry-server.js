@@ -1,6 +1,5 @@
 // entry-server.js
 import  {createSiteo}  from '../src/core';
-import  siteoApp  from '../src/app';
 import  SiteoLocalEN  from '../src/core/i18n/en';
 
 
@@ -26,7 +25,6 @@ export default (context) => {
     var app =  createSiteo( {
       configs: context.configs_frontend,
       messages: SiteoLocalEN,
-      APP: siteoApp
     });
 
     console.log (context.instance);
