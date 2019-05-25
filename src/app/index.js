@@ -1,17 +1,17 @@
 
 // PageHelper
 
-import PageSchema from './components/Pages/Schema.js';
-import SiteoRoutes from './routes';
-import RouteError from './components/Error.vue';
+//import PageSchema from './components/Pages/Schema.js';
+//import SiteoRoutes from './routes';
+
 
 
 export default {
   name: 'siteo-app',
 
   install: function (Vue) {
-      Vue.component('PageSchema', PageSchema);
-      Vue.component('RouteError', RouteError);
+    //  Vue.component('PageSchema', PageSchema);
+
 
   },
 
@@ -23,7 +23,6 @@ export default {
       'routes_posts_t': 'Blog',
     }
 
-    $coreVue.router.addRoutes(SiteoRoutes($pluginOptions||{}));
 
 
     // merge messages from instance

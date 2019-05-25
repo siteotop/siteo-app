@@ -1,6 +1,4 @@
-import Pages from './components/Pages';
-import RouteItems from './components/Items/index.vue';
-import RouteOrder from './components/Order.vue';
+import Pages from './components/Routes/Pages';
 
 export default function (configs) {
 
@@ -19,31 +17,31 @@ export default function (configs) {
         {
           name: "values",
           path: '/' + (configs.seo_path_values?  configs.seo_path_values: 'values'),
-          component: RouteItems,
+          component: import( /* webpackChunkName: "list" */ './components/Routes/Items/index.vue'),
           props: { typeList: 'values' }
         },
         {
           name: "experts",
           path:  '/' + (configs.seo_path_experts?  configs.seo_path_experts: 'experts') ,
-          component: RouteItems,
+          component: import( /* webpackChunkName: "list" */ './components/Routes/Items/index.vue'),
           props: { typeList: 'experts' }
         },
 
         {
           name: "posts",
           path:  '/' + (configs.seo_path_posts?  configs.seo_path_posts: 'posts'),
-          component: RouteItems,
+          component: import( /* webpackChunkName: "list" */ './components/Routes/Items/index.vue'),
           props: { typeList: 'posts' }
         },
 
         {
           name: "order",
           path:  '/go/:typeAction(order|call|recall|chat|links|locations)?',
-          component: RouteOrder,
+          component: import(/* webpackChunkName: "order" */  './components/Routes/Order.vue'),
           props: true
 
         },
-      
+
         {
           name: "objectPage",
           path:  '/:objectId',
@@ -55,8 +53,8 @@ export default function (configs) {
 
       );
     }
-    routes.push(
 
+    routes.push(
       {
          path: "*",
          name: 'PageError',
@@ -64,6 +62,7 @@ export default function (configs) {
          meta:{},
       }
     );
+
 
     return routes;
 

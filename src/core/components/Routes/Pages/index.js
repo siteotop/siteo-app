@@ -1,9 +1,9 @@
 
-import Loader from '../../../core/components/_mixins/component-loading.js';
+import Loader from '../../_mixins/component-loading.js';
 import mixinsAsyncdata from '../_mixins/asyncData';
 
 import { mapState } from 'vuex';
-import pages from  '../../store/modules/pages';
+import pages from  '../../../store/modules/pages';
 
 export default {
   mixins: [Loader, mixinsAsyncdata],
@@ -106,7 +106,7 @@ export default {
        }
     },
 
-  
+
       render(h ) {
 
         if (!this.postObject.jsonStructure) {

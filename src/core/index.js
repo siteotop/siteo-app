@@ -78,7 +78,7 @@ import VS2 from 'vue-script2';
 CoreVue.$script = VS2.load;
 
 
-
+import SiteoRoutes from './routes';
 
 /**
 start Siteo
@@ -142,8 +142,7 @@ export const createSiteo =  function ({configs, messages, APP, plugins} ) {
        }
     }
 
-    //
-
+    AppInstanse.router.addRoutes(SiteoRoutes(configs||{}));
 
 
     AppInstanse.extends = CoreVue;

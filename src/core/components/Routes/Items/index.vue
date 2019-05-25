@@ -36,7 +36,7 @@ import WiValues from '../Widgets/WiValues.vue';
 import WiExperts from '../Widgets/WiExperts.vue';
 import WiPosts from '../Widgets/WiPosts.vue';
 
-import * as StoreModules from  '../../store/modules';
+import * as StoreModules from  '../../../store/modules';
 
 import {
   mdiFilterVariant,
