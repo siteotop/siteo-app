@@ -2,7 +2,7 @@ var express = require('express');
 var server = express();
 
 
-const siteoTemplate = require('./apps/siteo-template.js');
+const siteoApp = require('./apps/siteo-app.js');
 const siteoApi = require('./apps/siteo-api.js');
 
 /*
@@ -22,35 +22,56 @@ if (process.env.NODE_ENV=='development') {
   server.use(express.static('dist'));
 }
 
-// common routing
-var siteoRouter = express.Router();
-siteoRouter.get('*', function(req,res){
-    siteoTemplate(req,res, req.baseUrl, req.path )
+/**
+  Create router for Siteo App
+  This Router resolve SSR siteo-app
+*/
+var routerSiteoApp = express.Router();
+routerSiteoApp.get('*', function(req,res){
+    siteoApp(req,res, req.baseUrl, req.path )
 });
 
-var apiRouter = express.Router();
-apiRouter.get('*', siteoApi);
+/**
+  Create router for API which using siteo-app
+  This Router resolve all API calls
+*/
+var routerApi = express.Router();
+routerApi.get('*', siteoApi);
 
+/**
+   @path "/api"
+   @router  routerApi
+   All routes which start with this path will be resolve using routerApi
+*/
+server.use('/api', routerApi);
 
-server.use('/api', apiRouter);
-
+/**
+siteo-app can works as multiple project on one server
+*/
 if (process.env.MULTISITEO) {
   // many projects  on one hosts
-  server.use('/:siteoId', siteoRouter);
+  /**
+     @path "/:siteoId"
+     @router  routerSiteoApp
+     All routes which start with  this patch will be resolve using routerSiteoApp
+  */
+  server.use('/:siteoId', routerSiteoApp);
 
-  // if main page
+  // if main page, We need put separetly for start siteo-app (main application page or landing page)
   server.get('/', (req, res) => {
-    siteoTemplate(req, res, '', '');
+    siteoApp(req, res, '', '');
   });
 
 } else {
-   // one project on one host
-    server.use('/', siteoRouter);
+  // one project on one host
+  server.use('/', routerSiteoApp);
 }
 
 const PORT = 8080;
 const HOST = '0.0.0.0';
 
 server.listen(PORT, HOST);
+
+
 console.log(`Running with ${process.env.NODE_ENV} mode`);
 console.log(`Running on http://${HOST}:${PORT}`);
