@@ -1,20 +1,19 @@
-<template functional>
-<v-container
-  fluid
-  tag="section"
-  :class="'pa-0 ' + props.cnf.b"
->
-<template
-  v-for="(element, index) in props.chldrn||[]"
- >
-   <StChildrenHelper :element="element">
-   </StChildrenHelper>
- </template>
-</v-container>
-</template>
-
 <script>
 export default {
-
+  functional: true,
+  render(h, context) {
+    return h('v-container', {
+        props: {
+          fluid: true,
+          tag: "section"
+        },
+        class: 'pa-0 ' + (context.props.cnf.b||''),
+        attrs: context.data.attrs
+      },
+      (context.props.chldrn||[]).map(function(element) {
+          return h('StChildrenHelper', {props: {element:element }})
+      })
+    )
+  }
 }
 </script>

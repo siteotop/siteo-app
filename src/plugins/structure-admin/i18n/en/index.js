@@ -1,6 +1,7 @@
 
 import {Vtf} from './Vuetify';
-import {ClassTitles} from './ClassTitles';
+import {helperClass} from './helperClass';
+import {helperAttrs} from './helperAttrs';
 import {PAl} from './PAlert';
 import {PCd, Cti, Cte, Cac} from './PCard';
 import {PCs, CSe} from './PCarusel';
@@ -35,7 +36,8 @@ export default {
     RCt: {
       t: 'Content'
     },
-    ClassTitles,
+    helperClass,
+    helperAttrs,
     RDw,
     RFt,
     RLg,
@@ -50,7 +52,7 @@ export default {
     PYv,
     PCs,
     CSe,
-    PIc, 
+    PIc,
     PTl, PTx, PHt,
     RBt,RAc,RMn, MBt,
     PAl,

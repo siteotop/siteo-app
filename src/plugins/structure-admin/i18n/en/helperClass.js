@@ -1,7 +1,7 @@
 
 
 
-export const ClassTitles = {
+export const helperClass = {
 
     background: {
       t: 'Background',

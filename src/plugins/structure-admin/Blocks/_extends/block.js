@@ -46,7 +46,7 @@ export default {
         type: String,
         default: 'helperChildren',
         validator: function (value) {
-           return ['helperChildren', 'helperProps', 'helperClass', 'helperData'].indexOf(value)!==-1
+           return ['helperChildren', 'helperProps', 'helperAttrs',  'helperClass', 'helperData'].indexOf(value)!==-1
         }
     },
 
@@ -186,8 +186,8 @@ export default {
        type = type?type: 't';
        if (this.typeHelper=='helperChildren') {
          return this.$t(`admins.${name}.${type}`);
-       } else if (this.typeHelper=='helperClass') {
-         return this.$t(`admins.ClassTitles.${name}.${type}`);
+       } else if (this.typeHelper=='helperClass' || this.typeHelper=='helperAttrs' ) {
+         return this.$t(`admins.${this.typeHelper}.${name}.${type}`);
        } else {
           return this.$t(`admins.${this.componentName}.${this.typeHelper}.${name}.${type}`);
        }

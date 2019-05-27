@@ -2,66 +2,50 @@
 import * as allowChildrenList from './MapComponents';
 import * as  readyProps from './readyProps';
 
-var isProperty=function(componentName, propertyName) {
 
-    return allowChildrenList[componentName]&&allowChildrenList[componentName][propertyName]
-}
+export const ROOT_STRUCTURE = {
 
-var isChildren = function (componentName){
-  return isProperty(componentName, '_ch');
-}
 
-// properties and default
-const getPropterties = function () {
-  return {
-      _d: {}, // data
-      _n: '', // name
-      _p: {}, // props
-      _c: [], // class
-      _ch: [], // children
-      
-  };
-};
-
-const  createSettComponent = function (componentName) {
-   var settings = {};
-   const _PROPERTIES = getPropterties();
-   for (var property in _PROPERTIES) {
-      if (isProperty(componentName, property)) {
-        settings[property] = _PROPERTIES[property];
+  getComponent: function (componentName) {
+      if (allowChildrenList[componentName]) {
+        return allowChildrenList[componentName];
+      } else {
+        return false;
       }
-   }
-   settings._n = componentName;
-   return settings;
-}
+  },
 
-
-export const updateSettComponent = function (issetStrucutre, componentName) {
-
-   //var componentObject = getComponent(componentName);
-   if (!allowChildrenList[componentName]) {
-     issetStrucutre._n = componentName;
-     return issetStrucutre;
-   }
-
-   var settings = {};
-   const _PROPERTIES = getPropterties();
-   for (var property in _PROPERTIES) {
-      if (isProperty(componentName, property)) {
-         if (!issetStrucutre[property]) {
-            settings[property] = _PROPERTIES[property];
-         } else {
-            settings[property] = issetStrucutre[property];
-         }
+  getAllowListFromComponent: function(componentName, propertyName) {
+      if (allowChildrenList[componentName]&&allowChildrenList[componentName][propertyName]) {
+          return allowChildrenList[componentName][propertyName];
+      } else {
+        return false;
       }
-   }
-   settings._n = issetStrucutre._n||componentName;
-   return settings;
+  },
+
+  isProperty:function(componentName, propertyName) {
+      return allowChildrenList[componentName]&&allowChildrenList[componentName][propertyName]
+  },
+
+  getPropterties:  function () {
+    return {
+        _d: {}, // data
+        _n: '', // name
+        _p: {}, // props
+        _c: [], // class
+        _a: {}, // attribs
+        _ch: [], // children
+
+    };
+  }
+
+
 }
 
-const createSettProps =  function(propsName, componentName, type){
-      if ( allowChildrenList[componentName]) {
-         var propsSettings = allowChildrenList[componentName][type][propsName];
+
+const createSettOneProp =  function(propsName, componentName, type){
+      var allowComponent = ROOT_STRUCTURE.getComponent(componentName);
+      if ( allowComponent) {
+         var propsSettings = allowComponent[type][propsName];
          if (typeof(propsSettings) == 'string') {
            propsSettings =readyProps[propsSettings];
          }
@@ -76,6 +60,7 @@ const createSettProps =  function(propsName, componentName, type){
   }
 
 
+
 export const helperChildren = {
   unZip: function (inputList) {
     return inputList;
@@ -83,7 +68,17 @@ export const helperChildren = {
   zip: function (inputList) {
     return inputList;
   },
-  createSettings: createSettComponent,
+  createSettings: function (componentName) {
+     var settings = {};
+     const _proporties = ROOT_STRUCTURE.getPropterties();
+     for (var property in _proporties) {
+        if (ROOT_STRUCTURE.isProperty(componentName, property)) {
+          settings[property] = _proporties[property];
+        }
+     }
+     settings._n = componentName;
+     return settings;
+  },
 
   /**
     @return @array of components
@@ -91,13 +86,16 @@ export const helperChildren = {
       { _n:'',_p:'', _ch: []}
     ]
   */
-  getAllowList: function (parentName) {
+  getAllowList: function (parentName, type) {
       if (!parentName) {
          parentName = 'root';
       }
-      if (isChildren(parentName)) {
-          var allowStructure = {};
-          return allowChildrenList[parentName]._ch;
+      if (!type) {
+        type = '_ch';
+      }
+      var children = ROOT_STRUCTURE.getAllowListFromComponent(parentName, type)
+      if (children!==false) {
+          return children
       } else {
         return [];
       }
@@ -115,14 +113,18 @@ export const helperProps = {
     @String componentName
     @return @array
   */
-   unZip: function (inputList, componentName) {
+   unZip: function (inputList, componentName, type) {
+      if (!type) {
+          type='_p';
+      }
      var newList = [];
      for (var propName in inputList) {
-       var settProps = createSettProps(propName, componentName, '_p');
+       var settProps = createSettOneProp(propName, componentName, type);
        settProps.value = inputList[propName];
        newList.push(settProps);
      }
      return newList;
+
    },
 
    zip: function (propsArray) {
@@ -134,16 +136,19 @@ export const helperProps = {
    },
 
    createSettings: function (propName, componentName) {
-      return createSettProps(propName, componentName,  '_p');
+      return createSettOneProp(propName, componentName,  '_p');
    },
 
    /**
      @return array
    */
-   getAllowList: function(componentName) {
-       var props;
-       if (isProperty(componentName, '_p')) {
-          return Object.keys(allowChildrenList[componentName]._p);
+   getAllowList: function(componentName, type) {
+        if (!type) {
+          type = '_p';
+        }
+       var props = ROOT_STRUCTURE.getAllowListFromComponent(componentName, type);
+       if (props!==false) {
+          return Object.keys(props);
         } else {
           return [];
         }
@@ -151,6 +156,9 @@ export const helperProps = {
     }
 };
 
+
+
+import {findClassInRegex} from  '../Blocks/Class/ExtendField/validators.js';
 
 
 const createClassesProps = function (className, componentName){
@@ -162,7 +170,6 @@ const createClassesProps = function (className, componentName){
   }
 }
 
-import {findClassInRegex} from  '../Blocks/Class/ExtendField/validators.js';
 
 export const helperClass = {
 
@@ -196,15 +203,8 @@ export const helperClass = {
 
     createSettings: createClassesProps,
 
-    getAllowList: function(componentName) {
-      console.log(componentName);
-      if (isProperty(componentName, '_c')) {
-         var result =  allowChildrenList[componentName]._c;
-         console.log(result);
-         return result;
-       } else {
-         return [];
-       }
+    getAllowList:  function(componentName) {
+      return helperChildren.getAllowList(componentName, '_c');
     }
 };
 
@@ -212,36 +212,40 @@ export const helperClass = {
 export const helperData = {
 
    unZip: function (inputList, componentName) {
-     var newList = [];
-     for (var propName in inputList) {
-       var settProps = createSettProps(propName, componentName, '_d');
-       settProps.value = inputList[propName];
-       newList.push(settProps);
-     }
-     return newList;
+      return helperProps.unZip(inputList, componentName, '_d');
    },
 
-   zip: function (propsArray) {
-       var objectProps = {};
-       for (var i in propsArray) {
-           objectProps[propsArray[i]._n] = propsArray[i].value;
-       }
-       return objectProps;
-   },
+   zip: helperProps.zip,
 
    createSettings: function (propName, componentName) {
-      return createSettProps(propName, componentName,  '_d');
+      return createSettOneProp(propName, componentName,  '_d');
    },
    /**
      @return array
    */
    getAllowList: function(componentName) {
-       var props;
-       if (isProperty(componentName, '_d')) {
-          return Object.keys(allowChildrenList[componentName]._d);
-        } else {
-          return [];
-        }
-
-    }
+      return helperProps.getAllowList(componentName, '_d')
+   }
 };
+
+
+
+
+export const helperAttrs = {
+
+  unZip: function (inputList, componentName) {
+     return helperProps.unZip(inputList, 'EAttrs', '_a');
+  },
+
+  zip: helperProps.zip,
+
+  createSettings: function (propName, componentName) {
+     return createSettOneProp(propName, 'EAttrs',  '_a');
+  },
+  /**
+    @return array
+  */
+  getAllowList: function(componentName) {
+     return helperProps.getAllowList('EAttrs', '_a')
+  }
+}

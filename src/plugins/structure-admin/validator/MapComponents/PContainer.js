@@ -82,6 +82,8 @@ export const PSc = {
 
   },
 
+  _a: [],
+
   _d: {
     // image background
     i: 'readyPropImage',

@@ -104,6 +104,7 @@ import draggable from 'vuedraggable'
 
 import SettingsProps from   './Props.vue';
 import SettingsData from   './Props.vue';
+import SettingsAttrs from   './Props.vue';
 import SettingsClass from   './Props/Class.vue';
 import SettingsColors from   './Colors.vue';
 
@@ -117,6 +118,7 @@ export default {
   //  DesignTabsBlock,
 
     SettingsProps,
+    SettingsAttrs,
     SettingsData,
     SettingsClass,
     SettingsColors
@@ -165,6 +167,7 @@ export default {
            '_p': 'Props',
            '_c': 'Class',
            '_d': 'Data',
+           '_a': 'Attrs',
            '_ch': 'Children',
            'colors':'Colors'
          }

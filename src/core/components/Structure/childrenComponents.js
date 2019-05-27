@@ -38,33 +38,36 @@ export default {
     }
 
 
-    var _p, _c, _ch, _d;
+    var _props, _class, _attrs, _children, _data;
 
     var design = context.parent.$store.state.appInstance.objectActive.design[name];
     if (design) {
         if (design._p) {
-          _p = {...design._p, ...(element._p||{})};
+          _props = {...design._p, ...(element._p||{})};
         }
         if (design._d) {
-          _d = {...design._d, ...(element._d||{})};
+          _data = {...design._d, ...(element._d||{})};
         }
-        _c = element._c? element._c: design._c;
-        _ch = element._ch? element._ch: design._ch;
+        _attrs = element._a? element._a: design._a;
+        _class = element._c? element._c: design._c;
+        _children = element._ch? element._ch: design._ch;
     } else {
-       _p = element._p;
-       _c = element._c;
-       _d = element._d;
-       _ch = element._ch;
+       _props = element._p;
+       _class = element._c;
+       _data = element._d;
+       _attrs = element._a;
+       _children = element._ch;
     }
 
 
     return h(createdComponent, {
      props: {
-       cnf: _p||{},
-       cntnt: _d||{},
-       chldrn: _ch||[]
+       cnf: _props||{},
+       cntnt: _data||{},
+       chldrn: _children||[]
      },
-     class: _c,
+     attrs: _attrs,
+     class: _class,
      on:  context.listeners
    })
 
