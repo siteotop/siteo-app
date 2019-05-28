@@ -3,7 +3,8 @@
     <v-layout >
       <draggable v-model='childrenList' style="width:100%;" :options="{group:'children', handle:'.'+dragClass}" @start="startDragg=true" @end="startDragg=false">
         <v-flex v-for="(component, indexComponent) in childrenList" :key="indexComponent">
-          <v-card :class="'ml-'+treeIndex+' ' +activeColor">
+          <v-hover>
+            <v-card slot-scope="{ hover }" :class="'ml-'+treeIndex+' ' +activeColor">
             <v-toolbar dense flat :color="activeColor">
               <v-btn small :disabled="childrenActive" :style="{cursor:'move'}"  icon :class="dragClass">
                 <v-icon>{{$options._icons.drag}}</v-icon>
@@ -11,63 +12,12 @@
               <v-toolbar-title class="pl-0 ml-0 subtitle-1">{{getText(component._n) }}
               </v-toolbar-title>
               <v-spacer></v-spacer>
-              <v-btn v-if="component._ch" @click="menuList[indexComponent].activeContent=!menuList[indexComponent].activeContent"  small  icon >
-                <v-icon>{{menuList[indexComponent].activeContent?$options._icons.more:$options._icons.less}}</v-icon>
+              <v-btn v-if="hover&&component._ch||menuList[indexComponent].activeContent" @click="menuList[indexComponent].activeContent=!menuList[indexComponent].activeContent"  small  icon max-width="40" >
+                <v-icon >{{menuList[indexComponent].activeContent?$options._icons.more:$options._icons.less}}</v-icon>
               </v-btn>
-              <v-menu v-model="menuList[indexComponent].activeEdit"  :nudge-width="100" min-width="500"  max-width="500" :close-on-content-click="false"  :close-on-click="false" eager :z-index="activeIndex">
-                <template v-slot:activator="{ on }">
-                  <v-btn v-on="on" icon>
-                      <v-icon>$vuetify.icons.edit</v-icon>
-                  </v-btn>
-                </template>
-                <v-card v-if="menuList[indexComponent].activeEdit" >
-                  <v-toolbar tabs dense>
-                    <v-toolbar-title>{{getText(component._n)}} </v-toolbar-title>
-                    <v-spacer></v-spacer>
-                    <v-btn icon @click="menuList[indexComponent].activeEdit=false">
-                      <v-icon>$vuetify.icons.close</v-icon>
-                    </v-btn>
-                    <template v-slot:extension>
-                        <v-tabs
-                          v-model="menuList[indexComponent].activeTabEdit"
-                        >
-                          <v-tab
-                            v-for="(shortNameSettingBlock, indexTab) in Object.keys(component)"
-                            :key="indexTab"
-                            v-if="shortNameSettingBlock!='_n'"
 
-                          >
-                              {{getHelperName(shortNameSettingBlock)}}
-                          </v-tab>
-                        </v-tabs>
-                    </template>
-                  </v-toolbar>
-                  <v-card-text>
-                    <v-tabs-items   v-model="menuList[indexComponent].activeTabEdit">
-                      <v-tab-item
-                        v-for="(shortNameSettingBlock, indexBlock) in Object.keys(component)"
-                        :key="indexBlock"
-                        v-if="shortNameSettingBlock!='_n'"
-                      >
-                        <v-card flat>
-                          <v-card-text>
-                            <component
-                            :is="'Settings'+getHelperName(shortNameSettingBlock)"
-                            v-model="component[shortNameSettingBlock]"
-                            :treeIndex="treeIndex+1"
-                            :componentName="component._n"
-                            :noDublicateChild="true"
-                            :typeHelper="'helper'+getHelperName(shortNameSettingBlock)"
-                            ></component>
-                          </v-card-text>
-                        </v-card>
-                      </v-tab-item>
-                    </v-tabs-items>
-                  </v-card-text>
-
-                </v-card>
-              </v-menu>
-            <HelperMenuEdit :indexComponent="indexComponent"></HelperMenuEdit>
+            <HelperMenuEdit v-if="hover||menuList[indexComponent].activeEdit" :component="component" :indexComponent="indexComponent"></HelperMenuEdit>
+            <HelperMenuActions  :component="component" :indexComponent="indexComponent"></HelperMenuActions>
 
             </v-toolbar>
             <v-card-text v-if="menuList[indexComponent].activeContent" class="pa-0 ma-0 pl-1">
@@ -77,6 +27,7 @@
             </v-card-text>
 
           </v-card>
+        </v-hover>
         </v-flex>
       </draggable>
     </v-layout>
@@ -107,7 +58,7 @@ import SettingsData from   './Props.vue';
 import SettingsAttrs from   './Props.vue';
 import SettingsClass from   './Props/Class.vue';
 import SettingsColors from   './Colors.vue';
-
+import HelperMenuEdit from './_extends/_helper/menu-edit.vue';
 import ExtendsBlock  from './_extends/block.js';
 
 export default {
@@ -116,7 +67,7 @@ export default {
   components: {
     draggable,
   //  DesignTabsBlock,
-
+    HelperMenuEdit,
     SettingsProps,
     SettingsAttrs,
     SettingsData,

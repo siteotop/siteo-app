@@ -3,7 +3,7 @@ import * as helperComponents from '../../validator/components';
 import  _isEqual from 'lodash/isEqual';
 import _cloneDeep from 'lodash/cloneDeep';
 import  _findIndex from 'lodash/findIndex';
-import HelperMenuEdit from './_helper/menu-edit.vue';
+import HelperMenuActions from './_helper/menu-actions.vue';
 import HelperMenuAdd from './_helper/menu-add.vue';
 
 import {
@@ -18,7 +18,7 @@ import {
 export default {
 
   components: {
-    HelperMenuEdit,
+    HelperMenuActions,
     HelperMenuAdd
   },
   _icons: {

@@ -43,7 +43,7 @@ export default {
                })
            ]),
            h('v-flex', {class: 'xs1'}, [
-             h('HelperMenuEdit', {props: {indexComponent: indexSettings}})
+             h('HelperMenuActions', {props: {indexComponent: indexSettings}})
            ])
 
 

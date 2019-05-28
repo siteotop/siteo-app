@@ -1,30 +1,73 @@
 <template functional>
-<v-menu   min-width="300" :nudge-width="100"  eager :z-index="parent.activeIndex">
+<v-menu
+  :value="parent.menuList[props.indexComponent].activeEdit"
+  @input="(value)=>parent.menuList[props.indexComponent].activeEdit=value"
+  :nudge-width="100"
+  min-width="500"
+  max-width="500"
+  :close-on-content-click="false"
+  :close-on-click="false"
+  eager
+  :z-index="parent.activeIndex"
+  >
   <template v-slot:activator="{ on }">
-    <v-btn v-on="on" icon>
-        <v-icon>$vuetify.icons.menuDots</v-icon>
+    <v-btn v-on="on" icon max-width="40" >
+        <v-icon >$vuetify.icons.edit</v-icon>
     </v-btn>
   </template>
-  <v-list>
-    <v-list-item v-if="!parent.noDublicateChild" @click="parent.cloneComponent(props.indexComponent)">
-      <v-list-item-title>Clone</v-list-item-title>
-      <v-list-item-action>
-        <v-btn  icon >
+  <v-card v-if="parent.menuList[props.indexComponent].activeEdit" >
+    <v-toolbar tabs dense>
+      <v-toolbar-title>{{parent.getText(props.component._n)}} </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn icon @click="parent.menuList[props.indexComponent].activeEdit=false">
+        <v-icon>$vuetify.icons.close</v-icon>
+      </v-btn>
+      <template v-slot:extension>
+          <v-tabs
+          :value="parent.menuList[props.indexComponent].activeTabEdit"
+          @change="(value)=>parent.menuList[props.indexComponent].activeTabEdit=value"
 
-          <v-icon>{{parent.$options._icons.block}}</v-icon>
-        </v-btn>
-      </v-list-item-action>
-    </v-list-item>
-    <v-list-item  @click="parent.removeComponentFromList(props.indexComponent)">
-      <v-list-item-title>Remove</v-list-item-title>
-      <v-list-item-action>
-        <v-btn  icon >
-            <v-icon>$vuetify.icons.delete</v-icon>
+          >
+            <v-tab
+              v-for="(shortNameSettingBlock, indexTab) in Object.keys(props.component)"
+              :key="indexTab"
+              v-if="shortNameSettingBlock!='_n'"
 
-        </v-btn>
-      </v-list-item-action>
-    </v-list-item>
-  </v-list>
+            >
+                {{parent.getHelperName(shortNameSettingBlock)}}
+            </v-tab>
+          </v-tabs>
+      </template>
+    </v-toolbar>
+    <v-card-text>
+      <v-tabs-items
+
+      :value="parent.menuList[props.indexComponent].activeTabEdit"
+      @change="(value)=>parent.menuList[props.indexComponent].activeTabEdit=value"
+      >
+        <v-tab-item
+          v-for="(shortNameSettingBlock, indexBlock) in Object.keys(props.component)"
+          :key="indexBlock"
+          v-if="shortNameSettingBlock!='_n'"
+        >
+          <v-card flat>
+            <v-card-text>
+              <component
+              :is="'Settings'+parent.getHelperName(shortNameSettingBlock)"
+              :value="props.component[shortNameSettingBlock]"
+              @input="(value)=>props.component[shortNameSettingBlock]=value"
+              :treeIndex="parent.treeIndex+1"
+              :componentName="props.component._n"
+              :noDublicateChild="true"
+              :typeHelper="'helper'+parent.getHelperName(shortNameSettingBlock)"
+              ></component>
+            </v-card-text>
+          </v-card>
+        </v-tab-item>
+      </v-tabs-items>
+    </v-card-text>
+
+  </v-card>
 </v-menu>
 </template>
 
