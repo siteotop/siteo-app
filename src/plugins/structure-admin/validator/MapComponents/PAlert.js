@@ -26,16 +26,7 @@ export const PAl = {
     },
 
     // border:
-    a: {
-      $comp: 'PropSelect',
-      items: [
-        'top',
-        'right',
-        'bottom',
-        'left'
-      ],
-      default: 'top'
-    } ,
+    a: 'readyPropSides',
 
     //coloredBorder:
     d: 'readyPropColor',

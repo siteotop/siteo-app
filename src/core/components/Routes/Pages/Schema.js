@@ -1,5 +1,5 @@
 
-import FunctionalSpeedDeal from './Functional/SpeedDeal.vue';
+
 import FunctionalShareWindow from './Functional/ShareWindow.vue';
 import FunctionalPageToolbar from './Functional/PageToolbar.vue';
 import FunctionalButtonUp from  './Functional/ButtonUp.vue';
@@ -11,10 +11,8 @@ export default {
         type: Boolean,
         default: false
       },
-      speedDeal: {
-        type: Boolean,
-        default: false
-      },
+
+
       shareWindow: {
         type: Boolean,
         default: false
@@ -59,8 +57,6 @@ export default {
           }),
           ////////// Structure
 
-          //speedDeal
-          context.props.speedDeal? h(FunctionalSpeedDeal):'',
 
           //shareWindow
           context.props.shareWindow? h(FunctionalShareWindow, { on: {closeShare: ()=>{ context.parent.shareWindow = false}}}):'',

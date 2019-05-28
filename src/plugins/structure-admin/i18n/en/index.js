@@ -18,6 +18,7 @@ import {PTb, TCt} from './PTabs';
 import {PTa, TTr, TTd} from './PTable';
 import {PTm, TEp} from './PTimeline';
 import {PSh} from './PSheet';
+import {PSd} from './PSpeedDeal';
 import {PSg, SGe} from './PSlideGroup';
 import {PYv} from './PYoutubeVideo';
 import {RDw} from './RDw';
@@ -47,6 +48,7 @@ export default {
     PPx,
     PPl,
     PIm,
+    PSd,
     PSh,
     PSg, SGe,
     PYv,

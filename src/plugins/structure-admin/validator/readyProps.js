@@ -22,6 +22,17 @@ export const readyPropClassCommon = {
   default: []
 };
 
+export const readyPropSides = {
+  $comp: 'PropSelect',
+  items: [
+    'top',
+    'right',
+    'bottom',
+    'left'
+  ],
+  default: 'top'
+}
+
 export const readyPropDataTitle = {
   $comp: 'PropTitle',
   default:''

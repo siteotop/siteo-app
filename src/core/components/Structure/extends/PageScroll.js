@@ -4,25 +4,22 @@
 */
 export default {
 
-  props: {
-    
-
-    hightUp: {
-      type: Number,
-      default: 0
-    },
-  },
-
+  props: ['cnf', 'cntnt', 'chldrn'],
 
   data() {
     return {
+      showedOnMount: false,
       offsetTop: 0
     }
   },
 
+  mounted() {
+    this.showedOnMount = true;
+  },
+
   computed: {
       needShowAction() {
-        return this.offsetTop> (this.hightUp||this.$vuetify.breakpoint.height);
+        return this.offsetTop> (this.cnf.e||this.$vuetify.breakpoint.height);
       }
   },
 

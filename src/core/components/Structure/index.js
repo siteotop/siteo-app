@@ -14,6 +14,7 @@ export {default as PIc}  from  './PIcon.vue';
 export {default as PPx}  from  './PParallax.vue';
 export {default as PPl}  from  './PProgressLinear.vue';
 export {default as PIm}  from  './PImage.vue';
+export {default as PSd}  from  './PSpeedDeal.vue';
 export {default as PSh}  from  './PSheet.vue';
 export {default as PSg}  from  './PSlideGroup.vue';
 export {default as PTa}  from  './PTable.vue';

@@ -20,6 +20,7 @@ export {PTa, TTr, TTd} from './PTable';
 export {PTl} from './PTitle';
 export {PTx, PHt} from './PText';
 export {PTm, TEp } from './PTimeline';
+export {PSd } from './PSpeedDeal';
 export {PSh } from './PSheet';
 export {PSg, SGe} from './PSlideGroup';
 export {PYv} from './PYoutubeVideo';
@@ -28,7 +29,7 @@ export {RBt, RAc, RMn, MBt} from './RootButton';
 export {RDw} from './RootDrawer';
 export {EAttrs} from './EmulateAttrs';
 export const rootPage = {
-  _ch: ['PSc', 'PPx', 'PIm', 'PYv', 'PCs' ]
+  _ch: ['PSc', 'PPx', 'PIm', 'PYv', 'PCs', 'PSd' ]
 };
 
 /**
