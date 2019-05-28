@@ -24,6 +24,7 @@ export const Flx =  {
       'PLs',
       'PTa',
       'PTm',
+      'PSd',
       'PSh',
       'PSg',
       'RDh',
