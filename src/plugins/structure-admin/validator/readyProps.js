@@ -153,7 +153,7 @@ export const readyPropImage = {
 
 export const readyPropIcon = {
   $comp: 'PropTitle',
-  default:'si-close'
+  default:'$vuetify.icons.action'
 };
 
 

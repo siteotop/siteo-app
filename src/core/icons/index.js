@@ -33,7 +33,7 @@ import {
   mdiCheck,
   mdiCloseCircle,
   mdiClose,
-  mdiDelete, 
+  mdiDelete,
   mdiCheckCircle,
   mdiInformation,
   mdiExclamation,
@@ -58,7 +58,7 @@ import {
   mdiHome,
   mdiShareVariant,
   mdiChevronUp,
- gestureTapHold
+  mdiGestureTap
 
  } from '@mdi/js'
 
@@ -94,5 +94,5 @@ export const vuetifyIcons = {
   home: mdiHome,
   share: mdiShareVariant,
   up: mdiChevronUp,
-  action: gestureTapHold
+  action: mdiGestureTap
 }
