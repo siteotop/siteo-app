@@ -2,7 +2,6 @@
 
 import FunctionalShareWindow from './Functional/ShareWindow.vue';
 import FunctionalPageToolbar from './Functional/PageToolbar.vue';
-import FunctionalButtonUp from  './Functional/ButtonUp.vue';
 
 export default {
     functional: true,
@@ -22,12 +21,6 @@ export default {
         type: Boolean,
         default: false
       },
-
-      buttonUp: {
-        type: Boolean,
-        default: false
-      },
-
 
       structure: {
           type: Array,
@@ -61,8 +54,6 @@ export default {
           //shareWindow
           context.props.shareWindow? h(FunctionalShareWindow, { on: {closeShare: ()=>{ context.parent.shareWindow = false}}}):'',
 
-          //buttonUp
-          context.props.buttonUp? h(FunctionalButtonUp):'',
 
 
       ])

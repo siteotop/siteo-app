@@ -38,15 +38,15 @@ export default {
           text: cnf.v,
           outline: cnf.u,
           rounded: cnf.m,
-          target: cnf.w?'_blank':cnf.w,
-          to: context.props.cntnt.r,
-          href: context.props.cntnt.h,
           width: cnf.ab,
           height: cnf.ac,
+          to: context.props.cntnt.r,
+          href: context.props.cntnt.h,
 
         },
         attrs: {
           rel: cnf.q,
+          target: cnf.w?'_blank':cnf.w,
         },
         class: context.data.class,
         on: context.listeners/* {

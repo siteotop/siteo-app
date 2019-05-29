@@ -24,6 +24,8 @@ export {default as PTl}  from  './PTitle.vue';
 export {default as PTm}  from  './PTimeline.vue';
 export {default as PTr}  from  './PToolbar.vue';
 export {default as PYv}  from  './PYoutubeVideo.vue';
+export {default as PUb}  from  './PUpButton.vue';
+
 export const RSp = 'VSpacer';
 export const StPlugin = 'StPlugin';
 export const RDh = 'VDivider'

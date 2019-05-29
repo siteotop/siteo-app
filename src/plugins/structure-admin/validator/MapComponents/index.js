@@ -24,12 +24,13 @@ export {PSd } from './PSpeedDeal';
 export {PSh } from './PSheet';
 export {PSg, SGe} from './PSlideGroup';
 export {PYv} from './PYoutubeVideo';
+export {PUb} from './PUpButton';
 export {RAb, TTl, PTr} from './RootAppBar';
 export {RBt, RAc, RMn, MBt} from './RootButton';
 export {RDw} from './RootDrawer';
 export {EAttrs} from './EmulateAttrs';
 export const rootPage = {
-  _ch: ['PSc', 'PPx', 'PIm', 'PYv', 'PCs', 'PSd' ]
+  _ch: ['PSc', 'PPx', 'PIm', 'PYv', 'PCs', 'PSd', 'PUb' ]
 };
 
 /**

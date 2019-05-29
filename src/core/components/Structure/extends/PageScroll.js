@@ -19,7 +19,7 @@ export default {
 
   computed: {
       needShowAction() {
-        return this.offsetTop> (this.cnf.e||this.$vuetify.breakpoint.height);
+        return this.offsetTop> (this.cnf.e||'150');
       }
   },
 
