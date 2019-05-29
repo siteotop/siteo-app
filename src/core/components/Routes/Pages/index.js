@@ -89,7 +89,19 @@ export default {
 
     },
 
+    mounted(){
+        this.addEventForEdit();
+    },
+
     methods: {
+
+      addEventForEdit() {
+        function KeyPress(e) {
+          var evtobj = window.event? event : e
+          if (evtobj.keyCode == 13 && evtobj.ctrlKey) alert("Ctrl+Enter");
+        }
+        document.onkeydown = KeyPress;
+      },
 
       asyncDataError(error_data) {
           this.$store.commit('pages/clearModel');
@@ -107,35 +119,35 @@ export default {
     },
 
 
-      render(h ) {
+    render(h ) {
 
-        if (!this.postObject.jsonStructure) {
-           return h('div', ['loaded']);//h('div',  'not loaded');
-        }
-
-        if (this.postObject.error) {
-          return h('RouteError', {props: this.postObject.error});
-        }
-
-        return h('PageSchema', {
-            props: {
-              pageToolbar: true,
-              speedDeal: true,
-              structure: this.postObject.jsonStructure,
-              sharing: true,
-              shareWindow: this.shareWindow,
-              buttonUp: true
-            }
-          })
-
-
-
-      },
-
-
-      renderError (h, err) {
-          return h('RouteError', {props: {status: 500 }});
+      if (!this.postObject.jsonStructure) {
+         return h('div', ['loaded']);//h('div',  'not loaded');
       }
+
+      if (this.postObject.error) {
+        return h('RouteError', {props: this.postObject.error});
+      }
+
+      return h('PageSchema', {
+          props: {
+            pageToolbar: true,
+            speedDeal: true,
+            structure: this.postObject.jsonStructure,
+            sharing: true,
+            shareWindow: this.shareWindow,
+            buttonUp: true
+          }
+        })
+
+
+
+    },
+
+
+    renderError (h, err) {
+        return h('RouteError', {props: {status: 500 }});
+    }
 
 
 
