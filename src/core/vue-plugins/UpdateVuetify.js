@@ -34,6 +34,14 @@ const install  = function (Vue, options) {
           if (designVuetify._p.dark!==undefined) {
               this.$vuetify.theme.dark = designVuetify._p.dark
           }
+          // insert light theme
+          if (designVuetify._p.l) {
+              this.$vuetify.theme.themes.light = designVuetify._p.l;
+          }
+          // insert dark theme
+          if (designVuetify._p.d) {
+              this.$vuetify.theme.themes.dark = designVuetify._p.d;
+          }
           // add icons
           if (designVuetify._p.i) {
             this.updateVuetifyIcons(designVuetify._p.i);
