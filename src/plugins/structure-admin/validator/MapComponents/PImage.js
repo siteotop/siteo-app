@@ -44,5 +44,5 @@ export const PIm =  {
     l: 'readyPropImage',
   },
 
-  _ch: ['PCt', 'PLt', 'PCd']
+  _ch: ['PCt', 'PLt', 'PCd', 'PTr']
 }

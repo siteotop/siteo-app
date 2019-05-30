@@ -27,13 +27,14 @@ export {PYv} from './PYoutubeVideo';
 export {PUb} from './PUpButton';
 export {RFt} from './RootFooter';
 export {RCt} from './RootContent';
-export {RAb, TTl, PTr} from './RootAppBar';
+export {TTl, PTr} from './PToolbar';
+export {RAb} from './RootAppBar';
 export {RBt, RAc, RMn, MBt} from './RootButton';
 export {RDw} from './RootDrawer';
 
 export {EAttrs} from './EmulateAttrs';
 export const rootPage = {
-  _ch: ['PSc', 'PPx', 'PIm', 'PYv', 'PCs', 'PSd', 'PUb' ]
+  _ch: ['PSc', 'PPx', 'PIm', 'PYv', 'PCs', 'PSd', 'PUb', 'PTr' ]
 };
 
 /**

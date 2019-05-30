@@ -68,7 +68,7 @@ export const PCt = {
     c: 'readyPropClassForContainer',
     ...PLt._p
   },
-  _ch: PLt._ch
+  _ch:  PLt._ch
 }
 
 
@@ -90,5 +90,5 @@ export const PSc = {
     i: 'readyPropImage',
   },
 
-  _ch: ['PCt']
+  _ch: ['PCt',  'PTr']
 }

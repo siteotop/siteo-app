@@ -4,7 +4,6 @@
   </v-toolbar>
 </template>
 <script>
-import PageScroll from '../../Pages/Functional/_extends/PageScroll';
 export default {
 
   extends: PageScroll,
@@ -12,25 +11,7 @@ export default {
 
   computed: {
 
-    tProps() {
-       var props = {
 
-         app: false,
-         flat: false,
-         fixed: false,
-        }
-        if (this.needShowAction) {
-         //  props.app =true;
-          props.fixed =true;
-         //props.app=true;
-        } else {
-          props.flat =true;
-          //props.absolute =false;
-
-        }
-
-        return props;
-    },
 
 
   }
