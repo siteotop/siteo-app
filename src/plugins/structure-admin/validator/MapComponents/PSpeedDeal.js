@@ -15,9 +15,7 @@ export const PSd = {
     //top: cnf.
     d: 'readyPropBoolean',
 
-    //bottom: cnf.
-    e: 'readyPropWidth',
-
+    
     //left: cnf.
     f: 'readyPropBoolean',
 
