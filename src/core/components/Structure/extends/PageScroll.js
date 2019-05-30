@@ -19,14 +19,14 @@ export default {
 
   computed: {
       needShowAction() {
-        return this.offsetTop> (this.cnf.e||'150');
+        return this.offsetTop> (this.cnf.e||'250');
       }
   },
 
   methods: {
-      onScroll(e) {
-        this.offsetTop = window.pageYOffset || document.documentElement.scrollTop;
-      },
+    onScroll(e) {
+      this.offsetTop = window.pageYOffset || document.documentElement.scrollTop;
+    },
   }
 
 }
