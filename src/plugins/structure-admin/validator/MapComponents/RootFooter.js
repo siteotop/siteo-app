@@ -23,6 +23,6 @@ export const RFt = {
     _ch: [
 
       ...PLt._ch,
-      
+      'PSr'
     ]
 };

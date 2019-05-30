@@ -17,6 +17,7 @@ export {default as PIm}  from  './PImage.vue';
 export {default as PSd}  from  './PSpeedDeal.vue';
 export {default as PSh}  from  './PSheet.vue';
 export {default as PSg}  from  './PSlideGroup.vue';
+export {default as PSr}  from  './PScroll.vue';
 export {default as PTa}  from  './PTable.vue';
 export {default as PTb}  from  './PTabs.vue';
 export {default as PTx}  from  './PText.vue';

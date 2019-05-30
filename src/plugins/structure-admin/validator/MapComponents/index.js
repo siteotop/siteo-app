@@ -22,6 +22,8 @@ export {PTx, PHt} from './PText';
 export {PTm, TEp } from './PTimeline';
 export {PSd } from './PSpeedDeal';
 export {PSh } from './PSheet';
+export {PSr } from './PScroll';
+
 export {PSg, SGe} from './PSlideGroup';
 export {PYv} from './PYoutubeVideo';
 
@@ -34,7 +36,7 @@ export {RDw} from './RootDrawer';
 
 export {EAttrs} from './EmulateAttrs';
 export const rootPage = {
-  _ch: ['PSc', 'PPx', 'PIm', 'PYv', 'PCs', 'PSd', 'PTr' ]
+  _ch: ['PSc', 'PPx', 'PIm', 'PYv', 'PCs', 'PSd', 'PSr', 'PTr' ]
 };
 
 /**
