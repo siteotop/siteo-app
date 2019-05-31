@@ -15,7 +15,7 @@ export const Flx =  {
       'PLt',
       'PIc',
       'PTl',
-      'RBt',
+      'PBt',
       'RAc',
       'PTx',
       'PIm',

@@ -43,5 +43,5 @@ export const PSd = {
     //color: cnf.
     m: 'readyPropColor',
   },
-  _ch: ['RBt']
+  _ch: ['PBt']
 }

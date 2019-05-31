@@ -3,6 +3,7 @@ import {Vtf} from './Vuetify';
 import {helperClass} from './helperClass';
 import {helperAttrs} from './helperAttrs';
 import {PAl} from './PAlert';
+import {PBt, RAc, PMn, MBt} from './PButton';
 import {PCd, Cti, Cte, Cac} from './PCard';
 import {PCs, CSe} from './PCarusel';
 import {PSc, PCt,  PLt, Flx} from './PContainer';
@@ -26,10 +27,8 @@ import {RDw} from './RDw';
 import {RFt} from './RFt';
 import {RLg, PAv} from './RLg';
 import {RAb, TTl, TTg, PTr} from './RootAppBar';
-
-
 import {PTl, PTx, PHt} from './PTitle';
-import {RBt, RAc, PMn, MBt} from './RootButton';
+
 
 export default {
 
@@ -58,7 +57,7 @@ export default {
     CSe,
     PIc,
     PTl, PTx, PHt,
-    RBt,RAc,PMn, MBt,
+    PBt,RAc,PMn, MBt,
     PAl,
     PDl,
     PDm,

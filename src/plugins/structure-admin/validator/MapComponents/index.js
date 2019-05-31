@@ -4,6 +4,7 @@ export {Vtf} from './Vuetify';
 export {rootDesign} from './RootDesign';
 export {PAl} from './PAlert';
 export {PAv, RLg} from './PAvatar';
+export {PBt, RAc, PMn, MBt} from './PButton';
 export {PCd, Cti, Cte, Cac } from './PCard';
 export {PCs, CSe} from './PCarusel';
 export {PSc, PCt, Flx, PLt} from './PContainer';
@@ -31,7 +32,6 @@ export {RFt} from './RootFooter';
 export {RCt} from './RootContent';
 export {TTl, PTr} from './PToolbar';
 export {RAb} from './RootAppBar';
-export {RBt, RAc, PMn, MBt} from './RootButton';
 export {RDw} from './RootDrawer';
 
 export {EAttrs} from './EmulateAttrs';

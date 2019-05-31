@@ -1,6 +1,6 @@
 
 //RootButton
-export const RBt =  {
+export const PBt =  {
   _p: {
 
     //xSmall: cnf.
@@ -101,14 +101,14 @@ export const RBt =  {
   _c: ['padding', 'textsize', 'texttransform', 'background', 'textcolor', 'hidden']
 }
 
-export const RAc = RBt;
+export const RAc = PBt;
 
 
 // PageMenu
 export const PMn = {
   _p: {
     ti:  'readyPropBoolean',
-    ...RBt._p
+    ...PBt._p
   },
   _d:{
     c:  {
@@ -119,12 +119,12 @@ export const PMn = {
       default: 'page'
     }
   },
-  _c: RBt._c,
+  _c: PBt._c,
   _ch: ['MBt', 'PDm']
 }
 
 // MenuButton
 export const MBt = {
-   _c: RBt._c,
-   _d: RBt._d,
+   _c: PBt._c,
+   _d: PBt._d,
 }

@@ -57,7 +57,7 @@ export const PDl = {
 
 
   },
-  _ch: ['RBt', 'PCd']
+  _ch: ['PBt', 'PCd']
 
 
 }

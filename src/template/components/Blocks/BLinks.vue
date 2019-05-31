@@ -17,12 +17,12 @@
             </v-list-item-content>
 
             <v-list-item-action >
-              <RBt :fab="true"
+              <PBt :fab="true"
                 :href="LINK.href"
                 :_at="LINK.title"
                 v-bind="Object.assign({fab:true, large:false} , props.$clp)"
                 >
-              </RBt>
+              </PBt>
 
             </v-list-item-action>
           </v-list-item>
@@ -32,9 +32,9 @@
  v-for="(LINK, index) in  props.items" :key="index">
     <slot v-bind:item="LINK">
       <template v-slot:activator="{ on }">
-        <RBt v-on="on"
+        <PBt v-on="on"
           v-bind="Object.assign({_at:LINK.title,  href:LINK.href, color:LINK.color, dark: true, siicon:'si-'+LINK.icon  }, props.$clp)"
-          ></RBt>
+          ></PBt>
       </template>
 
       <span>{{LINK.title}}</span>

@@ -25,6 +25,6 @@ export const PSr = {
      //g:
   },
 
-  _ch: ['RBt', 'PSd', 'PTr', 'RAb']
+  _ch: ['PBt', 'PSd', 'PTr', 'RAb']
 
 }

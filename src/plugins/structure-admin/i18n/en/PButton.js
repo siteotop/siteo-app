@@ -1,6 +1,6 @@
 
 //RootButton
-export const RBt = {
+export const PBt = {
   t:'Button',
   d:'Button for link or action',
   helperProps: {
@@ -152,8 +152,8 @@ export const RBt = {
 export const RAc = {
   t: 'Main Action',
   d: 'Action for App',
-  helperData: RBt.helperData,
-  helperProps: RBt.helperProps,
+  helperData: PBt.helperData,
+  helperProps: PBt.helperProps,
 
 } ;
 
@@ -168,7 +168,7 @@ export const PMn = {
      d: 'When menu is using in toolbar'
 
    },
-   ...RBt.helperProps
+   ...PBt.helperProps
  },
  helperData: {
    c: {
@@ -182,5 +182,5 @@ export const PMn = {
 export const MBt = {
   t: 'Menu Button',
   d: 'Data for menu position ',
-  helperData: RBt.helperData
+  helperData: PBt.helperData
 }

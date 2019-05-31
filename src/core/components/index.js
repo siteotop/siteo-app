@@ -1,5 +1,5 @@
 // Global Elements
-export {default as RBt} from './Structure/RootButton.js';
+export {default as PBt} from './Structure/PButton.js';
 export {default as StPlugin} from './Structure/StPlugin.vue';
 export {default as PLt}  from  './Structure/PLayout.vue';
 export {default as AppPulseLoader} from './Elements/AppPulseLoader.vue';

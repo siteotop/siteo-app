@@ -11,7 +11,7 @@ export default {
     var children = [];
 
     context.props.chldrn.map(function(element) {
-      if (element._n == 'RBt') {
+      if (element._n == 'PBt') {
         scopedSlots['activator'] = function (ref) {
           return h('StChildrenHelper', {props: {element:element}, on:ref.on });
         }
