@@ -4,7 +4,8 @@
     <PBt
      v-for="(menu, index) in parent.$store.getters['pages/menu']"
      :key="index"
-     :cnf="props.cnf" :cntnt="{t: menu.title }" >
+     :cnf="props.cnf" :cntnt="{t: menu.title, hg:  menu.target  }"
+     >
     </PBt>
   </template>
 

@@ -26,7 +26,7 @@ export default function (parentGetterUrl) {
                 if (section._a.id&&section._a['data-t']) {
                   menu.push({
                       title: section._n,
-                      href: '#id-link'
+                      target: '#'+section._a.id
                    });
                   }
               }
