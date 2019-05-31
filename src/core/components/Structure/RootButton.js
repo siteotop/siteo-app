@@ -40,6 +40,8 @@ export default {
           rounded: cnf.m,
           width: cnf.ab,
           height: cnf.ac,
+          tile: cnf.ad,
+          elevation: cnf.ae,
           to: context.props.cntnt.r,
           href: context.props.cntnt.h,
 

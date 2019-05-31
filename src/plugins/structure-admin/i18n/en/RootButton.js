@@ -114,6 +114,18 @@ export const RBt = {
       d: 'Sets the component height'
     },
 
+    //tile: cnf.
+    ad: {
+      t: 'tile',
+      d: ''
+    },
+
+    //elevation: cnf.
+    ae: {
+      t: 'elevation',
+      d: ''
+    }
+
 
 
 
