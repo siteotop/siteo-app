@@ -9,6 +9,7 @@ export {default as PDl}  from  './PDialog.vue';
 export {default as PDm}  from  './PDialogMenu';
 export {default as PEx}  from  './PExpansion.vue';
 export {default as PLs}  from  './PList.vue';
+export {default as PMn}  from  './PMenu.vue';
 export {default as PHt}  from  './PHtml.vue';
 export {default as PIc}  from  './PIcon.vue';
 export {default as PPx}  from  './PParallax.vue';

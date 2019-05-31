@@ -29,7 +29,7 @@ import {RAb, TTl, TTg, PTr} from './RootAppBar';
 
 
 import {PTl, PTx, PHt} from './PTitle';
-import {RBt, RAc, RMn, MBt} from './RootButton';
+import {RBt, RAc, PMn, MBt} from './RootButton';
 
 export default {
 
@@ -58,7 +58,7 @@ export default {
     CSe,
     PIc,
     PTl, PTx, PHt,
-    RBt,RAc,RMn, MBt,
+    RBt,RAc,PMn, MBt,
     PAl,
     PDl,
     PDm,

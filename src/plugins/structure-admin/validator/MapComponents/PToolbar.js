@@ -46,7 +46,7 @@ export const PTr = {
 
   },
   _c: ['elevation'],
-  _ch: ['TTl', 'TTg', 'RLg', 'RAc', 'RBt', 'RSp', 'RDv', 'RMn']
+  _ch: ['TTl', 'TTg', 'RLg', 'RAc', 'RBt', 'RSp', 'RDv', 'PMn']
 };
 
 //ToolbarTitle

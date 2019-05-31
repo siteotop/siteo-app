@@ -105,7 +105,7 @@ export const RAc = RBt;
 
 
 // PageMenu
-export const RMn = {
+export const PMn = {
   _p: {
     ti:  'readyPropBoolean',
     ...RBt._p

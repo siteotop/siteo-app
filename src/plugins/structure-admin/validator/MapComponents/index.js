@@ -31,7 +31,7 @@ export {RFt} from './RootFooter';
 export {RCt} from './RootContent';
 export {TTl, PTr} from './PToolbar';
 export {RAb} from './RootAppBar';
-export {RBt, RAc, RMn, MBt} from './RootButton';
+export {RBt, RAc, PMn, MBt} from './RootButton';
 export {RDw} from './RootDrawer';
 
 export {EAttrs} from './EmulateAttrs';

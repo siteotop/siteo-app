@@ -1,5 +1,5 @@
 
 
 export const rootDesign = {
-  _ch: [ 'Vtf', 'RAb', 'RDw',  'RCt', 'RFt', 'RAc', 'RMn']
+  _ch: [ 'Vtf', 'RAb', 'RDw',  'RCt', 'RFt', 'RAc', 'PMn']
 };

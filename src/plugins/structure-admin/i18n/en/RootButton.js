@@ -159,7 +159,7 @@ export const RAc = {
 
 
 // PageMenu
-export const RMn = {
+export const PMn = {
  t: 'Menu ',
  d: 'Menu with buttons',
  helperProps: {

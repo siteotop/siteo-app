@@ -31,7 +31,7 @@ export const Flx =  {
       'PYv',
       'PHt',
       'RSp',
-      'RMn',
+      'PMn',
       'PPx',
       'PPl',
       ]
