@@ -131,13 +131,10 @@ export default {
 
       return h('PageSchema', {
           props: {
-            pageToolbar: true,
-            speedDeal: true,
             structure: this.postObject.jsonStructure,
             sharing: true,
             shareWindow: this.shareWindow,
-            buttonUp: true
-          }
+            }
         })
 
 

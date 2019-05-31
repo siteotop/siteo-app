@@ -83,6 +83,12 @@ export const RBt =  {
     // height
     ac: 'readyPropWidth',
 
+    //tile: cnf.
+    ad: 'readyPropBoolean',
+
+    //elevation: cnf.
+    ae: 'readyPropElevation',
+
   },
 
   _d: {

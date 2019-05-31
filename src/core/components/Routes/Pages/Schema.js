@@ -39,7 +39,7 @@ export default {
 */
           ////////// Structure
           context.props.structure.map(function(element){
-            return h('StChildrenHelper', {props: { element:element, structure: {} }})
+            return h('StChildrenHelper', {props: { element:element}})
           }),
           ////////// Structure
 

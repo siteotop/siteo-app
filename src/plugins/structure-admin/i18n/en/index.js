@@ -20,7 +20,7 @@ import {PTm, TEp} from './PTimeline';
 import {PSh} from './PSheet';
 import {PSd} from './PSpeedDeal';
 import {PSg, SGe} from './PSlideGroup';
-import {PUb} from './PUpButton';
+import {PSr} from './PScroll';
 import {PYv} from './PYoutubeVideo';
 import {RDw} from './RDw';
 import {RFt} from './RFt';
@@ -49,6 +49,7 @@ export default {
     PPx,
     PPl,
     PIm,
+    PSr,
     PSd,
     PSh,
     PSg, SGe,
@@ -61,7 +62,6 @@ export default {
     PAl,
     PDl,
     PDm,
-    PUb,
     PEx, Exi,
     PCd, Cti, Cte, Cac,
     PLs, LAv, LCt, LAc, LTi,

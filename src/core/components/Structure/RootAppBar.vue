@@ -27,7 +27,8 @@ export default {
     props.scrollTarget= cnf.ab;
     props.scrollThreshold = cnf.ac;
     props.shrinkOnScroll  = cnf.ad;
-    props.color = cnf.c;
+    props.fixed  = cnf.ab;
+
     return h('v-app-bar', {
       props: props
     }, [

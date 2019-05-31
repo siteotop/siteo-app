@@ -1,9 +1,6 @@
 <template>
 <v-fab-transition>
   <v-speed-dial
-       v-if="showedOnMount"
-       v-scroll="onScroll"
-       v-show="needShowAction"
        v-model="fab"
        v-bind="{
          absolute: cnf.a,
@@ -50,9 +47,9 @@
 	- pulse
 	- change icons
 */
-import PageScroll from './extends/PageScroll';
 export default {
-   extends:  PageScroll,
+  props: ['cnf', 'cntnt', 'chldrn'],
+
    data() {
      return {
        fab: false

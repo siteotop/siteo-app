@@ -30,11 +30,7 @@ export const PSd = {
       d: ''
     },
 
-    //bottom: cnf.
-    e: {
-      t: 'Offset top',
-      d: ''
-    },
+    
 
     //left: cnf.
     f: {
