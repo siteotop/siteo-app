@@ -126,9 +126,6 @@ export const RBt = {
       d: ''
     }
 
-
-
-
   },
   helperData: {
     i: {
@@ -148,7 +145,7 @@ export const RBt = {
     h: {
       t: 'Href',
       d: ''
-    },
+    }
   }
 }
 
@@ -172,6 +169,12 @@ export const RMn = {
 
    },
    ...RBt.helperProps
+ },
+ helperData: {
+   c: {
+     t: 'Type of menu',
+     d: ''
+   }
  }
 }
 

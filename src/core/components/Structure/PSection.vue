@@ -8,7 +8,9 @@ export default {
           tag: "section"
         },
         class: 'pa-0 ' + (context.props.cnf.b||''),
-        attrs: context.data.attrs
+        attrs: {
+          ...context.data.attrs
+        }
       },
       (context.props.chldrn||[]).map(function(element) {
           return h('StChildrenHelper', {props: {element:element }})

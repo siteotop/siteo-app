@@ -95,7 +95,7 @@ export const RBt =  {
     i: 'readyPropIcon',
     t: 'readyPropDataTitle',
     r: 'readyPropDataTitle',
-    h: 'readyPropDataTitle',
+    h: 'readyPropDataTitle'
   },
 
   _c: ['padding', 'textsize', 'texttransform', 'background', 'textcolor', 'hidden']
@@ -109,7 +109,16 @@ export const RMn = {
   _p: {
     ti:  'readyPropBoolean',
     ...RBt._p
-  } ,
+  },
+  _d:{
+    c:  {
+      $comp: 'PropSelect',
+      items: [
+        'page',
+      ],
+      default: 'page'
+    }
+  },
   _c: RBt._c,
   _ch: ['MBt', 'PDm']
 }

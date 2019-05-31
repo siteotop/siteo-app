@@ -66,7 +66,7 @@ export default {
        cntnt: _data||{},
        chldrn: _children||[]
      },
-     attrs: _attrs,
+     attrs: _attrs||{},
      class: _class,
      on:  context.listeners
    })
