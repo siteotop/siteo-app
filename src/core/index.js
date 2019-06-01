@@ -83,7 +83,7 @@ import SiteoRoutes from './routes';
 /**
 start Siteo
 */
-export const createSiteo =  function ({configs, messages, plugins} ) {
+export const createSiteo =  function ({configs, plugins} ) {
 
    var AppInstanse = {};
    AppInstanse._plugins = {};
@@ -129,8 +129,13 @@ export const createSiteo =  function ({configs, messages, plugins} ) {
    AppInstanse.i18n = new VueI18n({
       silentTranslationWarn: process.env.NODE_ENV === 'development'? false: true, // silent log
       locale: configs.lang, // app lang
-      messages: messages // set locale messages
+      //messages: messages // set locale messages
     });
+
+    import(/* webpackChunkName: "locale-[request]" */ './i18n/'+ configs.lang).then(({default:local}) => {
+        //console.log(local);
+        AppInstanse.i18n.mergeLocaleMessage(configs.lang, local);
+    }).catch(error => 'An error occurred while loading the component');
 
     if (plugins) {
        for (var i in plugins ) {

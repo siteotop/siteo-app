@@ -6,7 +6,6 @@ import  { createSiteo} from './core';
 
 var app = createSiteo({
     configs: window.__SITEO_CONFIG__,
-    messages: window['siteo-locale-en'],
     plugins: window['siteo-plugins']
 });
 

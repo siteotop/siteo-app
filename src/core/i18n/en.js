@@ -1,8 +1,7 @@
 //import VeeEn from 'vee-validate/dist/locale/en';
 
 export default {
-  en: {
-  //  validation: VeeEn,
+
     copy: 'Копировать',
     cancel: 'Отмена',
     close: 'Закрыть',
@@ -134,5 +133,5 @@ export default {
 
     error404: 'Sorry, but the page you are looking for was either not found or does not exist. Try refreshing the page or click the button below to go back to the Homepage.',
 
- }
+
 }

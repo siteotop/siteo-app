@@ -1,6 +1,6 @@
 // entry-server.js
 import  {createSiteo}  from '../src/core';
-import  SiteoLocalEN  from '../src/core/i18n/en';
+//import  SiteoLocalEN  from '../src/core/i18n/en';
 
 
 export default (context) => {
@@ -24,7 +24,7 @@ export default (context) => {
     // for getting AppInstance we need id for appInstance
     var app =  createSiteo( {
       configs: context.configs_frontend,
-      messages: SiteoLocalEN,
+    //  messages: SiteoLocalEN,
     });
 
     console.log (context.instance);
