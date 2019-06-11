@@ -19,7 +19,10 @@ if (process.env.NODE_ENV =='development')  {
 server.disable('x-powered-by');
 
 if (process.env.NODE_ENV=='development') {
-  server.use(express.static('dist'));
+
+    server.use('/assets', express.static('dist/assets'));
+    server.use('/plugins', express.static('dist/plugins'));
+
 }
 
 /**
@@ -28,6 +31,7 @@ if (process.env.NODE_ENV=='development') {
 */
 var routerSiteoApp = express.Router();
 routerSiteoApp.get('*', function(req,res){
+
     siteoApp(req,res, req.baseUrl, req.path )
 });
 
