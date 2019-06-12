@@ -89,7 +89,7 @@ export default function (Vue, RESTApi, baseUrl)  {
            callCoreApi({dispatch}, APIconfig ) {
 
              return  RESTApi({
-                method: APIconfig.method,
+                method: APIconfig.method||'GET',
                 url: APIconfig.url,
                 data: APIconfig.data,
                 headers: {'common': { 'Authorization':"Bearer "+ APIconfig.access_token }},
