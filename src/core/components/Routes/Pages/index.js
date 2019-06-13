@@ -76,11 +76,11 @@ export default {
 
         canonical() {
 
-          return this.$store.getters.CORE_HOST + this.postObject.url;
+          return this.$store.getters.CORE_HOST + this.pageObject.url;
         },
 
         ...mapState({
-            postObject (state) {
+            pageObject (state) {
                 return state.pages? state.pages.objectActive: {};
             }
         })
@@ -109,9 +109,9 @@ export default {
       },
 
        helperCreateMeta(sourceField, mainField ) {
-         if (this.postObject[mainField]) {
-           return this.postObject[sourceField]? this.postObject[sourceField]:
-           this.postObject[mainField] ;
+         if (this.pageObject[mainField]) {
+           return this.pageObject[sourceField]? this.pageObject[sourceField]:
+           this.pageObject[mainField] ;
          } else {
             return '';
          }
@@ -121,17 +121,17 @@ export default {
 
     render(h ) {
 
-      if (!this.postObject.jsonStructure) {
+      if (!this.pageObject.jsonStructure) {
          return h('div', ['loaded']);//h('div',  'not loaded');
       }
 
-      if (this.postObject.error) {
-        return h('RouteError', {props: this.postObject.error});
+      if (this.pageObject.error) {
+        return h('RouteError', {props: this.pageObject.error});
       }
 
       return h('PageSchema', {
           props: {
-            structure: this.postObject.jsonStructure,
+            structure: this.pageObject.jsonStructure,
             sharing: true,
             shareWindow: this.shareWindow,
             }
