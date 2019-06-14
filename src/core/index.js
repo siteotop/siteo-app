@@ -109,8 +109,6 @@ export const createSiteo =  function ({configs, plugins} ) {
      autoFinish: false,
    });
 
-   AppInstanse._siteo_config = configs;
-
    // plugin for http requests
    var RESTApi = createRESTApi(configs.host_api||process.env.HOST_API);
    // create store

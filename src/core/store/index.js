@@ -75,6 +75,11 @@ export default function (Vue, RESTApi, configs)  {
              }
              return fullhost;
            },
+
+           getSiteoConfig: ()=>field=> {
+              return configs[field];
+           }
+
          },
          actions: {
 

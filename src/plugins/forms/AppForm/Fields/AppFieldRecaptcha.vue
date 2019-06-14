@@ -36,7 +36,7 @@ export default {
           id: "recaptcha" + new Date().getTime(),
           recaptcha: null,
           loading: true,
-          token: this.$root.$options._siteo_config.recaptcha
+          token:  this.$store.getters.getSiteoConfig('recaptcha')
       }
 
 
@@ -123,7 +123,7 @@ export default {
         };
 
         if (typeof(window.onloadCallback2)==="undefined") {
-          let url = 'https://www.google.com/recaptcha/api.js?onload=onloadCallback2&render=explicit&hl='+self.$root.$option._siteo_config.lang
+          let url = 'https://www.google.com/recaptcha/api.js?onload=onloadCallback2&render=explicit&hl='+ self.$store.getters.getSiteoConfig('lang'); 
           this.$root.$options.$script(url).then(function() {
             window.onloadCallback2 = function  (){
               self.recaptcha = window.grecaptcha.render(self.id, recaptcha_options );

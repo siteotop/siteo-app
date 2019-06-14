@@ -5,7 +5,7 @@ export default {
 
   siteoInstall: function($coreVue) {
 
-      var $pluginOptions = $coreVue._siteo_config['siteo-plugin-bus'];
+      var $pluginOptions = $coreVue.store.getters.getSiteoConfig('siteo-plugin-bus');
 
       console.log('bus inherit');
 

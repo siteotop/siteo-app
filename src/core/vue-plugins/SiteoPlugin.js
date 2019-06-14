@@ -20,12 +20,12 @@ const install  = function (Vue, options) {
           func = 'siteoInstall';
           instance = startCore;
           _pluginsStore = startCore._plugins;
-          _configPlugin = startCore._siteo_config[plugin.name]||{};
+          _configPlugin = startCore.store.getters.getSiteoConfig(plugin.name)||{};
        } else {
          func = 'liveInstall';
           instance = this;
           _pluginsStore = this.$root.$options._plugins;
-          _configPlugin = this.$root.$options._siteo_config[plugin.name]||{};
+          _configPlugin = this.$store.getters.getSiteoConfig(plugin.name)||{};
        }
 
        if (!plugin.name) {
