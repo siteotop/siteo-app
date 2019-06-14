@@ -26,13 +26,27 @@ export default {
 
   metaInfo () {
    return {
-      title: this.meta_title,
-      titleTemplate: '%s  - ' + this.$store.state.appInstance.objectActive.name,
+      title: this.pageObject.meta_title,
+      titleTemplate:
+        this.$store.getters.getSiteoConfig('seo_title_template') ||
+        ('%s  - ' + this.$store.state.appInstance.objectActive.name),
       meta: [
-        {name: 'description', vmid: 'description', content: this.meta_description }
+        {
+          name: 'description',
+          vmid: 'desc',
+          content: this.pageObject.meta_description
+        },
+        {
+          name: 'robots',
+          vmid: 'rob',
+          content: this.pageObject.meta_robots ||'index,follow'
+        }
       ],
       link: [
-      { rel: 'canonical', href: this.canonical },
+       {
+        rel: 'canonical',
+        href: this.canonical
+       },
       ]
 
     }
@@ -66,13 +80,6 @@ export default {
   },
 
   computed: {
-        meta_title() {
-          return this.helperCreateMeta('meta_title', 'title');
-        },
-
-        meta_description() {
-          return this.helperCreateMeta('meta_description', 'description');
-        },
 
         /**
          generate canonikal href link for vue-meta
@@ -85,7 +92,6 @@ export default {
               return this.$store.getters.CORE_HOST +'/'+ this.pageObject.url;
           }
 
-          return this.$store.getters.CORE_HOST + this.pageObject.url;
         },
 
         ...mapState({
@@ -115,16 +121,7 @@ export default {
       asyncDataError(error_data) {
           this.$store.commit('pages/clearModel');
           this.$store.commit('pages/updateModel', {error: error_data});
-      },
-
-       helperCreateMeta(sourceField, mainField ) {
-         if (this.pageObject[mainField]) {
-           return this.pageObject[sourceField]? this.pageObject[sourceField]:
-           this.pageObject[mainField] ;
-         } else {
-            return '';
-         }
-       }
+      }
     },
 
 
