@@ -114,7 +114,7 @@ export const createSiteo =  function ({configs, plugins} ) {
    // plugin for http requests
    var RESTApi = createRESTApi(configs.host_api||process.env.HOST_API);
    // create store
-   AppInstanse.store = createStore(Vue, RESTApi, configs.baseUrl);
+   AppInstanse.store = createStore(Vue, RESTApi, configs);
 
    // create router
    AppInstanse.router = createRouter(Vue, AppInstanse.store, configs.baseUrl )

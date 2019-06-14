@@ -15,7 +15,7 @@ const helperNameRegister = function ( name) {
   }
 }
 
-export default function (Vue, RESTApi, baseUrl)  {
+export default function (Vue, RESTApi, configs)  {
       const REGISTER={};
 
        Vue.use(Vuex);
@@ -59,12 +59,21 @@ export default function (Vue, RESTApi, baseUrl)  {
 
          },
          getters: {
-           /**
-            link for
-           */
 
+
+           /**
+             generate fullhost for canonical link and others links
+             if baseUrl == '/'  will be  only  domain without  end '/'
+             @example  'https://domain.com'
+             if baseUrl  with path like "/base" will be  domain with path
+             @example 'https://domain.com/base'
+           */
            CORE_HOST() {
-             return  baseUrl||'/';
+            var fullhost = 'https://'+configs.host;
+             if (configs.baseUrl!='/') {
+                fullhost+=configs.baseUrl;
+             }
+             return fullhost;
            },
          },
          actions: {

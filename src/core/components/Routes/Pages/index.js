@@ -74,7 +74,16 @@ export default {
           return this.helperCreateMeta('meta_description', 'description');
         },
 
+        /**
+         generate canonikal href link for vue-meta
+         if page is main generate start domain
+        */
         canonical() {
+          if (this.$store.state.appInstance.objectActive._websites_page == this.pageObject._id) {
+            return this.$store.getters.CORE_HOST;
+          } else {
+              return this.$store.getters.CORE_HOST +'/'+ this.pageObject.url;
+          }
 
           return this.$store.getters.CORE_HOST + this.pageObject.url;
         },
