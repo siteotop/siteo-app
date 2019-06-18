@@ -36,7 +36,7 @@ export default {
           id: "recaptcha" + new Date().getTime(),
           recaptcha: null,
           loading: true,
-          token:  this.$store.getters.getSiteoConfig('recaptcha')
+          pluginSettings:  this.$store.getters.getSiteoConfig('siteo-plugin-recaptchav2')||{}
       }
 
 
@@ -49,17 +49,12 @@ export default {
               this.resetCaptcha();
           }
       },
-      recaptcha: function (val, oldVal) {
 
-      //console.log(val);
-        if (val!==null) {
+      recaptcha: function (val, oldVal) {
+          if (val!==null) {
              this.loading = false;
           }
       }
-
-
-
-
   },
 
   computed: {
@@ -103,19 +98,17 @@ export default {
 
 
   mounted(){
-        var self = this;
-      //  console.log(window.onloadCallback2);
-       if (!this.token) {
+       var self = this;
+       var token = this.pluginSettings.token;
+       if (!token) {
           this.loading = false;
           return;
        }
-
-
       //  var element = document.getElementById(self.id);
         console.log('captcha loading');
 
        var recaptcha_options = {
-          'sitekey' : self.token,
+          'sitekey' : token,
           'callback' : self.getResponse,
           'expiredcallback':self.expiredResponse,
           'size': this.size
@@ -123,7 +116,7 @@ export default {
         };
 
         if (typeof(window.onloadCallback2)==="undefined") {
-          let url = 'https://www.google.com/recaptcha/api.js?onload=onloadCallback2&render=explicit&hl='+ self.$store.getters.getSiteoConfig('lang'); 
+          let url = 'https://www.google.com/recaptcha/api.js?onload=onloadCallback2&render=explicit&hl='+ self.$store.getters.getSiteoConfig('lang');
           this.$root.$options.$script(url).then(function() {
             window.onloadCallback2 = function  (){
               self.recaptcha = window.grecaptcha.render(self.id, recaptcha_options );
