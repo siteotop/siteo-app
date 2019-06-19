@@ -1,12 +1,12 @@
 
 import Loader from '../../_mixins/component-loading.js';
-import mixinsAsyncdata from '../_mixins/asyncData';
+//import mixinsAsyncdata from '../_mixins/asyncData';
 
 import { mapState } from 'vuex';
 import pages from  '../../../store/modules/pages';
 
 export default {
-  mixins: [Loader, mixinsAsyncdata],
+  mixins: [Loader],
 
   props: {
       objectId: {
@@ -27,10 +27,8 @@ export default {
   metaInfo () {
    return {
       title: this.pageObject.meta_title,
-      titleTemplate:
-        this.$store.getters.getSiteoConfig('seo_title_template') ||
-        ('%s  - ' + this.$store.state.appInstance.objectActive.name),
       meta: [
+
         {
           name: 'description',
           vmid: 'desc',
@@ -52,32 +50,15 @@ export default {
     }
   },
 
-  asyncData({ store, route }) {
-
-      store.registerApiModule( 'pages', pages('appInstance/urlID'));
-      if (store.state.allowAsyncLoad) {
-        var id;
-        if (route.params.objectId) {
-           id = route.params.objectId;
-        } else {
-           id = store.state.appInstance.objectActive._websites_page;
-        }
-
-        return new Promise ((resolve, reject)=>{
-             store.dispatch('pages/getObject', id).then((result)=>{
-
-                var newStructure = {
-                  jsonStructure:   JSON.parse(result.jsonStructure)
-                }
-                store.commit('pages/updateModel', newStructure  );
-                resolve(result);
-             }).catch(error=>{
-               reject(error);
-             });
-        });
-
-      }
+  serverPrefetch () {
+    // возвращает Promise из действия, поэтому
+    // компонент ждёт данные перед рендерингом
+    this.registerModule();
+    return this.fetchItem();
   },
+
+
+
 
   computed: {
 
@@ -106,6 +87,16 @@ export default {
 
     mounted(){
         this.addEventForEdit();
+
+        this.registerModule(true);
+        if (!this.pageObject._id) {
+            this.fetchItem();
+        }
+
+    },
+
+    destroyed() {
+      this.$store.unregisterApiModule ( 'pages');
     },
 
     methods: {
@@ -121,27 +112,63 @@ export default {
       asyncDataError(error_data) {
           this.$store.commit('pages/clearModel');
           this.$store.commit('pages/updateModel', {error: error_data});
+      },
+
+      fetchItem() {
+         var store = this.$store,
+             route = this.$route;
+
+            var id;
+            if (route.params.objectId) {
+               id = route.params.objectId;
+            } else {
+               id = store.state.appInstance.objectActive._websites_page;
+            }
+
+            return new Promise ((resolve, reject)=>{
+                 store.dispatch('pages/getObject', id).then((result)=>{
+
+                    var newStructure = {
+                      jsonStructure:   JSON.parse(result.jsonStructure)
+                    }
+                    store.commit('pages/updateModel', newStructure  );
+                    resolve(result);
+                 }).catch(error=>{
+                   reject(error);
+                 });
+            });
+
+      },
+
+      registerModule(preserveState) {
+          this.$store.registerApiModule( 'pages', pages('appInstance/urlID'), undefined, preserveState);
       }
+
     },
 
 
     render(h ) {
 
-      if (!this.pageObject.jsonStructure) {
-         return h('div', ['loaded']);//h('div',  'not loaded');
-      }
+        //if (!this.pageObject.jsonStructure) {
+        //   return h('div', ['loaded']);//h('div',  'not loaded');
+        //}
 
-      if (this.pageObject.error) {
-        return h('RouteError', {props: this.pageObject.error});
-      }
+        if (this.pageObject.error) {
+          return h('RouteError', {props: this.pageObject.error});
+        }
 
-      return h('PageSchema', {
-          props: {
-            structure: this.pageObject.jsonStructure,
-            sharing: true,
-            shareWindow: this.shareWindow,
-            }
+        if (this.pageObject.jsonStructure) {
+        return h('PageSchema', {
+            props: {
+              structure: this.pageObject.jsonStructure,
+              sharing: true,
+              shareWindow: this.shareWindow,
+              }
         })
+
+      } else {
+        return h('div', 'Temporary null');
+      }
 
 
 

@@ -23,7 +23,6 @@ export default function (Vue, RESTApi, configs)  {
        var store =  new Vuex.Store({
          state: {
            drawer: false,
-           allowAsyncLoad: true,
            pageLoader: false,
            usePablicToken: true,
            dispacthToken: 'defaultToken' // for example "account/refreshToken"
@@ -143,10 +142,10 @@ export default function (Vue, RESTApi, configs)  {
         /**
           Register module with createModelCRUD
         */
-       store.registerApiModule = function (name, module, options) {
+       store.registerApiModule = function ( name, module, options, preserveState) {
           var _name_register = helperNameRegister(name);
           if (!REGISTER[_name_register]) {
-                 store.registerModule(name, createModelCRUD(module, options));
+                 store.registerModule(name, createModelCRUD(module, options), {preserveState: preserveState});
                  REGISTER[_name_register] = true;
           } else {
 

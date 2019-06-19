@@ -47,48 +47,19 @@ export default (context) => {
 
     // ожидаем, пока маршрутизатор разрешит возможные асинхронные компоненты и хуки
     app.$router.onReady(() => {
-      const matchedComponents = app.$router.getMatchedComponents();
 
-      // нет подходящих маршрутов, отклоняем с 404
-      if (!matchedComponents.length) {
-        return reject({ssr_error_code: 'NOT_FOUND_COMPONENTS',  __SITEO_INSTANCE__: context.instance  })
-      }
-
-      // вызов `asyncData()` на всех соответствующих компонентах
-      Promise.all(matchedComponents.map(Component => {
-        if (Component.asyncData) {
-          return Component.asyncData({
-            store: app.$store,
-            route: app.$router.currentRoute
-
-          }).catch((error)=>{
-            reject({
-              ssr_error_code: 'NOT_ASYNC_DATA',
-              response_data_api: {
-                axios_config:  process.env.NODE_ENV === 'production'
-                  ? ''
-                  : error.config,
-
-                response_data: error.response&&error.response.data? error.response.data:false
-              } ,
-              __SITEO_INSTANCE__: context.instance })
-
-          })
-        }
-      })).then((data) => {
-        //console.log(data);
-        // После разрешения всех preFetch хуков, наше хранилище теперь
-        // заполнено состоянием, необходимым для рендеринга приложения.
+      context.rendered = () => {
+        // После рендеринга приложение, наше хранилище теперь
+        // заполнено финальным состоянием из наших компонентов.
         // Когда мы присоединяем состояние к контексту, и есть опция `template`
         // используемая для рендерера, состояние будет автоматически
         // сериализовано и внедрено в HTML как `window.__INITIAL_STATE__`.
-        //console.log(app.$store.state);
-        app.$store.state.allowAsyncLoad = false;
         app.$store.commit('clearAllMessages');
-        context.state = app.$store.state;
+        context.state = app.$store.state
+      }
 
-        resolve(app);
-    }).catch(reject);
+      resolve(app);
+
 
   }, reject)
 })
