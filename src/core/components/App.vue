@@ -24,6 +24,27 @@ export default {
           }
      },
 
+     metaInfo () {
+      return {
+        
+         titleTemplate:
+           this.$store.getters.getSiteoConfig('seo_title_template') ||
+           ('%s  - ' + this.$store.state.appInstance.objectActive.name),
+         htmlAttrs: {
+           lang: this.$store.getters.getSiteoConfig('lang'),
+         },
+         meta: [
+           {
+             name: 'theme-color',
+             vmid: 'color',
+             content: "#2196F3"
+           }
+
+         ]
+
+       }
+     },
+
      mounted() {
        this.mobile = this.$vuetify.breakpoint.xs;
      },

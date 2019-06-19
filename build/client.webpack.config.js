@@ -20,6 +20,7 @@ baseConfig.plugins.push(new HtmlWebpackPlugin({
  filename: path.resolve(__dirname, "../public")+ '/index.html',
  //inject: false,
  templateParameters: {
+     html_attr: "",
      title: "<title>siteo-template</title>",
      body_content: '<div id="app"></div>',
      body_state: '',
@@ -36,6 +37,7 @@ baseConfig.plugins.push(new HtmlWebpackPlugin({
   filename: path.resolve(__dirname, "../ssr/template")+ '/index.ssr.html',
   //inject: false,
   templateParameters: {
+      html_attr: 'data-vue-meta-server-rendered {{{meta.inject().headAttrs.text()}}}' ,
       title: `{{{ meta.inject().title.text() }}}
       {{{ meta.inject().meta.text() }}}
       {{{ meta.inject().link.text() }}}
@@ -55,6 +57,7 @@ baseConfig.plugins.push(new HtmlWebpackPlugin({
   filename: path.resolve(__dirname, "../ssr/template")+ '/index.ssr.plain.html',
   //inject: false,
   templateParameters: {
+      html_attr: "",
       title: "<title>siteo-template</title>",
       body_content: '<div id="app"></div>',
       body_state: '',
