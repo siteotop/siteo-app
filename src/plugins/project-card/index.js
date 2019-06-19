@@ -24,8 +24,11 @@ export default {
 
   liveInstall: function (vueInstance) {
 
-        vueInstance.$store.registerApiModule('_projectCard', storeProjectCard() );
-        console.log(vueInstance.$store);
+        vueInstance.$store.registerApiModule({
+              name:'_projectCard',
+              module: storeProjectCard()
+           });
+        
   },
 
   registerComponent: function () {

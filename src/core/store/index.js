@@ -141,11 +141,17 @@ export default function (Vue, RESTApi, configs)  {
 
         /**
           Register module with createModelCRUD
+          options: {
+              name: String,
+              module: Object,
+              moduleOptions: Object,
+              preserveState: Boolean
+          }
         */
-       store.registerApiModule = function ( name, module, options, preserveState) {
-          var _name_register = helperNameRegister(name);
+       store.registerApiModule = function (options  /*name, module, options, preserveState*/) {
+          var _name_register = helperNameRegister(options.name);
           if (!REGISTER[_name_register]) {
-                 store.registerModule(name, createModelCRUD(module, options), {preserveState: preserveState});
+                 store.registerModule(options.name, createModelCRUD(options.module, options.moduleOptions), {preserveState: options.preserveState});
                  REGISTER[_name_register] = true;
           } else {
 

@@ -141,7 +141,11 @@ export default {
       },
 
       registerModule(preserveState) {
-          this.$store.registerApiModule( 'pages', pages('appInstance/urlID'), undefined, preserveState);
+          this.$store.registerApiModule( {
+            name: 'pages',
+            module: pages('appInstance/urlID'),
+            preserveState: preserveState
+          } );
       }
 
     },
