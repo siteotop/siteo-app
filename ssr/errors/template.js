@@ -3,7 +3,6 @@ const fs = require('fs');
 const templateIndex = fs.readFileSync('./ssr/template/index.ssr.plain.html', 'utf-8');
 const lodashTemplate = require ('lodash/template');
 const compiled = lodashTemplate(templateIndex);
-const pageError = require('./page');
 const errorResponse = require('./response');
 const defaultInstance = require('./instance');
 //get templateError
@@ -19,7 +18,7 @@ module.exports = function (res, err, configs) {
   var params_template = {
     __SITEO_INSTANCE__: JSON.stringify({
         'appInstance/setModel':err.__SITEO_INSTANCE__|| defaultInstance,
-        'pages/setModel': pageError(error_response)
+        'setpageError': error_response
     }),
     __SITEO_CONFIG__: JSON.stringify(configs),
   };

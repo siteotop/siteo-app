@@ -56,6 +56,7 @@ export default function (Vue, RESTApi, configs)  {
            appInstance: createModelCRUD(appInstance),
            SystemMessages,
 
+
          },
          getters: {
 

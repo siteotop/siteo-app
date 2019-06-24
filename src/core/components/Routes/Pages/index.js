@@ -1,9 +1,9 @@
 
 import Loader from '../../_mixins/component-loading.js';
-//import mixinsAsyncdata from '../_mixins/asyncData';
 
 import { mapState } from 'vuex';
 import pages from  '../../../store/modules/pages';
+
 
 export default {
   mixins: [Loader],
@@ -50,6 +50,9 @@ export default {
     }
   },
 
+  /**
+     works on ssr
+  */
   serverPrefetch () {
     // возвращает Promise из действия, поэтому
     // компонент ждёт данные перед рендерингом
@@ -57,7 +60,15 @@ export default {
     return this.fetchItem();
   },
 
-
+  watch: {
+      objectId(newId, oldId) {
+          console.log(newId);
+          console.log(oldId);
+          if (newId!=oldId) {
+            this.fetchItem();
+          }
+      }
+  },
 
 
   computed: {
@@ -87,13 +98,16 @@ export default {
 
     mounted(){
         this.addEventForEdit();
+        if (!this.pageObject._id&&!this.pageObject.error) {
 
-        this.registerModule(true);
-        if (!this.pageObject._id) {
+            this.registerModule();
             this.fetchItem();
+        } else {
+          this.registerModule(true);
         }
 
     },
+
 
     destroyed() {
       this.$store.unregisterApiModule ( 'pages');
@@ -125,6 +139,11 @@ export default {
                id = store.state.appInstance.objectActive._websites_page;
             }
 
+            if (!id) {
+              return false;
+            }
+            console.log(id);
+            store.commit('pages/updateModel',  {error:false} );
             return new Promise ((resolve, reject)=>{
                  store.dispatch('pages/getObject', id).then((result)=>{
 
@@ -134,7 +153,9 @@ export default {
                     store.commit('pages/updateModel', newStructure  );
                     resolve(result);
                  }).catch(error=>{
-                   reject(error);
+                   store.commit('pages/updateModel',  {error: true} );
+                   resolve(error);
+                   //reject(error);
                  });
             });
 
@@ -161,8 +182,8 @@ export default {
           return h('RouteError', {props: this.pageObject.error});
         }
 
-        if (this.pageObject.jsonStructure) {
-        return h('PageSchema', {
+        if (Array.isArray(this.pageObject.jsonStructure)) {
+          return h('PageSchema', {
             props: {
               structure: this.pageObject.jsonStructure,
               sharing: true,
@@ -171,7 +192,7 @@ export default {
         })
 
       } else {
-        return h('div', 'Temporary null');
+        return h('div', 'jsonStructure is not array');
       }
 
 
