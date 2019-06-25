@@ -98,8 +98,7 @@ export default {
 
     mounted(){
         this.addEventForEdit();
-        if (!this.pageObject._id&&!this.pageObject.error) {
-
+        if (this.$store.state.allowAsyncLoad) {
             this.registerModule();
             this.fetchItem();
         } else {

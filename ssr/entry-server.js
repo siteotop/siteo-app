@@ -55,6 +55,7 @@ export default (context) => {
         // используемая для рендерера, состояние будет автоматически
         // сериализовано и внедрено в HTML как `window.__INITIAL_STATE__`.
         app.$store.commit('clearAllMessages');
+        app.$store.state.allowAsyncLoad = false;
         context.state = app.$store.state
       }
 

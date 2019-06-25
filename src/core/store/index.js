@@ -23,6 +23,7 @@ export default function (Vue, RESTApi, configs)  {
        var store =  new Vuex.Store({
          state: {
            drawer: false,
+           allowAsyncLoad: true,
            pageLoader: false,
            usePablicToken: true,
            dispacthToken: 'defaultToken' // for example "account/refreshToken"

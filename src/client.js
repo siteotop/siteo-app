@@ -28,5 +28,8 @@ app.$router.onReady(() => {
     app.updateVuetifyOptions(app.$store.state.appInstance.objectActive.design.Vtf);
   }
   //about  devide code client and SSR  https://bit.ly/2tnfDa4
+
   app.$mount('#app');
+  // allow use async load in beforeMount
+  app.$store.state.allowAsyncLoad = true;
 })
