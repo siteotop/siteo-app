@@ -21,22 +21,43 @@
        <v-icon>{{$options._icons.sort}}</v-icon>
    </v-btn>
   </PageItemsToolbar>
-  <component   :is="'wi-'+typeList" :items="$store.state[typeList].items.objects" :_t="title" $tl="justify-center text-xs-center pt-1 pb-4" :toggleComponent="toggle_component" :$vl="toggle_component=='list'">
-    <v-layout slot="header"  wrap class="mb-4"> </v-layout>
-  </component>
+
+  <v-container :class="'grid-list-md'">
+      <v-layout :class="'row wrap justify-center'"   >
+        <v-flex :class="'xs12 sm6 md4'"  v-for="(item, i) in listItems"
+      :key="i" >
+      <component   :is="'card-'+typeList" v-bind="item" :toogle="toggle_component=='list'"></component>
+      </v-flex>
+    </v-layout>
+   </v-container>
+
+  <slot  name="pagination">
+    <v-layout column wrap >
+      <v-flex justify-center text-xs-center>
+      <v-pagination
+
+         :length="6"
+       >
+      </v-pagination>
+    </v-flex>
+   </v-layout>
+ </slot>
 
 </div>
 </template>
 <script>
 import PageItemsToolbar from './Functional/PageItemsToolbar.vue';
-import mixinsAsyncdata from '../_mixins/asyncData';
 
-import WiValues from '../Widgets/WiValues.vue';
-import WiExperts from '../Widgets/WiExperts.vue';
-import WiPosts from '../Widgets/WiPosts.vue';
+import CardValues from './Cards/Values.vue';
+import BPrice from './Cards/BPrice.vue';
+import BHorizontal from './Cards/BPrice.vue';
+//import WiExperts from '../Widgets/WiExperts.vue';
+//import WiPosts from '../Widgets/WiPosts.vue';
+
+
 
 import * as StoreModules from  '../../../store/modules';
-
+import { mapState } from 'vuex';
 import {
   mdiFilterVariant,
   mdiViewModule,
@@ -47,7 +68,7 @@ import {
 
 export default {
 
-  mixins: [mixinsAsyncdata],
+
 
   props: {
     typeList: {
@@ -57,9 +78,9 @@ export default {
   },
   components: {
     PageItemsToolbar,
-    WiValues,
-    WiExperts,
-    WiPosts
+    CardValues,
+    BPrice,
+    BHorizontal
   },
 
   _icons: {
@@ -71,21 +92,7 @@ export default {
 
   },
 
-  asyncData({store, route}) {
-    console.log('loaded data items from server for route:');
-    store.registerApiModule({
-      name: route.name,
-      module: StoreModules[route.name]('appInstance/urlID'),
-      moduleOptions:  {moduleItems: true}
-    });
-
-    if (store.state.allowAsyncLoad) {
-       return store.dispatch(route.name+'/getList');
-    }
-  },
-
   destroyed () {
-    console.log(this.typeList);
     this.$store.unregisterApiModule(this.typeList);
  },
 
@@ -99,6 +106,17 @@ export default {
       title() {
         return this.$t('routes_'+this.typeList+'_t');
       },
+
+      ...mapState({
+          listItems (state) {
+              if (state[this.typeList]) {
+                  return state[this.typeList].items.objects||[];
+              } else {
+                return [];
+              }
+
+          }
+      })
 
 
   },
@@ -116,7 +134,39 @@ export default {
     }
   },
 
+  serverPrefetch () {
+    // возвращает Promise из действия, поэтому
+    // компонент ждёт данные перед рендерингом
+    this.registerModule();
+    return this.fetchItem();
+  },
+
+  mounted() {
+     if (this.$store.state.allowAsyncLoad) {
+       this.registerModule();
+       this.fetchItem();
+     } else {
+       this.registerModule(true);
+     }
+
+
+
+  },
+
   methods: {
+    registerModule(preserveState) {
+      this.$store.registerApiModule({
+        name: this.typeList,
+        module: StoreModules[this.typeList]('appInstance/urlID'),
+        moduleOptions:  {moduleItems: true},
+        preserveState: preserveState
+      });
+    },
+
+    fetchItem(){
+       return this.$store.dispatch(this.typeList+'/getList');
+    },
+
     asyncDataError(error_data) {
         console.log(error_dat);
         // in here place we need cath error

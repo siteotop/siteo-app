@@ -131,7 +131,7 @@ export default function (api ) {
           public: api.public||false,
           nameId: api.nameId||'',
           parentGetterUrl: api.parentGetterUrl,
-          id: 0,
+          id: 0
         },
 
         mutations: {
