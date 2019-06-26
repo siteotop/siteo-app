@@ -89,6 +89,25 @@ export default {
         ...mapState({
             pageObject (state) {
                 return state.pages? state.pages.objectActive: {};
+            },
+
+            pageMenu(state) {
+              if (Array.isArray(state.pages.objectActive.jsonStructure)) {
+                var menu = [];
+                state.pages.objectActive.jsonStructure.map(function(section, index){
+                    if (section._a) {
+                      if (section._a.id&&section._a['data-t']) {
+                        menu.push({
+                            title: section._a['data-t'],
+                            target: '#'+section._a.id
+                         });
+                        }
+                    }
+                });
+                return menu;
+              } else {
+                return [];
+              }
             }
         })
 
