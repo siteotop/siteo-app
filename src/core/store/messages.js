@@ -8,7 +8,8 @@ const SystemMessages = {
   state: function () {
       return {
          messages: [],
-         timeout:0
+         timeout:0,
+         pageError: null
       }
   },
 
@@ -31,9 +32,12 @@ const SystemMessages = {
             console.log(message);
           state.messages.push(message)
     },
-
+    setpageError(state, objectError) {
+          state.pageError = objectError;
+    },
     clearAllMessages(state) {
        state.messages=[];
+       state.pageError=null;
     }
   },
 
