@@ -92,7 +92,7 @@ export default {
 
     typeStructure: {
       type: String,
-      default: 'rootDesign'
+      default: 'RDe'
     },
 
     mainStructure: {
@@ -251,7 +251,7 @@ export default {
   computed: {
 
     structureDesign() {
-      return this.typeStructure =='rootDesign';
+      return this.typeStructure =='RDe';
     },
 
     zippedDesign() {

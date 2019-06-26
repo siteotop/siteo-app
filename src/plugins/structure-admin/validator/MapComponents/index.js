@@ -1,7 +1,7 @@
 
 
 export {Vtf} from './Vuetify';
-export {rootDesign} from './RootDesign';
+export {RDe} from './RootDesign';
 export {PAl} from './PAlert';
 export {PAv, RLg} from './PAvatar';
 export {PBt, RAc, PMn, MBt} from './PButton';
@@ -35,7 +35,7 @@ export {RAb} from './RootAppBar';
 export {RDw} from './RootDrawer';
 
 export {EAttrs} from './EmulateAttrs';
-export const rootPage = {
+export const RPa = {
   _ch: ['PSc', 'PPx', 'PIm', 'PYv', 'PCs', 'PSd', 'PSr', 'PTr' ]
 };
 

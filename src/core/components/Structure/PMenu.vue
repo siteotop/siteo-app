@@ -2,7 +2,7 @@
 <component :is="props.cnf.ti?'v-toolbar-items' : 'div'" :class="data.class" >
   <template v-if="props.cntnt.c">
     <PBt
-     v-for="(menu, index) in parent.$store.getters['pages/menu']"
+     v-for="(menu, index) in parent.pageMenu"
      :key="index"
      :cnf="props.cnf" :cntnt="{t: menu.title, hg:  menu.target  }"
      >
