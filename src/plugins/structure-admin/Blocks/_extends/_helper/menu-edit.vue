@@ -18,7 +18,17 @@
   <v-card v-if="parent.menuList[props.indexComponent].activeEdit" >
     <v-toolbar tabs dense>
       <v-toolbar-title>{{parent.getText(props.component._n)}} </v-toolbar-title>
+
       <v-spacer></v-spacer>
+
+      <v-menu  >
+        <template v-slot:activator="{ on }">
+          <v-btn v-on="on" icon  >
+              <v-icon>{{parent.$options._icons.database}}</v-icon>
+          </v-btn>
+        </template>
+        <blocks-gallery :idComponent="parent.componentName" ></blocks-gallery>
+      </v-menu>
       <v-btn icon @click="parent.menuList[props.indexComponent].activeEdit=false">
         <v-icon>$vuetify.icons.close</v-icon>
       </v-btn>

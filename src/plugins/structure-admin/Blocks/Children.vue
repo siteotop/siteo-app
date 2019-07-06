@@ -60,6 +60,8 @@ import SettingsClass from   './Props/Class.vue';
 import SettingsColors from   './Colors.vue';
 import HelperMenuEdit from './_extends/_helper/menu-edit.vue';
 import ExtendsBlock  from './_extends/block.js';
+import BlocksGallery from './Gallery/index.vue'
+
 
 export default {
   extends: ExtendsBlock,
@@ -72,7 +74,8 @@ export default {
     SettingsAttrs,
     SettingsData,
     SettingsClass,
-    SettingsColors
+    SettingsColors,
+    BlocksGallery
   },
 
   props: {

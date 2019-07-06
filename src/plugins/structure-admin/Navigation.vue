@@ -251,7 +251,7 @@ export default {
   computed: {
 
     structureDesign() {
-      return this.typeStructure =='RDe';
+      return  this.typeStructure !='RPa';
     },
 
     zippedDesign() {

@@ -12,7 +12,7 @@ import {
   mdiDrag,
   mdiUnfoldMoreHorizontal,
   mdiUnfoldLessHorizontal,
-
+  mdiDatabase
 } from '@mdi/js';
 
 export default {
@@ -27,6 +27,7 @@ export default {
     drag: mdiDrag,
     more: mdiUnfoldMoreHorizontal,
     less: mdiUnfoldLessHorizontal,
+    database: mdiDatabase
   },
   props: {
     //it is name for  parent component, which need for  merge settings child component
