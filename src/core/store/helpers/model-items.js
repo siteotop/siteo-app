@@ -55,7 +55,7 @@ const ACTIONS = {
     get list from model  by paramtrs
   */
   getList({dispatch, commit, getters, state}, data) {
-     var  config = {data: data};
+     var  config = {params: data};
      config.method = 'GET';
      config.url = getters.urlWithoutId;
      return   dispatch('callAPI', config, {root:true}).then(response=>{
