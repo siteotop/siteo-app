@@ -7,28 +7,55 @@
   max-width="500"
   :close-on-content-click="false"
   :close-on-click="false"
-  eager
-  :z-index="parent.activeIndex"
   >
   <template v-slot:activator="{ on }">
     <v-btn v-on="on" icon max-width="40" >
         <v-icon >$vuetify.icons.edit</v-icon>
     </v-btn>
   </template>
-  <v-card v-if="parent.menuList[props.indexComponent].activeEdit" >
+  <v-card v-if="parent.menuList[props.indexComponent].activeEdit">
     <v-toolbar tabs dense>
-      <v-toolbar-title>{{parent.getText(props.component._n)}} </v-toolbar-title>
-
+      <v-toolbar-title>{{parent.getText(props.component._n)}}  </v-toolbar-title>
+      <v-menu>
+        <template v-slot:activator="{ on }">
+          <v-btn v-on="on" icon  >
+              <v-icon>$vuetify.icons.ac_help</v-icon>
+          </v-btn>
+        </template>
+          <v-card>
+              ({{props.component._n}})
+          </v-card>
+      </v-menu>
       <v-spacer></v-spacer>
+      <v-btn icon @click="parent.copytoClipboard(props.indexComponent)">
+        <v-icon>{{parent.$options._icons.copy}}</v-icon>
+      </v-btn>
+      <v-btn icon @click="parent.pasteFromClipboard(props.indexComponent)">
+        <v-icon>{{parent.$options._icons.paste}}</v-icon>
+      </v-btn>
+      <v-menu
+      :close-on-content-click="false"
+      :close-on-click="false"
+      :value="parent.menuList[props.indexComponent].database"
+      @input="(value)=>parent.menuList[props.indexComponent].database=value"
 
-      <v-menu  >
+      min-width="500"
+      max-width="500"
+      >
         <template v-slot:activator="{ on }">
           <v-btn v-on="on" icon  >
               <v-icon>{{parent.$options._icons.database}}</v-icon>
           </v-btn>
         </template>
-        <blocks-gallery :idComponent="parent.componentName" ></blocks-gallery>
+        <blocks-gallery
+          @updateBlock="parent.updateJsonBlock(props.indexComponent, $event)"
+          @closeMenu="parent.menuList[props.indexComponent].database=false"
+          :idComponent="parent.getNameActiveComponent(props.indexComponent)"
+          :jsonStructure="props.component"
+          :titleComponent="parent.getText(props.component._n)"
+          ></blocks-gallery>
       </v-menu>
+
       <v-btn icon @click="parent.menuList[props.indexComponent].activeEdit=false">
         <v-icon>$vuetify.icons.close</v-icon>
       </v-btn>
@@ -49,7 +76,7 @@
           </v-tabs>
       </template>
     </v-toolbar>
-    <v-card-text>
+    <v-card-text v-if="parent.showItems">
       <v-tabs-items
 
       :value="parent.menuList[props.indexComponent].activeTabEdit"

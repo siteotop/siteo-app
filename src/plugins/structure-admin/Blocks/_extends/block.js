@@ -12,7 +12,10 @@ import {
   mdiDrag,
   mdiUnfoldMoreHorizontal,
   mdiUnfoldLessHorizontal,
-  mdiDatabase
+  mdiDatabase,
+  mdiContentCopy,
+  mdiContentPaste,
+  mdiContentCut
 } from '@mdi/js';
 
 export default {
@@ -27,7 +30,12 @@ export default {
     drag: mdiDrag,
     more: mdiUnfoldMoreHorizontal,
     less: mdiUnfoldLessHorizontal,
-    database: mdiDatabase
+    database: mdiDatabase,
+
+    copy: mdiContentCopy,
+    paste: mdiContentPaste,
+    cut: mdiContentCut
+
   },
   props: {
     //it is name for  parent component, which need for  merge settings child component
@@ -79,7 +87,8 @@ export default {
         menu: false,
         //array for DesignTabsBlock
         childrenList: [],
-        menuList: []
+        menuList: [],
+        showItems: true
       }
   },
 
@@ -97,7 +106,8 @@ export default {
     },
 
     value: function(newValue, oldValue) {
-        if (this.watchValue) {
+        if (true) {
+          console.log(newValue);
           if(!_isEqual(newValue, oldValue )) {
             this.connectChildrenList();
           }
@@ -128,12 +138,14 @@ export default {
          return {
            activeContent: false,
            activeEdit: false,
-           activeTabEdit: 0
+           activeTabEdit: 0,
+           database: false
          };
        });
 
 
     },
+
 
     addComponentToList(NameOfList) {
       var settings = helperComponents[this.typeHelper].createSettings(NameOfList, this.componentName);
@@ -150,10 +162,70 @@ export default {
 
     },
 
+    getNameActiveComponent(index) {
+        return this.childrenList[index]._n;
+    },
+    /*
+      clone component for manipulation
+    */
+    prepareToCopy(index) {
+        return _cloneDeep(this.childrenList[index]);
+    },
+
     cloneComponent(index) {
-        var cloning = _cloneDeep(this.childrenList[index]);
+        var cloning = this.prepareToCopy(index);
+        console.log(cloning);
         this.childrenList.push(cloning);
         this.createMenuList();
+    },
+
+    /**
+     copy jsonStructure to clipboard
+    */
+    copytoClipboard(index) {
+      var jsonStructureComponent = JSON.stringify(this.prepareToCopy(index));
+      if (navigator.clipboard) {
+
+        navigator.clipboard.writeText(jsonStructureComponent)
+            .then(() => {
+              console.log('Text copied to clipboard');
+            })
+            .catch(err => {
+              // This can happen if the user denies clipboard permissions:
+              console.error('Could not copy text: ', err);
+            });
+        }
+    },
+
+    /**
+      paste jsonStructure from clipboard
+    */
+    pasteFromClipboard(index) {
+      this.showItems = false;
+      if (navigator.clipboard&&navigator.clipboard.readText) {
+        navigator.clipboard.readText()
+        .then(text => {
+            var jsonStructureComponent = JSON.parse(text);
+            this.updateJsonBlock(index, jsonStructureComponent);
+            this.showItems = true;
+            //this.childrenList[index] = jsonStructureComponent;
+
+        })
+        .catch(err => {
+            console.error('Failed to read clipboard contents: ', err);
+            this.showItems = true;
+        });
+      }
+    },
+
+    updateJsonBlock(index, jsonStructure) {
+      console.log( index);
+      console.log( jsonStructure);
+      if (this.childrenList[index]._n  == jsonStructure._n ) {
+          for (var i in jsonStructure) {
+            this.childrenList[index][i] = jsonStructure[i]
+          }
+      }
     },
 
     removeComponentFromList(index) {
