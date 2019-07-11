@@ -32,9 +32,11 @@ const MUTATIONS = {
 
   },
 
+
   saveList(state, items) {
 
       if (items&&items !=null) {
+
          for(var i in items) {
             state.objects.push(items[i]);
          }
@@ -54,12 +56,13 @@ const ACTIONS = {
   /**
     get list from model  by paramtrs
   */
-  getList({dispatch, commit, getters, state}, data) {
-     var  config = {params: data};
+  getList({dispatch, commit, getters, state}, params) {
+     var  config = {params: params};
      config.method = 'GET';
      config.url = getters.urlWithoutId;
      return   dispatch('callAPI', config, {root:true}).then(response=>{
           commit('saveList', response.data.items);
+
           return state.objects;
      });
 
@@ -179,6 +182,7 @@ export default function () {
   return  {
       //namespaced: true,
       state: {
+      
         objects: [],
         // was loaded/checked first  items from server
         crudLoaded: false,
