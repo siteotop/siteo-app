@@ -4,11 +4,12 @@ export default {
   render(h, context) {
     return h('v-container', {
         props: {
-          fluid: true,
+          //fluid: true,
           tag: "section"
         },
         class: 'pa-0 ' + (context.props.cnf.b||''),
         attrs: {
+          fluid: '',
           ...context.data.attrs
         }
       },
