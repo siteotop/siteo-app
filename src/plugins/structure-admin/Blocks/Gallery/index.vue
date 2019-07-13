@@ -3,7 +3,7 @@
     <v-toolbar tabs dense>
       <v-toolbar-title>Gallery: {{idComponent}} </v-toolbar-title>
         <v-spacer></v-spacer>
-      <v-btn icon @click="added=true" >
+      <v-btn icon @click="openAddedMenu" >
             <v-icon>{{$options._icons.databasePlus}}</v-icon>
       </v-btn>
       <v-btn icon @click="closeMenu">
@@ -11,7 +11,7 @@
       </v-btn>
     </v-toolbar>
     <v-card-text  v-if="!added" >
-      <v-list-item v-for="(template, index) in templates"  @click="setNewJsonStrucutre(index)" :key="index" >
+      <v-list-item v-for="(template, index) in templates" @click="setNewJsonStrucutre(index)" :key="index" >
 
         <v-list-item-content>
           <v-list-item-title>{{template.title}}</v-list-item-title>
@@ -19,19 +19,23 @@
         </v-list-item-content>
 
         <v-list-item-action >
-
+            <v-btn  @click="updateJsonStrucutre($event, index)" icon>
+              <v-icon>$vuetify.icons.edit</v-icon>
+            </v-btn>
         </v-list-item-action>
+
       </v-list-item>
 
     </v-card-text >
     <v-card-text v-else >
+       
       <v-text-field
          v-model="title"
          label="Title"
        ></v-text-field>
-      <v-btn @click="saveJsonStrucutre">Save</v-btn>
+      <v-btn  @click="saveJsonStrucutre"><span v-if="isUpdate">Update</span><span v-else>Save</span> </v-btn>
+      <v-btn @click="added=false">Cancel</v-btn>
     </v-card-text>
-
 </v-card>
 </template>
 <script>
@@ -66,12 +70,13 @@ export default {
     return {
       title: '',
       added: false,
+      updateIndex: false,
       templates: []
     }
   },
 
   mounted() {
-     this.title = this.titleComponent;
+
      this.registerModule();
      this.$store.commit('_gallery_templates/clearList');
      this.fetchItem();
@@ -91,6 +96,17 @@ export default {
         }) ;
 
     },
+
+    openAddedMenu() {
+      this.added =  true;
+      if (this.isUpdate) {
+         this.title = this.templates[this.updateIndex].title;
+      } else {
+        this.title = this.titleComponent;
+      }
+    },
+
+
     registerModule() {
         this.$store.registerApiModule( {
           name: '_gallery_templates',
@@ -101,22 +117,62 @@ export default {
 
     saveJsonStrucutre() {
 
-        var jsonStructure = {};
-        jsonStructure[this.idComponent] = this.jsonStructure;
-        this.$store.dispatch('_gallery_templates/createObjectInList', {
-            title: this.title,
-            jsonStructure: jsonStructure,
-            type: this.idComponent
-        }).then(response=>{
+
+        var dispatch;
+        if (this.isUpdate) {
+          dispatch = '_gallery_templates/updateObjectInList';
+        } else {
+            dispatch = '_gallery_templates/createObjectInList';
+        }
+        this.$store.dispatch(dispatch, this.generateData()).then(response=>{
            this.added = false
         });
     },
 
+    /**
+      generate data for saveJsonStrucutre
+      it according to event SAVE/UPDATE
+    */
+    generateData() {
+      var jsonStructure = {};
+      jsonStructure[this.idComponent] = this.jsonStructure;
+      if (this.isUpdate) {
+        return {
+          _id: this.templates[this.updateIndex]._id,
+          title: this.title,
+          jsonStructure: jsonStructure,
+        }
+      } else {
+        return {
+           title: this.title,
+           jsonStructure: jsonStructure,
+           type: this.idComponent
+       }
+      }
+
+    },
+
+    updateJsonStrucutre(event, index) {
+         event.stopPropagation();
+         this.updateIndex = index;
+         this.openAddedMenu();
+
+    },
+
+    /**
+      Emit new structure for parent component
+    */
     setNewJsonStrucutre(index) {
-      console.log(this.templates[index].jsonStructure);
       var jsonStrucutre = JSON.parse( this.templates[index].jsonStructure);
       this.$emit('updateBlock', jsonStrucutre[this.idComponent]);
     }
+  },
+
+  computed: {
+      isUpdate() {
+        return   this.updateIndex!==false;
+      }
+
   }
 
 
