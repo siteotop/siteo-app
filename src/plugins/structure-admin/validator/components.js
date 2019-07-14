@@ -28,12 +28,12 @@ export const ROOT_STRUCTURE = {
 
   getPropterties:  function () {
     return {
-        _d: {}, // data
-        _n: '', // name
-        _p: {}, // props
-        _c: [], // class
-        _a: {}, // attribs
-        _ch: [], // children
+        _d: {}, // _data
+        _n: '', // _name
+        _p: {}, // _props
+        _c: [], // _class
+        _a: {}, // _attribs
+        _ch: [], // _children
 
     };
   }

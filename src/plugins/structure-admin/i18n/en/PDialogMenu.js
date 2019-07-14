@@ -72,7 +72,7 @@ export const PDm = {
       t: 'maxWidth',
       d: ''
     },
-    //openOnClick:  cnf.n,
+    //openOnClick
     n: {
       t: 'openOnClick',
       d: ''

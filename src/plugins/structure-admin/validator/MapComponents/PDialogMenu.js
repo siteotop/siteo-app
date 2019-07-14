@@ -38,7 +38,7 @@ export const PDm = {
       validators: {min:200, max:1500},
       default:500
     },
-    //openOnClick:  cnf.n,
+    //openOnClick
     n: 'readyPropBoolean',
     //openOnHover:  cnf.o,
     o: 'readyPropBoolean',
