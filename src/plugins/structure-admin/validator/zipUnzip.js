@@ -31,7 +31,7 @@ export const zipObjectBeforeSave = function (structure, removeName) {
 
         for (var property in settForComponent ) {
           var valueProperty = settForComponent[property];
-          if (property =='_ch') {
+          if (property =='h' /*_children*/) {
               zipObjectBeforeSave(settForComponent[property]);
           }
           if (_isEmpty(settForComponent[property])) {
@@ -69,8 +69,8 @@ export const unzipObjectBeforeUpate = function (structure, removedName) {
             removedName? index:structure[index].n /*_name*/
       );
 
-      if (structure[index]._ch&&structure[index]._ch.length) {
-         unzipObjectBeforeUpate(structure[index]._ch)
+      if (structure[index].h/*_children*/&&structure[index].h.length) {
+         unzipObjectBeforeUpate(structure[index].h)
       }
   }
   return structure;

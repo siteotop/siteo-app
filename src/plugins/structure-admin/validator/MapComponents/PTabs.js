@@ -23,7 +23,7 @@ export const PTb = {
 
   },
   c/*_class*/: ['background', 'elevation'],
-  _ch: ['TCt']
+  h/*_children*/: ['TCt']
 
 }
 
@@ -39,6 +39,6 @@ export const TCt = {
     t: 'readyPropDataTitle'
   },
 
-  _ch: ['PCt', 'PLt', 'PCd',  'PTl', 'PTx','PYv', ]
+  h/*_children*/: ['PCt', 'PLt', 'PCd',  'PTl', 'PTx','PYv', ]
 
 }

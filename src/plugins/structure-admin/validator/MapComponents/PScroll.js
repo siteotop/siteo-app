@@ -25,6 +25,6 @@ export const PSr = {
      //g:
   },
 
-  _ch: ['PBt', 'PSd', 'PTr', 'RAb']
+  h/*_children*/: ['PBt', 'PSd', 'PTr', 'RAb']
 
 }

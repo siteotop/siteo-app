@@ -5,7 +5,7 @@ export const Flx =  {
    p/*_props*/: {
       fc: 'readyPropClassForFlex',
    },
-   _ch: [
+   h/*_children*/: [
       'PAl',
       'PAv',
       'PCd',
@@ -53,9 +53,9 @@ export const PLt = {
 
   },
 
-  _ch: [
+  h/*_children*/: [
     'Flx',
-    ...Flx._ch]
+    ...Flx.h/*_children*/]
 
 
 }
@@ -69,7 +69,7 @@ export const PCt = {
     c: 'readyPropClassForContainer',
     ...PLt.p/*_props*/
   },
-  _ch:  PLt._ch
+  h/*_children*/:  PLt.h/*_children*/
 }
 
 
@@ -91,5 +91,5 @@ export const PSc = {
     i: 'readyPropImage',
   },
 
-  _ch: ['PCt',  'PTr']
+  h/*_children*/: ['PCt',  'PTr']
 }

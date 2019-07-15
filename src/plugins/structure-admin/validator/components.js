@@ -33,7 +33,7 @@ export const ROOT_STRUCTURE = {
          p: {}, // _props
          c: [], // _class
          a: {}, // _attribs
-        _ch: [], // _children
+         h: [], // _children
 
     };
   }
@@ -83,7 +83,7 @@ export const helperChildren = {
   /**
     @return @array of components
     [
-      { n:'', p:'', _ch: []}
+      { n:'', p:'', h: []}
     ]
   */
   getAllowList: function (parentName, type) {
@@ -91,7 +91,7 @@ export const helperChildren = {
          parentName = 'root';
       }
       if (!type) {
-        type = '_ch';
+        type = 'h' /*_children*/;
       }
       var children = ROOT_STRUCTURE.getAllowListFromComponent(parentName, type)
       if (children!==false) {

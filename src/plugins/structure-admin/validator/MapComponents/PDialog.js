@@ -57,7 +57,7 @@ export const PDl = {
 
 
   },
-  _ch: ['PBt', 'PCd']
+  h/*_children*/: ['PBt', 'PCd']
 
 
 }

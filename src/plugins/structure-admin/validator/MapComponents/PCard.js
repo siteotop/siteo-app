@@ -53,22 +53,22 @@ export const PCd = {
   },
   c/*_class*/: ['background'],
 
-  _ch: ['Cti', 'Cte', 'Cac', 'PAl', 'PLt',  'PLs', 'PIm', 'PCs', 'PYv']
+  h/*_children*/: ['Cti', 'Cte', 'Cac', 'PAl', 'PLt',  'PLs', 'PIm', 'PCs', 'PYv']
 
 }
 
 // v-card-title
 export const Cti = {
   c/*_class*/: ['background'],
-  _ch: ['PTl', 'PTx', 'PAv', 'RSp']
+  h/*_children*/: ['PTl', 'PTx', 'PAv', 'RSp']
 }
 
 // v-card-
 export const Cte = {
-  _ch: ['PTx', 'PAv']
+  h/*_children*/: ['PTx', 'PAv']
 }
 
 
 export const Cac = {
-  _ch: ['PTx', 'PAv', 'PBt', 'PDm']
+  h/*_children*/: ['PTx', 'PAv', 'PBt', 'PDm']
 }

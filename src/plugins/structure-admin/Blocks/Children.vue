@@ -13,7 +13,8 @@
               <v-toolbar-title class="pl-0 ml-0 subtitle-1">{{getText(component.n) }}
               </v-toolbar-title>
               <v-spacer></v-spacer>
-              <v-btn v-if="hover&&component._ch||menuList[indexComponent].activeContent" @click="menuList[indexComponent].activeContent=!menuList[indexComponent].activeContent"  small  icon max-width="40" >
+                <!-- _children in element.h-->
+              <v-btn v-if="hover&&component.h||menuList[indexComponent].activeContent" @click="menuList[indexComponent].activeContent=!menuList[indexComponent].activeContent"  small  icon max-width="40" >
                 <v-icon >{{menuList[indexComponent].activeContent?$options._icons.more:$options._icons.less}}</v-icon>
               </v-btn>
 
@@ -22,9 +23,9 @@
 
             </v-toolbar>
             <v-card-text v-if="menuList[indexComponent].activeContent" class="pa-0 ma-0 pl-1">
-              <!--_name in :componentName="component.n" -->
-              <SettingsChildren :treeIndex="treeIndex+1" v-if="component._ch" :componentName="component.n"
-              typeHelper="helperChildren"  v-model="component['_ch']">
+              <!--_name in :componentName="component.n" -->  <!-- _children in element.h-->   <!-- _children in element.h-->
+              <SettingsChildren :treeIndex="treeIndex+1" v-if="component.h" :componentName="component.n"
+              typeHelper="helperChildren"  v-model="component['h']">
               </SettingsChildren>
             </v-card-text>
 
@@ -124,8 +125,8 @@ export default {
            'p': 'Props', /*_props*/
            'c': 'Class', /*_class*/
            'd': 'Data', /*_data*/
-           'a': 'Attrs', a/*_attrib*/
-           '_ch': 'Children',
+           'a': 'Attrs', /*_attrib*/
+           'h': 'Children', /*_children*/
            'colors':'Colors'
          }
          if (MAP_NAMES[shortName]) {

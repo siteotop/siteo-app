@@ -21,7 +21,7 @@ export default {
       let cnf = context.props.cnf;
       let tbody = [], thead = [];
       let chldrn = (context.props.chldrn||[]).map(function (element, index) {
-        let tr = h('tr', (element._ch||[]).map(function(el, index) {
+        let tr = h('tr', (element.h/*_children*/||[]).map(function(el, index) {
           return h('td',{ class:el.c/*_class*/ } ,  [el.d/*_data*/? el.d.a/*_data*/: ''])
         }));
         if (index ===0) {

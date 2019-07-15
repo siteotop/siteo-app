@@ -12,8 +12,9 @@
       v-for="(element, i) in props.chldrn||[]"
       :key="i"
     >
+      <!-- _children in element.h-->
     <template
-      v-for="(elmt, index) in element._ch||[]"
+      v-for="(elmt, index) in element.h||[]"
      >
        <StChildrenHelper :element="elmt">
        </StChildrenHelper>

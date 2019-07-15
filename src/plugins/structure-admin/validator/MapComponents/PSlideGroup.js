@@ -20,7 +20,7 @@ export const PSg = {
 
   },
 
-  _ch: ['SGe']
+  h/*_children*/: ['SGe']
 
 
 }
@@ -28,6 +28,6 @@ export const PSg = {
 //Slide Group element
 export const SGe = {
 
-  _ch: ['PCt', 'PLt', 'PSh', 'PCd']
+  h/*_children*/: ['PCt', 'PLt', 'PSh', 'PCd']
 
 }

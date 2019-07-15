@@ -1,5 +1,5 @@
 
 //RootDesign
 export const RDe = {
-  _ch: [ 'Vtf', 'RAb', 'RDw',  'RCt', 'RFt', 'RAc', 'PMn']
+  h/*_children*/: [ 'Vtf', 'RAb', 'RDw',  'RCt', 'RFt', 'RAc', 'PMn']
 };

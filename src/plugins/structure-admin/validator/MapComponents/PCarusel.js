@@ -40,7 +40,7 @@ export const PCs = {
 
   },
   c/*_class*/: ['background', 'elevation'],
-  _ch: ['CSe']
+  h/*_children*/: ['CSe']
 
 }
 
@@ -56,6 +56,6 @@ export const CSe = {
     i: 'readyPropImage',
   },
 
-  _ch: ['PCt', 'PLt', 'PSh']
+  h/*_children*/: ['PCt', 'PLt', 'PSh']
 
 }

@@ -18,14 +18,14 @@ export const PTa = {
     //fixedHeader: cnf.
     e: 'readyPropBoolean',
   },
- _ch: ['TTr']
+ h/*_children*/: ['TTr']
 }
 
 //table tr
 export const TTr = {
 
   c/*_class*/: ['background'],
-  _ch: ['TTd']
+  h/*_children*/: ['TTd']
 }
 
 //table td

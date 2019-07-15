@@ -36,7 +36,7 @@ export {RDw} from './RootDrawer';
 
 export {EAttrs} from './EmulateAttrs';
 export const RPa = {
-  _ch: ['PSc', 'PPx', 'PIm', 'PYv', 'PCs', 'PSd', 'PSr', 'PTr' ]
+  h/*_children*/: ['PSc', 'PPx', 'PIm', 'PYv', 'PCs', 'PSd', 'PSr', 'PTr' ]
 };
 
 /**

@@ -24,7 +24,7 @@ export const PLs = {
     i: 'readyPropWidth'
   },
   c/*_class*/: ['background', 'elevation'],
-  _ch: ['LTi']
+  h/*_children*/: ['LTi']
 }
 
 // ListAvatar
@@ -55,5 +55,5 @@ export const LTi = {
     color: 'readyPropColor',
   },
 
-  _ch: ['LAv', 'LCt', 'LAc']
+  h/*_children*/: ['LAv', 'LCt', 'LAc']
 }

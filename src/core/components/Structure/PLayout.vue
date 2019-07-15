@@ -18,7 +18,8 @@
       :is="props.cnf.ft||'v-flex'"
       :class="(element.p? element.p.fc:false)||props.cnf.fc"
     >
-      <StChildrenHelper :element="flxchild" :key="appx" v-for="(flxchild, appx) in element._ch||[]" >
+        <!-- _children in element.h-->
+      <StChildrenHelper :element="flxchild" :key="appx" v-for="(flxchild, appx) in element.h||[]" >
       </StChildrenHelper>
     </component>
   </template>

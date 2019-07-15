@@ -19,7 +19,7 @@ export const PEx = {
     m: 'readyPropBoolean'
   },
   c/*_class*/: ['background', 'elevation'],
-  _ch: ['Exi']
+  h/*_children*/: ['Exi']
 
 }
 
@@ -33,6 +33,6 @@ export const Exi = {
     t: 'readyPropDataTitle'
   },
 
-  _ch: ['PCt', 'PLt', 'PCd',  'PTl', 'PTx','PYv',]
+  h/*_children*/: ['PCt', 'PLt', 'PCd',  'PTl', 'PTx','PYv',]
 
 }

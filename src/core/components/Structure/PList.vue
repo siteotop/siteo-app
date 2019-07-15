@@ -62,7 +62,7 @@ export default {
             avatar: el_c.a,
             color: el_c.c
           }, class:element.c/*_class*/} , [
-            (element._ch||[]).map(function(tileElement){
+            (element.h/*_children*/||[]).map(function(tileElement){
                return h('StChildrenHelper', {props: {element:tileElement, structure: tileStructure}})
             })
           ])

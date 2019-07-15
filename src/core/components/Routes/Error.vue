@@ -5,7 +5,7 @@
       p/*_props*/: {
         lc: ['column']
       },
-      _ch: [
+      h/*_children*/: [
          {
            n/*_name*/: 'PTl',
            d/*_data*/: {

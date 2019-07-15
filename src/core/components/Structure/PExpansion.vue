@@ -16,8 +16,9 @@
     <v-expansion-panel-header >{{element.d? element.d.t:'[title]'}}</v-expansion-panel-header>
 
     <v-expansion-panel-content>
+        <!-- _children in element.h-->
       <template
-        v-for="(elmt, index) in element._ch||[]"
+        v-for="(elmt, index) in element.h||[]"
        >
          <StChildrenHelper :element="elmt">
          </StChildrenHelper>

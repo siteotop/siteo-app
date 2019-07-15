@@ -51,7 +51,7 @@ export const PDm = {
     //offsetOverflow:  cnf.s
     s: 'readyPropBoolean'
   },
-  _ch: ['PBt','PLs', 'PCd']
+  h/*_children*/: ['PBt','PLs', 'PCd']
 
 
 }

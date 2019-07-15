@@ -23,8 +23,9 @@
       large: element.p.a,
       }:element.p"
   >
+     <!-- _children in element.h-->
     <StChildrenHelper
-      v-for="(chld, y) in element._ch||[]"
+      v-for="(chld, y) in element.h||[]"
       :key="y"
       :element="chld"
      >

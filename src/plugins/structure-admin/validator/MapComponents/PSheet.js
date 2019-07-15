@@ -22,6 +22,6 @@ export const PSh = {
 
   },
 
-  _ch: ['PLt' , 'PSh', 'PTl' ]
+  h/*_children*/: ['PLt' , 'PSh', 'PTl' ]
 
 }

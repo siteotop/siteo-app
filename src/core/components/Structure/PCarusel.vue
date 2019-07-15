@@ -26,8 +26,9 @@
           reverseTransition: element.p.r
         }:{}"
     >
+      <!-- _children in element.h-->
     <template
-      v-for="(elmt, index) in element._ch||[]"
+      v-for="(elmt, index) in element.h||[]"
      >
        <StChildrenHelper :element="elmt">
        </StChildrenHelper>

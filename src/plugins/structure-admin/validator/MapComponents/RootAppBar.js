@@ -45,5 +45,5 @@ export const  RAb= {
     ...PTr.p/*_props*/
   },
   c/*_class*/: ['elevation'],
-  _ch: PTr._ch
+  h/*_children*/: PTr.h/*_children*/
 }

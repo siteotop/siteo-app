@@ -8,7 +8,7 @@ export const PTm = {
     l: 'readyPropBoolean',
   },
 
-  _ch: ['TEp']
+  h/*_children*/: ['TEp']
 }
 export const TEp={
   p/*_props*/: {
@@ -33,5 +33,5 @@ export const TEp={
 
   },
 
-  _ch: ['PLt',  'PAv', 'PTx', 'PIm', 'PCd', 'PCs', 'PEx', 'PTb', 'PLs', 'PAl', 'PYv', 'PDl']
+  h/*_children*/: ['PLt',  'PAv', 'PTx', 'PIm', 'PCd', 'PCs', 'PEx', 'PTb', 'PLs', 'PAl', 'PYv', 'PDl']
 }

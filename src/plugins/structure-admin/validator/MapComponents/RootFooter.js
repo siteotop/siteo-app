@@ -20,9 +20,9 @@ export const RFt = {
       ...PLt.p/*_props*/,
     },
 
-    _ch: [
+    h/*_children*/: [
 
-      ...PLt._ch,
+      ...PLt.h/*_children*/,
       'PSr'
     ]
 };

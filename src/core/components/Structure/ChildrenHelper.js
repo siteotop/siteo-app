@@ -50,13 +50,13 @@ export default {
         }
         _attrs = element.a/*_attrib*/? element.a/*_attrib*/: design.a/*_attrib*/;
         _class = element.c/*_class*/? element.c/*_class*/: design.c/*_class*/;
-        _children = element._ch? element._ch: design._ch;
+        _children = element.h/*_children*/? element.h/*_children*/: design.h/*_children*/;
     } else {
        _props = element.p/*_props*/;
        _class = element.c/*_class*/;
        _data = element.d/*_data*/;
        _attrs = element.a/*_attrib*/;
-       _children = element._ch;
+       _children = element.h/*_children*/;
     }
 
 
