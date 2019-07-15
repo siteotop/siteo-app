@@ -1,7 +1,7 @@
 <template functional>
 <StChildrenHelper :element="{
      n/*_name*/ : 'PAv',
-    _p: {
+     p/*_props*/: {
        t:props.cnf.t,
        s: props.cnf.s||'38',
        c:props.cnf.c || 'primary lighten-2'

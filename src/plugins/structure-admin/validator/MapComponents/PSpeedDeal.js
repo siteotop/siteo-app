@@ -2,7 +2,7 @@
 
 export const PSd = {
 
-  _p: {
+  p/*_props*/: {
     //absolute: cnf.
     a: 'readyPropBoolean',
 

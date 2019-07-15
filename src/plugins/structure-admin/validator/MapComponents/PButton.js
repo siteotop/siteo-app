@@ -1,7 +1,7 @@
 
 //RootButton
 export const PBt =  {
-  _p: {
+  p/*_props*/: {
 
     //xSmall: cnf.
     n: 'readyPropBoolean',
@@ -106,9 +106,9 @@ export const RAc = PBt;
 
 // PageMenu
 export const PMn = {
-  _p: {
+  p/*_props*/: {
     ti:  'readyPropBoolean',
-    ...PBt._p
+    ...PBt.p/*_props*/
   },
   d/*_data*/:{
     c:  {

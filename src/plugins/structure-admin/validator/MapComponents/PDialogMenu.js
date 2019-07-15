@@ -3,7 +3,7 @@
 //PageDialogMenu
 export const PDm = {
 
-  _p: {
+  p/*_props*/: {
     //auto: cnf.a,
     a: 'readyPropBoolean',
     //top: cnf.b,

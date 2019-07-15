@@ -3,7 +3,7 @@
 //PageDialog
 export const PDl = {
 
-  _p: {
+  p/*_props*/: {
     //dark
     d: 'readyPropBoolean',
     //light

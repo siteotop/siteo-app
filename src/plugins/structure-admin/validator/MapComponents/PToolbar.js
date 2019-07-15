@@ -5,7 +5,7 @@
 // PageToolbar
 
 export const PTr = {
-  _p: {
+  p/*_props*/: {
       h: {
         $comp: 'PropHeight',
         validators: {min:30, max:120},

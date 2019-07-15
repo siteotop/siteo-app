@@ -5,7 +5,7 @@ export const PAl = {
       d: 'readyPropDataDesc',
       i: 'readyPropIcon',
   },
-  _p: {
+  p/*_props*/: {
     //color: props.cnf.c,
     c:'readyPropColor',
 

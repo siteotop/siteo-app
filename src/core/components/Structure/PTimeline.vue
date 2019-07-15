@@ -7,20 +7,21 @@
       light: props.cnf.l,
     }"
   >
+    <!-- _props  in element.p-->
   <v-timeline-item
     v-for="(element, i) in props.chldrn||[]"
     :key="i"
-    v-bind="element._p?{
-      color: element._p.c,
-      fillDot: element._p.f,
-      hideDot: element._p.h,
-      icon: element._p.i,
-      iconColor: element._p.n,
-      left: element._p.l,
-      right: element._p.r,
-      small: element._p.s,
-      large: element._p.a,
-      }:element._p"
+    v-bind="element.p?{
+      color: element.p.c,
+      fillDot: element.p.f,
+      hideDot: element.p.h,
+      icon: element.p.i,
+      iconColor: element.p.n,
+      left: element.p.l,
+      right: element.p.r,
+      small: element.p.s,
+      large: element.p.a,
+      }:element.p"
   >
     <StChildrenHelper
       v-for="(chld, y) in element._ch||[]"

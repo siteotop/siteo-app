@@ -7,7 +7,7 @@ export const PAv = {
     i: 'readyPropIcon',
     t: 'readyPropDataTitle'
   },
-  _p: {
+  p/*_props*/: {
     //tile
     t:'readyPropBoolean',
 
@@ -39,6 +39,6 @@ export const PAv = {
 
 //RootLogo
 export const RLg ={
-  _p: PAv._p,
+  p/*_props*/: PAv.p/*_props*/,
   _c: PAv._c,
 }

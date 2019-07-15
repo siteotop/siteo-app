@@ -29,12 +29,13 @@
     <!-- _data  in element.d-->
     {{element.d?element.d.t:''}}
   </v-tab>
+  <!-- _props  in element.p-->
   <v-tab-item
     v-for="(element, i) in props.chldrn||[]"
     :key="i"
-    v-bind="element._p?{
-        transition: element._p.a,
-        reverseTransition: element._p.b
+    v-bind="element.p?{
+        transition: element.p.a,
+        reverseTransition: element.p.b
       }:{}"
   >
     <template

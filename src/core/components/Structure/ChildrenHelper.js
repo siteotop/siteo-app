@@ -42,8 +42,8 @@ export default {
 
     var design = context.parent.$store.state.appInstance.objectActive.design[name];
     if (design) {
-        if (design._p) {
-          _props = {...design._p, ...(element._p||{})};
+        if (design.p/*_props*/) {
+          _props = {...design.p/*_props*/, ...(element.p/*_props*/||{})};
         }
         if (design.d/*_data*/) {
           _data = {...design.d/*_data*/, ...(element.d/*_data*/||{})};
@@ -52,7 +52,7 @@ export default {
         _class = element._c? element._c: design._c;
         _children = element._ch? element._ch: design._ch;
     } else {
-       _props = element._p;
+       _props = element.p/*_props*/;
        _class = element._c;
        _data = element.d/*_data*/;
        _attrs = element._a;

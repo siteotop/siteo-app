@@ -2,7 +2,7 @@
 
 export const PTa = {
 
-  _p: {
+  p/*_props*/: {
     //dark: cnf.
     a: 'readyPropBoolean',
 

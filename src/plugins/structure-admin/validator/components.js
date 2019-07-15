@@ -30,7 +30,7 @@ export const ROOT_STRUCTURE = {
     return {
          d: {}, // _data
          n: '', // _name
-        _p: {}, // _props
+         p: {}, // _props
         _c: [], // _class
         _a: {}, // _attribs
         _ch: [], // _children
@@ -83,7 +83,7 @@ export const helperChildren = {
   /**
     @return @array of components
     [
-      { n:'',_p:'', _ch: []}
+      { n:'', p:'', _ch: []}
     ]
   */
   getAllowList: function (parentName, type) {
@@ -115,7 +115,7 @@ export const helperProps = {
   */
    unZip: function (inputList, componentName, type) {
       if (!type) {
-          type='_p';
+          type='p'/*_props*/;
       }
      var newList = [];
      for (var propName in inputList) {
@@ -137,7 +137,7 @@ export const helperProps = {
    },
 
    createSettings: function (propName, componentName) {
-      return createSettOneProp(propName, componentName,  '_p');
+      return createSettOneProp(propName, componentName,  'p' /*_props*/);
    },
 
    /**
@@ -145,7 +145,7 @@ export const helperProps = {
    */
    getAllowList: function(componentName, type) {
         if (!type) {
-          type = '_p';
+          type = 'p'/*_props*/;
         }
        var props = ROOT_STRUCTURE.getAllowListFromComponent(componentName, type);
        if (props!==false) {

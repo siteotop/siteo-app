@@ -3,7 +3,7 @@
 
 export const PIc = {
 
-  _p: {
+  p/*_props*/: {
 
       //color: props.cnf.
       a: 'readyPropColor',

@@ -1,7 +1,7 @@
 
 
 export const PTb = {
-  _p: {
+  p/*_props*/: {
     a: 'readyPropBoolean',
     r: 'readyPropBoolean',
     //backgroundColor: props.cnf.
@@ -29,7 +29,7 @@ export const PTb = {
 
 
 export const TCt = {
-  _p: {
+  p/*_props*/: {
     a: 'readyPropTransition',
     b: 'readyPropTransition',
 

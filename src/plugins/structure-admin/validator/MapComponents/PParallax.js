@@ -1,7 +1,7 @@
 
 
 export const PPx = {
-  _p: {
+  p/*_props*/: {
 
     h: 'readyPropHeight',
     //background

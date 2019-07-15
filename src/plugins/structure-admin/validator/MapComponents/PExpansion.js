@@ -1,7 +1,7 @@
 
 
 export const PEx = {
-  _p: {
+  p/*_props*/: {
 
     // according
     a: 'readyPropBoolean',
@@ -25,7 +25,7 @@ export const PEx = {
 
 
 export const Exi = {
-  _p: {
+  p/*_props*/: {
 
   },
 

@@ -56,7 +56,7 @@ export default {
 
     }, class: context.data.class}, [
         (context.props.chldrn||[]).map(function(element){
-          var el_c = element._p||{};
+          var el_c = element.p/*_props*/||{};
           return h('v-list-item', {props: {
             tag:'li',
             avatar: el_c.a,

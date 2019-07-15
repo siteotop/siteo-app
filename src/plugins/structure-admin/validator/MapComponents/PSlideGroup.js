@@ -3,7 +3,7 @@
 
 export const PSg = {
 
-  _p: {
+  p/*_props*/: {
     //dark: props.cnf.
     a: 'readyPropBoolean',
     //light: props.cnf.

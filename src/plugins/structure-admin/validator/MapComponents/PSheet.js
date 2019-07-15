@@ -3,7 +3,7 @@
 
 export const PSh = {
 
-  _p: {
+  p/*_props*/: {
 
     //color: props.cnf.
     a: 'readyPropColor',

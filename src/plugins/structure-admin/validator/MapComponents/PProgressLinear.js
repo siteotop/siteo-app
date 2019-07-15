@@ -4,7 +4,7 @@
 
 export const PPl = {
 
-  _p: {
+  p/*_props*/: {
 
     //backgroundColor: props.cnf.
     a: 'readyPropColor',

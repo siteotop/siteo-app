@@ -22,7 +22,7 @@ const install  = function (Vue, options) {
 
      @param designVuetify  structure for Vuetify settings
      {
-       _p: {l: {primary: 'sdsdf'}, d: {}, dark: true }
+       p: {l: {primary: 'sdsdf'}, d: {}, dark: true }
      }
   */
     Vue.prototype.updateVuetifyOptions = function(designVuetify) {
@@ -30,21 +30,21 @@ const install  = function (Vue, options) {
           return;
         }
         //update themes
-        if ( designVuetify._p) {
-          if (designVuetify._p.dark!==undefined) {
-              this.$vuetify.theme.dark = designVuetify._p.dark
+        if ( designVuetify.p/*_props*/) {
+          if (designVuetify.p.dark!==undefined) {
+              this.$vuetify.theme.dark = designVuetify.p.dark
           }
           // insert light theme
-          if (designVuetify._p.l) {
-              this.$vuetify.theme.themes.light = designVuetify._p.l;
+          if (designVuetify.p.l) {
+              this.$vuetify.theme.themes.light = designVuetify.p.l;
           }
           // insert dark theme
-          if (designVuetify._p.d) {
-              this.$vuetify.theme.themes.dark = designVuetify._p.d;
+          if (designVuetify.p.d) {
+              this.$vuetify.theme.themes.dark = designVuetify.p.d;
           }
           // add icons
-          if (designVuetify._p.i) {
-            this.updateVuetifyIcons(designVuetify._p.i);
+          if (designVuetify.p.i) {
+            this.updateVuetifyIcons(designVuetify.p.i);
           }
         }
     }

@@ -3,7 +3,7 @@ import {PLt} from './PContainer';
 
 
 export const RFt = {
-    _p: {
+    p/*_props*/: {
       //absolute
       a: 'readyPropBoolean',
       //inset
@@ -17,7 +17,7 @@ export const RFt = {
       //color
       c: 'readyPropColor',
 
-      ...PLt._p,
+      ...PLt.p/*_props*/,
     },
 
     _ch: [

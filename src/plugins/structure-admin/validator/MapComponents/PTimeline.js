@@ -1,7 +1,7 @@
 
 
 export const PTm = {
-  _p: {
+  p/*_props*/: {
     a: 'readyPropBoolean',
     d: 'readyPropBoolean',
     r: 'readyPropBoolean',
@@ -11,7 +11,7 @@ export const PTm = {
   _ch: ['TEp']
 }
 export const TEp={
-  _p: {
+  p/*_props*/: {
     //color
     c: 'readyPropColor',
     //fillDot

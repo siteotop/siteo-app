@@ -1,8 +1,8 @@
 <template>
   <PageSchema :structure="[{
 
-    /*_name*/  n: 'PSc',
-      _p: {
+      n/*_name*/: 'PSc',
+      p/*_props*/: {
         lc: ['column']
       },
       _ch: [
@@ -11,7 +11,7 @@
            d/*_data*/: {
              t: title
            },
-           _p: {
+           p/*_props*/: {
              h: 'h1'
            }
          },

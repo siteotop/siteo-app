@@ -2,7 +2,7 @@
 import {PTr} from './PToolbar';
 
 export const  RAb= {
-  _p: {
+  p/*_props*/: {
     //clippedLeft
     s: 'readyPropBoolean',
     //clippedRight
@@ -42,7 +42,7 @@ export const  RAb= {
     ab: 'readyPropBoolean',
 
 
-    ...PTr._p
+    ...PTr.p/*_props*/
   },
   _c: ['elevation'],
   _ch: PTr._ch

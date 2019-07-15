@@ -2,7 +2,7 @@
 
 
 export const Vtf = {
-  _p: {
+  p/*_props*/: {
      // themes light
      l: 'readyPropColorsTheme',
      // themes dark

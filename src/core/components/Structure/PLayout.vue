@@ -12,11 +12,11 @@
       <StChildrenHelper :element="element">
       </StChildrenHelper>
     </component>
-
+    <!--_props  in element.p-->
     <component
       v-else
       :is="props.cnf.ft||'v-flex'"
-      :class="(element._p? element._p.fc:false)||props.cnf.fc"
+      :class="(element.p? element.p.fc:false)||props.cnf.fc"
     >
       <StChildrenHelper :element="flxchild" :key="appx" v-for="(flxchild, appx) in element._ch||[]" >
       </StChildrenHelper>

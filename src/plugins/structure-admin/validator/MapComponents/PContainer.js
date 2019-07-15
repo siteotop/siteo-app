@@ -2,7 +2,7 @@
 //import {readyPropClassForFlex} from '../readyProps.js';
 
 export const Flx =  {
-   _p: {
+   p/*_props*/: {
       fc: 'readyPropClassForFlex',
    },
    _ch: [
@@ -41,7 +41,7 @@ export const Flx =  {
 // PageLayout
 export const PLt = {
 
-  _p: {
+  p/*_props*/: {
 
     lc: 'readyPropClassForLayout',
     fc: 'readyPropClassForFlex',
@@ -62,12 +62,12 @@ export const PLt = {
 
 // PageContainer
 export const PCt = {
-  _p: {
+  p/*_props*/: {
     // height
     h: 'readyPropHeight',
     // container
     c: 'readyPropClassForContainer',
-    ...PLt._p
+    ...PLt.p/*_props*/
   },
   _ch:  PLt._ch
 }
@@ -76,7 +76,7 @@ export const PCt = {
 
 // PageSection
 export const PSc = {
-  _p: {
+  p/*_props*/: {
 
     //background
     b: 'readyPropColor',

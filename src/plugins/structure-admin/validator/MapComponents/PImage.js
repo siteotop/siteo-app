@@ -2,7 +2,7 @@
 
 export const PIm =  {
 
-  _p: {
+  p/*_props*/: {
     //aspectRatio:
     a: 'readyPropRatio',
     //contain

@@ -16,14 +16,14 @@
 
      }"
     :class="data.class">
-    <!-- _data  in element.d-->
+    <!-- _data  in element.d,  _props  in element.p-->
     <v-carousel-item
       v-for="(element, i) in props.chldrn||[]"
       :key="i"
       :src="element.d? element.d.i: element.d"
-      v-bind="element._p?{
-          transition: element._p.t,
-          reverseTransition: element._p.r
+      v-bind="element.p?{
+          transition: element.p.t,
+          reverseTransition: element.p.r
         }:{}"
     >
     <template

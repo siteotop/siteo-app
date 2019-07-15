@@ -2,7 +2,7 @@
 
 export const PSr = {
 
-  _p: {
+  p/*_props*/: {
      //offset
      a: 'readyPropWidth',
 

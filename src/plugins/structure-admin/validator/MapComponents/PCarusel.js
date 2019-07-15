@@ -1,6 +1,6 @@
 //PageCarusel
 export const PCs = {
-  _p: {
+  p/*_props*/: {
     //continuous
     a: 'readyPropBoolean',
 
@@ -46,7 +46,7 @@ export const PCs = {
 
 //Carusel element
 export const CSe = {
-  _p: {
+  p/*_props*/: {
     t: 'readyPropTransition',
     r: 'readyPropTransition',
 

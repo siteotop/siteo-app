@@ -4,7 +4,7 @@ export const PTl = {
     // title content
     t: 'readyPropDataTitle'
   },
-  _p: {
+  p/*_props*/: {
   //  tag for h
     h:'readyPropTagH'
   },

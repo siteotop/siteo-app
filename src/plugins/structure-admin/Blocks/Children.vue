@@ -121,9 +121,9 @@ export default {
      getHelperName(shortName) {
         var  MAP_NAMES = {
            'n': 'name',  /*_name*/
-           '_p': 'Props',
+           'p': 'Props', /*_props*/
            '_c': 'Class',
-           'd': 'Data', /*_data*/ 
+           'd': 'Data', /*_data*/
            '_a': 'Attrs',
            '_ch': 'Children',
            'colors':'Colors'

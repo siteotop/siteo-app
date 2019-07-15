@@ -1,7 +1,7 @@
 
 //RootDrawer
 export const RDw = {
-  _p:{
+  p/*_props*/:{
     //clipped
     c:'readyPropBoolean',
     //dark

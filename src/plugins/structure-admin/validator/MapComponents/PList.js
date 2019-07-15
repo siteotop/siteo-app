@@ -1,6 +1,6 @@
 
 export const PLs = {
-  _p: {
+  p/*_props*/: {
     //color
     b: 'readyPropColor',
     d: 'readyPropBoolean',
@@ -50,7 +50,7 @@ export const LAc={
 
 
 export const LTi = {
-  _p: {
+  p/*_props*/: {
     avatar: 'readyPropBoolean',
     color: 'readyPropColor',
   },

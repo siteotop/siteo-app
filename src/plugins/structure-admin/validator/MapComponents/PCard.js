@@ -1,7 +1,7 @@
 
 
 export const PCd = {
-  _p: {
+  p/*_props*/: {
 
     //color
     c:'readyPropColor',
