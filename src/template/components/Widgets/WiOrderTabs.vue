@@ -11,6 +11,7 @@
      <v-tabs-slider color="primary"></v-tabs-slider>
 
      <v-tab v-for="(BComponent ) in getTabsActions" :key="BComponent.index" :to="onlyTabs?'':BComponent.to" >
+       <!--_name-->
        {{BComponent._n}}
 
        <AppIcon v-if="icon" :name="BComponent._i"></AppIcon>

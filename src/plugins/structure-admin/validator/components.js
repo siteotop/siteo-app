@@ -29,7 +29,7 @@ export const ROOT_STRUCTURE = {
   getPropterties:  function () {
     return {
         _d: {}, // _data
-        _n: '', // _name
+         n: '', // _name
         _p: {}, // _props
         _c: [], // _class
         _a: {}, // _attribs
@@ -51,7 +51,7 @@ const createSettOneProp =  function(propsName, componentName, type){
          }
          return {
           ...propsSettings,
-          _n: propsName,
+          /*_name*/n: propsName,
           value: propsSettings.default,
         };
       } else {
@@ -76,14 +76,14 @@ export const helperChildren = {
           settings[property] = _proporties[property];
         }
      }
-     settings._n = componentName;
+     settings.n /*_name*/ = componentName;
      return settings;
   },
 
   /**
     @return @array of components
     [
-      { _n:'',_p:'', _ch: []}
+      { n:'',_p:'', _ch: []}
     ]
   */
   getAllowList: function (parentName, type) {
@@ -130,7 +130,8 @@ export const helperProps = {
    zip: function (propsArray) {
        var objectProps = {};
        for (var i in propsArray) {
-           objectProps[propsArray[i]._n] = propsArray[i].value;
+
+           objectProps[propsArray[i].n /*_name*/] = propsArray[i].value;
        }
        return objectProps;
    },
@@ -164,7 +165,7 @@ import {findClassInRegex} from  '../Blocks/Class/ExtendField/validators.js';
 const createClassesProps = function (className, componentName){
   return {
     $comp: 'PropClass'+className.replace(/^\w/, c => c.toUpperCase()),
-    _n: className,
+    /*_name*/n: className,
     default: '',
     value: ''
   }

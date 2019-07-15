@@ -10,7 +10,8 @@
   </template>
 
   <template v-for="(element, index) in props.chldrn||[]">
-    <PBt v-if="element._n=='MBt'" :cnf="props.cnf" :cntnt="element._d" :class="element._c" >
+      <!--_name-->
+    <PBt v-if="element.n=='MBt'" :cnf="props.cnf" :cntnt="element._d" :class="element._c" >
     </PBt>
     <StChildrenHelper
       v-else

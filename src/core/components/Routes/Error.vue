@@ -1,13 +1,13 @@
 <template>
   <PageSchema :structure="[{
 
-      _n: 'PSc',
+    /*_name*/  n: 'PSc',
       _p: {
         lc: ['column']
       },
       _ch: [
          {
-           _n: 'PTl',
+            /*_name*/  n: 'PTl',
            _d: {
              t: title
            },
@@ -16,7 +16,7 @@
            }
          },
          {
-           _n: 'PTx',
+             /*_name*/  n: 'PTx',
            _d: {
              t: description
            },

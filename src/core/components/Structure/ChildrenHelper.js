@@ -26,7 +26,7 @@ export default {
     if (typeof(element) =='string') {
       name = element;
     } else {
-       name = element._n;
+       name = element.n; /*_name*/
     }
 
     if (baseChildren[name]) {

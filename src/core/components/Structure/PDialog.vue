@@ -30,7 +30,7 @@ export default {
      var children = [];
 
      this.chldrn.map(function(element) {
-       if (element._n == 'PBt') {
+       if (element.n /*_name*/ == 'PBt') {
          scopedSlots['activator'] = function (ref) {
            return h('StChildrenHelper', {props: {element:element}, on:ref.on });
          }

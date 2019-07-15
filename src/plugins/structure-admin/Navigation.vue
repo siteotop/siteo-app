@@ -259,7 +259,7 @@ export default {
       if (this.isTreeWasObject) {
         var structureForSaving = {};
         for (var name in this.treeComponents) {
-          structureForSaving[this.treeComponents[name]._n] = _cloneDeep(this.treeComponents[name]);
+          structureForSaving[this.treeComponents[name].n/*_name*/] = _cloneDeep(this.treeComponents[name]);
         }
       } else {
         var structureForSaving = _cloneDeep(this.treeComponents);

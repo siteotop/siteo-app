@@ -9,7 +9,8 @@
               <v-btn small :disabled="childrenActive" :style="{cursor:'move'}"  icon :class="dragClass">
                 <v-icon>{{$options._icons.drag}}</v-icon>
               </v-btn>
-              <v-toolbar-title class="pl-0 ml-0 subtitle-1">{{getText(component._n) }}
+              <!--_name in getText(component.n) -->
+              <v-toolbar-title class="pl-0 ml-0 subtitle-1">{{getText(component.n) }}
               </v-toolbar-title>
               <v-spacer></v-spacer>
               <v-btn v-if="hover&&component._ch||menuList[indexComponent].activeContent" @click="menuList[indexComponent].activeContent=!menuList[indexComponent].activeContent"  small  icon max-width="40" >
@@ -21,7 +22,8 @@
 
             </v-toolbar>
             <v-card-text v-if="menuList[indexComponent].activeContent" class="pa-0 ma-0 pl-1">
-              <SettingsChildren :treeIndex="treeIndex+1" v-if="component._ch" :componentName="component._n"
+              <!--_name in :componentName="component.n" -->
+              <SettingsChildren :treeIndex="treeIndex+1" v-if="component._ch" :componentName="component.n"
               typeHelper="helperChildren"  v-model="component['_ch']">
               </SettingsChildren>
             </v-card-text>
@@ -111,13 +113,14 @@ export default {
      eventAll(functionOne) {
        var list = this.childrenList.slice(0);
        list.map((element)=>{
-          this[functionOne](element._n);
+
+          this[functionOne](element.n /*_name*/);
        })
      },
 
      getHelperName(shortName) {
         var  MAP_NAMES = {
-           '_n': 'name',
+           'n': 'name',  /*_name*/
            '_p': 'Props',
            '_c': 'Class',
            '_d': 'Data',

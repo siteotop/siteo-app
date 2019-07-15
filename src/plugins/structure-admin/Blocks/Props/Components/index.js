@@ -62,7 +62,7 @@ export const PropClass = function (settings) {
   return {
     name: ClassComponent,
     props: {
-      forProp: settings._n,
+      forProp: settings.n /*_name*/,
       allow: settings.allow? settings.allow: !settings.additional?  helper_class:  [...settings.additional, ...helper_class ]
     }
   }

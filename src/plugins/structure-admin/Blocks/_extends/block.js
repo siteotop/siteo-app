@@ -131,7 +131,7 @@ export default {
     },
 
     findIndexOfElement(name) {
-       return _findIndex (this.childrenList, {_n:name});
+       return _findIndex (this.childrenList, {/*_name*/ n:name});
     },
     createMenuList(childrenList) {
        this.menuList = this.childrenList.map(function(element) {
@@ -163,7 +163,7 @@ export default {
     },
 
     getNameActiveComponent(index) {
-        return this.childrenList[index]._n;
+        return this.childrenList[index].n /*_name*/;
     },
     /*
       clone component for manipulation
@@ -221,7 +221,7 @@ export default {
     updateJsonBlock(index, jsonStructure) {
       console.log( index);
       console.log( jsonStructure);
-      if (this.childrenList[index]._n  == jsonStructure._n ) {
+      if (this.childrenList[index].n/*_name*/  == jsonStructure.n /*_name*/ ) {
           for (var i in jsonStructure) {
             this.childrenList[index][i] = jsonStructure[i]
           }
@@ -277,7 +277,7 @@ export default {
 
       var names = {};
       for (var i in this.childrenList) {
-          names[this.childrenList[i]._n] = {
+          names[this.childrenList[i].n] /*_name*/ = {
             default:this.childrenList[i].default,
             value:this.childrenList[i].value };
       }

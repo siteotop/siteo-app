@@ -32,7 +32,7 @@ export default {
                {
                  props: {
                    ...component.props,
-                   label: context.parent.getText(propSettings._n),
+                   label: context.parent.getText(propSettings.n/*_name*/),
                    value: propSettings.value,
                    inputValue: propSettings.value
                  },

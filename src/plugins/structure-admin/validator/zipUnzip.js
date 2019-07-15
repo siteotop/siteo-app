@@ -6,7 +6,7 @@ import {ROOT_STRUCTURE}  from './components';
 const updateSettComponent = function (issetStrucutre, componentName) {
 
    if (!ROOT_STRUCTURE.getComponent(componentName)) {
-     issetStrucutre._n = componentName;
+     issetStrucutre.n /*_name*/ = componentName;
      return issetStrucutre;
    }
 
@@ -21,7 +21,7 @@ const updateSettComponent = function (issetStrucutre, componentName) {
          }
       }
    }
-   settings._n = issetStrucutre._n||componentName;
+   settings.n /*_name*/ = issetStrucutre.n /*_name*/||componentName;
    return settings;
 }
 
@@ -38,13 +38,13 @@ export const zipObjectBeforeSave = function (structure, removeName) {
              delete settForComponent[property];
           }
           //console.log(removeName);
-          if (property=='_n'&&removeName) {
+          if (property=='n' /*_name*/&&removeName) {
              delete settForComponent[property];
           }
         }
 
-        if (Object.keys(structure[index]).length ==1&&structure[index]._n ) {
-          structure[index] = structure[index]._n;
+        if (Object.keys(structure[index]).length ==1&&structure[index].n /*_name*/ ) {
+          structure[index] = structure[index].n /*_name*/;
         }
 
         if (_isEmpty(settForComponent)) {
@@ -60,13 +60,13 @@ export const unzipObjectBeforeUpate = function (structure, removedName) {
     for (var index in structure)  {
       if (typeof structure[index] == 'string') {
         structure[index] = {
-            _n:structure[index]
+            /*_name*/n:structure[index]
         };
       }
 
       structure[index]= updateSettComponent(
             structure[index],
-            removedName? index:structure[index]._n
+            removedName? index:structure[index].n /*_name*/
       );
 
       if (structure[index]._ch&&structure[index]._ch.length) {

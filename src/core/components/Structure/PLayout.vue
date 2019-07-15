@@ -3,8 +3,9 @@
   <template
     v-for="(element, index) in props.chldrn||[]"
    >
+    <!--_name-->
     <component
-      v-if="element._n!='Flx'"
+      v-if="element.n!='Flx'"
       :is="props.cnf.ft||'v-flex'"
       :class="props.cnf.fc"
     >
