@@ -6,7 +6,7 @@
 export const EAttrs = {
 
 
-  _a: {
+ a/*_attrib*/: {
       'id': 'readyPropDataTitle',
       'data-t': 'readyPropDataTitle',
   },

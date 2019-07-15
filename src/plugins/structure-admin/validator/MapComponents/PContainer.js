@@ -84,7 +84,7 @@ export const PSc = {
 
   },
 
-  _a: [],
+   a/*_attrib*/: [],
 
   d/*_data*/: {
     // image background

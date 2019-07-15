@@ -32,7 +32,7 @@ export const ROOT_STRUCTURE = {
          n: '', // _name
          p: {}, // _props
          c: [], // _class
-        _a: {}, // _attribs
+         a: {}, // _attribs
         _ch: [], // _children
 
     };
@@ -235,18 +235,18 @@ export const helperData = {
 export const helperAttrs = {
 
   unZip: function (inputList, componentName) {
-     return helperProps.unZip(inputList, 'EAttrs', '_a');
+     return helperProps.unZip(inputList, 'EAttrs', 'a' /*_attrib*/);
   },
 
   zip: helperProps.zip,
 
   createSettings: function (propName, componentName) {
-     return createSettOneProp(propName, 'EAttrs',  '_a');
+     return createSettOneProp(propName, 'EAttrs',  'a' /*_attrib*/);
   },
   /**
     @return array
   */
   getAllowList: function(componentName) {
-     return helperProps.getAllowList('EAttrs', '_a')
+     return helperProps.getAllowList('EAttrs', 'a' /*_attrib*/)
   }
 }

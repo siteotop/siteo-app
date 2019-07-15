@@ -48,14 +48,14 @@ export default {
         if (design.d/*_data*/) {
           _data = {...design.d/*_data*/, ...(element.d/*_data*/||{})};
         }
-        _attrs = element._a? element._a: design._a;
+        _attrs = element.a/*_attrib*/? element.a/*_attrib*/: design.a/*_attrib*/;
         _class = element.c/*_class*/? element.c/*_class*/: design.c/*_class*/;
         _children = element._ch? element._ch: design._ch;
     } else {
        _props = element.p/*_props*/;
        _class = element.c/*_class*/;
        _data = element.d/*_data*/;
-       _attrs = element._a;
+       _attrs = element.a/*_attrib*/;
        _children = element._ch;
     }
 

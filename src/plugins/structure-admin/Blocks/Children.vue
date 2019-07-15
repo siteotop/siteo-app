@@ -124,7 +124,7 @@ export default {
            'p': 'Props', /*_props*/
            'c': 'Class', /*_class*/
            'd': 'Data', /*_data*/
-           '_a': 'Attrs',
+           'a': 'Attrs', a/*_attrib*/
            '_ch': 'Children',
            'colors':'Colors'
          }

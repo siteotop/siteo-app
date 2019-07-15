@@ -95,11 +95,11 @@ export default {
               if (Array.isArray(state.pages.objectActive.jsonStructure)) {
                 var menu = [];
                 state.pages.objectActive.jsonStructure.map(function(section, index){
-                    if (section._a) {
-                      if (section._a.id&&section._a['data-t']) {
+                    if (section.a/*_attrib*/) {
+                      if (section.a.id&&section.a['data-t']) {
                         menu.push({
-                            title: section._a['data-t'],
-                            target: '#'+section._a.id
+                            title: section.a['data-t'],
+                            target: '#'+section.a.id
                          });
                         }
                     }
