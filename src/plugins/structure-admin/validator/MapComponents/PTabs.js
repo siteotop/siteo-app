@@ -35,7 +35,7 @@ export const TCt = {
 
   },
 
-  _d: {
+  d/*_data*/: {
     t: 'readyPropDataTitle'
   },
 

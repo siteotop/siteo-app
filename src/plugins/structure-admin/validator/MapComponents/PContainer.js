@@ -86,7 +86,7 @@ export const PSc = {
 
   _a: [],
 
-  _d: {
+  d/*_data*/: {
     // image background
     i: 'readyPropImage',
   },

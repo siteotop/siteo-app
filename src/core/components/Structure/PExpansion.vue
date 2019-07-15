@@ -12,7 +12,8 @@
     v-for="(element, i) in props.chldrn||[]"
     :key="i"
    >
-    <v-expansion-panel-header >{{element._d? element._d.t:'[title]'}}</v-expansion-panel-header>
+   <!-- _data  in element.d-->
+    <v-expansion-panel-header >{{element.d? element.d.t:'[title]'}}</v-expansion-panel-header>
 
     <v-expansion-panel-content>
       <template

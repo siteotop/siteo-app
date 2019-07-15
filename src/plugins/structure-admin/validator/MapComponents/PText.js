@@ -1,6 +1,6 @@
 
 export const PTx = {
-  _d: {
+  d/*_data*/: {
     // title content
     t: 'readyPropDataDesc'
   },

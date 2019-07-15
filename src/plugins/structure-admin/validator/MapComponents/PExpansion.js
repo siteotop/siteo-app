@@ -29,7 +29,7 @@ export const Exi = {
 
   },
 
-  _d: {
+  d/*_data*/: {
     t: 'readyPropDataTitle'
   },
 

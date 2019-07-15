@@ -45,8 +45,8 @@ export default {
         if (design._p) {
           _props = {...design._p, ...(element._p||{})};
         }
-        if (design._d) {
-          _data = {...design._d, ...(element._d||{})};
+        if (design.d/*_data*/) {
+          _data = {...design.d/*_data*/, ...(element.d/*_data*/||{})};
         }
         _attrs = element._a? element._a: design._a;
         _class = element._c? element._c: design._c;
@@ -54,7 +54,7 @@ export default {
     } else {
        _props = element._p;
        _class = element._c;
-       _data = element._d;
+       _data = element.d/*_data*/;
        _attrs = element._a;
        _children = element._ch;
     }

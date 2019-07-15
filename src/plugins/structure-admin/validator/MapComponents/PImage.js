@@ -36,7 +36,7 @@ export const PIm =  {
 
   },
 
-  _d: {
+  d/*_data*/: {
     // image background
     a: 'readyPropDataTitle',
     // image background

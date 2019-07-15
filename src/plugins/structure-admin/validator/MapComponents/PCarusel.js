@@ -52,7 +52,7 @@ export const CSe = {
 
   },
 
-  _d: {
+  d/*_data*/: {
     i: 'readyPropImage',
   },
 

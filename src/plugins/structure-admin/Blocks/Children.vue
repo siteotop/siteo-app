@@ -123,7 +123,7 @@ export default {
            'n': 'name',  /*_name*/
            '_p': 'Props',
            '_c': 'Class',
-           '_d': 'Data',
+           'd': 'Data', /*_data*/ 
            '_a': 'Attrs',
            '_ch': 'Children',
            'colors':'Colors'

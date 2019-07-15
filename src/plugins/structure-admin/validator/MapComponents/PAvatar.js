@@ -1,6 +1,6 @@
 
 export const PAv = {
-  _d: {
+  d/*_data*/: {
     // title content
     p: 'readyPropImage',
     pt: 'readyPropDataTitle',
@@ -39,7 +39,6 @@ export const PAv = {
 
 //RootLogo
 export const RLg ={
-  //_d: PAv._d,
   _p: PAv._p,
   _c: PAv._c,
 }

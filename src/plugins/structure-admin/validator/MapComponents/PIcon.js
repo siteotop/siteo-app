@@ -38,7 +38,7 @@ export const PIc = {
       k: 'readyPropSize',
   },
 
-  _d: {
+  d/*_data*/: {
     // title content
     i: 'readyPropIcon'
   }

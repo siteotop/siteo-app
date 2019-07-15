@@ -29,12 +29,12 @@ export const PLs = {
 
 // ListAvatar
 export const  LAv = {
-  _d: {
+  d/*_data*/: {
     i: 'readyPropImage'
   }
 }
 export const  LCt = {
-  _d: {
+  d/*_data*/: {
     t: 'readyPropDataTitle',
     d: 'readyPropDataTitle'
   }
@@ -42,7 +42,7 @@ export const  LCt = {
 }
 
 export const LAc={
-  _d: {
+  d/*_data*/: {
     i: 'readyPropIcon'
   }
 

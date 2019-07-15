@@ -1,5 +1,5 @@
 export const PYv = {
-  _d: {
+  d/*_data*/: {
     // code video from youtube
     v: {
       $comp: 'PropTitle',

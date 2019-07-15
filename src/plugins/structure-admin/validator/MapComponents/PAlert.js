@@ -1,7 +1,7 @@
 
 
 export const PAl = {
-  _d: {
+  d/*_data*/: {
       d: 'readyPropDataDesc',
       i: 'readyPropIcon',
   },

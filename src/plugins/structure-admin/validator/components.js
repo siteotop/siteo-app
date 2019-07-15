@@ -28,7 +28,7 @@ export const ROOT_STRUCTURE = {
 
   getPropterties:  function () {
     return {
-        _d: {}, // _data
+         d: {}, // _data
          n: '', // _name
         _p: {}, // _props
         _c: [], // _class
@@ -213,19 +213,19 @@ export const helperClass = {
 export const helperData = {
 
    unZip: function (inputList, componentName) {
-      return helperProps.unZip(inputList, componentName, '_d');
+      return helperProps.unZip(inputList, componentName, 'd' /*_data*/);
    },
 
    zip: helperProps.zip,
 
    createSettings: function (propName, componentName) {
-      return createSettOneProp(propName, componentName,  '_d');
+      return createSettOneProp(propName, componentName,  'd' /*_data*/);
    },
    /**
      @return array
    */
    getAllowList: function(componentName) {
-      return helperProps.getAllowList(componentName, '_d')
+      return helperProps.getAllowList(componentName, 'd' /*_data*/)
    }
 };
 

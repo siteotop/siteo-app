@@ -10,7 +10,7 @@ export const PPx = {
 
   },
 
-  _d: {
+  d/*_data*/: {
     a: 'readyPropDataTitle',
     // image background
     i: 'readyPropImage',

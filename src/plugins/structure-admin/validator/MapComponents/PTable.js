@@ -31,7 +31,7 @@ export const TTr = {
 //table td
 export const TTd = {
   _c: ['textalign'],
-  _d: {
+  d/*_data*/: {
     a: 'readyPropDataTitle'
   }
 }

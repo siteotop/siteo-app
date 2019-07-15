@@ -1,6 +1,6 @@
 
 export const PTl = {
-  _d: {
+  d/*_data*/: {
     // title content
     t: 'readyPropDataTitle'
   },

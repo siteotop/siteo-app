@@ -50,7 +50,7 @@ export const PPl = {
 
   },
 
-  _d: {
+  d/*_data*/: {
     a: {
       $comp: 'PropHeight',
       validators: {min:0, max:100},

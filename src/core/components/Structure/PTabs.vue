@@ -26,7 +26,8 @@
     :key="i"
     ripple
   >
-    {{element._d?element._d.t:''}}
+    <!-- _data  in element.d-->
+    {{element.d?element.d.t:''}}
   </v-tab>
   <v-tab-item
     v-for="(element, i) in props.chldrn||[]"

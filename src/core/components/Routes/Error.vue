@@ -7,8 +7,8 @@
       },
       _ch: [
          {
-            /*_name*/  n: 'PTl',
-           _d: {
+           n/*_name*/: 'PTl',
+           d/*_data*/: {
              t: title
            },
            _p: {
@@ -16,8 +16,8 @@
            }
          },
          {
-             /*_name*/  n: 'PTx',
-           _d: {
+           n/*_name*/: 'PTx',
+           d/*_data*/: {
              t: description
            },
 

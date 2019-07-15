@@ -91,7 +91,7 @@ export const PBt =  {
 
   },
 
-  _d: {
+  d/*_data*/: {
     i: 'readyPropIcon',
     t: 'readyPropDataTitle',
     r: 'readyPropDataTitle',
@@ -110,7 +110,7 @@ export const PMn = {
     ti:  'readyPropBoolean',
     ...PBt._p
   },
-  _d:{
+  d/*_data*/:{
     c:  {
       $comp: 'PropSelect',
       items: [
@@ -126,5 +126,5 @@ export const PMn = {
 // MenuButton
 export const MBt = {
    _c: PBt._c,
-   _d: PBt._d,
+   d/*_data*/: PBt.d/*_data*/,
 }

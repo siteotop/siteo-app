@@ -22,7 +22,7 @@ export default {
       let tbody = [], thead = [];
       let chldrn = (context.props.chldrn||[]).map(function (element, index) {
         let tr = h('tr', (element._ch||[]).map(function(el, index) {
-          return h('td',{ class:el._c } ,  [el._d? el._d.a: ''])
+          return h('td',{ class:el._c } ,  [el.d/*_data*/? el.d.a/*_data*/: ''])
         }));
         if (index ===0) {
           thead.push(tr)
