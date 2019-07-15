@@ -31,7 +31,7 @@ export const ROOT_STRUCTURE = {
          d: {}, // _data
          n: '', // _name
          p: {}, // _props
-        _c: [], // _class
+         c: [], // _class
         _a: {}, // _attribs
         _ch: [], // _children
 
@@ -205,7 +205,7 @@ export const helperClass = {
     createSettings: createClassesProps,
 
     getAllowList:  function(componentName) {
-      return helperChildren.getAllowList(componentName, '_c');
+      return helperChildren.getAllowList(componentName, 'c' /*_class*/);
     }
 };
 

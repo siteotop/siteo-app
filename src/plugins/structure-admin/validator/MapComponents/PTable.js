@@ -24,13 +24,13 @@ export const PTa = {
 //table tr
 export const TTr = {
 
-  _c: ['background'],
+  c/*_class*/: ['background'],
   _ch: ['TTd']
 }
 
 //table td
 export const TTd = {
-  _c: ['textalign'],
+  c/*_class*/: ['textalign'],
   d/*_data*/: {
     a: 'readyPropDataTitle'
   }

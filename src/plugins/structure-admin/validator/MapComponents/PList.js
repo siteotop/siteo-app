@@ -23,7 +23,7 @@ export const PLs = {
     //width:
     i: 'readyPropWidth'
   },
-  _c: ['background', 'elevation'],
+  c/*_class*/: ['background', 'elevation'],
   _ch: ['LTi']
 }
 

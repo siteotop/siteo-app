@@ -61,7 +61,7 @@ export default {
             tag:'li',
             avatar: el_c.a,
             color: el_c.c
-          }, class:element._c} , [
+          }, class:element.c/*_class*/} , [
             (element._ch||[]).map(function(tileElement){
                return h('StChildrenHelper', {props: {element:tileElement, structure: tileStructure}})
             })

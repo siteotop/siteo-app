@@ -122,7 +122,7 @@ export default {
         var  MAP_NAMES = {
            'n': 'name',  /*_name*/
            'p': 'Props', /*_props*/
-           '_c': 'Class',
+           'c': 'Class', /*_class*/
            'd': 'Data', /*_data*/
            '_a': 'Attrs',
            '_ch': 'Children',

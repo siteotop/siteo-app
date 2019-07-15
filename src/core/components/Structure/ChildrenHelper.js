@@ -49,11 +49,11 @@ export default {
           _data = {...design.d/*_data*/, ...(element.d/*_data*/||{})};
         }
         _attrs = element._a? element._a: design._a;
-        _class = element._c? element._c: design._c;
+        _class = element.c/*_class*/? element.c/*_class*/: design.c/*_class*/;
         _children = element._ch? element._ch: design._ch;
     } else {
        _props = element.p/*_props*/;
-       _class = element._c;
+       _class = element.c/*_class*/;
        _data = element.d/*_data*/;
        _attrs = element._a;
        _children = element._ch;

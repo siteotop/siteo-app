@@ -45,11 +45,11 @@ export const PTr = {
       q: 'readyPropImage',
 
   },
-  _c: ['elevation'],
+  c/*_class*/: ['elevation'],
   _ch: ['TTl', 'TTg', 'RLg', 'RAc', 'PBt', 'RSp', 'RDv', 'PMn']
 };
 
 //ToolbarTitle
 export const TTl = {
-  _c: ['hidden', 'textsize', 'margin', 'padding', 'textcolor']
+  c/*_class*/: ['hidden', 'textsize', 'margin', 'padding', 'textcolor']
 }

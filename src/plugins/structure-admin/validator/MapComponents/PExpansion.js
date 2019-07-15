@@ -18,7 +18,7 @@ export const PEx = {
     l: 'readyPropBoolean',
     m: 'readyPropBoolean'
   },
-  _c: ['background', 'elevation'],
+  c/*_class*/: ['background', 'elevation'],
   _ch: ['Exi']
 
 }

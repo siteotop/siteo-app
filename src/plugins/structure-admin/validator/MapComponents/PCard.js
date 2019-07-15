@@ -51,7 +51,7 @@ export const PCd = {
     //outlined
     v: 'readyPropBoolean'
   },
-  _c: ['background'],
+  c/*_class*/: ['background'],
 
   _ch: ['Cti', 'Cte', 'Cac', 'PAl', 'PLt',  'PLs', 'PIm', 'PCs', 'PYv']
 
@@ -59,7 +59,7 @@ export const PCd = {
 
 // v-card-title
 export const Cti = {
-  _c: ['background'],
+  c/*_class*/: ['background'],
   _ch: ['PTl', 'PTx', 'PAv', 'RSp']
 }
 

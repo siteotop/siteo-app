@@ -22,7 +22,7 @@ export const PTb = {
 
 
   },
-  _c: ['background', 'elevation'],
+  c/*_class*/: ['background', 'elevation'],
   _ch: ['TCt']
 
 }

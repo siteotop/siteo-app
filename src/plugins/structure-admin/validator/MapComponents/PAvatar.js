@@ -32,7 +32,7 @@ export const PAv = {
 
   },
 
-  _c: ['textsize', 'textcolor', 'textalign', 'texttransform'],
+  c/*_class*/: ['textsize', 'textcolor', 'textalign', 'texttransform'],
 
 
 }
@@ -40,5 +40,5 @@ export const PAv = {
 //RootLogo
 export const RLg ={
   p/*_props*/: PAv.p/*_props*/,
-  _c: PAv._c,
+  c/*_class*/: PAv.c/*_class*/,
 }

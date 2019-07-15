@@ -73,6 +73,6 @@ export const PAl = {
 
   },
 
-  _c: ['padding', 'margin']
+  c/*_class*/: ['padding', 'margin']
 
 }

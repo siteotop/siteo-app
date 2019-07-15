@@ -39,7 +39,7 @@ export const PCs = {
     j:  'readyPropBoolean',
 
   },
-  _c: ['background', 'elevation'],
+  c/*_class*/: ['background', 'elevation'],
   _ch: ['CSe']
 
 }

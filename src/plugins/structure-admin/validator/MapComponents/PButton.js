@@ -98,7 +98,7 @@ export const PBt =  {
     h: 'readyPropDataTitle'
   },
 
-  _c: ['padding', 'textsize', 'texttransform', 'background', 'textcolor', 'hidden']
+  c/*_class*/: ['padding', 'textsize', 'texttransform', 'background', 'textcolor', 'hidden']
 }
 
 export const RAc = PBt;
@@ -119,12 +119,12 @@ export const PMn = {
       default: 'page'
     }
   },
-  _c: PBt._c,
+  c/*_class*/: PBt.c/*_class*/,
   _ch: ['MBt', 'PDm']
 }
 
 // MenuButton
 export const MBt = {
-   _c: PBt._c,
+   c/*_class*/: PBt.c/*_class*/,
    d/*_data*/: PBt.d/*_data*/,
 }
