@@ -10,12 +10,10 @@
       <v-btn text value="cards">
           <v-icon>{{$options._icons.cards}}</v-icon>
       </v-btn>
-      <v-btn v-if="!$root.mobile" text value="card">
+      <v-btn  text value="card">
           <v-icon>{{$options._icons.card}}</v-icon>
       </v-btn>
-      <v-btn text value="list">
-         <v-icon>{{$options._icons.values}}</v-icon>
-      </v-btn>
+      
    </v-btn-toggle>
    <v-btn  small fab text>
        <v-icon>{{$options._icons.sort}}</v-icon>
@@ -50,7 +48,7 @@ import PageItemsToolbar from './Functional/PageItemsToolbar.vue';
 
 import CardValues from './Cards/Values.vue';
 import BPrice from './Cards/BPrice.vue';
-import BHorizontal from './Cards/BPrice.vue';
+
 //import WiExperts from '../Widgets/WiExperts.vue';
 //import WiPosts from '../Widgets/WiPosts.vue';
 
@@ -80,7 +78,7 @@ export default {
     PageItemsToolbar,
     CardValues,
     BPrice,
-    BHorizontal
+
   },
 
   _icons: {

@@ -1,5 +1,5 @@
 <template functional>
-  <v-hover v-if="!props.toogle">
+  <v-hover>
     <v-card
        slot-scope="{ hover }"
        :class="`elevation-${hover ? 12 : 2}`"
@@ -39,24 +39,6 @@
           </v-card-text>
         </v-card>
   </v-hover>
-  <b-horizontal v-else  v-bind="props">
-    <template v-slot:image>
-            <v-img
-              class="primary darken-2 white--text"
-               aspect-ratio="1"
-              :src="props.picture"
-              :alt="props.title"
-            ></v-img>
-    </template>
-    <template v-slot:action >
-          <v-card-text class="headline font-weight-medium">
-            <BPrice :discount="props.discount" :price="props.price"></BPrice>
-          </v-card-text>
-          <v-card-actions>
-            <PBt :to="props._to"  :fab="true" :large="false"></PBt>
-          </v-card-actions>
-    </template>
-  </b-horizontal>
 </template>
 
 <script>
