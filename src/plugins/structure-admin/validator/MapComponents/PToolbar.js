@@ -6,16 +6,19 @@
 
 export const PTr = {
   p/*_props*/: {
+     // height
       h: {
         $comp: 'PropHeight',
         validators: {min:30, max:120},
         default:48
       },
-
+      // dark
       d: 'readyPropBoolean',
 
+      //dense
       e: 'readyPropBoolean',
 
+      //color
       c: 'readyPropColor',
 
       //collapse: cnf.

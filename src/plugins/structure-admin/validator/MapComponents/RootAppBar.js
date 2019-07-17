@@ -38,8 +38,8 @@ export const  RAb= {
     //props.shrinkOnScroll  = cnf.
     ad: 'readyPropBoolean',
 
-    //
-    ab: 'readyPropBoolean',
+    // fixed
+    ae: 'readyPropBoolean',
 
 
     ...PTr.p/*_props*/

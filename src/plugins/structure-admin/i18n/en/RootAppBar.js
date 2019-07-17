@@ -143,8 +143,8 @@ export const RAb = {
       d: 'Shrinks a prominent toolbar to a dense or short (default) one'
     },
 
-    //props.shrinkOnScroll  = cnf.
-    ad: {
+    //props.fixed  = cnf.
+    ae: {
       t: 'fixed',
       d: 'fixed bar'
     },

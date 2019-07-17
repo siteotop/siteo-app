@@ -48,6 +48,7 @@ export const createToolbarProps = function (cnf) {
         short: cnf.r,
         tile:  cnf.o,
         src: cnf.q,
+        fixed: cnf.ab
       }
 }
 /**
