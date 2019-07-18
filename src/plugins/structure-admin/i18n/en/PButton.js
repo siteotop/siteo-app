@@ -69,11 +69,11 @@ export const PBt = {
       d: ''
     },
     u: {
-      t: 'Outline',
+      t: 'Outlined',
       d: ''
     },
     m: {
-      t: 'Round',
+      t: 'Rounded',
       d: ''
     },
     c: {

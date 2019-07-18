@@ -12,7 +12,7 @@ export default {
           defaultValues: context.parent.$store.state.APP_ORDER,
           formAction: context.props.formAction || 'makeSubscribe',
           propsStructure: ['name', 'email'],
-          typeInput: 'outline'
+          typeInput: 'outlined'
         }
       } })
 

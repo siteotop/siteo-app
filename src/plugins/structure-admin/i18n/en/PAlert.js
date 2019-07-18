@@ -11,8 +11,8 @@ export const PAl = {
     },
 
     o: {
-      t: 'outline',
-      d: 'Alert will have an outline'
+      t: 'outlined',
+      d: 'Alert will have an outlined'
     },
     t:{
       t: 'Type',

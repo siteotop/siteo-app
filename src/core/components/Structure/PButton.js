@@ -33,7 +33,7 @@ export default {
       fab: cnf.f,
       fixed: cnf.j,
       text: cnf.v,
-      outline: cnf.u,
+      outlined: cnf.u,
       rounded: cnf.m,
       width: cnf.ab,
       height: cnf.ac,

@@ -10,7 +10,7 @@
        :color="item.color"
        :small="parent.$root.mobile"
        :siicon="'si-'+ item.name"
-       :outline="props.active ==item.name? true: false"
+       :outlined="props.active ==item.name? true: false"
        :to="{name:'order',params: {typeAction: item.name}}"
       ></PBt>
       <span>{{parent.$t('actions.'+item.name)}}</span>

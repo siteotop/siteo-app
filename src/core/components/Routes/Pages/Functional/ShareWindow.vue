@@ -23,7 +23,7 @@
          </v-card-title>
 
          <v-card-text>
-           <v-text-field id="shareElementInputLink"   outline :value="canonicalUrl" readonly>
+           <v-text-field id="shareElementInputLink"   outlined :value="canonicalUrl" readonly>
              <template v-slot:append>
                <v-btn :icon="$vuetify.breakpoint.xs"   @click="copyText()" >
 

@@ -69,20 +69,20 @@ export default {
       'WiChats': {
          functional: true,
          render(h, context) {
-            return h('WiContacts', {props: {$vl: true,$clp: {outline:true, siicon: 'si-chat' } }})
+            return h('WiContacts', {props: {$vl: true,$clp: {outlined:true, siicon: 'si-chat' } }})
          }
       },
 
       'WiCalls': {
          functional: true,
          render(h, context) {
-            return h('WiContacts', {props: {$vl: true, $type: 'call',$clp: {outline:true, siicon: 'si-call' } }})
+            return h('WiContacts', {props: {$vl: true, $type: 'call',$clp: {outlined:true, siicon: 'si-call' } }})
          }
       },
       'WiWrapLinks': {
          functional: true,
          render(h, context) {
-            return h('WiLinks', {props: {$vl: true, $t: 'links',$clp: {outline:true, siicon: 'si-links' } }})
+            return h('WiLinks', {props: {$vl: true, $t: 'links',$clp: {outlined:true, siicon: 'si-links' } }})
          }
       }
   },

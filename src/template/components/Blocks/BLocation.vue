@@ -15,7 +15,7 @@
   <PBt
     block
     color="red"
-    outline
+    outlined
     target="_blank"
     siicon="si-googlemaps" :href="'https://www.google.com/maps/dir/?api=1&destination='+props._lat+','+props._lng" _at="Direction in Google Maps" >
   </PBt>
@@ -23,7 +23,7 @@
  <v-card-actions>
   <PBt
     block
-    outline
+    outlined
     target="_blank"
     siicon="si-locations" :href="'geo:'+props._lat+','+props._lng" _at="Open Default Map App" >
   </PBt>

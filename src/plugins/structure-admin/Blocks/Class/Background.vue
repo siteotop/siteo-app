@@ -3,7 +3,7 @@
          <template v-slot:activator="{ on }">
            <v-text-field
              label="color"
-             outline
+             outlined
              v-on="on"
              readonly
              v-model="valueData">

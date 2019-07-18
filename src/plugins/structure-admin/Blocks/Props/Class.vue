@@ -6,7 +6,7 @@
   :label="parent.getText(props.forProp)||'For class'"
   @input="listeners.input"
   multiple
-  outline
+  outlined
   persistent-hint
   chips
   deletable-chips
