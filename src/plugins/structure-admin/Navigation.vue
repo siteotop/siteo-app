@@ -5,10 +5,22 @@
       left
       stateless
       app
-      v-model="drawerSettings">
+      v-model="drawerSettings"
+      :width="widthDrawer"
+      >
     <v-toolbar>
       <v-toolbar-title>Settings</v-toolbar-title>
       <v-spacer></v-spacer>
+      <v-btn
+
+          @click="changeWidth"
+          small
+          icon
+          class=" white--text"
+        >
+        <v-icon v-if="!widthDrawer">$vuetify.icons.next</v-icon>
+        <v-icon v-else>$vuetify.icons.prev</v-icon>
+      </v-btn>
       <v-btn
 
           @click="drawerSettings = !drawerSettings"
@@ -17,8 +29,11 @@
           color="indigo"
           class=" white--text"
         >
-        <v-icon>$vuetify.icons.prev</v-icon>
+        <v-icon>$vuetify.icons.close</v-icon>
       </v-btn>
+
+
+
       <template v-slot:extension>
         <v-btn :disabled="!treeHistory.length"  icon @click="backHistory">
              Back
@@ -135,6 +150,7 @@ export default {
       drawerSettings: true,
       showJsonDesign: false,
       isTreeWasObject: false,
+      widthDrawer: undefined
     }
   },
 
@@ -243,6 +259,15 @@ export default {
       //console.log(JSON.parse(this.treeHistory));
        this.createTreeStructure(this.treeHistory.pop())
        this.historyBlock = true;
+    },
+
+    changeWidth() {
+      if (this.widthDrawer) {
+          this.widthDrawer=undefined
+      } else {
+        this.widthDrawer=500;
+      }
+
     }
 
   },
