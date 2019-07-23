@@ -59,16 +59,17 @@ export const PCd = {
 
 // v-card-title
 export const Cti = {
-  c/*_class*/: ['background'],
+  c/*_class*/: ['background', 'blocklayout', 'blockwrap' ],
   h/*_children*/: ['PTl', 'PTx', 'PAv', 'RSp']
 }
 
-// v-card-
+// v-card-text
 export const Cte = {
+  c/*_class*/: ['background', 'blocklayout', 'blockwrap'  ],
   h/*_children*/: ['PTx', 'PAv']
 }
 
-
+// v-card-action
 export const Cac = {
   h/*_children*/: ['PTx', 'PAv', 'PBt', 'PDm']
 }

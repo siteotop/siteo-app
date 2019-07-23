@@ -65,7 +65,7 @@ export const PBt = {
       d: ''
     },
     v: {
-      t: 'Flat',
+      t: 'Text',
       d: ''
     },
     u: {

@@ -80,16 +80,18 @@ export const PSc = {
 
     //background
     b: 'readyPropColor',
+    // container
+    c: 'readyPropBoolean',
 
+    // height
+    h: 'readyPropHeight',
+    //class for container
+    d: 'readyPropClassForContainer',
 
   },
 
-   a/*_attrib*/: [],
+  a/*_attrib*/: [],
 
-  d/*_data*/: {
-    // image background
-    i: 'readyPropImage',
-  },
 
-  h/*_children*/: ['PCt',  'PTr']
+  h/*_children*/: ['PLt']
 }
