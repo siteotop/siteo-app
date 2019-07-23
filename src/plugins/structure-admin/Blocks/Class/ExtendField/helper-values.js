@@ -101,11 +101,11 @@ export const blockwrap = [
 ];
 
 export const blocklayout = [
+  'layout',
   'column',
   'row',
   'reverse',
   'wrap'
-
 ];
 
 export const blockflex = [
