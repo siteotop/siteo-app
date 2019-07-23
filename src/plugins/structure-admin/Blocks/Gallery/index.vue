@@ -28,7 +28,7 @@
 
     </v-card-text >
     <v-card-text v-else >
-       
+
       <v-text-field
          v-model="title"
          label="Title"
@@ -125,7 +125,7 @@ export default {
             dispatch = '_gallery_templates/createObjectInList';
         }
         this.$store.dispatch(dispatch, this.generateData()).then(response=>{
-           this.added = false
+           this.clearForm();
         });
     },
 
@@ -150,6 +150,11 @@ export default {
        }
       }
 
+    },
+
+    clearForm() {
+      this.added = false
+      this.updateIndex = false;
     },
 
     updateJsonStrucutre(event, index) {
