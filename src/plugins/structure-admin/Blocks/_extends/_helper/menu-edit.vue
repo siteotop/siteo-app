@@ -101,7 +101,7 @@
               @input="(value)=>props.component[shortNameSettingBlock]=value"
               :treeIndex="parent.treeIndex+1"
               :componentName="props.component.n"
-              :noDublicateChild="true"
+              
               :typeHelper="'helper'+parent.getHelperName(shortNameSettingBlock)"
               ></component>
             </v-card-text>

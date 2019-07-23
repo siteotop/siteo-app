@@ -17,13 +17,12 @@ export default {
   render(h, context ) {
     //var self =context.props.objectProps;
      return context.props.objectProps.map(function(propSettings, indexSettings) {
-       console.log(propSettings);
+
        if (propSettings.$comp&&PropsComponents[propSettings.$comp]) {
         if (typeof PropsComponents[propSettings.$comp] !='function') {
           throw 'No Function';
         }
 
-        console.log(propSettings);
         var component = PropsComponents[propSettings.$comp](propSettings);
 
          return h('v-layout', {class: 'row'} ,  [

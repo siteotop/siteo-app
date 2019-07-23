@@ -14,6 +14,14 @@ import PropsSettingsList from './Props/SettingsList.js';
 export default {
   extends: ExtendsBlock,
   name: 'SettingsProps',
+
+  props: {
+    noDublicateChild: {
+      type: Boolean,
+      default: true
+    },
+  },
+
   components: {
       PropsSettingsList
   },
