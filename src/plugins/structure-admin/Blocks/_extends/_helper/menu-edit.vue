@@ -2,7 +2,7 @@
 <v-menu
   :value="parent.menuList[props.indexComponent].activeEdit"
   @input="(value)=>parent.menuList[props.indexComponent].activeEdit=value"
-  :nudge-width="100"
+  offset-x
   min-width="500"
   max-width="500"
   :close-on-content-click="false"
@@ -101,7 +101,7 @@
               @input="(value)=>props.component[shortNameSettingBlock]=value"
               :treeIndex="parent.treeIndex+1"
               :componentName="props.component.n"
-              
+
               :typeHelper="'helper'+parent.getHelperName(shortNameSettingBlock)"
               ></component>
             </v-card-text>

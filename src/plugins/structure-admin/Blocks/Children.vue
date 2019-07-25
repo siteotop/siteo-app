@@ -4,7 +4,7 @@
       <draggable v-model='childrenList' style="width:100%;" :options="{group:'children', handle:'.'+dragClass}" @start="startDragg=true" @end="startDragg=false">
         <v-flex v-for="(component, indexComponent) in childrenList" :key="indexComponent">
           <v-hover>
-            <v-card slot-scope="{ hover }" :class="'ml-'+treeIndex+' ' +activeColor">
+            <v-card  slot-scope="{ hover }" :class="'ml-'+treeIndex+' ' +activeColor">
             <v-toolbar dense flat :color="activeColor">
               <v-btn small :disabled="childrenActive" :style="{cursor:'move'}"  icon :class="dragClass">
                 <v-icon>{{$options._icons.drag}}</v-icon>
@@ -14,17 +14,25 @@
               </v-toolbar-title>
               <v-spacer></v-spacer>
                 <!-- _children in element.h-->
-              <v-btn v-if="hover&&component.h||menuList[indexComponent].activeContent" @click="menuList[indexComponent].activeContent=!menuList[indexComponent].activeContent"  small  icon max-width="40" >
+              <v-btn v-if="hover&&component.h||menuList[indexComponent].activeContent" @click="toggleOneElement(indexComponent)"  small  icon max-width="40" >
                 <v-icon >{{menuList[indexComponent].activeContent?$options._icons.more:$options._icons.less}}</v-icon>
               </v-btn>
-
-            <HelperMenuEdit v-if="hover||menuList[indexComponent].activeEdit" :component="component" :indexComponent="indexComponent"></HelperMenuEdit>
-            <HelperMenuActions  :component="component" :indexComponent="indexComponent"></HelperMenuActions>
+                <!-- Menu edit with pencil-->
+              <HelperMenuEdit
+                v-if="hover||menuList[indexComponent].activeEdit"
+                :component="component"
+                :indexComponent="indexComponent">
+              </HelperMenuEdit>
+                <!-- Additional menu-->
+              <HelperMenuActions
+                :component="component"
+                :indexComponent="indexComponent">
+              </HelperMenuActions>
 
             </v-toolbar>
             <v-card-text v-if="menuList[indexComponent].activeContent" class="pa-0 ma-0 pl-1">
               <!--_name in :componentName="component.n" -->  <!-- _children in element.h-->   <!-- _children in element.h-->
-              <SettingsChildren :treeIndex="treeIndex+1" v-if="component.h" :componentName="component.n"
+              <SettingsChildren :treeIndex="treeIndex+1" :treeOpenOnStart="treeStatus" v-if="component.h" :componentName="component.n"
               typeHelper="helperChildren"  v-model="component['h']">
               </SettingsChildren>
             </v-card-text>
@@ -91,6 +99,11 @@ export default {
     treeIndex: {
        type: Number,
        default: 0
+    },
+
+    treeOpenOnStart: {
+      type: Boolean,
+      default: false
     }
 
 
@@ -100,9 +113,16 @@ export default {
   data() {
       return {
         startDragg: false,
+        treeStatus: false
       }
   },
 
+  mounted(){
+        console.log(this.treeOpenOnStart);
+       if (this.treeOpenOnStart){
+          this.toggleAll();
+       }
+  },
 
 
   methods: {
@@ -135,7 +155,43 @@ export default {
            return shortName;
          }
 
+     },
+
+
+     /**
+      open first level element for item
+     */
+     toggleOneElement(indexComponent) {
+        this.menuList[indexComponent].activeContent=!this.menuList[indexComponent].activeContent;
+        if (this.menuList[indexComponent].activeContent) {
+          this.treeStatus = false;
+        }
+     },
+
+     toggleAll(){
+
+        for (var i in this.menuList) {
+           if (this.childrenList[i].h) {
+             this.treeView(i);
+            }
+        }
+     },
+
+     /**
+      Open all children elements for item
+     */
+     treeView(indexComponent) {
+         if (!this.menuList[indexComponent].activeContent) {
+            this.toggleOneElement(indexComponent);
+            this.treeStatus = true;
+         } else {
+           this.toggleOneElement(indexComponent);
+         }
+
      }
+
+
+
 
   },
 
@@ -152,11 +208,20 @@ export default {
     },
 
     activeColor() {
+
+       /*var colors_comp = {
+         Flx: 'cyan lighten-2'
+       }
+
+      if (colors_comp[this.componentName]) {
+        return colors_comp[this.componentName];
+      }*/
        var color = 'blue-grey';
-       if (this.treeIndex) {
-         return  `${color} lighten-${this.treeIndex}`;
+       if (this.treeIndex%2 ==0) {
+
+           return  `${color} `;
        } else {
-          return color;
+          return  `${color} lighten-1`;
        }
 
     },
