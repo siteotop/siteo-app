@@ -50,6 +50,8 @@ export const PLt = {
       items: ['v-flex', 'div'],
       default: 'div'
     },
+    c: 'readyPropBoolean',
+    d: 'readyPropClassForContainer'
 
   },
 

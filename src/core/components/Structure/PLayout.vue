@@ -1,34 +1,53 @@
-<template functional>
-<v-layout :class="props.cnf.lc">
-  <template
-    v-for="(element, index) in props.chldrn||[]"
-   >
-    <!--_name-->
-    <component
-      v-if="element.n!='Flx'"
-      :is="props.cnf.ft||'v-flex'"
-      :class="props.cnf.fc"
-    >
-      <StChildrenHelper :element="element">
-      </StChildrenHelper>
-    </component>
-    <!--_props  in element.p-->
-    <component
-      v-else
-      :is="props.cnf.ft||'v-flex'"
-      :class="(element.p? element.p.fc:false)||props.cnf.fc"
-    >
-        <!-- _children in element.h-->
-      <StChildrenHelper :element="flxchild" :key="appx" v-for="(flxchild, appx) in element.h||[]" >
-      </StChildrenHelper>
-    </component>
-  </template>
-  <slot></slot>
-</v-layout>
-</template>
 
 <script>
 export default {
+  functional: true,
+  render(h, context) {
 
+     var layout =  h('v-layout', {
+         class: context.props.cnf.lc
+      }, [
+        (context.props.chldrn||[]).map(function(element) {
+            var comp = context.props.cnf.ft||'v-flex';
+            if (element.n!='Flx') {
+                return h(comp, {
+                  class: context.props.cnf.fc
+                },
+                [
+                  h('StChildrenHelper', {
+                    props: {
+                      element: element
+                    }
+                  })
+                ]
+              )
+            } else {
+              return h(comp, {
+                class: (element.p? element.p.fc:false)||context.props.cnf.fc
+              }, [
+                  (element.h||[]).map(function(flex, index){
+                     return h('StChildrenHelper', {
+                       props: {
+                         element: flex
+                       }
+                     })
+                  })
+              ]);
+
+            }
+
+
+        })
+      ])
+      if (context.props.cnf.c) {
+        return h('v-container', {
+          class: context.props.cnf.d
+        } , [layout]);
+      } else {
+          return layout;
+      }
+
+
+  }
 }
 </script>

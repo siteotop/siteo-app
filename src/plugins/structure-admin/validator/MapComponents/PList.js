@@ -21,7 +21,10 @@ export const PLs = {
     //tile: cnf.
     h:'readyPropBoolean',
     //width:
-    i: 'readyPropWidth'
+    i: 'readyPropWidth',
+    //no wrap
+    n: 'readyPropBoolean'
+
   },
   c/*_class*/: ['background', 'elevation'],
   h/*_children*/: ['LTi']
