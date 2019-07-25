@@ -38,7 +38,20 @@ export default {
   functional: true,
   render(h, context) {
     var cnf = context.props.cnf;
-    return h('v-list', {props: {
+    var children =   (context.props.chldrn||[]).map(function(element){
+        var el_c = element.p/*_props*/||{};
+        return h('v-list-item', {props: {
+          tag:'li',
+          avatar: el_c.a,
+          color: el_c.c
+        }, class:element.c/*_class*/} , [
+          (element.h/*_children*/||[]).map(function(tileElement){
+             return h('StChildrenHelper', {props: {element:tileElement, structure: tileStructure}})
+          })
+        ])
+      });
+    return !cnf.n?
+     h('v-list', {props: {
 
       color: cnf.b,
       dense: cnf.d,
@@ -55,19 +68,8 @@ export default {
       width: cnf.i
 
     }, class: context.data.class}, [
-        (context.props.chldrn||[]).map(function(element){
-          var el_c = element.p/*_props*/||{};
-          return h('v-list-item', {props: {
-            tag:'li',
-            avatar: el_c.a,
-            color: el_c.c
-          }, class:element.c/*_class*/} , [
-            (element.h/*_children*/||[]).map(function(tileElement){
-               return h('StChildrenHelper', {props: {element:tileElement, structure: tileStructure}})
-            })
-          ])
-        })
-    ])
+        children
+    ]): children 
 
   }
 }
