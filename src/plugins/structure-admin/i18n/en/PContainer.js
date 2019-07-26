@@ -15,6 +15,17 @@ export const PLt = {
     ft: {
       t: 'Flex tag',
       d: ''
+    },
+
+    // container
+    c: {
+      t: 'Container on',
+      d: ''
+    },
+    // class for container
+    d: {
+      t: 'Container class',
+      d: ''
     }
   }
 }

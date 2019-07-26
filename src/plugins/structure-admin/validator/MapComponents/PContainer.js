@@ -50,7 +50,9 @@ export const PLt = {
       items: ['v-flex', 'div'],
       default: 'div'
     },
+    // container
     c: 'readyPropBoolean',
+    // class for container
     d: 'readyPropClassForContainer'
 
   },
@@ -82,13 +84,8 @@ export const PSc = {
 
     //background
     b: 'readyPropColor',
-    // container
-    c: 'readyPropBoolean',
 
-    // height
-    h: 'readyPropHeight',
-    //class for container
-    d: 'readyPropClassForContainer',
+
 
   },
 
