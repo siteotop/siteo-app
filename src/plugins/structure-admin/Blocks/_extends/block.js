@@ -15,7 +15,8 @@ import {
   mdiDatabase,
   mdiContentCopy,
   mdiContentPaste,
-  mdiContentCut
+  mdiContentCut,
+  mdiFileTree
 } from '@mdi/js';
 
 export default {
@@ -34,7 +35,8 @@ export default {
 
     copy: mdiContentCopy,
     paste: mdiContentPaste,
-    cut: mdiContentCut
+    cut: mdiContentCut,
+    tree: mdiFileTree
 
   },
   props: {
@@ -133,6 +135,8 @@ export default {
     findIndexOfElement(name) {
        return _findIndex (this.childrenList, {/*_name*/ n:name});
     },
+
+    
     createMenuList(childrenList) {
        this.menuList = this.childrenList.map(function(element) {
          return {

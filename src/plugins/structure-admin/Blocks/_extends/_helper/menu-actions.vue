@@ -7,7 +7,7 @@
   </template>
   <v-list >
     <template v-if="!parent.noDublicateChild">
-    <v-list-item  @click="parent.cloneComponent(props.indexComponent)">
+      <v-list-item  @click="parent.cloneComponent(props.indexComponent)">
        <v-list-item-content>
            <v-list-item-title>Clone</v-list-item-title>
        </v-list-item-content>
@@ -20,7 +20,7 @@
            <v-list-item-title>Tree View</v-list-item-title>
        </v-list-item-content>
       <v-list-item-action>
-
+          <v-icon>{{parent.$options._icons.tree}}</v-icon>
       </v-list-item-action>
     </v-list-item>
   </template>

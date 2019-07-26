@@ -28,6 +28,10 @@
               ({{props.component.n}})
           </v-card>
       </v-menu>
+        <HelperViewStructure
+              :treeComponents="parent.childrenList[props.indexComponent]"
+        ></HelperViewStructure>
+
       <v-spacer></v-spacer>
       <v-btn icon @click="parent.copytoClipboard(props.indexComponent)">
         <v-icon>{{parent.$options._icons.copy}}</v-icon>
@@ -116,7 +120,6 @@
 
 <script>
 export default {
-
 
 }
 </script>

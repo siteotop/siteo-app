@@ -1,10 +1,30 @@
 <template>
 <div>
-    <v-layout >
+    <v-layout column>
+
+      <!-- Header only first level -->
+      <v-flex v-if="firstLevel" >
+
+          <v-card  tile :class="'ml-'+treeIndex+' ' +activeColor">
+          <v-toolbar dense flat :color="activeColor + ' darken-1'">
+            <v-toolbar-title class="pl-0 ml-0 subtitle-1">
+              {{getText(componentName) }}
+            </v-toolbar-title>
+            <v-spacer></v-spacer>
+            <HelperViewStructure
+                  :treeComponents="childrenList"
+            ></HelperViewStructure>
+              <v-btn icon @click="toggleAll()">
+               <v-icon>{{$options._icons.tree}}</v-icon>
+              </v-btn>
+          </v-toolbar>
+
+        </v-card>
+      </v-flex>
       <draggable v-model='childrenList' style="width:100%;" :options="{group:'children', handle:'.'+dragClass}" @start="startDragg=true" @end="startDragg=false">
         <v-flex v-for="(component, indexComponent) in childrenList" :key="indexComponent">
           <v-hover>
-            <v-card  slot-scope="{ hover }" :class="'ml-'+treeIndex+' ' +activeColor">
+            <v-card tile  slot-scope="{ hover }" :class="'ml-'+treeIndex+' ' +activeColor">
             <v-toolbar dense flat :color="activeColor">
               <v-btn small :disabled="childrenActive" :style="{cursor:'move'}"  icon :class="dragClass">
                 <v-icon>{{$options._icons.drag}}</v-icon>
@@ -70,6 +90,7 @@ import SettingsAttrs from   './Props.vue';
 import SettingsClass from   './Props/Class.vue';
 import SettingsColors from   './Colors.vue';
 import HelperMenuEdit from './_extends/_helper/menu-edit.vue';
+import HelperViewStructure from './_extends/_helper/view-structure.vue';
 import ExtendsBlock  from './_extends/block.js';
 import BlocksGallery from './Gallery/index.vue'
 
@@ -86,7 +107,8 @@ export default {
     SettingsData,
     SettingsClass,
     SettingsColors,
-    BlocksGallery
+    BlocksGallery,
+    HelperViewStructure
   },
 
   props: {
@@ -118,7 +140,7 @@ export default {
   },
 
   mounted(){
-        console.log(this.treeOpenOnStart);
+       //console.log(this.treeOpenOnStart);
        if (this.treeOpenOnStart){
           this.toggleAll();
        }
@@ -228,6 +250,11 @@ export default {
 
     dragClass() {
       return 'draggable-'+this.treeIndex;
+    },
+
+    firstLevel() {
+
+      return this.treeIndex==0
     }
 
   }

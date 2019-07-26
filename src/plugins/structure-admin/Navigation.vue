@@ -3,6 +3,7 @@
     <v-navigation-drawer
       v-if="loadedi18n"
       left
+      class="elevation-6"
       stateless
       app
       v-model="drawerSettings"
@@ -38,9 +39,6 @@
         <v-btn :disabled="!treeHistory.length"  icon @click="backHistory">
              Back
         </v-btn>
-        <v-btn  icon  @click="showJsonDesign=true">
-           View
-         </v-btn>
         <v-btn  icon @click="saveDesign">
              Save
         </v-btn>
@@ -48,9 +46,7 @@
 
     </v-toolbar>
 
-    <v-subheader>
-        Main Components
-    </v-subheader>
+
     <SettingsChildren :componentName="typeStructure"  :noDublicateChild="structureDesign"  v-model="treeComponents" :watchValue="true">
     </SettingsChildren>
 
@@ -60,20 +56,7 @@
    </v-navigation-drawer>
 
 
-   <v-dialog v-model="showJsonDesign" width="700" >
-       <v-card>
-         <v-card-text>
-          <v-layout>
-                <v-flex>
-                   <code>{{JSON.stringify(treeComponents, null, 1)}}</code>
-                </v-flex>
-                <v-flex>
-                  <code>{{JSON.stringify(zippedDesign, null, 1)}}</code>
-                </v-flex>
-            </v-layout>
-          </v-card-text>
-       </v-card>
-   </v-dialog>
+
    <v-btn
           color="pink"
           v-show="!drawerSettings"
@@ -148,7 +131,6 @@ export default {
       historyBlock: false,
       treeComponents: {},
       drawerSettings: true,
-      showJsonDesign: false,
       isTreeWasObject: false,
       widthDrawer: undefined
     }
