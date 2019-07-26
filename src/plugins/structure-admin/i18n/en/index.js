@@ -6,7 +6,7 @@ import {PAl} from './PAlert';
 import {PBt, RAc, PMn, MBt} from './PButton';
 import {PCd, Cti, Cte, Cac} from './PCard';
 import {PCs, CSe} from './PCarusel';
-import {PSc, PCt,  PLt, Flx} from './PContainer';
+import {PSc,  PLt, Flx} from './PContainer';
 import {PDl} from './PDialog';
 import {PDm} from './PDialogMenu';
 import {PEx, Exi} from './PExpansion';
@@ -44,7 +44,7 @@ export default {
     RLg,
     PAv,
     RAb, TTl, TTg, PTr,
-    PSc, PCt, PLt, Flx,
+    PSc, PLt, Flx,
     PPx,
     PPl,
     PIm,

@@ -64,17 +64,6 @@ export const PLt = {
 
 }
 
-// PageContainer
-export const PCt = {
-  p/*_props*/: {
-    // height
-    h: 'readyPropHeight',
-    // container
-    c: 'readyPropClassForContainer',
-    ...PLt.p/*_props*/
-  },
-  h/*_children*/:  PLt.h/*_children*/
-}
 
 
 

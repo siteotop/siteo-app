@@ -39,23 +39,6 @@ export const Flx = {
 
 }
 
-export const  PCt = {
-  t: 'Container',
-  d: 'Container from vuetify',
-  helperProps: {
-    h: {
-      t: 'Height',
-      d: ''
-    },
-    c: {
-      t: 'Container class',
-      d: ''
-    },
-    ...PLt.helperProps
-
-  }
-}
-
 export const PSc = {
  t: 'Section',
  d: 'Container for page. Use <section> tag',

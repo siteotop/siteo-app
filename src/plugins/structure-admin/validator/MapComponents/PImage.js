@@ -44,5 +44,5 @@ export const PIm =  {
     l: 'readyPropImage',
   },
 
-  h/*_children*/: ['PCt', 'PLt', 'PCd', 'PTr']
+  h/*_children*/: [ 'PLt', 'PCd', 'PTr']
 }
