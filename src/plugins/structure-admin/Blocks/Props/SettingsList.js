@@ -9,6 +9,11 @@ export default {
         default: function () {
           return [];
         }
+      },
+
+      showMenu: {
+        type: Boolean,
+        default: true
       }
 
   },
@@ -41,9 +46,9 @@ export default {
                  }
                })
            ]),
-           h('v-flex', {class: 'xs1'}, [
+           context.props.showMenu?  h('v-flex', {class: 'xs1'}, [
              h('HelperMenuActions', {props: {indexComponent: indexSettings}})
-           ])
+           ]): ''
 
 
          ]);

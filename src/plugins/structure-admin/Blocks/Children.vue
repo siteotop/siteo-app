@@ -62,7 +62,7 @@
         </v-flex>
       </draggable>
     </v-layout>
-    <v-layout class="justify-center " ><HelperMenuAdd></HelperMenuAdd></v-layout>
+    <v-layout class="justify-center "><HelperMenuAdd></HelperMenuAdd></v-layout>
 
   <div v-if="draggable" v-show="startDragg">
     <v-subheader class="red--text">
@@ -80,35 +80,24 @@
 </template>
 
 <script>
-import draggable from 'vuedraggable'
+import draggable from 'vuedraggable';
 
 
 
-import SettingsProps from   './Props.vue';
-import SettingsData from   './Props.vue';
-import SettingsAttrs from   './Props.vue';
-import SettingsClass from   './Props/Class.vue';
-import SettingsColors from   './Colors.vue';
-import HelperMenuEdit from './_extends/_helper/menu-edit.vue';
-import HelperViewStructure from './_extends/_helper/view-structure.vue';
-import ExtendsBlock  from './_extends/block.js';
+
 import BlocksGallery from './Gallery/index.vue'
-
+import ExtendsBlock  from './_extends/block.js';
+import ExtendsData from './_extends/data.js';
 
 export default {
   extends: ExtendsBlock,
+  mixins: [ExtendsData],
   name: 'SettingsChildren',
   components: {
     draggable,
   //  DesignTabsBlock,
-    HelperMenuEdit,
-    SettingsProps,
-    SettingsAttrs,
-    SettingsData,
-    SettingsClass,
-    SettingsColors,
     BlocksGallery,
-    HelperViewStructure
+
   },
 
   props: {
@@ -118,15 +107,7 @@ export default {
       default: true
     },
 
-    treeIndex: {
-       type: Number,
-       default: 0
-    },
 
-    treeOpenOnStart: {
-      type: Boolean,
-      default: false
-    }
 
 
   },
@@ -135,7 +116,7 @@ export default {
   data() {
       return {
         startDragg: false,
-        treeStatus: false
+
       }
   },
 
@@ -161,34 +142,8 @@ export default {
        })
      },
 
-     getHelperName(shortName) {
-        var  MAP_NAMES = {
-           'n': 'name',  /*_name*/
-           'p': 'Props', /*_props*/
-           'c': 'Class', /*_class*/
-           'd': 'Data', /*_data*/
-           'a': 'Attrs', /*_attrib*/
-           'h': 'Children', /*_children*/
-           'colors':'Colors'
-         }
-         if (MAP_NAMES[shortName]) {
-           return MAP_NAMES[shortName];
-         } else {
-           return shortName;
-         }
-
-     },
 
 
-     /**
-      open first level element for item
-     */
-     toggleOneElement(indexComponent) {
-        this.menuList[indexComponent].activeContent=!this.menuList[indexComponent].activeContent;
-        if (this.menuList[indexComponent].activeContent) {
-          this.treeStatus = false;
-        }
-     },
 
      toggleAll(){
 
@@ -250,11 +205,6 @@ export default {
 
     dragClass() {
       return 'draggable-'+this.treeIndex;
-    },
-
-    firstLevel() {
-
-      return this.treeIndex==0
     }
 
   }

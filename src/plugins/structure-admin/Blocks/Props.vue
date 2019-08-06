@@ -1,7 +1,7 @@
 <template>
 <div>
-  <PropsSettingsList  :objectProps="childrenList" ></PropsSettingsList>
-  <HelperMenuAdd></HelperMenuAdd>
+  <PropsSettingsList :showMenu="showAddMenu" :objectProps="childrenList" ></PropsSettingsList>
+  <HelperMenuAdd v-if="showAddMenu"></HelperMenuAdd>
 </div>
 
 </template>
@@ -20,6 +20,11 @@ export default {
       type: Boolean,
       default: true
     },
+
+    showAddMenu: {
+      type: Boolean,
+      default: true
+    }
   },
 
   components: {

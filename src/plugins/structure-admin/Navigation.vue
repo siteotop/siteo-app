@@ -11,6 +11,8 @@
       >
     <v-toolbar>
       <v-toolbar-title>Settings</v-toolbar-title>
+
+
       <v-spacer></v-spacer>
       <v-btn
 
@@ -42,13 +44,24 @@
         <v-btn  icon @click="saveDesign">
              Save
         </v-btn>
+
+          <v-spacer></v-spacer>
+          <v-btn-toggle v-model="dropdown_value" mandatory>
+          <v-btn value="SettingsChildren">
+            1
+          </v-btn>
+          <v-btn value="DataEditable">
+           2
+          </v-btn>
+
+        </v-btn-toggle>
       </template>
 
     </v-toolbar>
 
 
-    <SettingsChildren :componentName="typeStructure"  :noDublicateChild="structureDesign"  v-model="treeComponents" :watchValue="true">
-    </SettingsChildren>
+    <component :is="dropdown_value" :componentName="typeStructure"  :noDublicateChild="structureDesign"  v-model="treeComponents" :watchValue="true">
+    </component>
 
     </v-card>
 
@@ -78,12 +91,14 @@ import _cloneDeep from 'lodash/cloneDeep';
 import _isEmpty from 'lodash/isEmpty';
 import {zipObjectBeforeSave, unzipObjectBeforeUpate} from './validator/zipUnzip';
 import SettingsChildren from './Blocks/Children.vue';
+import DataEditable from './Blocks/DataEditable.vue';
 import {mdiSettings} from '@mdi/js';
 export default {
   name:'BDesignTemplates',
 
   components: {
-    SettingsChildren
+    SettingsChildren,
+    DataEditable
   },
 
   props: {
@@ -132,7 +147,20 @@ export default {
       treeComponents: {},
       drawerSettings: true,
       isTreeWasObject: false,
-      widthDrawer: undefined
+      widthDrawer: undefined,
+      dropdown_value: 'SettingsChildren',
+      dropdown_type: [
+        {
+          text: 'Settings',
+          value: 'SettingsChildren'
+        },
+
+        {
+          text: 'Data',
+          value: 'SettingsChildrenData'
+        }
+      ]
+
     }
   },
 
