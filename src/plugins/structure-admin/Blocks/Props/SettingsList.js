@@ -30,7 +30,7 @@ export default {
 
         var component = PropsComponents[propSettings.$comp](propSettings);
 
-         return h('v-layout', {class: 'row'} ,  [
+         return h('v-layout', {class: context.props.showMenu? 'row': 'column'} ,  [
            h('v-flex', {class: 'xs11'}, [
              h(component.name,
                {
