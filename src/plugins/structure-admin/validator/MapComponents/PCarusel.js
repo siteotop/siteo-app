@@ -40,6 +40,7 @@ export const PCs = {
 
   },
   c/*_class*/: ['background', 'elevation'],
+  a/*_attrib*/: [],
   h/*_children*/: ['CSe']
 
 }

@@ -1,7 +1,7 @@
 
 import SettingsProps from   '../Props.vue';
 import SettingsData from   '../Props.vue';
-
+import SettingsAttrs from   '../Props.vue';
 import SettingsClass from   '../Props/Class.vue';
 import SettingsColors from   '../Colors.vue';
 import HelperViewStructure from './_helper/view-structure.vue';
@@ -14,6 +14,7 @@ export default {
      SettingsProps,
      SettingsData,
      SettingsClass,
+     SettingsAttrs,
      SettingsColors,
      HelperMenuEdit,
      HelperViewStructure

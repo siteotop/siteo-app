@@ -11,6 +11,8 @@ export const PYv = {
   p/*_props*/: {
     //aspect ration
     r: 'readyPropRatio'
-  }
+  },
+
+  a/*_attrib*/: [],
 
 }

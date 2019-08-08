@@ -54,6 +54,10 @@
            2
           </v-btn>
 
+          <v-btn value="MenuEditable">
+           3
+          </v-btn>
+
         </v-btn-toggle>
       </template>
 
@@ -92,13 +96,15 @@ import _isEmpty from 'lodash/isEmpty';
 import {zipObjectBeforeSave, unzipObjectBeforeUpate} from './validator/zipUnzip';
 import SettingsChildren from './Blocks/Children.vue';
 import DataEditable from './Blocks/DataEditable.vue';
+import MenuEditable from './Blocks/MenuEditable.vue';
 import {mdiSettings} from '@mdi/js';
 export default {
   name:'BDesignTemplates',
 
   components: {
     SettingsChildren,
-    DataEditable
+    DataEditable,
+    MenuEditable
   },
 
   props: {
@@ -149,18 +155,6 @@ export default {
       isTreeWasObject: false,
       widthDrawer: undefined,
       dropdown_value: 'SettingsChildren',
-      dropdown_type: [
-        {
-          text: 'Settings',
-          value: 'SettingsChildren'
-        },
-
-        {
-          text: 'Data',
-          value: 'SettingsChildrenData'
-        }
-      ]
-
     }
   },
 
