@@ -53,7 +53,7 @@ export const PCd = {
   },
   c/*_class*/: ['background', 'margin', 'padding'],
 
-  h/*_children*/: ['Cti', 'Cte', 'Cac', 'PAl', 'PLt',  'PLs', 'PIm', 'PCs', 'PYv']
+  h/*_children*/: ['Cti', 'Cte', 'Cac', 'PAl', 'PLt',  'PLs', 'PIm', 'PCs', 'PYv', 'PAd']
 
 }
 
@@ -72,5 +72,5 @@ export const Cte = {
 // v-card-action
 export const Cac = {
   c /*_class*/: ['margin', 'padding'],
-  h/*_children*/: ['PTx', 'PAv', 'PBt', 'PIc', 'PDm', 'PLs']
+  h/*_children*/: ['PTx', 'PAv', 'PBt', 'PIc', 'PDm', 'PLs', ]
 }

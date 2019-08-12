@@ -34,6 +34,7 @@ export const Flx =  {
       'PMn',
       'PPx',
       'PPl',
+      'PAd'
       ]
 }
 
