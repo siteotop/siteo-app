@@ -2,12 +2,27 @@
 
 import  { createSiteo} from './core';
 
-//  add before create siteo (on SSR same)
+import Vue from 'vue'
+import VueAnalytics from 'vue-analytics'
 
+
+
+//  add before create siteo (on SSR same)
 var app = createSiteo({
     configs: window.__SITEO_CONFIG__,
     plugins: window['siteo-plugins']
 });
+
+/**
+  Add Google analitics
+*/
+if (window.__SITEO_CONFIG__['siteo-plugin-googleanalitics']) {
+    Vue.use(VueAnalytics, {
+      id: window.__SITEO_CONFIG__['siteo-plugin-googleanalitics']['ui'],
+      router: app.$router
+    });
+}
+
 
 app.$router.onReady(() => {
 
