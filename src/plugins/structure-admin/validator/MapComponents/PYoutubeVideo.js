@@ -13,6 +13,4 @@ export const PYv = {
     r: 'readyPropRatio'
   },
 
-  a/*_attrib*/: [],
-
 }

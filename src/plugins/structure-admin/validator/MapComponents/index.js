@@ -37,7 +37,7 @@ export {PAd} from './PAdsense';
 
 export {EAttrs} from './EmulateAttrs';
 export const RPa = {
-  h/*_children*/: ['PSc', 'PPx', 'PIm', 'PYv', 'PCs', 'PSd', 'PSr', 'PTr' ]
+  h/*_children*/: ['PSc', 'PTr' ]
 };
 
 /**

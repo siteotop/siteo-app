@@ -16,6 +16,5 @@ export const PPx = {
     i: 'readyPropImage',
   },
 
-  a/*_attrib*/: [],
   h/*_children*/: ['PLt']
 }

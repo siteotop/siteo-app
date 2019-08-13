@@ -82,5 +82,5 @@ export const PSc = {
   a/*_attrib*/: [],
 
 
-  h/*_children*/: ['PLt']
+  h/*_children*/: ['PLt', 'PPx', 'PIm', 'PYv', 'PCs', 'PSd', 'PSr' ]
 }
