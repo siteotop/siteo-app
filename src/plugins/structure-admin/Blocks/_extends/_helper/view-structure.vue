@@ -7,13 +7,12 @@
     </template>
   <v-card  color="grey" style="o">
     <v-card-text>
-     <v-layout>
-           <v-flex>
+     <v-row>
+           <v-col>
               <code>{{JSON.stringify(treeComponents, null, 1)}}</code>
-           </v-flex>
-
-       </v-layout>
-     </v-card-text>
+           </v-col>
+       </v-row>
+    </v-card-text>
   </v-card>
 </v-menu>
 </template>

@@ -30,8 +30,8 @@ export default {
 
         var component = PropsComponents[propSettings.$comp](propSettings);
 
-         return h('v-layout', {class:  ''} ,  [
-           h('v-flex', {class: 'xs11'}, [
+         return h('v-row', {class:  ''} ,  [
+           h('v-col', { props: { cols: 11 }}, [
              h(component.name,
                {
                  props: {
@@ -46,7 +46,7 @@ export default {
                  }
                })
            ]),
-           context.props.showMenu?  h('v-flex', {class: 'xs1'}, [
+           context.props.showMenu?  h('v-col', {props: { cols: 1 }}, [
              h('HelperMenuActions', {props: {indexComponent: indexSettings}})
            ]): ''
 

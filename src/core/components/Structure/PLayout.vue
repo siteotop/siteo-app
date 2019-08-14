@@ -4,11 +4,11 @@ export default {
   functional: true,
   render(h, context) {
 
-     var layout =  h('v-layout', {
+     var layout =  h('v-row', {
          class: context.props.cnf.lc
       }, [
         (context.props.chldrn||[]).map(function(element) {
-            var comp = context.props.cnf.ft||'v-flex';
+            var comp = context.props.cnf.ft||'v-col';
             if (element.n!='Flx') {
                 return h(comp, {
                   class: context.props.cnf.fc

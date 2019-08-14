@@ -14,10 +14,10 @@ export default {
                 {name: 'show', value: !context.parent.$store.state.pageLoader}
             ]
         }),
-       
+
        context.parent.$store.state.pageLoader?  h('v-container', {attrs: {fluid: '', 'fill-height': ''}}, [
-          h('v-layout', {attrs: {'align-center':'', 'justify-center':''}},  [
-              h('v-flex', [
+          h('v-row', {props: {align: "center", justify:"center"}},  [
+              h('v-col', [
                       h('AppPulseLoader', {props: {loading: context.parent.$store.state.pageLoader, size: '40px'}})
               ])
 

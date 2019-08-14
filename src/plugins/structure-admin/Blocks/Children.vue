@@ -1,9 +1,9 @@
 <template>
 <div>
-    <v-layout column>
+    <v-row>
 
       <!-- Header only first level -->
-      <v-flex v-if="firstLevel" >
+      <v-col cols="12" class="pa-0" v-if="firstLevel" >
 
           <v-card  tile :class="'ml-'+treeIndex+' ' +activeColor">
           <v-toolbar dense flat :color="activeColor + ' darken-1'">
@@ -20,9 +20,9 @@
           </v-toolbar>
 
         </v-card>
-      </v-flex>
+      </v-col>
       <draggable v-model='childrenList' style="width:100%;" :options="{group:'children', handle:'.'+dragClass}" @start="startDragg=true" @end="startDragg=false">
-        <v-flex v-for="(component, indexComponent) in childrenList" :key="indexComponent">
+        <v-col cols="12" class="pa-0 pl-2" v-for="(component, indexComponent) in childrenList" :key="indexComponent">
           <v-hover>
             <v-card tile  slot-scope="{ hover }" :class="'ml-'+treeIndex+' ' +activeColor">
             <v-toolbar dense flat :color="activeColor">
@@ -59,10 +59,10 @@
 
           </v-card>
         </v-hover>
-        </v-flex>
+      </v-col>
       </draggable>
-    </v-layout>
-    <v-layout class="justify-center "><HelperMenuAdd></HelperMenuAdd></v-layout>
+    </v-row>
+    <v-row class="justify-center "><HelperMenuAdd></HelperMenuAdd></v-row>
 
   <div v-if="draggable" v-show="startDragg">
     <v-subheader class="red--text">

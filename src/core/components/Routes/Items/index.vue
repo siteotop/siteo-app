@@ -13,7 +13,7 @@
       <v-btn  text value="card">
           <v-icon>{{$options._icons.card}}</v-icon>
       </v-btn>
-      
+
    </v-btn-toggle>
    <v-btn  small fab text>
        <v-icon>{{$options._icons.sort}}</v-icon>
@@ -21,24 +21,23 @@
   </PageItemsToolbar>
 
   <v-container :class="'grid-list-md'">
-      <v-layout :class="'row wrap justify-center'"   >
-        <v-flex :class="'xs12 sm6 md4'"  v-for="(item, i) in listItems"
+      <v-row justify="center" >
+        <v-col  cols="12" md="4" sm="6" v-for="(item, i) in listItems"
       :key="i" >
       <component   :is="'card-'+typeList" v-bind="item" :toogle="toggle_component=='list'"></component>
-      </v-flex>
-    </v-layout>
+      </v-col>
+    </v-row>
    </v-container>
 
   <slot  name="pagination">
-    <v-layout column wrap >
-      <v-flex justify-center text-xs-center>
+    <v-row>
+      <v-col  justify="center" class="text-center">
       <v-pagination
-
          :length="6"
        >
       </v-pagination>
-    </v-flex>
-   </v-layout>
+    </v-col>
+   </v-row>
  </slot>
 
 </div>

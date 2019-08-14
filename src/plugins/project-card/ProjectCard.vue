@@ -13,7 +13,7 @@
       gradient="to bottom, rgba(0,0,0,.7), rgba(0,0,0,.5)"
       >
        <v-container fill-height>
-         <v-layout fill-height align-center justify-center column>
+         <v-row align="center" justify="center" >
             <div class=" white--text subtitle-1 font-weight-medium pb-3">
                Call to action for card The typography of an application is just as important as its functionality.
             </div>
@@ -22,7 +22,7 @@
                 <v-icon >$vuetify.icons.share</v-icon> Action name
               </v-btn>
             </div>
-         </v-layout>
+         </v-row>
        </v-container>
      </v-img>
      <v-card-actions class="grey lighten-3">

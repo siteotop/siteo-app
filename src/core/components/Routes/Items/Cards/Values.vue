@@ -12,18 +12,20 @@
             :alt="props.title"
           >
             <v-container fill-height fluid>
-              <v-layout fill-height align-center text-xs-center>
-                <v-flex xs12 >
+              <v-row >
+                <v-col class="text-center" >
                   <span v-if="!hover" class="headline">{{props.title}}</span>
                   <div v-else class="align-center ">
-                        <BPrice class="headline font-weight-bold " :discount="props.discount" :price="props.price"></BPrice>
+                        <BPrice class="headline font-weight-bold "
+                          :discount="props.discount"
+                          :price="props.price">
+                        </BPrice>
                       <div>
                         <PBt  :to="props._to"></PBt>
-
                       </div>
                   </div>
-                </v-flex>
-              </v-layout>
+                </v-col>
+              </v-row>
             </v-container>
           </v-img>
 

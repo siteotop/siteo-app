@@ -7,11 +7,11 @@
         :alt="props._t"
       >
         <v-container fill-height fluid>
-          <v-layout fill-height>
-            <v-flex xs12 align-end flexbox>
+          <v-row >
+            <v-col cols="12"  align="end">
                <span class="headline"><v-avatar color="primary">{{(i+1)}}</v-avatar> {{props._t}}</span>
-            </v-flex>
-          </v-layout>
+            </v-col>
+          </v-row>
         </v-container>
       </v-img>
       <v-card-title v-if="props._s">

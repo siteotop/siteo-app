@@ -1,25 +1,24 @@
 <template>
   <v-card :style="{width: '500px'}">
-  <v-layout>
-      <v-flex xs4  v-for="(colorOptions, colorName ) in themeColorsKebab" :key="colorName"  >
+  <v-row>
+      <v-col cols="4"  v-for="(colorOptions, colorName ) in themeColorsKebab" :key="colorName"  >
         <v-card tile v-for="(shadowOptions, shadowName) in colorOptions.shades"
         :key="shadowName"
         :class="shadowOptions.value.name +' '+shadowOptions.value.text"
         >
           <v-card-text class="ma-0 pa-1 pt-3 pb-3" :style="{cursor:'pointer'}" @click="setNewActiveClass(shadowOptions.value)">
-            <v-layout >
-              <v-flex >
+            <v-row >
+              <v-col >
                   {{shadowOptions.value.name}}
-              </v-flex>
-              <v-flex >
-              
+              </v-col>
+              <v-col >
                 <v-icon  v-if="valueData==shadowOptions.value.name">$vuetify.icons.success</v-icon>
-              </v-flex>
-            </v-layout>
+              </v-col>
+            </v-row>
           </v-card-text>
         </v-card>
-      </v-flex>
-  </v-layout>
+      </v-col>
+  </v-row>
 </v-card>
 </template>
 

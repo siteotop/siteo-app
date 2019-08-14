@@ -1,45 +1,45 @@
 <template>
 <v-card :style="{width: '500px'}">
-  <v-layout row wrap v-if="!activeColor">
-   <v-flex  xs4  v-for="(colorOptions, colorName ) in colorsKebabCase" :key="colorName" >
+  <v-row v-if="!activeColor">
+   <v-col  cols="4"  v-for="(colorOptions, colorName ) in colorsKebabCase" :key="colorName" >
       <v-card tile :class="colorOptions.value.name" @click="openShadesPalette(colorName, colorOptions.value)" >
           <v-card-text :style="{cursor:'pointer'}"   >
-              <v-layout>
-                  <v-flex xs11>
+              <v-row>
+                  <v-col cols="11">
                     {{colorOptions.value.name}}
-                  </v-flex>
-                  <v-flex xs1>
-                  
+                  </v-col>
+                  <v-col cols="1">
+
                     <v-icon  small v-if="valueData&&valueData.name==colorOptions.value.name">$vuetify.icons.success</v-icon>
-                  </v-flex>
-              </v-layout>
+                  </v-col>
+              </v-row>
           </v-card-text>
       </v-card>
       </v-flex>
-  </v-layout>
-  <v-layout row wrap v-else >
+  </v-row>
+  <v-row v-else >
       <v-btn  @click="closeShadesPalette()" fab >
         <v-icon>$vuetify.icons.prev</v-icon>
       </v-btn>
-      <v-flex xs12 v-for="(colorOptions, colorName ) in colorsKebabCase[activeColor].shades" :key="colorName" >
+      <v-col cols="12" v-for="(colorOptions, colorName ) in colorsKebabCase[activeColor].shades" :key="colorName" >
          <v-card tile :class="colorOptions.value.name+' '+colorOptions.value.text" @click="setNewActiveClass(colorOptions.value)">
            <v-card-text :style="{cursor:'pointer'}"  >
-             <v-layout>
-               <v-flex xs8>
+             <v-row>
+               <v-col cols="8">
                  {{colorOptions.value.name}}
-               </v-flex>
-               <v-flex xs3>
+               </v-col>
+               <v-col cols="3">
                  {{colorOptions.value.hex}}
                </v-flex>
-               <v-flex xs1>
+               <v-flex cols="1">
 
                   <v-icon small  v-if="valueData&&valueData.name==colorOptions.value.name">$vuetify.icons.success</v-icon>
                </v-flex>
-             </v-layout>
+             </v-row>
            </v-card-text>
          </v-card>
-       </v-flex>
-  </v-layout>
+       </v-col>
+  </v-row>
 </v-card>
 </template>
 

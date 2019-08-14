@@ -3,15 +3,15 @@
 <v-menu :close-on-content-click="false"  :close-on-click="false" eager >
 <template v-slot:activator="{on}">
 <v-container fill-height class="pa-0 ma-0"  v-on="on" :style="{cursor:'pointer'}">
-<v-layout   class="pa-0 ma-0" align-center>
+<v-row   class="pa-0 ma-0" align="center">
   <template v-for="(color, index) in value">
-  <v-flex  text-xs-center >
+  <v-col  class="text-center" >
     <v-sheet height="100%"  :color="color">
     {{index}}
   </v-sheet>
-  </v-flex >
+</v-col >
  </template>
-</v-layout>
+</v-row>
 </v-container>
 </template>
 <v-list>

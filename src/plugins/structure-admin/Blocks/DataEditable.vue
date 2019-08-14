@@ -1,7 +1,7 @@
 <template>
-<v-layout column>
+<v-row>
 
-  <v-flex v-for="(component, indexComponent) in childrenList" :key="indexComponent" class="mb-1">
+  <v-col cols="12" v-for="(component, indexComponent) in childrenList" :key="indexComponent" class="pa-0 pl-2 mb-1">
       <v-sheet tile  light>
         <v-hover>
           <v-toolbar dark slot-scope="{ hover }" flat  height="30" class="py-0" :color="!component.d? colorToolbar: 'orange'">
@@ -51,8 +51,8 @@
         </div>
       </div>
    </v-sheet>
-  </v-flex>
-</v-layout>
+ </v-col>
+</v-row>
 </template>
 
 <script>

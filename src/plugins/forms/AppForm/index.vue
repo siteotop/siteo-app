@@ -1,5 +1,5 @@
 <template>
-  <v-card flat fluid  @keyup.ctrl.enter="onSubmit">
+  <v-card flat fluid  @keyup.ctrl.enter="onSubmit" >
     <slot name="title"><v-subheader>{{$i18n_t('title')}}</v-subheader>
     </slot>
     <AppErrorResponse v-if="errorResponse"
@@ -12,9 +12,9 @@
       <slot name="success">
       </slot>
     </div>
-    <v-container v-if="showForm" class='grid-list-sm mt-0 pt-0'>
-      <v-layout row wrap align-end>
-          <v-flex xs12 v-for="(field, index) in formStructure" :key="index" v-show="!field.hide" :class="field.class?field.class:''" >
+    <v-container v-if="showForm" class='grid-list-xs mt-0 pt-0'>
+      <v-row  >
+          <v-col cols="12" v-for="(field, index) in formStructure" :key="index" v-show="!field.hide" :class="(field.class?field.class:'')+ ' py-0' " >
               <component v-if="field.name!='captcha'" :is="field.component"
                   :name="field.name"
                   v-model="dataValues[field.name]"
@@ -25,17 +25,15 @@
                   v-model="dataValues[field.name]"
                   v-bind="field.props"
               ></AppFieldRecaptcha>
-          </v-flex>
-         </v-layout>
-       <v-layout v-show="!statusLoading"
-        row
-        wrap
-        clas="my-3"
+          </v-col>
+        </v-row>
+       <v-row v-show="!statusLoading"
+        class="my-3"
         >
-          <v-flex class="xs10 text-xs-left">
+          <v-col cols="10" class="text-left">
             <v-btn :disabled="!formActive" @click="onSubmit">{{submitElement.label}}</v-btn>
-          </v-flex>
-          <v-flex>
+          </v-col>
+          <v-col>
             <v-tooltip top eager>
               <template v-slot:activator="{ on }">
                 <v-btn v-on="on" icon :disabled="!formActive" @click="leaveform = resetForm">
@@ -45,12 +43,14 @@
 
               <span>{{$t('commonForm.reset')}}</span>
             </v-tooltip>
-          </v-flex>
-       </v-layout>
-       <v-layout v-if="footer" class="pt-2 grey--text">
+          </v-col>
+       </v-row>
+       <v-row v-if="footer" class="pt-2 grey--text">
+         <v-col>
           <slot name="footer">
           </slot>
-       </v-layout>
+        </v-col>
+       </v-row>
        <AppConfirm v-if="leaveform"
           :dialog="true"
           :func="leaveform"
