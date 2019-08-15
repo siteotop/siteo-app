@@ -1,5 +1,5 @@
 <template>
-<div>
+<v-container>
     <v-row>
 
       <!-- Header only first level -->
@@ -21,8 +21,8 @@
 
         </v-card>
       </v-col>
-      <draggable v-model='childrenList' style="width:100%;" :options="{group:'children', handle:'.'+dragClass}" @start="startDragg=true" @end="startDragg=false">
-        <v-col cols="12" class="pa-0 pl-2" v-for="(component, indexComponent) in childrenList" :key="indexComponent">
+      <draggable v-model='childrenList'  style="width:100%;" :options="{group:'children', handle:'.'+dragClass}" @start="startDragg=true" @end="startDragg=false">
+        <v-col cols="12" class="pa-0" v-for="(component, indexComponent) in childrenList" :key="indexComponent">
           <v-hover>
             <v-card tile  slot-scope="{ hover }" :class="'ml-'+treeIndex+' ' +activeColor">
             <v-toolbar dense flat :color="activeColor">
@@ -76,7 +76,7 @@
       :options="{group:'children', filter: '.ignore-elements'}">
     </draggable>
   </div>
-</div>
+</v-container>
 </template>
 
 <script>
