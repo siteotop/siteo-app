@@ -1,5 +1,4 @@
 
-//import {readyPropClassForFlex} from '../readyProps.js';
 
 export const Flx =  {
    p/*_props*/: {
@@ -141,8 +140,8 @@ export const PLt = {
     //noGutters:
     s: 'readyPropBoolean',
 
-    //lc: 'readyPropClassForLayout',
-    //fc: 'readyPropClassForFlex',
+
+    //ft  flex tag
     ft: {
       $comp: 'PropSelect',
       items: ['v-row', 'div'],
@@ -155,7 +154,7 @@ export const PLt = {
 
   },
   c/*_class*/: ['padding', 'textsize', 'texttransform', 'background', 'textcolor', 'hidden', 'textalign'],
-  
+
   h/*_children*/: [
     'Flx',
     ...Flx.h/*_children*/]
