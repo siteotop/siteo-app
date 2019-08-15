@@ -116,12 +116,6 @@ export const readyPropClassForContainer = {
 };
 
 
-export const readyPropClassForFlex = {
-  $comp: 'PropClass',
-  additional: ['offset', 'order'],
-  default: []
-};
-
 export const readyPropClassForText = {
   $comp: 'PropClass',
   allow: ['textsize', 'textcolor', 'textalign', 'texttransform'],

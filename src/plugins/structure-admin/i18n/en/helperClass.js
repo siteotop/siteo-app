@@ -30,10 +30,7 @@ export const helperClass = {
       t: 'Margin',
       d:''
     },
-    offset: {
-      t: 'Offset',
-      d:''
-    },
+  
     padding: {
       t: 'Padding',
       d:''
