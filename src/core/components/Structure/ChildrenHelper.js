@@ -3,18 +3,24 @@ import * as baseChildren from './index';
 export default {
   functional: true,
   props: {
+
+    /**
+      @type Object or String
+      Full Object which describe element or string name for element (for Example PLt )
+    */
     element: {
 
     },
+
+    /**
+      @type Object  of structure
+      Addititonal structure for baseChildren
+
+    */
     structure: {
       default: function () {
         return {};
       }
-    },
-
-    defDesign: {
-      type: Boolean,
-      default: false
     }
 
   },

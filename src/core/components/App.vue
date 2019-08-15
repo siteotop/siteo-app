@@ -26,7 +26,7 @@ export default {
 
      metaInfo () {
       return {
-        
+
          titleTemplate:
            this.$store.getters.getSiteoConfig('seo_title_template') ||
            ('%s  - ' + this.$store.state.appInstance.objectActive.name),
@@ -59,7 +59,7 @@ export default {
           'RCt',
           'RFt'
         ].map(function(element){
-         return  h('StChildrenHelper', {props: {element:element, defDesign:true }});
+         return  h('StChildrenHelper', {props: {element:element}});
        })
 
       );
