@@ -118,7 +118,7 @@ export const readyPropClassForContainer = {
 
 export const readyPropClassForFlex = {
   $comp: 'PropClass',
-  additional: ['flexsize', 'blockflex', 'offset', 'order'],
+  additional: ['flexsize', 'offset', 'order'],
   default: []
 };
 

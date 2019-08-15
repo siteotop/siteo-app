@@ -12,17 +12,7 @@ export const helperClass = {
       d: 'There is a total of 25 elevation levels'
     },
 
-    blockflex: {
-      t: 'Flex class',
-      d:''
-    },
-
-    blocklayout: {
-      t: 'Layout class',
-      d:''
-    },
-
-    
+        
     display: {
       t: 'Display',
       d:''

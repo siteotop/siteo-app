@@ -81,22 +81,3 @@ export const textwrap=[
   'text-truncate',
   'text-no-wrap',
 ];
-
-
-export const blocklayout = [
-  'layout',
-  'column',
-  'row',
-  'reverse',
-  'wrap'
-];
-
-export const blockflex = [
-  'align-self-baseline',
-  'align-self-center',
-  'align-self-end',
-  'align-self-start',
-  'grow',
-  'shrink'
-
-];

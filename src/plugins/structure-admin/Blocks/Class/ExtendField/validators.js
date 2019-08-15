@@ -89,14 +89,6 @@ const FINDER_FOR_CLASS = {
     return  /([\-]{2})text|text([\-]{2})/.test(className);
   },
 
-  blocklayout: function(className) {
-    return baseClasses.blocklayout.find((element)=>element==className);
-  },
-
-
-  blockflex: function(className) {
-    return baseClasses.blockflex.find((element)=>element==className);
-  },
 
   gridlist: function(className) {
     var regeg_string = new RegExp('grid-list-('+baseClasses.breakpoint.join('|')+')');
