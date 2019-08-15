@@ -26,10 +26,11 @@ export default {
            noGutters: cnf.s
 
          },
-         class: context.props.cnf.lc
+         class: context.data.class
       }, [
         (context.props.chldrn||[]).map(function(element) {
             var comp = context.props.cnf.ft||'v-col';
+
             if (element.n!='Flx') {
                 return h(comp, {
                   class: context.props.cnf.fc
@@ -43,13 +44,33 @@ export default {
                 ]
               )
             } else {
+              var props = element.p||{};
               return h(comp, {
-                class: (element.p? element.p.fc:false)||context.props.cnf.fc
+                props: {
+                  cols: props.a,
+                  sm: props.b,
+                  md: props.c,
+                  lg: props.d,
+                  xl: props.e,
+                  offset: props.f,
+                  offsetSm: props.g,
+                  offsetMd: props.h,
+                  offsetLg: props.i,
+                  offsetXl: props.j,
+                  order: props.k,
+                  ordertSm: props.l,
+                  ordertMd: props.m,
+                  ordertLg: props.n,
+                  ordertXl: props.o,
+                  alignSelf: props.p,
+
+                }
+
               }, [
-                  (element.h||[]).map(function(flex, index){
+                  (element.h||[]).map(function(columnChild, index){
                      return h('StChildrenHelper', {
                        props: {
-                         element: flex
+                         element: columnChild
                        }
                      })
                   })

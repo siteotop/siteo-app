@@ -3,8 +3,55 @@
 
 export const Flx =  {
    p/*_props*/: {
-      fc: 'readyPropClassForFlex',
+     //cols:
+      a: 'readyPropFlexCount',
+
+     //sm:
+      b: 'readyPropFlexCount',
+
+     //md:
+      c: 'readyPropFlexCount',
+
+     //lg:
+      d: 'readyPropFlexCount',
+
+     //xl:
+      e: 'readyPropFlexCount',
+
+     //offset:
+      f: 'readyPropFlexCount',
+
+     //offsetSm:
+      g: 'readyPropFlexCount',
+
+     //offsetMd:
+      h: 'readyPropFlexCount',
+
+     //offsetLg:
+      i: 'readyPropFlexCount',
+
+     //offsetXl:
+      j: 'readyPropFlexCount',
+
+     //order:
+      k: 'readyPropFlexCount',
+
+     //ordertSm:
+      l: 'readyPropFlexCount',
+
+     //ordertMd:
+      m: 'readyPropFlexCount',
+
+     //ordertLg:
+      n: 'readyPropFlexCount',
+
+     //ordertXl:
+      o: 'readyPropFlexCount',
+
+     //alignSelf:
+      p: 'readyPropRow'
    },
+
    h/*_children*/: [
       'PAl',
       'PAv',
@@ -107,7 +154,8 @@ export const PLt = {
     d: 'readyPropClassForContainer'
 
   },
-
+  c/*_class*/: ['padding', 'textsize', 'texttransform', 'background', 'textcolor', 'hidden', 'textalign'],
+  
   h/*_children*/: [
     'Flx',
     ...Flx.h/*_children*/]

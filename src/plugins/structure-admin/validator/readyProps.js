@@ -175,3 +175,9 @@ export const readyPropRow = {
   items: ['start', 'center', 'end', 'space-between', 'space-around', 'stretch'],
   default: ''
 }
+
+export const readyPropFlexCount = {
+  $comp: 'PropSelect',
+  items: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+  default: '12'
+}

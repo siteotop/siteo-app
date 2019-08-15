@@ -105,15 +105,6 @@ export const PLt = {
       d: ''
     },
 
-
-    lc: {
-      t: 'Layout class',
-      d: ''
-    },
-    fc: {
-      t: 'Flex class',
-      d: ''
-    },
     ft: {
       t: 'Flex tag',
       d: ''
@@ -136,7 +127,103 @@ export const Flx = {
   t: 'Flex box',
   d: 'Flex element for <Layout>',
   helperProps: {
-    fc: PLt.helperProps.fc
+    //cols:
+     a: {
+       t: 'cols',
+       d: ''
+     },
+
+    //sm:
+     b: {
+       t: 'sm',
+       d: ''
+     },
+
+    //md:
+     c: {
+       t: 'md',
+       d: ''
+     },
+
+    //lg:
+     d: {
+       t: 'lg',
+       d: ''
+     },
+
+    //xl:
+     e: {
+       t: 'xl',
+       d: ''
+     },
+
+    //offset:
+     f: {
+       t: 'offset',
+       d: ''
+     },
+
+    //offsetSm:
+     g: {
+       t: 'offsetSm',
+       d: ''
+     },
+
+    //offsetMd:
+     h: {
+       t: 'offsetMd',
+       d: ''
+     },
+
+    //offsetLg:
+     i: {
+       t: 'offsetLg',
+       d: ''
+     },
+
+    //offsetXl:
+     j: {
+       t: 'offsetXl',
+       d: ''
+     },
+
+    //order:
+     k: {
+       t: 'order',
+       d: ''
+     },
+
+    //ordertSm:
+     l: {
+       t: 'ordertSm',
+       d: ''
+     },
+
+    //ordertMd:
+     m: {
+       t: 'ordertMd',
+       d: ''
+     },
+
+    //ordertLg:
+     n: {
+       t: 'ordertLg',
+       d: ''
+     },
+
+    //ordertXl:
+     o: {
+       t: 'ordertXl',
+       d: ''
+     },
+
+    //alignSelf:
+     p:{
+       t: 'alignSelf',
+       d: ''
+     },
+
+
   }
 
 }
