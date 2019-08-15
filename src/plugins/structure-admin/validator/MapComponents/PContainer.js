@@ -50,7 +50,7 @@ export const Flx =  {
      //alignSelf:
       p: 'readyPropRow'
    },
-
+   c/*_class*/: ['display'], 
    h/*_children*/: [
       'PAl',
       'PAv',
@@ -153,7 +153,7 @@ export const PLt = {
     d: 'readyPropClassForContainer'
 
   },
-  c/*_class*/: ['padding', 'textsize', 'texttransform', 'background', 'textcolor', 'hidden', 'textalign'],
+  c/*_class*/: ['padding', 'textsize', 'texttransform', 'background', 'textcolor', 'hidden', 'textalign', 'display'],
 
   h/*_children*/: [
     'Flx',

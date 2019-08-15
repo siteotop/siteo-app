@@ -64,8 +64,8 @@ export default {
                   ordertXl: props.o,
                   alignSelf: props.p,
 
-                }
-
+                },
+                class: element.c
               }, [
                   (element.h||[]).map(function(columnChild, index){
                      return h('StChildrenHelper', {
