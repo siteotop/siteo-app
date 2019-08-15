@@ -67,9 +67,11 @@ const FINDER_FOR_CLASS = {
     @example text-xs-center https://vuetifyjs.com/ru/framework/alignment
   */
   textalign: function(className) {
-    var regeg_string = new RegExp('text(-('
+    var regeg_string = new RegExp('text(\-('
     + baseClasses.breakpoint.join('|')+'))?-('
     + baseClasses.align.join('|')+')');
+    console.log('testalign text test ');
+    console.log(regeg_string.test(className));
     return  regeg_string.test(className);
   },
 
@@ -77,7 +79,8 @@ const FINDER_FOR_CLASS = {
     @example d-flex   https://vuetifyjs.com/ru/framework/display
   */
   display: function (className) {
-    var regeg_string = new RegExp('d-('
+    var regeg_string = new RegExp('d(\-('
+    +baseClasses.breakpoint.join('|')+'))?-('
     +baseClasses.display.join('|')+')');
     return  regeg_string.test(className);
   },

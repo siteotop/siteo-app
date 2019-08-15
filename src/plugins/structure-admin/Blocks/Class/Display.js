@@ -1,25 +1,11 @@
-import ExtendField from './ExtendField/extend.vue';
+import ExtendText from './TextAlign';
 
 
 export default {
-  extends: ExtendField,
+  extends: ExtendText,
   $type: 'd',
+  $Helpername: 'display'
 
-
-  computed: {
-
-     /**
-        elevations-n
-     */
-      items() {
-
-          //var elements = _range(25);
-
-          return this.multiplyArray('',  [this.$options.$type], this.$options.$HelperValues.display, '-');
-
-
-      }
-  }
 
 
 }

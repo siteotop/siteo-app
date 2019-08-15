@@ -7,7 +7,7 @@ export const  breakpoint = [
 ];
 
 /*
- text align 
+ text align
 */
 export const  align = [
   'left',
@@ -31,13 +31,21 @@ export const condition = [
   'and-up'
 ];
 
+/**
+Specify the elements display property. These classes can be applied to all breakpoints, from xs to xl and have no specified breakpoint.
+https://vuetifyjs.com/en/styles/display
+*/
 export const display = [
-  'inline-flex',
-  'flex',
+  'none',
+  'inline',
   'inline-block',
   'block',
-  'inline',
-  'none'
+  'table',
+  'table-cell',
+  'table-row',
+  'flex',
+  'inline-flex',
+
 ];
 
 export const topography =  [
