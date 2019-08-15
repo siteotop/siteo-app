@@ -12,16 +12,12 @@ export const helperClass = {
       d: 'There is a total of 25 elevation levels'
     },
 
-        
+
     display: {
       t: 'Display',
       d:''
     },
 
-    flexsize: {
-      t: 'Flex sizes',
-      d:''
-    },
     gridlist: {
       t: 'Grid list',
       d:''

@@ -144,12 +144,6 @@ export const PropClassTextwrap = function () {
   }
 }
 
-import {default as Flexsize} from '../../Class/Flexsize.js';
-export const PropClassFlexsize = function () {
-  return {
-    name: Flexsize
-  }
-}
 
 import {default as Offset} from '../../Class/Offset.js';
 export const PropClassOffset = function () {
