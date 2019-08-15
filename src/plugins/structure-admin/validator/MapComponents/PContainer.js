@@ -44,11 +44,61 @@ export const PLt = {
 
   p/*_props*/: {
 
-    lc: 'readyPropClassForLayout',
-    fc: 'readyPropClassForFlex',
+    //align
+    a: 'readyPropRow',
+
+    //alignSm:
+    b: 'readyPropRow',
+
+    //alignMd:
+    e: 'readyPropRow',
+
+    //alignLg:
+    f: 'readyPropRow',
+
+    //alignXl:
+    g: 'readyPropRow',
+
+    //alignContent:
+    h: 'readyPropRow',
+
+    //alignContentSm:
+    i: 'readyPropRow',
+
+    //alignContentMd:
+    j: 'readyPropRow',
+
+    //alignContentLg:
+    k: 'readyPropRow',
+
+    //alignContentXl:
+    l: 'readyPropRow',
+    //justify:
+    m: 'readyPropRow',
+
+    //justifySm:
+    n: 'readyPropRow',
+
+    //justifyMd:
+    o: 'readyPropRow',
+
+    //justifyLg:
+    p: 'readyPropRow',
+
+    //justifyXl:
+    q: 'readyPropRow',
+
+    //dense:
+    r: 'readyPropBoolean',
+
+    //noGutters:
+    s: 'readyPropBoolean',
+
+    //lc: 'readyPropClassForLayout',
+    //fc: 'readyPropClassForFlex',
     ft: {
       $comp: 'PropSelect',
-      items: ['v-flex', 'div'],
+      items: ['v-row', 'div'],
       default: 'div'
     },
     // container

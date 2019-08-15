@@ -4,7 +4,28 @@ export default {
   functional: true,
   render(h, context) {
 
+     var cnf = context.props.cnf||{};
      var layout =  h('v-row', {
+         props: {
+           align: cnf.a,
+           alignSm: cnf.b,
+           alignMd: cnf.e,
+           alignLg: cnf.f,
+           alignXl: cnf.g,
+           alignContent: cnf.h,
+           alignContentSm: cnf.i,
+           alignContentMd: cnf.j,
+           alignContentLg: cnf.k,
+           alignContentXl: cnf.l,
+           justify: cnf.m,
+           justifySm: cnf.n,
+           justifyMd: cnf.o,
+           justifyLg: cnf.p,
+           justifyXl: cnf.q,
+           dense: cnf.r,
+           noGutters: cnf.s
+
+         },
          class: context.props.cnf.lc
       }, [
         (context.props.chldrn||[]).map(function(element) {

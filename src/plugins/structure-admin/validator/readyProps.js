@@ -115,13 +115,14 @@ export const readyPropClassForContainer = {
   default: []
 };
 
+/*
 export const readyPropClassForLayout = {
   $comp: 'PropClass',
-//  allow: ['padding', 'margin', 'textalign', 'textcolor'],
+
   additional: ['blockwrap', 'blocklayout'],
   default: []
 };
-
+*/
 
 
 export const readyPropClassForFlex = {
@@ -167,4 +168,10 @@ export const readyPropBoolean = {
 export const readyPropColor = {
   $comp: 'PropClassBackground',
   default: 'primary'
+}
+
+export const readyPropRow = {
+  $comp: 'PropSelect',
+  items: ['start', 'center', 'end', 'space-between', 'space-around', 'stretch'],
+  default: ''
 }

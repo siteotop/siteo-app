@@ -55,6 +55,8 @@ export const PropBoolean = function() {
   }
 }
 
+
+
 import {default as ClassComponent} from '../Class.vue';
 
 export const PropClass = function (settings) {
