@@ -11,14 +11,7 @@ const FINDER_FOR_CLASS = {
      return  /elevation-([0-2]?[0-9])/.test(className);
   },
 
-  /**
-    @example hidden-xs-only
-  */
-  hidden: function(className) {
-    var regeg_string = new RegExp('hidden-('+baseClasses.breakpoint.join('|')+')-('+ baseClasses.condition.join('|')+')');
-    return  regeg_string.test(className);
-  },
-
+  
   /**
     @example
   */

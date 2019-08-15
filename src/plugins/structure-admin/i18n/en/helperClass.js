@@ -22,15 +22,12 @@ export const helperClass = {
       t: 'Grid list',
       d:''
     },
-    hidden: {
-      t: 'Hidden',
-      d:''
-    },
+  
     margin: {
       t: 'Margin',
       d:''
     },
-  
+
     padding: {
       t: 'Padding',
       d:''

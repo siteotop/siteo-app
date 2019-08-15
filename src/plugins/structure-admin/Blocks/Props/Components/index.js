@@ -60,7 +60,7 @@ export const PropBoolean = function() {
 import {default as ClassComponent} from '../Class.vue';
 
 export const PropClass = function (settings) {
-  var helper_class = ['background', 'display', 'elevation', 'hidden', 'margin', 'padding',  'textalign', 'textcolor', 'textsize', 'texttransform',  'textweight', 'textwrap'];
+  var helper_class = ['background', 'display', 'elevation',  'margin', 'padding',  'textalign', 'textcolor', 'textsize', 'texttransform',  'textweight', 'textwrap'];
   return {
     name: ClassComponent,
     props: {
@@ -94,12 +94,6 @@ export const PropClassElevation = function () {
 
 }
 
-import {default as Hidden} from '../../Class/Hidden.js';
-export const PropClassHidden = function () {
-  return {
-    name: Hidden
-  }
-}
 
 
 import {default as Textsize} from '../../Class/TextSize.js';

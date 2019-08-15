@@ -54,5 +54,5 @@ export const PTr = {
 
 //ToolbarTitle
 export const TTl = {
-  c/*_class*/: ['hidden', 'textsize', 'margin', 'padding', 'textcolor']
+  c/*_class*/: ['display', 'textsize', 'margin', 'padding', 'textcolor']
 }

@@ -98,7 +98,7 @@ export const PBt =  {
     h: 'readyPropDataTitle'
   },
 
-  c/*_class*/: ['padding', 'textsize', 'texttransform', 'background', 'textcolor', 'hidden']
+  c/*_class*/: ['padding', 'textsize', 'texttransform', 'background', 'textcolor', 'display']
 }
 
 export const RAc = PBt;
