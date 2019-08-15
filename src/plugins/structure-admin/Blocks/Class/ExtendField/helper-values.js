@@ -1,11 +1,14 @@
 export const  breakpoint = [
-  'xs',
+  //'xs', exclude it, because plain class have been using using without xs
   'sm',
   'md',
   'lg',
   'xl'
 ];
 
+/*
+ text align 
+*/
 export const  align = [
   'left',
   'center',

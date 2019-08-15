@@ -7,7 +7,9 @@ export default {
 
   computed: {
       items() {
-          return this.multiplyArray( this.$options.$type+'-',  this.$options.$HelperValues.breakpoint, this.$options.$HelperValues.align, '-');
+
+          var baseAlign = this.multiplyArray('' ,  [this.$options.$type], this.$options.$HelperValues.align, '-');
+          return baseAlign.concat (this.multiplyArray( this.$options.$type+'-',  this.$options.$HelperValues.breakpoint, this.$options.$HelperValues.align, '-'));
       }
   }
 
