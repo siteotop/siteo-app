@@ -187,12 +187,6 @@ export const PropClassMargin = function () {
   }
 }
 
-import {default as Blockwrap} from '../../Class/Blockwrap.js';
-export const PropClassBlockwrap = function () {
-  return {
-    name: Blockwrap
-  }
-}
 
 import {default as Blocklayout} from '../../Class/Blocklayout.js';
 export const PropClassBlocklayout = function () {

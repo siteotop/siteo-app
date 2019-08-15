@@ -22,11 +22,7 @@ export const helperClass = {
       d:''
     },
 
-    blockwrap: {
-      t: 'Container class',
-      d:''
-    },
-
+    
     display: {
       t: 'Display',
       d:''

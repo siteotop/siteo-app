@@ -93,9 +93,6 @@ const FINDER_FOR_CLASS = {
     return baseClasses.blocklayout.find((element)=>element==className);
   },
 
-  blockwrap: function(className) {
-    return baseClasses.blockwrap.find((element)=>element==className);
-  },
 
   blockflex: function(className) {
     return baseClasses.blockflex.find((element)=>element==className);

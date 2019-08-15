@@ -82,23 +82,6 @@ export const textwrap=[
   'text-no-wrap',
 ];
 
-export const blockwrap = [
-  'align-baseline',
-  'align-center',
-  'align-end',
-  'align-start',
-  'align-content-start',
-  'align-content-center',
-  'align-content-end',
-  'align-content-space-around',
-  'align-content-space-between',
-  'justify-start',
-  'justify-center',
-  'justify-end',
-  'justify-space-around',
-  'justify-space-between',
-  'fill-height'
-];
 
 export const blocklayout = [
   'layout',

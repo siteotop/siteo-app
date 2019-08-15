@@ -111,18 +111,9 @@ export const readyPropTransition = {
 export const readyPropClassForContainer = {
   $comp: 'PropClass',
 //  allow: ['padding', 'margin', 'textalign', 'textcolor'],
-  additional: ['blockwrap', 'gridlist'],
+  additional: [ 'gridlist'],
   default: []
 };
-
-/*
-export const readyPropClassForLayout = {
-  $comp: 'PropClass',
-
-  additional: ['blockwrap', 'blocklayout'],
-  default: []
-};
-*/
 
 
 export const readyPropClassForFlex = {
