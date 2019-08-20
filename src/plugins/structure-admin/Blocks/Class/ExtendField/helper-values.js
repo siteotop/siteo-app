@@ -15,6 +15,9 @@ export const  align = [
   'right',
 ];
 
+/**
+https://vuetifyjs.com/en/styles/spacing
+*/
 export const direction = [
   'a',
   't',
@@ -23,6 +26,8 @@ export const direction = [
   'r',
   'x',
   'y',
+  's',
+  'e'
 ];
 
 export const condition = [
@@ -91,4 +96,5 @@ export const texttransform=[
 export const textwrap=[
   'text-truncate',
   'text-no-wrap',
+  'text-justify'
 ];

@@ -60,7 +60,7 @@ export const PropBoolean = function() {
 import {default as ClassComponent} from '../Class.vue';
 
 export const PropClass = function (settings) {
-  var helper_class = ['background', 'display', 'elevation',  'margin', 'padding',  'textalign', 'textcolor', 'textsize', 'texttransform',  'textweight', 'textwrap'];
+  var helper_class = ['background', 'display', 'elevation',  'margin', 'marginn',  'padding',  'textalign', 'textcolor', 'textsize', 'texttransform',  'textweight', 'textwrap'];
   return {
     name: ClassComponent,
     props: {
@@ -157,6 +157,14 @@ import {default as Margin} from '../../Class/Margin.js';
 export const PropClassMargin = function () {
   return {
     name: Margin
+  }
+}
+
+
+import {default as Marginn} from '../../Class/MarginNegative.js';
+export const PropClassMarginn = function () {
+  return {
+    name: Marginn
   }
 }
 

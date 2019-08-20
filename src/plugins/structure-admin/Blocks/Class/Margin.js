@@ -1,17 +1,14 @@
-import ExtendField from './ExtendField/extend.vue';
-
-import  _range from 'lodash/range';
+import Padding from './Padding';
 
 export default {
-  extends: ExtendField,
+  extends: Padding,
   $type: 'm',
-
 
   computed: {
       items() {
-
-          return this.multiplyArray( this.$options.$type,  this.$options.$HelperValues.direction, _range(6), '-');
-
+          var cls =  this.generateClases();
+          cls.push('mx-auto', 'my-auto', 'ma-auto');
+          return cls;
       }
   }
 

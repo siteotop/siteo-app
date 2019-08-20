@@ -22,9 +22,14 @@ export const helperClass = {
       t: 'Grid list',
       d:''
     },
-  
+
     margin: {
       t: 'Margin',
+      d:''
+    },
+
+    marginn: {
+      t: 'Margin Negative',
       d:''
     },
 

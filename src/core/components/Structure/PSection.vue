@@ -8,6 +8,7 @@ export default {
     return h('section', {
         //class: context.props.cnf.b||'',
         attrs: context.data.attrs,
+        class: context.data.class
       },
 
       (context.props.chldrn||[]).map(function(element) {

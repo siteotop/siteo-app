@@ -11,7 +11,7 @@ const FINDER_FOR_CLASS = {
      return  /elevation-([0-2]?[0-9])/.test(className);
   },
 
-  
+
   /**
     @example
   */
@@ -41,10 +41,19 @@ const FINDER_FOR_CLASS = {
   },
 
   /**
+    @example ma-n2 mx-n4 and others https://vuetifyjs.com/ru/framework/spacing
+  */
+  marginn: function(className) {
+    var regeg_string = new RegExp('m('+baseClasses.direction.join('|')+')-n([0-9]{1,2})');
+    console.log(regeg_string.test(className));
+    return  regeg_string.test(className);
+  },
+
+  /**
     @example ma-2 mx-4 and others https://vuetifyjs.com/ru/framework/spacing
   */
   margin: function(className) {
-    var regeg_string = new RegExp('m('+baseClasses.direction.join('|')+')-([0-5])');
+    var regeg_string = new RegExp('m('+baseClasses.direction.join('|')+')-([0-9]{1,2})');
     return  regeg_string.test(className);
   },
 
@@ -52,7 +61,7 @@ const FINDER_FOR_CLASS = {
     @example pa-2 px-4 and others https://vuetifyjs.com/ru/framework/spacing
   */
   padding: function(className) {
-    var regeg_string = new RegExp('p('+baseClasses.direction.join('|')+')-([0-5])');
+    var regeg_string = new RegExp('p('+baseClasses.direction.join('|')+')-([0-13])');
     return  regeg_string.test(className);
   },
 
