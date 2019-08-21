@@ -31,6 +31,15 @@ export const PropDescription = function () {
   }
 }
 
+import HtmlEditor from '../HtmlEditor.vue';
+export const PropHtmlEditor = function () {
+  return {
+    name: HtmlEditor,
+    props: {
+    },
+  }
+}
+
 export const PropSelect = function (settings) {
   //console.log(settings);
   return {

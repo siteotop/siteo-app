@@ -43,6 +43,11 @@ export const readyPropDataDesc = {
   default:''
 }
 
+export const readyPropHtmlEditor = {
+  $comp: 'PropHtmlEditor',
+  default:''
+}
+
 
 export const readyPropElevation = {
   $comp: 'PropHeight',

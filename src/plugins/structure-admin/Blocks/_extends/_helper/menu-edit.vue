@@ -3,8 +3,11 @@
   :value="parent.menuList[props.indexComponent].activeEdit"
   @input="(value)=>parent.menuList[props.indexComponent].activeEdit=value"
   offset-x
+
   min-width="500"
   max-width="500"
+  max-height="600"
+
   :close-on-content-click="false"
   :close-on-click="false"
   >
