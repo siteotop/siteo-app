@@ -3,6 +3,7 @@ import {Vtf} from './Vuetify';
 import {helperClass} from './helperClass';
 import {helperAttrs} from './helperAttrs';
 import {PAl} from './PAlert';
+import {PAd} from './PAdsense';
 import {PBt, RAc, PMn, MBt} from './PButton';
 import {PCd, Cti, Cte, Cac} from './PCard';
 import {PCs, CSe} from './PCarusel';
@@ -44,6 +45,7 @@ export default {
     RLg,
     PAv,
     RAb, TTl, TTg, PTr,
+    PAd,
     PSc, PLt, Flx,
     PPx,
     PPl,
