@@ -28,7 +28,6 @@ export {default as PYv}  from  './PYoutubeVideo.vue';
 export {default as PAd}  from  './PAdsense.vue';
 
 export const RSp = 'VSpacer';
-export const StPlugin = 'StPlugin';
 export const RDh = 'VDivider'
 export const RDv = {
   functional: true,

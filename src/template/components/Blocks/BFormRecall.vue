@@ -6,7 +6,7 @@ export default {
   props: ['formAction'],
   render(h, context) {
 
-      return  h('StPlugin', {
+      return  h('SiteoPlugin', {
         props: {
           pluginName: 'siteo-plugin-forms',
           pluginOptions: {

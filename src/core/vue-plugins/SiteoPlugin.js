@@ -9,20 +9,23 @@
 const install  = function (Vue, options) {
 
     /** register siteo Plugin
-      @param plugin is object of pplugin
+      @param plugin is object of plugin
       @param startCore using when plugin is registering before  createSiteo();
     */
     Vue.prototype.registerSiteoPlugin = function (plugin, startCore) {
 
 
-       var instance, _pluginsStore, _configPlugin, func;
+       var instance,  // Main object Vue Instance
+          _pluginsStore, // Object where store all separate plugins
+          _configPlugin, // common configs for plugin
+          func;
        if (startCore) {
-          func = 'siteoInstall';
+          func = 'siteoInstall'; // when start project  during creating createSiteo()
           instance = startCore;
           _pluginsStore = startCore._plugins;
           _configPlugin = startCore.store.getters.getSiteoConfig(plugin.name)||{};
        } else {
-         func = 'liveInstall';
+         func = 'liveInstall'; // when was created during works
           instance = this;
           _pluginsStore = this.$root.$options._plugins;
           _configPlugin = this.$store.getters.getSiteoConfig(plugin.name)||{};

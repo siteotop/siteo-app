@@ -1,21 +1,18 @@
 <template>
   <div v-if="loaded">
     <div v-if="component"><component :is="component"  v-bind="pluginOptions"></component></div>
-
   </div>
   <div v-else>
-
-      <slot>
+    <slot v-if="desktopReady">
         Plugin not  loaded
-        <v-progress-linear
+         <v-progress-linear
               color="primary"
               indeterminate
               rounded
               height="6"
          ></v-progress-linear>
       </slot>
-
-  </div>
+   </div>
 </template>
 
 <script>
@@ -49,6 +46,7 @@ export default {
 
     data() {
       return {
+        desktopReady: false,
         loaded: false,
         component: false
        }
@@ -60,7 +58,7 @@ export default {
         console.log('Load Plugin');
         console.log(this.pluginName);
         // https://some-domen.com/plugins/+this.pluginName
-
+        this.desktopReady = true;
 
         var filename = process.env.STATIC_PLUGINS + this.pluginName+'.js';
         //console.log(this);
@@ -78,11 +76,9 @@ export default {
             console.log(error);
             self.loaded =true
         });
-
-
-
-
     },
+
+
     beforeDestroy() {
       if (this.removeOnDestroy) {
           this.removePlugin();
@@ -90,6 +86,8 @@ export default {
     },
 
     methods: {
+
+
       getPluginFromStore() {
           var plugin = this.$root.$options._plugins[this.pluginName];
           if (plugin) {

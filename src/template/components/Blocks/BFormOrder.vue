@@ -13,7 +13,7 @@ export default {
       props.formAction = context.props.formAction || 'APP_ORDER/createObject';
 
 
-      return  h('StPlugin', {props: {pluginName: 'siteo-plugin-forms', pluginOptions: props } })
+      return  h('SiteoPlugin', {props: {pluginName: 'siteo-plugin-forms', pluginOptions: props } })
   }
 
 }
