@@ -34,6 +34,7 @@ export {TTl, PTr} from './PToolbar';
 export {RAb} from './RootAppBar';
 export {RDw} from './RootDrawer';
 export {PAd} from './PAdsense';
+export {PPn} from './PSiteoPlugin';
 
 export {EAttrs} from './EmulateAttrs';
 export const RPa = {

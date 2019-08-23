@@ -185,9 +185,17 @@ export const PropClassGridlist = function () {
   }
 }
 
+
 import {default as Colors} from '../../Colors.vue';
 export const PropColorsTheme = function () {
   return {
     name: Colors
+  }
+}
+
+import {default as Plugin} from '../Plugin.vue';
+export const PropPlugin = function () {
+  return {
+    name: Plugin
   }
 }

@@ -1,11 +1,14 @@
 
 
 import InstagramPost from './component.vue';
-
+/**
+*/
 export default {
-
-  getComponent: function (Vue, options) {
-    return InstagramPost;
+  name: 'siteo-plugin-instagram-post',
+  registerComponent: function (Vue, options) {
+    return  {
+       component:  InstagramPost
+     }
    },
 
 }

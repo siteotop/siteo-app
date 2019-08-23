@@ -38,6 +38,14 @@ export default {
       removeOnDestroy: {
         type: Boolean,
         default: false
+      },
+
+      /*
+        swith to administration mode
+      */
+      adminMode: {
+        type: Boolean,
+        default: false
       }
 
     },
@@ -55,27 +63,16 @@ export default {
 
     mounted() {
         // load plugin
-        console.log('Load Plugin');
-        console.log(this.pluginName);
+        console.log('Loading Plugin');
+        //console.log(this.pluginName);
         // https://some-domen.com/plugins/+this.pluginName
         this.desktopReady = true;
+        //console.log(this.pluginName);
+        if (!this.pluginName) {
+          return
+        }
+        this.getPluginComponent(this.pluginName);
 
-        var filename = process.env.STATIC_PLUGINS + this.pluginName+'.js';
-        //console.log(this);
-        var self = this;
-
-        this.$root.$options.$script(filename).then((data)=>{
-            console.log(data);
-            if (window['siteo-plugins']&&window['siteo-plugins'][self.pluginName]) {
-                self.registerSiteoPlugin(window['siteo-plugins'][self.pluginName]);
-                self.component = this.getPluginFromStore(self.pluginName);
-            }
-            self.loaded = true;
-
-        }).catch((error)=>{
-            console.log(error);
-            self.loaded =true
-        });
     },
 
 
@@ -87,9 +84,39 @@ export default {
 
     methods: {
 
+      getPluginComponent(pluginName) {
+        var filename = process.env.STATIC_PLUGINS + pluginName+'.js';
+        //console.log(this);
+        var self = this;
 
-      getPluginFromStore() {
-          var plugin = this.$root.$options._plugins[this.pluginName];
+        this.$root.$options.$script(filename).then((data)=>{
+            /**
+              при створенні плагіна webpack генерує файл який створює змінну в обєкті window['siteo-plugins']
+              Тобто якщо плагін завантажено, то існує обєкт window['siteo-plugins'][self.pluginName]
+            */
+
+                  if (window['siteo-plugins']&&window['siteo-plugins'][pluginName]) {
+
+                      self.registerSiteoPlugin(window['siteo-plugins'][pluginName]);
+                      self.component = this.getPluginFromStore(pluginName);
+                  }
+                  self.loaded = true;
+                  if (self.adminMode) {
+                      self.$emit('changeComponent', self.component );
+                  }
+
+        }).catch((error)=>{
+            console.log(error);
+            self.loaded =true
+        });
+
+      },
+
+      /**
+        Plugin was saved in  $root.$options._plugins
+      */
+      getPluginFromStore(pluginName) {
+          var plugin = this.$root.$options._plugins[pluginName];
           if (plugin) {
               if (plugin.component) {
                 return plugin.component;

@@ -25,6 +25,7 @@ import {PSg, SGe} from './PSlideGroup';
 import {PSr} from './PScroll';
 import {PYv} from './PYoutubeVideo';
 import {RDw} from './RDw';
+import {PPn} from './PPn';
 import {RFt} from './RFt';
 import {RLg, PAv} from './RLg';
 import {RAb, TTl, TTg, PTr} from './RootAppBar';
@@ -69,6 +70,7 @@ export default {
     PTa, TTr, TTd,
     PTb, TCt,
     PTm, TEp,
+    PPn,
     RSp: {
       t: 'Spacer',
       d: 'Same <v-spacer>'

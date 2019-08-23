@@ -19,7 +19,7 @@ const install  = function (Vue, options) {
           _pluginsStore, // Object where store all separate plugins
           _configPlugin, // common configs for plugin
           func;
-       if (startCore) {
+        if (startCore) {
           func = 'siteoInstall'; // when start project  during creating createSiteo()
           instance = startCore;
           _pluginsStore = startCore._plugins;

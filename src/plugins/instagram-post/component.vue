@@ -8,12 +8,12 @@
 export default {
 
   props: {
-    _url: {
+    link: {
       type: String,
       default: ''
     },
 
-    $hc: { // hidecaption
+    openCaption: { // hidecaption
       type: Boolean,
       default: false
     }
@@ -27,8 +27,11 @@ export default {
 
   mounted() {
       var self = this;
-      if (!this._url) { return;}
-      var url ='https://api.instagram.com/oembed?omitscript=true&hidecaption='+this.$hc+'&url=' + this._url;
+      if (!this.link) {
+        self.htmlInsta = 'No Instagram Url';
+        return;
+      }
+      var url ='https://api.instagram.com/oembed?omitscript=true&hidecaption='+!this.openCaption+'&url=' + this.link;
       var $script = self.$root.$options.$script;
         self.$root.$options.axios.get(url).then(function(result){
             console.log(result);
@@ -40,7 +43,7 @@ export default {
 
 
         }).catch(function(error){
-          self.htmlInsta = '';
+          self.htmlInsta = 'Error load';
           console.log('Instagram error ');
           console.log(error);
       })
