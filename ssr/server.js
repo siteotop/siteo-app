@@ -59,16 +59,19 @@ if (process.env.MULTISITEO) {
      @router  routerSiteoApp
      All routes which start with  this patch will be resolve using routerSiteoApp
   */
+  server.use('/([a-z]{2})/:siteoId', routerSiteoApp);
   server.use('/:siteoId', routerSiteoApp);
 
+
+
   // if main page, We need put separetly for start siteo-app (main application page or landing page)
-  server.get('/', (req, res) => {
+  server.get('/|/([a-z]{2})', (req, res) => {
     siteoApp(req, res, '', '');
   });
 
 } else {
   // one project on one host
-  server.use('/', routerSiteoApp);
+  server.use('/|/([a-z]{2})', routerSiteoApp);
 }
 
 const PORT = 8080;

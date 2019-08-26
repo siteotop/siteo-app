@@ -27,6 +27,12 @@ module.exports=function (req, res, baseUrl, path) {
     baseUrl = '/pr2019'
     path = '/services/'
   */
+
+  console.log('baseUrl');
+  console.log(baseUrl);
+  console.log('path');
+  console.log(path);
+
   var  context = {
     url: path,
     configs_frontend: {
