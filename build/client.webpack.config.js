@@ -37,7 +37,7 @@ baseConfig.plugins.push(new HtmlWebpackPlugin({
   filename: path.resolve(__dirname, "../ssr/template")+ '/index.ssr.html',
   //inject: false,
   templateParameters: {
-      html_attr: 'data-vue-meta-server-rendered {{{meta.inject().headAttrs.text()}}}' ,
+      html_attr: 'data-vue-meta-server-rendered {{{meta.inject().htmlAttrs.text()}}}' ,
       title: `{{{ meta.inject().title.text() }}}
       {{{ meta.inject().meta.text() }}}
       {{{ meta.inject().link.text() }}}
