@@ -95,7 +95,12 @@ export default function (Vue, RESTApi, configs)  {
            callAPI({dispatch, state, getters, rootGetters}, APIconfig) {
 
               return dispatch(state.dispacthToken).then(access_token=>{
-                    APIconfig.access_token = access_token;
+                    if (!APIconfig.headers) {
+                      APIconfig.headers = {};
+                    }
+                    APIconfig.headers.common = {
+                      'Authorization':"Bearer "+ access_token
+                    };
                     return  dispatch('callCoreApi', APIconfig );
               })
 
@@ -103,11 +108,12 @@ export default function (Vue, RESTApi, configs)  {
 
            callCoreApi({dispatch}, APIconfig ) {
 
+             APIconfig.headers
              return  RESTApi({
                 method: APIconfig.method||'GET',
                 url: APIconfig.url,
                 data: APIconfig.data,
-                headers: {'common': { 'Authorization':"Bearer "+ APIconfig.access_token }},
+                headers: APIconfig.headers,
                 params: APIconfig.params,
                 withCredentials: true
 
