@@ -1,5 +1,6 @@
 <template>
 <v-card :style="{width: '500px'}">
+  sdfg sdf
   <v-row v-if="!activeColor">
    <v-col  cols="4"  v-for="(colorOptions, colorName ) in colorsKebabCase" :key="colorName" >
       <v-card tile :class="colorOptions.value.name" @click="openShadesPalette(colorName, colorOptions.value)" >
@@ -15,7 +16,7 @@
               </v-row>
           </v-card-text>
       </v-card>
-      </v-flex>
+      </v-col>
   </v-row>
   <v-row v-else >
       <v-btn  @click="closeShadesPalette()" fab >
@@ -30,11 +31,11 @@
                </v-col>
                <v-col cols="3">
                  {{colorOptions.value.hex}}
-               </v-flex>
-               <v-flex cols="1">
+               </v-col>
+               <v-col cols="1">
 
                   <v-icon small  v-if="valueData&&valueData.name==colorOptions.value.name">$vuetify.icons.success</v-icon>
-               </v-flex>
+               </v-col>
              </v-row>
            </v-card-text>
          </v-card>
@@ -112,7 +113,7 @@ export default {
 
           }
         }
-
+        console.log(colorsKebab);
         return colorsKebab;
 
       }
