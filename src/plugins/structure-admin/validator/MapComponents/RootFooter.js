@@ -17,7 +17,7 @@ export const RFt = {
       //color
       c: 'readyPropColor',
 
-      ...PLt.p/*_props*/,
+      
     },
 
     h/*_children*/: [
