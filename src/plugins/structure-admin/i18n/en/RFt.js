@@ -34,7 +34,22 @@ export const RFt = {
       d: 'Background color'
     },
 
+    //padless
+    b: {
+      t: 'padless',
+      d: ''
+    },
+    //tile
+    g: {
+      t: 'tile',
+      d: ''
+    },
+    //elevation
     e: {
+      t: 'elevation',
+      d: ''
+    }
+  /**  e: {
       t: 'Tag',
       d: 'Tag for flex'
     },
@@ -47,7 +62,7 @@ export const RFt = {
       t: 'Class for flex',
       d: 'Flex inside layout in footer'
 
-    }
+    }*/
 
   }
 }

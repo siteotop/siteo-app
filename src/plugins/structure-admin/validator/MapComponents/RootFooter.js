@@ -10,14 +10,18 @@ export const RFt = {
       i: 'readyPropBoolean',
       //dark
       d: 'readyPropBoolean',
-      //dark
+      //light
       l: 'readyPropBoolean',
-      //dark
+      //fixed
       f: 'readyPropBoolean',
       //color
       c: 'readyPropColor',
-
-      
+      //padless
+      b: 'readyPropBoolean',
+      //tile
+      g: 'readyPropBoolean',
+      //elevation
+      e: 'readyPropElevation'
     },
 
     h/*_children*/: [

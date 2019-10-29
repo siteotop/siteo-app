@@ -9,16 +9,19 @@
       dark: props.cnf.d,
       light: props.cnf.l,
       fixed: props.cnf.f,
+      padless: props.cnf.b,
+      tile:props.cnf.g,
+      elevation:props.cnf.e,
     }"
 >
- <PLt v-bind="{cnf: {}, chldrn: props.chldrn }">
-   <v-flex xs12 text-xs-center class="pa-1 "  >
-    <v-btn target="_blank" :title="parent.$t('copyright', { template: 'siteo', url:'https://siteo.top'})" dark text href="https://siteo.top">
-      <v-icon v-text="siteo"></v-icon>
-      siteo.top
-    </v-btn>
-   </v-flex>
- </PLt>
+
+<template
+  v-for="(elmt, index) in props.chldrn||[]"
+ >
+   <StChildrenHelper :element="elmt">
+   </StChildrenHelper>
+</template>
+ 
 </v-footer>
 </template>
 
