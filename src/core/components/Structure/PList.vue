@@ -38,6 +38,9 @@ export default {
   functional: true,
   render(h, context) {
     var cnf = context.props.cnf;
+    var data = context.props.cntnt;
+    // if data auto menu drawer not exist
+    if (!data.a)  {
     var children =   (context.props.chldrn||[]).map(function(element){
         var el_c = element.p/*_props*/||{};
         return h('v-list-item', {props: {
@@ -50,6 +53,18 @@ export default {
           })
         ])
       });
+    } else {
+      var children =  (context.parent.$store.state.appInstance.objectActive.menus||[]).map(function(element){
+
+          return h('v-list-item', {props: {
+            to: element.link, 
+            tag:'li',
+          },} , [
+             h('v-list-item-content', [ h('v-list-item-title', [element.anchor])  ])
+          ])
+        });
+
+    }
     return !cnf.n?
      h('v-list', {props: {
 
@@ -69,7 +84,7 @@ export default {
 
     }, class: context.data.class}, [
         children
-    ]): children 
+    ]): children
 
   }
 }

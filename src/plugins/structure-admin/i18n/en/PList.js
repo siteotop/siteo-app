@@ -65,6 +65,14 @@ export const PLs = {
       t: 'width',
       d: ''
     }
+  },
+
+  helperData: {
+
+    a: {
+      t: 'Auto drawer menu',
+      d: ''
+    }
   }
 }
 

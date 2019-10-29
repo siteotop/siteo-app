@@ -26,6 +26,10 @@ export const PLs = {
     n: 'readyPropBoolean'
 
   },
+  d/*_data*/: {
+    //auto menu drawer
+    a: 'readyPropBoolean',
+  },
   c/*_class*/: ['background', 'elevation'],
   h/*_children*/: ['LTi']
 }
