@@ -93,13 +93,14 @@ export const createSiteo =  function ({configs, plugins} ) {
      icons: {
        iconfont: 'md',  // default
        values: vuetifyIcons
-     },
+     }
+     /*,
 
      theme: {
        themes: {
 
        }
-     }
+     }*/
    });
 
    Vue.use(VueProgressBar, {

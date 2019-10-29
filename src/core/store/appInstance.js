@@ -15,7 +15,7 @@ export default {
          description:"",
          contacts: [],
          design:{},
-         menu:[] ,
+         menus:[] ,
          links:[],
          locations: [],
          _websites_page: ''

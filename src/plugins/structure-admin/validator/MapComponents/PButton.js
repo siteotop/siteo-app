@@ -115,6 +115,8 @@ export const PMn = {
       $comp: 'PropSelect',
       items: [
         'page',
+        'top',
+        'foot'
       ],
       default: 'page'
     }

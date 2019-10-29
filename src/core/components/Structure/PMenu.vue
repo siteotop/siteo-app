@@ -1,6 +1,6 @@
 <template functional>
 <component :is="props.cnf.ti?'v-toolbar-items' : 'div'" :class="data.class" >
-  <template v-if="props.cntnt.c">
+  <template v-if="props.cntnt.c=='page'">
     <PBt
      v-for="(menu, index) in parent.pageMenu"
      :key="index"
@@ -8,7 +8,14 @@
      >
     </PBt>
   </template>
-
+  <template v-if="props.cntnt.c=='top'">
+    <PBt
+     v-for="(menu, index) in parent.$store.state.appInstance.objectActive.menus"
+     :key="index"
+     :cnf="props.cnf" :cntnt="{t: menu.anchor, r:  menu.link  }"
+     >
+    </PBt>
+  </template>
   <template v-for="(element, index) in props.chldrn||[]">
       <!--_name in element.n,  _data  in element.d, _class in  element.c  -->
     <PBt v-if="element.n=='MBt'" :cnf="props.cnf" :cntnt="element.d" :class="element.c" >
