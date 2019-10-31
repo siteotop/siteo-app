@@ -22,6 +22,7 @@ if (process.env.NODE_ENV=='development') {
 
     server.use('/assets', express.static('dist/assets'));
     server.use('/plugins', express.static('dist/plugins'));
+    server.use('/core', express.static('dist/core'));
 
 }
 
