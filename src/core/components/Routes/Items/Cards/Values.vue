@@ -15,7 +15,7 @@
            <v-toolbar flat class="transparent">
                   <v-avatar size="32" class="ma-1" :color="hover?'primary lighten-2':'primary'">{{props.index}}</v-avatar>
                   <v-spacer></v-spacer>
-                 <DialogVideoYoutube :videoId="props.videoId" :title="props.title">
+                 <DialogVideoYoutube v-if="props.videoId" :videoId="props.videoId" :title="props.title">
                  </DialogVideoYoutube>
 
 
