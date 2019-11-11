@@ -3,7 +3,7 @@
   <v-row v-else>
     <v-col cols="12">
       <strike  class="body-1">{{props.price}} {{parent.$store.state.appInstance.objectActive.currency}}</strike>
-    </v-flex>
+    </v-col>
     <v-col cols="12" :class="data.staticClass">
       <span v-if="props.discount!='100'">{{Math.ceil(props.price/100*(100-props.discount))}} {{parent.$store.state.appInstance.objectActive.currency}}</span>
       <span v-else class="red--text font-weight-black"> FREE </span>
