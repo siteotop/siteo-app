@@ -24,7 +24,7 @@
       <v-row justify="center" >
         <v-col  cols="12" md="4" sm="6" v-for="(item, i) in listItems"
       :key="i" >
-      <component   :is="'card-'+typeList" v-bind="item" :toogle="toggle_component=='list'"></component>
+      <component   :is="'card-'+typeList" v-bind=" item" :index="i+1" :toogle="toggle_component=='list'"></component>
       </v-col>
     </v-row>
    </v-container>
@@ -47,7 +47,7 @@ import PageItemsToolbar from './Functional/PageItemsToolbar.vue';
 
 import CardValues from './Cards/Values.vue';
 import BPrice from './Cards/BPrice.vue';
-
+import DialogVideoYoutube from './Cards/VideoYoutube.vue';
 //import WiExperts from '../Widgets/WiExperts.vue';
 //import WiPosts from '../Widgets/WiPosts.vue';
 
@@ -77,6 +77,7 @@ export default {
     PageItemsToolbar,
     CardValues,
     BPrice,
+    DialogVideoYoutube
 
   },
 
