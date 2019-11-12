@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="modalValue" max-width="700">
+  <v-dialog v-model="modalValue" max-width="700" eager>
     <template v-slot:activator="{ on }">
       <v-btn  fab small v-on="on">
         <v-icon>$vuetify.icons.video</v-icon>
@@ -17,7 +17,8 @@
         </v-icon></v-btn>
       </v-toolbar>
       <v-responsive :aspect-ratio="'1.7'">
-       <iframe width="100%" height="100%" :src="'https://www.youtube.com/embed/'+videoId+'?autoplay=1'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+        <!-- https://developers.google.com/youtube/player_parameters?hl=ru -->
+       <iframe v-if="modalValue" width="100%" height="100%" :src="'https://www.youtube.com/embed/'+videoId+'?autoplay=1&rel=0'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
        </iframe>
       </v-responsive>
       <v-card-actions>
