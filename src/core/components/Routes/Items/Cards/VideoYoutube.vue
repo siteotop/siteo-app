@@ -5,7 +5,7 @@
         <v-icon>$vuetify.icons.video</v-icon>
       </v-btn>
     </template>
-    <v-card >
+    <v-card v-if="modalValue" >
       <v-toolbar>
          <v-icon>$vuetify.icons.video</v-icon>
           <v-toolbar-title>
@@ -18,7 +18,7 @@
       </v-toolbar>
       <v-responsive :aspect-ratio="'1.7'">
         <!-- https://developers.google.com/youtube/player_parameters?hl=ru -->
-       <iframe v-if="modalValue" width="100%" height="100%" :src="'https://www.youtube.com/embed/'+videoId+'?autoplay=1&rel=0'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+       <iframe  width="100%" height="100%" :src="'https://www.youtube.com/embed/'+videoId+'?autoplay=1&rel=0'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
        </iframe>
       </v-responsive>
       <v-card-actions>
