@@ -31,7 +31,7 @@ export const createModelCRUD = function (object, options) {
          modules.api = API(object.api);
       }
       if (options.moduleItems) {
-        modules.items = createItems();
+        modules.items = createItems(object.items||{});
       }
     }
 

@@ -45,12 +45,11 @@ const MUTATIONS = {
   saveList(state, items) {
 
       if (items&&items !=null) {
-
          for(var i in items) {
             state.objects.push(items[i]);
          }
       }
-    state.crudLoaded = true;
+
   },
 
   clearList(state, items) {
@@ -161,9 +160,11 @@ const ACTIONS = {
     */
     searchObjectInItems({state, dispatch,  getters, commit}, id_object) {
 
-       if (state.getfullObjectFromServer || !state.crudLoaded) {
+        // must load full one object from server
+       if (state.getfullObjectFromServer ) {
            return dispatch('getObject', id_object);
        }
+
 
        console.log(id_object);
        var result = _find(state.objects,  function(o) { return o[getters.nameId] == id_object; } );
@@ -189,7 +190,7 @@ const GETTERS = {
 };
 
 
-export default function () {
+export default function (configItems) {
 
   return  {
       //namespaced: true,
@@ -201,10 +202,9 @@ export default function () {
             servercount: 0,
         },
         objects: [],
-        // was loaded/checked first  items from server
-        crudLoaded: false,
+
         //scipt needs send request for getting full object from server
-        getfullObjectFromServer: false
+        getfullObjectFromServer: configItems.getfullObjectFromServer|| false
       },
 
       mutations: MUTATIONS,
