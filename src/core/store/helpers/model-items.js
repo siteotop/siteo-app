@@ -33,6 +33,15 @@ const MUTATIONS = {
   },
 
 
+  savePagination(state, serverPagination) {
+    for(var i in state.pagination) {
+       if (serverPagination [i]) {
+         state.pagination[i] = serverPagination [i];
+       }
+    }
+
+  },
+
   saveList(state, items) {
 
       if (items&&items !=null) {
@@ -57,11 +66,16 @@ const ACTIONS = {
     get list from model  by paramtrs
   */
   getList({dispatch, commit, getters, state}, params) {
+
      var  config = {params: params};
      config.method = 'GET';
      config.url = getters.urlWithoutId;
      return   dispatch('callAPI', config, {root:true}).then(response=>{
+          if (params && !params['append']) {
+             commit('clearList');
+          }
           commit('saveList', response.data.items);
+          commit('savePagination', response.data.pagination );
 
           return state.objects;
      });
@@ -169,10 +183,8 @@ const ACTIONS = {
 
 const GETTERS = {
 
-  countItems (state) {
-    //console.log(state);
-    //console.log(state.objects);
-    return state.objects.length;
+  pagination(state) {
+     return state.pagination;
   }
 };
 
@@ -182,7 +194,12 @@ export default function () {
   return  {
       //namespaced: true,
       state: {
-      
+        //
+        pagination: {
+            limit: 10,
+            offset: 0,
+            servercount: 0,
+        },
         objects: [],
         // was loaded/checked first  items from server
         crudLoaded: false,

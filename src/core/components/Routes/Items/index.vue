@@ -29,7 +29,7 @@
     </v-row>
    </v-container>
 
-  <slot  name="pagination">
+  <!--<slot  name="pagination">
     <v-row>
       <v-col  justify="center" class="text-center">
       <v-pagination
@@ -38,6 +38,7 @@
       </v-pagination>
     </v-col>
    </v-row>
+ -->
  </slot>
 
 </div>
@@ -113,7 +114,14 @@ export default {
                 return [];
               }
 
+          },
+
+          countItems(state) {
+            if (state[this.typeList]) {
+                return state[this.typeList].items.pagination.servercount || 0;
+            }
           }
+
       })
 
 
@@ -124,7 +132,7 @@ export default {
 
    return {
       title: this.title,
-      titleTemplate: '%s  - ' + this.$store.state.appInstance.objectActive.name,
+      titleTemplate: this.countItems +  ' %s  - ' + this.$store.state.appInstance.objectActive.name,
       meta: [
         {name: 'description', vmid: 'description', content: '' }
       ]
@@ -135,9 +143,11 @@ export default {
   serverPrefetch () {
     // возвращает Promise из действия, поэтому
     // компонент ждёт данные перед рендерингом
+
     this.registerModule();
     return this.fetchItem();
   },
+
 
   mounted() {
      if (this.$store.state.allowAsyncLoad) {
@@ -162,7 +172,15 @@ export default {
     },
 
     fetchItem(){
-       return this.$store.dispatch(this.typeList+'/getList');
+
+       // use limit from settings website
+       // usefull for websites with short list, where need show all list with values
+       const limit = this.$store.getters.getSiteoConfig('seo_limit');
+       let params;
+       if (limit != 10 ){
+         params = {limit:limit};
+       }
+       return this.$store.dispatch(this.typeList+'/getList', params);
     },
 
     asyncDataError(error_data) {
