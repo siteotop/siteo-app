@@ -22,7 +22,7 @@
 
   <v-container :class="'grid-list-md'">
       <v-row v-if="!loaded">
-        <v-col cols="12" md="4" sm="6" v-for="i in [1,2,3,4,5,6]">
+        <v-col cols="12" md="4" sm="6" v-for="i in [1,2,3,4,5,6]" :key="i">
           <v-skeleton-loader
              class="mx-auto"
              boilerplate
