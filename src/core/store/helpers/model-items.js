@@ -53,7 +53,9 @@ const MUTATIONS = {
   },
 
   clearList(state, items) {
-      state.objects = [];
+    //  state.objects = [];
+      while(state.objects.length > 0) {state.objects.pop();}
+
   }
 };
 
