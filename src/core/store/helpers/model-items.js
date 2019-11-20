@@ -72,6 +72,7 @@ const ACTIONS = {
      config.method = 'GET';
      config.url = getters.urlWithoutId;
      return   dispatch('callAPI', config, {root:true}).then(response=>{
+          state.firstLoaded = true;
           if (params && !params['append']) {
              commit('clearList');
           }
@@ -198,6 +199,7 @@ export default function (configItems) {
       //namespaced: true,
       state: {
         //
+        firstLoaded: false,
         pagination: {
             limit: 10,
             offset: 0,

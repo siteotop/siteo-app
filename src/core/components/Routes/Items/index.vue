@@ -21,7 +21,16 @@
   </PageItemsToolbar>
 
   <v-container :class="'grid-list-md'">
-      <v-row justify="center" >
+      <v-row v-if="!loaded">
+        <v-col cols="12" md="4" sm="6" v-for="i in [1,2,3,4,5,6]">
+          <v-skeleton-loader
+             class="mx-auto"
+             boilerplate
+             type="card, text,actions"
+           ></v-skeleton-loader>
+        </v-col>
+      </v-row>
+      <v-row v-else justify="center" >
         <v-col  cols="12" md="4" sm="6" v-for="(item, i) in listItems"
       :key="i" >
       <component   :is="'card-'+typeList" v-bind=" item" :index="i+1" :toogle="toggle_component=='list'"></component>
@@ -97,6 +106,7 @@ export default {
 
   data() {
     return {
+      notLoaded: true,
       toggle_component: 'cards'
     }
   },
@@ -119,6 +129,13 @@ export default {
           countItems(state) {
             if (state[this.typeList]) {
                 return state[this.typeList].items.pagination.servercount || 0;
+            }
+          },
+          loaded(state) {
+            if (state[this.typeList]) {
+                return state[this.typeList].items.firstLoaded;
+            } else {
+              return false;
             }
           }
 
