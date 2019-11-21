@@ -33,7 +33,11 @@
       <v-row v-else justify="center" >
         <v-col  cols="12" md="4" sm="6" v-for="(item, i) in listItems"
       :key="i" >
-      <component   :is="'card-'+typeList" v-bind=" item" :index="i+1" :toogle="toggle_component=='list'"></component>
+      <component
+        :is="'card-'+typeList"
+        v-bind="item"
+        :index="i+1"
+        :toogle="toggle_component=='list'"></component>
       </v-col>
     </v-row>
    </v-container>
@@ -115,6 +119,7 @@ export default {
       title() {
         return this.$t('routes_'+this.typeList+'_t');
       },
+
 
       ...mapState({
           listItems (state) {

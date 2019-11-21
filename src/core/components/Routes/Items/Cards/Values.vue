@@ -62,13 +62,14 @@
           </v-card-title> -->
         <v-divider ></v-divider>
           <v-card-actions>
+            <v-spacer></v-spacer>
                 <v-btn
                   tag="a"
                   disabled
                   text
                   color="deep-purple accent-4"
                 >
-                  Read
+                  {{parent.$store.getters.getSiteoConfig('t_re')||'MORE'}}
                 </v-btn>
                 <v-btn
                   tag="a"
@@ -76,7 +77,7 @@
                   text
                   color="primary accent-4"
                 >
-                  Where to eat
+                 {{parent.$store.getters.getSiteoConfig('t_ac')||'ACTION'}}
                 </v-btn>
               <!--  <v-spacer></v-spacer>
                 <v-btn icon>

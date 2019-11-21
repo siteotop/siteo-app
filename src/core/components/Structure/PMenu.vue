@@ -13,7 +13,7 @@
     <PBt
      v-if="menu['p_'+props.cntnt.c]==1"
      :key="index"
-     :cnf="props.cnf" :cntnt="{t: menu.anchor, r:  menu.link  }"
+     :cnf="props.cnf" :cntnt="menu.ext?{t: menu.anchor, h: menu.link  }:{t: menu.anchor, r:  menu.link } "
      >
     </PBt>
    </template>
