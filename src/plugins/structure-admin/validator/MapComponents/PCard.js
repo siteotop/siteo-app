@@ -59,18 +59,18 @@ export const PCd = {
 
 // v-card-title
 export const Cti = {
-  c/*_class*/: ['background',   'margin', 'padding' ],
+  c/*_class*/: ['background',   'margin', 'padding', 'textalign', 'textcolor' ],
   h/*_children*/: ['PTl', 'PTx', 'PIc', 'PAv', 'RSp']
 }
 
 // v-card-text
 export const Cte = {
-  c/*_class*/: ['background', 'margin', 'padding' ],
+  c/*_class*/: ['background', 'margin', 'padding', 'textalign', 'textcolor' ],
   h/*_children*/: ['PTx', 'PAv', 'PIc', 'PLt', 'PMn', 'RSp']
 }
 
 // v-card-action
 export const Cac = {
-  c /*_class*/: ['margin', 'padding'],
+  c /*_class*/: ['margin', 'padding', 'textalign', 'textcolor'],
   h/*_children*/: ['PTx', 'PAv', 'PBt', 'PIc', 'PDm', 'PLs', ]
 }
