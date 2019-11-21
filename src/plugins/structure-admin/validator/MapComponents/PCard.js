@@ -51,7 +51,7 @@ export const PCd = {
     //outlined
     v: 'readyPropBoolean'
   },
-  c/*_class*/: ['background', 'margin', 'padding'],
+  c/*_class*/: ['background', 'margin', 'padding', 'textalign', 'textcolor'],
 
   h/*_children*/: ['Cti', 'Cte', 'Cac', 'PAl', 'PLt',  'PLs', 'PIm', 'PCs', 'PYv', 'PAd']
 
@@ -66,7 +66,7 @@ export const Cti = {
 // v-card-text
 export const Cte = {
   c/*_class*/: ['background', 'margin', 'padding' ],
-  h/*_children*/: ['PTx', 'PAv', 'PIc']
+  h/*_children*/: ['PTx', 'PAv', 'PIc', 'PLt', 'PMn', 'RSp']
 }
 
 // v-card-action
