@@ -8,13 +8,15 @@
      >
     </PBt>
   </template>
-  <template v-if="props.cntnt.c=='top'">
+  <template v-if="props.cntnt.c=='top'||props.cntnt.c=='foot'">
+    <template  v-for="(menu, index) in parent.$store.state.appInstance.objectActive.menus" >
     <PBt
-     v-for="(menu, index) in parent.$store.state.appInstance.objectActive.menus"
+     v-if="menu['p_'+props.cntnt.c]==1"
      :key="index"
      :cnf="props.cnf" :cntnt="{t: menu.anchor, r:  menu.link  }"
      >
     </PBt>
+   </template>
   </template>
   <template v-for="(element, index) in props.chldrn||[]">
       <!--_name in element.n,  _data  in element.d, _class in  element.c  -->

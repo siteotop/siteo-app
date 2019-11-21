@@ -56,12 +56,12 @@ export default {
     } else {
       var children =  (context.parent.$store.state.appInstance.objectActive.menus||[]).map(function(element){
 
-          return h('v-list-item', {props: {
-            to: element.link, 
+          return  element.p_nav==1?  h('v-list-item', {props: {
+            to: element.link,
             tag:'li',
           },} , [
              h('v-list-item-content', [ h('v-list-item-title', [element.anchor])  ])
-          ])
+          ]): '';
         });
 
     }
