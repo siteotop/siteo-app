@@ -2,8 +2,34 @@
 export const PTx = {
   d/*_data*/: {
     // title content
-    t: 'readyPropDataDesc'
+    t: 'readyPropDataDesc',
+    // field from
+    a: {
+      $comp: 'PropSelect',
+      items: [
+        'name',
+        'title',
+        'slogan',
+        'actionText',
+        'description'
+      ],
+      default: 'description'
+    },
   },
+
+  p/*_props*/: {
+    // tag default div
+    a: {
+      $comp: 'PropSelect',
+      items: [
+        'span',
+        'b',
+        'i'
+      ],
+      default: 'span'
+    },
+  },
+
 
   c/*_class*/: ['textsize', 'textcolor', 'textalign', 'texttransform', 'textweight', 'textwrap'],
 
