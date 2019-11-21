@@ -1,14 +1,17 @@
 
-
+import WidthHeight from '../WidthHeight.vue';
 export const PropHeight = function(settings) {
   return {
-    name: 'v-slider',
+    name: WidthHeight,
     props: {
-      min: settings.validators.min||0,
-      max: settings.validators.max||100,
-      thumbLabel: true,
-      inverseLabel: true,
-      alwaysDirty: true,
+      vSlider: {
+        min: settings.validators.min||0,
+        max: settings.validators.max||100,
+        thumbLabel: true,
+        inverseLabel: true,
+        alwaysDirty: true,
+      }
+
     },
   }
 }
