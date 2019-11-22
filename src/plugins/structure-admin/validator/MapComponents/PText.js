@@ -31,7 +31,7 @@ export const PTx = {
   },
 
 
-  c/*_class*/: ['textsize', 'textcolor', 'textalign', 'texttransform', 'textweight', 'textwrap'],
+  c/*_class*/: ['background', 'textsize', 'textcolor', 'textalign', 'texttransform', 'textweight', 'textwrap', 'padding', 'margin'],
 
 
 }
