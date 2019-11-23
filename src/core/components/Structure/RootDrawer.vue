@@ -2,7 +2,6 @@
 <v-navigation-drawer
  app
  fixed
- :disable-route-watcher="true"
  :disable-resize-watcher="true"
  :value="parent.$store.state.drawer"
  @input="(value)=>parent.$store.state.drawer = value"
