@@ -20,7 +20,10 @@ export default {
 
      data() {
           return {
-           mobile: true
+           mobile: true,
+
+           // обив для дравера, але щось сторінка проглючує без нього
+           //drawerMounted: false
           }
      },
 
@@ -47,6 +50,7 @@ export default {
 
      mounted() {
        this.mobile = this.$vuetify.breakpoint.xs;
+      // this.drawerMounted = true;
      },
 
      render(h) {
@@ -54,6 +58,7 @@ export default {
         return h('v-app',
 
         [
+        //this.drawerMounted? 'RDw': '',
           'RDw',
           'RAb',
           'RCt',
