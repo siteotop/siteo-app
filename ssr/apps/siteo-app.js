@@ -19,17 +19,21 @@ const httpApi = require('../helper/http-api.js');
 
 */
 module.exports=function (req, res, baseUrl, path) {
-  /**
-    Example for Express: https://siteo-dev.com/pr2019/services/
+  //console.log(req);
 
-    req.originalUrl = '/pr2019/services/'
-    req.baseUrl = '/pr2019'
+  //console.log(req._parsedUrl);
+  /**
+    Example for Express: #1https://siteo-dev.com/pr2019/services/   #2https://siteo-dev.com/pr2019/services/?sdf=34
+
+    req.originalUrl = '/pr2019/services/'  &  '/pr2019/services/?sdf=34'
+    req.baseUrl = '/pr2019'   &   '/pr2019'
     req.hostname= 'siteo-dev.com'
     baseUrl = '/pr2019'
     path = '/services/'
   */
   var  context = {
-    url: path,
+    path: path,
+    query: req.query,
     configs_frontend: {
       baseUrl: baseUrl||"/",
       lang: 'en',

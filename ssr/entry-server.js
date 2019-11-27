@@ -24,7 +24,7 @@ export default (context) => {
     //  messages: SiteoLocalEN,
     });
 
-    console.log (context.instance);
+    //console.log (context.instance);
     app.$store.commit('appInstance/setModel', context.instance);
     context.meta = app.$meta();
 
@@ -40,7 +40,8 @@ export default (context) => {
 
 
     // устанавливаем маршрут для маршрутизатора серверной части
-    app.$router.push(context.url)
+    //console.log(context.url);
+    app.$router.push( {path:context.path, query:  context.query }  )
 
     // ожидаем, пока маршрутизатор разрешит возможные асинхронные компоненты и хуки
     app.$router.onReady(() => {
