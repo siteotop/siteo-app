@@ -9,13 +9,15 @@ const SystemMessages = {
       return {
          messages: [],
          timeout:0,
-         pageError: null
+         status: false
       }
   },
 
   mutations: {
 
-
+    turnOnMessages(state) {
+       state.status =true;
+    },
     /*
       set messages which was get from the server
       message is  object  { text: '', type:''}
@@ -32,12 +34,10 @@ const SystemMessages = {
             console.log(message);
           state.messages.push(message)
     },
-    setpageError(state, objectError) {
-          state.pageError = objectError;
-    },
+
     clearAllMessages(state) {
        state.messages=[];
-       state.pageError=null;
+
     }
   },
 
@@ -47,6 +47,9 @@ const SystemMessages = {
         this action filter message and commit
     */
     generateSystemMessage({commit, state}, message) {
+       if (!state.status) {
+         return ;
+       }
         if (typeof message == 'string') {
           message = {text: message, type: 'error'};
         }

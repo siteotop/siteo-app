@@ -203,13 +203,9 @@ export default {
          params = {limit:limit};
        }
        return this.$store.dispatch(this.typeList+'/getList', params);
-    },
-
-    asyncDataError(error_data) {
-        console.log(error_dat);
-        // in here place we need cath error
-        throw error_data;
     }
+
+
   }
 }
 

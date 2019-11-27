@@ -38,7 +38,7 @@ const baseErrors={
 
   'AXIOS_ERR_RESPONSE': {
     status: 500,
-    error_description: 'API throught server return error  response in body: '
+    error_description: 'Response from API-server return error'
   }
 
 }

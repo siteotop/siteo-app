@@ -62,8 +62,6 @@ export default {
 
   watch: {
       objectId(newId, oldId) {
-          console.log(newId);
-          console.log(oldId);
           if (newId!=oldId) {
             this.fetchItem();
           }
@@ -108,6 +106,10 @@ export default {
               } else {
                 return [];
               }
+            },
+
+            statusError(state) {
+                return this.$store.state.srvPageErr;
             }
         })
 
@@ -127,8 +129,10 @@ export default {
     },
 
 
+
     destroyed() {
       this.$store.unregisterApiModule ( 'pages');
+
     },
 
     methods: {
@@ -141,11 +145,11 @@ export default {
         document.onkeydown = KeyPress;
       },
 
-      asyncDataError(error_data) {
+    /*  asyncDataError(error_data) {
           this.$store.commit('pages/clearModel');
           this.$store.commit('pages/updateModel', {error: error_data});
       },
-
+*/
       fetchItem() {
          var store = this.$store,
              route = this.$route;
@@ -160,18 +164,24 @@ export default {
             if (!id) {
               return false;
             }
-            console.log(id);
-            store.commit('pages/updateModel',  {error:false} );
+            //console.log(id);
+
+
             return new Promise ((resolve, reject)=>{
                  store.dispatch('pages/getObject', id).then((result)=>{
 
                     var newStructure = {
-                      jsonStructure:   JSON.parse(result.jsonStructure)
+                      jsonStructure: JSON.parse(result.jsonStructure)
                     }
                     store.commit('pages/updateModel', newStructure  );
                     resolve(result);
                  }).catch(error=>{
-                   store.commit('pages/updateModel',  {error: true} );
+                   // error is error.response
+                   //console.log(error);
+                   if (error.response) {
+                     store.commit('setSrvPageErr',  error.response.data );
+                   }
+
                    resolve(error);
                    //reject(error);
                  });
@@ -196,8 +206,8 @@ export default {
         //   return h('div', ['loaded']);//h('div',  'not loaded');
         //}
 
-        if (this.pageObject.error) {
-          return h('RouteError', {props: this.pageObject.error});
+        if (this.statusError) {
+          return h('RouteError', {props: {status: this.statusError.status||404}});
         }
 
         if (Array.isArray(this.pageObject.jsonStructure)) {

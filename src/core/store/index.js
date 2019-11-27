@@ -23,9 +23,10 @@ export default function (Vue, RESTApi, configs)  {
        var store =  new Vuex.Store({
          state: {
            drawer: false,
-           allowAsyncLoad: true,
+           allowAsyncLoad: true, // During first load after SSR we need turn off async load data from API
            pageLoader: false,
            usePablicToken: true,
+           srvPageErr: false, //Full Error for Page or another route
            dispacthToken: 'defaultToken' // for example "account/refreshToken"
          },
 
@@ -49,7 +50,15 @@ export default function (Vue, RESTApi, configs)  {
             newDispatchToken(state, value) {
 
                 state.dispacthToken = value;
-            }
+            },
+            setSrvPageErr(state, objectError) {
+                 state.srvPageErr = objectError;
+            },
+            clearSrvPageErr(state) {
+               if (state.allowAsyncLoad) {
+                 state.srvPageErr = false;
+               }
+            },
          },
 
          modules: {
@@ -141,7 +150,6 @@ export default function (Vue, RESTApi, configs)  {
                 store.dispatch('generateSystemMessage', {text: `Error ${error.response.data.status
          }: ${error.response.data.error_description}` , type: 'error'});
              }
-
               return Promise.reject(error);
            }
 

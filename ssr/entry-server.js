@@ -1,15 +1,12 @@
 // entry-server.js
 import  {createSiteo}  from '../src/core';
-//import  SiteoLocalEN  from '../src/core/i18n/en';
 
 
 export default (context) => {
   // поскольку могут быть асинхронные хуки маршрута или компоненты,
   // мы будем возвращать Promise, чтобы сервер смог дожидаться
   // пока всё не будет готово к рендерингу.
-    if (!context.instance._id) {
-       throw {ssr_error_code: 'APP_INSTANCE_NOT_VALID' , response_data_api: context.instance};
-    }
+
   // if design not found connect default design
    if (context.instance.design) {
      if (typeof context.instance.design == 'string' ) {

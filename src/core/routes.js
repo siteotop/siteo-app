@@ -58,7 +58,7 @@ export default function (configs) {
       {
          path: "*",
          name: 'PageError',
-         component: { functional: true, render(h){ return h('RouteError', {props: {status:404}})} } ,
+         component: { functional: true, render(h){ return h('RouteError', {props: {status:404, fromRoute: true}})} } ,
          meta:{},
       }
     );

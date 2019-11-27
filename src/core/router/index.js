@@ -33,6 +33,9 @@ export default function (Vue, store, baseUrl, routes) {
      router.beforeEach(function (to, from, next) {
          Vue.prototype.$Progress.start();
          store.commit('startPageLoader');
+         //store.commit('clearAllMessages');
+         store.commit('clearSrvPageErr');
+
          next();
      });
 

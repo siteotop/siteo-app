@@ -1,29 +1,39 @@
 <template>
-  <PageSchema :structure="[{
+<v-container class="fill-height ">
+<v-row align="center" justify="center">
+    <v-col cols="12" sm="10" md="8" class="text-center">
+      <v-sheet class="transparent">
+        <v-avatar size="90">
+          <img
+            src="/core/android-chrome-192x192.png"
+         alt="Logo"
+         >
+        </v-avatar>
+        <div class="font-weight-black pb-2" style="font-size:180px;">
+          {{dataStatus}}
+        </div>
+        <div class="mt-n6 title">
+          {{description}}
+        </div>
+        <div>
+          <span class="caption grey--text text--lighten-1">For more information click <a class="caption grey--text text--lighten-1"  @click="modalError=true" >here</a></span>
+          <v-dialog max-width="500" v-model="modalError">
+            <v-card >
+              <v-card-text>
+              <code>{{JSON.stringify($store.state.srvPageErr, null, 1)}}</code>
+              </v-card-text>
+            </v-card>
+          </v-dialog>
+        </div>
+        <div class="mt-4">
+          <v-btn  v-bind="buttonProps"><v-icon>$vuetify.icons.home</v-icon>{{buttonText}}</v-btn>
+          </div>
+      </v-sheet>
 
-      n/*_name*/: 'PSc',
-      p/*_props*/: {
-        lc: ['column']
-      },
-      h/*_children*/: [
-         {
-           n/*_name*/: 'PTl',
-           d/*_data*/: {
-             t: title
-           },
-           p/*_props*/: {
-             h: 'h1'
-           }
-         },
-         {
-           n/*_name*/: 'PTx',
-           d/*_data*/: {
-             t: description
-           },
+    </v-col>
+</v-row>
+</v-container>
 
-         }
-      ]
-   } ]"></PageSchema>
 </template>
 
 <script>
@@ -32,29 +42,74 @@ export default {
 
   props : {
       status: [Number, Object],
-      error_code: String,
-      issuer: String,
-      error_description: String,
-      action: {
-        type: Boolean,
+
+      // when component using for route error not found
+      fromRoute: {
+        type: [Boolean],
         default: false
       }
   },
 
+  data() {
+      return {
+        dataStatus: false,
+        modalError: false
+      }
+  },
+
+  created() {
+      // everytime take status from props
+      this.dataStatus = this.status;
+      if (this.fromRoute) {
+        // need operator "if" when websites is disabled and others path update original server response
+        if (!this.$store.state.srvPageErr ) {
+          this.$store.commit('setSrvPageErr', {status: 404, error_description: 'Document not found'});
+        } else {
+           // when website is disabled  status take from response
+           this.dataStatus = this.$store.state.srvPageErr.status;
+        }
+      } else {
+
+      }
+  },
   computed: {
 
-      title () {
-         return `Error: ${this.status}`
+      buttonProps() {
+        var button = {
+            color: 'primary',
+            exact: true
+        }
+        if (this.$store.getters['appInstance/activeId']) {
+          button.to = {name:'indexPage'};
+        } else {
+          button.href="https://"+ this.$store.getters.getSiteoConfig('host');
+        }
+        return button;
       },
 
       description() {
-         if (this.error_description) {
-          return `Description: ${this.error_description}; Error code: ${this.error_code}; Issuer: ${this.issuer}`;
+         if (this.$store.state.srvPageErr) {
+            if (this.$store.state.srvPageErr.response_data_api ) {
+                return this.$store.state.srvPageErr.response_data_api.error_description;
+            } else {
+                return this.$store.state.srvPageErr.error_description;
+            }
+
+         }  else {
+           return  this.$t('error'+this.dataStatus);
          }
 
-         return  this.$t('error'+this.status);
+      },
 
-      }
+      buttonText() {
+         if (this.$store.state.appInstance.objectActive.name){
+            return this.$store.state.appInstance.objectActive.name;
+         } else {
+           return 'Main Page'
+         }
+      },
+
+
 
   }
 
