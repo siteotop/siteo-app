@@ -55,6 +55,7 @@ export default (context) => {
         app.$store.commit('clearAllMessages');
         app.$store.state.allowAsyncLoad = false;
         context.state = app.$store.state
+        delete context.state.route;
       }
 
       resolve(app);

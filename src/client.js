@@ -27,6 +27,10 @@ if (window.__SITEO_CONFIG__['siteo-plugin-googleanalitics']) {
 app.$router.onReady(() => {
 
    if (window.__INITIAL_STATE__) {
+        //fix problem with #hash work (on server we remove route from state, here we added route)
+        window.__INITIAL_STATE__.route = app.$route;
+        //fix
+        // replase state from SSR
         app.$store.replaceState(window.__INITIAL_STATE__);
    } else {
     // if no window.__INITIAL_STATE__

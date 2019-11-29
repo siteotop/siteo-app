@@ -6,8 +6,8 @@ import VueRouter from 'router';
 
 export default function (Vue, store, baseUrl, routes) {
     Vue.use(VueRouter);
-    var router;
-    router = new VueRouter({
+
+    var router = new VueRouter({
         /**
           https://router.vuejs.org/api/#base
           our path is without last "/"
