@@ -49,6 +49,7 @@ export default {
        var func_click = function(ev){
         ev.preventDefault();
         context.parent.$vuetify.goTo(context.props.cntnt.hg, {offset: 50, duration: 40});
+        context.parent.$router.replace({hash:context.props.cntnt.hg} );
         //document.location.hash = context.props.cntnt.hg;
      };
 
