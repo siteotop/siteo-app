@@ -35,6 +35,13 @@ export default function (configs) {
         },
 
         {
+          name: "locations",
+          path:  '/' + (configs.seo_path_locations?  configs.seo_path_locations: 'locations'),
+          component: ()=>import( /* webpackChunkName: "locations" */ './components/Routes/Locations/index.vue'),
+          props: { typeList: 'locations' }
+        },
+
+        {
           name: "order",
           path:  '/go/:typeAction(order|call|recall|chat|links|locations)?',
           component:()=>import(/* webpackChunkName: "order" */  './components/Routes/Order.vue'),
