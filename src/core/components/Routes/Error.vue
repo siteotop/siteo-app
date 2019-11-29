@@ -80,7 +80,7 @@ export default {
             exact: true
         }
         if (this.$store.getters['appInstance/activeId']) {
-          button.to = {name:'indexPage'};
+          button.to = {path:'/'};
         } else {
           button.href="https://"+ this.$store.getters.getSiteoConfig('host');
         }

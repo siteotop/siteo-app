@@ -5,7 +5,7 @@ export default function (configs) {
     var routes = [
         {
           name: "indexPage",
-          path:  '',
+          path:  configs.seo_path_index||'',
           component: Pages,
           props: true,
           meta: {name: 'page'}
@@ -16,34 +16,34 @@ export default function (configs) {
       routes.push(
         {
           name: "values",
-          path: '/' + (configs.seo_path_values?  configs.seo_path_values: 'values'),
+          path: configs.seo_path_values|| '/values',
           component:()=>import( /* webpackChunkName: "list" */ './components/Routes/Items/index.vue'),
           props: { typeList: 'values' }
         },
         {
           name: "experts",
-          path:  '/' + (configs.seo_path_experts?  configs.seo_path_experts: 'experts') ,
+          path:  configs.seo_path_experts || '/experts',
           component:()=>import( /* webpackChunkName: "list" */ './components/Routes/Items/index.vue'),
           props: { typeList: 'experts' }
         },
 
         {
           name: "posts",
-          path:  '/' + (configs.seo_path_posts?  configs.seo_path_posts: 'posts'),
+          path:  configs.seo_path_posts || '/posts',
           component: ()=>import( /* webpackChunkName: "list" */ './components/Routes/Items/index.vue'),
           props: { typeList: 'posts' }
         },
 
         {
           name: "locations",
-          path:  '/' + (configs.seo_path_locations?  configs.seo_path_locations: 'locations'),
+          path:  configs.seo_path_locations|| '/locations',
           component: ()=>import( /* webpackChunkName: "locations" */ './components/Routes/Locations/index.vue'),
           props: { typeList: 'locations' }
         },
 
         {
           name: "order",
-          path:  '/go/:typeAction(order|call|recall|chat|links|locations)?',
+          path:  '/go/:typeAction(order|call|recall|chat|links)?',
           component:()=>import(/* webpackChunkName: "order" */  './components/Routes/Order.vue'),
           props: true
 
