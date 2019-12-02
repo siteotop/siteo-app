@@ -8,8 +8,13 @@ export default function (parentGetterUrl) {
           meta_description: '',
           meta_robots: '',
           url: '',
-        //  error: false,
-          jsonStructure: ''
+          jsonStructure: '',
+          og_title: '',
+          title: '',
+          description:'',
+          picture: '',
+          og_image: '',
+          meta_robots: '',
       }
     },
 

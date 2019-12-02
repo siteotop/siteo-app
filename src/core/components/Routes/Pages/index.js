@@ -31,14 +31,43 @@ export default {
 
         {
           name: 'description',
-          vmid: 'desc',
+          vmid: 'des',
           content: this.pageObject.meta_description
         },
         {
           name: 'robots',
           vmid: 'rob',
           content: this.pageObject.meta_robots ||'index,follow'
-        }
+        },
+
+        /**
+            instructions for Open Graph Protocol https://ogp.me/
+        */
+
+        {
+          property: 'og:type',
+          vmid: 'ogy',
+          content:'article'
+        },
+
+        {
+          property: 'og:title',
+          vmid: 'ogt',
+          content: this.pageObject.og_title|| this.pageObject.meta_title
+        },
+
+        {
+          property: 'og:url',
+          vmid: 'ogu',
+          content: this.canonical
+        },
+
+        this.pageObject.og_image || this.pageObject.picture? {
+          property: 'og:image',
+          vmid: 'ogi',
+          content: this.pageObject.og_image || this.pageObject.picture
+        }: '',
+
       ],
       link: [
        {
@@ -111,7 +140,8 @@ export default {
             statusError(state) {
                 return this.$store.state.srvPageErr;
             }
-        })
+        }),
+
 
 
 
