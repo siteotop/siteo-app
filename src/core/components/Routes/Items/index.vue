@@ -77,8 +77,11 @@ import {
   mdiSortVariant
 } from '@mdi/js';
 
+import MetaInfo from '../Pages/MetaInfo';
+
 export default {
 
+  mixins: [MetaInfo],
 
 
   props: {
@@ -120,7 +123,11 @@ export default {
         return this.$t('routes_'+this.typeList+'_t');
       },
 
+      pageObject() {
+          return  {};
+      },
 
+      
       ...mapState({
           listItems (state) {
               if (state[this.typeList]) {
@@ -149,7 +156,7 @@ export default {
 
   },
 
-
+ /*
   metaInfo () {
 
    return {
@@ -161,7 +168,7 @@ export default {
 
     }
   },
-
+*/
   serverPrefetch () {
     // возвращает Promise из действия, поэтому
     // компонент ждёт данные перед рендерингом

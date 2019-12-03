@@ -4,9 +4,10 @@ import Loader from '../../_mixins/component-loading.js';
 import { mapState } from 'vuex';
 import pages from  '../../../store/modules/pages';
 
+import MetaInfo from './MetaInfo';
 
 export default {
-  mixins: [Loader],
+  mixins: [Loader, MetaInfo],
 
   props: {
       objectId: {
@@ -24,60 +25,7 @@ export default {
   },
 
 
-  metaInfo () {
-   return {
-      title: this.pageObject.meta_title,
-      meta: [
 
-        {
-          name: 'description',
-          vmid: 'des',
-          content: this.pageObject.meta_description
-        },
-        {
-          name: 'robots',
-          vmid: 'rob',
-          content: this.pageObject.meta_robots ||'index,follow'
-        },
-
-        /**
-            instructions for Open Graph Protocol https://ogp.me/
-        */
-
-        {
-          property: 'og:type',
-          vmid: 'ogy',
-          content:'article'
-        },
-
-        {
-          property: 'og:title',
-          vmid: 'ogt',
-          content: this.pageObject.og_title|| this.pageObject.meta_title
-        },
-
-        {
-          property: 'og:url',
-          vmid: 'ogu',
-          content: this.canonical
-        },
-
-        this.pageObject.og_image || this.pageObject.picture? {
-          property: 'og:image',
-          vmid: 'ogi',
-          content: this.pageObject.og_image || this.pageObject.picture
-        }: '',
-
-      ],
-      link: [
-       {
-        rel: 'canonical',
-        href: this.canonical
-       },
-      ]
-
-    }
-  },
 
   /**
      works on ssr
@@ -100,18 +48,7 @@ export default {
 
   computed: {
 
-        /**
-         generate canonikal href link for vue-meta
-         if page is main generate start domain
-        */
-        canonical() {
-          if (this.$store.state.appInstance.objectActive._websites_page == this.pageObject._id) {
-            return this.$store.getters.CORE_HOST;
-          } else {
-              return this.$store.getters.CORE_HOST +'/'+ this.pageObject.url;
-          }
-
-        },
+      
 
         ...mapState({
             pageObject (state) {
