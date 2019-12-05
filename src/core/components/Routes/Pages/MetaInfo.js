@@ -17,14 +17,17 @@ export default {
         return this.$store.getters.CORE_HOST + this.$route.path;
       }
 
-
-
       /*if (this.$store.state.appInstance.objectActive._websites_page == this.pageObject._id) {
         return this.$store.getters.CORE_HOST;
       } else {
           return this.$store.getters.CORE_HOST +'/'+ this.pageObject.url;
       }*/
 
+    },
+
+
+    statusError(state) {
+        return this.$store.state.srvPageErr;
     }
   },
 

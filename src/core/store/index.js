@@ -117,7 +117,7 @@ export default function (Vue, RESTApi, configs)  {
 
            callCoreApi({dispatch}, APIconfig ) {
 
-             APIconfig.headers
+             //APIconfig.headers
              return  RESTApi({
                 method: APIconfig.method||'GET',
                 url: APIconfig.url,

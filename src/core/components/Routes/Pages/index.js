@@ -48,7 +48,7 @@ export default {
 
   computed: {
 
-      
+
 
         ...mapState({
             pageObject (state) {
@@ -72,10 +72,6 @@ export default {
               } else {
                 return [];
               }
-            },
-
-            statusError(state) {
-                return this.$store.state.srvPageErr;
             }
         }),
 
@@ -118,14 +114,12 @@ export default {
       },
 */
       fetchItem() {
-         var store = this.$store,
-             route = this.$route;
 
-            var id;
-            if (route.params.objectId) {
-               id = route.params.objectId;
+            var id; // id for page
+            if (this.$route.params.objectId) {
+               id = this.$route.params.objectId;
             } else {
-               id = store.state.appInstance.objectActive._websites_page;
+               id = this.$store.state.appInstance.objectActive._websites_page;
             }
 
             if (!id) {
@@ -135,18 +129,20 @@ export default {
 
 
             return new Promise ((resolve, reject)=>{
-                 store.dispatch('pages/getObject', id).then((result)=>{
+                 this.$store.dispatch('pages/getObject', id).then((result)=>{
 
                     var newStructure = {
                       jsonStructure: JSON.parse(result.jsonStructure)
                     }
-                    store.commit('pages/updateModel', newStructure  );
+                    this.$store.commit('pages/updateModel', newStructure  );
                     resolve(result);
                  }).catch(error=>{
                    // error is error.response
                    //console.log(error);
                    if (error.response) {
-                     store.commit('setSrvPageErr',  error.response.data );
+                     this.$store.commit('setSrvPageErr',  error.response.data );
+                   } else {
+                     this.$store.commit('setSrvPageErr', {status: 500}  )
                    }
 
                    resolve(error);

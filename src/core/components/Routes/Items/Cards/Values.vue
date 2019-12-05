@@ -1,6 +1,7 @@
 <template functional>
   <v-hover>
     <v-card
+
        slot-scope="{ hover }"
        :class="`elevation-${hover ? 12 : 2}`"
     >
@@ -51,8 +52,8 @@
          <v-list-item-subtitle>{{props.subtitle}}</v-list-item-subtitle>
        </v-list-item-content>
       </v-list-item>
-
-      <v-card-text>
+      {{props.comp}}
+      <v-card-text >
         {{props.preview}}
       </v-card-text>
         <!--  <v-card-title>
@@ -60,8 +61,8 @@
             <v-spacer></v-spacer>
             <PBt :to="props._to" :fab="true" :large="false"></PBt>
           </v-card-title> -->
-        <v-divider ></v-divider>
-          <v-card-actions>
+        <v-divider  ></v-divider>
+          <v-card-actions >
             <v-spacer></v-spacer>
                 <v-btn
                   tag="a"

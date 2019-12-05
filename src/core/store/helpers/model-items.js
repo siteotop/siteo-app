@@ -52,6 +52,10 @@ const MUTATIONS = {
 
   },
 
+  saveAdditional(state, object) {
+      state.additional = object;
+  },
+
   clearList(state, items) {
     //  state.objects = [];
       while(state.objects.length > 0) {state.objects.pop();}
@@ -73,13 +77,22 @@ const ACTIONS = {
      config.url = getters.urlWithoutId;
      return   dispatch('callAPI', config, {root:true}).then(response=>{
           state.firstLoaded = true;
-          if (params && !params['append']) {
-             commit('clearList');
+          if (params ) {
+            if ( !params['append']) {
+                commit('clearList');
+            }
+
+            if (params.additional) {
+              commit('saveAdditional', response.data[params.additional]);
+            }
+
           }
           commit('saveList', response.data.items);
           commit('savePagination', response.data.pagination );
 
+
           return state.objects;
+
      });
 
   },
@@ -200,6 +213,7 @@ export default function (configItems) {
       state: {
         //
         firstLoaded: false,
+        additional: {},
         pagination: {
             limit: 10,
             offset: 0,
