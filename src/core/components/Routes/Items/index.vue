@@ -1,7 +1,7 @@
 <template>
 <div v-if="!statusError">
-  <v-container fluid >
-    <v-container>
+  <v-container fluid  v-if="pageObject.meta_title">
+    <v-container >
     <v-row   justify="center"   alignContent="center" class="text-center" >
       <v-col  cols="12" md="5" v-if="!loaded">
         <v-skeleton-loader
@@ -12,7 +12,7 @@
       </v-col>
       <v-col cols="12" v-else>
         <v-sheet class="transparent"  v-if="pageObject.meta_title">
-        <h1 class="display-2 font-weight-black">{{pageObject.title}}</h1>
+           <h1 class="display-2 font-weight-black">{{pageObject.title}}</h1>
             <div class="mt-2 font-weight-medium">{{pageObject.description}}</div>
         </v-sheet>
       </v-col>
@@ -34,9 +34,37 @@
       </v-btn>
 
    </v-btn-toggle>
-   <v-btn  small fab text>
-       <v-icon>{{$options._icons.sort}}</v-icon>
-   </v-btn>
+
+
+
+   <v-menu
+     v-model="ordermenu"
+     :close-on-content-click="false"
+     :nudge-width="200"
+     offset-x
+   >
+     <template v-slot:activator="{ on }">
+       <v-btn  small fab text  v-on="on">
+           <v-icon>{{$options._icons.sort}}</v-icon>
+       </v-btn>
+     </template>
+     <v-card>
+       <v-card-text>
+       <v-select
+          v-model="limit"
+
+          :items="[ '10',  '20', '30', '50']"
+          label="Limit"
+          filled
+        ></v-select>
+      </v-card-text>
+      <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn disabled>OK</v-btn>
+          <v-btn @click="ordermenu=false" >Cancel</v-btn>
+      </v-card-actions>
+     </v-card>
+   </v-menu>
   </PageItemsToolbar>
 
   <v-container :fluid="toggle_component=='card'" :class="'grid-list-md'">
@@ -75,8 +103,14 @@
       </v-pagination>
     </v-col>
    </v-row>
+   </slot>
  -->
- </slot>
+   <PageSchema v-if="pageObject.jsonStructure"
+      :structure = "pageObject.jsonStructure"
+      :sharing = "true"
+   >
+
+   </PageSchema>
 
 </div>
 <div v-else>
@@ -143,8 +177,10 @@ export default {
 
   data() {
     return {
+      ordermenu: false,
       notLoaded: true,
       toggle_component: 'card',
+      limit: this.$store.getters.getSiteoConfig('seo_limit')
 
     }
   },
@@ -183,6 +219,12 @@ export default {
           countItems(state) {
             if (state[this.typeList]) {
                 return state[this.typeList].items.pagination.servercount || 0;
+            }
+          },
+
+          limitItems() {
+            if (state[this.typeList]) {
+                return state[this.typeList].items.pagination.limit;
             }
           },
           loaded(state) {
@@ -246,10 +288,10 @@ export default {
 
        // use limit from settings website
        // usefull for websites with short list, where need show all list with values
-       const limit = this.$store.getters.getSiteoConfig('seo_limit');
-       let params;
-       if (limit != 10 ){
-         params = {limit:limit};
+
+       let params={};
+       if (this.limit != 10 ){
+         params = {limit:this.limit};
        }
        // return response for using additional funcional page
        params.additional = 'pageObject';
