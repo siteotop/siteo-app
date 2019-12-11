@@ -18,27 +18,27 @@ export default function (configs) {
           name: "values",
           path: configs.seo_path_values|| '/values',
           component:()=>import( /* webpackChunkName: "list" */ './components/Routes/Items/index.vue'),
-          props: { typeList: 'values' }
+          props: true,
         },
         {
           name: "experts",
           path:  configs.seo_path_experts || '/experts',
           component:()=>import( /* webpackChunkName: "list" */ './components/Routes/Items/index.vue'),
-          props: { typeList: 'experts' }
+          props: true,
         },
 
         {
           name: "posts",
           path:  configs.seo_path_posts || '/posts',
           component: ()=>import( /* webpackChunkName: "list" */ './components/Routes/Items/index.vue'),
-          props: { typeList: 'posts' }
+          props: true,
         },
 
         {
           name: "locations",
           path:  configs.seo_path_locations|| '/locations',
           component: ()=>import( /* webpackChunkName: "locations" */ './components/Routes/Locations/index.vue'),
-          props: { typeList: 'locations' }
+          props: true,
         },
 
         {

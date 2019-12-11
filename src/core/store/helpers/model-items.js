@@ -82,8 +82,8 @@ const ACTIONS = {
                 commit('clearList');
             }
 
-            if (params.additional) {
-              commit('saveAdditional', response.data[params.additional]);
+            if (response.data.additional) {
+              commit('saveAdditional', response.data.additional);
             }
 
           }

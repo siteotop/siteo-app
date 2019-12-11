@@ -20,9 +20,30 @@
     </v-container>
   </v-container>
   <PageItemsToolbar :hightUp="100">
-    <v-btn   fab text>
-      <v-icon>{{$options._icons.filter}}</v-icon>
-    </v-btn>
+    <v-menu
+      eager
+      :nudge-width="200"
+
+    >
+      <template v-slot:activator="{ on }">
+
+        <v-btn :disabled="!vcategories.length"  fab text  v-on="on">
+          <v-icon>{{$options._icons.filter}}</v-icon>
+        </v-btn>
+      </template>
+      <v-card>
+        <v-list>
+        <v-list-item tag="a" :to="{path: prefixCategory + cat.idUrl}"  v-for="(cat, i) in vcategories" :key="i">
+          <v-list-item-content>
+            <v-list-item-title>{{cat.title}} <span class="grey--text text--lighten-1">{{cat.count}}0</span></v-list-item-title>
+
+          </v-list-item-content>
+
+          </v-list-item>
+        </v-list>
+      </v-card>
+    </v-menu>
+
     <v-toolbar-title><h2 class="title" >{{$store.getters.getSiteoConfig('t_ls')||'LIST VALUES'}}</h2></v-toolbar-title>
     <v-spacer></v-spacer>
     <v-btn-toggle mandatory v-model="toggle_component">
@@ -148,10 +169,16 @@ export default {
 
 
   props: {
-    typeList: {
+
+    /**
+      dirty category (with required prefix or suffix)
+    */
+    category: {
       type: String,
       default :''
-    }
+    },
+
+
   },
   components: {
     PageItemsToolbar,
@@ -171,18 +198,39 @@ export default {
 
   },
 
+  created() {
+      this.typeList = this.$route.name;
+      console.log(this.$route);
+      this.findRealCategory(this.category);
+
+
+
+  },
+
   destroyed () {
     this.$store.unregisterApiModule(this.typeList);
- },
+  },
 
   data() {
     return {
+      typeList:'',
+      prefixCategory:'',
+      realCategory: false,
       ordermenu: false,
       notLoaded: true,
       toggle_component: 'card',
       limit: this.$store.getters.getSiteoConfig('seo_limit')
 
     }
+  },
+
+  watch: {
+      category(newId, oldId) {
+          if (newId!=oldId) {
+            this.findRealCategory(newId);
+            this.fetchItem();
+          }
+      }
   },
 
   computed: {
@@ -209,9 +257,18 @@ export default {
 
           pageObject (state) {
              if (state[this.typeList]) {
-               return state[this.typeList].items.additional || {}
+               return state[this.typeList].items.additional.pageObject || {}
              } else {
                return {};
+             }
+
+          },
+
+          vcategories (state) {
+             if (state[this.typeList]) {
+               return state[this.typeList].items.additional.vcategories || []
+             } else {
+               return [];
              }
 
           },
@@ -275,6 +332,22 @@ export default {
   },
 
   methods: {
+    findRealCategory(path_category) {
+      var path = this.$store.getters.getSiteoConfig('seo_path_'+this.typeList);
+
+      var mathes= path.match(new RegExp("\\((.*)\\["));
+      if (mathes[1]) {
+        this.prefixCategory = mathes[1];
+        if (path_category) {
+          this.realCategory = path_category.replace(mathes[1], "");
+        } else {
+          this.realCategory = false;
+        }
+      } else {
+        return false;
+      }
+    },
+
     registerModule(preserveState) {
       this.$store.registerApiModule({
         name: this.typeList,
@@ -294,9 +367,11 @@ export default {
          params = {limit:this.limit};
        }
        // return response for using additional funcional page
-       params.additional = 'pageObject';
+       params.additional = true;
        params.gp = this.$route.path;
-
+       if  (this.realCategory) {
+          params.category = this.realCategory;
+       }
        return new Promise ((resolve, reject)=>{
 
            this.$store.dispatch(this.typeList+'/getList', params).then((result)=>{
