@@ -1,10 +1,13 @@
 <template>
+ <v-lazy
+  v-model="isActive"
+ >
   <div v-if="loaded">
-    <div v-if="component"><component :is="component"  v-bind="pluginOptions"></component></div>
+    <div v-if="component"><component :is="component"   v-bind="pluginOptions"></component></div>
   </div>
   <div v-else>
     <slot v-if="desktopReady">
-        Plugin not  loaded
+        <span class="grey--text text--lighten-1">Plugin loading</span>
          <v-progress-linear
               color="primary"
               indeterminate
@@ -13,6 +16,7 @@
          ></v-progress-linear>
       </slot>
    </div>
+ </v-lazy>
 </template>
 
 <script>
@@ -54,12 +58,28 @@ export default {
 
     data() {
       return {
+        isActive: false,
         desktopReady: false,
         loaded: false,
         component: false
        }
     },
 
+    watch: {
+        isActive(newValue, oldValue) {
+            if (newValue!=oldValue&&newValue) {
+              console.log('Cnahe v-lazy');
+
+              if (!this.pluginName) {
+                return
+              }
+              this.getPluginComponent(this.pluginName);
+
+
+            }
+
+        }
+    },
 
     mounted() {
         // load plugin
@@ -68,10 +88,6 @@ export default {
         // https://some-domen.com/plugins/+this.pluginName
         this.desktopReady = true;
         //console.log(this.pluginName);
-        if (!this.pluginName) {
-          return
-        }
-        this.getPluginComponent(this.pluginName);
 
     },
 
