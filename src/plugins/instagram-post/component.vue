@@ -1,5 +1,11 @@
 <template >
-  <div v-html="htmlInsta"></div>
+  <div v-if="loaded" v-html="htmlInsta"></div>
+  <div v-else>
+    <v-skeleton-loader
+        type="card"
+    >
+    </v-skeleton-loader>
+  </div>
 </template>
 
 <script>
@@ -21,6 +27,7 @@ export default {
 
   data() {
       return {
+        loaded: false,
         htmlInsta: ''
       }
   },
@@ -37,13 +44,17 @@ export default {
             console.log(result);
             self.htmlInsta=result.data.html;
             $script('https://www.instagram.com/embed.js').then(function() {
+               self.loaded=true;
                 window.instgrm.Embeds.process();
+
             })
 
 
 
         }).catch(function(error){
+          self.loaded=true;
           self.htmlInsta = 'Error load';
+
           console.log('Instagram error ');
           console.log(error);
       })
