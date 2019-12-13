@@ -15,7 +15,7 @@
   <SiteoPlugin
     ref="pluginLoader"
     :adminMode="true"
-    @changeComponent="catchComponent($event)"
+    @change-component="catchComponent($event)"
   >
   </SiteoPlugin>
  </div>
@@ -31,7 +31,8 @@ export default {
     return {
        pluginsList: [
          '',
-         'siteo-plugin-instagram-post'
+         'siteo-plugin-instagram-post',
+         'siteo-plugin-select-items'
        ],
 
        pluginComponentProps: {},
@@ -54,7 +55,7 @@ export default {
             this.valueData.pluginOptions = {};
             for (var key in newValue) {
                 var name_prop = newValue[key].name;
-              // if prop is default not add to page 
+              // if prop is default not add to page
                if (this.pluginComponentProps[name_prop] != newValue[key].value) {
                  this.valueData.pluginOptions[name_prop] =  newValue[key].value;
                }
@@ -89,11 +90,15 @@ export default {
         // newComponent.props;
         this.pluginProps = [];
         this.pluginComponentProps = {};
+
+
+
         for (var nameProp in newComponent.props) {
             var type_prop = newComponent.props[nameProp].type;
             console.log(type_prop);
             if (newComponent.props[nameProp].type) {
-                var NameComponent;
+                // Need if prop is Object 
+                var NameComponent = false;
                 if (type_prop == Boolean) {
                   NameComponent = 'v-switch';
                 }
@@ -101,12 +106,16 @@ export default {
                 if (type_prop == String) {
                   NameComponent = 'v-text-field';
                 }
-                this.pluginComponentProps[nameProp] = newComponent.props[nameProp].default;
-                this.pluginProps.push({
-                    name: nameProp,
-                    component: NameComponent,
-                    value:this.valueData.pluginOptions[nameProp]||newComponent.props[nameProp].default
-                });
+
+
+                if ( NameComponent) {
+                  this.pluginComponentProps[nameProp] = newComponent.props[nameProp].default;
+                  this.pluginProps.push({
+                      name: nameProp,
+                      component: NameComponent,
+                      value:this.valueData.pluginOptions[nameProp]||newComponent.props[nameProp].default
+                  });
+                }
             }
         }
     }

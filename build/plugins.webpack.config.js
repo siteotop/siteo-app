@@ -49,6 +49,7 @@ module.exports = {
     'bus':   './src/plugins/bus',
     'project-card':   './src/plugins/project-card',
     'sharing':   './src/plugins/sharing',
+    'select-items':   './src/plugins/select-items',
 
   },
 
