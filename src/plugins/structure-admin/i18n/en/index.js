@@ -7,7 +7,7 @@ import {PAd} from './PAdsense';
 import {PBt, RAc, PMn, MBt} from './PButton';
 import {PCd, Cti, Cte, Cac} from './PCard';
 import {PCs, CSe} from './PCarusel';
-import {PSc,  PLt, Flx} from './PContainer';
+import {PCt,  PLt, Flx} from './PContainer';
 import {PDl} from './PDialog';
 import {PDm} from './PDialogMenu';
 import {PEx, Exi} from './PExpansion';
@@ -36,6 +36,9 @@ export default {
 
   admins: {
     Vtf,
+    RPa: {
+      t: 'Page'
+    },
     RCt: {
       t: 'Content'
     },
@@ -47,7 +50,7 @@ export default {
     PAv,
     RAb, TTl, TTg, PTr,
     PAd,
-    PSc, PLt, Flx,
+    PCt, PLt, Flx,
     PPx,
     PPl,
     PIm,

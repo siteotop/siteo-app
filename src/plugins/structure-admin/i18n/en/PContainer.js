@@ -228,13 +228,17 @@ export const Flx = {
 
 }
 
-export const PSc = {
- t: 'Section',
- d: 'Container for page. Use <section> tag',
+export const PCt = {
+ t: 'Container',
+ d: 'Container for page',
   helperProps: {
 
+    a: {
+      t: 'Fluid',
+      d: ''
+    },
     b: {
-      t: 'Background',
+      t: 'Tag',
       d: ''
     },
 

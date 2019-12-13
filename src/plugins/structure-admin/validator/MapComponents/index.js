@@ -7,7 +7,7 @@ export {PAv, RLg} from './PAvatar';
 export {PBt, RAc, PMn, MBt} from './PButton';
 export {PCd, Cti, Cte, Cac } from './PCard';
 export {PCs, CSe} from './PCarusel';
-export {PSc, Flx, PLt} from './PContainer';
+export {PCt, Flx, PLt} from './PContainer';
 export {PIm} from './PImage';
 export {PDl} from './PDialog';
 export {PDm} from './PDialogMenu';
@@ -38,7 +38,7 @@ export {PPn} from './PSiteoPlugin';
 
 export {EAttrs} from './EmulateAttrs';
 export const RPa = {
-  h/*_children*/: ['PSc', 'PTr' ]
+  h/*_children*/: ['PCt', 'PTr' ]
 };
 
 /**

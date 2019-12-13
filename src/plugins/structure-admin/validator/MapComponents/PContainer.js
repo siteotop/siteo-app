@@ -167,11 +167,16 @@ export const PLt = {
 
 
 // PageSection
-export const PSc = {
+export const PCt = {
   p/*_props*/: {
 
     //background
-    b: 'readyPropColor',
+    a: 'readyPropBoolean',
+    b: {
+      $comp: 'PropSelect',
+      items: ['section', 'div'],
+      default: 'section'
+    },
 
 
 
@@ -180,5 +185,5 @@ export const PSc = {
   a/*_attrib*/: [],
   c/*_class*/: cls,
 
-  h/*_children*/: ['PLt', 'PPx', 'PIm', 'PYv', 'PCs', 'PSd', 'PSr' ]
+  h/*_children*/: ['PCt','PLt', 'PPx', 'PIm', 'PYv', 'PCs', 'PSd', 'PSr' ]
 }

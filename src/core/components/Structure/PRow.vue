@@ -5,7 +5,7 @@ export default {
   render(h, context) {
 
      var cnf = context.props.cnf||{};
-     var layout =  h('v-row', {
+     return  h('v-row', {
          props: {
            align: cnf.a,
            alignSm: cnf.b,
@@ -81,14 +81,6 @@ export default {
 
         })
       ])
-      if (context.props.cnf.c) {
-        return h('v-container', {
-          class: context.props.cnf.d
-        } , [layout]);
-      } else {
-          return layout;
-      }
-
 
   }
 }
