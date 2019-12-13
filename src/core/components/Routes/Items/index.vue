@@ -1,6 +1,6 @@
 <template>
 <div v-if="!statusError">
-  <v-container fluid  v-if="pageObject.meta_title">
+  <v-container tag="section" fluid  v-if="pageObject.meta_title">
     <v-container >
     <v-row   justify="center"   alignContent="center" class="text-center" >
       <v-col  cols="12" md="5" v-if="!loaded">
