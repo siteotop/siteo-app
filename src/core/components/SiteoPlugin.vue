@@ -110,15 +110,17 @@ export default {
               при створенні плагіна webpack генерує файл який створює змінну в обєкті window['siteo-plugins']
               Тобто якщо плагін завантажено, то існує обєкт window['siteo-plugins'][self.pluginName]
             */
-
+                  var component;
                   if (window['siteo-plugins']&&window['siteo-plugins'][pluginName]) {
 
                       self.registerSiteoPlugin(window['siteo-plugins'][pluginName]);
-                      self.component = this.getPluginFromStore(pluginName);
+                      component= this.getPluginFromStore(pluginName);
                   }
                   self.loaded = true;
                   if (self.adminMode) {
-                      self.$emit('changeComponent', self.component );
+                      self.$emit('change-component', component);
+                  } else {
+                    self.component = component
                   }
 
         }).catch((error)=>{
