@@ -5,7 +5,8 @@ import  _maxBy from 'lodash/maxBy';
 
 const MUTATIONS = {
   addItem(state, item) {
-     state.objects.unshift(item);
+     state.objects.push(item);
+     ++state.pagination.servercount;
   },
 
   /**
