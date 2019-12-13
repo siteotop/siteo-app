@@ -1,11 +1,13 @@
 <template >
-  <div v-if="loaded" v-html="htmlInsta"></div>
-  <div v-else>
+<div>
+  <div v-show="loaded" v-html="htmlInsta"></div>
+  <div v-if="!loaded">
     <v-skeleton-loader
         type="card"
     >
     </v-skeleton-loader>
   </div>
+</div>
 </template>
 
 <script>
