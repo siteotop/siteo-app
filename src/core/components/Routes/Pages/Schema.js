@@ -25,7 +25,7 @@ export default {
 
     render(h, context) {
       console.log(' render page ');
-      return h('div', [
+      return  [
 
           // pageToolbar
         /**  false? h(FunctionalPageToolbar, {props: {
@@ -49,7 +49,7 @@ export default {
 
 
 
-      ])
+      ]
 
 
 
