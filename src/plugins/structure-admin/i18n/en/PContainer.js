@@ -110,22 +110,12 @@ export const PRw = {
       d: ''
     },
 
-    // container
-    c: {
-      t: 'Container on',
-      d: ''
-    },
-    // class for container
-    d: {
-      t: 'Container class',
-      d: ''
-    }
   }
 }
 
 export const Flx = {
-  t: 'Flex box',
-  d: 'Flex element for <Layout>',
+  t: 'Column',
+  d: '<v-col> for <v-row>',
   helperProps: {
     //cols:
      a: {
