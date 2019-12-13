@@ -1,8 +1,8 @@
 
 
-export const PLt = {
-  t: 'Layout',
-  d: 'Layout for flexbox',
+export const PRw = {
+  t: 'Row',
+  d: 'v-row, parent for v-col',
   helperProps: {
     //align
     a: {

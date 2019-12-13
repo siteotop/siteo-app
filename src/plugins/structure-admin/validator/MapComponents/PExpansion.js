@@ -33,6 +33,6 @@ export const Exi = {
     t: 'readyPropDataTitle'
   },
 
-  h/*_children*/: ['PLt', 'PCd',  'PTl', 'PTx','PYv',]
+  h/*_children*/: ['PRw', 'PCd',  'PTl', 'PTx','PYv',]
 
 }

@@ -6,7 +6,7 @@ export default {
 
     /**
       @type Object or String
-      Full Object which describe element or string name for element (for Example PLt )
+      Full Object which describe element or string name for element (for Example PRw )
     */
     element: {
 

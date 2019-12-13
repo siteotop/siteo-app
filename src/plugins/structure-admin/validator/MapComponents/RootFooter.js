@@ -1,4 +1,4 @@
-import {PLt} from './PContainer';
+import {PRw} from './PContainer';
 
 
 
@@ -26,7 +26,7 @@ export const RFt = {
 
     h/*_children*/: [
 
-      ...PLt.h/*_children*/,
+      ...PRw.h/*_children*/,
       'PSr'
     ]
 };

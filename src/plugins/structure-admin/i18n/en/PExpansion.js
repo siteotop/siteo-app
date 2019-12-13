@@ -1,5 +1,5 @@
 
-import {PLt} from './PContainer';
+import {PRw} from './PContainer';
 //PageExpansion
 export const PEx = {
   t: 'Expansion',
@@ -40,7 +40,7 @@ export const PEx = {
 export const Exi = {
   t: 'Expansion block',
   d: '',
-  helperProps: PLt.helperProps,
+  helperProps: PRw.helperProps,
   helperData: {
     t:  {
       t: 'Title',

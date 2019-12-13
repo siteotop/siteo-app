@@ -58,7 +58,7 @@ export const Flx =  {
       'PCs',
       'PDl',
       'PDm',
-      'PLt',
+      'PRw',
       'PIc',
       'PTl',
       'PBt',
@@ -87,7 +87,7 @@ export const Flx =  {
 
 
 // PageLayout
-export const PLt = {
+export const PRw = {
 
   p/*_props*/: {
 
@@ -185,5 +185,5 @@ export const PCt = {
   a/*_attrib*/: [],
   c/*_class*/: cls,
 
-  h/*_children*/: ['PCt','PLt', 'PPx', 'PIm', 'PYv', 'PCs', 'PSd', 'PSr' ]
+  h/*_children*/: ['PCt','PRw', 'PPx', 'PIm', 'PYv', 'PCs', 'PSd', 'PSr' ]
 }

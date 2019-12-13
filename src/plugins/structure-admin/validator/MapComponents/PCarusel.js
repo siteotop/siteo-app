@@ -56,6 +56,6 @@ export const CSe = {
     i: 'readyPropImage',
   },
 
-  h/*_children*/: ['PLt', 'PSh']
+  h/*_children*/: ['PRw', 'PSh']
 
 }

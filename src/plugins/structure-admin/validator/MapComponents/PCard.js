@@ -53,7 +53,7 @@ export const PCd = {
   },
   c/*_class*/: ['background', 'margin', 'padding', 'textalign', 'textcolor'],
 
-  h/*_children*/: ['Cti', 'Cte', 'Cac', 'PAl', 'PLt',  'PLs', 'PIm', 'PCs', 'PYv', 'PAd']
+  h/*_children*/: ['Cti', 'Cte', 'Cac', 'PAl', 'PRw',  'PLs', 'PIm', 'PCs', 'PYv', 'PAd']
 
 }
 
@@ -66,7 +66,7 @@ export const Cti = {
 // v-card-text
 export const Cte = {
   c/*_class*/: ['background', 'margin', 'padding', 'textalign', 'textcolor' ],
-  h/*_children*/: ['PTx', 'PAv', 'PIc', 'PLt', 'PMn', 'RSp']
+  h/*_children*/: ['PTx', 'PAv', 'PIc', 'PRw', 'PMn', 'RSp']
 }
 
 // v-card-action

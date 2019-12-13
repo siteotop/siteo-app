@@ -7,7 +7,7 @@ export {PAv, RLg} from './PAvatar';
 export {PBt, RAc, PMn, MBt} from './PButton';
 export {PCd, Cti, Cte, Cac } from './PCard';
 export {PCs, CSe} from './PCarusel';
-export {PCt, Flx, PLt} from './PContainer';
+export {PCt, Flx, PRw} from './PContainer';
 export {PIm} from './PImage';
 export {PDl} from './PDialog';
 export {PDm} from './PDialogMenu';
