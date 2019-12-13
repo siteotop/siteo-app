@@ -36,6 +36,13 @@ const FINDER_FOR_CLASS = {
   /**
     @example  fon
   */
+  container: function(className) {
+    return baseClasses.container.find((element)=>element==className);
+  },
+
+  /**
+    @example  fon
+  */
   textwrap: function(className) {
     return baseClasses.textwrap.find((element)=>element==className);
   },
@@ -93,6 +100,8 @@ const FINDER_FOR_CLASS = {
   textcolor: function (className) {
     return  /([\-]{2})text|text([\-]{2})/.test(className);
   },
+
+
 
 
   gridlist: function(className) {

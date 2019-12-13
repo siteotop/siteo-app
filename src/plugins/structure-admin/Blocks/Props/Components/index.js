@@ -180,6 +180,13 @@ export const PropClassMarginn = function () {
   }
 }
 
+import {default as Container} from '../../Class/Container.js';
+export const PropClassContainer = function () {
+  return {
+    name: Container
+  }
+}
+
 
 import {default as Gridlist} from '../../Class/GridList.js';
 export const PropClassGridlist = function () {

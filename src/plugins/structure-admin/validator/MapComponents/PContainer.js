@@ -1,5 +1,5 @@
 
-const cls = ['padding', 'margin', 'marginn',  'textsize', 'texttransform', 'background', 'textcolor', 'textalign', 'display'];
+const cls = ['padding', 'margin', 'marginn',  'textsize', 'texttransform', 'background', 'textcolor', 'textalign', 'display', 'container'];
 export const Flx =  {
    p/*_props*/: {
      //cols:
@@ -148,10 +148,8 @@ export const PRw = {
       items: ['v-row', 'div'],
       default: 'div'
     },
-    // container
-    c: 'readyPropBoolean',
-    // class for container
-    d: 'readyPropClassForContainer'
+
+  
 
   },
   c/*_class*/: cls,
