@@ -107,6 +107,7 @@
               :is = "cardComponent"
               v-bind="item"
               :index="i+1"
+              :clickOnVideo="clickOnVideo"
 
             >
             </component>
@@ -114,6 +115,8 @@
         </template>
     </v-row>
    </v-container>
+   <DialogVideoYoutube v-if="videoActiveObject" :videoId="videoActiveObject.videoId"  :title="videoActiveObject.title" @close-dialog="videoActiveObject=false">
+   </DialogVideoYoutube>
 
   <!--<slot  name="pagination">
     <v-row>
@@ -213,6 +216,7 @@ export default {
 
   data() {
     return {
+      videoActiveObject: false,
       typeList:'',
       prefixCategory:'',
       realCategory: false,
@@ -390,6 +394,12 @@ export default {
 
 
        })
+
+    },
+
+    clickOnVideo(eventTitle) {
+        this.videoActiveObject = eventTitle;
+
 
     }
 

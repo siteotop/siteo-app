@@ -23,8 +23,9 @@
       </v-list-item-content>
     </v-list-item>
     <v-card-actions >
-      <DialogVideoYoutube v-if="props.videoId" :videoId="props.videoId" :title="props.title">
-      </DialogVideoYoutube>
+      <v-btn v-if="props.videoId"  fab small @click="(event)=>{props.clickOnVideo({videoId: props.videoId, title: props.title})}">
+        <v-icon>$vuetify.icons.video</v-icon>
+      </v-btn>
       <v-spacer></v-spacer>
           <v-btn
             tag="a"
