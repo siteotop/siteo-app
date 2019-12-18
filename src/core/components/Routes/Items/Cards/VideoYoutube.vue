@@ -1,7 +1,7 @@
 <template>
   <v-dialog :fullscreen="fscreen" v-model="modalValue" max-width="700">
 
-    <v-card >
+    <v-card :loading="!loaded" loader-height="5">
       <v-toolbar>
          <v-icon>$vuetify.icons.video</v-icon>
           <v-toolbar-title>
@@ -14,7 +14,7 @@
       </v-toolbar>
       <v-responsive :aspect-ratio="'1.7'">
         <!-- https://developers.google.com/youtube/player_parameters?hl=ru -->
-       <iframe  width="100%" height="100%" :src="'https://www.youtube.com/embed/'+clearVideoId+'?autoplay=1&listType=user_uploads&rel=0&start='+start" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+       <iframe @load="loaded=true"  width="100%" height="100%" :src="'https://www.youtube.com/embed/'+clearVideoId+'?autoplay=1&listType=user_uploads&rel=0&start='+start" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
        </iframe>
       </v-responsive>
       <v-card-actions>
@@ -67,7 +67,8 @@ export default {
      return  {
         modalValue: true,
         clearVideoId: '',
-        start: ''
+        start: '',
+        loaded: false
      }
 
   },
