@@ -10,7 +10,7 @@
          >
         </v-avatar>
         <div class="font-weight-black pb-2" style="font-size:180px;">
-          {{dataStatus}}
+          {{code}}
         </div>
         <div class="mt-n6 title">
           {{description}}
@@ -64,12 +64,7 @@ export default {
         // need operator "if" when websites is disabled and others path update original server response
         if (!this.$store.state.srvPageErr ) {
           this.$store.commit('setSrvPageErr', {status: 404, error_description: 'Document not found'});
-        } else {
-           // when website is disabled  status take from response
-           this.dataStatus = this.$store.state.srvPageErr.status;
         }
-      } else {
-
       }
   },
   computed: {
@@ -99,6 +94,12 @@ export default {
            return  this.$t('error'+this.dataStatus);
          }
 
+      },
+
+      code() {
+        // when website is disabled  status take from response
+         return this.dataStatus? this.dataStatus:
+            this.$store.state.srvPageErr.error_code;
       },
 
       buttonText() {
