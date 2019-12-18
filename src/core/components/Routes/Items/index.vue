@@ -1,16 +1,21 @@
 <template>
 <div v-if="!statusError">
-  <v-container tag="section" fluid  v-if="pageObject.meta_title">
+  <v-container v-if="loaded">
+        <v-row   justify="center"   alignContent="center" class="text-center" >
+          <v-col  cols="12" md="5" >
+            <v-skeleton-loader
+               boilerplate
+               type="paragraph"
+
+             ></v-skeleton-loader>
+          </v-col>
+        </v-row>
+  </v-container>
+  <v-container tag="section" fluid  v-if="pageObject.meta_title&&!loaded">
     <v-container >
     <v-row   justify="center"   alignContent="center" class="text-center" >
-      <v-col  cols="12" md="5" v-if="!loaded">
-        <v-skeleton-loader
-           boilerplate
-           type="paragraph"
 
-         ></v-skeleton-loader>
-      </v-col>
-      <v-col cols="12" v-else>
+      <v-col cols="12">
         <v-sheet class="transparent"  v-if="pageObject.meta_title">
            <h1 class="display-2 font-weight-black">{{pageObject.title}}</h1>
             <div class="mt-2 font-weight-medium">{{pageObject.description}}</div>
@@ -33,18 +38,21 @@
       </template>
       <v-card>
         <v-list>
-        <v-list-item tag="a" :to="{path: prefixCategory + cat.idUrl}"  v-for="(cat, i) in vcategories" :key="i">
-          <v-list-item-content>
-            <v-list-item-title>{{cat.title}} <span class="grey--text text--lighten-1">{{cat.count}}0</span></v-list-item-title>
-
-          </v-list-item-content>
-
+          <v-list-item v-if="category" exact tag="a" :to="{name: 'values'}">
+            <v-list-item-content>
+              <v-list-item-title>Back</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item  tag="a" :to="{path: prefixCategory + cat.idUrl}"  v-for="(cat, i) in vcategories" :key="i">
+            <v-list-item-content>
+              <v-list-item-title>{{cat.title}} <span class="grey--text text--lighten-1">{{cat.count}}</span></v-list-item-title>
+            </v-list-item-content>
           </v-list-item>
         </v-list>
       </v-card>
     </v-menu>
 
-    <v-toolbar-title><h2 class="title" >{{$store.getters.getSiteoConfig('t_ls')||'LIST VALUES'}}</h2></v-toolbar-title>
+    <v-toolbar-title><h2 class="title" >{{category_title}}</h2></v-toolbar-title>
     <v-spacer></v-spacer>
     <v-btn-toggle mandatory v-model="toggle_component">
       <v-btn text value="card">
@@ -89,7 +97,7 @@
   </PageItemsToolbar>
 
   <v-container :fluid="toggle_component=='card'" :class="'grid-list-md'">
-      <v-row v-if="!loaded">
+      <v-row v-if="loaded">
         <v-col cols="12" sm="6"  md="4" lg="3" xl="2" v-for="i in [1,2,3,4,5,6]" :key="i">
           <v-skeleton-loader
              class="mx-auto"
@@ -162,6 +170,7 @@ import {
   mdiViewList,
   mdiSortVariant
 } from '@mdi/js';
+import  _find  from 'lodash/find';
 
 import MetaInfo from '../Pages/MetaInfo';
 
@@ -203,7 +212,6 @@ export default {
 
   created() {
       this.typeList = this.$route.name;
-      console.log(this.$route);
       this.findRealCategory(this.category);
 
 
@@ -216,6 +224,7 @@ export default {
 
   data() {
     return {
+      loaded: false,
       videoActiveObject: false,
       typeList:'',
       prefixCategory:'',
@@ -247,6 +256,21 @@ export default {
           return this.toggle_component =='card'?
             {cols:12, sm:6, md:3, lg:3, xl:2} :
             {cols:12, sm:12, md:9, lg:8, xl:7};
+      },
+
+      category_title() {
+          if (this.category) {
+             var o =  _find(this.vcategories, ['idUrl', this.realCategory ] );
+             if (o) {
+               return o.title;
+             }
+          }
+         return  this.$store.getters.getSiteoConfig('t_ls')||'LIST VALUES'
+      },
+
+      metaTitle() {
+
+         return this.pageObject.meta_title? this.pageObject.meta_title: this.category_title ;
       },
 
       ...mapState({
@@ -288,13 +312,13 @@ export default {
                 return state[this.typeList].items.pagination.limit;
             }
           },
-          loaded(state) {
+        /*  loaded(state) {
             if (state[this.typeList]) {
                 return state[this.typeList].items.firstLoaded;
             } else {
               return false;
             }
-          }
+          }*/
 
       })
 
@@ -370,6 +394,7 @@ export default {
        if (this.limit != 10 ){
          params = {limit:this.limit};
        }
+       this.loaded = true;
        // return response for using additional funcional page
        params.additional = true;
        params.gp = this.$route.path;
@@ -379,7 +404,7 @@ export default {
        return new Promise ((resolve, reject)=>{
 
            this.$store.dispatch(this.typeList+'/getList', params).then((result)=>{
-
+              this.loaded = false;
               resolve(true);
            }).catch(error=>{
              if (error.response) {
@@ -387,6 +412,7 @@ export default {
              } else {
                   this.$store.commit('setSrvPageErr', {status: 500}  )
              }
+             this.loaded = false;
              resolve(error);
              //reject(error);
            });;
