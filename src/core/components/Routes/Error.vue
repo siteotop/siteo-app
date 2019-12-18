@@ -16,7 +16,7 @@
           {{description}}
         </div>
         <div>
-          <span class="caption grey--text text--lighten-1">For more information click <a class="caption grey--text text--lighten-1"  @click="modalError=true" >here</a></span>
+          <span class="caption grey--text text--lighten-1">{{ $t('for_more')}}  <a class="caption grey--text text--lighten-1"  @click="modalError=true" >{{ $t('here')}}</a></span>
           <v-dialog max-width="500" v-model="modalError">
             <v-card >
               <v-card-text>
@@ -106,7 +106,7 @@ export default {
          if (this.$store.state.appInstance.objectActive.name){
             return this.$store.state.appInstance.objectActive.name;
          } else {
-           return 'Main Page'
+           return  this.$t('mainpage');
          }
       },
 

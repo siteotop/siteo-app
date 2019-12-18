@@ -23,19 +23,20 @@
 </template>
   <!--  -->
    <v-footer color="black" elevation="12" v-if="parent.cookiePolicy" fixed >
-     <v-sheet max-width="900px" class="text-center transparent pt-3 mx-auto">
+     <v-sheet max-width="900px" dark class="text-center transparent pt-3 mx-auto">
 
-         <noindex v-pre>
-           <div>
-             We use cookies to ensure that we give you the best experience on our website. By closing this message, you consent to our cookies on this device in accordance with our cookie policy unless you have disabled them.
-          </div>
+       <!--googleoff: all-->
+            <div>
+             {{parent.$t('cookiePolicy')}}
+            </div>
+      <!--/googleoff: all-->
         </noindex>
          <v-btn
            class="my-6"
            depressed
            color="error"
            @click="parent.cookieStop"
-         >Accept</v-btn>
+         >{{parent.$t('cookieAct')}}</v-btn>
 
      </v-sheet>
 

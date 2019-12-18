@@ -71,7 +71,7 @@
                   text
                   color="deep-purple accent-4"
                 >
-                  {{parent.$store.getters.getSiteoConfig('t_re')||'MORE'}}
+                  {{parent.$store.getters.getSiteoConfig('t_re')||parent.$t('rm')}}
                 </v-btn>
                 <v-btn
                   tag="a"
@@ -79,7 +79,7 @@
                   text
                   color="primary accent-4"
                 >
-                 {{parent.$store.getters.getSiteoConfig('t_ac')||'ACTION'}}
+                 {{parent.$store.getters.getSiteoConfig('t_ac')||parent.$t('action')}}
                 </v-btn>
               <!--  <v-spacer></v-spacer>
                 <v-btn icon>
