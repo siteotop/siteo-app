@@ -25,6 +25,10 @@ export default {
 
     },
 
+    metaTitle() {
+      return this.pageObject.meta_title;
+    },
+
 
     statusError(state) {
         return this.$store.state.srvPageErr;
@@ -33,7 +37,7 @@ export default {
 
   metaInfo () {
    return {
-      title: this.pageObject.meta_title,
+      title: this.metaTitle,
       meta: [
 
         {
