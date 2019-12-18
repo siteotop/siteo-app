@@ -38,9 +38,9 @@
       </template>
       <v-card>
         <v-list>
-          <v-list-item v-if="category" exact tag="a" :to="{name: 'values'}">
+          <v-list-item  exact tag="a" :to="{name: 'values'}">
             <v-list-item-content>
-              <v-list-item-title>Back</v-list-item-title>
+              <v-list-item-title>{{$store.getters.getSiteoConfig('t_ls')||'Back'}}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
           <v-list-item  tag="a" :to="{path: prefixCategory + cat.idUrl}"  v-for="(cat, i) in vcategories" :key="i">
