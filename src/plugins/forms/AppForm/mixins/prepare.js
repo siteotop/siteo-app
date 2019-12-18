@@ -18,21 +18,25 @@ export default {
           }
           var formStructure = [];
           //var formStructure =
-          for (let index_component in propsStructure) {
+          propsStructure.map((field, key )=>{
               var field_structure = {};
-              if (typeof(propsStructure[index_component]) == 'string') {
-                field_structure = getStructureForField(propsStructure[index_component]);
+              if (!field) {
+                return;
+              }
+              if (typeof(field) == 'string') {
+                field_structure = getStructureForField(field);
               } else {
-                field_structure = mergeStructureFields(propsStructure[index_component]) ;
+                field_structure = mergeStructureFields(field) ;
               }
               var field_props = field_structure.props,
-              name = field_structure.name;
+                  name = field_structure.name;
               this.createFieldValues(field_structure, name);
               this.connectCommonProps(field_props, name);
               this.createFieldI18n(field_props, name);
               formStructure.push(field_structure);
+          })
 
-           }
+          
            this.createRecaptcha(formStructure);
           // console.log(this.formStructure);
            this.createSubmit();
