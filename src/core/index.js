@@ -2,8 +2,7 @@
 
 import Vue from 'vue'; //1 include vue
 
-/**Progres bar */
-import VueProgressBar from 'vue-progressbar';
+
 
 /**VUE-META
   for  manage <title> and others <head> html elements
@@ -103,12 +102,7 @@ export const createSiteo =  function ({configs, plugins} ) {
      }*/
    });
 
-   Vue.use(VueProgressBar, {
-     //color: AppInstanse.vuetify.theme.accent ||'rgb(106, 180, 255)',
-     failedColor: 'red',
-     thickness: '3px',
-     autoFinish: false,
-   });
+   
 
    // plugin for http requests
    var RESTApi = createRESTApi(configs.host_api||process.env.HOST_API);

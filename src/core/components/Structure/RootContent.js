@@ -33,7 +33,7 @@ export default {
         /**
           BLOCK PROGRESS BAR
         */
-        h('vue-progress-bar'),
+        context.parent.mounted? h('vue-progress-bar'):'',
 
 
 

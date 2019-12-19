@@ -20,8 +20,8 @@ export default {
     data() {
           return {
            mobile: true,
-           cookiePolicy: false
-
+           cookiePolicy: false,
+           mounted: false
            // обив для дравера, але щось сторінка проглючує без нього
            //drawerMounted: false
           }
@@ -51,14 +51,13 @@ export default {
      mounted() {
        this.mobile = this.$vuetify.breakpoint.xs;
        setTimeout(this.cookieAsk, 30);
-
+       this.mounted = true;
        // this.drawerMounted = true;
      },
 
      methods:{
         cookieAsk() {
             var re = window.localStorage.getItem('siteo_cookie_policy');
-            console.log(re);
             if (!re) {
                this.cookiePolicy = true;
             }

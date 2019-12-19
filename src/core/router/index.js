@@ -31,7 +31,10 @@ export default function (Vue, store, baseUrl, routes) {
      });
 
      router.beforeEach(function (to, from, next) {
-         Vue.prototype.$Progress.start();
+        if (Vue.prototype.$Progress) {
+          Vue.prototype.$Progress.start();
+        }
+
          store.commit('startPageLoader');
          //store.commit('clearAllMessages');
          store.commit('clearSrvPageErr');
@@ -41,7 +44,10 @@ export default function (Vue, store, baseUrl, routes) {
 
      router.afterEach(function (to, from) {
          store.commit('stopPageLoader');
-         Vue.prototype.$Progress.finish();
+         if (Vue.prototype.$Progress) {
+           Vue.prototype.$Progress.finish();
+         }
+
 
               /**
                   GOOGLE ANALYTYCS
