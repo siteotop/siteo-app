@@ -11,6 +11,7 @@
           </v-col>
         </v-row>
   </v-container>
+
   <v-container tag="section" fluid  v-if="pageObject.meta_title&&!loaded">
     <v-container >
     <v-row   justify="center"   alignContent="center" class="text-center" >
@@ -23,6 +24,12 @@
       </v-col>
     </v-row>
     </v-container>
+  </v-container>
+  <v-container>
+    <s-adsense
+      height="120px"
+      adType="content">
+    </s-adsense>
   </v-container>
   <PageItemsToolbar :hightUp="100">
     <v-menu
@@ -120,9 +127,15 @@
             >
             </component>
           </v-col>
+          <v-col v-if="i===0||(i%7==0)" v-bind="vColProps">
+            <v-card><s-adsense :adType="toggle_component">
+            </s-adsense>
+          </v-card>
+          </v-col>
         </template>
     </v-row>
    </v-container>
+
    <DialogVideoYoutube v-if="videoActiveObject" :videoId="videoActiveObject.videoId"  :title="videoActiveObject.title" @close-dialog="videoActiveObject=false">
    </DialogVideoYoutube>
 
@@ -137,13 +150,17 @@
    </v-row>
    </slot>
  -->
-   <PageSchema v-if="pageObject.jsonStructure"
-      :structure = "pageObject.jsonStructure"
-      :sharing = "true"
-   >
-
-   </PageSchema>
-
+     <PageSchema v-if="pageObject.jsonStructure&&pageObject.jsonStructure.length"
+        :structure = "pageObject.jsonStructure"
+        :sharing = "true"
+     >
+     </PageSchema>
+     <v-container>
+       <s-adsense
+         
+         adType="content">
+       </s-adsense>
+     </v-container>
 </div>
 <div v-else>
     <RouteError :status="statusError.status"></RouteError>
