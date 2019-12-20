@@ -30,6 +30,6 @@ export default {
     //copyright:'Website created using "{template}" app and hosted on platform {url}',
     error404: 'Извините, но страница не найдена. Либо она не существует или была удалена. Нажмите кнопку ниже, чтобы вернуться на главную страницу',
 
-    cookiePolicy: ' We use cookies to ensure that we give you the best experience on our website. By closing this message, you consent to our cookies on this device in accordance with our cookie policy unless you have disabled them.',
-    cookieAct: 'Accept'
+    cookiePolicy: 'Мы используем файлы cookie, чтобы обеспечить вам лучший опыт на нашем сайте. Закрывая это сообщение, вы даете согласие на наши файлы cookie на этом устройстве соответствии с нашей политикой по cookie, если вы их не отключили.',
+    cookieAct: 'Принять'
 }
