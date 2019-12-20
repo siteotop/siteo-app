@@ -155,12 +155,7 @@
         :sharing = "true"
      >
      </PageSchema>
-     <v-container>
-       <s-adsense
-         
-         adType="content">
-       </s-adsense>
-     </v-container>
+     
 </div>
 <div v-else>
     <RouteError :status="statusError.status"></RouteError>
