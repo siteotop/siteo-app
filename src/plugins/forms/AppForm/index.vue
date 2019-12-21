@@ -15,12 +15,11 @@
     <v-container v-if="showForm" class='grid-list-xs mt-0 pt-0'>
       <v-row  >
           <v-col cols="12" v-for="(field, index) in formStructure" :key="index" v-show="!field.hide" :class="(field.class?field.class:'')+ ' py-0' " >
-              <!-- thre types of component 1) v-* (v-fieldtext) 2) component object (BDataVCategories) 3) App* (AppFieldPlainText) field.component.name  == true means that is object  -->
-              <component v-if="field.name!='captcha'" :is="field.component"
+                <component v-if="field.name!='captcha'" :is="field.component"
                   :name="field.name"
                   v-model="dataValues[field.name]"
 
-                  v-bind="  field.component[0]=='v'||field.component.name? field.props: Object.assign({vComp: field.props}, field.propsNative)"
+                  v-bind="  field.component[0]=='v'? field.props: Object.assign({vComp: field.props}, field.propsNative)"
               ></component>
               <AppFieldRecaptcha v-if="(field.name=='captcha'&&formActive)"
                   v-model="dataValues[field.name]"
