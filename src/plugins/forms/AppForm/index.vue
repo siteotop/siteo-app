@@ -79,7 +79,6 @@ import AppFieldPlainText from './Fields/AppFieldPlainText';
 import AppFieldPhone from './Fields/AppFieldPhone';
 import AppFieldItems from './Fields/AppFieldItems.vue';
 import AppFieldDate from './Fields/AppFieldDate.vue';
-import AppFieldWorldApi from './Fields/AppFieldWorldApi.vue';
 import AppFieldRecaptcha from './Fields/AppFieldRecaptcha.vue';
 
 import {mdiBackupRestore}  from '@mdi/js'
@@ -114,7 +113,6 @@ export default {
     AppFieldPhone,
     AppFieldItems,
     AppFieldDate,
-    AppFieldWorldApi,
     AppFieldRecaptcha
   },
 

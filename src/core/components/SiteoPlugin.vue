@@ -3,7 +3,7 @@
   v-model="isActive"
  >
   <div v-if="loaded">
-    <div v-if="component"><component :is="component"   v-bind="pluginOptions"></component></div>
+    <div v-if="component"><component :is="component" v-on="$listeners" :value="value"  v-bind="pluginOptions"></component></div>
   </div>
   <div v-else>
     <slot v-if="desktopReady">
@@ -50,6 +50,10 @@ export default {
       adminMode: {
         type: Boolean,
         default: false
+      },
+
+      value: {
+
       }
 
     },
@@ -84,7 +88,8 @@ export default {
     mounted() {
         // load plugin
         console.log('Loading Plugin');
-        //console.log(this.pluginName);
+
+        console.log(this);
         // https://some-domen.com/plugins/+this.pluginName
         this.desktopReady = true;
         //console.log(this.pluginName);

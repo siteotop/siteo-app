@@ -4,31 +4,30 @@
       @focus="activated=true"
       v-bind="propsSelect"
       :label="correctLabel"
-      item-value="_id"
-      item-text="title"
+      v-model="valueData"
+
       @change="change($event)"
     >
 
     <template v-slot:item="data">
       <v-list-item-avatar>
-        <v-avatar color="primary" class="white--text"><span>{{data.item.title[0]}}</span></v-avatar>
+        <v-avatar color="primary" class="white--text"><span>{{data.item[propsSelect.itemText][0]}}</span></v-avatar>
         <!-- <img :src="data.item.avatar"> -->
       </v-list-item-avatar>
       <v-list-item-content>
-        <v-list-item-title >{{data.item.title}}</v-list-item-title>
-        <v-list-item-subtitle >{{data.item.subtitle}}</v-list-item-subtitle>
+        <v-list-item-title >{{data.item[propsSelect.itemText]}}</v-list-item-title>
+
       </v-list-item-content>
-
     </template>
+  </v-autocomplete>
 
-
-    </v-autocomplete>
 </template>
 
 <script>
-
+import VModelInput from '../forms/AppForm/Fields/_mixins/v-model-input';
 import  _find  from 'lodash/find';
 export default {
+  mixins: [VModelInput],
 
   props: {
      label: {
@@ -40,6 +39,15 @@ export default {
        type: String,
        default: ''
 
+     },
+     activateOnStart: {
+        type: Boolean,
+        default: false
+     },
+     // when use siteo API
+     internalApi: {
+       type: String,
+       default:''
      },
 
      // Id for Website
@@ -68,15 +76,20 @@ export default {
            light: true,
            rounded: true,
            hideDetails: true,
-
+           itemValue:"_id",
+           itemText:"title"
          }
       }
   },
   created() {
+    console.log( this.vComp);
      this.propsSelect =  Object.assign(this.propsSelect, this.vComp);
+     console.log( this.propsSelect);
   },
   mounted() {
-
+    if (this.activateOnStart) {
+       this.activated = true;
+    }
   },
   watch: {
     activated (newValue, oldValue) {
@@ -97,6 +110,10 @@ export default {
       },
 
       apiUrl() {
+        if (this.internalApi) {
+           return this.internalApi;
+        }
+
         var siteoId='';
          if (this.siteoId) {
            siteoId=this.siteoId;
