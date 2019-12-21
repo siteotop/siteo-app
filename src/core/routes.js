@@ -37,7 +37,7 @@ export default function (configs) {
         {
           name: "locations",
           path:  configs.seo_path_locations|| '/locations',
-          component: ()=>import( /* webpackChunkName: "locations" */ './components/Routes/Locations/index.vue'),
+          //component: ()=>import( /* webpackChunkName: "locations" */ './components/Routes/Locations/index.vue'),
           props: true,
         },
 
