@@ -12,7 +12,7 @@
            <v-list-item-title>Clone</v-list-item-title>
        </v-list-item-content>
       <v-list-item-action>
-        <v-icon>{{parent.$options._icons.block}}</v-icon>
+        <v-icon>{{parent.$options._icons.copy}}</v-icon>
       </v-list-item-action>
     </v-list-item>
     <v-list-item  @click="parent.treeView(props.indexComponent)">
