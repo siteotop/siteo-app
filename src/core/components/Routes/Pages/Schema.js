@@ -24,7 +24,9 @@ export default {
     },
 
     render(h, context) {
-      console.log(' render page ');
+      if (!context.props.structure ||!context.props.structure.length) {
+        return '';
+      }
       return  [
 
           // pageToolbar
@@ -38,7 +40,7 @@ export default {
             }}):'',
 */
           ////////// Structure
-          context.props.structure.map(function(element){
+           context.props.structure.map(function(element){
             return h('StChildrenHelper', {props: { element:element}})
           }),
           ////////// Structure
