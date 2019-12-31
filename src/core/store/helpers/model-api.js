@@ -3,7 +3,10 @@
   @return  String Data fo Sending to The server
 */
 
-const prepareData = function (data) {
+const prepareData = function (data, prepare) {
+      if (!prepare) {
+        return data;
+      }
       for (let i in data) {
            if ( typeof(data[i]) =='object') {
               data[i] = JSON.stringify((data[i]));
@@ -48,9 +51,25 @@ const ACTIONS =  {
    create object in model API
  */
  createObject({dispatch, state, getters}, data) {
-    var  config = {data: prepareData(data)};
+    var  config = {data: prepareData(data, state.prepare)};
     config.method = 'POST';
     config.url = getters.urlWithoutId+ '/0';
+    return  dispatch('callAPI', config,  {root:true});
+
+ },
+
+ /**
+    create action for object
+    clone, like and others
+    @example
+ */
+ actionObject({dispatch, state, getters}, sett) {
+    var  config = {};
+    config.method = 'POST';
+    if (sett.data){
+      config.data = sett.data;
+    }
+    config.url = getters.urlWithoutId+ '/'+ sett.id + '/' + sett.action;
     return  dispatch('callAPI', config,  {root:true});
 
  },
@@ -75,8 +94,8 @@ const ACTIONS =  {
  /**
      upadete  object in model APi  and update in store
  */
- updateObject({dispatch, commit, getters}, data) {
-    var  config = {data: prepareData(data) };
+ updateObject({dispatch, commit, state,  getters}, data) {
+    var  config = {data: prepareData(data, state.prepare) };
     config.method = 'PUT';
     config.url = getters.urlID;
     return   dispatch('callAPI', config, {root:true}).then(response=>{
@@ -131,6 +150,7 @@ export default function (api ) {
           public: api.public||false,
           nameId: api.nameId||'',
           parentGetterUrl: api.parentGetterUrl,
+          prepare:api.prepare||false, // for prepareData
           id: 0
         },
 
