@@ -20,6 +20,7 @@
                   v-model="dataValues[field.name]"
 
                   v-bind="  field.component[0]=='v'? field.props: Object.assign({vComp: field.props}, field.propsNative)"
+                  :propFormValues="field.propFormValues?dataValues:false"
               ></component>
               <AppFieldRecaptcha v-if="(field.name=='captcha'&&formActive)"
                   v-model="dataValues[field.name]"
@@ -128,6 +129,20 @@ export default {
       },
 
       /**
+
+        Fuction for action
+        If function exists formAction is not using
+        @example actionSend(data, good, error) {
+           console.log(data);
+            good();
+        }
+      */
+      formActionEvent: {
+        type: [Boolean, Function],
+        default: false
+      },
+
+      /**
         collection
         @example #1
           [
@@ -198,8 +213,6 @@ export default {
   watch: {
     propsStructure(newValue, oldValue) {
       if (newValue.length != oldValue.length ) {
-          var self = this;
-          console.log('watch structure');
           this.resetForm();
       }
     }
@@ -330,45 +343,54 @@ export default {
       send and check validation
     */
     sendRequest(data) {
-       var self = this;
-       if (!this.formAction) {
-             self.$store.dispatch('generateSystemMessage', {text: 'No Action', type: 'error'});
-             self.stopFormLoader();
+
+       if (!this.formAction&&!this.formActionEvent) {
+             this.$store.dispatch('generateSystemMessage', {text: 'No action or function', type: 'error'});
+             this.stopFormLoader();
              return false;
        }
 
-       self.startFormLoader();
-       self.clearMessagesForm();
+       this.startFormLoader();
+       this.clearMessagesForm();
        //console.log('sfd');
-      data = self.filterValuesBeforeSave(data);
+       data = this.filterValuesBeforeSave(data);
+
+       const event_good = (response)=>{
+         this.stopFormLoader();
+         this.disableForm();
+         this.clearCaptcha();
+         this.updateDefaultsValues();
+
+         if (this.successDestroy) {
+            this.destroyForm();
+         }
+         this.successResult = true;
+        this.$emit('successForm', response);
+       }
+
+       const event_bad = (error)=>{
+         this.clearCaptcha();
+         this.stopFormLoader();
+
+         this.errorResponse = error.response.data;
+         if (error.response.status ==400&&error.response.data.error_code =='validatorMessages') {
+            this.catchFormValidation(error.response.data.error_description);
+         }
+       }
+
+       if (this.formActionEvent) {
+          return this.formActionEvent(data,  event_good, event_bad);
+       }
 
         //var dispatch = this.$options.$storeForValues + '/' + this.$options.$method;
         //var apidata = {data: data}
-     return self.$store.dispatch(this.formAction, data).then(response=>{
+       return this.$store.dispatch(this.formAction, data).then(response=>{
               //var suc__mess = self.getSuccessMessage();
-
-              self.stopFormLoader();
-              self.disableForm();
-              self.clearCaptcha();
-              self.updateDefaultsValues();
-
-              if (self.successDestroy) {
-                 self.destroyForm();
-              }
-              this.successResult = true;
-              self.$emit('successForm', response);
-
-
+              event_good(response);
         }).catch(error=>{
           console.log(error);
           //self.disableForm();
-          self.clearCaptcha();
-          self.stopFormLoader();
-
-          self.errorResponse = error.response.data;
-          if (error.response.status ==400&&error.response.data.error_code =='validatorMessages') {
-             self.catchFormValidation(error.response.data.error_description);
-          }
+          event_bad(error);
 
         });
 
