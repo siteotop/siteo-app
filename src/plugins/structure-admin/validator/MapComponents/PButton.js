@@ -122,7 +122,7 @@ export const PMn = {
     }
   },
   c/*_class*/: PBt.c/*_class*/,
-  h/*_children*/: ['MBt', 'PDm']
+  h/*_children*/: ['MBt', 'PDm', 'RLn']
 }
 
 // MenuButton

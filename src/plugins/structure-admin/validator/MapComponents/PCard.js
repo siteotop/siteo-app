@@ -66,7 +66,7 @@ export const Cti = {
 // v-card-text
 export const Cte = {
   c/*_class*/: ['background', 'margin', 'padding', 'textalign', 'textcolor' ],
-  h/*_children*/: ['PTx', 'PAv', 'PIc', 'PRw', 'PMn', 'RSp']
+  h/*_children*/: ['PTx', 'PAv', 'PIc', 'PRw', 'PMn', 'RSp', 'RLn']
 }
 
 // v-card-action

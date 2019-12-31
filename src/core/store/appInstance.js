@@ -17,6 +17,7 @@ export default {
          design:{},
          menus:[] ,
          links:[],
+         langs: [],
          locations: [],
          _websites_page: ''
         }
@@ -58,26 +59,7 @@ export default {
       },
 
 
-      LIST_LANG(state, getters, rootState){
-        //return state.list;
-        var route, langs, list;
-        route = rootState.route;
-        langs = [];
-      //  console.log( state.website.domains);
-        list = state.domains;
 
-        for (let i in list) {
-
-           let l={};
-            l.l = list[i].l.toUpperCase();
-            l.n =l.l+ ' - ' + getters.LANGUAGES[list[i].l];
-            l.d = list[i].d +  route.path;
-            langs.push(l);
-           //  console.log(lang);
-        }
-
-        return langs;
-       },
 
 
     },

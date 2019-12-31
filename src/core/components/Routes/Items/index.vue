@@ -25,12 +25,6 @@
     </v-row>
     </v-container>
   </v-container>
-  <v-container>
-    <s-adsense
-      height="120px"
-      adType="content">
-    </s-adsense>
-  </v-container>
   <PageItemsToolbar :hightUp="100">
     <v-menu
       eager
@@ -155,7 +149,7 @@
         :sharing = "true"
      >
      </PageSchema>
-     
+
 </div>
 <div v-else>
     <RouteError :status="statusError.status"></RouteError>
