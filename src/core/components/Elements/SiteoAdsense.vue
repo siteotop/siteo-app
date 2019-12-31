@@ -1,5 +1,5 @@
 <template>
-<div ref="block" :style="{width:width, maxHeight: height , border: border}">
+<div ref="block" :style="{width:width, maxHeight: maxHeight , border: border}">
   <ins
     v-if="showBlock"
     class="adsbygoogle"
@@ -12,6 +12,7 @@
 <script>
 export default {
   name: 's-adsense',
+
   props: {
 
     adType: {
@@ -21,7 +22,7 @@ export default {
 
     },
 
-    height: {
+    maxHeight: {
       type: String,
       default: undefined
     }
@@ -40,32 +41,10 @@ export default {
 
 
     mounted() {
-  /*
-      const adTypes = {
-
-         // In-article
-         'page': {
-            'style':"display:block; text-align:center",
-            'data-ad-layout':"in-article",
-            'data-ad-format':"fluid",
-         },
-
-         'values1': {
-           'style':"display:block;",
-           'data-ad-format':"fluid",
-         },
-
-         'values1': {
-           'style':"display:block;",
-           'data-ad-format':"fluid",
-         },
-
-      };
-
-  */
       this.loadAdsense();
-  },
-  watch: {
+    },
+
+    watch: {
       adType(newType, oldType) {
           if (!newType&&newType!=oldType) {
             this.showBlock = false;
@@ -87,7 +66,6 @@ export default {
        var  createAd = function () {
            //var width = self.$refs.block.parentElement.offsetWidth;
            //console.log(width)
-
            //self.widthBlock = {width: (width -20) + 'px', border: '1px solid red' };
            self.configAdsense = {};
            self.configAdsense['data-ad-format'] = 'fluid';
@@ -109,6 +87,10 @@ export default {
                    if ( isBlock) {
                      self.configAdsense['data-ad-layout-key'] = configes.bls[self.adType].key;
                    }
+                 break;
+              case 'display':
+                     self.configAdsense['data-ad-format'] = 'auto';
+                     self.configAdsense['data-full-width-responsive'] = 'true';
                  break;
              }
              console.log(self.configAdsense);
