@@ -33,7 +33,7 @@
     >
       <template v-slot:activator="{ on }">
 
-        <v-btn :disabled="!vcategories.length"  fab text  v-on="on">
+        <v-btn :disabled="vcategories.length==0"  fab text  v-on="on">
           <v-icon>{{$options._icons.filter}}</v-icon>
         </v-btn>
       </template>
