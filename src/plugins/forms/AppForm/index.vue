@@ -356,26 +356,28 @@ export default {
        data = this.filterValuesBeforeSave(data);
 
        const event_good = (response)=>{
-         this.stopFormLoader();
-         this.disableForm();
-         this.clearCaptcha();
-         this.updateDefaultsValues();
+           this.stopFormLoader();
+           this.disableForm();
+           this.clearCaptcha();
+           this.updateDefaultsValues();
 
-         if (this.successDestroy) {
-            this.destroyForm();
-         }
-         this.successResult = true;
-        this.$emit('successForm', response);
+           if (this.successDestroy) {
+              this.destroyForm();
+           }
+           this.successResult = true;
+          this.$emit('successForm', response);
        }
 
        const event_bad = (error)=>{
-         this.clearCaptcha();
-         this.stopFormLoader();
+           this.clearCaptcha();
+           this.stopFormLoader();
 
-         this.errorResponse = error.response.data;
-         if (error.response.status ==400&&error.response.data.error_code =='validatorMessages') {
-            this.catchFormValidation(error.response.data.error_description);
-         }
+           if (error) {
+             this.errorResponse = error.response.data;
+             if (error.response.status ==400&&error.response.data.error_code =='validatorMessages') {
+                this.catchFormValidation(error.response.data.error_description);
+             }
+           }
        }
 
        if (this.formActionEvent) {
