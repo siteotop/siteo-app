@@ -8,4 +8,4 @@ is cooking...
 ### Commits style
 https://github.com/conventional-commits/conventionalcommits.org
 
-types: <refactor>, <fix>, <chore>, <feat>, <docs>
+types: refactor, fix, chore, feat, docs
