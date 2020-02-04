@@ -8,7 +8,10 @@
 
       @change="change($event)"
     >
-
+    <template v-slot:prepend-item>
+        <v-skeleton-loader v-if="loading" type="list-item-avatar-two-line@3">
+        </v-skeleton-loader>
+    </template>
     <template v-slot:item="data">
       <v-list-item-avatar>
         <v-avatar color="primary" class="white--text"><span>{{data.item[propsSelect.itemText][0]}}</span></v-avatar>
@@ -138,6 +141,7 @@ export default {
             limit: 20
           }
        }
+       this.loading=true;
        this.$store.dispatch('callAPI', config).then(result=>{
            console.log(result);
            if (result.status==200&&result.data) {
