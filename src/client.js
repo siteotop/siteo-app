@@ -31,6 +31,8 @@ if (window.__SITEO_CONFIG__['siteo-plugin-googleanalitics']) {
 }
 
 
+
+
 app.$router.onReady(() => {
 
    if (window.__INITIAL_STATE__) {
@@ -59,3 +61,17 @@ app.$router.onReady(() => {
   // allow use async load in beforeMount
   app.$store.state.allowAsyncLoad = true;
 })
+
+//https://github.com/typekit/webfontloader
+window.WebFontConfig = {
+  google: {
+    families: ['Roboto:300,400,500,700']
+  }
+};
+
+(function(d) {
+   var wf = d.createElement('script'), s = d.scripts[0];
+   wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+   wf.async = true;
+   s.parentNode.insertBefore(wf, s);
+})(document);
