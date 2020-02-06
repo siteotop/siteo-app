@@ -115,7 +115,8 @@ const ACTIONS = {
        if (data[getters.nameId]) {
           commit('setApiId', data[getters.nameId]);
           delete data[getters.nameId];
-
+       } else {
+         return false;
        }
 
      }
