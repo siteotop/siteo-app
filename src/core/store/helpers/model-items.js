@@ -116,8 +116,8 @@ const ACTIONS = {
           commit('setApiId', data[getters.nameId]);
           delete data[getters.nameId];
        } else {
-         return false;
-       }
+         dispatch('generateSystemMessage', {text:  'No Id for  changing', type: 'error'},  { root: true });
+        }
 
      }
      return  dispatch('updateObject', data).then(response=>{
