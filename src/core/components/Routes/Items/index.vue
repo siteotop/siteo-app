@@ -1,6 +1,6 @@
 <template>
 <div v-if="!statusError">
-  <v-container v-if="loaded">
+  <v-container v-if="loaded" >
         <v-row   justify="center"   alignContent="center" class="text-center" >
           <v-col  cols="12" md="5" >
             <v-skeleton-loader
@@ -13,7 +13,7 @@
   </v-container>
 
   <v-container tag="section" fluid  v-if="pageObject.meta_title&&!loaded">
-    <v-container >
+    <v-container class="container-text">
     <v-row   justify="center"   alignContent="center" class="text-center" >
 
       <v-col cols="12">
