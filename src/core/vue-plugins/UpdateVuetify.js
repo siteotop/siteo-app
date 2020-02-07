@@ -1,6 +1,24 @@
 
 
 
+export const helperOptionsVuetify = function (vuetifyOptObject, designVuetify ) {
+
+  if (designVuetify.p.dark!==undefined) {
+      vuetifyOptObject.theme.dark = designVuetify.p.dark
+  }
+  // insert light theme
+  if (designVuetify.p.l) {
+
+      vuetifyOptObject.theme.themes.light = designVuetify.p.l;
+
+    //  console.log(JSON.stringify(this.$vuetify.theme.themes));
+  }
+  // insert dark theme
+  if (designVuetify.p.d) {
+      vuetifyOptObject.theme.themes.dark = designVuetify.p.d;
+  }
+}
+
 
 const install  = function (Vue, options) {
 
@@ -26,22 +44,11 @@ const install  = function (Vue, options) {
      }
   */
     Vue.prototype.updateVuetifyOptions = function(designVuetify) {
-        if (!designVuetify) {
-          return;
-        }
+
+
         //update themes
-        if ( designVuetify.p/*_props*/) {
-          if (designVuetify.p.dark!==undefined) {
-              this.$vuetify.theme.dark = designVuetify.p.dark
-          }
-          // insert light theme
-          if (designVuetify.p.l) {
-              this.$vuetify.theme.themes.light = designVuetify.p.l;
-          }
-          // insert dark theme
-          if (designVuetify.p.d) {
-              this.$vuetify.theme.themes.dark = designVuetify.p.d;
-          }
+        if (designVuetify&&designVuetify.p/*_props*/) {
+            helperOptionsVuetify(this.$vuetify, designVuetify);
           // add icons
           if (designVuetify.p.i) {
             this.updateVuetifyIcons(designVuetify.p.i);
@@ -52,6 +59,6 @@ const install  = function (Vue, options) {
 }
 
 
-export default  {
+export const pluginUpdateVuetify  = {
   install: install
 }

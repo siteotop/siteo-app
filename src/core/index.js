@@ -15,7 +15,7 @@ import VueI18n from 'vue-i18n';
 Vue.use(VueI18n);
 
 
-import pluginUpdateVuetify from './vue-plugins/UpdateVuetify';
+import {pluginUpdateVuetify, helperOptionsVuetify} from './vue-plugins/UpdateVuetify';
 import pluginSiteoPlugin from './vue-plugins/SiteoPlugin';
 Vue.use(pluginUpdateVuetify);
 Vue.use(pluginSiteoPlugin);
@@ -82,27 +82,35 @@ import SiteoRoutes from './routes';
 /**
 start Siteo
 */
-export const createSiteo =  function ({configs, plugins} ) {
+export const createSiteo =  function ({configs, plugins, client}) {
 
    var AppInstanse = {};
    AppInstanse._plugins = {};
    // start VueProgressBar
+    var vuetifyOptions =   {
+      icons: {
+        iconfont: 'md',  // default
+        values: vuetifyIcons
+      },
 
-   AppInstanse.vuetify = new Vuetify({
-     icons: {
-       iconfont: 'md',  // default
-       values: vuetifyIcons
-     }
-     /*,
+      theme: {
+        themes: {
+          light:{},
+          dark: {}
+        },
+        dark: false
+      }
+   };
+   if (client) {
+      if (window.__INITIAL_STATE__ && window.__INITIAL_STATE__.appInstance.objectActive.design.Vtf ) {
+        helperOptionsVuetify(vuetifyOptions, window.__INITIAL_STATE__.appInstance.objectActive.design.Vtf);
+      }
 
-     theme: {
-       themes: {
+   }
 
-       }
-     }*/
-   });
+   AppInstanse.vuetify = new Vuetify(vuetifyOptions);
 
-   
+
 
    // plugin for http requests
    var RESTApi = createRESTApi(configs.host_api||process.env.HOST_API);

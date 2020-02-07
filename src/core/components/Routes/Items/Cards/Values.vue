@@ -13,8 +13,8 @@
             :src="props.picture"
             :alt="props.title"
           >
-           <v-toolbar flat class="transparent">
-                  <v-avatar size="32" class="ma-1" :color="hover?'primary lighten-2':'primary'">{{props.index}}</v-avatar>
+           <v-toolbar flat class="transparent ">
+                  <v-avatar size="32" class="ma-1 white--text" :color="hover?'primary darken-2':'primary'">{{props.index}}</v-avatar>
                   <v-spacer></v-spacer>
                   <v-btn v-if="props.videoId"  fab small @click="(event)=>{props.clickOnVideo({videoId: props.videoId, title: props.title})}">
                     <v-icon>$vuetify.icons.video</v-icon>
