@@ -41,7 +41,7 @@
         <v-list>
           <v-list-item  exact tag="a" :to="{name: 'values'}">
             <v-list-item-content>
-              <v-list-item-title>{{$store.getters.getSiteoConfig('t_ls')||'Back'}}</v-list-item-title>
+              <v-list-item-title>{{$store.getters.getSiteoConfig('t_ls')||'Back'}} </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
           <v-list-item  tag="a" :to="{path: prefixCategory + cat.idUrl}"  v-for="(cat, i) in vcategories" :key="i">
@@ -53,7 +53,7 @@
       </v-card>
     </v-menu>
 
-    <v-toolbar-title><h2 class="title" >{{category_title}}</h2></v-toolbar-title>
+    <v-toolbar-title><h2 class="title" >{{category_title}} ТОП {{topCount}}  </h2></v-toolbar-title>
     <v-spacer></v-spacer>
     <v-btn-toggle mandatory v-model="toggle_component">
       <v-btn text value="card">
@@ -313,11 +313,19 @@ export default {
             }
           },
 
-          limitItems() {
+          limitItems(state) {
             if (state[this.typeList]) {
                 return state[this.typeList].items.pagination.limit;
             }
           },
+
+          topCount() {
+            if (this.countItems> this.limitItems) {
+               return this.limitItems
+            } else {
+              return this.countItems;
+            }
+          }
         /*  loaded(state) {
             if (state[this.typeList]) {
                 return state[this.typeList].items.firstLoaded;
