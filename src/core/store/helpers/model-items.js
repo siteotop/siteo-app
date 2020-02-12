@@ -204,6 +204,10 @@ const GETTERS = {
 
   pagination(state) {
      return state.pagination;
+  },
+
+  countItems(state) {
+      return state.objects.length;
   }
 };
 

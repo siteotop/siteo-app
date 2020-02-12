@@ -127,6 +127,17 @@
           </v-card>
           </v-col>
         </template>
+        <v-col v-if="showMoreLoad"  v-bind="vColProps">
+          <v-card height="100%">
+             <v-row justify="center"   alignContent="center" class="fill-height text-center">
+               <v-col>
+                  <v-btn :loading="loadingMore" :disable="loadingMore" x-large @click="getMoreItems"> Load more</v-btn>
+               </v-col>
+             </v-row>
+
+           </v-card>
+         </v-col>
+
     </v-row>
    </v-container>
 
@@ -231,6 +242,7 @@ export default {
   data() {
     return {
       loaded: false,
+      loadingMore: false,
       videoActiveObject: false,
       typeList:'',
       prefixCategory:'',
@@ -314,18 +326,15 @@ export default {
           },
 
           limitItems(state) {
+
             if (state[this.typeList]) {
                 return state[this.typeList].items.pagination.limit;
             }
           },
 
-          topCount() {
-            if (this.countItems> this.limitItems) {
-               return this.limitItems
-            } else {
-              return this.countItems;
-            }
-          }
+
+
+
         /*  loaded(state) {
             if (state[this.typeList]) {
                 return state[this.typeList].items.firstLoaded;
@@ -334,7 +343,23 @@ export default {
             }
           }*/
 
-      })
+      }),
+      topCount() {
+        if (this.countItems> this.limitItems) {
+           return this.limitItems
+        } else {
+          return this.countItems;
+        }
+      },
+
+      showMoreLoad() {
+        if (this.$store.getters[this.typeList+'/countItems']) {
+             if (this.$store.getters[this.typeList+'/countItems']<this.countItems) {
+               return true;
+             }
+          }
+          return false;
+      }
 
 
   },
@@ -399,25 +424,33 @@ export default {
       });
     },
 
+    getParamsForFetch() {
+      let params={};
+      if (this.limit != 10 ){
+        params = {limit:this.limit};
+      }
+
+      // return response for using additional funcional page
+      params.additional = true;
+      params.gp = this.$route.path;
+      if  (this.realCategory) {
+         params.category = this.realCategory;
+      };
+
+      return params;
+    },
+
     fetchItem(){
 
        // use limit from settings website
        // usefull for websites with short list, where need show all list with values
 
-       let params={};
-       if (this.limit != 10 ){
-         params = {limit:this.limit};
-       }
+
        this.loaded = true;
-       // return response for using additional funcional page
-       params.additional = true;
-       params.gp = this.$route.path;
-       if  (this.realCategory) {
-          params.category = this.realCategory;
-       }
+
        return new Promise ((resolve, reject)=>{
 
-           this.$store.dispatch(this.typeList+'/getList', params).then((result)=>{
+           this.$store.dispatch(this.typeList+'/getList', this.getParamsForFetch()).then((result)=>{
               this.loaded = false;
               resolve(true);
            }).catch(error=>{
@@ -430,10 +463,24 @@ export default {
              resolve(error);
              //reject(error);
            });;
-
-
-
        })
+
+    },
+
+    getMoreItems() {
+      this.loadingMore = true;
+      var params = this.getParamsForFetch();
+      var pagination =  this.$store.getters[this.typeList+'/pagination'];
+      params.offset =parseInt(pagination.offset) + parseInt(pagination.limit);
+      params.append = true;
+      params.additional ='';
+      params.gp = false;
+      this.$store.dispatch(this.typeList+'/getList', params).then((result)=>{
+          this.loadingMore = false;
+      }).catch(error=>{
+         this.loadingMore = false;
+        //console.log(error);
+      });;
 
     },
 
