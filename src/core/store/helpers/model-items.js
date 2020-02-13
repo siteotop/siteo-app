@@ -41,6 +41,12 @@ const MUTATIONS = {
        }
     }
 
+    if (state.pagination.servercount> state.objects.length) {
+        state.pagination.showMore = true;
+    } else {
+      state.pagination.showMore =false;
+    }
+
   },
 
   saveList(state, items) {
@@ -224,6 +230,7 @@ export default function (configItems) {
             limit: 10,
             offset: 0,
             servercount: 0,
+            showMore: false
         },
         objects: [],
 

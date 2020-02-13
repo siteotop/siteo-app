@@ -127,7 +127,7 @@
           </v-card>
           </v-col>
         </template>
-        <v-col v-if="showMoreLoad"  v-bind="vColProps">
+        <v-col v-if="showMore"  v-bind="vColProps">
           <v-card height="100%">
              <v-row justify="center"   alignContent="center" class="fill-height text-center">
                <v-col>
@@ -332,6 +332,13 @@ export default {
             }
           },
 
+          showMore(state) {
+
+            if (state[this.typeList]) {
+                return state[this.typeList].items.pagination.showMore;
+            }
+          },
+
 
 
 
@@ -350,15 +357,6 @@ export default {
         } else {
           return this.countItems;
         }
-      },
-
-      showMoreLoad() {
-        if (this.$store.getters[this.typeList+'/countItems']) {
-             if (this.$store.getters[this.typeList+'/countItems']<this.countItems) {
-               return true;
-             }
-          }
-          return false;
       }
 
 
