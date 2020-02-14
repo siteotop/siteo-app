@@ -280,7 +280,7 @@ export default {
           if (this.category) {
              var o =  _find(this.vcategories, ['idUrl', this.realCategory ] );
              if (o) {
-               return o.title;
+               return  o.title;
              }
           }
          return  this.$store.getters.getSiteoConfig('t_ls')||'LIST VALUES'
@@ -288,7 +288,14 @@ export default {
 
       metaTitle() {
 
-         return this.pageObject.meta_title? this.pageObject.meta_title: this.category_title ;
+         return this.pageObject.meta_title?
+            this.pageObject.meta_title.replace(/\{\{([^}]+)\}\}/, (i, match)=>{
+                    if (match == 'N') {
+                      return this.countItems;
+                    }
+                    return   match
+                })
+                :   (this.countItems + ' ' + this.category_title) ;
       },
 
       ...mapState({
