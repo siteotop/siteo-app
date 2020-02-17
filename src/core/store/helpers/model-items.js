@@ -35,8 +35,8 @@ const MUTATIONS = {
 
 
   savePagination(state, serverPagination) {
-    for(var i in state.pagination) {
-       if (serverPagination [i]) {
+    for(var i in serverPagination) {
+       if (state.pagination [i]!==undefined) {
          state.pagination[i] = serverPagination [i];
        }
     }
