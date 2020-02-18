@@ -65,14 +65,20 @@
         <v-divider  ></v-divider>
           <v-card-actions >
             <v-spacer></v-spacer>
-                <v-btn
-                  tag="a"
-                  disabled
-                  text
-                  color="deep-purple accent-4"
-                >
-                  {{parent.$store.getters.getSiteoConfig('t_re')||parent.$t('rm')}}
-                </v-btn>
+
+
+            <v-btn
+              v-bind="{
+                  tag: 'a',
+                  disabled: props.url_page?false: true,
+                  text: true,
+                  color: 'primary accent-4',
+                  href: props.ext_p?props.url_page : undefined ,
+                  to: !props.ext_p? props.url_page: undefined
+                }">
+             {{parent.$store.getters.getSiteoConfig('t_re')||parent.$t('rm')}}
+            </v-btn>
+
                 <v-btn
                   tag="a"
                   disabled

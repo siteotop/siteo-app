@@ -158,8 +158,8 @@ export default {
     change(eventId) {
         var element = _find (this.items, ['_id', eventId]);
         //console.log(element);
-        if (element&&element.internal_url ) {
-          document.location.href = element.internal_url;
+        if (element&&element.url_page ) {
+          document.location.href = element.url_page;
         }
 
 
