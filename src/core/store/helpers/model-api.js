@@ -69,7 +69,11 @@ const ACTIONS =  {
     if (sett.data){
       config.data = sett.data;
     }
-    config.url = getters.urlWithoutId+ '/'+ sett.id + '/' + sett.action;
+    var id='';
+    if (sett.id) {
+      id = '/'+sett.id;
+    }
+    config.url = getters.urlWithoutId+ id + '/' + sett.action;
     return  dispatch('callAPI', config,  {root:true});
 
  },
