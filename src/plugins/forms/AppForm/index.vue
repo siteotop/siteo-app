@@ -377,6 +377,8 @@ export default {
              if (error.response.status ==400&&error.response.data.error_code =='validatorMessages') {
                 this.catchFormValidation(error.response.data.error_description);
              }
+           } else {
+              // something happend for without error
            }
        }
 

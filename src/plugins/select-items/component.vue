@@ -2,7 +2,7 @@
   <v-autocomplete
       :items="items"
       @focus="activated=true"
-      v-bind="propsSelect"
+      v-bind="filterPropsSElected"
       :label="correctLabel"
       v-model="valueData"
 
@@ -84,11 +84,12 @@ export default {
          }
       }
   },
+  /*
   created() {
     console.log( this.vComp);
-     this.propsSelect =  Object.assign(this.propsSelect, this.vComp);
+     //this.propsSelect =  Object.assign(this.propsSelect, this.vComp);
      console.log( this.propsSelect);
-  },
+  },*/
   mounted() {
     if (this.activateOnStart) {
        this.activated = true;
@@ -102,6 +103,10 @@ export default {
     }
   },
   computed: {
+
+      filterPropsSElected() {
+          return Object.assign(this.propsSelect, this.vComp);
+      },
 
       correctLabel() {
           if (this.nameStore) {
