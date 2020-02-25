@@ -74,16 +74,19 @@ export default {
   },
 
   created() {
-      var params = this.videoId.split('?');
-      this.clearVideoId = params[0];
-      if (params[1]) {
-         var time =   params[1].match(new RegExp("t=([0-9]+)"));
+
+         var id = this.videoId.match(new RegExp("([^&?]+)?|&?"));
+          if (id&&id[1]) {
+            this.clearVideoId =id[1];
+          }   else {
+
+          }
+         var time =   this.videoId.match(new RegExp("t=([0-9]+)"));
          //time example ["t=23", "23", index: 0, input: "t=23", groups: undefined]
-         if (time[1]) {
+         if (time&& time[1]) {
             this.start = time[1]
          }
 
-      }
 
   },
 
