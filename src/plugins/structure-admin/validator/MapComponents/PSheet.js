@@ -1,0 +1,27 @@
+
+
+
+export const PSh = {
+
+  p/*_props*/: {
+
+    //color: props.cnf.
+    a: 'readyPropColor',
+    //dark: props.cnf.
+    b: 'readyPropBoolean',
+    //elevation: props.cnf.
+    c: 'readyPropElevation',
+    //height: props.cnf.
+    d: 'readyPropHeight',
+    //light: props.cnf.
+    e: 'readyPropBoolean',
+    //tile: props.cnf.
+    f: 'readyPropBoolean',
+    //width: props.cnf.
+    g: 'readyPropWidth',
+
+  },
+
+  h/*_children*/: ['PRw' , 'PSh', 'PTl' ]
+
+}

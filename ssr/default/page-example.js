@@ -31,7 +31,7 @@ module.exports = {
           $bls: [
 
             {
-              $$:'AppAction',
+              $$:'StAction',
               _props: {
                 _at: 'Action Text',
 
@@ -39,12 +39,12 @@ module.exports = {
             },
 
             {
-              $$:'AppAction',
+              $$:'StAction',
               _props: {
                 _at: 'Non Default Text',  //
                 color: 'red',
                 dark: true,
-                to: '/services',  //
+                to: '/values',  //
               }
             },
 
@@ -54,7 +54,7 @@ module.exports = {
                 _at: 'Dialog Action',  //
                 color: 'red',
                 dark: true,
-                to: '/services',  //
+                to: '/values',  //
               }
             }
           ]
@@ -193,7 +193,7 @@ module.exports = {
                   {
                     $$: 'WiServices',
                     _n: 'Services',
-                    _i: 'si-services',
+                    _i: 'si-values',
 
 
                   }
@@ -210,13 +210,13 @@ module.exports = {
         $$: 'SectionWrap',
         _props: {
           _t: 'Title with button',  //
-          _d: 'If you click on default AppAction button you will  go to order form  by default. Everywhere! Everytime!',  //
+          _d: 'If you click on default StAction button you will  go to order form  by default. Everywhere! Everytime!',  //
           $tc: 'primary',
           _p: '', // background image
           $bf: 'xs12 sm6 md4 text-xs-center',
           $bls: [
             {
-              $$:'AppAction',
+              $$:'StAction',
               _props: {
                 _at: 'Action Text',  //
                 //_ah: 'Action Href',  //
@@ -232,7 +232,7 @@ module.exports = {
         $$: 'WiServices',
         _props: {
           _t: 'Services ',  //
-          _d: 'If all services or items which you sell',  //
+          _d: 'If all values or items which you sell',  //
 
 
         }
@@ -270,7 +270,7 @@ module.exports = {
               _props: {
                 _t: 'Integrate your order form',
                 _s: 'Form is very flexible',
-                _d: 'You can use combination of fields. Base core fields are name, lastname, email, phone, date, services, experts. Some fields, such as, services, experts are integrated with your price list and your people list. Customer can select one of them when booking throught your web-app, if those fields will include at form.',
+                _d: 'You can use combination of fields. Base core fields are name, lastname, email, phone, date, values, experts. Some fields, such as, services, experts are integrated with your price list and your people list. Customer can select one of them when booking throught your web-app, if those fields will include at form.',
 
 
               }
@@ -292,7 +292,7 @@ module.exports = {
            $bl: 'align-center row wrap ',
            $bls: [
              {
-               $$:'AppSiteoPlugin',
+               $$:'StPlugin',
                _props: {
                  pluginName: 'instagram-post',
                  pluginOptions: {
@@ -566,7 +566,7 @@ module.exports = {
           _p: 'https://picsum.photos/1600/600?random', // background image
           $bls: [
             {
-              $$: 'AppAction',
+              $$: 'StAction',
 
 
             }
@@ -585,7 +585,7 @@ module.exports = {
           $_t: 'display-3',
           $bls: [
             {
-              $$:'AppSiteoPlugin',
+              $$:'StPlugin',
               _props: {
                  pluginName: 'example',
                  pluginOptions: {}

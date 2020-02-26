@@ -3,36 +3,30 @@
 version: '3.7'
 services:
     webpackfrontend:
+      container_name: webpackfrontend
       build:
         context: ./
       #  dockerfile: ./docker/Dockerfile-webpack-dev
       volumes:
-      #  - ../siteo_public/account:/app/public
-        - ./dist:/app/dist
-        - ./src:/app/src
-        - ./build:/app/build
-        - ./public:/app/public
-        - ./ssr:/app/ssr
-        #- ./dist:/app/dist
+        - ./:/app
+        - /app/node_modules
       entrypoint:
         - npm
         - run
         - frontend
       env_file: ./main.env
 
-    ########
+#############################
+  ########
     webpackplugins:
+      container_name: webpackplugins
       build:
         context: ./
       #  dockerfile: ./docker/Dockerfile-webpack-dev
       volumes:
-      #  - ../siteo_public/account:/app/public
-        - ./dist:/app/dist
-        - ./src:/app/src
-        - ./build:/app/build
-        - ./public:/app/public
-        - ./ssr:/app/ssr
-        #- ./dist:/app/dist
+        - ./:/app
+        - /app/node_modules
+
       entrypoint:
         - npm
         - run
@@ -40,17 +34,13 @@ services:
       env_file: ./main.env
     ########
     webpackssr:
-      #container_name: devserver
+      container_name: webpackssr
       build:
         context: ./
       #  dockerfile: ./docker/Dockerfile-webpack-dev
       volumes:
-      #  - ../siteo_public/account:/app/public
-        - ./dist:/app/dist
-        - ./src:/app/src
-        - ./build:/app/build
-        - ./ssr:/app/ssr
-        #- ./dist:/app/dist
+        - ./:/app
+        - /app/node_modules
       entrypoint:
         - npm
         - run

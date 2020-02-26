@@ -2,13 +2,12 @@ FROM node:8.15.0-alpine
 
 WORKDIR /app
 
-COPY package.json ./
-#VOLUME /app package-lock.json
-COPY *.js ./
+COPY  package*.json ./
 
 RUN npm install
 
-VOLUME /app/dist /app/public /app/src /app/build /app/ssr
+#COPY . .
+
 
 # production algoritm
 #create production dist/v.*.*.* files

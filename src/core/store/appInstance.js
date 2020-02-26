@@ -1,67 +1,55 @@
-export default function () {
-  return  {
+/*
+Store for appInstance.objectActive from server
+*/
 
-    state: function() {
-       return {
-         data: {
-           _id:0,
-           pid:"",
-           name:"",
-           title:"",
-           slogan:"",
-           actionText:"",
-           description:"",
-           domain:"",
-           templates_id:"",
-           pages_id: '',
-           countryAlpha2:"",
-           lang:"",
-           currency: '',
-           design:false
-         }, //   APP_INSTANCE.data,
+export default {
 
-         contacts: [], // APP_INSTANCE.contacts,
-         design:{}, // APP_INSTANCE.design|| {},
-         menu:[] ,  // APP_INSTANCE.menu||[],
-         links:[],  //APP_INSTANCE.links||[],
-         locations: []// APP_INSTANCE.locations||[]
-       }
-
-    },
-
-   mutations: {
-      saveInstanse(state, instance) {
-          for( var i in state) {
-            state[i] = instance[i];
-          }
-      },
-      /**
-         change state  bRender
-         @param state
-         @param rules {object}  rules include blocks name which need block ()
-      */
-      setOffRender (state, nameStructure) {
-        if (!state.design[nameStructure].props ) {
-            state.design[nameStructure].props = {coreOff: true};
-        } else if(!state.design[nameStructure].props.coreOff) {
-          state.design[nameStructure].props.coreOff = true;
+  //api:'/admins',
+  api: {url: '/apps',  getOnly: true },
+  state () {
+      return {
+         name:"",
+         title:"",
+         slogan:"",
+         actionText:"",
+         description:"",
+         contacts: [],
+         design:{},
+         menus:[] ,
+         links:[],
+         langs: [],
+         locations: [],
+         _websites_page: ''
         }
+  },
+  actions: {
+
+      makeOrder() {
 
       },
 
-      setOnRender(state, nameStructure) {
-        if (state.design[nameStructure].props&&state.design[nameStructure].props.coreOff  ) {
-            state.design[nameStructure].props.coreOff = false;
-        }
-      }
+      makeSubscribe({dispatch, getters}, data) {
+          var config = {data:data};
+           config.method = 'POST';
+           config.url = getters.WEBSITE_API_URL + '/subscribers';
+           return  dispatch('callAPI', config, {root:true});
 
-    },
+      },
+
+    }
+}
+
+
+
+/*
+export default {
+
 
 
     getters: {
 
       WEBSITE_API_URL(state) {
-        return '/websites/' +state.data._id;
+        return '/apps/' +state.data._id;
       },
 
 
@@ -70,29 +58,8 @@ export default function () {
           return state.data.lang;
       },
 
-      /**
-        list  for domains lang
-      */
-      LIST_LANG(state, getters, rootState){
-        //return state.list;
-        var route, langs, list;
-        route = rootState.route;
-        langs = [];
-      //  console.log( state.website.domains);
-        list = state.domains;
 
-        for (let i in list) {
 
-           let l={};
-            l.l = list[i].l.toUpperCase();
-            l.n =l.l+ ' - ' + getters.LANGUAGES[list[i].l];
-            l.d = list[i].d +  route.path;
-            langs.push(l);
-           //  console.log(lang);
-        }
-
-        return langs;
-       },
 
 
     },
@@ -110,5 +77,6 @@ export default function () {
     }
 
 
-  }
+
 }
+*/

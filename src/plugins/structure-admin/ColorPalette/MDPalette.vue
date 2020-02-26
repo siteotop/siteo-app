@@ -1,0 +1,135 @@
+<template>
+<v-card :style="{width: '500px'}">
+  sdfg sdf
+  <v-row v-if="!activeColor">
+   <v-col  cols="4"  v-for="(colorOptions, colorName ) in colorsKebabCase" :key="colorName" >
+      <v-card tile :class="colorOptions.value.name" @click="openShadesPalette(colorName, colorOptions.value)" >
+          <v-card-text :style="{cursor:'pointer'}"   >
+              <v-row>
+                  <v-col cols="11">
+                    {{colorOptions.value.name}}
+                  </v-col>
+                  <v-col cols="1">
+
+                    <v-icon  small v-if="valueData&&valueData.name==colorOptions.value.name">$vuetify.icons.success</v-icon>
+                  </v-col>
+              </v-row>
+          </v-card-text>
+      </v-card>
+      </v-col>
+  </v-row>
+  <v-row v-else >
+      <v-btn  @click="closeShadesPalette()" fab >
+        <v-icon>$vuetify.icons.prev</v-icon>
+      </v-btn>
+      <v-col cols="12" v-for="(colorOptions, colorName ) in colorsKebabCase[activeColor].shades" :key="colorName" >
+         <v-card tile :class="colorOptions.value.name+' '+colorOptions.value.text" @click="setNewActiveClass(colorOptions.value)">
+           <v-card-text :style="{cursor:'pointer'}"  >
+             <v-row>
+               <v-col cols="8">
+                 {{colorOptions.value.name}}
+               </v-col>
+               <v-col cols="3">
+                 {{colorOptions.value.hex}}
+               </v-col>
+               <v-col cols="1">
+
+                  <v-icon small  v-if="valueData&&valueData.name==colorOptions.value.name">$vuetify.icons.success</v-icon>
+               </v-col>
+             </v-row>
+           </v-card-text>
+         </v-card>
+       </v-col>
+  </v-row>
+</v-card>
+</template>
+
+<script>
+/**
+   component for choise color from Material Design Palette
+*/
+import ExtendPalette from './extends';
+
+export default {
+
+  extends: ExtendPalette,
+
+  data () {
+      return  {
+          /**
+             active color for Material design Palette
+             @example 'pink' or 'pink'
+          */
+          activeColor: '',
+
+      }
+  },
+
+  computed: {
+
+      /**
+        create object colors with kebab case  naming
+        @example return
+        colors: {
+          pink: {
+              value: {name 'pink', hex: '#e91e63'},
+              shades: {
+                lighten1: {
+                  value: {
+                    name: 'pink lighten-1',
+                    hex: '',
+                },
+                ...
+              }
+            }
+         },
+         ...
+      }
+      */
+      colorsKebabCase(){
+        var colorsKebab={};
+        for (const [color, shades] of Object.entries(this.$options.$colors)) {
+          const nameColorKebab =  this.toKebabCase(color);
+          colorsKebab[color] = {
+              value: this.createValue([nameColorKebab], shades.base),
+              shades: {}
+          };
+          for (const [name, hex] of Object.entries(shades)) {
+
+            var  shadeColorKebab=[];
+           //  if name == base that is mean we need use
+            if (name == 'base' ) {
+              shadeColorKebab.push(nameColorKebab);
+            } else if (color=='shades') {
+               shadeColorKebab.push(name);
+                //shadeColorKebab = name;
+            } else {
+                shadeColorKebab = [nameColorKebab, this.toKebabCase(name)];
+            }
+
+            colorsKebab[color].shades[name] = {
+                value: this.createValue(shadeColorKebab, hex)
+              }
+
+          }
+        }
+        console.log(colorsKebab);
+        return colorsKebab;
+
+      }
+    },
+
+    methods: {
+      openShadesPalette(colorName, newClass) {
+        console.log(colorName);
+         this.setNewActiveClass(newClass);
+         this.activeColor = colorName;
+      },
+
+      closeShadesPalette() {
+        this.activeColor = '';
+      }
+    }
+}
+
+</script>

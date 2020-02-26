@@ -3,7 +3,7 @@ var helperMessage = function (h, message, type) {
   return h(type,   {
      attrs: {
             value: message.state,
-            color: message.type,
+            color: message.type||'error',
             transition: "scale-transition",
             dismissible:true,
 
@@ -31,7 +31,7 @@ var helperMessage = function (h, message, type) {
             }, [ message.action.text ]) : '',
         //<v-btn flat @click.native="message.state = false">Close</v-btn>
          (type=='v-snackbar'? h('v-btn', {
-                  attrs: {flat:true},
+                  attrs: {text:true},
                   nativeOn: {
                     click: function($event) {
                       message.state = false
@@ -87,7 +87,7 @@ export default {
 
                     [
 
-                  
+
                      //  Mobile.methods.getIsMobile(context.parent)?
                        props.messages.map(function(message) {
                               return  helperMessage(h, message, props.block );

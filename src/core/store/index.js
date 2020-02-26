@@ -1,11 +1,9 @@
 import Vuex from 'vuex';
-import {createRESTApi} from 'core/http/rest-api.js';
 import {checkObjectResponse} from 'core/http/error-handling.js';
 import SystemMessages from './messages.js';
-import {createModelCRUD} from './helpers/model-events'
+import {createModelCRUD} from './helpers/createModelCRUD'
 //import i18n from './i18n.js';
-
-import createInstance from './appInstance.js';
+import appInstance from './appInstance.js';
 
 
 
@@ -17,19 +15,19 @@ const helperNameRegister = function ( name) {
   }
 }
 
-export default function (Vue, configs)  {
+export default function (Vue, RESTApi, configs)  {
       const REGISTER={};
 
        Vue.use(Vuex);
-       var RESTApi = createRESTApi(process.env.HOST_API);
+
        var store =  new Vuex.Store({
          state: {
            drawer: false,
-           allowAsyncLoad: true,
+           allowAsyncLoad: true, // During first load after SSR we need turn off async load data from API
            pageLoader: false,
-           //recaptcha: configs.recaptcha,
            usePablicToken: true,
-           getterToken: 'NAME_MODULE/action' // for example "account/refreshToken"
+           srvPageErr: false, //Full Error for Page or another route
+           dispacthToken: 'defaultToken' // for example "account/refreshToken"
          },
 
          mutations: {
@@ -49,48 +47,82 @@ export default function (Vue, configs)  {
                  state.drawer = false;
             },
 
-            newGetterToken(state, value) {
-                state.usePablicToken = false;
-                state.getterToken = value;
-            }
+            newDispatchToken(state, value) {
+
+                state.dispacthToken = value;
+            },
+            setSrvPageErr(state, objectError) {
+                 state.srvPageErr = objectError;
+            },
+            clearSrvPageErr(state) {
+               if (state.allowAsyncLoad) {
+                 state.srvPageErr = false;
+               }
+            },
          },
 
          modules: {
-           APP_INSTANCE: createInstance (),
-
-
-           //APP_EXPERTS: createExperts ('WEBSITE_API_URL'),
+            // AppResourse
+           appInstance: createModelCRUD(appInstance),
            SystemMessages,
+
 
          },
          getters: {
+
+
+           /**
+             generate fullhost for canonical link and others links
+             if baseUrl == '/'  will be  only  domain without  end '/'
+             @example  'https://domain.com'
+             if baseUrl  with path like "/base" will be  domain with path
+             @example 'https://domain.com/base'
+           */
            CORE_HOST() {
-             return  configs.path||'/';
+            var fullhost = 'https://'+configs.host;
+             if (configs.baseUrl!='/') {
+                fullhost+=configs.baseUrl;
+             }
+             return fullhost;
            },
+
+           getSiteoConfig: ()=>field=> {
+              return configs[field];
+           }
+
          },
          actions: {
 
+           // default place public token for siteo-template
+           defaultToken() {
+              return  '';
+           },
+
+           /**
+            @param APIconfig configs for callCoreApi
+           */
            callAPI({dispatch, state, getters, rootGetters}, APIconfig) {
 
-              if (state.usePablicToken) {
-                APIconfig.access_token = configs.public_token;
-              } else {
-                  console.log(state.getterToken);
-                APIconfig.access_token = rootGetters[state.getterToken];
-
-              }
-
-              return  dispatch('callCoreApi', APIconfig );
+              return dispatch(state.dispacthToken).then(access_token=>{
+                    if (!APIconfig.headers) {
+                      APIconfig.headers = {};
+                    }
+                    APIconfig.headers.common = {
+                      'Authorization':"Bearer "+ access_token
+                    };
+                    return  dispatch('callCoreApi', APIconfig );
+              })
 
            },
 
            callCoreApi({dispatch}, APIconfig ) {
 
+             //APIconfig.headers
              return  RESTApi({
-                method: APIconfig.method,
+                method: APIconfig.method||'GET',
                 url: APIconfig.url,
                 data: APIconfig.data,
-                headers: {'common': { 'Authorization':"Bearer "+ APIconfig.access_token }},
+                headers: APIconfig.headers,
                 params: APIconfig.params,
                 withCredentials: true
 
@@ -110,18 +142,32 @@ export default function (Vue, configs)  {
          },
 
          function (error) {
-           if (!checkObjectResponse(error.response, store)) {
+           if (checkObjectResponse(error.response, store)) {
+             // common error
+             if (error.response.data.error_code=='validatorMessages') {
 
-           } else {
+             } else {
+                store.dispatch('generateSystemMessage', {text: `Error ${error.response.data.status
+         }: ${error.response.data.error_description}` , type: 'error'});
+             }
               return Promise.reject(error);
            }
 
        });
-       var helperRegister =
-       store.registerApiModule = function (name, module, turnOnList) {
-          var _name_register = helperNameRegister(name);
+
+        /**
+          Register module with createModelCRUD
+          options: {
+              name: String,
+              module: Object,
+              moduleOptions: Object,
+              preserveState: Boolean
+          }
+        */
+       store.registerApiModule = function (options  /*name, module, options, preserveState*/) {
+          var _name_register = helperNameRegister(options.name);
           if (!REGISTER[_name_register]) {
-                 store.registerModule(name, createModelCRUD(module, turnOnList));
+                 store.registerModule(options.name, createModelCRUD(options.module, options.moduleOptions), {preserveState: options.preserveState});
                  REGISTER[_name_register] = true;
           } else {
 

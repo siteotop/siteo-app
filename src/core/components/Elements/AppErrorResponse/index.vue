@@ -4,8 +4,8 @@
     <v-alert v-for="(message, index) in LocalMessages" :key="index"
       transition= "scale-transition"
       v-model="message.state"
-      :color="message.type"
-      icon="warning"
+      :type="message.type"
+      
       v-bind="vAlert"
     >
         {{message.text}}

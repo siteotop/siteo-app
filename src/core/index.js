@@ -2,8 +2,7 @@
 
 import Vue from 'vue'; //1 include vue
 
-/**Progres bar */
-import VueProgressBar from 'vue-progressbar';
+
 
 /**VUE-META
   for  manage <title> and others <head> html elements
@@ -16,6 +15,10 @@ import VueI18n from 'vue-i18n';
 Vue.use(VueI18n);
 
 
+import {pluginUpdateVuetify, helperOptionsVuetify} from './vue-plugins/UpdateVuetify';
+import pluginSiteoPlugin from './vue-plugins/SiteoPlugin';
+Vue.use(pluginUpdateVuetify);
+Vue.use(pluginSiteoPlugin);
 /**
   main object for template
 */
@@ -23,11 +26,16 @@ import CoreVue from './components/App.vue';
 
 
 
+
+
 import * as CoreComponents from  './components';
 for (let NameComponent in CoreComponents) {
    Vue.component(NameComponent, CoreComponents[NameComponent]);
 }
-//delete CoreComponents;
+
+import {createRESTApi} from './http/rest-api.js';
+
+
 /**ROUTER
    create Routing for every APP
 */
@@ -49,101 +57,98 @@ import { sync } from 'vuex-router-sync';
   https://vuetifyjs.com/ru/
 */
 import Vuetify from 'vuetify';
+
 Vue.use(Vuetify);
-
-
 import 'vuetify/dist/vuetify.min.css';
 
+
 /**CSS*/
-require( './style/animations.scss');
+//require( './style/animations.scss');
 require('./style/common.css')
 
+import {vuetifyIcons} from './icons';
 
-/**ICONS*/
-import IconsRegister from  './components/Icons/register.js';
+
 
 import axios from 'axios';
+CoreVue.axios = axios;
 
 import VS2 from 'vue-script2';
+CoreVue.$script = VS2.load;
 
 
+import SiteoRoutes from './routes';
 
-export default function ({configs, APP, messages, plugins} ) {
+/**
+start Siteo
+*/
+export const createSiteo =  function ({configs, plugins, client}) {
 
-
+   var AppInstanse = {};
+   AppInstanse._plugins = {};
    // start VueProgressBar
-   Vue.use(VueProgressBar, {
-     color: Vue.prototype.$vuetify.theme.accent ||'rgb(106, 180, 255)',
-     failedColor: 'red',
-     thickness: '3px',
-   });
+    var vuetifyOptions =   {
+      icons: {
+        iconfont: 'md',  // default
+        values: vuetifyIcons
+      },
 
-   CoreVue._siteo_config = configs;
+      theme: {
+        themes: {
+          light:{},
+          dark: {}
+        },
+        dark: false
+      }
+   };
+   if (client) {
+      if (window.__INITIAL_STATE__ && window.__INITIAL_STATE__.appInstance.objectActive.design.Vtf ) {
+        helperOptionsVuetify(vuetifyOptions, window.__INITIAL_STATE__.appInstance.objectActive.design.Vtf);
+      }
+
+   }
+
+   AppInstanse.vuetify = new Vuetify(vuetifyOptions);
+
+
+
+   // plugin for http requests
+   var RESTApi = createRESTApi(configs.host_api||process.env.HOST_API);
    // create store
-   CoreVue.store = createStore(Vue, configs);
-   //CoreVue.store.commit('saveInstanse', APP.options.instance);
+   AppInstanse.store = createStore(Vue, RESTApi, configs);
 
    // create router
-   CoreVue.router = createRouter(Vue, CoreVue.store, configs.path )
+   AppInstanse.router = createRouter(Vue, AppInstanse.store, configs.baseUrl )
 
    //sync router with store for access route from store
-   sync(CoreVue.store, CoreVue.router );
-
-   CoreVue.$script = VS2.load;
-   CoreVue.axios = axios;
-
+   sync(AppInstanse.store, AppInstanse.router);
 
 
    // connect routes translating to all messages
    //APP.options.messages[APP.options.instance.data.lang].routes = APP.options.instance.routes;
    // Create VueI18n instance with options
-   CoreVue.i18n = new VueI18n({
+   AppInstanse.i18n = new VueI18n({
       silentTranslationWarn: process.env.NODE_ENV === 'development'? false: true, // silent log
       locale: configs.lang, // app lang
-      messages: messages // set locale messages
+      //messages: messages // set locale messages
     });
 
+    import(/* webpackChunkName: "locale-[request]" */ './i18n/'+ configs.lang).then(({default:local}) => {
+        //console.log(local);
+        AppInstanse.i18n.mergeLocaleMessage(configs.lang, local);
+    }).catch(error => 'An error occurred while loading the component');
 
-    CoreVue.IconsRegister= IconsRegister;
-    // add plugins
-    var PLUGINS = {};
-    CoreVue.SiteoAddPlugin = function (plugin) {
-      if (!plugin.name) {
-        console.log('Plugin has not param plugin.name');
-        return ;
-      }
-      if (!PLUGINS[plugin.name]) {
-        // install for Vue
-        PLUGINS[plugin.name] = true;
-        console.log(plugin);
-        Vue.use(plugin, {$coreVue:CoreVue, $pluginOptions: plugin.options, name: plugin.name});
-
-        if (plugin.siteoInstall) {
-          // install special function for siteoInstall (using for SSR)
-          // on SSR components registering one time, but is some deals which need registered every time
-          plugin.siteoInstall(CoreVue, plugin.options);
-        }
-
-        console.log(PLUGINS);
-      } else {
-          console.log(`Plugin ${plugin.name} was loaded early`);
-      }
-    };
-
-    CoreVue.SiteoAddPlugin(APP);
-
-    console.log(plugins);
     if (plugins) {
        for (var i in plugins ) {
-          CoreVue.SiteoAddPlugin(plugins[i]);
+          Vue.prototype.registerSiteoPlugin(plugins[i], AppInstanse);
        }
     }
 
-    // start Vue instance
-    let app2 = new Vue(
-      CoreVue
-    );
+    AppInstanse.router.addRoutes(SiteoRoutes(configs||{}));
 
-    return app2;
+
+    AppInstanse.extends = CoreVue;
+    return  new Vue( AppInstanse );
+
 
 }

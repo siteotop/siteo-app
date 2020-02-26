@@ -4,16 +4,16 @@
 import VueRouter from 'router';
 
 
-export default function (Vue, store, path,  routes) {
+export default function (Vue, store, baseUrl, routes) {
     Vue.use(VueRouter);
-    var router;
-    router = new VueRouter({
+
+    var router = new VueRouter({
         /**
           https://router.vuejs.org/api/#base
           our path is without last "/"
           "" or "/app"
         */
-        base: path||'/',
+        base: baseUrl||'/',
         mode: 'history',
         fallback: false,  // для браузеров где нет History Api  (IE9) будет просто открывать новую страницу
         routes: routes,
@@ -27,18 +27,27 @@ export default function (Vue, store, path,  routes) {
             return { x: 0, y: 0 }
           }
         }
-
+      //pathToRegexpOptions: ?: Object; // настройки path-to-regexp для компиляции regex
      });
 
      router.beforeEach(function (to, from, next) {
-         Vue.prototype.$Progress.start();
+        if (Vue.prototype.$Progress) {
+          Vue.prototype.$Progress.start();
+        }
+
          store.commit('startPageLoader');
+         //store.commit('clearAllMessages');
+         store.commit('clearSrvPageErr');
+
          next();
      });
 
      router.afterEach(function (to, from) {
          store.commit('stopPageLoader');
-         Vue.prototype.$Progress.finish();
+         if (Vue.prototype.$Progress) {
+           Vue.prototype.$Progress.finish();
+         }
+
 
               /**
                   GOOGLE ANALYTYCS

@@ -1,0 +1,69 @@
+<template functional>
+  <v-hover>
+    <v-card
+
+       slot-scope="{ hover }"
+       :class="`elevation-${hover ? 12 : 2}`"
+    >
+    <v-list-item three-line
+>
+      <v-list-item-avatar size="56" color="grey">
+        <v-img v-if="props.picture"
+          :src="props.picture"
+        >
+       </v-img>
+       <span v-else>
+            {{props.title[0]}}
+        </span>
+      </v-list-item-avatar>
+      <v-list-item-content>
+        <v-list-item-title ><h3 class="subtitle-2" >{{props.index}}. {{props.title}}</h3></v-list-item-title>
+        <v-list-item-subtitle class="font-italic font-weight-bold">{{props.subtitle}}</v-list-item-subtitle>
+        <v-list-item-subtitle>{{props.preview}}</v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+    <v-card-actions >
+      <v-btn v-if="props.videoId"  fab small @click="(event)=>{props.clickOnVideo({videoId: props.videoId, title: props.title})}">
+        <v-icon>$vuetify.icons.video</v-icon>
+      </v-btn>
+      <v-spacer></v-spacer>
+          <v-btn
+            v-bind="{
+                tag: 'a',
+                xSmall: true,
+                disabled: props.url_page?false: true,
+                text: true,
+                color: 'primary accent-4',
+                href: props.ext_p?props.url_page : undefined ,
+                to: !props.ext_p? props.url_page: undefined
+              }">
+           {{parent.$store.getters.getSiteoConfig('t_re')||parent.$t('rm')}}
+          </v-btn>
+          <v-btn
+            x-small
+            tag="a"
+            disabled
+            text
+            color="primary accent-4"
+          >
+           {{parent.$store.getters.getSiteoConfig('t_ac')||'ACTION'}}
+          </v-btn>
+        <!--  <v-spacer></v-spacer>
+          <v-btn icon>
+            <v-icon>mdi-heart</v-icon>
+          </v-btn>
+          <v-btn icon>
+            <v-icon>mdi-share-variant</v-icon>
+          </v-btn>  -->
+  </v-card-actions>
+    </v-card>
+  </v-hover>
+</template>
+
+<script>
+
+export default {
+
+}
+
+</script>

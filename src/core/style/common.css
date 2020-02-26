@@ -24,3 +24,7 @@
 .top-m-4 {
   margin-top:-60px;
 }
+
+.container-text {
+  max-width: 980px !important;
+}

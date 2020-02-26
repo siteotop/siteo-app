@@ -6,6 +6,7 @@ services:
     ############### SERVER
     ssrserver:
       container_name: siteotemplate
+      restart: always
       networks:
         siteo_template_network:
          aliases:
@@ -19,13 +20,8 @@ services:
       #ports:
       #  - "8080:8080"
       volumes:
-      #  - ../siteo_public/account:/app/public
-        - ./dist:/app/dist
-        - ./src:/app/src
-        - ./build:/app/build
-        - ./ssr:/app/ssr
-        - ./public:/app/public
-        #- ./dist:/app/dist
+        - ./:/app
+        - /app/node_modules
       entrypoint:
         - npm
         - run
@@ -34,7 +30,7 @@ services:
       env_file: ./main.env
 
 
-
+# network siteo_network must be  created
 networks:
   siteo_template_network:
     external:

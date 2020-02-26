@@ -5,14 +5,19 @@ const filterMessage = function ( message) {
 };
 
 const SystemMessages = {
-  state: {
-     messages: [],
-     timeout:0
+  state: function () {
+      return {
+         messages: [],
+         timeout:0,
+         status: false
+      }
   },
 
   mutations: {
 
-
+    turnOnMessages(state) {
+       state.status =true;
+    },
     /*
       set messages which was get from the server
       message is  object  { text: '', type:''}
@@ -32,6 +37,7 @@ const SystemMessages = {
 
     clearAllMessages(state) {
        state.messages=[];
+
     }
   },
 
@@ -41,6 +47,12 @@ const SystemMessages = {
         this action filter message and commit
     */
     generateSystemMessage({commit, state}, message) {
+       if (!state.status) {
+         return ;
+       }
+        if (typeof message == 'string') {
+          message = {text: message, type: 'error'};
+        }
         commit('setMessage', filterMessage(message));
     }
 

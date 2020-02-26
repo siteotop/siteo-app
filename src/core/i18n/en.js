@@ -1,149 +1,35 @@
 //import VeeEn from 'vee-validate/dist/locale/en';
 
 export default {
-  en: {
-  //  validation: VeeEn,
-    copy: 'Копировать',
-    cancel: 'Отмена',
-    close: 'Закрыть',
-    share: 'Share',
-    m: 'Content',
+
+    copy: 'Copy', // in share element
+    cancel: 'Cancel', // in share element
+    close: 'Close', // in share element
+    share: 'Share', // in share element
     rm: 'Read More',
-    no_data: 'Данных для отображения нет',
-    copyright:'Website created on app "{template}" and hosted on platform',
-
-    actions: {
-        order: 'Заказать',
-        call: 'Позвонить',
-        recall: 'Обратный звонок',
-        chat: 'Месенджеры',
-        links: 'Ссылки',
-        locations: 'Адреса'
-    },
-
-    auto: {
-      call: 'Call by',
-      chat: 'Write message by',
-      links: '{company_name} in'
-    },
-
-    // написать через
-    // подзвонить через
-    // Перейти на / ми в / {company name}
-
-
+    //no_data: 'Данных для отображения нет',
+    mainpage: 'Main page',
+    action: 'Action',
+    for_more: 'For more information click',
+    here: 'here',
+    /**
+      common form
+    */
     commonForm: {
       reset: 'Reset Form',
       success: 'Success response form',
-      leave: 'Ви желаете прервать заполнение формы?',
-      leave_desc: 'Все заполненные данные будут утеряны.',
-      send: 'Отправить', 
+      leave: 'Do you want close the form?',
+      leave_desc: 'All data will lose',
+      send: 'Send',
       error: {
-         no_valid: 'Ошибки валидации'
+         no_valid: 'Validation errors'
       },
       captcha: {l: 'Captcha', d: 'Check the robot'}
     },
 
-    formOrder: {
-      title: 'Form new ',
-      description:'Form new in the order page',
-      content: {
-        name: {
-          l: 'Your name',
-          d: 'Description About name',
-        },
-        lastname: {
-          l: 'Your lastname',
-          d: '',
-        },
-        email: {
-          l:"Email" ,
-          d: "Tap your email"
-        },
+    //copyright:'Website created using "{template}" app and hosted on platform {url}',
+    error404: 'Sorry, but the page you are looking for was either not found or does not exist. Try refreshing the page or click the button below to go back to the Homepage.',
 
-        phone: {
-          l:"Phone" ,
-          d: "Tap your phone"
-        },
-
-        services: {
-          l:"Services" ,
-          d: "Tap your Services"
-        },
-
-        dateorder: {
-          l:"Date" ,
-          d: "Tap your Services"
-        },
-        submit: {
-          l: 'Send',
-          d: '',
-        }
-      }
-
-
-    },
-
-    formRecall:  {
-      title: 'We recall you',
-      description:'We recall you',
-      content: {
-        services: {
-          l: '@:formOrder.content.services.l',
-          d: '@:formOrder.content.services.d',
-        },
-        name: {
-          l: '@:formOrder.content.name.l',
-          d: '@:formOrder.content.name.d',
-        },
-
-        phone: {
-          l:"@:formOrder.content.phone.l" ,
-          d: "@:formOrder.content.phone.d"
-        },
-
-        submit: {
-          l: 'Recall me',
-          d: '',
-        }
-      }
-    },
-
-    formEmail:  {
-      title: 'Subscribe on email',
-      description:'Subscribe on email',
-      content: {
-        name: {
-          l: '@:formOrder.content.name.l',
-          d: '@:formOrder.content.name.d',
-        },
-
-        email: {
-          l:"@:formOrder.content.email.l" ,
-          d: "@:formOrder.content.email.d"
-        },
-
-        submit: {
-          l: 'Subscribe',
-          d: '',
-        }
-      }
-    },
-
-    gpsFixed: {
-      country_code: 'Country code',
-      ip: 'IP adress'
-    },
-
-    page404: {
-
-        title:'404',
-        description:' Sorry, but the page you are looking for was either not found or does not exist. Try refreshing the page or click the button below to go back to the Homepage.'
-      },
-
-     page503: {
-          title:'503 Service Unavailable',
-          description:' Message'
-        }
- }
+    cookiePolicy: ' We use cookies to ensure that we give you the best experience on our website. By closing this message, you consent to our cookies on this device in accordance with our cookie policy unless you have disabled them.',
+    cookieAct: 'Accept'
 }

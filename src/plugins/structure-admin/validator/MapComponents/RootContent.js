@@ -1,0 +1,6 @@
+
+
+// rootContetn
+export const RCt = {
+  
+};
