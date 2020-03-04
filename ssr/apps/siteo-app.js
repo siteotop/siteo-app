@@ -71,13 +71,12 @@ module.exports=function (req, res, baseUrl, path) {
       if (err) {
           generateTemplateError(res, err ,context.configs_frontend );
         } else {
-
+          res.type('html');
           // We need status code for html page if routing is PageError
           //console.log(context.state);
           if (context.state.srvPageErr) {
-                res.status(404).end(html);
+            res.status(404).end(html);
           } else {
-
             res.end(html);
           }
 
