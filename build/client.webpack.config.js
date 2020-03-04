@@ -25,7 +25,8 @@ baseConfig.plugins.push(new HtmlWebpackPlugin({
      body_content: '<div id="app"></div>',
      body_state: '',
      siteo_config: JSON.stringify({baseUrl: '/', lang: 'en'}),
-     siteo_instance: ''
+     siteo_instance: '',
+     path_icon: process.env.PATH_ICON
  }
 }));
 
@@ -45,7 +46,8 @@ baseConfig.plugins.push(new HtmlWebpackPlugin({
       body_content: '<!--vue-ssr-outlet-->',
       body_state: '{{{renderState()}}}',
       siteo_config: '{{{JSON.stringify(configs_frontend)}}}',
-      siteo_instance: ''
+      siteo_instance: '',
+      path_icon: process.env.PATH_ICON
   }
 }));
 
@@ -62,7 +64,8 @@ baseConfig.plugins.push(new HtmlWebpackPlugin({
       body_content: '<div id="app"></div>',
       body_state: '',
       siteo_config: '<%= __SITEO_CONFIG__ %>',
-      siteo_instance: 'window.__SITEO_INSTANCE__ = <%= __SITEO_INSTANCE__ %>'
+      siteo_instance: 'window.__SITEO_INSTANCE__ = <%= __SITEO_INSTANCE__ %>',
+      path_icon: process.env.PATH_ICON
 
   }
 }));
