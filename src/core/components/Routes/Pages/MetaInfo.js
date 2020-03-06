@@ -9,19 +9,40 @@ export default {
     */
     canonical() {
 
-      //console.log('route');
-      //console.log(this.$route);
       if (this.$route.path == '/') {
         return this.$store.getters.CORE_HOST;
       } else {
         return this.$store.getters.CORE_HOST + this.$route.path;
       }
+    },
 
-      /*if (this.$store.state.appInstance.objectActive._websites_page == this.pageObject._id) {
-        return this.$store.getters.CORE_HOST;
-      } else {
-          return this.$store.getters.CORE_HOST +'/'+ this.pageObject.url;
-      }*/
+    metaLinks() {
+       var metalink = [
+         {
+              rel: 'canonical',
+              href: this.canonical
+         },
+
+      ];
+
+      if (this.autoHreflang) {
+          // path is diferent for multiwebsites
+          var langPath='';
+          if (this.$route.path != '/') {
+            langPath = this.$route.path;
+          }
+         const langs = this.$store.state.appInstance.objectActive.langs;
+         langs.map((website)=>{
+           metalink.push({
+                rel:"alternate",
+                hreflang: website.lang,
+                href: website.url + langPath
+           });
+         })
+
+      }
+
+      return metalink;
 
     },
 
@@ -80,12 +101,7 @@ export default {
         }: '',
 
       ],
-      link: [
-       {
-        rel: 'canonical',
-        href: this.canonical
-       },
-      ]
+      link: this.metaLinks
 
     }
   }
