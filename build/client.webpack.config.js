@@ -90,7 +90,8 @@ module.exports = merge(baseConfig, {
     filename: 'siteo-[name].js',
     library: "siteo-[name]",
 		libraryTarget: "umd",
-    libraryExport: 'default'
+    libraryExport: 'default',
+    chunkFilename: "siteo-chunk-[name].js"
 
   },
   entry: {
