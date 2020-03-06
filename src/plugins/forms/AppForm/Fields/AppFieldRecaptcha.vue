@@ -36,7 +36,7 @@ export default {
           id: "recaptcha" + new Date().getTime(),
           recaptcha: null,
           loading: true,
-          pluginSettings:  this.$store.getters.getSiteoConfig('siteo-plugin-recaptchav2')||{}
+          pluginSettings:  this.$store.getters.getSiteoConfig('SiteoPluginRecaptchav2')||{}
       }
 
 
@@ -117,7 +117,7 @@ export default {
 
         if (typeof(window.onloadCallback2)==="undefined") {
           let url = 'https://www.google.com/recaptcha/api.js?onload=onloadCallback2&render=explicit&hl='+ self.$store.getters.getSiteoConfig('lang');
-          this.$root.$options.$script(url).then(function() {
+          this.$loadScript(url).then(function() {
             window.onloadCallback2 = function  (){
               self.recaptcha = window.grecaptcha.render(self.id, recaptcha_options );
 

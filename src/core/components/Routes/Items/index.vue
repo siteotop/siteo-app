@@ -250,8 +250,8 @@ export default {
       ordermenu: false,
       notLoaded: true,
       toggle_component: 'card',
-      limit: this.$store.getters.getSiteoConfig('seo_limit')
-
+      limit: this.$store.getters.getSiteoConfig('seo_limit'),
+      autoHreflang: true   // generate automatic hreflangs for all multilanuages websites versions
     }
   },
 
@@ -265,6 +265,7 @@ export default {
   },
 
   computed: {
+
 
       cardComponent() {
          return this.toggle_component+'-'+this.typeList;

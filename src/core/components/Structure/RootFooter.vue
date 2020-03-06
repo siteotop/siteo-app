@@ -22,25 +22,7 @@
    </StChildrenHelper>
 </template>
   <!--  -->
-   <v-footer color="black" elevation="12" v-if="parent.cookiePolicy" fixed >
-     <v-sheet max-width="900px" dark class="text-center transparent pt-3 mx-auto">
-
-       <!--googleoff: all-->
-            <div>
-             {{parent.$t('cookiePolicy')}}
-            </div>
-      <!--/googleoff: all-->
-        </noindex>
-         <v-btn
-           class="my-6"
-           depressed
-           color="error"
-           @click="parent.cookieStop"
-         >{{parent.$t('cookieAct')}}</v-btn>
-
-     </v-sheet>
-
-   </v-footer>
+  
 </v-footer>
 </template>
 

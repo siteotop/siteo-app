@@ -5,28 +5,22 @@ import  { createSiteo} from './core';
 import Vue from 'vue'
 import VueAnalytics from 'vue-analytics'
 /**Progres bar */
-import VueProgressBar from 'vue-progressbar';
 
-Vue.use(VueProgressBar, {
-  //color: AppInstanse.vuetify.theme.accent ||'rgb(106, 180, 255)',
-  failedColor: 'red',
-  thickness: '3px',
-  autoFinish: false,
-});
+import LoadScript from './core/vue-plugins/LoadScript';
+Vue.use(LoadScript);
 
 //  add before create siteo (on SSR same)
 var app = createSiteo({
     configs: window.__SITEO_CONFIG__,
-    plugins: window['siteo-plugins'],
     client: true
 });
 
 /**
   Add Google analitics
 */
-if (window.__SITEO_CONFIG__['siteo-plugin-googleanalitics']) {
+if (window.__SITEO_CONFIG__['SiteoPluginGoogleanalitics']) {
     Vue.use(VueAnalytics, {
-      id: window.__SITEO_CONFIG__['siteo-plugin-googleanalitics']['ui'],
+      id: window.__SITEO_CONFIG__['SiteoPluginGoogleanalitics']['ui'],
       router: app.$router
     });
 }

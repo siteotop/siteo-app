@@ -43,21 +43,20 @@ module.exports = {
 
   entry: {
 
-    'instagram-post':   './src/plugins/instagram-post',
-    'forms':   './src/plugins/forms',
-    'structure-admin':   './src/plugins/structure-admin',
-    'bus':   './src/plugins/bus',
-    'project-card':   './src/plugins/project-card',
-    'sharing':   './src/plugins/sharing',
-    'select-items':   './src/plugins/select-items',
+    'InstagramPost':   './src/plugins/instagram-post',
+    'Forms':   './src/plugins/forms',
+    'Bus':   './src/plugins/bus',
+  //  'ProjectCard':   './src/plugins/project-card',
+    'Sharing':   './src/plugins/sharing',
+    'SelectItems':   './src/plugins/select-items',
 
   },
 
   output: {
     path: path.resolve(__dirname, '../dist' + DIR_RESOURCE),
     publicPath: process.env.HOST_PLUGIN + DIR_RESOURCE +'/',
-    filename: 'siteo-plugin-[name].js',
-    library: ['siteo-plugins', "siteo-plugin-[name]"],
+    filename: 'SiteoPlugin[name].js',
+    library: "SiteoPlugin[name]",
 		libraryTarget: "umd",
     libraryExport: 'default',
 

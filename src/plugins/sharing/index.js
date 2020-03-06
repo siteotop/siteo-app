@@ -2,7 +2,7 @@
 
 
 export default {
-  name: 'siteo-plugin-sharing',
+  //name: 'siteo-plugin-sharing',
 
   registerComponent: function () {
      return  {

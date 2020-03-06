@@ -1,6 +1,27 @@
 
 
 <script>
+// pageToolbar
+/**  false? h(FunctionalPageToolbar, {props: {
+  contentStructure:context.props.structure,
+  hightUp: 300,
+  sharing: context.props.sharing
+},
+on: {
+    shareWindow: ()=>{ context.parent.shareWindow = true}
+  }}):'',
+
+
+
+
+  COPY FROM SCHEMA.js
+//shareWindow
+//  context.props.shareWindow? h(FunctionalShareWindow, { on: {closeShare: ()=>{ context.parent.shareWindow = false}}}):'',
+
+
+
+
+*/
 import Colors from '../../../../_helper/colors';
 import Sharing from './sharing';
 

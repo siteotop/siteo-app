@@ -4,7 +4,7 @@
  fixed
  :disable-resize-watcher="true"
  :value="parent.$store.state.drawer"
- @input="(value)=>parent.$store.state.drawer = value"
+ @input="(value)=>parent.$store.commit('toogleDrawer', value)"
  v-bind="{
    clipped: props.cnf.c,
    dark: props.cnf.d,
@@ -25,11 +25,13 @@
    width: props.cnf.w
  }"
  >
+ <template v-if="parent.$store.state.drawerBody">
   <StChildrenHelper v-for="(element, index) in props.chldrn||[]"
     :element="element"
     :key="index"
   >
   </StChildrenHelper>
+</template>
 </v-navigation-drawer>
 </template>
 

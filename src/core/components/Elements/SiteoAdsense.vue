@@ -57,7 +57,7 @@ export default {
   methods: {
      loadAdsense() {
        var self=this;
-       var configes = self.$store.getters.getSiteoConfig('siteo-plugin-googleadsense');
+       var configes = self.$store.getters.getSiteoConfig('SiteoPluginGoogleadsense');
        // checkon/off adsense
        if (!configes||!configes.on) {
          return;
@@ -94,7 +94,7 @@ export default {
                  break;
              }
              console.log(self.configAdsense);
-           self.$root.$options.$script('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js').then(function(){
+           self.$root.$loadScript('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js').then(function(){
              (adsbygoogle = window.adsbygoogle || []).push({})
            });
        }

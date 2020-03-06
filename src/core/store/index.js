@@ -23,6 +23,7 @@ export default function (Vue, RESTApi, configs)  {
        var store =  new Vuex.Store({
          state: {
            drawer: false,
+           drawerBody: false,
            allowAsyncLoad: true, // During first load after SSR we need turn off async load data from API
            pageLoader: false,
            usePablicToken: true,
@@ -39,8 +40,17 @@ export default function (Vue, RESTApi, configs)  {
                 state.pageLoader = false;
             },
 
-            openDrawer(state) {
-                 state.drawer = true;
+            toogleDrawer(state, value) {
+
+                if (value!==undefined) {
+                    state.drawer = value;
+                } else {
+                    state.drawer =  !state.drawer;
+                }
+
+                 if (!state.drawerBody &&state.drawer) {
+                   state.drawerBody = true;
+                 }
              },
 
             closeDrawer(state) {

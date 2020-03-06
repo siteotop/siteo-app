@@ -31,9 +31,6 @@ export default function (Vue, store, baseUrl, routes) {
      });
 
      router.beforeEach(function (to, from, next) {
-        if (Vue.prototype.$Progress) {
-          Vue.prototype.$Progress.start();
-        }
 
          store.commit('startPageLoader');
          //store.commit('clearAllMessages');
@@ -44,16 +41,11 @@ export default function (Vue, store, baseUrl, routes) {
 
      router.afterEach(function (to, from) {
          store.commit('stopPageLoader');
-         if (Vue.prototype.$Progress) {
-           Vue.prototype.$Progress.finish();
-         }
+         /**
+            GOOGLE ANALYTYCS
 
-
-              /**
-                  GOOGLE ANALYTYCS
-
-                  ga(['router_link']);
-              */
+            ga(['router_link']);
+        */
       });
 
       return router;

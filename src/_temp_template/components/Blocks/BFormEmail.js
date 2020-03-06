@@ -6,7 +6,7 @@ export default {
   render(h, context) {
     return  h('SiteoPlugin', {
       props: {
-        pluginName: 'siteo-plugin-forms',
+        pluginName: 'SiteoPluginsForms',
         pluginOptions: {
           i18nkey: 'formEmail',
           defaultValues: context.parent.$store.state.APP_ORDER,
