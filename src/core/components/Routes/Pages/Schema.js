@@ -1,6 +1,6 @@
 
 
-import FunctionalShareWindow from './Functional/ShareWindow.vue';
+//import FunctionalShareWindow from './Functional/ShareWindow.vue';
 
 export default {
     functional: true,
@@ -29,16 +29,7 @@ export default {
       }
       return  [
 
-          // pageToolbar
-        /**  false? h(FunctionalPageToolbar, {props: {
-            contentStructure:context.props.structure,
-            hightUp: 300,
-            sharing: context.props.sharing
-          },
-          on: {
-              shareWindow: ()=>{ context.parent.shareWindow = true}
-            }}):'',
-*/
+
           ////////// Structure
            context.props.structure.map(function(element){
             return h('StChildrenHelper', {props: { element:element}})
@@ -46,8 +37,6 @@ export default {
           ////////// Structure
 
 
-          //shareWindow
-          context.props.shareWindow? h(FunctionalShareWindow, { on: {closeShare: ()=>{ context.parent.shareWindow = false}}}):'',
 
 
 
