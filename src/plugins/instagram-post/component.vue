@@ -41,11 +41,11 @@ export default {
         return;
       }
       var url ='https://api.instagram.com/oembed?omitscript=true&hidecaption='+!this.openCaption+'&url=' + this.link;
-      var $script = self.$root.$options.$script;
-        self.$root.$options.axios.get(url).then(function(result){
+
+      self.$root.$options.axios.get(url).then(function(result){
             console.log(result);
             self.htmlInsta=result.data.html;
-            $script('https://www.instagram.com/embed.js').then(function() {
+            self.$loadScript('https://www.instagram.com/embed.js').then(function() {
                self.loaded=true;
                 window.instgrm.Embeds.process();
 

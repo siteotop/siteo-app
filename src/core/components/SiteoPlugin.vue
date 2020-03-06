@@ -110,7 +110,7 @@ export default {
         //console.log(this);
         var self = this;
 
-        this.$root.$options.$script(filename).then((data)=>{
+        this.$loadScript(filename).then((data)=>{
             /**
               при створенні плагіна webpack генерує файл який створює змінну в обєкті
               Тобто якщо плагін завантажено, то існує обєкт window[self.pluginName]

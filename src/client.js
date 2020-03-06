@@ -14,6 +14,9 @@ Vue.use(VueProgressBar, {
   autoFinish: false,
 });
 
+import LoadScript from './core/vue-plugins/LoadScript';
+Vue.use(LoadScript);
+
 //  add before create siteo (on SSR same)
 var app = createSiteo({
     configs: window.__SITEO_CONFIG__,

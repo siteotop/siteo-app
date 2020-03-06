@@ -73,9 +73,6 @@ import {vuetifyIcons} from './icons';
 import axios from 'axios';
 CoreVue.axios = axios;
 
-import VS2 from 'vue-script2';
-CoreVue.$script = VS2.load;
-
 
 import SiteoRoutes from './routes';
 
