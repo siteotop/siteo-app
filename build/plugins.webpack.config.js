@@ -45,9 +45,8 @@ module.exports = {
 
     'InstagramPost':   './src/plugins/instagram-post',
     'Forms':   './src/plugins/forms',
-    'StructureAdmin':   './src/plugins/structure-admin',
     'Bus':   './src/plugins/bus',
-    'ProjectCard':   './src/plugins/project-card',
+  //  'ProjectCard':   './src/plugins/project-card',
     'Sharing':   './src/plugins/sharing',
     'SelectItems':   './src/plugins/select-items',
 

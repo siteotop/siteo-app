@@ -1,6 +1,0 @@
-
-
-// rootContetn
-export const RCt = {
-  
-};
