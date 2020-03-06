@@ -82,7 +82,7 @@ import SiteoRoutes from './routes';
 /**
 start Siteo
 */
-export const createSiteo =  function ({configs, plugins, client}) {
+export const createSiteo =  function ({configs, client}) {
 
    var AppInstanse = {};
    AppInstanse._plugins = {};
@@ -138,9 +138,10 @@ export const createSiteo =  function ({configs, plugins, client}) {
         AppInstanse.i18n.mergeLocaleMessage(configs.lang, local);
     }).catch(error => 'An error occurred while loading the component');
 
-    if (plugins) {
-       for (var i in plugins ) {
-          Vue.prototype.registerSiteoPlugin(plugins[i], AppInstanse);
+    if (client&&configs.plugins) {
+       for (var pluginName in configs.plugins ) {
+          if (window[configs.plugins[pluginName]])
+          Vue.prototype.registerSiteoPlugin(pluginName, window[configs.plugins[pluginName]], AppInstanse);
        }
     }
 

@@ -8,7 +8,7 @@ export default {
 
       return  h('SiteoPlugin', {
         props: {
-          pluginName: 'siteo-plugin-forms',
+          pluginName: 'SiteoPluginsForms',
           pluginOptions: {
             i18nkey: 'formRecall',
             defaultValues: context.parent.$store.state.APP_ORDER,

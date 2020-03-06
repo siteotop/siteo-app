@@ -31,8 +31,8 @@ export default {
     return {
        pluginsList: [
          '',
-         'siteo-plugin-instagram-post',
-         'siteo-plugin-select-items'
+         'SiteoPluginInstagramPost',
+         'SiteoPluginSelectItems'
        ],
 
        pluginComponentProps: {},
@@ -97,7 +97,7 @@ export default {
             var type_prop = newComponent.props[nameProp].type;
             console.log(type_prop);
             if (newComponent.props[nameProp].type) {
-                // Need if prop is Object 
+                // Need if prop is Object
                 var NameComponent = false;
                 if (type_prop == Boolean) {
                   NameComponent = 'v-switch';

@@ -1,11 +1,11 @@
 
 
 export default {
-  name: 'siteo-plugin-bus',
+  //name: 'siteo-plugin-bus',
 
   siteoInstall: function($coreVue) {
 
-      var $pluginOptions = $coreVue.store.getters.getSiteoConfig('siteo-plugin-bus');
+      var $pluginOptions = $coreVue.store.getters.getSiteoConfig('SiteoPluginBus');
 
       console.log('bus inherit');
 

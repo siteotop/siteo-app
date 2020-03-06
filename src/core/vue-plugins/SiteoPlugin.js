@@ -12,7 +12,7 @@ const install  = function (Vue, options) {
       @param plugin is object of plugin
       @param startCore using when plugin is registering before  createSiteo();
     */
-    Vue.prototype.registerSiteoPlugin = function (plugin, startCore) {
+    Vue.prototype.registerSiteoPlugin = function (pluginName, plugin, startCore) {
 
 
        var instance,  // Main object Vue Instance
@@ -31,12 +31,8 @@ const install  = function (Vue, options) {
           _configPlugin = this.$store.getters.getSiteoConfig(plugin.name)||{};
        }
 
-       if (!plugin.name) {
-         console.log('Plugin has not param plugin.name');
-         return ;
-       }
-       if ( _pluginsStore[plugin.name]) {
-         console.log(`Plugin ${plugin.name} was loaded early`);
+       if ( _pluginsStore[pluginName]) {
+         console.log(`Plugin ${pluginName} was loaded early`);
          return false;
        }
 
@@ -56,9 +52,9 @@ const install  = function (Vue, options) {
 
       // install for Vue
       if (plugin.registerComponent) {
-        _pluginsStore[plugin.name] = plugin.registerComponent();
+        _pluginsStore[pluginName] = plugin.registerComponent();
       } else {
-        _pluginsStore[plugin.name] = true;
+        _pluginsStore[pluginName] = true;
       }
 
 

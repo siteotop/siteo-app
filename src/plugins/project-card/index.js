@@ -13,10 +13,10 @@ const storeProjectCard = function () {
 }
 
 
-const name = 'siteo-plugin-project-card';
+//const name = 'siteo-plugin-project-card';
 
 export default {
-  name: name,
+//  name: name,
 
   install: function(Vue) {
      Vue.component(name, ProjectCard);
@@ -28,7 +28,7 @@ export default {
               name:'_projectCard',
               module: storeProjectCard()
            });
-        
+
   },
 
   registerComponent: function () {

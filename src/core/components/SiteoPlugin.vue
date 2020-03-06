@@ -112,13 +112,13 @@ export default {
 
         this.$root.$options.$script(filename).then((data)=>{
             /**
-              при створенні плагіна webpack генерує файл який створює змінну в обєкті window['siteo-plugins']
-              Тобто якщо плагін завантажено, то існує обєкт window['siteo-plugins'][self.pluginName]
+              при створенні плагіна webpack генерує файл який створює змінну в обєкті
+              Тобто якщо плагін завантажено, то існує обєкт window[self.pluginName]
             */
                   var component;
-                  if (window['siteo-plugins']&&window['siteo-plugins'][pluginName]) {
+                  if (window[pluginName]) {
 
-                      self.registerSiteoPlugin(window['siteo-plugins'][pluginName]);
+                      self.registerSiteoPlugin(pluginName, window[pluginName]);
                       component= this.getPluginFromStore(pluginName);
                   }
                   self.loaded = true;
@@ -129,7 +129,9 @@ export default {
                   }
 
         }).catch((error)=>{
+
             console.log(error);
+            console.log('catch error for plugin');
             self.loaded =true
         });
 

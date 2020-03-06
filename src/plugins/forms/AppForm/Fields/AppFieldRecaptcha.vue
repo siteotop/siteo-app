@@ -36,7 +36,7 @@ export default {
           id: "recaptcha" + new Date().getTime(),
           recaptcha: null,
           loading: true,
-          pluginSettings:  this.$store.getters.getSiteoConfig('siteo-plugin-recaptchav2')||{}
+          pluginSettings:  this.$store.getters.getSiteoConfig('SiteoPluginRecaptchav2')||{}
       }
 
 
