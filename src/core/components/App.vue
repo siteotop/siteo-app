@@ -14,16 +14,16 @@ export default {
       RAb,
       RFt,
       RAc,
-      RLn
-
+      RLn,
+      FooterScroll: ()=>import( /* webpackChunkName: "footer-scroll" */ './Elements/FooterScroll.vue')
     },
     // _siteo_config: {},
     // _plugins: {},
     data() {
           return {
            mobile: true,
-           cookiePolicy: false,
-           mounted: false
+           
+          // mounted: false
            // обив для дравера, але щось сторінка проглючує без нього
            //drawerMounted: false
           }
@@ -52,22 +52,6 @@ export default {
 
      mounted() {
        this.mobile = this.$vuetify.breakpoint.xs;
-       setTimeout(this.cookieAsk, 30);
-       this.mounted = true;
-       // this.drawerMounted = true;
-     },
-
-     methods:{
-        cookieAsk() {
-            var re = window.localStorage.getItem('siteo_cookie_policy');
-            if (!re) {
-               this.cookiePolicy = true;
-            }
-        },
-        cookieStop() {
-          this.cookiePolicy = false;
-          var re = window.localStorage.setItem('siteo_cookie_policy', true);
-        }
      },
 
      render(h) {
@@ -79,7 +63,8 @@ export default {
           'RDw',
           'RAb',
           'RCt',
-          'RFt'
+          'RFt',
+          'FooterScroll'
         ].map(function(element){
          return  h('StChildrenHelper', {props: {element:element}});
        })
