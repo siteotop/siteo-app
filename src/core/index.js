@@ -63,7 +63,7 @@ import 'vuetify/dist/vuetify.min.css';
 
 
 /**CSS*/
-//require( './style/animations.scss');
+
 require('./style/common.css')
 
 import {vuetifyIcons} from './icons';
@@ -83,8 +83,8 @@ export const createSiteo =  function ({configs, client}) {
 
    var AppInstanse = {};
    AppInstanse._plugins = {};
-   // start VueProgressBar
-    var vuetifyOptions =   {
+
+   var vuetifyOptions =   {
       icons: {
         iconfont: 'md',  // default
         values: vuetifyIcons

@@ -30,14 +30,7 @@ export default {
        */
         h('AppMessagesBlock', {props: {messages: context.parent.$store.state.SystemMessages.messages }}),
 
-        /**
-          BLOCK PROGRESS BAR
-        */
-        context.parent.mounted? h('vue-progress-bar'):'',
-
-
-
-
+        
     ]);
 
   }

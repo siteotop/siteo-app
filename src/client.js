@@ -5,14 +5,6 @@ import  { createSiteo} from './core';
 import Vue from 'vue'
 import VueAnalytics from 'vue-analytics'
 /**Progres bar */
-import VueProgressBar from 'vue-progressbar';
-
-Vue.use(VueProgressBar, {
-  //color: AppInstanse.vuetify.theme.accent ||'rgb(106, 180, 255)',
-  failedColor: 'red',
-  thickness: '3px',
-  autoFinish: false,
-});
 
 import LoadScript from './core/vue-plugins/LoadScript';
 Vue.use(LoadScript);
