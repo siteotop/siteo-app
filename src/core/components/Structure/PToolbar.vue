@@ -22,7 +22,7 @@ export const ToolbarElements = {
        return h('v-app-bar-nav-icon',  {
          class: context.data.class,
          on: {
-           click: ()=>context.parent.$store.state.drawer=!context.parent.$store.state.drawer
+           click: ()=>context.parent.$store.commit('toogleDrawer')
          }
        }
        )

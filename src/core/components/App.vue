@@ -22,7 +22,7 @@ export default {
     data() {
           return {
            mobile: true,
-           
+
           // mounted: false
            // обив для дравера, але щось сторінка проглючує без нього
            //drawerMounted: false
@@ -59,7 +59,6 @@ export default {
         return h('v-app',
 
         [
-        //this.drawerMounted? 'RDw': '',
           'RDw',
           'RAb',
           'RCt',
