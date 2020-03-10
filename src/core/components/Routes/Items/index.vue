@@ -44,7 +44,7 @@
               <v-list-item-title>{{$store.getters.getSiteoConfig('t_ls')||'Back'}} </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item  tag="a" :to="{path: prefixCategory + cat.idUrl}"  v-for="(cat, i) in vcategories" :key="i">
+          <v-list-item  tag="a" :to="{name: 'values', params: {category: (prefixCategory + cat.idUrl)}}"  v-for="(cat, i) in vcategories" :key="i">
             <v-list-item-content>
               <v-list-item-title>{{cat.title}} <span class="grey--text text--lighten-1">{{cat.count}}</span></v-list-item-title>
             </v-list-item-content>
@@ -405,6 +405,10 @@ export default {
   },
 
   methods: {
+
+    /*
+        dirty category with prefix or suffix
+    */
     findRealCategory(path_category) {
       var path = this.$store.getters.getSiteoConfig('seo_path_'+this.typeList);
 
