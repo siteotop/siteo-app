@@ -122,9 +122,16 @@ export default {
            return this.internalApi;
         }
 
-        var siteoId='';
+         var siteoId='';
+         // if siteoId present
          if (this.siteoId) {
-           siteoId=this.siteoId;
+           // siteoId can be json or simple  string
+           if (this.siteoId=='parentId') {
+              siteoId=this.$store.getters['getSiteoConfig']('mainWebsite');
+           } else {
+              siteoId=this.siteoId;
+           }
+
          } else {
            siteoId=this.$store.getters['appInstance/activeId'];
          }
