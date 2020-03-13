@@ -14,7 +14,7 @@
 
           :pluginOptions="{
             internalApi:citiesLink,
-            label: 'Cities',
+            label: 'Locations',
             vComp: {
               itemValue:'urlId',
               itemText:'title',
@@ -99,9 +99,9 @@ export default {
     },
 
     methods: {
-      fetchItem() {
-
-
+      getParamsForFetch() {
+        let params={};
+        return params;
       },
 
       registerModule(preserveState) {

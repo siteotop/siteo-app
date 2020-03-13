@@ -7,7 +7,7 @@ export default {
           loadingMore: false,
         }
     },
-    
+
     mounted(){
         this.serverMount();
     },
@@ -29,11 +29,43 @@ export default {
     },
 
     methods: {
+
+      
       /**
         registerModule();
         fetchItem();
       */
+      fetchItem(){
 
+         // use limit from settings website
+         // usefull for websites with short list, where need show all list with values
+
+
+         this.loaded = true;
+
+         return new Promise ((resolve, reject)=>{
+
+             this.$store.dispatch(this.$options.nameModule+'/getList', this.getParamsForFetch()).then((result)=>{
+
+                if (this.resultResolve) {
+                  this.resultResolve(result);
+                }
+
+                this.loaded = false;
+                resolve(true);
+             }).catch(error=>{
+               if (error.response) {
+                 this.$store.commit('setSrvPageErr',  error.response.data );
+               } else {
+                    this.$store.commit('setSrvPageErr', {status: 500}  )
+               }
+               this.loaded = false;
+               resolve(error);
+               //reject(error);
+             });;
+         })
+
+      },
 
       serverMount() {
         if (this.$store.state.allowAsyncLoad) {

@@ -237,7 +237,7 @@ export default {
 
   data() {
     return {
-    
+
       videoActiveObject: false,
       typeList:'',
       prefixCategory:'',
@@ -426,32 +426,7 @@ export default {
       return params;
     },
 
-    fetchItem(){
 
-       // use limit from settings website
-       // usefull for websites with short list, where need show all list with values
-
-
-       this.loaded = true;
-
-       return new Promise ((resolve, reject)=>{
-
-           this.$store.dispatch(this.typeList+'/getList', this.getParamsForFetch()).then((result)=>{
-              this.loaded = false;
-              resolve(true);
-           }).catch(error=>{
-             if (error.response) {
-               this.$store.commit('setSrvPageErr',  error.response.data );
-             } else {
-                  this.$store.commit('setSrvPageErr', {status: 500}  )
-             }
-             this.loaded = false;
-             resolve(error);
-             //reject(error);
-           });;
-       })
-
-    },
 
     getMoreItems() {
       this.loadingMore = true;

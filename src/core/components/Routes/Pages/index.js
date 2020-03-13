@@ -96,45 +96,37 @@ export default {
           this.$store.commit('pages/updateModel', {error: error_data});
       },
 */
-      fetchItem() {
-
-            var id; // id for page
-            if (this.$route.params.objectId) {
-               id = this.$route.params.objectId;
-            } else {
-               id = this.$store.state.appInstance.objectActive._websites_page;
-            }
-
+      /**
+        Get ID for page
+      */
+      getParamsForFetch() {
+          var id; // id for page
+          if (this.$route.params.objectId) {
+             id = this.$route.params.objectId;
+          } else {
+             id = this.$store.state.appInstance.objectActive._websites_page;
+          }
+          return id;
+            /**
             if (!id) {
               return false;
-            }
-            //console.log(id);
+            } else {
 
+            }*/
 
-            return new Promise ((resolve, reject)=>{
-                 this.$store.dispatch('pages/getObject', id).then((result)=>{
-
-                    var newStructure = {
-                      jsonStructure: JSON.parse(result.jsonStructure)
-                    }
-                    this.$store.commit('pages/updateModel', newStructure  );
-                    resolve(result);
-                 }).catch(error=>{
-                   // error is error.response
-                   //console.log(error);
-                   if (error.response) {
-                     this.$store.commit('setSrvPageErr',  error.response.data );
-                   } else {
-                     this.$store.commit('setSrvPageErr', {status: 500}  )
-                   }
-
-                   resolve(error);
-                   //reject(error);
-                 });
-            });
-
+          //console.log(id);
       },
 
+      /**
+        additional function when fetchItem Promise resolved
+      */
+      resultResolve(result) {
+        var newStructure = {
+          jsonStructure: JSON.parse(result.jsonStructure)
+        }
+        this.$store.commit('pages/updateModel', newStructure  );
+      },
+    
       registerModule(preserveState) {
           this.$store.registerApiModule( {
             name: this.$options.nameModule,
