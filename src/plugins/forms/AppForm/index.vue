@@ -68,7 +68,7 @@
 
 //var _Values = require('lodash/values');   // get values as array and object
 
-import Loader from '../../../core/components/_mixins/component-loading.js';
+import Loader from './mixins/component-loading.js';
 import ChunkLoader from '../../../core/components/_mixins/loader-i18-chunk.js';
 import {helperValidationError} from '../../../core/components/Elements/AppErrorResponse/error-helper.js';
 

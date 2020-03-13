@@ -1,5 +1,4 @@
 
-import Loader from '../../_mixins/component-loading.js';
 
 import { mapState } from 'vuex';
 
@@ -10,7 +9,7 @@ import MetaInfo from './MetaInfo';
 import ServerFetch from '../_mixins/serverFetch';
 
 export default {
-  mixins: [Loader, MetaInfo, ServerFetch],
+  mixins: [MetaInfo, ServerFetch],
 
   props: {
       objectId: {
