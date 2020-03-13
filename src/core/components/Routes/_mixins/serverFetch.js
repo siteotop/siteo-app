@@ -1,7 +1,13 @@
 
 
 export default {
-
+    data() {
+        return {
+          loaded: false,
+          loadingMore: false,
+        }
+    },
+    
     mounted(){
         this.serverMount();
     },

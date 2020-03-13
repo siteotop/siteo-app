@@ -237,8 +237,7 @@ export default {
 
   data() {
     return {
-      loaded: false,
-      loadingMore: false,
+    
       videoActiveObject: false,
       typeList:'',
       prefixCategory:'',
