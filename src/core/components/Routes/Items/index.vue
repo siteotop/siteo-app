@@ -178,7 +178,7 @@ import DialogVideoYoutube from './Cards/VideoYoutube.vue';
 
 
 
-import * as StoreModules from  '../../../store/modules';
+import values  from  '../../../store/modules/values';
 import { mapState } from 'vuex';
 import {
   mdiFilterVariant,
@@ -190,12 +190,13 @@ import {
 import  _find  from 'lodash/find';
 
 import MetaInfo from '../Pages/MetaInfo';
-
+import ServerFetch from '../_mixins/serverFetch';
 
 export default {
 
-  mixins: [MetaInfo],
+  mixins: [MetaInfo, ServerFetch],
 
+  nameModule: 'values',
 
   props: {
 
@@ -228,16 +229,11 @@ export default {
   },
 
   created() {
-      this.typeList = this.$route.name;
+      this.typeList = this.$options.nameModule;
       this.findRealCategory(this.category);
-
-
-
   },
 
-  destroyed () {
-    this.$store.unregisterApiModule(this.typeList);
-  },
+
 
   data() {
     return {
@@ -383,26 +379,7 @@ export default {
     }
   },
 */
-  serverPrefetch () {
-    // возвращает Promise из действия, поэтому
-    // компонент ждёт данные перед рендерингом
 
-    this.registerModule();
-    return this.fetchItem();
-  },
-
-
-  mounted() {
-     if (this.$store.state.allowAsyncLoad) {
-       this.registerModule();
-       this.fetchItem();
-     } else {
-       this.registerModule(true);
-     }
-
-
-
-  },
 
   methods: {
 
@@ -427,8 +404,8 @@ export default {
 
     registerModule(preserveState) {
       this.$store.registerApiModule({
-        name: this.typeList,
-        module: StoreModules[this.typeList]('appInstance/urlID'),
+        name: this.$options.nameModule,
+        module: values('appInstance/urlID'),
         moduleOptions:  {moduleItems: true},
         preserveState: preserveState
       });

@@ -69,13 +69,51 @@
 </template>
 
 <script>
+
+import locations from  '../../../store/modules/locations';
+import MetaInfo from '../Pages/MetaInfo';
+import ServerFetch from '../_mixins/serverFetch';
+
+
 export default {
+    mixins: [MetaInfo, ServerFetch],
+    nameModule: 'locations',
+
+    data() {
+        return {
+          pageObject: {}
+        }
+    },
 
     computed: {
        citiesLink() {
-          var siteoId =this.$store.getters['getSiteoConfig']('mainWebsite');
+         var siteoId =this.$store.getters['getSiteoConfig']('mainWebsite');
          return '/apps/'+siteoId+'/locations';
-       }
+       },
+
+       metaTitle() {
+
+            return 'Need Create';
+       },
+
+    },
+
+    methods: {
+      fetchItem() {
+
+
+      },
+
+      registerModule(preserveState) {
+        this.$store.registerApiModule({
+          name: this.$options.nameModule,
+          module: locations('appInstance/urlID'),
+          moduleOptions: {moduleItems: true},
+          preserveState: preserveState
+        });
+      },
     }
+
+
 }
 </script>

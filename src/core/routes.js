@@ -41,14 +41,14 @@ export default function (configs) {
           props: true,
         },
 
-        {
+       /*  {
           name: "order",
           path:  '/go/:typeAction(order|call|recall|chat|links)?',
-          component:()=>import(/* webpackChunkName: "order" */  './components/Routes/Order.vue'),
+          component:()=>import(  './components/Routes/Order.vue'),
           props: true
 
         },
-
+        */
         {
           name: "objectPage",
           path:  '/:objectId',

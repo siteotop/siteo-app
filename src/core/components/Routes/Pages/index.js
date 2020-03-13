@@ -2,12 +2,15 @@
 import Loader from '../../_mixins/component-loading.js';
 
 import { mapState } from 'vuex';
+
 import pages from  '../../../store/modules/pages';
 
 import MetaInfo from './MetaInfo';
 
+import ServerFetch from '../_mixins/serverFetch';
+
 export default {
-  mixins: [Loader, MetaInfo],
+  mixins: [Loader, MetaInfo, ServerFetch],
 
   props: {
       objectId: {
@@ -16,8 +19,11 @@ export default {
       }
   },
 
+  nameModule: 'pages',
+
   data() {
     return  {
+
       error: false,
       //offsetTop: 0,
       shareWindow: false
@@ -25,17 +31,6 @@ export default {
   },
 
 
-
-
-  /**
-     works on ssr
-  */
-  serverPrefetch () {
-    // возвращает Promise из действия, поэтому
-    // компонент ждёт данные перед рендерингом
-    this.registerModule();
-    return this.fetchItem();
-  },
 
   watch: {
       objectId(newId, oldId) {
@@ -84,21 +79,8 @@ export default {
 
     mounted(){
         this.addEventForEdit();
-        if (this.$store.state.allowAsyncLoad) {
-            this.registerModule();
-            this.fetchItem();
-        } else {
-          this.registerModule(true);
-        }
-
     },
 
-
-
-    destroyed() {
-      this.$store.unregisterApiModule ( 'pages');
-
-    },
 
     methods: {
 
@@ -156,7 +138,7 @@ export default {
 
       registerModule(preserveState) {
           this.$store.registerApiModule( {
-            name: 'pages',
+            name: this.$options.nameModule,
             module: pages('appInstance/urlID'),
             preserveState: preserveState
           } );
