@@ -32,6 +32,46 @@ export default {
     methods: {
 
 
+      /*
+          dirty category with prefix or suffix
+
+          examples mathes for locations
+
+
+
+      */
+
+      findPrefixes() {
+        //example patch "/where-eat:category(-[A-Za-z0-9_\-]+?)?:location(-in-[A-Za-z0-9_\-]+)?" ;
+        var path = this.$store.getters.getSiteoConfig('seo_path_'+this.$options.nameModule);
+        // find params names
+        let array1;
+        /// find names for params
+        var regex1=new RegExp(":([a-z]+?)\\(", "g");
+        var mathes_params_names = [];
+        //[[":category(", "category"], [":location(", "location"]]
+        while ((array1 = regex1.exec(path)) !== null) {
+            mathes_params_names.push(array1[1]);
+        }
+        /// find prefix for params
+        var regex1=new RegExp("\\((.*?)\\[", "g");
+        var mathes_params_values = [];
+        //  [["(-[", "-"], ["(-in-[", "-in-"]]
+        while ((array1 = regex1.exec(path)) !== null) {
+            mathes_params_values.push(array1[1]);
+        }
+        console.log(mathes_params_names);
+        console.log(mathes_params_values);
+        if (mathes_params_names.length>0) {
+            mathes_params_names.map((param_name, index)=>{
+                let pname = param_name + 'Prefix';
+                if (this[pname]!==undefined) {
+                  this[pname] = mathes_params_values[index]||'';
+                }
+            })
+        }
+      },
+
       /**
         registerModule();
         fetchItem();
