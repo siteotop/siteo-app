@@ -2,12 +2,29 @@
 
 <v-container  fluid>
 <v-row>
-  <v-col cols="12" sm="6"  md="3" lg="3" xl="3">
+
+  <v-col cols="12" sm="6"  md="4" lg="4" xl="4">
     <v-card>
       <v-toolbar>
          Choise
       </v-toolbar>
     <v-card-text>
+
+      <SiteoPlugin
+          pluginName="SiteoPluginSelectItems"
+
+          :pluginOptions="{
+            eventOnChange: onChangeCategory,
+            label: 'Values',
+            vComp: {
+              //hint:'Choose website',
+              chips: true,
+              deletableChips:true,
+              rounded: false,
+             }
+        }"
+      >
+      </SiteoPlugin>
       <SiteoPlugin
 
           pluginName="SiteoPluginSelectItems"
@@ -28,27 +45,9 @@
       </SiteoPlugin>
 
 
-      <SiteoPlugin
-          pluginName="SiteoPluginSelectItems"
 
-          :pluginOptions="{
-            eventOnChange: onChangeCategory,
-            label: 'Values',
-            vComp: {
-              //hint:'Choose website',
-              chips: true,
-              deletableChips:true,
-              rounded: false,
-             }
-        }"
-      >
-      </SiteoPlugin>
 </v-card-text>
     </v-card>
-
-  </v-col>
-  <v-col cols="12" sm="6"  md="4" lg="4" xl="4">
-
     <v-card>
       <v-toolbar>
          list
@@ -106,7 +105,8 @@
     </v-row>
     </v-card>
   </v-col>
-  <v-col cols="12" sm="12"  md="4" lg="5" xl="5">
+
+  <v-col cols="12" sm="12"  md="8" lg="8" xl="8">
     <v-card>
       <v-toolbar>
          Map
