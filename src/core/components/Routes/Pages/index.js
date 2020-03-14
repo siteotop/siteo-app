@@ -22,7 +22,7 @@ export default {
 
   data() {
     return  {
-
+      moduleAction: 'getObject',
       error: false,
       //offsetTop: 0,
       shareWindow: false
@@ -126,7 +126,7 @@ export default {
         }
         this.$store.commit('pages/updateModel', newStructure  );
       },
-    
+
       registerModule(preserveState) {
           this.$store.registerApiModule( {
             name: this.$options.nameModule,

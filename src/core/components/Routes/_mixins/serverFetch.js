@@ -3,6 +3,7 @@
 export default {
     data() {
         return {
+          moduleAction: 'getList',
           loaded: false,
           loadingMore: false,
         }
@@ -30,7 +31,7 @@ export default {
 
     methods: {
 
-      
+
       /**
         registerModule();
         fetchItem();
@@ -45,7 +46,7 @@ export default {
 
          return new Promise ((resolve, reject)=>{
 
-             this.$store.dispatch(this.$options.nameModule+'/getList', this.getParamsForFetch()).then((result)=>{
+             this.$store.dispatch(this.$options.nameModule+'/'+this.moduleAction, this.getParamsForFetch()).then((result)=>{
 
                 if (this.resultResolve) {
                   this.resultResolve(result);
