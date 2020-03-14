@@ -53,7 +53,27 @@
       <v-toolbar>
          list
       </v-toolbar>
-      <v-row class="pa-2">
+      <v-row v-if="loaded">
+        <v-col cols="12"  v-for="i in [1,2,3,4,5,6]" :key="i">
+          <v-card>
+            <v-card-text>
+              <v-skeleton-loader
+                 class="mx-auto"
+                 type="heading"
+               ></v-skeleton-loader>
+            </v-card-text>
+            <v-card-text>
+              <v-skeleton-loader
+                 class="mx-auto"
+                 boilerplate
+                 type=" paragraph, actions"
+               ></v-skeleton-loader>
+           </v-card-text>
+          </v-card>
+
+        </v-col>
+      </v-row>
+      <v-row v-else  class="pa-2">
           <template v-for="(item, i) in listItems">
             <v-col
               cols="12"
