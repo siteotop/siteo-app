@@ -5,7 +5,7 @@
       v-bind="filterPropsSElected"
       :label="correctLabel"
       v-model="valueData"
-
+      autocomplete="off"
       @change="change($event)"
     >
     <template v-slot:prepend-item>
@@ -14,11 +14,11 @@
     </template>
     <template v-slot:item="data">
       <v-list-item-avatar>
-        <v-avatar color="primary" class="white--text"><span>{{data.item[propsSelect.itemText][0]}}</span></v-avatar>
+        <v-avatar color="primary" class="white--text"><span>{{data.item[filterPropsSElected.itemText][0]}}</span></v-avatar>
         <!-- <img :src="data.item.avatar"> -->
       </v-list-item-avatar>
       <v-list-item-content>
-        <v-list-item-title >{{data.item[propsSelect.itemText]}}</v-list-item-title>
+        <v-list-item-title >{{data.item[filterPropsSElected.itemText]}}</v-list-item-title>
 
       </v-list-item-content>
     </template>
@@ -47,6 +47,18 @@ export default {
         type: Boolean,
         default: false
      },
+
+     /**
+      Function on event change
+     */
+     eventOnChange: {
+       type:Function,
+       default: (element)=>{
+         if (element&&element.url_page ) {
+           document.location.href = element.url_page;
+         }
+       }
+     },
      // when use siteo API
      internalApi: {
        type: String,
@@ -74,14 +86,7 @@ export default {
         loading: false,
         items: [],
         activated: false, // not activate get items
-        propsSelect: {
-           solo: true,
-           light: true,
-           rounded: true,
-           hideDetails: true,
-           itemValue:"_id",
-           itemText:"title"
-         }
+
       }
   },
   /*
@@ -105,7 +110,14 @@ export default {
   computed: {
 
       filterPropsSElected() {
-          return Object.assign(this.propsSelect, this.vComp);
+          return Object.assign({
+             solo: true,
+             light: true,
+             rounded: true,
+             hideDetails: true,
+             itemValue:"_id",
+             itemText:"title"
+           }, this.vComp);
       },
 
       correctLabel() {
@@ -168,13 +180,10 @@ export default {
     },
 
     change(eventId) {
-        var element = _find (this.items, ['_id', eventId]);
-        //console.log(element);
-        if (element&&element.url_page ) {
-          document.location.href = element.url_page;
+        var element = _find (this.items, [this.filterPropsSElected.itemValue, eventId]);
+        if (this.eventOnChange) {
+          this.eventOnChange(element);
         }
-
-
     }
   }
 
