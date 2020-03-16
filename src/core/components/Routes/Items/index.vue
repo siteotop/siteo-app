@@ -396,7 +396,7 @@ export default {
       params.additional = true;
       params.gp = this.$route.path;
       if  (this.categoryReal) {
-         params.category = this.categoryReal;
+         params.attribute = this.categoryReal;
       };
 
       return params;
