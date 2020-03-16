@@ -32,13 +32,18 @@ export default {
     methods: {
 
 
+      setClearParamFromPath(dirtyValue, paramName) {
+          let real = paramName + 'Real'; 
+          let prefix = paramName + 'Prefix';
+          if (this[prefix]) {
+            this[real] = dirtyValue.replace(this[prefix], "");
+          } else {
+            this[real] = dirtyValue;
+          }
+      },
       /*
           dirty category with prefix or suffix
-
           examples mathes for locations
-
-
-
       */
 
       findPrefixes() {
@@ -60,8 +65,7 @@ export default {
         while ((array1 = regex1.exec(path)) !== null) {
             mathes_params_values.push(array1[1]);
         }
-        console.log(mathes_params_names);
-        console.log(mathes_params_values);
+
         if (mathes_params_names.length>0) {
             mathes_params_names.map((param_name, index)=>{
                 let pname = param_name + 'Prefix';

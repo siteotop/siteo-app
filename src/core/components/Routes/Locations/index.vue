@@ -170,10 +170,18 @@ export default {
 
     created() {
         this.findPrefixes();
-        this.findRealCategory(this.category);
-        this.findRealLocation(this.location);
+        this.setClearParamFromPath(this.category, 'category');
+        this.setClearParamFromPath(this.location, 'location');
 
+    },
 
+    watch: {
+        category(newId, oldId) {
+            if (newId!=oldId) {
+              this.setClearParamFromPath(newId, 'category');
+              this.fetchItem();
+            }
+        }
     },
 
     computed: {
@@ -222,18 +230,6 @@ export default {
 
     methods: {
 
-      findRealLocation(path_category) {
-        if (this.locationPrefix) {
-          this.locationReal = path_category.replace(this.locationPrefix, "");
-        }
-      },
-
-      findRealCategory(path_category) {
-
-        if (this.categoryPrefix) {
-          this.categoryReal = path_category.replace(this.categoryPrefix, "");
-        }
-      },
       /**
         function for plugin SiteoPluginSelectItems (Locations)
       */

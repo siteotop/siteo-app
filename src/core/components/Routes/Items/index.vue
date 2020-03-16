@@ -230,7 +230,7 @@ export default {
 
   created() {
       this.findPrefixes();
-      this.findRealCategory(this.category);
+      this.setClearParamFromPath(this.category, 'category');
   },
 
 
@@ -252,7 +252,7 @@ export default {
   watch: {
       category(newId, oldId) {
           if (newId!=oldId) {
-            this.findRealCategory(newId);
+            this.setClearParamFromPath(newId, 'category');
             this.fetchItem();
           }
       }
@@ -370,12 +370,7 @@ export default {
 
   methods: {
 
-    findRealCategory(path_category) {
 
-      if (this.categoryPrefix) {
-        this.categoryReal = path_category.replace(this.categoryPrefix, "");
-      }
-    },
 
     registerModule(preserveState) {
       this.$store.registerApiModule({
