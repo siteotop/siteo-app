@@ -39,6 +39,8 @@
               itemText:'title',
               hint:'Choose website',
               rounded: false,
+              chips: true,
+              deletableChips:true,
              }
         }"
       >
@@ -181,6 +183,13 @@ export default {
               this.setClearParamFromPath(newId, 'category');
               this.fetchItem();
             }
+        },
+
+        location(newId, oldId) {
+            if (newId!=oldId) {
+              this.setClearParamFromPath(newId, 'location');
+              this.fetchItem();
+            }
         }
     },
 
@@ -267,6 +276,21 @@ export default {
 
       getParamsForFetch() {
         let params={};
+        if (this.limit != 10 ){
+          params = {limit:this.limit};
+        }
+
+        // return response for using additional funcional page
+        params.additional = true;
+        params.gp = this.$route.path;
+        if  (this.categoryReal) {
+           params.attribute = this.categoryReal;
+        }
+        if  (this.locationReal) {
+           params.location = this.locationReal;
+           params.location_website_id = this.$store.getters['getSiteoConfig']('mainWebsite');
+        }
+
         return params;
       },
 
