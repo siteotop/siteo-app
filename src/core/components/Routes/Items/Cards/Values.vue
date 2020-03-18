@@ -10,7 +10,7 @@
             aspect-ratio="1.61"
             class="primary darken-2 white--text"
             :gradient="hover?'to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)':''"
-            :src="props.thumb['420']"
+            :src="props.thumb420"
             :alt="props.title"
           >
            <v-toolbar flat class="transparent ">

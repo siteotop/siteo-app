@@ -12,7 +12,7 @@
         <v-skeleton-loader v-if="loading" type="list-item-avatar-two-line@3">
         </v-skeleton-loader>
     </template>
-    <template v-slot:item="data">
+    <template  v-slot:item="data">
       <v-list-item-avatar>
         <v-avatar color="primary" class="white--text"><span>{{data.item[filterPropsSElected.itemText][0]}}</span></v-avatar>
         <!-- <img :src="data.item.avatar"> -->

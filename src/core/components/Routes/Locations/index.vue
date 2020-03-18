@@ -10,7 +10,7 @@
             @click:close="onChangeCategory(false)"
             >
             <v-avatar left>
-              <v-img :src="categoryObject.picture"></v-img>
+              <v-img :src="categoryObject.thumb420"></v-img>
             </v-avatar>{{categoryObject.title}}
           </v-chip>
          <v-chip
@@ -37,7 +37,7 @@
     <v-card>
      <component
       :is="'v-img'"
-      :src="categoryObject.picture"
+      :src="categoryObject.thumb420"
       height="300"
       :gradient="'to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)'"
       class="primary darken-2"
@@ -273,6 +273,7 @@ export default {
          var siteoId =this.$store.getters['getSiteoConfig']('mainWebsite');
          return '/apps/'+siteoId+'/locations?attribute='+this.$store.getters['appInstance/activeId'];
        },
+
 
        titleWithCategory() {
          if ( this.pageObject.title) {
