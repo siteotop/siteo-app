@@ -74,6 +74,7 @@
                   :value ="locationObject.idUrl"
                   :pluginOptions="{
                     internalApi:citiesLink,
+                  //  queryParams: ,
                     label: 'Locations',
                     eventOnChange: onChangeLocation  ,
                     startObject: locationObject._id? locationObject:false,
@@ -270,7 +271,7 @@ export default {
     computed: {
        citiesLink() {
          var siteoId =this.$store.getters['getSiteoConfig']('mainWebsite');
-         return '/apps/'+siteoId+'/locations';
+         return '/apps/'+siteoId+'/locations?attribute='+this.$store.getters['appInstance/activeId'];
        },
 
        titleWithCategory() {
