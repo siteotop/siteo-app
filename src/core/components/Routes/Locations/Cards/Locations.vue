@@ -6,7 +6,7 @@
 
     </v-card-text>
     <v-card-actions>
-        <v-btn >details </v-btn>
+    <v-spacer></v-spacer>    <v-btn disabled>{{parent.$t('rm')}} </v-btn>
     </v-card-actions>
 
   </v-card>
