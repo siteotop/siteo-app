@@ -34,7 +34,7 @@ export default {
   watch: {
       objectId(newId, oldId) {
           if (newId!=oldId) {
-            this.fetchItem();
+             this.fetchItem();
           }
       }
   },
@@ -106,15 +106,14 @@ export default {
           } else {
              id = this.$store.state.appInstance.objectActive._websites_page;
           }
-          return id;
-            /**
-            if (!id) {
-              return false;
-            } else {
+          if (id) {
+            return id;
+          } else {
+            // we must throw erro, because /test/ is not working, when we send /page without id 
+              throw "id_is_empty";
+          }
 
-            }*/
 
-          //console.log(id);
       },
 
       /**
