@@ -11,14 +11,16 @@
             >
             <v-avatar left>
               <v-img :src="categoryObject.picture"></v-img>
-            </v-avatar>{{categoryObject.title}}</v-chip>
+            </v-avatar>{{categoryObject.title}}
+          </v-chip>
          <v-chip
-          v-if="locationObject.title"
-          close
-          @click:close="onChangeLocation(false)"
+           v-if="locationObject.title"
+           close
+           @click:close="onChangeLocation(false)"
           >
 
-          {{locationObject.title}}</v-chip>
+          {{locationObject.title}}
+         </v-chip>
       </v-toolbar-title>
      <v-spacer></v-spacer>
   </v-toolbar>
@@ -43,7 +45,7 @@
         <v-container>
           <v-row>
             <v-col cols="12" class="text-center white--text">
-                <h1 class="display-2">{{titleWithCategory}}</h1>
+                <h1 :class="smAndDown?'title' :'display-2'">{{titleWithCategory}}</h1>
                 <strong class="subtitle-1">{{categoryObject.subtitle}}</strong>
             </v-col>
             <v-col>
@@ -229,6 +231,7 @@ export default {
 
     data() {
         return {
+          smAndDown: true,
           categoryPrefix: '',
           locationPrefix: '',
           categoryReal: '',
@@ -242,6 +245,10 @@ export default {
         this.setClearParamFromPath(this.category, 'category');
         this.setClearParamFromPath(this.location, 'location');
 
+    },
+
+    mounted() {
+      this.smAndDown = this.$vuetify.breakpoint.smAndDown;
     },
 
     watch: {
