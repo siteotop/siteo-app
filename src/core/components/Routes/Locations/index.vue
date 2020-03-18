@@ -36,12 +36,16 @@
      <component
       :is="'v-img'"
       :src="categoryObject.picture"
-      :height="categoryObject.picture?300:150"
+      height="300"
       :gradient="'to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)'"
       class="primary darken-2"
       >
         <v-container>
           <v-row>
+            <v-col cols="12" class="text-center white--text">
+                <h1 class="display-2">{{titleWithCategory}}</h1>
+                <strong class="subtitle-1">{{categoryObject.subtitle}}</strong>
+            </v-col>
             <v-col>
               <SiteoPlugin
                   pluginName="SiteoPluginSelectItems"
@@ -85,10 +89,7 @@
               </SiteoPlugin>
 
             </v-col>
-            <v-col v-if="categoryObject.title" cols="12" class="text-center white--text">
-                <h2 class="display-2">{{categoryObject.title}}</h2>
-                <strong class="subtitle-1">{{categoryObject.subtitle}}</strong>
-            </v-col>
+
 
           </v-row>
         </v-container>
@@ -97,11 +98,27 @@
       {{categoryObject.preview}}
     </v-card-text>
 
+
     <v-divider>
     </v-divider>
       <v-toolbar flat>
-        <h3>{{titleWithCategory}}</h3>
+        <h2>{{$store.getters.getSiteoConfig('t_ac')}}
+          <v-chip
+             v-if="locationObject.title"
+             close
+             @click:close="onChangeLocation(false)"
+             >
+             {{locationObject.title}}
+          </v-chip>
+        </h2>
+        <v-spacer>
+        </v-spacer>
+        {{$t('top')}}:
+        {{topCount}}
       </v-toolbar>
+      <v-card-text v-if="pageObject.description">
+        {{pageObject.description}}
+      </v-card-text>
       <v-row v-if="loaded">
         <v-col cols="12"  v-for="i in [1,2,3,4,5,6]" :key="i">
           <v-card>
@@ -212,7 +229,6 @@ export default {
 
     data() {
         return {
-          pageObject: {},
           categoryPrefix: '',
           locationPrefix: '',
           categoryReal: '',
@@ -251,6 +267,10 @@ export default {
        },
 
        titleWithCategory() {
+         if ( this.pageObject.title) {
+           return this.pageObject.title;
+         }
+
          let startText = this.$store.getters.getSiteoConfig('t_ac');
          if (this.categoryObject.title) {
            startText+=' '+this.categoryObject.title;
@@ -259,7 +279,9 @@ export default {
        },
 
        metaTitle() {
-
+          if ( this.pageObject.meta_title) {
+            return this.replaceTitle(this.pageObject.meta_title);
+          }
             if (this.locationObject.title) {
              return this.locationObject.title+': '+this.titleWithCategory;
            }
@@ -275,6 +297,15 @@ export default {
                } else {
                  return [];
                }
+
+           },
+
+           pageObject (state) {
+              if (state.locations) {
+                return state.locations.items.additional.pageObject || {}
+              } else {
+                return {};
+              }
 
            },
 
@@ -314,7 +345,14 @@ export default {
              }
              return {};
            }
-         })
+         }),
+         topCount() {
+           if (this.countItems> this.limitItems) {
+              return this.limitItems
+           } else {
+             return this.countItems;
+           }
+         }
 
     },
 

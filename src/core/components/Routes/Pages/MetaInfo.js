@@ -104,5 +104,15 @@ export default {
       link: this.metaLinks
 
     }
+  },
+  methods: {
+    replaceTitle(meta_title) {
+       return meta_title.replace(/\{\{([^}]+)\}\}/, (i, match)=>{
+              if (match == 'N') {
+                return this.countItems;
+              }
+              return   match
+          });
+    }
   }
 }

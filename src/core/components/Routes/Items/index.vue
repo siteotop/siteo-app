@@ -53,7 +53,7 @@
       </v-card>
     </v-menu>
 
-    <v-toolbar-title><h2 class="title" >{{category_title}} ТОП {{topCount}}  </h2></v-toolbar-title>
+    <v-toolbar-title><h2 class="title" >{{category_title}} {{$t('top')}} {{topCount}}  </h2></v-toolbar-title>
     <v-spacer></v-spacer>
     <v-btn-toggle mandatory v-model="toggle_component">
       <v-btn text value="card">
@@ -284,12 +284,7 @@ export default {
       metaTitle() {
 
          return this.pageObject.meta_title?
-            this.pageObject.meta_title.replace(/\{\{([^}]+)\}\}/, (i, match)=>{
-                    if (match == 'N') {
-                      return this.countItems;
-                    }
-                    return   match
-                })
+            this.replaceTitle(this.pageObject.meta_title)
                 :   (this.countItems + ' ' + this.category_title) ;
       },
 

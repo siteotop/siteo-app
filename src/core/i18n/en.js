@@ -12,6 +12,8 @@ export default {
     action: 'Action',
     for_more: 'For more information click',
     here: 'here',
+    top: 'TOP',
+    list: 'list',
     /**
       common form
     */
