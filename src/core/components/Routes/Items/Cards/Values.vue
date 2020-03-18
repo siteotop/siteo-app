@@ -79,11 +79,19 @@
              {{parent.$store.getters.getSiteoConfig('t_re')||parent.$t('rm')}}
             </v-btn>
 
-                <v-btn
+                <v-btn v-if="props.count==0"
                   tag="a"
                   disabled
                   text
                   color="primary accent-4"
+                >
+                 {{parent.$store.getters.getSiteoConfig('t_ac')||parent.$t('action')}}
+                </v-btn>
+                <v-btn v-else
+                  tag="a"
+                  text
+                  color="primary accent-4"
+                  :to="{name:'locations', params: { category: '-try-'+ props.idUrl }}"
                 >
                  {{parent.$store.getters.getSiteoConfig('t_ac')||parent.$t('action')}}
                 </v-btn>

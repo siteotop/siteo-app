@@ -1,6 +1,6 @@
 <template >
   <v-autocomplete
-      :items="items"
+      :items="showRealItems? items : [startObject] "
       @focus="activated=true"
       v-bind="filterPropsSElected"
       :label="correctLabel"
@@ -48,6 +48,10 @@ export default {
         default: false
      },
 
+     startObject: {
+       type: [Boolean, Object],
+       default: false
+     },
      /**
       Function on event change
      */
@@ -83,6 +87,7 @@ export default {
 
   data() {
       return {
+        startObjectShow: false,
         loading: false,
         items: [],
         activated: false, // not activate get items
@@ -96,6 +101,10 @@ export default {
      console.log( this.propsSelect);
   },*/
   mounted() {
+    if (this.startObject!==false){
+        this.startObjectShow = true;
+        //this.valueData = this.startObject[this.filterPropsSElected.itemValue];
+    }
     if (this.activateOnStart) {
        this.activated = true;
     }
@@ -108,7 +117,9 @@ export default {
     }
   },
   computed: {
-
+      showRealItems() {
+          return   this.activated||!this.startObjectShow;
+      },
       filterPropsSElected() {
           return Object.assign({
              solo: true,
@@ -180,6 +191,9 @@ export default {
     },
 
     change(eventId) {
+        if (this.startObjectShow) {
+          this.startObjectShow = false;
+        }
         var element = _find (this.items, [this.filterPropsSElected.itemValue, eventId]);
         if (this.eventOnChange) {
           this.eventOnChange(element);

@@ -59,6 +59,12 @@ const MUTATIONS = {
 
   },
 
+  updateAdditional(state, object) {
+      for (let key in object) {
+          state.additional[key] = object[key];
+      }
+  },
+
   saveAdditional(state, object) {
       state.additional = object;
   },

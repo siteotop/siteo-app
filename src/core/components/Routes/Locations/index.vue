@@ -1,58 +1,106 @@
 <template>
+<div>
+  <v-toolbar >
+     <v-spacer></v-spacer>
+      <v-toolbar-title>
+         {{$store.getters.getSiteoConfig('t_ac')}}
+         <v-chip
+            v-if="categoryObject.title"
+            close
+            @click:close="onChangeCategory(false)"
+            >
+            <v-avatar left>
+              <v-img :src="categoryObject.picture"></v-img>
+            </v-avatar>{{categoryObject.title}}</v-chip>
+         <v-chip
+          v-if="locationObject.title"
+          close
+          @click:close="onChangeLocation(false)"
+          >
 
-<v-container  fluid>
-<v-row>
+          {{locationObject.title}}</v-chip>
+      </v-toolbar-title>
+     <v-spacer></v-spacer>
+  </v-toolbar>
+<v-container  :fluid="activeMap">
+<v-row justify="center">
 
-  <v-col cols="12" sm="6"  md="4" lg="4" xl="4">
+  <v-col v-bind="activeMap?
+    {
+      cols:12, sm:6,  md:4, lg:4, xl:4
+    }:
+    {
+      cols:12, sm:12,  md:10, lg:8, xl:7
+    }" >
     <v-card>
-      <v-toolbar>
-         Choise
-      </v-toolbar>
+     <component
+      :is="'v-img'"
+      :src="categoryObject.picture"
+      :height="categoryObject.picture?300:150"
+      :gradient="'to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)'"
+      class="primary darken-2"
+      >
+        <v-container>
+          <v-row>
+            <v-col>
+              <SiteoPlugin
+                  pluginName="SiteoPluginSelectItems"
+                  :value ="categoryObject.idUrl"
+                  :pluginOptions="{
+                    eventOnChange: onChangeCategory,
+                    label: 'Values',
+                    startObject: categoryObject._id? categoryObject:false,
+
+                    vComp: {
+                      //hint:'Choose website',
+                      itemValue:'idUrl',
+                      itemText:'title',
+                      chips: true,
+                      deletableChips:true,
+                      rounded: false,
+                     }
+                }"
+              >
+              </SiteoPlugin>
+              <SiteoPlugin
+
+                  pluginName="SiteoPluginSelectItems"
+                  :value ="locationObject.idUrl"
+                  :pluginOptions="{
+                    internalApi:citiesLink,
+                    label: 'Locations',
+                    eventOnChange: onChangeLocation  ,
+                    startObject: locationObject._id? locationObject:false,
+
+                    vComp: {
+                      itemValue:'idUrl',
+                      itemText:'title',
+                      hint:'Choose website',
+                      rounded: false,
+                      chips: true,
+                      deletableChips:true,
+                     }
+                }"
+              >
+              </SiteoPlugin>
+
+            </v-col>
+            <v-col v-if="categoryObject.title" cols="12" class="text-center white--text">
+                <h2 class="display-2">{{categoryObject.title}}</h2>
+                <strong class="subtitle-1">{{categoryObject.subtitle}}</strong>
+            </v-col>
+
+          </v-row>
+        </v-container>
+     </component>
     <v-card-text>
+      {{categoryObject.preview}}
+    </v-card-text>
 
-      <SiteoPlugin
-          pluginName="SiteoPluginSelectItems"
-
-          :pluginOptions="{
-            eventOnChange: onChangeCategory,
-            label: 'Values',
-            vComp: {
-              //hint:'Choose website',
-              chips: true,
-              deletableChips:true,
-              rounded: false,
-             }
-        }"
-      >
-      </SiteoPlugin>
-      <SiteoPlugin
-
-          pluginName="SiteoPluginSelectItems"
-
-          :pluginOptions="{
-            internalApi:citiesLink,
-            label: 'Locations',
-            eventOnChange: onChangeLocations  ,
-
-            vComp: {
-              itemValue:'idUrl',
-              itemText:'title',
-              hint:'Choose website',
-              rounded: false,
-              chips: true,
-              deletableChips:true,
-             }
-        }"
-      >
-      </SiteoPlugin>
-
-
-
-</v-card-text>
-    </v-card>
-    <v-card>
-      <v-toolbar>
-         list
+    <v-divider>
+    </v-divider>
+      <v-toolbar flat>
+        <h3>{{titleWithCategory}}</h3>
       </v-toolbar>
       <v-row v-if="loaded">
         <v-col cols="12"  v-for="i in [1,2,3,4,5,6]" :key="i">
@@ -108,18 +156,20 @@
     </v-card>
   </v-col>
 
-  <v-col cols="12" sm="12"  md="8" lg="8" xl="8">
+  <v-col v-if="activeMap" v-bind="{
+      cols:12, sm:6,  md:4, lg:4, xl:4
+    }">
     <v-card>
       <v-toolbar>
          Map
       </v-toolbar>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1348.0643095832522!2d19.0576707!3d47.4874077!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741dc5ae59ceba5%3A0x8393b16f22898a6d!2sCostes%20Restaurant!5e0!3m2!1sen!2sua!4v1584167183725!5m2!1sen!2sua" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
     </v-card>
   </v-col>
 
 </v-row>
 </v-container>
-
+</div>
 
 </template>
 
@@ -166,7 +216,8 @@ export default {
           categoryPrefix: '',
           locationPrefix: '',
           categoryReal: '',
-          locationReal: ''
+          locationReal: '',
+          activeMap: false
         }
     },
 
@@ -199,10 +250,23 @@ export default {
          return '/apps/'+siteoId+'/locations';
        },
 
+       titleWithCategory() {
+         let startText = this.$store.getters.getSiteoConfig('t_ac');
+         if (this.categoryObject.title) {
+           startText+=' '+this.categoryObject.title;
+         }
+         return startText
+       },
+
        metaTitle() {
 
-            return 'Need Create';
+            if (this.locationObject.title) {
+             return this.locationObject.title+': '+this.titleWithCategory;
+           }
+          return  this.titleWithCategory
        },
+
+
 
        ...mapState({
            listItems (state) {
@@ -229,10 +293,27 @@ export default {
 
            showMore(state) {
 
-             if (state.values) {
-                 return state.values.items.pagination.showMore;
+             if (state.locations) {
+                 return state.locations.items.pagination.showMore;
              }
            },
+
+           categoryObject(state) {
+             if (state.locations) {
+                if (state.locations.items.additional.category) {
+                   return state.locations.items.additional.category;
+                }
+             }
+             return {};
+           },
+           locationObject(state) {
+             if (state.locations) {
+                if (state.locations.items.additional.location) {
+                   return state.locations.items.additional.location;
+                }
+             }
+             return {};
+           }
          })
 
     },
@@ -242,36 +323,48 @@ export default {
       /**
         function for plugin SiteoPluginSelectItems (Locations)
       */
-      onChangeLocations(element){
+      onChangeLocation(element){
+
+          /*
+          let reducedElement;
           if (element) {
-            this.locationReal =  element.idUrl;
-          } else {
-            this.locationReal = '';
-          }
-          this.coreEventOnChange();
+            reducedElement =  element;
+            reducedElement = {
+              'idUrl': element.idUrl
+            }
+          }*/
+          this.coreEventOnChange(element, 'location');
       },
 
       onChangeCategory(element){
+        /*  let reducedElement;
           if (element) {
-            this.categoryReal  = element.idUrl;
-          } else {
-            this.categoryReal  = '';
-          }
-          this.coreEventOnChange();
+            reducedElement =  element;
+            reducedElement = {
+              'idUrl': element.idUrl
+            }
+          }*/
+          this.coreEventOnChange(element, 'category' );
       },
 
-      coreEventOnChange() {
+      coreEventOnChange(reducedElement,  paramName ) {
+          // Block sets new param
+          let paramReal = paramName+'Real';
+
+          var newPartState={};
+          newPartState[paramName]  = reducedElement;
+          if (reducedElement) {
+            this[paramReal]  = reducedElement.idUrl;
+            } else {
+            this[paramReal]  = '';
+          }
+          this.$store.commit('locations/updateAdditional', newPartState);
+          // block push
           let category = this.categoryReal? (this.categoryPrefix + this.categoryReal): undefined;
           let location = this.locationReal? (this.locationPrefix + this.locationReal): undefined;
           this.$router.push({name: 'locations', params:{category: category, location:location}})
       },
 
-      /**
-        function for plugin SiteoPluginSelectItems (values)
-      */
-      onChangeValues(){
-
-      },
 
 
       getParamsForFetch() {
