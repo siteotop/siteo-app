@@ -52,16 +52,17 @@ export default {
        type: [Boolean, Object],
        default: false
      },
+
+     changeUrlPage: {
+        type:Boolean,
+        default: false
+     },
      /**
       Function on event change
      */
      eventOnChange: {
-       type:Function,
-       default: (element)=>{
-         if (element&&element.url_page ) {
-           document.location.href = element.url_page;
-         }
-       }
+       type:[Function, Boolean],
+       default: false
      },
      // when use siteo API
      internalApi: {
@@ -195,6 +196,13 @@ export default {
           this.startObjectShow = false;
         }
         var element = _find (this.items, [this.filterPropsSElected.itemValue, eventId]);
+
+        if (this.changeUrlPage) {
+          if (element&&element.url_page ) {
+            document.location.href = element.url_page;
+          }
+        }
+
         if (this.eventOnChange) {
           this.eventOnChange(element);
         }
