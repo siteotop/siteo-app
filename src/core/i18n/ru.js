@@ -14,6 +14,7 @@ export default {
     here: 'здесь',
     top: 'ТОП',
     list: 'список',
+    empty: 'пустой',
     /**
       common form
     */

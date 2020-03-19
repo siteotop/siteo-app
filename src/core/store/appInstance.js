@@ -11,7 +11,6 @@ export default {
          name:"",
          title:"",
          slogan:"",
-         actionText:"",
          description:"",
          contacts: [],
          design:{},

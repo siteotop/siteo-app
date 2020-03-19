@@ -14,6 +14,7 @@ export default {
     here: 'here',
     top: 'TOP',
     list: 'list',
+    empty: 'empty',
     /**
       common form
     */

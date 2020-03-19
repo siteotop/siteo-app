@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="mb-3">
   <v-toolbar >
      <v-spacer></v-spacer>
       <v-toolbar-title>
@@ -104,7 +104,12 @@
 
     <v-divider>
     </v-divider>
-      <v-toolbar flat>
+    <v-card-text v-if="countItems==0">
+        <v-alert v-if="!loaded" color="warning" border="left">
+            {{$t('list')}} {{$t('empty')}}
+        </v-alert>
+    </v-card-text >
+      <v-toolbar v-else flat>
         <h2>{{$store.getters.getSiteoConfig('t_ac')}}
           <v-chip
              v-if="locationObject.title"
@@ -161,6 +166,7 @@
           </v-card>
           </v-col>
         </template>
+
         <v-col cols="12" v-if="showMore"  >
           <v-card height="100%">
              <v-row justify="center"   alignContent="center" class="fill-height text-center">
@@ -170,9 +176,20 @@
              </v-row>
 
            </v-card>
-         </v-col>
+        </v-col>
 
     </v-row>
+
+      <v-card-actions v-if="$store.getters.getSiteoConfig('actionLink')">
+        <v-spacer>
+        </v-spacer>
+          <v-btn tag="a" target="_blank" :href="$store.getters.getSiteoConfig('actionLink')" large color="primary">
+              {{$store.getters.getSiteoConfig('actionText')}}
+          </v-btn>
+
+        <v-spacer>
+        </v-spacer>
+      </v-card-actions>
     </v-card>
   </v-col>
 
