@@ -29,7 +29,7 @@ export default {
       }
 
       // Add div because was error
-      return  h('div',
+      return  h('div', { class: 'fill-height' }, 
           ////////// Structure
            context.props.structure.map(function(element){
             return h('StChildrenHelper', {props: { element:element}})
