@@ -79,7 +79,7 @@
              {{parent.$store.getters.getSiteoConfig('t_re')||parent.$t('rm')}}
             </v-btn>
 
-                <v-btn v-if="props.count==0"
+                <v-btn
                   tag="a"
                   disabled
                   text
@@ -87,14 +87,7 @@
                 >
                  {{parent.$store.getters.getSiteoConfig('t_ac')||parent.$t('action')}}
                 </v-btn>
-                <v-btn v-else
-                  tag="a"
-                  text
-                  color="primary accent-4"
-                  :to="{name:'locations', params: { category: '-try-'+ props.idUrl }}"
-                >
-                 {{parent.$store.getters.getSiteoConfig('t_ac')||parent.$t('action')}}
-                </v-btn>
+
               <!--  <v-spacer></v-spacer>
                 <v-btn icon>
                   <v-icon>mdi-heart</v-icon>
