@@ -12,6 +12,9 @@ export default {
     action: 'Дія',
     for_more: 'Для більшої інформації натисни',
     here: 'тут',
+    top: 'ТОП',
+    list: 'список',
+    empty: 'пустий',
     /**
       common form
     */

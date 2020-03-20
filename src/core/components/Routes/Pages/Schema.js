@@ -27,24 +27,16 @@ export default {
       if (!context.props.structure ||!context.props.structure.length) {
         return '';
       }
-      return  [
 
-
+      // Add div because was error
+      return  h('div',
           ////////// Structure
            context.props.structure.map(function(element){
             return h('StChildrenHelper', {props: { element:element}})
-          }),
+          })
           ////////// Structure
-
-
-
-
-
-      ]
-
-
-
-    }
+        )
+      }
 
 
 }

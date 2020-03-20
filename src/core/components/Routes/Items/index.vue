@@ -44,7 +44,7 @@
               <v-list-item-title>{{$store.getters.getSiteoConfig('t_ls')||'Back'}} </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item  tag="a" :to="{path: prefixCategory + cat.idUrl}"  v-for="(cat, i) in vcategories" :key="i">
+          <v-list-item  tag="a" :to="{name: 'values', params: {category: (categoryPrefix + cat.idUrl)}}"  v-for="(cat, i) in vcategories" :key="i">
             <v-list-item-content>
               <v-list-item-title>{{cat.title}} <span class="grey--text text--lighten-1">{{cat.count}}</span></v-list-item-title>
             </v-list-item-content>
@@ -53,7 +53,7 @@
       </v-card>
     </v-menu>
 
-    <v-toolbar-title><h2 class="title" >{{category_title}} ТОП {{topCount}}  </h2></v-toolbar-title>
+    <v-toolbar-title><h2 class="title" >{{category_title}} {{$t('top')}} {{topCount}}  </h2></v-toolbar-title>
     <v-spacer></v-spacer>
     <v-btn-toggle mandatory v-model="toggle_component">
       <v-btn text value="card">
@@ -97,7 +97,7 @@
    </v-menu>
   </PageItemsToolbar>
 
-  <v-container :fluid="toggle_component=='card'" :class="'grid-list-md'">
+  <v-container :fluid="toggle_component=='card'" :class="'grid-list-lg'">
       <v-row v-if="loaded">
         <v-col cols="12" sm="6"  md="4" lg="3" xl="2" v-for="i in [1,2,3,4,5,6]" :key="i">
           <v-skeleton-loader
@@ -178,7 +178,7 @@ import DialogVideoYoutube from './Cards/VideoYoutube.vue';
 
 
 
-import * as StoreModules from  '../../../store/modules';
+import values  from  '../../../store/modules/values';
 import { mapState } from 'vuex';
 import {
   mdiFilterVariant,
@@ -190,12 +190,13 @@ import {
 import  _find  from 'lodash/find';
 
 import MetaInfo from '../Pages/MetaInfo';
-
+import ServerFetch from '../_mixins/serverFetch';
 
 export default {
 
-  mixins: [MetaInfo],
+  mixins: [MetaInfo, ServerFetch],
 
+  nameModule: 'values',
 
   props: {
 
@@ -228,25 +229,18 @@ export default {
   },
 
   created() {
-      this.typeList = this.$route.name;
-      this.findRealCategory(this.category);
-
-
-
+      this.findPrefixes();
+      this.setClearParamFromPath(this.category, 'category');
   },
 
-  destroyed () {
-    this.$store.unregisterApiModule(this.typeList);
-  },
+
 
   data() {
     return {
-      loaded: false,
-      loadingMore: false,
+
       videoActiveObject: false,
-      typeList:'',
-      prefixCategory:'',
-      realCategory: false,
+      categoryPrefix:'',
+      categoryReal: false,
       ordermenu: false,
       notLoaded: true,
       toggle_component: 'card',
@@ -258,7 +252,7 @@ export default {
   watch: {
       category(newId, oldId) {
           if (newId!=oldId) {
-            this.findRealCategory(newId);
+            this.setClearParamFromPath(newId, 'category');
             this.fetchItem();
           }
       }
@@ -268,7 +262,7 @@ export default {
 
 
       cardComponent() {
-         return this.toggle_component+'-'+this.typeList;
+         return this.toggle_component+'-values';
       },
 
       vColProps() {
@@ -279,7 +273,7 @@ export default {
 
       category_title() {
           if (this.category) {
-             var o =  _find(this.vcategories, ['idUrl', this.realCategory ] );
+             var o =  _find(this.vcategories, ['idUrl', this.categoryReal ] );
              if (o) {
                return  o.title;
              }
@@ -290,19 +284,14 @@ export default {
       metaTitle() {
 
          return this.pageObject.meta_title?
-            this.pageObject.meta_title.replace(/\{\{([^}]+)\}\}/, (i, match)=>{
-                    if (match == 'N') {
-                      return this.countItems;
-                    }
-                    return   match
-                })
+            this.replaceTitle(this.pageObject.meta_title)
                 :   (this.countItems + ' ' + this.category_title) ;
       },
 
       ...mapState({
           listItems (state) {
-              if (state[this.typeList]) {
-                  return state[this.typeList].items.objects||[];
+              if (state.values) {
+                  return state.values.items.objects||[];
               } else {
                 return [];
               }
@@ -310,8 +299,8 @@ export default {
           },
 
           pageObject (state) {
-             if (state[this.typeList]) {
-               return state[this.typeList].items.additional.pageObject || {}
+             if (state.values) {
+               return state.values.items.additional.pageObject || {}
              } else {
                return {};
              }
@@ -319,8 +308,8 @@ export default {
           },
 
           vcategories (state) {
-             if (state[this.typeList]) {
-               return state[this.typeList].items.additional.vcategories || []
+             if (state.values) {
+               return state.values.items.additional.vcategories || []
              } else {
                return [];
              }
@@ -328,35 +317,24 @@ export default {
           },
 
           countItems(state) {
-            if (state[this.typeList]) {
-                return state[this.typeList].items.pagination.servercount || 0;
+            if (state.values) {
+                return state.values.items.pagination.servercount || 0;
             }
           },
 
           limitItems(state) {
 
-            if (state[this.typeList]) {
-                return state[this.typeList].items.pagination.limit;
+            if (state.values) {
+                return state.values.items.pagination.limit;
             }
           },
 
           showMore(state) {
 
-            if (state[this.typeList]) {
-                return state[this.typeList].items.pagination.showMore;
+            if (state.values) {
+                return state.values.items.pagination.showMore;
             }
           },
-
-
-
-
-        /*  loaded(state) {
-            if (state[this.typeList]) {
-                return state[this.typeList].items.firstLoaded;
-            } else {
-              return false;
-            }
-          }*/
 
       }),
       topCount() {
@@ -383,48 +361,16 @@ export default {
     }
   },
 */
-  serverPrefetch () {
-    // возвращает Promise из действия, поэтому
-    // компонент ждёт данные перед рендерингом
 
-    this.registerModule();
-    return this.fetchItem();
-  },
-
-
-  mounted() {
-     if (this.$store.state.allowAsyncLoad) {
-       this.registerModule();
-       this.fetchItem();
-     } else {
-       this.registerModule(true);
-     }
-
-
-
-  },
 
   methods: {
-    findRealCategory(path_category) {
-      var path = this.$store.getters.getSiteoConfig('seo_path_'+this.typeList);
 
-      var mathes= path.match(new RegExp("\\((.*)\\["));
-      if (mathes[1]) {
-        this.prefixCategory = mathes[1];
-        if (path_category) {
-          this.realCategory = path_category.replace(mathes[1], "");
-        } else {
-          this.realCategory = false;
-        }
-      } else {
-        return false;
-      }
-    },
+
 
     registerModule(preserveState) {
       this.$store.registerApiModule({
-        name: this.typeList,
-        module: StoreModules[this.typeList]('appInstance/urlID'),
+        name: this.$options.nameModule,
+        module: values('appInstance/urlID'),
         moduleOptions:  {moduleItems: true},
         preserveState: preserveState
       });
@@ -439,49 +385,24 @@ export default {
       // return response for using additional funcional page
       params.additional = true;
       params.gp = this.$route.path;
-      if  (this.realCategory) {
-         params.category = this.realCategory;
+      if  (this.categoryReal) {
+         params.attribute = this.categoryReal;
       };
 
       return params;
     },
 
-    fetchItem(){
 
-       // use limit from settings website
-       // usefull for websites with short list, where need show all list with values
-
-
-       this.loaded = true;
-
-       return new Promise ((resolve, reject)=>{
-
-           this.$store.dispatch(this.typeList+'/getList', this.getParamsForFetch()).then((result)=>{
-              this.loaded = false;
-              resolve(true);
-           }).catch(error=>{
-             if (error.response) {
-               this.$store.commit('setSrvPageErr',  error.response.data );
-             } else {
-                  this.$store.commit('setSrvPageErr', {status: 500}  )
-             }
-             this.loaded = false;
-             resolve(error);
-             //reject(error);
-           });;
-       })
-
-    },
 
     getMoreItems() {
       this.loadingMore = true;
       var params = this.getParamsForFetch();
-      var pagination =  this.$store.getters[this.typeList+'/pagination'];
+      var pagination =  this.$store.getters[this.$options.nameModule+'/pagination'];
       params.offset =parseInt(pagination.offset) + parseInt(pagination.limit);
       params.append = true;
       params.additional ='';
       params.gp = false;
-      this.$store.dispatch(this.typeList+'/getList', params).then((result)=>{
+      this.$store.dispatch(this.$options.nameModule+'/getList', params).then((result)=>{
           this.loadingMore = false;
       }).catch(error=>{
          this.loadingMore = false;

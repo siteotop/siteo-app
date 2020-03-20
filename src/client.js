@@ -18,9 +18,9 @@ var app = createSiteo({
 /**
   Add Google analitics
 */
-if (window.__SITEO_CONFIG__['SiteoPluginGoogleanalitics']) {
+if (window.__SITEO_CONFIG__['SiteoPluginGanalitics']) {
     Vue.use(VueAnalytics, {
-      id: window.__SITEO_CONFIG__['SiteoPluginGoogleanalitics']['ui'],
+      id: window.__SITEO_CONFIG__['SiteoPluginGanalitics']['ui'],
       router: app.$router
     });
 }

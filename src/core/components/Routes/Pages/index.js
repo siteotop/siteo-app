@@ -1,13 +1,15 @@
 
-import Loader from '../../_mixins/component-loading.js';
 
 import { mapState } from 'vuex';
+
 import pages from  '../../../store/modules/pages';
 
 import MetaInfo from './MetaInfo';
 
+import ServerFetch from '../_mixins/serverFetch';
+
 export default {
-  mixins: [Loader, MetaInfo],
+  mixins: [MetaInfo, ServerFetch],
 
   props: {
       objectId: {
@@ -16,8 +18,11 @@ export default {
       }
   },
 
+  nameModule: 'pages',
+
   data() {
     return  {
+      moduleAction: 'getObject',
       error: false,
       //offsetTop: 0,
       shareWindow: false
@@ -26,21 +31,10 @@ export default {
 
 
 
-
-  /**
-     works on ssr
-  */
-  serverPrefetch () {
-    // возвращает Promise из действия, поэтому
-    // компонент ждёт данные перед рендерингом
-    this.registerModule();
-    return this.fetchItem();
-  },
-
   watch: {
       objectId(newId, oldId) {
           if (newId!=oldId) {
-            this.fetchItem();
+             this.fetchItem();
           }
       }
   },
@@ -84,21 +78,8 @@ export default {
 
     mounted(){
         this.addEventForEdit();
-        if (this.$store.state.allowAsyncLoad) {
-            this.registerModule();
-            this.fetchItem();
-        } else {
-          this.registerModule(true);
-        }
-
     },
 
-
-
-    destroyed() {
-      this.$store.unregisterApiModule ( 'pages');
-
-    },
 
     methods: {
 
@@ -115,48 +96,39 @@ export default {
           this.$store.commit('pages/updateModel', {error: error_data});
       },
 */
-      fetchItem() {
+      /**
+        Get ID for page
+      */
+      getParamsForFetch() {
+          var id; // id for page
+          if (this.$route.params.objectId) {
+             id = this.$route.params.objectId;
+          } else {
+             id = this.$store.state.appInstance.objectActive._websites_page;
+          }
+          if (id) {
+            return id;
+          } else {
+            // we must throw erro, because /test/ is not working, when we send /page without id 
+              throw "id_is_empty";
+          }
 
-            var id; // id for page
-            if (this.$route.params.objectId) {
-               id = this.$route.params.objectId;
-            } else {
-               id = this.$store.state.appInstance.objectActive._websites_page;
-            }
 
-            if (!id) {
-              return false;
-            }
-            //console.log(id);
+      },
 
-
-            return new Promise ((resolve, reject)=>{
-                 this.$store.dispatch('pages/getObject', id).then((result)=>{
-
-                    var newStructure = {
-                      jsonStructure: JSON.parse(result.jsonStructure)
-                    }
-                    this.$store.commit('pages/updateModel', newStructure  );
-                    resolve(result);
-                 }).catch(error=>{
-                   // error is error.response
-                   //console.log(error);
-                   if (error.response) {
-                     this.$store.commit('setSrvPageErr',  error.response.data );
-                   } else {
-                     this.$store.commit('setSrvPageErr', {status: 500}  )
-                   }
-
-                   resolve(error);
-                   //reject(error);
-                 });
-            });
-
+      /**
+        additional function when fetchItem Promise resolved
+      */
+      resultResolve(result) {
+        var newStructure = {
+          jsonStructure: JSON.parse(result.jsonStructure)
+        }
+        this.$store.commit('pages/updateModel', newStructure  );
       },
 
       registerModule(preserveState) {
           this.$store.registerApiModule( {
-            name: 'pages',
+            name: this.$options.nameModule,
             module: pages('appInstance/urlID'),
             preserveState: preserveState
           } );

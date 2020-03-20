@@ -2,8 +2,29 @@ const LoadScript = {
   install: function (Vue) {
     Vue.loadScript = Vue.prototype.$loadScript = function (src) { // eslint-disable-line no-param-reassign
       return new Promise(function (resolve, reject) {
+        const attrName =  'loaded';
         if (document.querySelector('script[src="' + src + '"]')) {
-          resolve();
+
+          var ele =  document.querySelector('script[src="' + src + '"]');
+
+          // This function fix problem with one time loading same SiteoPlugin
+          var timer = 0;
+          const checkFunc = ()=>{
+              if (ele.hasAttribute( attrName)) {
+                  resolve();
+              } else {
+                if (timer<5000) {
+                  console.log(timer);
+                  timer += 50;
+                  setTimeout(checkFunc, 50);
+                } else {
+                  // if script not loaded and
+                  reject()
+                }
+              }
+          }
+
+          checkFunc();
 
           return;
         }
@@ -14,7 +35,10 @@ const LoadScript = {
         el.async = true;
         el.src = src;
 
-        el.addEventListener('load', resolve);
+        el.addEventListener('load', ()=>{
+            el.setAttribute(attrName, 1) ;
+            resolve();
+        } );
         el.addEventListener('error', reject);
         el.addEventListener('abort', reject);
 

@@ -10,7 +10,7 @@
             aspect-ratio="1.61"
             class="primary darken-2 white--text"
             :gradient="hover?'to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)':''"
-            :src="props.thumb['420']"
+            :src="props.thumb420"
             :alt="props.title"
           >
            <v-toolbar flat class="transparent ">
@@ -79,11 +79,19 @@
              {{parent.$store.getters.getSiteoConfig('t_re')||parent.$t('rm')}}
             </v-btn>
 
-                <v-btn
+                <v-btn v-if="props.count==0"
                   tag="a"
                   disabled
                   text
                   color="primary accent-4"
+                >
+                 {{parent.$store.getters.getSiteoConfig('t_ac')||parent.$t('action')}}
+                </v-btn>
+                <v-btn v-else
+                  tag="a"
+                  text
+                  color="primary accent-4"
+                  :to="{name:'locations', params: { category: '-try-'+ props.idUrl }}"
                 >
                  {{parent.$store.getters.getSiteoConfig('t_ac')||parent.$t('action')}}
                 </v-btn>

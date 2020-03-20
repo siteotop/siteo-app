@@ -64,7 +64,7 @@ export default {
         {
           name: 'description',
           vmid: 'des',
-          content: this.pageObject.meta_description
+          content: this.pageObject.meta_description||this.metaTitle
         },
         {
           name: 'robots',
@@ -103,6 +103,16 @@ export default {
       ],
       link: this.metaLinks
 
+    }
+  },
+  methods: {
+    replaceTitle(meta_title) {
+       return meta_title.replace(/\{\{([^}]+)\}\}/, (i, match)=>{
+              if (match == 'N') {
+                return this.countItems;
+              }
+              return   match
+          });
     }
   }
 }

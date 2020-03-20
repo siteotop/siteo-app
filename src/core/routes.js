@@ -37,18 +37,18 @@ export default function (configs) {
         {
           name: "locations",
           path:  configs.seo_path_locations|| '/locations',
-          //component: ()=>import( /* webpackChunkName: "locations" */ './components/Routes/Locations/index.vue'),
+          component: ()=>import( /* webpackChunkName: "locations" */ './components/Routes/Locations/index.vue'),
           props: true,
         },
 
-        {
+       /*  {
           name: "order",
           path:  '/go/:typeAction(order|call|recall|chat|links)?',
-          component:()=>import(/* webpackChunkName: "order" */  './components/Routes/Order.vue'),
+          component:()=>import(  './components/Routes/Order.vue'),
           props: true
 
         },
-
+        */
         {
           name: "objectPage",
           path:  '/:objectId',

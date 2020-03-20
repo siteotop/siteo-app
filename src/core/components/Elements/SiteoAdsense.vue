@@ -57,7 +57,7 @@ export default {
   methods: {
      loadAdsense() {
        var self=this;
-       var configes = self.$store.getters.getSiteoConfig('SiteoPluginGoogleadsense');
+       var configes = self.$store.getters.getSiteoConfig('SiteoPluginGadsense');
        // checkon/off adsense
        if (!configes||!configes.on) {
          return;

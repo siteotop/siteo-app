@@ -117,9 +117,12 @@ export default function (Vue, RESTApi, configs)  {
                     if (!APIconfig.headers) {
                       APIconfig.headers = {};
                     }
-                    APIconfig.headers.common = {
-                      'Authorization':"Bearer "+ access_token
-                    };
+                    if (access_token) {
+                      APIconfig.headers.common = {
+                        'Authorization':"Bearer "+ access_token
+                      };
+                    }
+
                     return  dispatch('callCoreApi', APIconfig );
               })
 
