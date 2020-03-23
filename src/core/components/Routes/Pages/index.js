@@ -109,7 +109,7 @@ export default {
           if (id) {
             return id;
           } else {
-            // we must throw erro, because /test/ is not working, when we send /page without id 
+            // we must throw erro, because /test/ is not working, when we send /page without id
               throw "id_is_empty";
           }
 
@@ -145,6 +145,21 @@ export default {
 
         if (this.statusError) {
           return h('RouteError', {props: {status: this.statusError.status||404}});
+        }
+
+        if (this.loaded) {
+           return h('v-container', [
+              h('v-row', {props: {alignContent: 'center', justify: 'center'}, class: 'text-center' }, [
+                h('v-col', {props: {cols: 12}}, [
+                  h('v-skeleton-loader', {props: { type: 'image'} }),
+                  h('v-skeleton-loader', {props: { type: 'heading'}, class:'pa-3 ma-3' }),
+                  h('v-skeleton-loader', {props: { type: 'text@8'} }),
+                  h('v-skeleton-loader', {props: { type: 'heading'}, class:'pa-3 ma-3' }),
+                  h('v-skeleton-loader', {props: { type: 'text@8'} })
+
+                ])
+              ])
+           ] )
         }
 
         if (Array.isArray(this.pageObject.jsonStructure)) {
