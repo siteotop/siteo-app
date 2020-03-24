@@ -110,6 +110,7 @@ export default {
             return id;
           } else {
             // we must throw erro, because /test/ is not working, when we send /page without id
+              this.loaded = false; 
               throw "id_is_empty";
           }
 
