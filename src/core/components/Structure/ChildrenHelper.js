@@ -1,5 +1,8 @@
 import * as baseChildren from './index';
+const dynamicBase = {
+  'PCs':()=> import( /* webpackChunkName: "PCs" */ './PCarusel.vue'),
 
+};
 export default {
   functional: true,
   props: {
@@ -40,7 +43,16 @@ export default {
     }else if(  context.props.structure[name]) {
       createdComponent = context.props.structure[name];
     } else {
-        createdComponent = name;
+
+        if (dynamicBase[name]) {
+          console.log(name);
+            createdComponent = dynamicBase[name] ;
+        } else {
+          createdComponent = name;
+        }
+
+
+
     }
 
 
@@ -64,6 +76,7 @@ export default {
        _attrs = element.a/*_attrib*/;
        _children = element.h/*_children*/;
     }
+
 
 
     return h(createdComponent, {
