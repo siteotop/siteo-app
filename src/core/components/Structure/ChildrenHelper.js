@@ -1,6 +1,17 @@
 import * as baseChildren from './index';
 const dynamicBase = {
   'PCs':()=> import( /* webpackChunkName: "PCs" */ './PCarusel.vue'),
+  'PDl':()=> import( /* webpackChunkName: "PDl" */ './PDialog.vue'),
+  'PDl':()=> import( /* webpackChunkName: "PDl" */ './PDialogMenu.vue'),
+  'PEx':()=> import( /* webpackChunkName: "PEx" */ './PExpansion.vue'),
+  'PPl':()=> import( /* webpackChunkName: "PPl" */ './PProgressLinear.vue'),
+  'PSd':()=> import( /* webpackChunkName: "PSd" */ './PSpeedDeal.vue'),
+  'PSg':()=> import( /* webpackChunkName: "PSg" */ './PSlideGroup.vue'),
+  'PSr':()=> import( /* webpackChunkName: "PSr" */ './PScroll.vue'),
+  'PTa':()=> import( /* webpackChunkName: "PSr" */ './PTable.vue'),
+  'PTb':()=> import( /* webpackChunkName: "PTb" */ './PTabs.vue'),
+  'PTm':()=> import( /* webpackChunkName: "PTm" */ './PTimeline.vue'),
+  'PYv':()=> import( /* webpackChunkName: "PYv" */ './PYoutubeVideo.vue'),
 
 };
 export default {
