@@ -26,7 +26,7 @@ export {default as PTl}  from  './PTitle.vue';
 //export {default as PTm}  from  './PTimeline.vue';
 export {default as PTr}  from  './PToolbar.vue';
 //export {default as PYv}  from  './PYoutubeVideo.vue';
-export {default as PAd}  from  './PAdsense.vue';
+//export {default as PAd}  from  './PAdsense.vue';
 export {default as PPn}  from  './PSiteoPlugin.vue';
 export {default as PRp}  from  './PResponsive.vue';
 export const RSp = 'VSpacer';

@@ -6,4 +6,3 @@ export {default as AppErrorResponse} from './Elements/AppErrorResponse/index.vue
 export {default as AppMessagesBlock} from './Elements/AppMessagesBlock.js';
 export {default as StChildrenHelper} from './Structure/ChildrenHelper';
 export {default as PageSchema} from './Routes/Pages/Schema.js';
-export {default as SAdsense} from './Elements/SiteoAdsense.vue';

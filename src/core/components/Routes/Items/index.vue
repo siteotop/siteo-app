@@ -122,8 +122,9 @@
             </component>
           </v-col>
           <v-col v-if="i===0||(i%7==0)" v-bind="vColProps">
-            <v-card><s-adsense :adType="toggle_component">
-            </s-adsense>
+            <v-card>
+              <PAd :adType="toggle_component">
+              </PAd>
           </v-card>
           </v-col>
         </template>
@@ -211,7 +212,8 @@ export default {
     BPrice: ()=> import( /* webpackChunkName: "CardValues" */ './Cards/BPrice.vue') ,
     CardValues: ()=> import( /* webpackChunkName: "CardValues" */ './Cards/Values.vue') ,
     ListValues: ()=> import( /* webpackChunkName: "ListValues" */ './Cards/ValuesList.vue') ,
-    DialogVideoYoutube: ()=> import( /* webpackChunkName: "DialogVideo" */ './Cards/VideoYoutube.vue') ,
+    DialogVideoYoutube: ()=> import( /* webpackChunkName: "DialogVideo" */ './Cards/VideoYoutube.vue'),
+    PAd: ()=> import( /* webpackChunkName: "adsense" */ '../../Structure/PAdsense/Index.vue')
   },
 
   _icons: {

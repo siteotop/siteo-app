@@ -13,6 +13,7 @@ const dynamicBase = {
   'PTm':()=> import( /* webpackChunkName: "PTm" */ './PTimeline.vue'),
   'PYv':()=> import( /* webpackChunkName: "PYv" */ './PYoutubeVideo.vue'),
   'PLs':()=> import( /* webpackChunkName: "PLs" */ './PList.vue'),
+  'PAd':()=> import( /* webpackChunkName: "adsense" */ './PAdsense/index.vue'),
 
 };
 export default {

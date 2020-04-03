@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 's-adsense',
+  name: 'PAd',
 
   props: {
 

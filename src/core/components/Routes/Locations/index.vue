@@ -161,8 +161,9 @@
             </CardLocations>
           </v-col>
           <v-col v-if="i===0||(i%7==0)" >
-            <v-card><s-adsense adType="list">
-            </s-adsense>
+            <v-card>
+              <PAd adType="list">
+              </PAd>
           </v-card>
           </v-col>
         </template>
@@ -223,7 +224,8 @@ export default {
     nameModule: 'locations',
 
     components: {
-      CardLocations
+      CardLocations,
+      PAd: ()=> import( /* webpackChunkName: "adsense" */ '../../Structure/PAdsense/Index.vue')
     },
 
     props: {
