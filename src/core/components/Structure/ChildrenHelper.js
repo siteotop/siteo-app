@@ -50,15 +50,17 @@ export default {
     }
 
     if (baseChildren[name]) {
+      // fixed component very often used
       createdComponent = baseChildren[name];
     }else if(  context.props.structure[name]) {
+       // using prop structure
       createdComponent = context.props.structure[name];
     } else {
-
+        // dynamic components using import
         if (dynamicBase[name]) {
-          console.log(name);
             createdComponent = dynamicBase[name] ;
         } else {
+          // text name component
           createdComponent = name;
         }
 
