@@ -3,7 +3,7 @@
 import  { createSiteo} from './core';
 
 import Vue from 'vue'
-import VueAnalytics from 'vue-analytics'
+
 /**Progres bar */
 
 import LoadScript from './core/vue-plugins/LoadScript';
@@ -19,10 +19,14 @@ var app = createSiteo({
   Add Google analitics
 */
 if (window.__SITEO_CONFIG__['SiteoPluginGanalitics']) {
-    Vue.use(VueAnalytics, {
-      id: window.__SITEO_CONFIG__['SiteoPluginGanalitics']['ui'],
-      router: app.$router
-    });
+
+    import(/* webpackChunkName: "analitics" */ 'vue-analytics').then((VueAnalytics)=>{
+        console.log(VueAnalytics.default);
+      Vue.use(VueAnalytics.default, {
+        id: window.__SITEO_CONFIG__['SiteoPluginGanalitics']['ui'],
+        router: app.$router
+      });
+    })
 }
 
 
