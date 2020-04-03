@@ -3,11 +3,12 @@
 <v-row align="center" justify="center">
     <v-col cols="12" sm="10" md="8" class="text-center">
       <v-sheet class="transparent">
-        <v-avatar size="90">
-          <img
+        <v-avatar size="90" color="primary">
+        <!--  <img
             src="/core/android-chrome-192x192.png"
          alt="Logo"
          >
+       -->
         </v-avatar>
         <div class="font-weight-black pb-2" style="font-size:180px;">
           {{code}}

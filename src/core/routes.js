@@ -64,7 +64,8 @@ export default function (configs) {
       {
          path: "*",
          name: 'PageError',
-         component: { functional: true, render(h){ return h('RouteError', {props: {status:404, fromRoute: true}})} } ,
+         component:  ()=>import( /* webpackChunkName: "page-error" */ './components/Routes/Error.vue'),
+         props: {status:404, fromRoute: true},
          meta:{},
       }
     );
