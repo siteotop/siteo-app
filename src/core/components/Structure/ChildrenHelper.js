@@ -2,7 +2,7 @@ import * as baseChildren from './index';
 const dynamicBase = {
   'PCs':()=> import( /* webpackChunkName: "PCs" */ './PCarusel.vue'),
   'PDl':()=> import( /* webpackChunkName: "PDl" */ './PDialog.vue'),
-  'PDl':()=> import( /* webpackChunkName: "PDl" */ './PDialogMenu.vue'),
+  'PDl':()=> import( /* webpackChunkName: "PDl" */ './PDialogMenu.js'),
   'PEx':()=> import( /* webpackChunkName: "PEx" */ './PExpansion.vue'),
   'PPl':()=> import( /* webpackChunkName: "PPl" */ './PProgressLinear.vue'),
   'PSd':()=> import( /* webpackChunkName: "PSd" */ './PSpeedDeal.vue'),
@@ -13,7 +13,7 @@ const dynamicBase = {
   'PTm':()=> import( /* webpackChunkName: "PTm" */ './PTimeline.vue'),
   'PYv':()=> import( /* webpackChunkName: "PYv" */ './PYoutubeVideo.vue'),
   'PLs':()=> import( /* webpackChunkName: "PLs" */ './PList.vue'),
-  'PAd':()=> import( /* webpackChunkName: "adsense" */ './PAdsense/index.vue'),
+  'PAd':()=> import( /* webpackChunkName: "adsense" */ './PAdsense/Index.vue'),
 
 };
 export default {
