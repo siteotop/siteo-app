@@ -12,6 +12,7 @@ const dynamicBase = {
   'PTb':()=> import( /* webpackChunkName: "PTb" */ './PTabs.vue'),
   'PTm':()=> import( /* webpackChunkName: "PTm" */ './PTimeline.vue'),
   'PYv':()=> import( /* webpackChunkName: "PYv" */ './PYoutubeVideo.vue'),
+  'PLs':()=> import( /* webpackChunkName: "PLs" */ './PList.vue'),
 
 };
 export default {
