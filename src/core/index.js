@@ -82,7 +82,6 @@ import Vuetify, {
   VChip,
   VDivider,
   VFooter,
-  VGrid,
   VContainer,
   VRow,
   VCol,
@@ -104,7 +103,6 @@ import Vuetify, {
   VListItemTitle,
   VMenu,
   VNavigationDrawer,
-  VPagination,
   VSheet,
   VSkeletonLoader,
   VSubheader,
@@ -138,7 +136,7 @@ Vue.use(Vuetify, {
 
     VDivider,
     VFooter,
-    VGrid,
+
     VContainer,
     VRow,
     VCol,
@@ -160,7 +158,7 @@ Vue.use(Vuetify, {
     VListItemTitle,
     VMenu,
     VNavigationDrawer,
-    VPagination,
+
     VSheet,
     VSkeletonLoader,
     VSubheader,
@@ -206,6 +204,7 @@ Vue.use(Vuetify, {
     VStepperContent:()=>import( /* webpackChunkName: "stepper" */ 'vuetify/lib/components/VStepper/VStepperContent'),
   //  VStepperHeader:()=>import( /* webpackChunkName: "stepper" */ 'vuetify/lib/components/VStepper/VStepperHeader'),
     VStepperStep:()=>import( /* webpackChunkName: "stepper" */ 'vuetify/lib/components/VStepper/VStepperStep'),
+    VPagination:()=>import( /* webpackChunkName: "stepper" */ 'vuetify/lib/components/VPagination/VPagination'),
     VStepperItems,
     VStepperHeader,
 

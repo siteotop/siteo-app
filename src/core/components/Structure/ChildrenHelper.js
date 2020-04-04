@@ -12,7 +12,11 @@ const dynamicBase = {
   'PTb':()=> import( /* webpackChunkName: "carusel" */ './PTabs.vue'),
   'PTm':()=> import( /* webpackChunkName: "PTm" */ './PTimeline.vue'),
   'PYv':()=> import( /* webpackChunkName: "PYv" */ './PYoutubeVideo.vue'),
-  'PLs':()=> import( /* webpackChunkName: "PLs" */ './PList.vue'),
+  'PLs':()=> import(
+      /* webpackChunkName: "PLs" */
+      /* webpackPrefetch: true */
+    
+      './PList.vue'),
   'PAd':()=> import( /* webpackChunkName: "adsense" */ './PAdsense/Index.vue'),
   'PPx':()=> import( /* webpackChunkName: "parallax" */ './PParallax.vue'),
 
