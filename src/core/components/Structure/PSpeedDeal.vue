@@ -41,6 +41,9 @@
 </template>
 
 <script>
+import Vue from 'vue';
+
+Vue.component('VSpeedDial', ()=> import( /* webpackChunkName: "PSd" */ 'vuetify/lib/components/VSpeedDial/VSpeedDial'));
 
 /**
   - зробити  Floating Action Button

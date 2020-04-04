@@ -1,19 +1,20 @@
 import * as baseChildren from './index';
 const dynamicBase = {
-  'PCs':()=> import( /* webpackChunkName: "PCs" */ './PCarusel.vue'),
-  'PDl':()=> import( /* webpackChunkName: "PDl" */ './PDialog.vue'),
-  'PDl':()=> import( /* webpackChunkName: "PDl" */ './PDialogMenu.js'),
-  'PEx':()=> import( /* webpackChunkName: "PEx" */ './PExpansion.vue'),
+  'PCs':()=> import( /* webpackChunkName: "carusel" */ './PCarusel.vue'),
+  'PDl':()=> import( /* webpackChunkName: "dialog" */ './PDialog.vue'),
+  'PDl':()=> import( /* webpackChunkName: "menu" */ './PDialogMenu.js'),
+  'PEx':()=> import( /* webpackChunkName: "expansion" */ './PExpansion.vue'),
   'PPl':()=> import( /* webpackChunkName: "PPl" */ './PProgressLinear.vue'),
   'PSd':()=> import( /* webpackChunkName: "PSd" */ './PSpeedDeal.vue'),
-  'PSg':()=> import( /* webpackChunkName: "PSg" */ './PSlideGroup.vue'),
+  'PSg':()=> import( /* webpackChunkName: "carusel" */ './PSlideGroup.vue'),
   'PSr':()=> import( /* webpackChunkName: "PSr" */ './PScroll.vue'),
-  'PTa':()=> import( /* webpackChunkName: "PSr" */ './PTable.vue'),
-  'PTb':()=> import( /* webpackChunkName: "PTb" */ './PTabs.vue'),
+  'PTa':()=> import( /* webpackChunkName: "PTa" */ './PTable.vue'),
+  'PTb':()=> import( /* webpackChunkName: "carusel" */ './PTabs.vue'),
   'PTm':()=> import( /* webpackChunkName: "PTm" */ './PTimeline.vue'),
   'PYv':()=> import( /* webpackChunkName: "PYv" */ './PYoutubeVideo.vue'),
   'PLs':()=> import( /* webpackChunkName: "PLs" */ './PList.vue'),
   'PAd':()=> import( /* webpackChunkName: "adsense" */ './PAdsense/Index.vue'),
+  'PPx':()=> import( /* webpackChunkName: "parallax" */ './PParallax.vue'),
 
 };
 export default {

@@ -28,6 +28,13 @@
 </v-expansion-panels>
 </template>
 <script>
+
+import Vue from 'vue';
+
+Vue.component('VExpansionPanel', ()=> import( /* webpackChunkName: "expansion" */ 'vuetify/lib/components/VExpansionPanel/VExpansionPanel'));
+Vue.component('VExpansionPanels', ()=> import( /* webpackChunkName: "expansion" */ 'vuetify/lib/components/VExpansionPanel/VExpansionPanels'));
+Vue.component('VExpansionPanelContent', ()=> import( /* webpackChunkName: "expansion" */ 'vuetify/lib/components/VExpansionPanel/VExpansionPanelContent'));
+Vue.component('VExpansionPanelHeader', ()=> import( /* webpackChunkName: "expansion" */ 'vuetify/lib/components/VExpansionPanel/VExpansionPanelHeader'));
 export default {
 
 }

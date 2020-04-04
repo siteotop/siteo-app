@@ -90,7 +90,7 @@ export default {
           var evtobj = window.event? event : e
           if (evtobj.keyCode == 13 && evtobj.ctrlKey) alert("Ctrl+Enter");
         }
-        document.onkeydown = KeyPress;
+        //document.onkeydown = KeyPress;
       },
 
     /*  asyncDataError(error_data) {

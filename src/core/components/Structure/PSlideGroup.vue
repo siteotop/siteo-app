@@ -24,6 +24,9 @@
 </template>
 
 <script>
+import Vue from 'vue';
+
+Vue.component('VSlideGroup', ()=> import( /* webpackChunkName: "carusel" */ 'vuetify/lib/components/VSlideGroup/VSlideGroup'));
 export default {
 
 }
