@@ -33,7 +33,8 @@ for (let NameComponent in CoreComponents) {
    Vue.component(NameComponent, CoreComponents[NameComponent]);
 }
 
-Vue.component('AppErrorResponse', ()=> import( /* webpackChunkName: "responseError" */ './components/Elements/AppErrorResponse/index.vue'));
+Vue.component('AppErrorResponse', ()=> import( /* webpackChunkName: "alerts" */ './components/Elements/AppErrorResponse/index.vue'));
+Vue.component('AppMessagesBlock', ()=> import( /* webpackChunkName: "alerts" */ './components/Elements/AppMessagesBlock'));
 
 
 import {createRESTApi} from './http/rest-api.js';

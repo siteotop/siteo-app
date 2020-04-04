@@ -13,6 +13,12 @@ const SystemMessages = {
       }
   },
 
+  getters: {
+    errorMessages(state) {
+        return state.messages.length;
+    }
+  },
+
   mutations: {
 
     turnOnMessages(state) {

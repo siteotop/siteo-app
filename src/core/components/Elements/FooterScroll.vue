@@ -32,6 +32,12 @@
         </v-sheet>
       </v-footer>
     </div>
+     <AppMessagesBlock
+       v-if="$store.getters.errorMessages"
+       :messages="$store.state.SystemMessages.messages"
+     >
+     </AppMessagesBlock>
+
 </div>
 <div v-else>
 </div>
