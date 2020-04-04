@@ -1,5 +1,26 @@
 import * as baseChildren from './index';
+const dynamicBase = {
+  'PCs':()=> import( /* webpackChunkName: "carusel" */ './PCarusel.vue'),
+  'PDl':()=> import( /* webpackChunkName: "dialog" */ './PDialog.vue'),
+  'PDl':()=> import( /* webpackChunkName: "menu" */ './PDialogMenu.js'),
+  'PEx':()=> import( /* webpackChunkName: "expansion" */ './PExpansion.vue'),
+  'PPl':()=> import( /* webpackChunkName: "PPl" */ './PProgressLinear.vue'),
+  'PSd':()=> import( /* webpackChunkName: "PSd" */ './PSpeedDeal.vue'),
+  'PSg':()=> import( /* webpackChunkName: "carusel" */ './PSlideGroup.vue'),
+  'PSr':()=> import( /* webpackChunkName: "PSr" */ './PScroll.vue'),
+  'PTa':()=> import( /* webpackChunkName: "PTa" */ './PTable.vue'),
+  'PTb':()=> import( /* webpackChunkName: "carusel" */ './PTabs.vue'),
+  'PTm':()=> import( /* webpackChunkName: "PTm" */ './PTimeline.vue'),
+  'PYv':()=> import( /* webpackChunkName: "PYv" */ './PYoutubeVideo.vue'),
+  'PLs':()=> import(
+      /* webpackChunkName: "PLs" */
+      /* webpackPrefetch: true */
+    
+      './PList.vue'),
+  'PAd':()=> import( /* webpackChunkName: "adsense" */ './PAdsense/Index.vue'),
+  'PPx':()=> import( /* webpackChunkName: "parallax" */ './PParallax.vue'),
 
+};
 export default {
   functional: true,
   props: {
@@ -36,11 +57,22 @@ export default {
     }
 
     if (baseChildren[name]) {
+      // fixed component very often used
       createdComponent = baseChildren[name];
     }else if(  context.props.structure[name]) {
+       // using prop structure
       createdComponent = context.props.structure[name];
     } else {
-        createdComponent = name;
+        // dynamic components using import
+        if (dynamicBase[name]) {
+            createdComponent = dynamicBase[name] ;
+        } else {
+          // text name component
+          createdComponent = name;
+        }
+
+
+
     }
 
 
@@ -64,6 +96,7 @@ export default {
        _attrs = element.a/*_attrib*/;
        _children = element.h/*_children*/;
     }
+
 
 
     return h(createdComponent, {

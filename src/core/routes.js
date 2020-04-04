@@ -1,4 +1,3 @@
-import Pages from './components/Routes/Pages';
 
 export default function (configs) {
 
@@ -6,7 +5,7 @@ export default function (configs) {
         {
           name: "indexPage",
           path:  configs.seo_path_index||'',
-          component: Pages,
+          component: ()=>import( /* webpackChunkName: "page" */ './components/Routes/Pages'),
           props: true,
           meta: {name: 'page'}
         },
@@ -52,7 +51,7 @@ export default function (configs) {
         {
           name: "objectPage",
           path:  '/:objectId',
-          component: Pages,
+          component: ()=>import( /* webpackChunkName: "page" */ './components/Routes/Pages'),
           props: true,
           meta: {name: 'page'}
         },
@@ -65,7 +64,8 @@ export default function (configs) {
       {
          path: "*",
          name: 'PageError',
-         component: { functional: true, render(h){ return h('RouteError', {props: {status:404, fromRoute: true}})} } ,
+         component:  ()=>import( /* webpackChunkName: "page-error" */ './components/Routes/Error.vue'),
+         props: {status:404, fromRoute: true},
          meta:{},
       }
     );

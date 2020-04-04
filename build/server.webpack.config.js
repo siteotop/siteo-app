@@ -6,19 +6,10 @@ const baseConfig = require('./base.webpack.config.js')
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
 const webpack = require('webpack');
 
-
-baseConfig.plugins.push( new webpack.DefinePlugin({
-  'process.env': {
-     NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-     HOST_API: JSON.stringify(process.env.HOST_API),
-     SSR: JSON.stringify("on")
-  }
-}));
-
 // Этот плагин преобразует весь результат серверной сборки
 // в один JSON-файл. Имя по умолчанию будет
 // `vue-ssr-server-bundle.json`
-baseConfig.plugins.push( new VueSSRServerPlugin());
+
 
 
 module.exports = merge(baseConfig, {
@@ -40,6 +31,9 @@ module.exports = merge(baseConfig, {
     libraryTarget: 'commonjs2'
   },
 
+
+
+
   // https://webpack.js.org/configuration/externals/#function
   // https://github.com/liady/webpack-node-externals
   // Внешние зависимости приложения. Это значительно ускоряет процесс
@@ -50,7 +44,22 @@ module.exports = merge(baseConfig, {
     // нужно также указывать белый список зависимостей изменяющих `global` (например, полифиллы)
     // whitelist: /\.css$/
   //})
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+         HOST_API: JSON.stringify(process.env.HOST_API),
+         SSR: JSON.stringify("on")
+      }
+    }),
+    new VueSSRServerPlugin()
+  ],
+  module: {
+    rules: [
+      { test: /\.(sa|sc|c)ss$/, loader: 'ignore-loader' },
+      { test: /\.styl$/, loader: 'ignore-loader' },
 
-
+    ]
+  }
 
 })

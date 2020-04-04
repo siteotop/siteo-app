@@ -10,7 +10,9 @@ import ServerFetch from '../_mixins/serverFetch';
 
 export default {
   mixins: [MetaInfo, ServerFetch],
-
+  components: {
+    ErrorPage:  ()=>import( /* webpackChunkName: "page-error" */ '../Error.vue')
+  },
   props: {
       objectId: {
         type: String,
@@ -88,7 +90,7 @@ export default {
           var evtobj = window.event? event : e
           if (evtobj.keyCode == 13 && evtobj.ctrlKey) alert("Ctrl+Enter");
         }
-        document.onkeydown = KeyPress;
+        //document.onkeydown = KeyPress;
       },
 
     /*  asyncDataError(error_data) {
@@ -110,7 +112,7 @@ export default {
             return id;
           } else {
             // we must throw erro, because /test/ is not working, when we send /page without id
-              this.loaded = false; 
+              this.loaded = false;
               throw "id_is_empty";
           }
 
@@ -145,7 +147,7 @@ export default {
         //}
 
         if (this.statusError) {
-          return h('RouteError', {props: {status: this.statusError.status||404}});
+          return h('ErrorPage', {props: {status: this.statusError.status||404}});
         }
 
         if (this.loaded) {
@@ -182,7 +184,7 @@ export default {
 
 
     renderError (h, err) {
-        return h('RouteError', {props: {status: 500 }});
+        return h('ErrorPage', {props: {status: 500 }});
     }
 
 

@@ -25,7 +25,7 @@
     </v-row>
     </v-container>
   </v-container>
-  <PageItemsToolbar :hightUp="100">
+  <v-toolbar flat  >
     <v-menu
       eager
       :nudge-width="200"
@@ -95,7 +95,7 @@
       </v-card-actions>
      </v-card>
    </v-menu>
-  </PageItemsToolbar>
+  </v-toolbar>
 
   <v-container :fluid="toggle_component=='card'" :class="'grid-list-lg'">
       <v-row v-if="loaded">
@@ -122,8 +122,9 @@
             </component>
           </v-col>
           <v-col v-if="i===0||(i%7==0)" v-bind="vColProps">
-            <v-card><s-adsense :adType="toggle_component">
-            </s-adsense>
+            <v-card>
+              <PAd :adType="toggle_component">
+              </PAd>
           </v-card>
           </v-col>
         </template>
@@ -167,12 +168,9 @@
 </div>
 </template>
 <script>
-import PageItemsToolbar from './Functional/PageItemsToolbar.vue';
+//import ListValues from './Cards/ValuesList.vue';
 
-import CardValues from './Cards/Values.vue';
-import ListValues from './Cards/ValuesList.vue';
-import BPrice from './Cards/BPrice.vue';
-import DialogVideoYoutube from './Cards/VideoYoutube.vue';
+//import DialogVideoYoutube from './Cards/VideoYoutube.vue';
 //import WiExperts from '../Widgets/WiExperts.vue';
 //import WiPosts from '../Widgets/WiPosts.vue';
 
@@ -211,12 +209,11 @@ export default {
 
   },
   components: {
-    PageItemsToolbar,
-    CardValues,
-    ListValues,
-    BPrice,
-    DialogVideoYoutube
-
+    BPrice: ()=> import( /* webpackChunkName: "CardValues" */ './Cards/BPrice.vue') ,
+    CardValues: ()=> import( /* webpackChunkName: "CardValues" */ './Cards/Values.vue') ,
+    ListValues: ()=> import( /* webpackChunkName: "ListValues" */ './Cards/ValuesList.vue') ,
+    DialogVideoYoutube: ()=> import( /* webpackChunkName: "DialogVideo" */ './Cards/VideoYoutube.vue'),
+    PAd: ()=> import( /* webpackChunkName: "adsense" */ '../../Structure/PAdsense/Index.vue')
   },
 
   _icons: {

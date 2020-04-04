@@ -55,11 +55,15 @@ export default {
       });
     } else {
       var children =  (context.parent.$store.state.appInstance.objectActive.menus||[]).map(function(element){
-
-          return  element.p_nav==1?  h('v-list-item', {props: {
-            to: element.link,
+          let pr = {
             tag:'li',
-          },} , [
+          };
+          if (element.ext) {
+            pr.href=element.link;
+          } else {
+            pr.to = element.link;
+          }
+          return  element.p_nav==1?  h('v-list-item', {props:pr} , [
              h('v-list-item-content', [ h('v-list-item-title', [element.anchor])  ])
           ]): '';
         });

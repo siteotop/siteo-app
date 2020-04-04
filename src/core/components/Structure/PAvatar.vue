@@ -10,12 +10,17 @@
      left:props.cnf.d,
      right:props.cnf.e
      }"
+    :class="data.class"
  >
    <img v-if="props.cntnt.p" :src="props.cntnt.p" :alt="props.cntnt.pt">
-   <span v-else class="white--text headline">
-     <v-icon v-if="props.cntnt.i">{{props.cntnt.i}}</v-icon>
-     <span v-else>{{props.cntnt.t}}</span>
-   </span>
+   <span v-if="props.cntnt.t">{{props.cntnt.t}}</span>
+   <template
+       v-for="(element, index) in props.chldrn||[]"
+      >
+        <StChildrenHelper :element="element">
+        </StChildrenHelper>
+   </template>
+
 </v-avatar>
 </template>
 <script>
