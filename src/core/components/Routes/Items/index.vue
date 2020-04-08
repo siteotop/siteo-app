@@ -173,7 +173,7 @@
 //import DialogVideoYoutube from './Cards/VideoYoutube.vue';
 //import WiExperts from '../Widgets/WiExperts.vue';
 //import WiPosts from '../Widgets/WiPosts.vue';
-
+import CardValues from './Cards/Values.vue';
 
 
 import values  from  '../../../store/modules/values';
@@ -209,8 +209,8 @@ export default {
 
   },
   components: {
+    CardValues,
     BPrice: ()=> import( /* webpackChunkName: "CardValues" */ './Cards/BPrice.vue') ,
-    CardValues: ()=> import( /* webpackChunkName: "CardValues" */ './Cards/Values.vue') ,
     ListValues: ()=> import( /* webpackChunkName: "ListValues" */ './Cards/ValuesList.vue') ,
     DialogVideoYoutube: ()=> import( /* webpackChunkName: "DialogVideo" */ './Cards/VideoYoutube.vue'),
     PAd: ()=> import( /* webpackChunkName: "adsense" */ '../../Structure/PAdsense/Index.vue')
