@@ -223,6 +223,8 @@ export default {
     mixins: [MetaInfo, ServerFetch],
     nameModule: 'locations',
 
+    storeModule: locations('appInstance/urlID'),
+
     components: {
       CardLocations,
       PAd: ()=> import( /* webpackChunkName: "adsense" */ '../../Structure/PAdsense/Index.vue')
@@ -451,16 +453,7 @@ export default {
         }
 
         return params;
-      },
-
-      registerModule(preserveState) {
-        this.$store.registerApiModule({
-          name: this.$options.nameModule,
-          module: locations('appInstance/urlID'),
-          moduleOptions: {moduleItems: true},
-          preserveState: preserveState
-        });
-      },
+      }
     }
 
 

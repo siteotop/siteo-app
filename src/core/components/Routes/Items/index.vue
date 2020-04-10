@@ -196,6 +196,8 @@ export default {
 
   nameModule: 'values',
 
+  storeModule: values('appInstance/urlID'),
+
   props: {
 
     /**
@@ -362,16 +364,6 @@ export default {
 
   methods: {
 
-
-
-    registerModule(preserveState) {
-      this.$store.registerApiModule({
-        name: this.$options.nameModule,
-        module: values('appInstance/urlID'),
-        moduleOptions:  {moduleItems: true},
-        preserveState: preserveState
-      });
-    },
 
     getParamsForFetch() {
       let params={};

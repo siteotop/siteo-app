@@ -31,9 +31,25 @@ export default {
 
     methods: {
 
+      /**
+        function for register module
+      */
+      registerModule(preserveState) {
+        let opt = {moduleItems: true};
+        if (this.moduleAction == 'getObject') {
+          opt = {};
+        }
+        this.$store.registerApiModule({
+          name: this.$options.nameModule,
+          module:this.$options.storeModule,
+          moduleOptions:  opt,
+          preserveState: preserveState
+        });
+      },
+
 
       setClearParamFromPath(dirtyValue, paramName) {
-          let real = paramName + 'Real'; 
+          let real = paramName + 'Real';
           let prefix = paramName + 'Prefix';
           if (this[prefix]) {
             this[real] = dirtyValue.replace(this[prefix], "");

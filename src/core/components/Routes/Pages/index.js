@@ -21,7 +21,8 @@ export default {
   },
 
   nameModule: 'pages',
-
+  storeModule: pages('appInstance/urlID'),
+  
   data() {
     return  {
       moduleAction: 'getObject',
@@ -127,15 +128,8 @@ export default {
           jsonStructure: JSON.parse(result.jsonStructure)
         }
         this.$store.commit('pages/updateModel', newStructure  );
-      },
-
-      registerModule(preserveState) {
-          this.$store.registerApiModule( {
-            name: this.$options.nameModule,
-            module: pages('appInstance/urlID'),
-            preserveState: preserveState
-          } );
       }
+
 
     },
 
