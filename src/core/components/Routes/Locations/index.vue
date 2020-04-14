@@ -1,6 +1,6 @@
 <template>
 <div class="mb-3">
-  <v-toolbar >
+  <!--<v-toolbar >
      <v-spacer></v-spacer>
       <v-toolbar-title>
          {{$store.getters.getSiteoConfig('t_ac')}}
@@ -23,8 +23,8 @@
          </v-chip>
       </v-toolbar-title>
      <v-spacer></v-spacer>
-  </v-toolbar>
-<v-container  :fluid="activeMap">
+  </v-toolbar> -->
+<v-container  :fluid="activeMap" class=" pa-0">
 <v-row justify="center">
 
   <v-col v-bind="activeMap?
@@ -33,14 +33,16 @@
     }:
     {
       cols:12, sm:12,  md:10, lg:8, xl:7
-    }" >
-    <v-card>
+    }"
+    class="pt-0 mt-0"
+    >
+    <v-card class="grey lighten-5">
      <component
       :is="'v-img'"
       :src="categoryObject.thumb420"
       height="300"
       :gradient="'to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)'"
-      class="primary darken-2"
+      class="primary darken-4"
       >
         <v-container>
           <v-row>
@@ -153,12 +155,13 @@
               cols="12"
               class="grid-list-md"
             >
-            <CardLocations
-              v-bind="item"
+            <CardLocation
+              :location="item"
               :index="i+1"
-
+              :active="(activeId==item._id)"
+              :clickOnLocation="clickOnLocation"
             >
-            </CardLocations>
+            </CardLocation>
           </v-col>
           <v-col v-if="i===0||(i%7==0)" >
             <v-card>
@@ -207,6 +210,12 @@
 
 </v-row>
 </v-container>
+  <CardOpenLocation
+    v-if="locationActiveObject"
+    :locationId="locationActiveObject._id"
+    :store="$options.nameModule"
+    @close-dialog="closeOneLocation()">
+  </CardOpenLocation>
 </div>
 
 </template>
@@ -217,16 +226,21 @@ import locations from  '../../../store/modules/locations';
 import MetaInfo from '../Pages/MetaInfo';
 import ServerFetch from '../_mixins/serverFetch';
 
-import CardLocations from './Cards/Locations.vue';
+import CardLocation from  './Cards/Location.vue';
+
 import { mapState } from 'vuex';
 export default {
     mixins: [MetaInfo, ServerFetch],
+
     nameModule: 'locations',
 
     storeModule: locations('appInstance/urlID'),
 
     components: {
-      CardLocations,
+      CardLocation,
+      CardOpenLocation: ()=> import( /* webpackChunkName: "CardOpenLocation" */ '../Location/Cards/OpenLocation.vue'),
+
+
       PAd: ()=> import( /* webpackChunkName: "adsense" */ '../../Structure/PAdsense/Index.vue')
     },
 
@@ -258,8 +272,11 @@ export default {
           locationPrefix: '',
           categoryReal: '',
           locationReal: '',
-          activeMap: false
-        }
+          activeMap: false,
+          locationActiveObject: false,  // for active location
+          activeId: false,
+          activeStatus: false
+         }
     },
 
     created() {
@@ -387,6 +404,22 @@ export default {
     },
 
     methods: {
+      clickOnLocation(event, locationObject) {
+        event.stopPropagation();
+        if (locationObject == false) {
+            this.closeOneLocation();
+        } else {
+          this.locationActiveObject = locationObject;
+          this.activeId = locationObject._id;
+          this.activeStatus = true;
+        }
+
+      },
+      closeOneLocation() {
+        this.locationActiveObject=false;
+        this.activeId = false;
+        this.activeStatus = false;
+      },
 
       /**
         function for plugin SiteoPluginSelectItems (Locations)
