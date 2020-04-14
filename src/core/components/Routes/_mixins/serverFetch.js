@@ -41,7 +41,7 @@ export default {
         }
         this.$store.registerApiModule({
           name: this.$options.nameModule,
-          module:this.$options.storeModule,
+          module: this.getStoreModule? this.getStoreModule(): this.$options.storeModule,
           moduleOptions:  opt,
           preserveState: preserveState
         });
@@ -92,6 +92,14 @@ export default {
         }
       },
 
+      errorResolve(error) {
+        if (error.response) {
+          this.$store.commit('setSrvPageErr',  error.response.data );
+        } else {
+             this.$store.commit('setSrvPageErr', {status: 500}  )
+        }
+      },
+
       /**
         registerModule();
         fetchItem();
@@ -115,11 +123,7 @@ export default {
                 this.loaded = false;
                 resolve(true);
              }).catch(error=>{
-               if (error.response) {
-                 this.$store.commit('setSrvPageErr',  error.response.data );
-               } else {
-                    this.$store.commit('setSrvPageErr', {status: 500}  )
-               }
+               this.errorResolve(error);
                this.loaded = false;
                resolve(error);
                //reject(error);
