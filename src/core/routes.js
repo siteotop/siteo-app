@@ -40,6 +40,13 @@ export default function (configs) {
           props: true,
         },
 
+        {
+          name: "location",
+          path: '/p/:locationIdUrl-n:locationId',
+          component: ()=>import( /* webpackChunkName: "Location" */ './components/Routes/Location/index.vue'),
+          props: true,
+        },
+
        /*  {
           name: "order",
           path:  '/go/:typeAction(order|call|recall|chat|links)?',

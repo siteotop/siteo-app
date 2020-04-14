@@ -17,7 +17,14 @@ export default function (parentGetterUrl) {
           lng : '',
           preview: '',
           gbsess: '',
-          picture: ''
+          picture: '',
+          phone: '',
+          videolink: '',
+          pricelink: '',
+          website: '',
+          thumb420: '',
+          thumb120: '',
+
       }
     }
   }
