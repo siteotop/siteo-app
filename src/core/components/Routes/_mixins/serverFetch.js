@@ -133,12 +133,13 @@ export default {
       },
 
       serverMount() {
-        if (this.$store.state.allowAsyncLoad) {
+          if (this.$store.state[this.$options.nameModule]) {
+              this.registerModule(true);
+          } else {
             this.registerModule();
             this.fetchItem();
-        } else {
-          this.registerModule(true);
-        }
+          }
+
       }
     }
 }
