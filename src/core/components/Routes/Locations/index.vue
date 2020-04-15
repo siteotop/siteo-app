@@ -1,5 +1,6 @@
 <template>
-<div class="mb-3">
+<div class="mb-3 fill-height"  >
+
   <!--<v-toolbar >
      <v-spacer></v-spacer>
       <v-toolbar-title>
@@ -24,19 +25,55 @@
       </v-toolbar-title>
      <v-spacer></v-spacer>
   </v-toolbar> -->
-<v-container  :fluid="activeMap" class=" pa-0">
-<v-row justify="center">
 
-  <v-col v-bind="activeMap?
-    {
-      cols:12, sm:6,  md:4, lg:4, xl:4
-    }:
-    {
-      cols:12, sm:12,  md:10, lg:8, xl:7
-    }"
-    class="pt-0 mt-0"
+<v-container  :fluid="activeMap" class=" pa-0 fill-height" :style="divHeight?{height: (divHeight+'px')}:''">
+
+  <v-btn
+    v-if="!drawer"
+    absolute
+    dark
+    depressed
+    top
+    left
+    width="24"
+    elevation="4"
+    color="primary darken-3"
+    class="pr-0"
+    style="top:32px; left:-24px; z-index:3;"
+    @click="toogleDrawer"
+  >
+    <v-icon>$vuetify.icon.next</v-icon>
+</v-btn>
+
+
+  <v-navigation-drawer
+      width="500"
+      v-model="drawer"
+      absolute
+      floating
+      stateless
+
+      :height="divHeight||'100%'"
+      class="elevation-2"
     >
-    <v-card class="grey lighten-5">
+
+    <template v-slot:prepend>
+        <v-toolbar
+          flat
+        >
+          <v-btn
+            icon
+            @click="toogleDrawer">
+            <v-icon>$vuetify.icons.prev</v-icon>
+          </v-btn>
+
+        </v-toolbar>
+      </template>
+
+    <v-card
+      tile
+      class="grey lighten-5"
+     >
      <component
       :is="'v-img'"
       :src="categoryObject.thumb420"
@@ -195,25 +232,25 @@
         </v-spacer>
       </v-card-actions>
     </v-card>
-  </v-col>
+  </v-navigation-drawer>
 
-  <v-col v-if="activeMap" v-bind="{
-      cols:12, sm:6,  md:4, lg:4, xl:4
-    }">
-    <v-card>
-      <v-toolbar>
-         Map
-      </v-toolbar>
+<LocationsMap
+  v-if="activeMap"
+  :locations="listItems"
+  :autoCenter="true"
+  :openedPopup="activeId"
+  @activate-marker="openActiveLocation"
+ >
 
-    </v-card>
-  </v-col>
+</LocationsMap>
 
-</v-row>
+
 </v-container>
   <CardOpenLocation
     v-if="locationActiveObject"
     :locationId="locationActiveObject._id"
     :store="$options.nameModule"
+
     @close-dialog="closeOneLocation()">
   </CardOpenLocation>
 </div>
@@ -241,7 +278,8 @@ export default {
       CardOpenLocation: ()=> import( /* webpackChunkName: "CardOpenLocation" */ '../Location/Cards/OpenLocation.vue'),
 
 
-      PAd: ()=> import( /* webpackChunkName: "adsense" */ '../../Structure/PAdsense/Index.vue')
+      PAd: ()=> import( /* webpackChunkName: "adsense" */ '../../Structure/PAdsense/Index.vue'),
+      LocationsMap: ()=> import( /* webpackChunkName: "map" */ './Map/index.vue'),
     },
 
     props: {
@@ -268,6 +306,7 @@ export default {
     data() {
         return {
           smAndDown: true,
+          drawer: true,
           categoryPrefix: '',
           locationPrefix: '',
           categoryReal: '',
@@ -275,7 +314,8 @@ export default {
           activeMap: false,
           locationActiveObject: false,  // for active location
           activeId: false,
-          activeStatus: false
+          activeStatus: false,
+          divHeight: false
          }
     },
 
@@ -287,7 +327,12 @@ export default {
     },
 
     mounted() {
+      let minusHight = 64;
       this.smAndDown = this.$vuetify.breakpoint.smAndDown;
+      if (this.$vuetify.breakpoint.smAndUp) {
+        this.activeMap = true;
+      }
+      this.divHeight = this.$vuetify.breakpoint.height - minusHight;
     },
 
     watch: {
@@ -409,11 +454,14 @@ export default {
         if (locationObject == false) {
             this.closeOneLocation();
         } else {
-          this.locationActiveObject = locationObject;
-          this.activeId = locationObject._id;
-          this.activeStatus = true;
+          this.openActiveLocation(locationObject)
         }
 
+      },
+      openActiveLocation(locationObject) {
+        this.locationActiveObject = locationObject;
+        this.activeId = locationObject._id;
+        this.activeStatus = true;
       },
       closeOneLocation() {
         this.locationActiveObject=false;
@@ -486,6 +534,15 @@ export default {
         }
 
         return params;
+      },
+
+      toogleDrawer() {
+        this.drawer=!this.drawer;
+        if (!this.drawer) {
+           if (!this.activeMap) {
+             this.activeMap = true;
+           }
+        }
       }
     }
 
