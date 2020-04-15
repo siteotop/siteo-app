@@ -19,6 +19,7 @@
           {{pageObject.title}}
         </v-toolbar-title>
       </v-toolbar>
+    </template>
       <v-img
         v-if="pageObject.picture"
         height="250"
@@ -31,7 +32,7 @@
       </v-img>
 
 
-  </template>
+
     <v-alert v-if="errorResponse" type="error">
         Error: {{errorResponse.error_description}}
     </v-alert>
@@ -214,7 +215,7 @@ export default {
        {
 
          //app: true,
-         fixed:true,
+         absolute:true,
          stateless: true,
          clipped:true,
          width: "500",
