@@ -185,6 +185,17 @@ module.exports = merge(baseConfig, {
             'stylus-loader',
 
           ]
+        },
+
+        // added after error Leaflet
+        {
+          //|woff|woff2|eot|ttf|svg
+          test:  /\.(png|jpe?g|gif)$/i,
+          loader: 'file-loader',
+          options: {
+            name: '[path][name].[ext]',
+          }
+          //loader: 'ignore-loader'
         }
       ]
     }

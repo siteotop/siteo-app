@@ -58,7 +58,12 @@ module.exports = merge(baseConfig, {
     rules: [
       { test: /\.(sa|sc|c)ss$/, loader: 'ignore-loader' },
       { test: /\.styl$/, loader: 'ignore-loader' },
+      {
+        //|woff|woff2|eot|ttf|svg
+        test:  /\.(png|jpe?g|gif)$/i,
+        loader: 'ignore-loader',
 
+      },
     ]
   }
 
