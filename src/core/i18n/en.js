@@ -13,6 +13,7 @@ export default {
     for_more: 'For more information click',
     here: 'here',
     top: 'TOP',
+    in: 'in', 
     list: 'list',
     empty: 'empty',
     /**

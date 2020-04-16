@@ -1,7 +1,8 @@
 <template >
   <v-autocomplete
       :items="showRealItems? items : [startObject] "
-      @focus="activated=true"
+      @click="setActivateOnClick"
+      @focus="setActivateOnFocus"
       v-bind="filterPropsSElected"
       :label="correctLabel"
       v-model="valueData"
@@ -168,6 +169,14 @@ export default {
   },
 
   methods: {
+
+    setActivateOnClick() {
+        this.activated=true;
+    },
+    setActivateOnFocus() {
+       this.activated=true;
+    },
+
     fetchItems() {
        console.log('goooood');
 

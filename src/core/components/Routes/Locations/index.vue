@@ -66,7 +66,23 @@
             @click="toogleDrawer">
             <v-icon>$vuetify.icons.prev</v-icon>
           </v-btn>
+          <v-chip
+             v-if="categoryObject.title"
+             close
+             @click:close="onChangeCategory(false)"
+             >
+             <v-avatar left>
+               <v-img :src="categoryObject.thumb420"></v-img>
+             </v-avatar>{{categoryObject.title}}
+           </v-chip>
+          <v-chip
+            v-if="locationObject.title"
+            close
+            @click:close="onChangeLocation(false)"
+           >
 
+           {{locationObject.title}}
+          </v-chip>
         </v-toolbar>
       </template>
 
@@ -84,7 +100,7 @@
         <v-container>
           <v-row>
             <v-col cols="12" class="text-center white--text">
-                <h1 :class="smAndDown?'title' :'display-2'">{{titleWithCategory}}</h1>
+                <h1 :class="smAndDown?'title' :'display-1'">{{pageTitleH1}}</h1>
                 <strong class="subtitle-1">{{categoryObject.subtitle}}</strong>
             </v-col>
             <v-col>
@@ -93,15 +109,15 @@
                   :value ="categoryObject.idUrl"
                   :pluginOptions="{
                     eventOnChange: onChangeCategory,
-                    label: 'Values',
+                    label: $store.getters.getSiteoConfig('t_ls'),
                     startObject: categoryObject._id? categoryObject:false,
 
                     vComp: {
                       //hint:'Choose website',
                       itemValue:'idUrl',
                       itemText:'title',
-                      chips: true,
-                      deletableChips:true,
+                      //chips: true,
+                      //deletableChips:true,
                       rounded: false,
                      }
                 }"
@@ -114,7 +130,7 @@
                   :pluginOptions="{
                     internalApi:citiesLink,
                   //  queryParams: ,
-                    label: 'Locations',
+                    label: $store.getters.getSiteoConfig('t_ac'),
                     eventOnChange: onChangeLocation  ,
                     startObject: locationObject._id? locationObject:false,
 
@@ -123,8 +139,8 @@
                       itemText:'title',
                       hint:'Choose website',
                       rounded: false,
-                      chips: true,
-                      deletableChips:true,
+                    //  chips: true,
+                    //  deletableChips:true,
                      }
                 }"
               >
@@ -149,15 +165,14 @@
         </v-alert>
     </v-card-text >
       <v-toolbar v-else flat>
-        <h2>{{$store.getters.getSiteoConfig('t_ac')}}
-          <v-chip
-             v-if="locationObject.title"
-             close
-             @click:close="onChangeLocation(false)"
-             >
-             {{locationObject.title}}
-          </v-chip>
+        <v-toolbar-title><h2 class="title">
+            <span v-if="locationObject.title">
+              {{locationObject.country}}, {{locationObject.title}}:
+            </span>
+            {{$store.getters.getSiteoConfig('t_ac')}}
+            {{categoryObject.title}}
         </h2>
+        </v-toolbar-title>
         <v-spacer>
         </v-spacer>
         {{$t('top')}}:
@@ -358,14 +373,21 @@ export default {
        },
 
 
-       titleWithCategory() {
+       pageTitleH1() {
          if ( this.pageObject.title) {
            return this.pageObject.title;
          }
 
-         let startText = this.$store.getters.getSiteoConfig('t_ac');
+         let startText = '';
          if (this.categoryObject.title) {
-           startText+=' '+this.categoryObject.title;
+           startText+=this.$store.getters.getSiteoConfig('t_ac')+ ' '+this.categoryObject.title;
+         } else {
+           startText = this.$store.state.appInstance.objectActive.slogan || (this.$store.getters.getSiteoConfig('t_ac') + ' ' +  this.$store.state.appInstance.objectActive.name)
+         }
+
+         if (this.locationObject.title) {
+           // field region using for language differences (like in Ukrainian в Будапешті)
+            startText+=' '+ this.$t('in') + ' '+this.locationObject.region;
          }
          return startText
        },
@@ -374,11 +396,8 @@ export default {
           if ( this.pageObject.meta_title) {
             return this.replaceTitle(this.pageObject.meta_title);
           }
-            if (this.locationObject.title) {
-             return this.locationObject.title+': '+this.titleWithCategory;
-           }
-          return  this.titleWithCategory
-       },
+          return  this.pageTitleH1
+        },
 
 
 
