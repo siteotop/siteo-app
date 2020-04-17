@@ -8,6 +8,7 @@ export default function (parentGetterUrl) {
         return {
           idUrl:'',
           title:'',
+          country : '',
           region : '',
           city : '',
           street : '',
