@@ -90,8 +90,9 @@ export default {
     };
   },
   created() {
-    this.setDataCenter();
     this.setDataZoom();
+    this.setDataCenter();
+
     if (this.autoCenter&&this.locations[0]) {
       this.dataCenter = [this.locations[0].lat, this.locations[0].lng ];
     }

@@ -1,5 +1,21 @@
 <template >
 <v-slide-x-transition >
+  <v-btn
+    v-if="!drawer"
+    absolute
+    dark
+    depressed
+    top
+    left
+    width="24"
+    elevation="2"
+    color="primary darken-3"
+    class="pr-0"
+    style="top:18px; left:-24px; z-index:3;"
+    @click="drawer=true"
+  >
+    <v-icon>$vuetify.icon.next</v-icon>
+</v-btn>
   <v-navigation-drawer
     v-if="!loaded"
     v-model="drawer"
@@ -15,8 +31,8 @@
           @click="closeDrawer">
           <v-icon>$vuetify.icons.prev</v-icon>
         </v-btn>
-        <v-toolbar-title >
-          {{pageObject.title}}
+        <v-toolbar-title  >
+          <!-- something text  -->
         </v-toolbar-title>
       </v-toolbar>
     </template>
@@ -247,6 +263,9 @@ export default {
     },
     // emit event for close drawer
     closeDrawer() {
+       if (this.openRoute) {
+          this.drawer = false;
+       }
        this.$emit('close-dialog');
     },
 

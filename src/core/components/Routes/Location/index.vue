@@ -9,7 +9,9 @@
     </CardOpenLocation>
     <LocationsMap
       v-if="activeMap"
-
+      :locations="pageObject.title?[pageObject]:[]"
+      :autoCenter="true"
+      zoom="16"
      >
 
     </LocationsMap>
@@ -18,10 +20,10 @@
 </template>
 
 <script>
-
-
+import MetaInfo from '../Pages/MetaInfo';
+import { mapState } from 'vuex';
 export default {
-    //mixins: [MetaInfo, ServerFetch],
+    mixins: [MetaInfo],
     //nameModule: 'locations',
 
     components: {
@@ -49,7 +51,35 @@ export default {
       }
 
       this.divHeight = this.$vuetify.breakpoint.height - 64;
+
+
     },
+
+      computed: {
+
+        metaTitle() {
+           if ( this.pageObject.title) {
+             return this.pageObject.title
+           }
+           return  'Location Undefined';
+         },
+
+        metaDescr() {
+
+          return this.pageObject.title
+          +' - ' + this.pageObject.preview.substring(0, 90)+ '...'
+          +' '+ this.pageObject.country
+          +' ' + this.pageObject.city
+          +' ' + this.pageObject.street
+          +' ' + this.pageObject.phone;
+
+        },
+        ...mapState({
+          pageObject (state) {
+              return state.location? state.location.objectActive: {};
+          },
+        })
+      }
 
 
 
