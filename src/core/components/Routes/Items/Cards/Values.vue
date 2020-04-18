@@ -64,10 +64,7 @@
           </v-card-title> -->
         <v-divider  ></v-divider>
           <v-card-actions >
-            <v-spacer></v-spacer>
-
-
-            <v-btn
+              <v-btn
               v-bind="{
                   tag: 'a',
                   disabled: props.url_page?false: true,
@@ -78,15 +75,16 @@
                 }">
              {{parent.$store.getters.getSiteoConfig('t_re')||parent.$t('rm')}}
             </v-btn>
-
-                <v-btn
-                  tag="a"
-                  disabled
-                  text
-                  color="primary accent-4"
-                >
-                 {{parent.$store.getters.getSiteoConfig('t_ac')||parent.$t('action')}}
-                </v-btn>
+            <v-spacer></v-spacer>
+            <v-btn
+              v-if="props.where"
+              tag="a"
+              text
+              color="primary accent-4"
+              :to="props.where.link"
+            >
+             {{props.where.text}}
+            </v-btn>
 
               <!--  <v-spacer></v-spacer>
                 <v-btn icon>

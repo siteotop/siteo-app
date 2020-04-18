@@ -9,10 +9,11 @@ export default {
     rm: 'Read More',
     //no_data: 'Данных для отображения нет',
     mainpage: 'Main page',
-    action: 'Action',
+    open: 'Open',
     for_more: 'For more information click',
     here: 'here',
     top: 'TOP',
+    in: 'in',
     list: 'list',
     empty: 'empty',
     /**

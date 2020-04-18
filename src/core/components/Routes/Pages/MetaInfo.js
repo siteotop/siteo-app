@@ -64,7 +64,7 @@ export default {
         {
           name: 'description',
           vmid: 'des',
-          content: this.pageObject.meta_description||this.metaTitle
+          content: this.pageObject.meta_description||this.metaDescr||this.metaTitle
         },
         {
           name: 'robots',

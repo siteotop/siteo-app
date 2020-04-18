@@ -117,11 +117,7 @@ module.exports = {
            //  path.resolve(__dirname, 'node_modules/vuetify/src'),
             path.resolve(__dirname, '../node_modules/vuetify/lib/components'),
           ]
-      },
-
-
-
-
+      }
     ]
   },
 

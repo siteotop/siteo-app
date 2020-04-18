@@ -21,7 +21,12 @@ const GETTERS = {
      var prefixurl = '';
      console.log(state);
      if (state.parentGetterUrl) {
-        prefixurl=  rootGetters[state.parentGetterUrl];
+       if (typeof (state.parentGetterUrl) == 'function' ) {
+          prefixurl = state.parentGetterUrl();
+       } else {
+          prefixurl=  rootGetters[state.parentGetterUrl];
+       }
+
      }
      return  prefixurl + state.url;
    },
@@ -153,7 +158,7 @@ export default function (api ) {
           url: api.url,
           public: api.public||false,
           nameId: api.nameId||'',
-          parentGetterUrl: api.parentGetterUrl,
+          parentGetterUrl: api.parentGetterUrl, // can be as function or string
           prepare:api.prepare||false, // for prepareData
           id: 0
         },

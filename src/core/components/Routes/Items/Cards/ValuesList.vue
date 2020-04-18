@@ -30,7 +30,6 @@
           <v-btn
             v-bind="{
                 tag: 'a',
-                xSmall: true,
                 disabled: props.url_page?false: true,
                 text: true,
                 color: 'primary accent-4',
@@ -40,13 +39,13 @@
            {{parent.$store.getters.getSiteoConfig('t_re')||parent.$t('rm')}}
           </v-btn>
           <v-btn
-            x-small
+            v-if="props.where"
             tag="a"
-            disabled
             text
             color="primary accent-4"
+            :to="props.where.link"
           >
-           {{parent.$store.getters.getSiteoConfig('t_ac')||'ACTION'}}
+           {{props.where.text}}
           </v-btn>
         <!--  <v-spacer></v-spacer>
           <v-btn icon>

@@ -116,6 +116,7 @@
               :is = "cardComponent"
               v-bind="item"
               :index="i+1"
+              :where="createWhere(item.idUrl, item.count )"
               :clickOnVideo="clickOnVideo"
 
             >
@@ -173,7 +174,7 @@
 //import DialogVideoYoutube from './Cards/VideoYoutube.vue';
 //import WiExperts from '../Widgets/WiExperts.vue';
 //import WiPosts from '../Widgets/WiPosts.vue';
-
+import CardValues from './Cards/Values.vue';
 
 
 import values  from  '../../../store/modules/values';
@@ -196,6 +197,8 @@ export default {
 
   nameModule: 'values',
 
+  storeModule: values('appInstance/urlID'),
+
   props: {
 
     /**
@@ -209,8 +212,8 @@ export default {
 
   },
   components: {
+    CardValues,
     BPrice: ()=> import( /* webpackChunkName: "CardValues" */ './Cards/BPrice.vue') ,
-    CardValues: ()=> import( /* webpackChunkName: "CardValues" */ './Cards/Values.vue') ,
     ListValues: ()=> import( /* webpackChunkName: "ListValues" */ './Cards/ValuesList.vue') ,
     DialogVideoYoutube: ()=> import( /* webpackChunkName: "DialogVideo" */ './Cards/VideoYoutube.vue'),
     PAd: ()=> import( /* webpackChunkName: "adsense" */ '../../Structure/PAdsense/Index.vue')
@@ -362,15 +365,22 @@ export default {
 
   methods: {
 
+    createWhere(idUrl, count) {
+        let s = this.$store.getters.getSiteoConfig('seo_path_locations');
+        let where;
+        console.log(count);
+        if (s&&count==1) {
+          where = {
+            link: {name:'locations', params: {
+                    category: this.$store.getters.getSiteoConfig('rlc') + idUrl
+                  }
+                },
+            text: this.$store.getters.getSiteoConfig('t_ac')
+          }
+          return where;
+        }
+        return false;
 
-
-    registerModule(preserveState) {
-      this.$store.registerApiModule({
-        name: this.$options.nameModule,
-        module: values('appInstance/urlID'),
-        moduleOptions:  {moduleItems: true},
-        preserveState: preserveState
-      });
     },
 
     getParamsForFetch() {

@@ -31,9 +31,25 @@ export default {
 
     methods: {
 
+      /**
+        function for register module
+      */
+      registerModule(preserveState) {
+        let opt = {moduleItems: true};
+        if (this.moduleAction == 'getObject') {
+          opt = {};
+        }
+        this.$store.registerApiModule({
+          name: this.$options.nameModule,
+          module: this.getStoreModule? this.getStoreModule(): this.$options.storeModule,
+          moduleOptions:  opt,
+          preserveState: preserveState
+        });
+      },
+
 
       setClearParamFromPath(dirtyValue, paramName) {
-          let real = paramName + 'Real'; 
+          let real = paramName + 'Real';
           let prefix = paramName + 'Prefix';
           if (this[prefix]) {
             this[real] = dirtyValue.replace(this[prefix], "");
@@ -76,6 +92,14 @@ export default {
         }
       },
 
+      errorResolve(error) {
+        if (error.response) {
+          this.$store.commit('setSrvPageErr',  error.response.data );
+        } else {
+             this.$store.commit('setSrvPageErr', {status: 500}  )
+        }
+      },
+
       /**
         registerModule();
         fetchItem();
@@ -99,11 +123,7 @@ export default {
                 this.loaded = false;
                 resolve(true);
              }).catch(error=>{
-               if (error.response) {
-                 this.$store.commit('setSrvPageErr',  error.response.data );
-               } else {
-                    this.$store.commit('setSrvPageErr', {status: 500}  )
-               }
+               this.errorResolve(error);
                this.loaded = false;
                resolve(error);
                //reject(error);
@@ -113,12 +133,13 @@ export default {
       },
 
       serverMount() {
-        if (this.$store.state.allowAsyncLoad) {
+          if (this.$store.state[this.$options.nameModule]) {
+              this.registerModule(true);
+          } else {
             this.registerModule();
             this.fetchItem();
-        } else {
-          this.registerModule(true);
-        }
+          }
+
       }
     }
 }

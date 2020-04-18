@@ -8,6 +8,7 @@ export default function (parentGetterUrl) {
         return {
           idUrl:'',
           title:'',
+          country : '',
           region : '',
           city : '',
           street : '',
@@ -17,7 +18,15 @@ export default function (parentGetterUrl) {
           lng : '',
           preview: '',
           gbsess: '',
-          picture: ''
+          picture: '',
+          phone: '',
+          videolink: '',
+          pricelink: '',
+          website: '',
+          thumb420: '',
+          thumb120: '',
+          values: {}
+
       }
     }
   }

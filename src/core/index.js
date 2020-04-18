@@ -111,6 +111,7 @@ import Vuetify, {
   VStepperItems,
   VStepperHeader,
   VFabTransition,
+  VSlideXTransition
 } from 'vuetify/lib'
 import { Ripple, Scroll, Touch, Resize, Mutate, Intersect } from 'vuetify/lib/directives'
 
@@ -212,7 +213,7 @@ Vue.use(Vuetify, {
   //  VStepperItems:()=>import( /* webpackChunkName: "stepper" */ 'vuetify/lib/components/VStepper/VStepperItems'),
 
     VFabTransition,
-
+    VSlideXTransition
   },
 
   directives: {
