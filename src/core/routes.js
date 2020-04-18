@@ -15,7 +15,7 @@ export default function (configs) {
       routes.push(
         {
           name: "values",
-          path: configs.seo_path_values|| '/values',
+          path: configs.rvp+':category('+configs.rvc+'[A-Za-z0-9_\-]+)?',
           component:()=>import( /* webpackChunkName: "list" */ './components/Routes/Items/index.vue'),
           props: true,
         },
@@ -35,7 +35,7 @@ export default function (configs) {
 
         {
           name: "locations",
-          path:  configs.seo_path_locations|| '/locations',
+          path:  configs.rlp+':category('+configs.rlc+'[A-Za-z0-9_\-]+?)?:location('+configs.rll+'[A-Za-z0-9_\-]+?)?',
           component: ()=>import( /* webpackChunkName: "locations" */ './components/Routes/Locations/index.vue'),
           props: true,
         },

@@ -116,6 +116,7 @@
               :is = "cardComponent"
               v-bind="item"
               :index="i+1"
+              :where="createWhere(item.idUrl, item.count )"
               :clickOnVideo="clickOnVideo"
 
             >
@@ -364,6 +365,23 @@ export default {
 
   methods: {
 
+    createWhere(idUrl, count) {
+        let s = this.$store.getters.getSiteoConfig('seo_path_locations');
+        let where;
+        console.log(count);
+        if (s&&count==1) {
+          where = {
+            link: {name:'locations', params: {
+                    category: this.$store.getters.getSiteoConfig('rlc') + idUrl
+                  }
+                },
+            text: this.$store.getters.getSiteoConfig('t_ac')
+          }
+          return where;
+        }
+        return false;
+
+    },
 
     getParamsForFetch() {
       let params={};
