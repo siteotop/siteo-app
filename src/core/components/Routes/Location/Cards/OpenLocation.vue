@@ -60,20 +60,22 @@
        </v-card-title>
            <v-divider></v-divider>
     <v-card-actions>
-      <v-btn
+    <v-btn
+        v-for="(action, i) in actions"
         icon
         outlined
         color="primary"
         xLarge
-        @click="goToDirect"
+        :disabled="action.disabled"
+        @click="action.eventClick"
       >
-        <v-icon>{{$options._icons.directions}}</v-icon>
+        <v-icon>{{$options._icons[action.icon]}}</v-icon>
     </v-btn>
     </v-card-actions>
          <v-divider></v-divider>
     <v-list >
 
-      <v-list-item two-line @click="">
+      <v-list-item three-line >
         <v-list-item-icon>
           <v-icon>{{$options._icons.mapMarker}}</v-icon>
         </v-list-item-icon>
@@ -81,10 +83,14 @@
         <v-list-item-content>
           <v-list-item-title>{{pageObject.street}}</v-list-item-title>
           <v-list-item-subtitle>{{pageObject.city}}, {{pageObject.region}} {{pageObject.zipcode}}</v-list-item-subtitle>
+          <v-list-item-subtitle class="">{{pageObject.lat}}, {{pageObject.lng}}</v-list-item-subtitle>
         </v-list-item-content>
+        <v-list-item-action>
+           <HelperMenu :actions="treeData.adress.actions"></HelperMenu>
+        </v-list-item-action>
       </v-list-item>
 
-      <v-list-item  v-if="pageObject.gbsess" two-line @click="">
+      <v-list-item  v-if="pageObject.gbsess" two-line >
         <v-list-item-icon>
           <v-icon>{{$options._icons.googlemaps}}</v-icon>
         </v-list-item-icon>
@@ -93,9 +99,13 @@
           <v-list-item-title>Open google Maps</v-list-item-title>
           <v-list-item-subtitle>google maps</v-list-item-subtitle>
         </v-list-item-content>
+
+        <v-list-item-action>
+           <HelperMenu :actions="treeData.gbsess.actions"></HelperMenu>
+        </v-list-item-action>
       </v-list-item>
 
-      <v-list-item v-if="pageObject.phone" @click="">
+      <v-list-item v-if="pageObject.phone" >
         <v-list-item-icon>
           <v-icon>{{$options._icons.phone}}</v-icon>
         </v-list-item-icon>
@@ -103,18 +113,34 @@
         <v-list-item-content>
           <v-list-item-title>{{pageObject.phone}}</v-list-item-title>
         </v-list-item-content>
+        <v-list-item-action>
+           <HelperMenu :actions="treeData.phone.actions"></HelperMenu>
+        </v-list-item-action>
       </v-list-item>
 
-      <v-list-item v-if="pageObject.website" @click="">
+      <v-list-item v-if="pageObject.website" >
         <v-list-item-icon>
           <v-icon>{{$options._icons.earth}}</v-icon>
         </v-list-item-icon>
 
         <v-list-item-content>
-          <v-list-item-title><a href="">{{pageObject.website}}</a></v-list-item-title>
+          <v-list-item-title><a @click="goToWebsite">{{pageObject.website}}</a></v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 
+      <v-list-item v-if="pageObject.pricelink" >
+        <v-list-item-icon>
+          <v-icon>{{$options._icons.price}}</v-icon>
+        </v-list-item-icon>
+
+        <v-list-item-content>
+          <v-list-item-title>Price</a></v-list-item-title>
+        </v-list-item-content>
+
+        <v-list-item-action>
+           <HelperMenu :actions="treeData.pricelink.actions"></HelperMenu>
+        </v-list-item-action>
+      </v-list-item>
 
 
 
@@ -159,25 +185,37 @@
 import ServerFetch from '../../_mixins/serverFetch';
 import locations from  '../../../../store/modules/locations';
 import { mapState } from 'vuex';
-
+import HelperMenu from './Helper/Menu.vue';
 import {
   mdiMapMarker,
   mdiPhone,
   mdiEarth,
   mdiDirections,
-  mdiGoogleMaps
+  mdiGoogleMaps,
+  mdiBookmark,
+  mdiContentCopy,
+  mdiCurrencyUsd
 } from '@mdi/js';
 
 export default {
   mixins: [ServerFetch],
   nameModule: 'location',
+
   _icons: {
     mapMarker: mdiMapMarker,
     phone: mdiPhone,
     earth: mdiEarth,
     directions: mdiDirections,
-    googlemaps: mdiGoogleMaps
+    googlemaps: mdiGoogleMaps,
+    bookmark: mdiBookmark,
+    copy: mdiContentCopy,
+    price: mdiCurrencyUsd
   },
+
+  components: {
+    HelperMenu
+  },
+
   props: {
 
     //uses when componnet using in route location
@@ -213,6 +251,88 @@ export default {
         moduleAction: 'getObject',
         errorResponse: false,
         locationData: false,
+
+        // actions for main card-actions
+        actions: [
+
+          {
+             icon: 'directions',
+             eventClick: this.goToDirect
+          },
+
+          {
+             icon: 'bookmark',
+             disabled: true,
+             eventClick: ""
+
+          }
+        ],
+
+        treeData: {
+            adress: {
+                actions: [
+                    {
+                      textKey: ()=>{
+                          return this.$t('route');
+                      },
+                      icon: 'directions',
+                      onClick: this.goToDirect
+                    },
+
+                    {
+                      textKey: ()=>{
+                          return this.$t('copy');
+                      },
+                      icon: 'copy',
+                      onClick: this.copyLatLng
+                    }
+                ]
+            },
+
+            gbsess: {
+              actions: [
+                {
+                  textKey: ()=>{
+                      return this.$t('open');
+                  },
+                  icon: 'googlemaps',
+                  onClick: this.goToGoogleMaps
+                },
+              ]
+            },
+
+            phone: {
+              actions: [
+                {
+                  textKey: ()=>{
+                      return this.$t('call');
+                  },
+                  icon: 'phone',
+                  onClick: this.callPhone
+                },
+
+                {
+                  textKey: ()=>{
+                      return this.$t('copy');
+                  },
+                  icon: 'copy',
+                  onClick: this.copyPhone
+                },
+              ]
+            },
+            pricelink: {
+              actions: [
+                {
+                  textKey: ()=>{
+                      return this.$t('open');
+                  },
+                  icon: 'price',
+                  onClick: this.goToPrice
+                },
+              ]
+            }
+
+        }
 
     }
   },
@@ -297,6 +417,45 @@ export default {
 
     goToDirect() {
        let url = 'https://maps.google.com/?saddr=Current+Location&daddr='+this.pageObject.lat+','+this.pageObject.lng;
+        window.open(url, '_blank');
+    },
+
+    copyLatLng() {
+        this.copyText(this.pageObject.lat+','+this.pageObject.lng);
+    },
+
+    copyText(text) {
+      if (navigator.clipboard) {
+          navigator.clipboard.writeText(text)
+              .then(() => {
+                console.log('Text copied to clipboard');
+              })
+              .catch(err => {
+                // This can happen if the user denies clipboard permissions:
+                console.error('Could not copy text: ', err);
+              });
+        }
+    },
+
+    goToGoogleMaps() {
+      let url = this.pageObject.gbsess;
+      window.open(url, '_blank');
+    },
+    copyPhone() {
+      this.copyText(this.pageObject.phone);
+    },
+    callPhone() {
+        let url="tel:"+ this.pageObject.phone;
+        window.open(url);
+    },
+    goToWebsite(event) {
+        event.stopPropagation();
+        let url=this.pageObject.website;
+        window.open(url, '_blank');
+    },
+
+    goToPrice(event) {
+        let url=this.pageObject.pricelink;
         window.open(url, '_blank');
     }
 
