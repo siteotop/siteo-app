@@ -76,15 +76,15 @@
              {{parent.$store.getters.getSiteoConfig('t_re')||parent.$t('rm')}}
             </v-btn>
             <v-spacer></v-spacer>
-                <v-btn
-                  v-if="props.where"
-                  tag="a"
-                  text
-                  color="primary accent-4"
-                  :to="props.where.link"
-                >
-                 {{props.where.text}}
-                </v-btn>
+            <v-btn
+              v-if="props.where"
+              tag="a"
+              text
+              color="primary accent-4"
+              :to="props.where.link"
+            >
+             {{props.where.text}}
+            </v-btn>
 
               <!--  <v-spacer></v-spacer>
                 <v-btn icon>

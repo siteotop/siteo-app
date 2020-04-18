@@ -82,7 +82,7 @@
 
         <v-list-item-content>
           <v-list-item-title>{{pageObject.street}}</v-list-item-title>
-          <v-list-item-subtitle>{{pageObject.city}}, {{pageObject.region}} {{pageObject.zipcode}}</v-list-item-subtitle>
+          <v-list-item-subtitle>{{pageObject.city}}, {{pageObject.region}}, {{pageObject.country}} {{pageObject.zipcode}}</v-list-item-subtitle>
           <v-list-item-subtitle class="">{{pageObject.lat}}, {{pageObject.lng}}</v-list-item-subtitle>
         </v-list-item-content>
         <v-list-item-action>
@@ -144,11 +144,32 @@
 
 
 
-   </v-list>
+      </v-list>
       <v-card-text>
           {{pageObject.preview}}
       </v-card-text>
-     </v-card>
+
+      <v-card-text v-if="valuesItems.length">
+        <v-card-title class="ml-n3">
+           {{$store.getters.getSiteoConfig('t_ls')}}
+        </v-card-title>
+        <v-chip
+            v-for="(value, index) in valuesItems"
+            pill
+            link
+            :key="index"
+            class="mr-2"
+            :to="{name:'locations', params: { category: prefixLocCat+value.idUrl   }}"
+          >
+            <v-avatar left>
+              <v-img v-if="value.thumb120" :src="value.thumb120"></v-img>
+            </v-avatar>
+             {{value.title}}
+          </v-chip>
+      </v-card-text>
+
+
+   </v-card>
 
 
   </v-navigation-drawer>
@@ -251,8 +272,9 @@ export default {
         moduleAction: 'getObject',
         errorResponse: false,
         locationData: false,
-
+        toggle_component: 'card',
         // actions for main card-actions
+        prefixLocCat:  this.$store.getters.getSiteoConfig('rlc'),
         actions: [
 
           {
@@ -369,8 +391,18 @@ export default {
     ...mapState({
           pageObject (state) {
               return state.location? state.location.objectActive: {};
-          },
-        })
+          }
+
+
+        }),
+
+        valuesItems() {
+            if (this.pageObject.values) {
+              return  this.pageObject.values.items;
+            } else {
+              return [];
+            }
+        }
 
 
   },

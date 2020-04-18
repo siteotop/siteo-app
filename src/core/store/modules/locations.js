@@ -25,6 +25,7 @@ export default function (parentGetterUrl) {
           website: '',
           thumb420: '',
           thumb120: '',
+          values: {}
 
       }
     }

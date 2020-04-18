@@ -329,6 +329,7 @@ export default {
             if (newId!=oldId) {
               this.setClearParamFromPath(newId, 'category');
               this.fetchItem();
+              this.closeOneLocation();
             }
         },
 

@@ -1,6 +1,9 @@
 <template functional>
   <v-card @click="(event)=>{props.clickOnLocation(event, props.location)}" :dark="props.active" :color="props.active?'primary darken-2':''">
     <v-card-title>{{props.index}}. {{props.location.title}} {{propsactive}}</v-card-title>
+    <v-card-subtitle>
+      {{props.location.street}},  {{props.location.city}} {{props.location.region}} {{props.location.country}} 
+    </v-card-subtitle>
     <v-card-text>
       <div>  {{props.location.preview}}</div>
 
