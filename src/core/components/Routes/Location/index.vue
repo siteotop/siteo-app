@@ -5,13 +5,17 @@
     <CardOpenLocation
       :locationId="locationId"
       :openRoute="true"
+      @drawer-close="activateMap"
+      @drawer-open="hideMap"
+
     >
     </CardOpenLocation>
     <LocationsMap
       v-if="activeMap"
       :locations="pageObject.title?[pageObject]:[]"
       :autoCenter="true"
-      zoom="16"
+      :hideControl="hideControl"
+      :zoom="16"
      >
 
     </LocationsMap>
@@ -41,13 +45,14 @@ export default {
     data() {
       return {
         activeMap: false,
-        divHeight: '100%'
+        divHeight: '100%',
+        hideControl: true
       }
     },
 
     mounted() {
       if (this.$vuetify.breakpoint.smAndUp) {
-        this.activeMap = true;
+         this.activateMap();
       }
 
       this.divHeight = this.$vuetify.breakpoint.height - 64;
@@ -79,6 +84,18 @@ export default {
               return state.location? state.location.objectActive: {};
           },
         })
+      },
+
+      methods: {
+        activateMap () {
+            this.activeMap = true;
+            this.hideControl = false;
+        },
+        hideMap() {
+          if (this.$vuetify.breakpoint.xs) {
+            this.hideControl = true;
+          }
+        }
       }
 
 

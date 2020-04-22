@@ -235,7 +235,7 @@
     </LocationsMap>
   </v-container>
 
-  <CardOpenLocation
+    <CardOpenLocation
     v-if="locationActiveObject"
     :locationId="locationActiveObject._id"
     :store="$options.nameModule"

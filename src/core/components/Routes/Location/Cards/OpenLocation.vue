@@ -1,4 +1,5 @@
 <template >
+<div>
 <v-slide-x-transition >
   <v-btn
     v-if="!drawer"
@@ -16,6 +17,7 @@
   >
     <v-icon>$vuetify.icon.next</v-icon>
 </v-btn>
+</v-slide-x-transition >
   <v-navigation-drawer
     v-if="!loaded"
     v-model="drawer"
@@ -197,7 +199,7 @@
   >
   </v-skeleton-loader>
   </v-navigation-drawer>
-</v-slide-x-transition >
+</div>
 </template>
 
 <script>
@@ -364,6 +366,15 @@ export default {
           if (newId!=oldId) {
              this.fetchItem();
           }
+      },
+
+      drawer(drw, oldDrw) {
+          if (drw == true) {
+             this.$emit('drawer-open');
+          } else {
+            this.$emit('drawer-close');
+
+          }
       }
   },
 
@@ -373,6 +384,7 @@ export default {
        {
 
          //app: true,
+        // permanent: true,
          absolute:true,
          stateless: true,
          clipped:true,
