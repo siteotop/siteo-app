@@ -296,8 +296,6 @@ export default {
         return {
           smAndDown: true,
           drawer: true,
-          categoryPrefix: '',
-          locationPrefix: '',
           categoryReal: '',
           locationReal: '',
           activeMap: false,
@@ -309,7 +307,6 @@ export default {
     },
 
     created() {
-        this.findPrefixes();
         this.setClearParamFromPath(this.category, 'category');
         this.setClearParamFromPath(this.location, 'location');
 
@@ -347,6 +344,12 @@ export default {
          return '/apps/'+siteoId+'/locations?attribute='+this.$store.getters['appInstance/activeId'];
        },
 
+       categoryPrefix() {
+          return this.$store.getters.getSiteoConfig('rlc');
+       },
+       locationPrefix() {
+          return this.$store.getters.getSiteoConfig('rll');
+       },
 
        pageTitleH1() {
          if ( this.pageObject.title) {

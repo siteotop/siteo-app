@@ -229,7 +229,6 @@ export default {
   },
 
   created() {
-      this.findPrefixes();
       this.setClearParamFromPath(this.category, 'category');
   },
 
@@ -239,7 +238,6 @@ export default {
     return {
 
       videoActiveObject: false,
-      categoryPrefix:'',
       categoryReal: false,
       ordermenu: false,
       notLoaded: true,
@@ -343,6 +341,10 @@ export default {
         } else {
           return this.countItems;
         }
+      },
+
+      categoryPrefix() {
+          return this.$store.getters.getSiteoConfig('rvc');
       }
 
 
@@ -364,6 +366,8 @@ export default {
 
 
   methods: {
+
+
 
     createWhere(idUrl, count) {
         let s = this.$store.getters.getSiteoConfig('seo_path_locations');
