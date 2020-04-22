@@ -348,6 +348,8 @@ export default {
       }
 
 
+
+
   },
 
  /*
@@ -370,11 +372,9 @@ export default {
 
 
     createWhere(idUrl, count) {
-        let s = this.$store.getters.getSiteoConfig('seo_path_locations');
-        let where;
-        console.log(count);
+        let s = this.$store.getters.getSiteoConfig('rlp');
         if (s&&count!=0) {
-          where = {
+        let  where = {
             link: {name:'locations', params: {
                     category: this.$store.getters.getSiteoConfig('rlc') + idUrl
                   }

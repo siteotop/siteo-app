@@ -8,44 +8,42 @@ export default function (configs) {
           component: ()=>import( /* webpackChunkName: "page" */ './components/Routes/Pages'),
           props: true,
           meta: {name: 'page'}
-        },
+        }
     ];
 
     if (!configs.lp) {
-      routes.push(
-        {
-          name: "values",
-          path: configs.rvp+':category('+configs.rvc+'[A-Za-z0-9_\-]+)?',
-          component:()=>import( /* webpackChunkName: "list" */ './components/Routes/Items/index.vue'),
-          props: true,
-        },
-        {
-          name: "experts",
-          path:  configs.seo_path_experts || '/experts',
-          component:()=>import( /* webpackChunkName: "list" */ './components/Routes/Items/index.vue'),
-          props: true,
-        },
 
-        {
-          name: "posts",
-          path:  configs.seo_path_posts || '/posts',
-          component: ()=>import( /* webpackChunkName: "list" */ './components/Routes/Items/index.vue'),
-          props: true,
-        },
+        // values
+        if ( configs.rvp) {
+            routes.push(
+              {
+                name: "values",
+                path:  configs.rvp+':category('+configs.rvc+'[A-Za-z0-9_\-]+)?',
+                component:()=>import( /* webpackChunkName: "list" */ './components/Routes/Items/index.vue'),
+                props: true,
+              });
+          }
 
-        {
-          name: "locations",
-          path:  configs.rlp+':category('+configs.rlc+'[A-Za-z0-9_\-]+?)?:location('+configs.rll+'[A-Za-z0-9_\-]+?)?',
-          component: ()=>import( /* webpackChunkName: "locations" */ './components/Routes/Locations/index.vue'),
-          props: true,
-        },
+        //locations
+        if ( configs.rlp) {
 
-        {
-          name: "location",
-          path: '/p/:locationIdUrl-n:locationId',
-          component: ()=>import( /* webpackChunkName: "Location" */ './components/Routes/Location/index.vue'),
-          props: true,
-        },
+            routes.push({
+              name: "locations",
+              path:configs.rlp+':category('+configs.rlc+'[A-Za-z0-9_\-]+?)?:location('+configs.rll+'[A-Za-z0-9_\-]+?)?',
+              component: ()=>import( /* webpackChunkName: "locations" */ './components/Routes/Locations/index.vue'),
+              props: true,
+            },
+
+            {
+              name: "location",
+              path: '/p/:locationIdUrl-n:locationId',
+              component: ()=>import( /* webpackChunkName: "Location" */ './components/Routes/Location/index.vue'),
+              props: true,
+            }
+           )
+        }
+
+        routes.push(
 
        /*  {
           name: "order",
@@ -55,13 +53,13 @@ export default function (configs) {
 
         },
         */
-        {
-          name: "objectPage",
-          path:  '/:objectId',
-          component: ()=>import( /* webpackChunkName: "page" */ './components/Routes/Pages'),
-          props: true,
-          meta: {name: 'page'}
-        },
+          {
+            name: "objectPage",
+            path:  '/:objectId',
+            component: ()=>import( /* webpackChunkName: "page" */ './components/Routes/Pages'),
+            props: true,
+            meta: {name: 'page'}
+          },
 
 
       );
