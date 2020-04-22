@@ -369,7 +369,7 @@ export default {
         let s = this.$store.getters.getSiteoConfig('seo_path_locations');
         let where;
         console.log(count);
-        if (s&&count==1) {
+        if (s&&count!=0) {
           where = {
             link: {name:'locations', params: {
                     category: this.$store.getters.getSiteoConfig('rlc') + idUrl
