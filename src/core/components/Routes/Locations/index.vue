@@ -334,6 +334,16 @@ export default {
           this.activeMap = true;
         }
         this.divHeight = this.$vuetify.breakpoint.height - minusHight;
+
+        // if isset hash company
+        if (this.$route.hash) {
+          const found = this.$route.hash.match(/[A-Za-z0-9_\-]+?-n[0-9]+$/g);
+          if (found!=null) {
+            this.$router.push('/p/'+found[0]);
+          }
+
+        }
+
     },
 
     watch: {
