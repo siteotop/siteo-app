@@ -29,13 +29,29 @@
         flat
       >
         <v-btn
+          v-if="!openRoute"
           icon
           @click="closeDrawer">
+          <v-icon>$vuetify.icons.prev</v-icon>
+        </v-btn>
+        <v-btn
+          v-else
+          icon
+            :to="{name: 'locations'}"
+          >
           <v-icon>$vuetify.icons.prev</v-icon>
         </v-btn>
         <v-toolbar-title  >
           <!-- something text  -->
         </v-toolbar-title>
+        <v-spacer>
+        </v-spacer>
+        <v-btn
+          v-if=""
+          icon
+          @click="closeDrawer">
+          <v-icon>$vuetify.icons.close</v-icon>
+        </v-btn>
       </v-toolbar>
     </template>
       <v-img
@@ -217,7 +233,8 @@ import {
   mdiGoogleMaps,
   mdiBookmark,
   mdiContentCopy,
-  mdiCurrencyUsd
+  mdiCurrencyUsd,
+  mdiMap
 } from '@mdi/js';
 
 export default {
@@ -232,7 +249,8 @@ export default {
     googlemaps: mdiGoogleMaps,
     bookmark: mdiBookmark,
     copy: mdiContentCopy,
-    price: mdiCurrencyUsd
+    price: mdiCurrencyUsd,
+    map: mdiMap
   },
 
   components: {

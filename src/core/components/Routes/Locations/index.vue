@@ -36,11 +36,7 @@
           <v-toolbar
             flat
           >
-            <v-btn
-              icon
-              @click="toogleDrawer">
-              <v-icon>$vuetify.icons.prev</v-icon>
-            </v-btn>
+
             <v-chip
                v-if="categoryObject.title"
                close
@@ -58,6 +54,14 @@
 
              {{locationObject.title}}
             </v-chip>
+            <v-spacer>
+            </v-spacer>
+            <v-btn
+              icon
+              @click="toogleDrawer">
+              <v-icon v-if="!mobileMode">$vuetify.icons.close</v-icon>
+              <v-icon v-else>{{$options._icons.map}}</v-icon>
+            </v-btn>
           </v-toolbar>
         </template>
 
@@ -75,7 +79,7 @@
           <v-container>
             <v-row>
               <v-col cols="12" class="text-center white--text">
-                  <h1 :class="smAndDown?'title' :'display-1'">{{pageTitleH1}}</h1>
+                  <h1 :class="mobileMode?'title' :'display-1'">{{pageTitleH1}}</h1>
                   <strong class="subtitle-1">{{categoryObject.subtitle}}</strong>
               </v-col>
               <v-col>
@@ -229,6 +233,7 @@
       :locations="listItems"
       :autoCenter="true"
       :openedPopup="activeId"
+      :hideControl="hideControl"
       @activate-marker="openActiveLocation"
      >
 
@@ -251,15 +256,20 @@
 import locations from  '../../../store/modules/locations';
 import MetaInfo from '../Pages/MetaInfo';
 import ServerFetch from '../_mixins/serverFetch';
-
 import CardLocation from  './Cards/Location.vue';
+
+import {
+  mdiMap
+} from '@mdi/js';
 
 import { mapState } from 'vuex';
 export default {
     mixins: [MetaInfo, ServerFetch],
 
     nameModule: 'locations',
-
+    _icons: {
+      map: mdiMap
+    },
     storeModule: locations('appInstance/urlID'),
 
     components: {
@@ -294,7 +304,8 @@ export default {
 
     data() {
         return {
-          smAndDown: true,
+          mobileMode: true,
+          hideControl: true,
           drawer: true,
           categoryReal: '',
           locationReal: '',
@@ -313,12 +324,12 @@ export default {
     },
 
     mounted() {
-      let minusHight = 64;
-      this.smAndDown = this.$vuetify.breakpoint.smAndDown;
-      if (this.$vuetify.breakpoint.smAndUp) {
-        this.activeMap = true;
-      }
-      this.divHeight = this.$vuetify.breakpoint.height - minusHight;
+        let minusHight = 64;
+        this.mobileMode = !this.$vuetify.breakpoint.smAndUp;
+        if (!this.mobileMode) {
+          this.activeMap = true;
+        }
+        this.divHeight = this.$vuetify.breakpoint.height - minusHight;
     },
 
     watch: {
@@ -542,8 +553,13 @@ export default {
         this.drawer=!this.drawer;
         if (!this.drawer) {
            if (!this.activeMap) {
-             this.activeMap = true;
+              this.activeMap = true;
            }
+           if (this.mobileMode) {
+             this.hideControl = false;
+           }
+        } else {
+          this.hideControl = true;
         }
       },
 
