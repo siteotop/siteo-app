@@ -58,7 +58,7 @@ export default {
 
       zoom: {
         type: Number,
-        default: 5
+        default: 8
       },
 
       center: {
@@ -123,8 +123,12 @@ export default {
           this.setZoom(this.dataZoom);
       }
 
+    },
+    zoom(newZoom) {
+        this.dataZoom = newZoom;
     }
   },
+
   methods: {
     setDataCenter(){
       this.dataCenter = this.center;

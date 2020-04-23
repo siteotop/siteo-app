@@ -234,6 +234,7 @@
       :autoCenter="true"
       :openedPopup="activeId"
       :hideControl="hideControl"
+      :zoom="zoomMap"
       @activate-marker="openActiveLocation"
      >
 
@@ -263,6 +264,7 @@ import {
 } from '@mdi/js';
 
 import { mapState } from 'vuex';
+const startZoom = 6;
 export default {
     mixins: [MetaInfo, ServerFetch],
 
@@ -313,7 +315,9 @@ export default {
           locationActiveObject: false,  // for active location
           activeId: false,
           activeStatus: false,
-          divHeight: false
+          divHeight: false,
+          zoomMap: startZoom
+
          }
     },
 
@@ -345,6 +349,11 @@ export default {
             if (newId!=oldId) {
               this.setClearParamFromPath(newId, 'location');
               this.fetchItem();
+            }
+            if (newId) {
+               this.zoomMap = 13;
+            } else {
+              this.zoomMap = startZoom;
             }
         }
     },
