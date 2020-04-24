@@ -70,13 +70,17 @@ export default {
          },
 
         metaDescr() {
+          if (this.pageObject.title) {
+            return this.pageObject.title
+            +' - ' + this.pageObject.preview.substring(0, 90)+ '...'
+            +' '+ this.pageObject.country
+            +' ' + this.pageObject.city
+            +' ' + this.pageObject.street
+            +' ' + this.pageObject.phone;
 
-          return this.pageObject.title
-          +' - ' + this.pageObject.preview.substring(0, 90)+ '...'
-          +' '+ this.pageObject.country
-          +' ' + this.pageObject.city
-          +' ' + this.pageObject.street
-          +' ' + this.pageObject.phone;
+        } else {
+           return '';  
+        }
 
         },
         ...mapState({
