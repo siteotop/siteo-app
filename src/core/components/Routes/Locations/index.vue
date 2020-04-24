@@ -189,7 +189,6 @@
               <CardLocation
                 :location="item"
                 :index="i+1"
-                :active="(activeId==item._id)"
                 :clickOnLocation="clickOnLocation"
               >
               </CardLocation>
@@ -337,9 +336,15 @@ export default {
 
         // if isset hash company
         if (this.$route.hash) {
-          const found = this.$route.hash.match(/[A-Za-z0-9_\-]+?-n[0-9]+$/g);
+          const found = this.$route.hash.match(new RegExp('([A-Za-z0-9_\-]+?)-n([0-9]+)', 'i'));
           if (found!=null) {
-            this.$router.push('/p/'+found[0]);
+            this.$router.push({
+                name: 'location',
+                params: {
+                  locationIdUrl: found[1],
+                  locationId: found[2]
+                }
+              });
           }
 
         }
@@ -477,6 +482,7 @@ export default {
 
     methods: {
       clickOnLocation(event, locationObject) {
+        event.preventDefault();
         event.stopPropagation();
         if (locationObject == false) {
             this.closeOneLocation();

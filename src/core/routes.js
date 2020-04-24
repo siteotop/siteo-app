@@ -36,7 +36,7 @@ export default function (configs) {
 
             {
               name: "location",
-              path: '/p/:locationIdUrl-n:locationId',
+              path: '/p/:locationIdUrl([A-Za-z0-9_\-]+)-n:locationId([0-9]+?)',
               component: ()=>import( /* webpackChunkName: "Location" */ './components/Routes/Location/index.vue'),
               props: true,
             }
