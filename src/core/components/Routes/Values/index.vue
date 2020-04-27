@@ -114,9 +114,9 @@
             >
             <component
               :is = "cardComponent"
-              v-bind="item"
+              v-bind="item.value"
               :index="i+1"
-              :where="createWhere(item.idUrl, item.count )"
+              :action="item.action"
               :clickOnVideo="clickOnVideo"
 
             >
@@ -289,7 +289,27 @@ export default {
       ...mapState({
           listItems (state) {
               if (state.values) {
-                  return state.values.items.objects||[];
+                  if (state.values.items.objects) {
+                    let about_text=this.$store.getters.getSiteoConfig('t_re')||this.$t('rm');
+
+
+                    let prefix_loc = this.$store.getters.getSiteoConfig('rlp');
+                    let prefix_loc_cat = this.$store.getters.getSiteoConfig('rlc');
+                    let text = this.$store.getters.getSiteoConfig('t_ac');
+                    return state.values.items.objects.map((value, index)=>{
+                        let action = (prefix_loc&&value.count!=0)?
+                          this.createWhere(prefix_loc_cat, text, value.idUrl)
+                          :false;
+                        return {
+                            value: value,
+                            action: action
+                        }
+                        return value
+                    });
+                  } else {
+                    return [];
+                  }
+
               } else {
                 return [];
               }
@@ -371,21 +391,15 @@ export default {
 
 
 
-    createWhere(idUrl, count) {
-        let s = this.$store.getters.getSiteoConfig('rlp');
-        if (s&&count!=0) {
-        let  where = {
+    createWhere(prefix_category, text,  idUrl) {
+        return  {
             link: {name:'locations', params: {
-                    category: this.$store.getters.getSiteoConfig('rlc') + idUrl
+                    category: prefix_category + idUrl
                   }
                 },
-            text: this.$store.getters.getSiteoConfig('t_ac')
+            text: text
           }
-          return where;
-        }
-        return false;
-
-    },
+        },
 
     getParamsForFetch() {
       let params={};

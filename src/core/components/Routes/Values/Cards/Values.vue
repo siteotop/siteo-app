@@ -77,13 +77,13 @@
             </v-btn>
             <v-spacer></v-spacer>
             <v-btn
-              v-if="props.where"
+              v-if="props.action"
               tag="a"
               text
               color="primary accent-4"
-              :to="props.where.link"
+              :to="props.action.link"
             >
-             {{props.where.text}}
+             {{props.action.text}}
             </v-btn>
 
               <!--  <v-spacer></v-spacer>
