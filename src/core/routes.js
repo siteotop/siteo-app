@@ -19,7 +19,7 @@ export default function (configs) {
               {
                 name: "values",
                 path:  configs.rvp+':category('+configs.rvc+'[A-Za-z0-9_\-]+)?',
-                component:()=>import( /* webpackChunkName: "list" */ './components/Routes/Items/index.vue'),
+                component:()=>import( /* webpackChunkName: "list" */ './components/Routes/Values/index.vue'),
                 props: true,
               });
           }
