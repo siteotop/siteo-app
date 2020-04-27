@@ -47,7 +47,7 @@
         <v-spacer>
         </v-spacer>
         <v-btn
-          v-if=""
+
           icon
           @click="closeDrawer">
           <v-icon>$vuetify.icons.close</v-icon>
@@ -80,6 +80,7 @@
     <v-card-actions>
     <v-btn
         v-for="(action, i) in actions"
+        :key="i"
         icon
         outlined
         color="primary"
