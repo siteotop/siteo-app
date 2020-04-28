@@ -3,7 +3,7 @@
 
 
     <CardOpenLocation
-      :locationId="locationId"
+      :locationIdUrl="locationIdUrl"
       :openRoute="true"
       @drawer-close="activateMap"
       @drawer-open="hideMap"
@@ -36,7 +36,7 @@ export default {
     },
 
     props: {
-      locationId: {
+      locationIdUrl: {
         type: String,
         default:''
       }
@@ -79,7 +79,7 @@ export default {
             +' ' + this.pageObject.phone;
 
         } else {
-           return '';  
+           return '';
         }
 
         },

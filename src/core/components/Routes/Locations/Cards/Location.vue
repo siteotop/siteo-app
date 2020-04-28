@@ -15,7 +15,6 @@
       <v-spacer></v-spacer>
       <v-btn :to="{name: 'location', params: {
         locationIdUrl: props.location.idUrl,
-        locationId: props.location._id
       }}"  @click="(event)=>{props.clickOnLocation(event, props.location)}">
         {{parent.$t('rm')}}
       </v-btn>

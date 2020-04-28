@@ -266,7 +266,7 @@ export default {
       default: false
     },
 
-    locationId: {
+    locationIdUrl: {
       type: [String, Boolean],
       default: ''
     },
@@ -381,7 +381,7 @@ export default {
   },
 
   watch: {
-      locationId(newId, oldId) {
+      locationIdUrl(newId, oldId) {
           if (newId!=oldId) {
              this.fetchItem();
           }
@@ -465,8 +465,8 @@ export default {
     },
     getParamsForFetch() {
 
-        if (this.locationId) {
-          return  this.locationId;
+        if (this.locationIdUrl) {
+          return  this.locationIdUrl;
         }
         else {
             this.loaded = false;

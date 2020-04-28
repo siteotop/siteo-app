@@ -117,6 +117,7 @@
               v-bind="item.value"
               :index="i+1"
               :action="item.action"
+              :about="item.about"
               :clickOnVideo="clickOnVideo"
 
             >
@@ -291,17 +292,20 @@ export default {
               if (state.values) {
                   if (state.values.items.objects) {
                     let about_text=this.$store.getters.getSiteoConfig('t_re')||this.$t('rm');
-
-
+                    let prefix_val = this.$store.getters.getSiteoConfig('rvp');
+                    let prefix_val_cat = this.categoryPrefix;
                     let prefix_loc = this.$store.getters.getSiteoConfig('rlp');
                     let prefix_loc_cat = this.$store.getters.getSiteoConfig('rlc');
-                    let text = this.$store.getters.getSiteoConfig('t_ac');
+                    let action_text = this.$store.getters.getSiteoConfig('t_ac');
                     return state.values.items.objects.map((value, index)=>{
                         let action = (prefix_loc&&value.count!=0)?
-                          this.createWhere(prefix_loc_cat, text, value.idUrl)
+                          this.createWhere(prefix_loc_cat, action_text, value.idUrl)
                           :false;
+
+                        let about = prefix_val? this.createAbout(about_text, value.idUrl, value._id) : false;
                         return {
                             value: value,
+                            about: about,
                             action: action
                         }
                         return value
@@ -389,7 +393,15 @@ export default {
 
   methods: {
 
-
+    createAbout( text,  idUrl, id) {
+      return  {
+          link: {name:'value', params: {
+                  valueIdUrl:  idUrl
+                }
+              },
+          text: text
+        }
+    },
 
     createWhere(prefix_category, text,  idUrl) {
         return  {
@@ -399,7 +411,7 @@ export default {
                 },
             text: text
           }
-        },
+    },
 
     getParamsForFetch() {
       let params={};

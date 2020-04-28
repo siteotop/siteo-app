@@ -22,6 +22,14 @@ export default function (configs) {
                 component:()=>import( /* webpackChunkName: "list" */ './components/Routes/Values/index.vue'),
                 props: true,
               });
+
+              routes.push(
+                {
+                  name: "value",
+                  path: '/v/:valueIdUrl([A-Za-z0-9_\-]+)',
+                  component:()=>import( /* webpackChunkName: "list" */ './components/Routes/Value/index.vue'),
+                  props: true,
+                });
           }
 
         //locations
@@ -36,7 +44,7 @@ export default function (configs) {
 
             {
               name: "location",
-              path: '/p/:locationIdUrl([A-Za-z0-9_\-]+)-n:locationId([0-9]+?)',
+              path: '/p/:locationIdUrl([A-Za-z0-9_\-]+)',
               component: ()=>import( /* webpackChunkName: "Location" */ './components/Routes/Location/index.vue'),
               props: true,
             }

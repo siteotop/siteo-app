@@ -48,7 +48,7 @@ export default {
       },
 
       /**
-        find real params and getting prefix for params 
+        find real params and getting prefix for params
       */
       setClearParamFromPath(dirtyValue, paramName) {
           let real = paramName + 'Real';

@@ -131,8 +131,10 @@
             </v-row>
           </v-container>
        </component>
-      <v-card-text>
-        {{categoryObject.preview}}
+      <v-card-text v-if="categoryObject.preview">
+        {{categoryObject.preview}} <router-link :to="{ name: 'value', params: {
+          valueIdUrl: categoryObject.idUrl
+          } }">{{$store.getters.getSiteoConfig('t_re')}} {{categoryObject.title}}</router-link>
       </v-card-text>
 
 
@@ -242,7 +244,7 @@
 
     <CardOpenLocation
     v-if="locationActiveObject"
-    :locationId="locationActiveObject._id"
+    :locationIdUrl="locationActiveObject.idUrl"
     :store="$options.nameModule"
 
     @close-dialog="closeOneLocation()">
@@ -336,13 +338,12 @@ export default {
 
         // if isset hash company
         if (this.$route.hash) {
-          const found = this.$route.hash.match(new RegExp('([A-Za-z0-9_\-]+?)-n([0-9]+)', 'i'));
+          const found = this.$route.hash.match(new RegExp('([A-Za-z0-9_\-]+?)$', 'i'));
           if (found!=null) {
             this.$router.push({
                 name: 'location',
                 params: {
                   locationIdUrl: found[1],
-                  locationId: found[2]
                 }
               });
           }
@@ -495,7 +496,7 @@ export default {
         this.locationActiveObject = locationObject;
         this.activeId = locationObject._id;
         this.activeStatus = true;
-        this.changeLocationRoute(locationObject.idUrl, locationObject._id);
+        this.changeLocationRoute(locationObject.idUrl);
 
       },
       closeOneLocation() {
@@ -588,10 +589,10 @@ export default {
         }
       },
 
-      changeLocationRoute(idUrl, number) {
+      changeLocationRoute(idUrl) {
 
           this.$router.replace({
-              hash: idUrl+'-n'+number
+              hash: idUrl
             })
 
       }
