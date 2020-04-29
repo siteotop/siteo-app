@@ -45,6 +45,15 @@ export default {
              content: "#2196F3"
            }
 
+         ],
+
+         style: [
+            {
+              cssText: this.$vuetify.theme.generatedStyles,
+              type: 'text/css',
+
+              id:"vuetify-theme-stylesheet"
+            }
          ]
 
        }
