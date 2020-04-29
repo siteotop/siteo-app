@@ -11,7 +11,7 @@
     maxWidth: props.cnf.d,
     minHeight: props.cnf.e,
     minWidth: props.cnf.f,
-    alt: props.cntnt.a,
+    alt: props.cntnt.a||'image',
     lazySrc: props.cntnt.l,
     src: props.cntnt.i
   }"
