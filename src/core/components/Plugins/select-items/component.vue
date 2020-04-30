@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import VModelInput from '../forms/AppForm/Fields/_mixins/v-model-input';
+import VModelInput from '../forms/Fields/_mixins/v-model-input';
 import  _find  from 'lodash/find';
 export default {
   mixins: [VModelInput],
