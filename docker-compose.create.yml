@@ -2,8 +2,8 @@
 #docker run --rm  -v /var/www/account/siteo-account/public:/app/public -v /var/www/account/siteo-account/dist:/app/dist  account
 version: '3.7'
 services:
-    webpackfrontend:
-      container_name: webpackfrontend
+    siteo_frontend:
+      container_name: siteo_frontend
       build:
         context: ./
       #  dockerfile: ./docker/Dockerfile-webpack-dev
@@ -17,24 +17,9 @@ services:
       env_file: ./main.env
 
 #############################
-  ########
-    webpackplugins:
-      container_name: webpackplugins
-      build:
-        context: ./
-      #  dockerfile: ./docker/Dockerfile-webpack-dev
-      volumes:
-        - ./:/app
-        - /app/node_modules
-
-      entrypoint:
-        - npm
-        - run
-        - plugins
-      env_file: ./main.env
-    ########
-    webpackssr:
-      container_name: webpackssr
+   ########
+    siteo_ssr:
+      container_name: siteo_ssr
       build:
         context: ./
       #  dockerfile: ./docker/Dockerfile-webpack-dev

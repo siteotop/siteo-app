@@ -3,15 +3,19 @@
 
 
     <CardOpenLocation
-      :locationId="locationId"
+      :locationIdUrl="locationIdUrl"
       :openRoute="true"
+      @drawer-close="activateMap"
+      @drawer-open="hideMap"
+
     >
     </CardOpenLocation>
     <LocationsMap
       v-if="activeMap"
       :locations="pageObject.title?[pageObject]:[]"
       :autoCenter="true"
-      zoom="16"
+      :hideControl="hideControl"
+      :zoom="16"
      >
 
     </LocationsMap>
@@ -32,7 +36,7 @@ export default {
     },
 
     props: {
-      locationId: {
+      locationIdUrl: {
         type: String,
         default:''
       }
@@ -41,13 +45,14 @@ export default {
     data() {
       return {
         activeMap: false,
-        divHeight: '100%'
+        divHeight: '100%',
+        hideControl: true
       }
     },
 
     mounted() {
       if (this.$vuetify.breakpoint.smAndUp) {
-        this.activeMap = true;
+         this.activateMap();
       }
 
       this.divHeight = this.$vuetify.breakpoint.height - 64;
@@ -65,13 +70,17 @@ export default {
          },
 
         metaDescr() {
+          if (this.pageObject.title) {
+            return this.pageObject.title
+            +' - ' + this.pageObject.preview.substring(0, 90)+ '...'
+            +' '+ this.pageObject.country
+            +' ' + this.pageObject.city
+            +' ' + this.pageObject.street
+            +' ' + this.pageObject.phone;
 
-          return this.pageObject.title
-          +' - ' + this.pageObject.preview.substring(0, 90)+ '...'
-          +' '+ this.pageObject.country
-          +' ' + this.pageObject.city
-          +' ' + this.pageObject.street
-          +' ' + this.pageObject.phone;
+        } else {
+           return '';
+        }
 
         },
         ...mapState({
@@ -79,6 +88,18 @@ export default {
               return state.location? state.location.objectActive: {};
           },
         })
+      },
+
+      methods: {
+        activateMap () {
+            this.activeMap = true;
+            this.hideControl = false;
+        },
+        hideMap() {
+          if (this.$vuetify.breakpoint.xs) {
+            this.hideControl = true;
+          }
+        }
       }
 
 

@@ -2,12 +2,26 @@ const fs = require('fs');
 const { createBundleRenderer } = require('vue-server-renderer');
 const generateTemplateError = require('../errors/template');
 const template = fs.readFileSync('./ssr/template/index.ssr.html', 'utf-8');
-const serverBundle = require('../dist/vue-ssr-server-bundle.json')
+const serverBundle = require('../../dist/assets/vue-ssr-server-bundle.json')
+const clientManifest = require('../../dist/assets/vue-ssr-client-manifest.json')
 const renderer = createBundleRenderer(serverBundle, {
+  /* about options https://ssr.vuejs.org/ru/api/#template  **/
   inject:false,
-  runInNewContext: false, // рекомендуется
+  runInNewContext:false, // рекомендуется false
   template, // (опционально) шаблон страницы
-  //clientManifest // (опционально) манифест клиентской сборки
+  clientManifest, // (опционально) манифест клиентской сборки
+  shouldPreload:(file, type) => {
+    // тип определяется на основе расширения файла.
+    // https://fetch.spec.whatwg.org/#concept-request-destination
+    if (type === 'script' || type === 'style') {
+     return true
+   }
+    return false;
+  },
+  shouldPrefetch: (file, type) => {
+    return false;
+  }
+
 })
 
 const httpApi = require('../helper/http-api.js');

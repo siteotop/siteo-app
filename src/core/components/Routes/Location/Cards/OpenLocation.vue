@@ -1,4 +1,5 @@
 <template >
+<div>
 <v-slide-x-transition >
   <v-btn
     v-if="!drawer"
@@ -16,6 +17,7 @@
   >
     <v-icon>$vuetify.icon.next</v-icon>
 </v-btn>
+</v-slide-x-transition >
   <v-navigation-drawer
     v-if="!loaded"
     v-model="drawer"
@@ -27,13 +29,29 @@
         flat
       >
         <v-btn
+          v-if="!openRoute"
           icon
           @click="closeDrawer">
+          <v-icon>$vuetify.icons.prev</v-icon>
+        </v-btn>
+        <v-btn
+          v-else
+          icon
+            :to="{name: 'locations'}"
+          >
           <v-icon>$vuetify.icons.prev</v-icon>
         </v-btn>
         <v-toolbar-title  >
           <!-- something text  -->
         </v-toolbar-title>
+        <v-spacer>
+        </v-spacer>
+        <v-btn
+
+          icon
+          @click="closeDrawer">
+          <v-icon>$vuetify.icons.close</v-icon>
+        </v-btn>
       </v-toolbar>
     </template>
       <v-img
@@ -62,6 +80,7 @@
     <v-card-actions>
     <v-btn
         v-for="(action, i) in actions"
+        :key="i"
         icon
         outlined
         color="primary"
@@ -197,7 +216,7 @@
   >
   </v-skeleton-loader>
   </v-navigation-drawer>
-</v-slide-x-transition >
+</div>
 </template>
 
 <script>
@@ -215,7 +234,8 @@ import {
   mdiGoogleMaps,
   mdiBookmark,
   mdiContentCopy,
-  mdiCurrencyUsd
+  mdiCurrencyUsd,
+  mdiMap
 } from '@mdi/js';
 
 export default {
@@ -230,7 +250,8 @@ export default {
     googlemaps: mdiGoogleMaps,
     bookmark: mdiBookmark,
     copy: mdiContentCopy,
-    price: mdiCurrencyUsd
+    price: mdiCurrencyUsd,
+    map: mdiMap
   },
 
   components: {
@@ -245,7 +266,7 @@ export default {
       default: false
     },
 
-    locationId: {
+    locationIdUrl: {
       type: [String, Boolean],
       default: ''
     },
@@ -360,9 +381,18 @@ export default {
   },
 
   watch: {
-      locationId(newId, oldId) {
+      locationIdUrl(newId, oldId) {
           if (newId!=oldId) {
              this.fetchItem();
+          }
+      },
+
+      drawer(drw, oldDrw) {
+          if (drw == true) {
+             this.$emit('drawer-open');
+          } else {
+            this.$emit('drawer-close');
+
           }
       }
   },
@@ -373,6 +403,7 @@ export default {
        {
 
          //app: true,
+        // permanent: true,
          absolute:true,
          stateless: true,
          clipped:true,
@@ -434,8 +465,8 @@ export default {
     },
     getParamsForFetch() {
 
-        if (this.locationId) {
-          return  this.locationId;
+        if (this.locationIdUrl) {
+          return  this.locationIdUrl;
         }
         else {
             this.loaded = false;

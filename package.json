@@ -1,7 +1,7 @@
 {
   "name": "@siteo/app",
   "description": "Core material design template for  web apps which based on Siteo platform https://siteo.top",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "license": "MIT",
   "author": {
     "name": "Dmytro Diachuk",
@@ -89,7 +89,6 @@
   ],
   "scripts": {
     "frontend": "webpack --config build/client.webpack.config.js",
-    "plugins": "webpack --config build/plugins.webpack.config.js",
     "backend": "webpack --config build/server.webpack.config.js",
     "server": "node ssr/server.js"
   }

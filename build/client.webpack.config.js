@@ -6,6 +6,7 @@ const baseConfig = require('./base.webpack.config.js');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const html_template= 'build/template.html';
 const webpack = require('webpack');
+const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
 
 /**
   extract-text-webpack-plugin  was changed to mini-css-extract-plugin for CSS
@@ -18,9 +19,11 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 */
 
 const createDirResource = require('./helper/dirResource');
-const DIR_RESOURCE=createDirResource('assets', process.env.NODE_ENV);
+//const DIR_RESOURCE=createDirResource('assets', process.env.NODE_ENV);
 
-
+const DIR_RESOURCE = '/assets';
+const isProd = process.env.NODE_ENV ==  'production';
+const VERSION = process.env.npm_package_version;
 
 
 
@@ -36,11 +39,11 @@ module.exports = merge(baseConfig, {
   output: {
     path: path.resolve(__dirname, '../dist' + DIR_RESOURCE),
     publicPath: process.env.HOST_STATIC + DIR_RESOURCE +'/',
-    filename: 'siteo-[name].js',
-    library: "siteo-[name]",
-		libraryTarget: "umd",
-    libraryExport: 'default',
-    chunkFilename: "siteo-chunk-[name].js"
+    filename: `siteo-[name]-${VERSION}.js`,
+    //library: "siteo-[name]",
+		//libraryTarget: "umd",
+    //libraryExport: 'default',
+    chunkFilename: isProd? "[name].[hash].js": "[name].js"
 
   },
   entry: {
@@ -101,7 +104,10 @@ module.exports = merge(baseConfig, {
             title: `{{{ meta.inject().title.text() }}}
             {{{ meta.inject().meta.text() }}}
             {{{ meta.inject().link.text() }}}
-            {{{ meta.inject().style.text() }}}`,
+            {{{ meta.inject().style.text() }}}
+            {{{ renderResourceHints() }}}
+            `,  //https://ssr.vuejs.org/ru/guide/build-config.html#%D0%BA%D0%BE%D0%BD%D1%84%D0%B8%D0%B3%D1%83%D1%80%D0%B0%D1%86%D0%B8%D1%8F-%D0%BAn%D0%B8%D0%B5%D0%BD%D1%82%D1%81%D0%BA%D0%BE%D0%B9-%D1%87%D0%B0%D1%81%D1%82%D0%B8
+                //{{{ renderStyles()}}}
             body_content: '<!--vue-ssr-outlet-->',
             body_state: '{{{renderState()}}}',
             siteo_config: '{{{JSON.stringify(configs_frontend)}}}',
@@ -132,15 +138,16 @@ module.exports = merge(baseConfig, {
         'process.env': {
            NODE_ENV: JSON.stringify(process.env.NODE_ENV),
            HOST_API: JSON.stringify(process.env.HOST_API_FRONTEND),
-           STATIC_PLUGINS: JSON.stringify(process.env.HOST_PLUGIN+ createDirResource('plugins', process.env.NODE_ENV) +'/' )
         }
       }),
       new MiniCssExtractPlugin({
           // Options similar to the same options in webpackOptions.output
           // both options are optional
-          filename: "[name].css",
-          chunkFilename: "[id].css"
-        })
+          filename: `[name]-${VERSION}.css`,
+          chunkFilename: "[name].[hash].css"
+        }),
+
+      new VueSSRClientPlugin()
     ],
 
     module: {

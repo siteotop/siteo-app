@@ -114,9 +114,10 @@
             >
             <component
               :is = "cardComponent"
-              v-bind="item"
+              v-bind="item.value"
               :index="i+1"
-              :where="createWhere(item.idUrl, item.count )"
+              :action="item.action"
+              :about="item.about"
               :clickOnVideo="clickOnVideo"
 
             >
@@ -229,7 +230,6 @@ export default {
   },
 
   created() {
-      this.findPrefixes();
       this.setClearParamFromPath(this.category, 'category');
   },
 
@@ -239,7 +239,6 @@ export default {
     return {
 
       videoActiveObject: false,
-      categoryPrefix:'',
       categoryReal: false,
       ordermenu: false,
       notLoaded: true,
@@ -291,7 +290,43 @@ export default {
       ...mapState({
           listItems (state) {
               if (state.values) {
-                  return state.values.items.objects||[];
+                  if (state.values.items.objects) {
+                    let about_text=this.$store.getters.getSiteoConfig('t_re')||this.$t('rm');
+                    let prefix_val = this.$store.getters.getSiteoConfig('rvp');
+                    let prefix_val_cat = this.categoryPrefix;
+                    let prefix_loc = this.$store.getters.getSiteoConfig('rlp');
+                    let prefix_loc_cat = this.$store.getters.getSiteoConfig('rlc');
+                    let action_text = this.$store.getters.getSiteoConfig('t_ac');
+                    return state.values.items.objects.map((value, index)=>{
+                        let action = (prefix_loc&&value.count!=0)?
+                            this.createAbout(
+                                'locations',
+                                'category',
+                                prefix_loc_cat+value.idUrl,
+                                action_text  )
+                            :false;
+                        // if url page present
+
+                        let about = prefix_val?
+                        this.createAbout(
+                          'value',
+                          'valueIdUrl',
+                          value.idUrl,
+                          about_text,
+                          value.url_page,
+                          value.ext_p ): false;
+
+                        return {
+                            value: value,
+                            about: about,
+                            action: action
+                        }
+                        return value
+                    });
+                  } else {
+                    return [];
+                  }
+
               } else {
                 return [];
               }
@@ -343,7 +378,13 @@ export default {
         } else {
           return this.countItems;
         }
+      },
+
+      categoryPrefix() {
+          return this.$store.getters.getSiteoConfig('rvc');
       }
+
+
 
 
   },
@@ -365,21 +406,27 @@ export default {
 
   methods: {
 
-    createWhere(idUrl, count) {
-        let s = this.$store.getters.getSiteoConfig('seo_path_locations');
-        let where;
-        console.log(count);
-        if (s&&count==1) {
-          where = {
-            link: {name:'locations', params: {
-                    category: this.$store.getters.getSiteoConfig('rlc') + idUrl
-                  }
-                },
-            text: this.$store.getters.getSiteoConfig('t_ac')
-          }
-          return where;
+    createAbout(route, paramKey,  paramValue, text, url_page, external) {
+      let button = {
+            text: text
+      }
+
+      if (url_page) {
+        button.bind = {
+          to: url_page
         }
-        return false;
+        return button;
+      } else {
+        button.bind = {
+              to: {
+                  name:route,
+                  params: {}
+                }
+             };
+          button.bind.to.params[paramKey] =paramValue;
+         return button;
+      }
+      return false;
 
     },
 

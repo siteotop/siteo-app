@@ -7,6 +7,8 @@ export default function (parentGetterUrl) {
     state () {
         return {
           title: '',
+          idUrl: '',
+          count: '',
           subtitle: '',
           price: '',
           discount: '',
@@ -14,7 +16,9 @@ export default function (parentGetterUrl) {
           readMore: '',
           actionText: '',
           internal_uri: '',
-          picture: ''
+          picture: '',
+          thumb420: '',
+          thumb120: '',
       }
     }
   }

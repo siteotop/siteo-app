@@ -24,7 +24,7 @@
             </l-marker>
         </template>
 
-      <l-control-zoom position="bottomright"  ></l-control-zoom>
+      <l-control-zoom v-if="!hideControl" position="bottomright"  ></l-control-zoom>
   </l-map>
 
 </template>
@@ -58,7 +58,7 @@ export default {
 
       zoom: {
         type: Number,
-        default: 5
+        default: 8
       },
 
       center: {
@@ -66,6 +66,11 @@ export default {
         default: ()=>{ return [47.413220, -1.219482]}
       },
 
+      hideControl: {
+        type: Boolean,
+        default: false
+
+      },
       /**
         take centre from first location
       */
@@ -118,8 +123,12 @@ export default {
           this.setZoom(this.dataZoom);
       }
 
+    },
+    zoom(newZoom) {
+        this.dataZoom = newZoom;
     }
   },
+
   methods: {
     setDataCenter(){
       this.dataCenter = this.center;

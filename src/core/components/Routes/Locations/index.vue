@@ -36,11 +36,7 @@
           <v-toolbar
             flat
           >
-            <v-btn
-              icon
-              @click="toogleDrawer">
-              <v-icon>$vuetify.icons.prev</v-icon>
-            </v-btn>
+
             <v-chip
                v-if="categoryObject.title"
                close
@@ -58,6 +54,14 @@
 
              {{locationObject.title}}
             </v-chip>
+            <v-spacer>
+            </v-spacer>
+            <v-btn
+              icon
+              @click="toogleDrawer">
+              <v-icon v-if="!mobileMode">$vuetify.icons.close</v-icon>
+              <v-icon v-else>{{$options._icons.map}}</v-icon>
+            </v-btn>
           </v-toolbar>
         </template>
 
@@ -75,7 +79,7 @@
           <v-container>
             <v-row>
               <v-col cols="12" class="text-center white--text">
-                  <h1 :class="smAndDown?'title' :'display-1'">{{pageTitleH1}}</h1>
+                  <h1 :class="mobileMode?'title' :'display-1'">{{pageTitleH1}}</h1>
                   <strong class="subtitle-1">{{categoryObject.subtitle}}</strong>
               </v-col>
               <v-col>
@@ -127,8 +131,10 @@
             </v-row>
           </v-container>
        </component>
-      <v-card-text>
-        {{categoryObject.preview}}
+      <v-card-text v-if="categoryObject.preview">
+        {{categoryObject.preview}} <router-link :to="{ name: 'value', params: {
+          valueIdUrl: categoryObject.idUrl
+          } }">{{$store.getters.getSiteoConfig('t_re')}} {{categoryObject.title}}</router-link>
       </v-card-text>
 
 
@@ -185,7 +191,6 @@
               <CardLocation
                 :location="item"
                 :index="i+1"
-                :active="(activeId==item._id)"
                 :clickOnLocation="clickOnLocation"
               >
               </CardLocation>
@@ -229,15 +234,17 @@
       :locations="listItems"
       :autoCenter="true"
       :openedPopup="activeId"
+      :hideControl="hideControl"
+      :zoom="zoomMap"
       @activate-marker="openActiveLocation"
      >
 
     </LocationsMap>
   </v-container>
 
-  <CardOpenLocation
+    <CardOpenLocation
     v-if="locationActiveObject"
-    :locationId="locationActiveObject._id"
+    :locationIdUrl="locationActiveObject.idUrl"
     :store="$options.nameModule"
 
     @close-dialog="closeOneLocation()">
@@ -251,15 +258,21 @@
 import locations from  '../../../store/modules/locations';
 import MetaInfo from '../Pages/MetaInfo';
 import ServerFetch from '../_mixins/serverFetch';
-
 import CardLocation from  './Cards/Location.vue';
 
+import {
+  mdiMap
+} from '@mdi/js';
+
 import { mapState } from 'vuex';
+const startZoom = 6;
 export default {
     mixins: [MetaInfo, ServerFetch],
 
     nameModule: 'locations',
-
+    _icons: {
+      map: mdiMap
+    },
     storeModule: locations('appInstance/urlID'),
 
     components: {
@@ -294,34 +307,49 @@ export default {
 
     data() {
         return {
-          smAndDown: true,
+          mobileMode: true,
+          hideControl: true,
           drawer: true,
-          categoryPrefix: '',
-          locationPrefix: '',
           categoryReal: '',
           locationReal: '',
           activeMap: false,
           locationActiveObject: false,  // for active location
           activeId: false,
           activeStatus: false,
-          divHeight: false
+          divHeight: false,
+          zoomMap: startZoom
+
          }
     },
 
     created() {
-        this.findPrefixes();
         this.setClearParamFromPath(this.category, 'category');
         this.setClearParamFromPath(this.location, 'location');
 
     },
 
     mounted() {
-      let minusHight = 64;
-      this.smAndDown = this.$vuetify.breakpoint.smAndDown;
-      if (this.$vuetify.breakpoint.smAndUp) {
-        this.activeMap = true;
-      }
-      this.divHeight = this.$vuetify.breakpoint.height - minusHight;
+        let minusHight = 64;
+        this.mobileMode = !this.$vuetify.breakpoint.smAndUp;
+        if (!this.mobileMode) {
+          this.activeMap = true;
+        }
+        this.divHeight = this.$vuetify.breakpoint.height - minusHight;
+
+        // if isset hash company
+        if (this.$route.hash) {
+          const found = this.$route.hash.match(new RegExp('([A-Za-z0-9_\-]+?)$', 'i'));
+          if (found!=null) {
+            this.$router.push({
+                name: 'location',
+                params: {
+                  locationIdUrl: found[1],
+                }
+              });
+          }
+
+        }
+
     },
 
     watch: {
@@ -338,6 +366,11 @@ export default {
               this.setClearParamFromPath(newId, 'location');
               this.fetchItem();
             }
+            if (newId) {
+               this.zoomMap = 13;
+            } else {
+              this.zoomMap = startZoom;
+            }
         }
     },
 
@@ -347,6 +380,12 @@ export default {
          return '/apps/'+siteoId+'/locations?attribute='+this.$store.getters['appInstance/activeId'];
        },
 
+       categoryPrefix() {
+          return this.$store.getters.getSiteoConfig('rlc');
+       },
+       locationPrefix() {
+          return this.$store.getters.getSiteoConfig('rll');
+       },
 
        pageTitleH1() {
          if ( this.pageObject.title) {
@@ -444,6 +483,7 @@ export default {
 
     methods: {
       clickOnLocation(event, locationObject) {
+        event.preventDefault();
         event.stopPropagation();
         if (locationObject == false) {
             this.closeOneLocation();
@@ -456,7 +496,7 @@ export default {
         this.locationActiveObject = locationObject;
         this.activeId = locationObject._id;
         this.activeStatus = true;
-        this.changeLocationRoute(locationObject.idUrl, locationObject._id);
+        this.changeLocationRoute(locationObject.idUrl);
 
       },
       closeOneLocation() {
@@ -539,15 +579,20 @@ export default {
         this.drawer=!this.drawer;
         if (!this.drawer) {
            if (!this.activeMap) {
-             this.activeMap = true;
+              this.activeMap = true;
            }
+           if (this.mobileMode) {
+             this.hideControl = false;
+           }
+        } else {
+          this.hideControl = true;
         }
       },
 
-      changeLocationRoute(idUrl, number) {
+      changeLocationRoute(idUrl) {
 
           this.$router.replace({
-              hash: idUrl+'-n'+number
+              hash: idUrl
             })
 
       }

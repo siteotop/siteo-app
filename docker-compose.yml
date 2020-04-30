@@ -4,13 +4,13 @@ version: '3.7'
 services:
 
     ############### SERVER
-    ssrserver:
-      container_name: siteotemplate
+    siteo_server:
+      container_name: siteo_server
       restart: always
       networks:
         siteo_template_network:
          aliases:
-          - siteotemplate.siteo_template_network
+          - siteo_server.siteo_template_network
 
       build:
         context: ./

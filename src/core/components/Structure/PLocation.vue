@@ -8,7 +8,7 @@
   </template>
    <CardOpenLocation
     v-if="openCard"
-    :locationId="cntnt.a"
+    :locationIdUrl="cntnt.a"
     :websiteId="cntnt.b"
     @close-dialog="openCard=false"
    >

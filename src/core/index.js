@@ -34,7 +34,11 @@ for (let NameComponent in CoreComponents) {
 }
 
 Vue.component('AppErrorResponse', ()=> import( /* webpackChunkName: "alerts" */ './components/Elements/AppErrorResponse/index.vue'));
+Vue.component('AppConfirm', ()=> import( /* webpackChunkName: "alerts" */ './components/Elements/AppConfirm.vue'));
 Vue.component('AppMessagesBlock', ()=> import( /* webpackChunkName: "alerts" */ './components/Elements/AppMessagesBlock'));
+
+Vue.component('SiteoPluginForms', ()=> import( /* webpackChunkName: "plugin-form" */ './components/Plugins/forms/index.vue'));
+Vue.component('SiteoPluginSelectItems', ()=> import( /* webpackChunkName: "plugin-items" */ './components/Plugins/select-items/component.vue'));
 
 
 import {createRESTApi} from './http/rest-api.js';
