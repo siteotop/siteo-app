@@ -299,10 +299,23 @@ export default {
                     let action_text = this.$store.getters.getSiteoConfig('t_ac');
                     return state.values.items.objects.map((value, index)=>{
                         let action = (prefix_loc&&value.count!=0)?
-                          this.createWhere(prefix_loc_cat, action_text, value.idUrl)
-                          :false;
+                            this.createAbout(
+                                'locations',
+                                'category',
+                                prefix_loc_cat+value.idUrl,
+                                action_text  )
+                            :false;
+                        // if url page present
 
-                        let about = prefix_val? this.createAbout(about_text, value.idUrl, value._id) : false;
+                        let about = prefix_val?
+                        this.createAbout(
+                          'value',
+                          'valueIdUrl',
+                          value.idUrl,
+                          about_text,
+                          value.url_page,
+                          value.ext_p ): false;
+
                         return {
                             value: value,
                             about: about,
@@ -393,24 +406,28 @@ export default {
 
   methods: {
 
-    createAbout( text,  idUrl, id) {
-      return  {
-          link: {name:'value', params: {
-                  valueIdUrl:  idUrl
-                }
-              },
-          text: text
-        }
-    },
-
-    createWhere(prefix_category, text,  idUrl) {
-        return  {
-            link: {name:'locations', params: {
-                    category: prefix_category + idUrl
-                  }
-                },
+    createAbout(route, paramKey,  paramValue, text, url_page, external) {
+      let button = {
             text: text
-          }
+      }
+
+      if (url_page) {
+        button.bind = {
+          to: url_page
+        }
+        return button;
+      } else {
+        button.bind = {
+              to: {
+                  name:route,
+                  params: {}
+                }
+             };
+          button.bind.to.params[paramKey] =paramValue;
+         return button;
+      }
+      return false;
+
     },
 
     getParamsForFetch() {

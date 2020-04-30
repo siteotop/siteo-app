@@ -66,7 +66,8 @@
           <v-card-actions >
               <v-btn
                 tag="a"
-                :to="props.about.link"
+                v-bind="props.about.bind"
+
                 text
                 color="primary accent-4"
               >
@@ -78,7 +79,8 @@
               tag="a"
               text
               color="primary accent-4"
-              :to="props.action.link"
+              v-bind="props.action.bind"
+
             >
              {{props.action.text}}
             </v-btn>

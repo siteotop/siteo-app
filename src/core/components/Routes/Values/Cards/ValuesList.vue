@@ -27,33 +27,25 @@
         <v-icon>$vuetify.icons.video</v-icon>
       </v-btn>
       <v-spacer></v-spacer>
-          <v-btn
-            v-bind="{
-                tag: 'a',
-                disabled: props.url_page?false: true,
-                text: true,
-                color: 'primary accent-4',
-                href: props.ext_p?props.url_page : undefined ,
-                to: !props.ext_p? props.url_page: undefined
-              }">
-           {{parent.$store.getters.getSiteoConfig('t_re')||parent.$t('rm')}}
-          </v-btn>
-          <v-btn
-            v-if="props.where"
-            tag="a"
-            text
-            color="primary accent-4"
-            :to="props.where.link"
-          >
-           {{props.where.text}}
-          </v-btn>
-        <!--  <v-spacer></v-spacer>
-          <v-btn icon>
-            <v-icon>mdi-heart</v-icon>
-          </v-btn>
-          <v-btn icon>
-            <v-icon>mdi-share-variant</v-icon>
-          </v-btn>  -->
+              <v-btn
+                tag="a"
+                v-bind="props.about.bind"
+
+                text
+                color="primary accent-4"
+              >
+             {{props.about.text}}
+            </v-btn>
+            <v-btn
+              v-if="props.action"
+              tag="a"
+              text
+              color="primary accent-4"
+              v-bind="props.action.bind"
+
+            >
+             {{props.action.text}}
+            </v-btn>
   </v-card-actions>
     </v-card>
   </v-hover>
