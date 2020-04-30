@@ -5,6 +5,7 @@ const nodeExternals = require('webpack-node-externals')
 const baseConfig = require('./base.webpack.config.js')
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
 const webpack = require('webpack');
+const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
 
 // Этот плагин преобразует весь результат серверной сборки
 // в один JSON-файл. Имя по умолчанию будет
@@ -25,7 +26,7 @@ module.exports = merge(baseConfig, {
 
   // Это сообщает что в серверной сборке следует использовать экспорты в стиле Node
   output: {
-    path: path.resolve(__dirname, '../ssr/dist'),
+    path: path.resolve(__dirname, '../dist/assets'),
     //publicPath: 'server/',
     filename: 'built-server-bundle.js',
     libraryTarget: 'commonjs2'
@@ -52,7 +53,8 @@ module.exports = merge(baseConfig, {
          SSR: JSON.stringify("on")
       }
     }),
-    new VueSSRServerPlugin()
+    new VueSSRServerPlugin(),
+
   ],
   module: {
     rules: [
