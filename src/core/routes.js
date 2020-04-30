@@ -26,17 +26,19 @@ export default function (configs) {
               routes.push(
                 {
                   name: "value",
-                  path: '/v/:valueIdUrl([A-Za-z0-9_\-]+)',
+                  path: configs.rvo+':valueIdUrl([A-Za-z0-9_\-]+)',
                   component:()=>import( /* webpackChunkName: "list" */ './components/Routes/Value/index.vue'),
                   props: true,
                 });
           }
 
         //locations
+
         if ( configs.rlp) {
 
             routes.push({
               name: "locations",
+              // configs.rlp can be /where or /somethingelse
               path:configs.rlp+':category('+configs.rlc+'[A-Za-z0-9_\-]+?)?:location('+configs.rll+'[A-Za-z0-9_\-]+?)?',
               component: ()=>import( /* webpackChunkName: "locations" */ './components/Routes/Locations/index.vue'),
               props: true,
@@ -44,7 +46,8 @@ export default function (configs) {
 
             {
               name: "location",
-              path: '/p/:locationIdUrl([A-Za-z0-9_\-]+)',
+              // configs.rlo can b   /p/ or /post-
+              path: configs.rlo+':locationIdUrl([A-Za-z0-9_\-]+)',
               component: ()=>import( /* webpackChunkName: "Location" */ './components/Routes/Location/index.vue'),
               props: true,
             }
