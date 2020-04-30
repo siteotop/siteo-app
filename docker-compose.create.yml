@@ -17,22 +17,7 @@ services:
       env_file: ./main.env
 
 #############################
-  ########
-    webpackplugins:
-      container_name: webpackplugins
-      build:
-        context: ./
-      #  dockerfile: ./docker/Dockerfile-webpack-dev
-      volumes:
-        - ./:/app
-        - /app/node_modules
-
-      entrypoint:
-        - npm
-        - run
-        - plugins
-      env_file: ./main.env
-    ########
+   ########
     webpackssr:
       container_name: webpackssr
       build:

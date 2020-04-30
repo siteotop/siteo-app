@@ -138,14 +138,13 @@ module.exports = merge(baseConfig, {
         'process.env': {
            NODE_ENV: JSON.stringify(process.env.NODE_ENV),
            HOST_API: JSON.stringify(process.env.HOST_API_FRONTEND),
-           STATIC_PLUGINS: JSON.stringify(process.env.HOST_PLUGIN+ createDirResource('plugins', process.env.NODE_ENV) +'/' )
         }
       }),
       new MiniCssExtractPlugin({
           // Options similar to the same options in webpackOptions.output
           // both options are optional
           filename: `[name]-${VERSION}.css`,
-          chunkFilename: "[name].[hash:7].css"
+          chunkFilename: "[name].[hash].css"
         }),
 
       new VueSSRClientPlugin()

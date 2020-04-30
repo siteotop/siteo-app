@@ -89,7 +89,6 @@
   ],
   "scripts": {
     "frontend": "webpack --config build/client.webpack.config.js",
-    "plugins": "webpack --config build/plugins.webpack.config.js",
     "backend": "webpack --config build/server.webpack.config.js",
     "server": "node ssr/server.js"
   }

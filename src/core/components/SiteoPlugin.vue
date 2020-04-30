@@ -1,21 +1,10 @@
 <template>
  <v-lazy
   v-model="isActive"
+
  >
-  <div v-if="loaded">
-    <div v-if="component"><component :is="component" v-on="$listeners" :value="value"  v-bind="pluginOptions"></component></div>
-  </div>
-  <div v-else>
-    <slot v-if="desktopReady">
-        <span class="grey--text text--lighten-1">Plugin loading</span>
-         <v-progress-linear
-              color="primary"
-              indeterminate
-              rounded
-              height="6"
-         ></v-progress-linear>
-      </slot>
-   </div>
+  <div v-if="pluginName"><component :is="pluginName" v-on="$listeners" :value="value"  v-bind="pluginOptions"></component></div>
+
  </v-lazy>
 </template>
 
@@ -77,7 +66,7 @@ export default {
               if (!this.pluginName) {
                 return
               }
-              this.getPluginComponent(this.pluginName);
+              //this.getPluginComponent(this.pluginName);
 
 
             }
@@ -97,69 +86,7 @@ export default {
     },
 
 
-    beforeDestroy() {
-      if (this.removeOnDestroy) {
-          this.removePlugin();
-      }
-    },
 
-    methods: {
-
-      getPluginComponent(pluginName) {
-        var filename = process.env.STATIC_PLUGINS + pluginName+'.js';
-        //console.log(this);
-        var self = this;
-
-        this.$loadScript(filename).then((data)=>{
-            /**
-              при створенні плагіна webpack генерує файл який створює змінну в обєкті
-              Тобто якщо плагін завантажено, то існує обєкт window[self.pluginName]
-            */
-                  var component;
-                  if (window[pluginName]) {
-
-                      self.registerSiteoPlugin(pluginName, window[pluginName]);
-                      component= this.getPluginFromStore(pluginName);
-                  }
-                  self.loaded = true;
-                  if (self.adminMode) {
-                      self.$emit('change-component', component);
-                  } else {
-                    self.component = component
-                  }
-
-        }).catch((error)=>{
-
-            console.log(error);
-            console.log('catch error for plugin');
-            self.loaded =true
-        });
-
-      },
-
-      /**
-        Plugin was saved in  $root.$options._plugins
-      */
-      getPluginFromStore(pluginName) {
-          var plugin = this.$root.$options._plugins[pluginName];
-          if (plugin) {
-              if (plugin.component) {
-                return plugin.component;
-              }
-
-          }
-          return false;
-
-      },
-
-      removePlugin() {
-
-          if ( this.$root.$options._plugins[this.pluginName]) {
-             delete this.$root.$options._plugins[this.pluginName];
-          }
-
-      }
-    }
 }
 
 
