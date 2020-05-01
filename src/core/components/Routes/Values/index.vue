@@ -412,6 +412,18 @@ export default {
       }
 
       if (url_page) {
+        if (external) {
+          if (url_page!='none'){
+            button.bind = {
+              href: url_page
+            }
+          } else {
+            button.bind = {
+              disabled: true
+            }
+          }
+          return button;
+        }
         button.bind = {
           to: url_page
         }
