@@ -1,5 +1,5 @@
 <template>
-<div class="mb-3 fill-height"  >
+<div v-if="!statusError" class="mb-3 fill-height"  >
   <v-container  :fluid="activeMap" class=" pa-0 fill-height" :style="divHeight?{height: (divHeight+'px')}:''">
 
   <v-slide-x-transition >
@@ -250,6 +250,7 @@
     @close-dialog="closeOneLocation()">
   </CardOpenLocation>
 </div>
+<ErrorPage v-else :status="statusError.status"></ErrorPage>
 
 </template>
 
@@ -282,6 +283,7 @@ export default {
 
       PAd: ()=> import( /* webpackChunkName: "adsense" */ '../../Structure/PAdsense/Index.vue'),
       LocationsMap: ()=> import( /* webpackChunkName: "map" */ './Map/index.vue'),
+
     },
 
     props: {

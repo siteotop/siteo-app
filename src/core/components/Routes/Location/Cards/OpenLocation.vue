@@ -1,5 +1,5 @@
 <template >
-<div>
+<div v-if="!statusError">
 <v-slide-x-transition >
   <v-btn
     v-if="!drawer"
@@ -217,6 +217,12 @@
   </v-skeleton-loader>
   </v-navigation-drawer>
 </div>
+<v-navigation-drawer v-else v-model="drawer"
+v-bind="drawerProps">
+  <ErrorPage  :status="statusError.status"></ErrorPage>
+
+</v-navigation-drawer>
+
 </template>
 
 <script>
@@ -429,7 +435,7 @@ export default {
 
         valuesItems() {
             if (this.pageObject.values) {
-              return  this.pageObject.values.items;
+              return  this.pageObject.values.items||[];
             } else {
               return [];
             }
@@ -440,10 +446,7 @@ export default {
 
   methods: {
 
-    // rechange function
-    errorResolve() {
 
-    },
     // emit event for close drawer
     closeDrawer() {
        if (this.openRoute) {

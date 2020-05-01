@@ -1,5 +1,5 @@
 <template>
-<section>
+<section v-if="!statusError">
   <v-container  v-if="loaded">
      <v-row justify=center>
         <v-col cols="12" sm="5"  md="5" lg="4" xl="3">
@@ -68,6 +68,8 @@
   </v-container>
 
 </section>
+<ErrorPage v-else :status="statusError.status"></ErrorPage>
+
 </template>
 
 <script>
