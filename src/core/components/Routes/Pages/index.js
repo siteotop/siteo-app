@@ -10,9 +10,7 @@ import ServerFetch from '../_mixins/serverFetch';
 
 export default {
   mixins: [MetaInfo, ServerFetch],
-  components: {
-    ErrorPage:  ()=>import( /* webpackChunkName: "page-error" */ '../Error.vue')
-  },
+  
   props: {
       objectId: {
         type: String,
@@ -22,7 +20,7 @@ export default {
 
   nameModule: 'pages',
   storeModule: pages('appInstance/urlID'),
-  
+
   data() {
     return  {
       moduleAction: 'getObject',

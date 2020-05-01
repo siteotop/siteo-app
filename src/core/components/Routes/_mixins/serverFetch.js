@@ -29,6 +29,12 @@ export default {
       return this.fetchItem();
     },
 
+    computed: {
+        statusError(state) {
+            return this.$store.state.srvPageErr;
+        }
+    },
+
     methods: {
 
       /**

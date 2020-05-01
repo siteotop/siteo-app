@@ -166,7 +166,7 @@
 
 </div>
 <div v-else>
-    <RouteError :status="statusError.status"></RouteError>
+    <ErrorPage :status="statusError.status"></ErrorPage>
 </div>
 </template>
 <script>

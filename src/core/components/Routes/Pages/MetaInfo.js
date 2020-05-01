@@ -48,11 +48,6 @@ export default {
 
     metaTitle() {
       return this.pageObject.meta_title;
-    },
-
-
-    statusError(state) {
-        return this.$store.state.srvPageErr;
     }
   },
 

@@ -39,6 +39,7 @@ Vue.component('AppMessagesBlock', ()=> import( /* webpackChunkName: "alerts" */ 
 
 Vue.component('SiteoPluginForms', ()=> import( /* webpackChunkName: "plugin-form" */ './components/Plugins/forms/index.vue'));
 Vue.component('SiteoPluginSelectItems', ()=> import( /* webpackChunkName: "plugin-items" */ './components/Plugins/select-items/component.vue'));
+Vue.component('ErrorPage',   ()=>import( /* webpackChunkName: "page-error" */ './components/Routes/Error.vue'));
 
 
 import {createRESTApi} from './http/rest-api.js';

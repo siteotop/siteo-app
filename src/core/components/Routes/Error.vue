@@ -42,7 +42,10 @@
 export default {
 
   props : {
-      status: [Number, Object],
+      status: {
+        type: [Number, Object],
+        default: 404
+      },
 
       // when component using for route error not found
       fromRoute: {
