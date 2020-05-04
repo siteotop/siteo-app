@@ -37,7 +37,7 @@
           <v-col>
             <v-tooltip top eager>
               <template v-slot:activator="{ on }">
-                <v-btn v-on="on" icon :disabled="!formActive" @click="leaveform = resetForm">
+                <v-btn v-on="on" :loading="statusLoading" icon :disabled="!formActive" @click="leaveform = resetForm">
                   <v-icon>{{$options._icons.clear}}</v-icon>
                 </v-btn>
               </template>
@@ -59,7 +59,7 @@
           :description="$t('commonForm.leave_desc')"
           @hideDialog="()=>{this.leaveform=false}"
        ></AppConfirm>
-       <app-pulse-loader v-if="statusLoading" :loading="statusLoading"></app-pulse-loader>
+
     </v-container>
   </v-card>
 </template>

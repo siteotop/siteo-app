@@ -113,6 +113,7 @@ import Vuetify, {
   VSkeletonLoader,
   VSubheader,
   VProgressLinear,
+  VProgressCircular,
   VStepperItems,
   VStepperHeader,
   VFabTransition,
@@ -170,7 +171,7 @@ Vue.use(Vuetify, {
     VSkeletonLoader,
     VSubheader,
     VProgressLinear,
-
+    VProgressCircular,
     VDialog: ()=> import( /* webpackChunkName: "dialog" */ 'vuetify/lib/components/VDialog/VDialog'),
     VAlert: ()=> import( /* webpackChunkName: "alerts" */ 'vuetify/lib/components/VAlert/VAlert'),
     VSnackbar: ()=> import( /* webpackChunkName: "alerts" */ 'vuetify/lib/components/VSnackbar/VSnackbar'),
