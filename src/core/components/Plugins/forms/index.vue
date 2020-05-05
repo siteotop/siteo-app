@@ -28,16 +28,16 @@
               ></AppFieldRecaptcha>
           </v-col>
         </v-row>
-       <v-row v-show="!statusLoading"
+       <v-row 
         class="my-3"
         >
           <v-col cols="10" class="text-left">
-            <v-btn :disabled="!formActive" @click="onSubmit">{{submitElement.label}}</v-btn>
+            <v-btn :disabled="!formActive" :loading="statusLoading" @click="onSubmit">{{submitElement.label}}</v-btn>
           </v-col>
           <v-col>
             <v-tooltip top eager>
               <template v-slot:activator="{ on }">
-                <v-btn v-on="on" :loading="statusLoading" icon :disabled="!formActive" @click="leaveform = resetForm">
+                <v-btn v-on="on"  icon :disabled="!formActive" @click="leaveform = resetForm">
                   <v-icon>{{$options._icons.clear}}</v-icon>
                 </v-btn>
               </template>
