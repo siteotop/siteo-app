@@ -201,6 +201,7 @@ Vue.use(Vuetify, {
     VTabs: ()=>import( /* webpackChunkName: "carusel" */ 'vuetify/lib/components/VTabs/VTabs'),
     VTabItem: ()=>import( /* webpackChunkName: "carusel" */ 'vuetify/lib/components/VTabs/VTabItem'),
     VTabsItems: ()=>import( /* webpackChunkName: "carusel" */ 'vuetify/lib/components/VTabs/VTabsItems'),
+    VTabsSlider: ()=>import( /* webpackChunkName: "carusel" */ 'vuetify/lib/components/VTabs/VTabsSlider'),
 
     VTooltip: ()=>import( /* webpackChunkName: "tooltip" */ 'vuetify/lib/components/VTooltip/VTooltip'),
     VDataTable: ()=>import( /* webpackChunkName: "tables" */ 'vuetify/lib/components/VDataTable/VDataTable'),
