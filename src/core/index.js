@@ -307,7 +307,7 @@ export const createSiteo =  function ({configs, client}) {
     import(/* webpackChunkName: "locale-[request]" */ './i18n/'+ configs.lang).then(({default:local}) => {
         //console.log(local);
         AppInstanse.i18n.mergeLocaleMessage(configs.lang, local);
-    }).catch(error => 'An error occurred while loading the component');
+    }).catch(error => {console.log(error)});
 
     if (client&&configs.plugins) {
        for (var pluginName in configs.plugins ) {
