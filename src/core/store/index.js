@@ -96,6 +96,10 @@ export default function (Vue, RESTApi, configs)  {
              return fullhost;
            },
 
+           PATH_ICON() {
+             return process.env.PATH_ICON;
+           },
+
            getSiteoConfig: ()=>field=> {
               return configs[field];
            }

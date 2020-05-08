@@ -30,6 +30,7 @@ export default {
      },
 
      metaInfo () {
+      var path = this.$store.getters['PATH_ICON'];
       return {
 
          titleTemplate:
@@ -46,7 +47,39 @@ export default {
            }
 
          ],
-
+         link: [
+           {
+             rel:"icon",
+             type: "image/x-icon",
+             href: path+"favicon.ico"
+           },
+           {
+             rel:"apple-touch-icon",
+             sizes:"180x180",
+             href: path+"apple-touch-icon.png"
+           },
+           {
+             rel:"icon",
+             sizes:"32x32",
+             type: "image/png",
+             href: path+"favicon-32x32.png"
+           },
+           {
+             rel:"icon",
+             sizes:"16x16",
+             type: "image/png",
+             href: path+"favicon-16x16.png"
+           },
+          /* {
+             rel:"manifest",
+             href: path+"site.webmanifest"
+           },*/
+           {
+             rel:"mask-icon",
+             href: path+"safari-pinned-tab.svg",
+             color:"#cc0000"
+           }
+         ],
          style: [
             {
               cssText: this.$vuetify.theme.generatedStyles,

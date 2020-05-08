@@ -4,11 +4,11 @@
     <v-col cols="12" sm="10" md="8" class="text-center">
       <v-sheet class="transparent">
         <v-avatar size="90" color="primary">
-        <!--  <img
-            src="/core/android-chrome-192x192.png"
-         alt="Logo"
+          <img
+            :src="$store.getters['PATH_ICON']+'android-chrome-192x192.png'"
+            alt="Logo 404"
          >
-       -->
+
         </v-avatar>
         <div class="font-weight-black pb-2" style="font-size:180px;">
           {{code}}
@@ -61,6 +61,22 @@ export default {
       }
   },
 
+  /**
+    when error
+  */
+  metaInfo () {
+   return {
+      title: this.dataStatus,
+      meta: [
+        {
+          name: 'robots',
+          vmid: 'rob',
+          content: 'noindex,nofollow'
+        }
+      ]
+    }
+  },
+
   created() {
       // everytime take status from props
       this.dataStatus = this.status;
@@ -78,10 +94,11 @@ export default {
             color: 'primary',
             exact: true
         }
-        if (this.$store.getters['appInstance/activeId']) {
+        if (this.$store.state.appInstance.objectActive.name) {
           button.to = {path:'/'};
         } else {
-          button.href="https://"+ this.$store.getters.getSiteoConfig('host');
+
+          button.href="/";
         }
         return button;
       },

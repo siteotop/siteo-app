@@ -138,6 +138,7 @@ module.exports = merge(baseConfig, {
         'process.env': {
            NODE_ENV: JSON.stringify(process.env.NODE_ENV),
            HOST_API: JSON.stringify(process.env.HOST_API_FRONTEND),
+           PATH_ICON: JSON.stringify(process.env.PATH_ICON),  
         }
       }),
       new MiniCssExtractPlugin({
