@@ -1,4 +1,3 @@
-export {default as RLg}  from './RootLogo.vue';
 export {default as PAl}  from  './PAlert.vue';
 export {default as PAv}  from  './PAvatar.vue';
 export {default as PCd}  from  './PCard.vue';
