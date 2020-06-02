@@ -189,7 +189,7 @@ Vue.use(Vuetify, {
     VInput: ()=> import( /* webpackChunkName: "inputs-form" */ 'vuetify/lib/components/VInput/VInput'),
     VSelect: ()=> import( /* webpackChunkName: "inputs-form" */ 'vuetify/lib/components/VSelect/VSelect'),
     VOverflowBtn: ()=> import( /* webpackChunkName: "inputs-form" */ 'vuetify/lib/components/VOverflowBtn/VOverflowBtn'),
-
+    VSlider: ()=> import( /* webpackChunkName: "inputs-form" */ 'vuetify/lib/components/VSlider/VSlider'),
 
     VItemGroup: ()=> import( /* webpackChunkName: "carusel" */ 'vuetify/lib/components/VItemGroup/VItemGroup'),
     VWindow: ()=> import( /* webpackChunkName: "carusel" */ 'vuetify/lib/components/VWindow/VWindow'),
