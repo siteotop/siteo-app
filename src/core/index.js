@@ -308,7 +308,7 @@ export const createSiteo =  function ({configs, client}) {
         //console.log(local);
         AppInstanse.i18n.mergeLocaleMessage(configs.lang, local);
     }).catch(error => {console.log(error)});
-
+    AppInstanse.extends = CoreVue;
     if (client&&configs.plugins) {
        for (var pluginName in configs.plugins ) {
           if (window[configs.plugins[pluginName]])
@@ -318,8 +318,6 @@ export const createSiteo =  function ({configs, client}) {
 
     AppInstanse.router.addRoutes(SiteoRoutes(configs||{}));
 
-
-    AppInstanse.extends = CoreVue;
     return  new Vue( AppInstanse );
 
 

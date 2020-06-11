@@ -17,6 +17,14 @@ export default {
       RLn,
       FooterScroll: ()=>import( /* webpackChunkName: "footer-scroll" */ './Elements/FooterScroll.vue')
     },
+
+    appStr: [
+      'RDw',
+      'RAb',
+      'RCt',
+      'RFt',
+      'FooterScroll'
+    ],
     // _siteo_config: {},
     // _plugins: {},
     data() {
@@ -100,13 +108,7 @@ export default {
 
         return h('v-app',
 
-        [
-          'RDw',
-          'RAb',
-          'RCt',
-          'RFt',
-          'FooterScroll'
-        ].map(function(element){
+        this.$options.appStr.map(function(element){
          return  h('StChildrenHelper', {props: {element:element}});
        })
 
