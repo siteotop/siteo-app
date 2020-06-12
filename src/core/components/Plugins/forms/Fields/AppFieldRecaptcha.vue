@@ -1,7 +1,11 @@
 <template>
   <v-card flat color="grey lighten-3" class="pa-4 my-2">
 
-    <AppPulseLoader :loading="loading" ></AppPulseLoader>
+    <v-skeleton-loader
+      v-if="loading"
+      type="heading"
+    >
+    </v-skeleton-loader>
     <div :id="id" class="justify-center"></div>
     <v-card-text v-if="error">
       <div class="red--text" v-for="(message, index) in errorMessages" :key="index">
@@ -82,6 +86,7 @@ export default {
 
 
       getResponse(response){
+          console.log(response);
           this.valueData = response;
       },
 
@@ -100,6 +105,7 @@ export default {
   mounted(){
        var self = this;
        var token = this.pluginSettings.token;
+       console.log(this.pluginSettings);
        if (!token) {
           this.loading = false;
           return;
@@ -120,8 +126,8 @@ export default {
           this.$loadScript(url).then(function() {
             window.onloadCallback2 = function  (){
               self.recaptcha = window.grecaptcha.render(self.id, recaptcha_options );
-
              }
+
           }).catch((error)=>{
             this.loading = false;
             console.log(error);

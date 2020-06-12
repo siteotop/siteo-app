@@ -8,12 +8,14 @@ export default {
      if page is main generate start domain
     */
     canonical() {
-
-      if (this.$route.path == '/') {
+      let path = this.$route.path;
+      path = path.endsWith('/')? path.slice(0, -1): path;
+      /*if (this.$route.path == '/') {
         return this.$store.getters.CORE_HOST;
       } else {
         return this.$store.getters.CORE_HOST + this.$route.path;
-      }
+      } */
+      return this.$store.getters.CORE_HOST + path
     },
 
     metaLinks() {

@@ -113,6 +113,7 @@ import Vuetify, {
   VSkeletonLoader,
   VSubheader,
   VProgressLinear,
+  VProgressCircular,
   VStepperItems,
   VStepperHeader,
   VFabTransition,
@@ -170,7 +171,7 @@ Vue.use(Vuetify, {
     VSkeletonLoader,
     VSubheader,
     VProgressLinear,
-
+    VProgressCircular,
     VDialog: ()=> import( /* webpackChunkName: "dialog" */ 'vuetify/lib/components/VDialog/VDialog'),
     VAlert: ()=> import( /* webpackChunkName: "alerts" */ 'vuetify/lib/components/VAlert/VAlert'),
     VSnackbar: ()=> import( /* webpackChunkName: "alerts" */ 'vuetify/lib/components/VSnackbar/VSnackbar'),
@@ -188,7 +189,7 @@ Vue.use(Vuetify, {
     VInput: ()=> import( /* webpackChunkName: "inputs-form" */ 'vuetify/lib/components/VInput/VInput'),
     VSelect: ()=> import( /* webpackChunkName: "inputs-form" */ 'vuetify/lib/components/VSelect/VSelect'),
     VOverflowBtn: ()=> import( /* webpackChunkName: "inputs-form" */ 'vuetify/lib/components/VOverflowBtn/VOverflowBtn'),
-
+    VSlider: ()=> import( /* webpackChunkName: "inputs-form" */ 'vuetify/lib/components/VSlider/VSlider'),
 
     VItemGroup: ()=> import( /* webpackChunkName: "carusel" */ 'vuetify/lib/components/VItemGroup/VItemGroup'),
     VWindow: ()=> import( /* webpackChunkName: "carusel" */ 'vuetify/lib/components/VWindow/VWindow'),
@@ -200,6 +201,7 @@ Vue.use(Vuetify, {
     VTabs: ()=>import( /* webpackChunkName: "carusel" */ 'vuetify/lib/components/VTabs/VTabs'),
     VTabItem: ()=>import( /* webpackChunkName: "carusel" */ 'vuetify/lib/components/VTabs/VTabItem'),
     VTabsItems: ()=>import( /* webpackChunkName: "carusel" */ 'vuetify/lib/components/VTabs/VTabsItems'),
+    VTabsSlider: ()=>import( /* webpackChunkName: "carusel" */ 'vuetify/lib/components/VTabs/VTabsSlider'),
 
     VTooltip: ()=>import( /* webpackChunkName: "tooltip" */ 'vuetify/lib/components/VTooltip/VTooltip'),
     VDataTable: ()=>import( /* webpackChunkName: "tables" */ 'vuetify/lib/components/VDataTable/VDataTable'),
@@ -305,8 +307,8 @@ export const createSiteo =  function ({configs, client}) {
     import(/* webpackChunkName: "locale-[request]" */ './i18n/'+ configs.lang).then(({default:local}) => {
         //console.log(local);
         AppInstanse.i18n.mergeLocaleMessage(configs.lang, local);
-    }).catch(error => 'An error occurred while loading the component');
-
+    }).catch(error => {console.log(error)});
+    AppInstanse.extends = CoreVue;
     if (client&&configs.plugins) {
        for (var pluginName in configs.plugins ) {
           if (window[configs.plugins[pluginName]])
@@ -316,8 +318,6 @@ export const createSiteo =  function ({configs, client}) {
 
     AppInstanse.router.addRoutes(SiteoRoutes(configs||{}));
 
-
-    AppInstanse.extends = CoreVue;
     return  new Vue( AppInstanse );
 
 

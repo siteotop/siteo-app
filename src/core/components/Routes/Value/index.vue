@@ -49,15 +49,24 @@
                 <v-col cols="12" class="body-1 .font-weight-regular	">
                   <p>{{pageObject.preview}}</p>
                 </v-col>
-                <v-col cols="12">
+                <v-col cols="12"
+                  v-if="buttonWhere!==false"
+                >
+                    <v-btn v-if="pageObject.count=='0'"
+                      disabled
+                      x-large
+                    >
+                      {{buttonWhere.text}}
+                    </v-btn>
                     <v-btn
-                       :disabled="pageObject.count=='0'"
-                       v-if="buttonWhere!==false"
+                      v-else
+                       :title="buttonWhere.text+' '+ pageObject.title"
+
                        :to="buttonWhere.link"
                        x-large
                        color="primary"
                       >
-                      {{buttonWhere.text}} {{pageObject.title}}
+                      {{buttonWhere.text}}
                     </v-btn>
                 </v-col>
               </v-row>

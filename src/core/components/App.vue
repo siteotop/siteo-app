@@ -17,6 +17,14 @@ export default {
       RLn,
       FooterScroll: ()=>import( /* webpackChunkName: "footer-scroll" */ './Elements/FooterScroll.vue')
     },
+
+    appStr: [
+      'RDw',
+      'RAb',
+      'RCt',
+      'RFt',
+      'FooterScroll'
+    ],
     // _siteo_config: {},
     // _plugins: {},
     data() {
@@ -30,6 +38,7 @@ export default {
      },
 
      metaInfo () {
+      var path = this.$store.getters['PATH_ICON'];
       return {
 
          titleTemplate:
@@ -46,7 +55,39 @@ export default {
            }
 
          ],
-
+         link: [
+           {
+             rel:"icon",
+             type: "image/x-icon",
+             href: path+"favicon.ico"
+           },
+           {
+             rel:"apple-touch-icon",
+             sizes:"180x180",
+             href: path+"apple-touch-icon.png"
+           },
+           {
+             rel:"icon",
+             sizes:"32x32",
+             type: "image/png",
+             href: path+"favicon-32x32.png"
+           },
+           {
+             rel:"icon",
+             sizes:"16x16",
+             type: "image/png",
+             href: path+"favicon-16x16.png"
+           },
+          /* {
+             rel:"manifest",
+             href: path+"site.webmanifest"
+           },*/
+           {
+             rel:"mask-icon",
+             href: path+"safari-pinned-tab.svg",
+             color:"#cc0000"
+           }
+         ],
          style: [
             {
               cssText: this.$vuetify.theme.generatedStyles,
@@ -67,13 +108,7 @@ export default {
 
         return h('v-app',
 
-        [
-          'RDw',
-          'RAb',
-          'RCt',
-          'RFt',
-          'FooterScroll'
-        ].map(function(element){
+        this.$options.appStr.map(function(element){
          return  h('StChildrenHelper', {props: {element:element}});
        })
 
