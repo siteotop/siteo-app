@@ -19,7 +19,7 @@
                 @click="activatePlace(location)"
             >
               <l-popup>
-                  <div class="subtitle-2">{{location.title}}</div>
+                  <div class="text-subtitle-2">{{location.title}}</div>
               </l-popup>
             </l-marker>
         </template>

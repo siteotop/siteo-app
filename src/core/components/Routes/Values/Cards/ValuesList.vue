@@ -17,7 +17,7 @@
         </span>
       </v-list-item-avatar>
       <v-list-item-content>
-        <v-list-item-title ><h3 class="subtitle-2" >{{props.index}}. {{props.title}}</h3></v-list-item-title>
+        <v-list-item-title ><h3 class="text-subtitle-2" >{{props.index}}. {{props.title}}</h3></v-list-item-title>
         <v-list-item-subtitle class="font-italic font-weight-bold">{{props.subtitle}}</v-list-item-subtitle>
         <v-list-item-subtitle>{{props.preview}}</v-list-item-subtitle>
       </v-list-item-content>

@@ -10,7 +10,7 @@
             :src="props._m"
           >
           </v-img>
-          <v-card-title  class="headline">
+          <v-card-title  class="text-h5">
              {{props._t}}
           </v-card-title>
           <v-card-text>

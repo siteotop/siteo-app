@@ -79,8 +79,8 @@
           <v-container>
             <v-row>
               <v-col cols="12" class="text-center white--text">
-                  <h1 :class="mobileMode?'title' :'display-1'">{{pageTitleH1}}</h1>
-                  <strong class="subtitle-1">{{categoryObject.subtitle}}</strong>
+                  <h1 class="text-h5 text-sm-h3">{{pageTitleH1}}</h1>
+                  <strong class="text-subtitle-1">{{categoryObject.subtitle}}</strong>
               </v-col>
               <v-col>
                 <SiteoPlugin
@@ -146,7 +146,7 @@
           </v-alert>
       </v-card-text >
         <v-toolbar v-else flat>
-          <v-toolbar-title><h2 class="title">
+          <v-toolbar-title><h2 class="text-h6">
               <span v-if="locationObject.title">
                 {{locationObject.country}}, {{locationObject.title}}:
               </span>

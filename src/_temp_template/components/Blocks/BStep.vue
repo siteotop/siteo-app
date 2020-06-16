@@ -9,7 +9,7 @@
         <v-container fill-height fluid>
           <v-row >
             <v-col cols="12"  align="end">
-               <span class="headline"><v-avatar color="primary">{{(i+1)}}</v-avatar> {{props._t}}</span>
+               <span class="text-h5"><v-avatar color="primary">{{(i+1)}}</v-avatar> {{props._t}}</span>
             </v-col>
           </v-row>
         </v-container>

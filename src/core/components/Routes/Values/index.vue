@@ -18,7 +18,7 @@
 
       <v-col cols="12">
         <v-sheet class="transparent"  v-if="pageObject.meta_title">
-           <h1 class="display-2 font-weight-black">{{pageObject.title}}</h1>
+           <h1 class="text-h3 font-weight-black">{{pageObject.title}}</h1>
             <div class="mt-2 font-weight-medium">{{pageObject.description}}</div>
         </v-sheet>
       </v-col>
@@ -53,7 +53,7 @@
       </v-card>
     </v-menu>
 
-    <v-toolbar-title><h2 class="title" >{{category_title}} {{$t('top')}} {{topCount}}  </h2></v-toolbar-title>
+    <v-toolbar-title><h2 class="text-h6" >{{category_title}} {{$t('top')}} {{topCount}}  </h2></v-toolbar-title>
     <v-spacer></v-spacer>
     <v-btn-toggle mandatory v-model="toggle_component">
       <v-btn text value="card">
