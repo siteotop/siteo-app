@@ -22,11 +22,21 @@ export default {
 
         if (position ==-1) {
             // if URL isn't path for app
+
             window.location = url;
             //  window.open('', '_blank');
         } else {
             // check for app path;
+
             let path = url.slice(host.length);
+
+            let attrib = this.getAttribute('href');
+            if (attrib[0]=='#') {
+                  console.log('delay')
+                  self.$vuetify.goTo(attrib, {offset: 50, duration: 40});
+                return;
+            }
+
             if (!path) {
               path = '/';
             }
@@ -38,3 +48,14 @@ export default {
   }
 }
 </script>
+
+<style>
+  .siteo-cnt-menu {
+    list-style-position: inside;
+    list-style-type: decimal-leading-zero ;
+  }
+  .siteo-cnt-menu .ql-indent-1 {
+    list-style-type: decimal-leading-zero ;
+    padding-left: 3em;
+  }
+</style>
