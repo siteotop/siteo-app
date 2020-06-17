@@ -1,5 +1,5 @@
 <template >
-<div v-html="cntnt.t">
+<div class="pa-4 siteo-html" v-html="cntnt.t">
 </div>
 </template>
 <script>
@@ -57,5 +57,10 @@ export default {
   .siteo-cnt-menu .ql-indent-1 {
     list-style-type: decimal-leading-zero ;
     padding-left: 3em;
+  }
+
+  .siteo-html p {
+    font-size: 20px;
+    line-height: 1.55;
   }
 </style>
