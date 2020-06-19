@@ -1,6 +1,5 @@
 <template functional>
 <v-alert
-    :value="true"
     v-bind="{
       color: props.cnf.c,
       outlined: props.cnf.o,

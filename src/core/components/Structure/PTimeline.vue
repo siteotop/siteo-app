@@ -24,12 +24,10 @@
       }:element.p"
   >
      <!-- _children in element.h-->
-    <StChildrenHelper
-      v-for="(chld, y) in element.h||[]"
-      :key="y"
-      :element="chld"
-     >
-    </StChildrenHelper>
+     <StChildrenHelper
+        :element="element.h"
+        :list="true">
+     </StChildrenHelper>
   </v-timeline-item>
 </v-timeline>
 </template>

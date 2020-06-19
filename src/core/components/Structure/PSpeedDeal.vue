@@ -30,12 +30,11 @@
            <v-icon v-else>$vuetify.icons.close</v-icon>
          </v-btn>
      </template>
-        <StChildrenHelper
-          v-for="(chld, y) in chldrn"
-          :key="y"
-          :element="chld"
-         >
-        </StChildrenHelper>
+       <StChildrenHelper
+          :element="chldrn"
+          :list="true">
+       </StChildrenHelper>
+      
   </v-speed-dial>
 </v-fab-transition>
 </template>

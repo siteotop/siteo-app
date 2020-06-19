@@ -3,11 +3,9 @@
   <v-scroll-y-transition>
     <template v-if="needShowAction">
       <StChildrenHelper
-        v-for="(element, index) in chldrn"
-        :key="index"
-        :element="element"
-      >
-    </StChildrenHelper>
+         :element="chldrn"
+         :list="true">
+      </StChildrenHelper>
     </template>
   </v-scroll-y-transition>
 </div>

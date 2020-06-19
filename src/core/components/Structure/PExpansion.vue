@@ -17,12 +17,10 @@
 
     <v-expansion-panel-content>
         <!-- _children in element.h-->
-      <template
-        v-for="(elmt, index) in element.h||[]"
-       >
-         <StChildrenHelper :element="elmt">
-         </StChildrenHelper>
-      </template>
+        <StChildrenHelper
+           :element="element.h"
+           :list="true">
+        </StChildrenHelper>
     </v-expansion-panel-content>
   </v-expansion-panel>
 </v-expansion-panels>

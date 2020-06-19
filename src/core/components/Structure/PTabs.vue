@@ -39,12 +39,10 @@
       }:{}"
   >
       <!-- _children in element.h-->
-    <template
-      v-for="(elmt, index) in element.h||[]"
-     >
-       <StChildrenHelper :element="elmt">
-       </StChildrenHelper>
-    </template>
+      <StChildrenHelper
+         :element="element.h"
+         :list="true">
+      </StChildrenHelper>
   </v-tab-item>
 </v-tabs>
 </template>

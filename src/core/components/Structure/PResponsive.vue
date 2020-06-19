@@ -11,14 +11,10 @@ v-bind="{
 }"
 :class="data.class"
 >
-
-  <template
-    v-for="(element, index) in props.chldrn||[]"
-   >
-     <StChildrenHelper :element="element">
-     </StChildrenHelper>
-  </template>
-
+  <StChildrenHelper
+     :element="props.chldrn"
+     :list="true">
+  </StChildrenHelper>
 </v-responsive>
 </template>
 <script>

@@ -27,15 +27,18 @@ export default {
     props.scrollTarget= cnf.ab;
     props.scrollThreshold = cnf.ac;
     props.shrinkOnScroll  = cnf.ad;
-  
+
     console.log(props);
     return h('v-app-bar', {
       props: props
-    }, [
-      (context.props.chldrn||[]).map(function(element){
-        return h('StChildrenHelper', {props: {element:element, structure: ToolbarElements}})
-      })
-    ]);
+    },
+      h('StChildrenHelper', {
+        props: {
+          element:context.props.chldrn,
+          list:true,
+          structure: ToolbarElements
+      }})
+    );
 
   }
 }

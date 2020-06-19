@@ -1,11 +1,13 @@
 <script>
 
 const helperContext = function(componentName,h,context) {
-  return h(componentName, {class: context.data.class} ,  [
-    (context.props.chldrn||[]).map(function(element){
-      return h('StChildrenHelper', {props: {element:element}})
-    })
-  ])
+  return h(componentName, {class: context.data.class} ,
+    h('StChildrenHelper', {
+      props: {
+        element:context.props.chldrn,
+        list:true
+    }})
+  )
 }
 
 const cardStructure = {
@@ -57,11 +59,14 @@ export default {
         tile: cnf.t,
         width: cnf.q,
         outlined: cnf.v,
-      }, class: context.data.class}, [
-        (context.props.chldrn||[]).map(function(element){
-          return h('StChildrenHelper', {props: {element:element, structure: cardStructure}})
-        })
-    ])
+      }, class: context.data.class},
+        h('StChildrenHelper', {
+          props: {
+            element:context.props.chldrn,
+            list:true,
+            structure: cardStructure
+        }})
+      )
 
   }
 }

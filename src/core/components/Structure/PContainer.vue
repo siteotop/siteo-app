@@ -14,10 +14,12 @@ export default {
         attrs: context.data.attrs,
         class: context.data.class
       },
+      h('StChildrenHelper', {
+        props: {
+          element:context.props.chldrn,
+          list:true
+      }})
 
-      (context.props.chldrn||[]).map(function(element) {
-          return h('StChildrenHelper', {props: {element:element }})
-      })
 
     )
   }

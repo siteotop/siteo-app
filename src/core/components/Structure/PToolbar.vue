@@ -62,11 +62,14 @@ export default {
 
     return h('v-toolbar', {
       props: createToolbarProps(cnf)
-    }, [
-      (context.props.chldrn||[]).map(function(element){
-        return h('StChildrenHelper', {props: {element:element, structure: ToolbarElements}})
-      })
-    ]);
+    },
+      h('StChildrenHelper', {
+        props: {
+          element:context.props.chldrn,
+          list:true,
+          structure: ToolbarElements
+      }})
+    );
 
   }
 }

@@ -6,12 +6,10 @@
  :class="props.cnf.b"
 >
 
-  <template
-    v-for="(element, index) in props.chldrn||[]"
-   >
-     <StChildrenHelper :element="element">
-     </StChildrenHelper>
-  </template>
+  <StChildrenHelper
+     :element="props.chldrn"
+     :list="true">
+  </StChildrenHelper>
 
 </v-parallax>
 </template>
