@@ -10,7 +10,7 @@ import ServerFetch from '../_mixins/serverFetch';
 
 export default {
   mixins: [MetaInfo, ServerFetch],
-  
+
   props: {
       objectId: {
         type: String,
@@ -25,8 +25,7 @@ export default {
     return  {
       moduleAction: 'getObject',
       error: false,
-      //offsetTop: 0,
-      shareWindow: false
+
     }
   },
 
@@ -161,8 +160,6 @@ export default {
           return h('PageSchema', {
             props: {
               structure: this.pageObject.jsonStructure,
-              sharing: true,
-              shareWindow: this.shareWindow,
               }
         })
 

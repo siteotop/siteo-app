@@ -1,20 +1,9 @@
 
 
-//import FunctionalShareWindow from './Functional/ShareWindow.vue';
-
 export default {
     functional: true,
     props: {
-      shareWindow: {
-        type: Boolean,
-        default: false
-      },
-
-      sharing: {
-        type: Boolean,
-        default: false
-      },
-
+      
       structure: {
           type: Array,
           default: function() {

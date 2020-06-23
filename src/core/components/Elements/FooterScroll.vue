@@ -1,5 +1,5 @@
 <template>
-  <div v-if="front" id="cookies">
+  <div v-if="front" id="cookies" v-scroll="onScroll">
     <div
       v-if="cookiePolicy"
       v-scroll="cookieOnScroll"
@@ -32,6 +32,45 @@
         </v-sheet>
       </v-footer>
     </div>
+    <v-fab-transition>
+    <v-btn
+      v-show="fab"
+      aria-label="Scroll to top"
+      title="Scroll to top"
+      bottom
+      right
+      fab
+      fixed
+      large
+
+
+      @click="toTop"
+    >
+      <v-icon>$vuetify.icons.up</v-icon>
+    </v-btn>
+  </v-fab-transition>
+  <v-fab-transition>
+  <v-btn
+    v-show="fab"
+    aria-label="Share"
+    title="share"
+    left
+    bottom
+    fab
+    fixed
+    large
+
+
+    @click="share=!share"
+  >
+    <v-icon>$vuetify.icons.share</v-icon>
+  </v-btn>
+</v-fab-transition>
+    <ShareWindow
+      v-if="share"
+      @close="closeShare"
+     >
+    </ShareWindow>
      <AppMessagesBlock
        v-if="$store.getters.errorMessages"
        :messages="$store.state.SystemMessages.messages"
@@ -45,22 +84,44 @@
 
 <script>
 export default {
-
+    components: {
+      ShareWindow: ()=>import('./Share/Window.vue')
+    },
     data() {
         return {
            currentOffset: 0,
            front: false,
            cookiePolicy: false,
-           cookieStatus: false
+           cookieStatus: false,
+           fab: false,
+           share: false,
+           value: false
         }
     },
     mounted() {
       this.front = true;
       this.cookieAsk();
-    }
-    ,
+    },
 
     methods: {
+      closeShare() {
+        console.log('close');
+        this.share = false;
+      },
+
+      onScroll () {
+        if (typeof window === 'undefined') return
+        const top = (
+          window.pageYOffset ||
+          document.documentElement.offsetTop ||
+          0
+        )
+        this.fab = top > 300
+      },
+      toTop () {
+       this.$router.push({ hash: '' })
+       this.$vuetify.goTo(0)
+     },
       cookieAsk() {
           var re = window.localStorage.getItem('siteo_cookie_policy');
           if (!re) {
