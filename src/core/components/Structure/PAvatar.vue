@@ -14,12 +14,11 @@
  >
    <img v-if="props.cntnt.p" :src="props.cntnt.p" :alt="props.cntnt.pt">
    <span v-if="props.cntnt.t">{{props.cntnt.t}}</span>
-   <template
-       v-for="(element, index) in props.chldrn||[]"
-      >
-        <StChildrenHelper :element="element">
-        </StChildrenHelper>
-   </template>
+   <StChildrenHelper
+      :element="props.chldrn"
+      :list="true">
+   </StChildrenHelper>
+
 
 </v-avatar>
 </template>

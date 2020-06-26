@@ -32,9 +32,9 @@
                 </v-col>
 
                 <v-col class="text-center" >
-                  <span v-if="!hover" class="headline">{{props.title}}</span>
+                  <span v-if="!hover" class="text-h5">{{props.title}}</span>
                   <div v-else class="align-center ">
-                        <BPrice class="headline font-weight-bold "
+                        <BPrice class="text-h5 font-weight-bold "
                           :discount="props.discount"
                           :price="props.price">
                         </BPrice>
@@ -49,7 +49,7 @@
           <v-list-item>
 
        <v-list-item-content>
-         <v-list-item-title class="headline"><h3>{{props.title}}</h3></v-list-item-title>
+         <v-list-item-title class="text-h5"><h3>{{props.title}}</h3></v-list-item-title>
          <v-list-item-subtitle>{{props.subtitle}}</v-list-item-subtitle>
        </v-list-item-content>
       </v-list-item>
@@ -58,7 +58,7 @@
         {{props.preview}}
       </v-card-text>
         <!--  <v-card-title>
-            <BPrice class="headline font-weight-medium" :discount="props.discount" :price="props.price"></BPrice>
+            <BPrice class="text-h5 font-weight-medium" :discount="props.discount" :price="props.price"></BPrice>
             <v-spacer></v-spacer>
             <PBt :to="props._to" :fab="true" :large="false"></PBt>
           </v-card-title> -->

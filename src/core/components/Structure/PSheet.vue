@@ -10,10 +10,12 @@
     width: props.cnf.g,
   }"
 >
-<template v-for="(elmt, index) in props.chldrn||[]">
-   <StChildrenHelper :element="elmt">
-   </StChildrenHelper>
-</template>
+
+  <StChildrenHelper
+     :element="props.chldrn"
+     :list="true">
+  </StChildrenHelper>
+
 </v-sheet>
 </template>
 <script>

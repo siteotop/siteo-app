@@ -17,7 +17,7 @@
           {{description}}
         </div>
         <div>
-          <span class="caption grey--text text--lighten-1">{{ $t('for_more')}}  <a class="caption grey--text text--lighten-1"  @click="modalError=true" >{{ $t('here')}}</a></span>
+          <span class="text-caption grey--text text--lighten-1">{{ $t('for_more')}}  <a class="text-caption grey--text text--lighten-1"  @click="modalError=true" >{{ $t('here')}}</a></span>
           <v-dialog max-width="500" v-model="modalError">
             <v-card >
               <v-card-text>

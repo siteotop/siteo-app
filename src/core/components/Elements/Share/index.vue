@@ -1,28 +1,8 @@
 
 
 <script>
-// pageToolbar
-/**  false? h(FunctionalPageToolbar, {props: {
-  contentStructure:context.props.structure,
-  hightUp: 300,
-  sharing: context.props.sharing
-},
-on: {
-    shareWindow: ()=>{ context.parent.shareWindow = true}
-  }}):'',
 
-
-
-
-  COPY FROM SCHEMA.js
-//shareWindow
-//  context.props.shareWindow? h(FunctionalShareWindow, { on: {closeShare: ()=>{ context.parent.shareWindow = false}}}):'',
-
-
-
-
-*/
-import Colors from '../../../../_helper/colors';
+import Colors from './colors';
 import Sharing from './sharing';
 
 export default {
@@ -50,7 +30,7 @@ export default {
             new_array.push({
                 href: this.getHrefForService(service),
                 color: Colors[i] || '',
-                icon:  i,
+                icon:  service.i,
                 title:  i,
                 subtitle: i,
              });
@@ -76,12 +56,25 @@ export default {
     },
 
     render (h) {
-        return h('BLinks', {
-          props: {
-            items: this.collectLinks,
-            $vl: this.$vl,
-            $clp: {fab: true, outlined: true}
-        }});
+        return h('div',
+          [this.collectLinks.map(function(link) {
+            return  h('v-btn', {props: {
+              color: link.color,
+              large: true,
+              dark: true,
+              fab:true,
+              href: link.href,
+
+            },
+            attrs: {
+                target: "_blank"
+            },
+            class: 'ma-1'
+          }, [
+                h('v-icon', link.icon)
+            ] );
+          }  )
+      ])
 
     }
 

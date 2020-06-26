@@ -26,11 +26,10 @@
  }"
  >
  <template v-if="parent.$store.state.drawerBody">
-  <StChildrenHelper v-for="(element, index) in props.chldrn||[]"
-    :element="element"
-    :key="index"
-  >
-  </StChildrenHelper>
+   <StChildrenHelper
+      :element="props.chldrn"
+      :list="true">
+   </StChildrenHelper>
 </template>
 </v-navigation-drawer>
 </template>

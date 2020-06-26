@@ -14,15 +14,12 @@
       elevation:props.cnf.e,
     }"
 >
-
-<template
-  v-for="(elmt, index) in props.chldrn||[]"
- >
-   <StChildrenHelper :element="elmt">
-   </StChildrenHelper>
-</template>
+  <StChildrenHelper
+     :element="props.chldrn"
+     :list="true">
+  </StChildrenHelper>
   <!--  -->
-  
+
 </v-footer>
 </template>
 

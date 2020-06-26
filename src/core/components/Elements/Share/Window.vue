@@ -1,16 +1,14 @@
 <template >
-<div>
   <v-dialog
-       :value="shareWindow"
-       @update:returnValue="(e)=>{shareWindow=e}"
-       width="500"
-       :fullscreen="$vuetify.breakpoint.xs"
+      v-model="shareWindow"
+      width="500"
+      :fullscreen="$vuetify.breakpoint.xs"
 
      >
        <v-card>
 
          <v-card-title
-           class="headline grey lighten-2"
+           class="text-h5 grey lighten-2"
            primary-title
          >
 
@@ -22,21 +20,28 @@
            </v-btn>
          </v-card-title>
 
-         <v-card-text>
-           <v-text-field id="shareElementInputLink"   outlined :value="canonicalUrl" readonly>
+         <v-card-text class="pt-3">
+           <v-subheader>
+              {{ogTitle}}
+           </v-subheader>
+           <v-text-field
+              id="shareCopyId"
+              outlined
+              :value="canonicalUrl"
+              readonly>
              <template v-slot:append>
-               <v-btn :icon="$vuetify.breakpoint.xs"   @click="copyText()" >
-
-                 <v-icon>{{$options._icons.copy}}</v-icon>
-                  <span v-if="!$vuetify.breakpoint.xs">{{$t('copy')}}</span>
-               </v-btn>
+               <v-btn
+                icon
+                @click="copyText()"
+              >
+               <v-icon>{{$options._icons.copy}}</v-icon>
+             </v-btn>
             </template>
 
 
            </v-text-field>
 
-          <v-divider></v-divider>
-            <AppSharing
+           <AppSharing
               :cannonical="canonicalUrl"
               :ogTitle="ogTitle"
 
@@ -44,42 +49,33 @@
             </AppSharing>
          </v-card-text>
 
-         <v-divider></v-divider>
-         <v-spacer></v-spacer>
+
 
          <v-card-actions>
            <v-spacer></v-spacer>
            <v-btn
              color="primary"
-             text @click="shareWindow = false"
+             text
+             @click="shareWindow = false"
            >
              {{$t('close')}}
            </v-btn>
          </v-card-actions>
        </v-card>
+       <v-snackbar
+          v-model="snackbar"
 
-     </v-dialog>
-     <v-snackbar
-        v-model="snackbar"
+          color="info"
+          >
+          Link Copied
 
-        color="info"
-        >
-        Link Copied
-      <v-btn
-        dark
-        text
-        @click="snackbar = false"
-      >
-        {{$t('close')}}
-      </v-btn>
-</v-snackbar>
-</div>
-
+        </v-snackbar>
+ </v-dialog>
 </template>
 
 <script>
 
-import AppSharing from './Share/index.vue';
+import AppSharing from './index.vue';
 import  _find  from 'lodash/find';
 
 import {mdiContentCopy} from '@mdi/js';
@@ -92,7 +88,7 @@ export default {
       return {
         snackbar: false,
         shareWindow: true,
-        ogTitle: this.$parent.$metaInfo.title
+
       }
   },
 
@@ -100,19 +96,31 @@ export default {
     copy:mdiContentCopy
   },
 
+  mounted() {
+    console.log(this.$meta().resume());
+  },
+
   computed: {
     canonicalUrl () {
+        console.log(this.$route);
+        return window.location.origin + window.location.pathname;
+    },
+    ogTitle() {
+      var meta = this.$meta().resume();
 
+      if (meta.metaInfo&&meta.metaInfo.title)
+        return  meta.metaInfo.title;
+      else {
+         return '';
+      }
 
-      var link =_find(this.$parent.$metaInfo.link, function(o) { return o['rel'] == 'canonical'; })
-       return  link.href;
     }
   },
 
   methods: {
     copyText() {
         /* Get the text field */
-        var copyText = document.getElementById("shareElementInputLink");
+        var copyText = document.getElementById("shareCopyId");
         /* Select the text field */
         copyText.select();
         /* Copy the text inside the text field */
@@ -127,7 +135,7 @@ export default {
   watch: {
     shareWindow(newValue) {
         if (!newValue) {
-          this.$emit('closeShare');
+          this.$emit('close');
         }
     }
   }

@@ -1,20 +1,9 @@
 
 
-//import FunctionalShareWindow from './Functional/ShareWindow.vue';
-
 export default {
     functional: true,
     props: {
-      shareWindow: {
-        type: Boolean,
-        default: false
-      },
-
-      sharing: {
-        type: Boolean,
-        default: false
-      },
-
+      
       structure: {
           type: Array,
           default: function() {
@@ -29,12 +18,15 @@ export default {
       }
 
       // Add div because was error
-      return  h('div', { class: 'fill-height' }, 
+      return  h('div', { class: 'fill-height' },
           ////////// Structure
-           context.props.structure.map(function(element){
-            return h('StChildrenHelper', {props: { element:element}})
-          })
-          ////////// Structure
+          h('StChildrenHelper', {
+            props: {
+              element:context.props.structure,
+              list: true
+            }})
+
+           ////////// Structure
         )
       }
 

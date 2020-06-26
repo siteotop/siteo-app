@@ -105,12 +105,12 @@ export default {
      },
 
      render(h) {
-
         return h('v-app',
-
-        this.$options.appStr.map(function(element){
-         return  h('StChildrenHelper', {props: {element:element}});
-       })
+          h('StChildrenHelper', {
+            props: {
+              element:this.$options.appStr,
+              list:true
+          }})
 
       );
      }

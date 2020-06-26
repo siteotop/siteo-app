@@ -47,11 +47,15 @@ export default {
           tag:'li',
           avatar: el_c.a,
           color: el_c.c
-        }, class:element.c/*_class*/} , [
-          (element.h/*_children*/||[]).map(function(tileElement){
-             return h('StChildrenHelper', {props: {element:tileElement, structure: tileStructure}})
-          })
-        ])
+        }, class:element.c/*_class*/} ,
+          h('StChildrenHelper', {
+            props: {
+              element:element.h,
+              list:true,
+              structure: tileStructure
+          }})
+
+        )
       });
     } else {
       var children =  (context.parent.$store.state.appInstance.objectActive.menus||[]).map(function(element){

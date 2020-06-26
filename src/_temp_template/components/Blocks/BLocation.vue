@@ -1,6 +1,6 @@
 <template functional>
 <v-card >
- <v-card-title class="headline pb-0">
+ <v-card-title class="text-h5 pb-0">
   <AppIcon name="si-locations"></AppIcon>
   {{props._t}}
   <v-spacer></v-spacer>

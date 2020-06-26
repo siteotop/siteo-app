@@ -2,7 +2,7 @@
 
   <v-dialog v-model="showDialog"  max-width="340" >
      <v-card>
-       <v-card-title class="headline">{{title}}</v-card-title>
+       <v-card-title class="text-h5">{{title}}</v-card-title>
        <v-card-text>{{description}}</v-card-text>
        <v-card-actions>
          <v-spacer></v-spacer>

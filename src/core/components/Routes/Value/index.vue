@@ -43,10 +43,10 @@
               <v-row>
 
                 <v-col cols="12">
-                  <h1 class="display-2 font-weight-bold ">{{pageObject.title}}</h1>
+                  <h1 class="text-h3 font-weight-bold ">{{pageObject.title}}</h1>
                   <span class="grey--text lighten-1">{{pageObject.subtitle}}</span>
                 </v-col>
-                <v-col cols="12" class="body-1 .font-weight-regular	">
+                <v-col cols="12" class="text-body-1 .font-weight-regular	">
                   <p>{{pageObject.preview}}</p>
                 </v-col>
                 <v-col cols="12"
