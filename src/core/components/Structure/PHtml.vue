@@ -1,5 +1,5 @@
 <template >
-<div class="pa-4 siteo-html" v-html="cntnt.t">
+<div class="siteo-html" v-html="cntnt.t">
 </div>
 </template>
 <script>
