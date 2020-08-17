@@ -1,5 +1,5 @@
 <template >
-<div class="pa-4 siteo-html" v-html="cntnt.t">
+<div class="siteo-html" v-html="cntnt.t">
 </div>
 </template>
 <script>
@@ -16,6 +16,7 @@ export default {
 
       container[i].onclick = function(e){
         e.preventDefault();
+        //href в даному випадку має завжди повний url 
         const url = this.href;
         const host = self.$store.getters['CORE_HOST'];
         const position = url.indexOf(host, 0);
@@ -63,4 +64,19 @@ export default {
     font-size: 20px;
     line-height: 1.55;
   }
+
+  .siteo-html h2, .siteo-html h3, .siteo-html h4, .siteo-html h5 {
+    margin-top: 1.72em;
+    margin-bottom: 1.30em;
+  }
+  .siteo-html h2{
+      font-size: 26px;
+  }
+  .siteo-html h3{
+      font-size: 25px;
+  }
+  .siteo-html h4{
+      font-size: 24px;
+  }
+
 </style>
