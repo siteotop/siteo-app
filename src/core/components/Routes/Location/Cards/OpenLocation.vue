@@ -42,7 +42,7 @@
           <v-icon>$vuetify.icons.prev</v-icon>
         </v-btn>
         <v-toolbar-title  >
-          <!-- something text  -->
+          {{pageObject.title}}
         </v-toolbar-title>
         <v-spacer>
         </v-spacer>
@@ -73,10 +73,8 @@
      <v-card
       flat
      >
-       <v-card-title>
-          {{pageObject.title}}
-       </v-card-title>
-           <v-divider></v-divider>
+
+    <v-divider></v-divider>
     <v-card-actions>
     <v-btn
         v-for="(action, i) in actions"
@@ -187,6 +185,8 @@
           </v-chip>
       </v-card-text>
 
+      <PAd adType="card">
+      </PAd>
 
    </v-card>
 

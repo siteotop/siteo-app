@@ -17,7 +17,7 @@ const dynamicBase = {
       /* webpackPrefetch: true */
 
       './PList.vue'),
-  'PAd':()=> import( /* webpackChunkName: "adsense" */ './PAdsense/Index.vue'),
+  //'PAd':()=> import( /* webpackChunkName: "adsense" */ './PAdsense/Index.vue'),
   'PPx':()=> import( /* webpackChunkName: "parallax" */ './PParallax.vue'),
   'PLc':()=> import( /* webpackChunkName: "PLc" */ './PLocation.vue'),
 

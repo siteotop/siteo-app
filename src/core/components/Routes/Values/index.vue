@@ -18,7 +18,7 @@
 
       <v-col cols="12">
         <v-sheet class="transparent"  v-if="pageObject.meta_title">
-           <h1 class="text-h3 font-weight-black">{{pageObject.title}}</h1>
+           <h1 class="text-h5 text-md-h3 font-weight-black">{{pageObject.title}}</h1>
             <div class="mt-2 font-weight-medium">{{pageObject.description}}</div>
         </v-sheet>
       </v-col>
@@ -217,7 +217,7 @@ export default {
     BPrice: ()=> import( /* webpackChunkName: "CardValues" */ './Cards/BPrice.vue') ,
     ListValues: ()=> import( /* webpackChunkName: "ListValues" */ './Cards/ValuesList.vue') ,
     DialogVideoYoutube: ()=> import( /* webpackChunkName: "DialogVideo" */ './Cards/VideoYoutube.vue'),
-    PAd: ()=> import( /* webpackChunkName: "adsense" */ '../../Structure/PAdsense/Index.vue')
+  //  PAd: ()=> import( /* webpackChunkName: "adsense" */ '../../Structure/PAdsense/Index.vue')
   },
 
   _icons: {
