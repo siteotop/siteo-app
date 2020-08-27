@@ -125,7 +125,7 @@
           </v-col>
           <v-col v-if="i===0||(i%7==0)" v-bind="vColProps">
             <v-card>
-              <PAd :adType="toggle_component">
+              <PAd :key="toggle_component" :adType="toggle_component">
               </PAd>
           </v-card>
           </v-col>
