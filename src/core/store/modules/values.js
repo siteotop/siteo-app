@@ -4,6 +4,7 @@ export default function (parentGetterUrl) {
 
   return  {
     api: {url: '/values', parentGetterUrl: parentGetterUrl},
+    items: { append: true},
     state () {
         return {
           title: '',

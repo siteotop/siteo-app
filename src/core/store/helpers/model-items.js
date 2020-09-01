@@ -70,10 +70,9 @@ const MUTATIONS = {
   },
 
   clearList(state, items) {
-    //  state.objects = [];
+      //  state.objects = [];
       while(state.objects.length > 0) {state.objects.pop();}
-
-  }
+    }
 };
 
 
@@ -91,14 +90,12 @@ const ACTIONS = {
      return   dispatch('callAPI', config, {root:true}).then(response=>{
           state.firstLoaded = true;
           if (params ) {
-            if ( !params['append']) {
-                commit('clearList');
-            }
-
             if (response.data.additional) {
               commit('saveAdditional', response.data.additional);
             }
-
+          }
+          if ( !state.append) {
+              commit('clearList');
           }
           commit('saveList', response.data.items);
           commit('savePagination', response.data.pagination );
@@ -240,6 +237,8 @@ export default function (configItems) {
         },
         objects: [],
 
+        // need clear list before save new list
+        append: configItems.append ||false,
         //scipt needs send request for getting full object from server
         getfullObjectFromServer: configItems.getfullObjectFromServer|| false
       },
