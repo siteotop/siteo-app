@@ -16,7 +16,7 @@ export default {
 
       container[i].onclick = function(e){
         e.preventDefault();
-        //href в даному випадку має завжди повний url 
+        //href в даному випадку має завжди повний url
         const url = this.href;
         const host = self.$store.getters['CORE_HOST'];
         const position = url.indexOf(host, 0);
@@ -77,6 +77,10 @@ export default {
   }
   .siteo-html h4{
       font-size: 24px;
+  }
+
+  .siteo-html img {
+    max-width:100% !important;
   }
 
 </style>
