@@ -23,8 +23,8 @@ export default {
     },
 
     maxHeight: {
-      type: String,
-      default: undefined
+      type: [String, Number],
+      default: 300
     }
 
   },
