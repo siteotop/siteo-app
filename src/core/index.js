@@ -208,6 +208,7 @@ Vue.use(Vuetify, {
     VSimpleTable: ()=>import( /* webpackChunkName: "tables" */ 'vuetify/lib/components/VDataTable/VSimpleTable'),
 
     VDatePicker:()=>import( /* webpackChunkName: "pickers" */ 'vuetify/lib/components/VDatePicker/VDatePicker'),
+    VTimePicker:()=>import( /* webpackChunkName: "pickers" */ 'vuetify/lib/components/VTimePicker/VTimePicker'),
 
     VStepper:()=>import( /* webpackChunkName: "stepper" */ 'vuetify/lib/components/VStepper/VStepper'),
     VStepperContent:()=>import( /* webpackChunkName: "stepper" */ 'vuetify/lib/components/VStepper/VStepperContent'),
@@ -220,7 +221,11 @@ Vue.use(Vuetify, {
   //  VStepperItems:()=>import( /* webpackChunkName: "stepper" */ 'vuetify/lib/components/VStepper/VStepperItems'),
 
     VFabTransition,
-    VSlideXTransition
+    VSlideXTransition,
+    VExpansionPanel:()=> import( /* webpackChunkName: "expansion" */ 'vuetify/lib/components/VExpansionPanel/VExpansionPanel'),
+    VExpansionPanels:()=> import( /* webpackChunkName: "expansion" */ 'vuetify/lib/components/VExpansionPanel/VExpansionPanels'),
+    VExpansionPanelContent:()=> import( /* webpackChunkName: "expansion" */ 'vuetify/lib/components/VExpansionPanel/VExpansionPanelContent'),
+    VExpansionPanelHeader:()=> import( /* webpackChunkName: "expansion" */ 'vuetify/lib/components/VExpansionPanel/VExpansionPanelHeader')
   },
 
   directives: {
