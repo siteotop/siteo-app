@@ -15,6 +15,7 @@ export default function (parentGetterUrl) {
           picture: '',
           og_image: '',
           meta_robots: '',
+          f: ''
       }
     },
 

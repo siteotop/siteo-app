@@ -45,6 +45,7 @@ import {
   mdiMinusBox,
   mdiCircle,
   mdiArrowUp,
+  mdiArrowDown,
   mdiChevronDown,
   mdiMenuDown,
   mdiMenu,
@@ -81,6 +82,7 @@ export const vuetifyIcons = {
   checkboxIndeterminate: mdiMinusBox,
   delimiter: mdiCircle, // for carousel
   sort: mdiArrowUp,
+  down: mdiArrowDown,
   expand: mdiChevronDown,
   menu: mdiMenu,
   subgroup: mdiMenuDown,

@@ -29,7 +29,9 @@ export default {
     }
   },
 
-
+  components: {
+    PageRecipe: ()=> import( /* webpackChunkName: "PageRecipe" */ './Functional/Recipe.vue') ,
+  },
 
   watch: {
       objectId(newId, oldId) {
@@ -155,17 +157,21 @@ export default {
               ])
            ] )
         }
+        var component = this.pageObject.f;
+        if (!this.pageObject.f) {
+          if (Array.isArray(this.pageObject.jsonStructure)) {
+             component= 'PageSchema';
+          } else {
+            return h('div', 'jsonStructure is not array');
+          }
+        }
 
-        if (Array.isArray(this.pageObject.jsonStructure)) {
-          return h('PageSchema', {
-            props: {
+        return h(component, {
+          props: {
               structure: this.pageObject.jsonStructure,
-              }
-        })
+            }
+        });
 
-      } else {
-        return h('div', 'jsonStructure is not array');
-      }
 
 
 
