@@ -94,7 +94,7 @@ const ACTIONS = {
               commit('saveAdditional', response.data.additional);
             }
           }
-          if ( !state.append) {
+          if ( !state.append||!params.offset) {
               commit('clearList');
           }
           commit('saveList', response.data.items);
