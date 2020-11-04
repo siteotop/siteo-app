@@ -216,7 +216,7 @@ export default {
     CardValues,
     BPrice: ()=> import( /* webpackChunkName: "CardValues" */ './Cards/BPrice.vue') ,
     ListValues: ()=> import( /* webpackChunkName: "ListValues" */ './Cards/ValuesList.vue') ,
-    DialogVideoYoutube: ()=> import( /* webpackChunkName: "DialogVideo" */ './Cards/VideoYoutube.vue'),
+    DialogVideoYoutube: ()=> import( /* webpackChunkName: "YoutubeVideo" */ './Cards/VideoYoutube.vue'),
   //  PAd: ()=> import( /* webpackChunkName: "adsense" */ '../../Structure/PAdsense/Index.vue')
   },
 

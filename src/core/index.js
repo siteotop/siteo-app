@@ -41,6 +41,7 @@ Vue.component('SiteoPluginForms', ()=> import( /* webpackChunkName: "plugin-form
 Vue.component('SiteoPluginSelectItems', ()=> import( /* webpackChunkName: "plugin-items" */ './components/Plugins/select-items/component.vue'));
 Vue.component('ErrorPage',   ()=>import( /* webpackChunkName: "page-error" */ './components/Routes/Error.vue'));
 
+Vue.component('PYv', ()=> import( /* webpackChunkName: "YoutubeVideo" */ './components/Structure/PYoutubeVideo.vue'));
 
 import {createRESTApi} from './http/rest-api.js';
 
