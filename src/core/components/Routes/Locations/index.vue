@@ -181,11 +181,13 @@
               >
               </CardLocation>
             </v-col>
-            <v-col v-if="i===0||(i%7==0)" >
-              <v-card>
+            <v-col
+              cols="12"
+              v-if="i===0||(i%7==0)" >
+
                 <PAd adType="list">
                 </PAd>
-            </v-card>
+            
             </v-col>
           </template>
 
