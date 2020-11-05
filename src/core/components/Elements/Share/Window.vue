@@ -12,7 +12,7 @@
            primary-title
          >
 
-            <v-icon>$vuetify.icons.share</v-icon>
+            <v-icon left>$vuetify.icons.share</v-icon>
             {{$t('share')}}
           <v-spacer></v-spacer>
            <v-btn    icon   @click="shareWindow = false">
@@ -83,7 +83,17 @@ import {mdiContentCopy} from '@mdi/js';
 export default {
 
   components: {AppSharing},
+  props: {
+      link: {
+          type: String,
+          default: ''
+       },
+      title: {
+        type: String,
+        default: ''
+      }
 
+  },
   data() {
       return {
         snackbar: false,
@@ -96,16 +106,24 @@ export default {
     copy:mdiContentCopy
   },
 
-  mounted() {
+  /*mounted() {
     console.log(this.$meta().resume());
-  },
+  },*/
 
   computed: {
     canonicalUrl () {
-        console.log(this.$route);
-        return window.location.origin + window.location.pathname;
+        //console.log(this.$route);
+        if (this.link) {
+            return this.link;
+        } else {
+          return window.location.origin + window.location.pathname;
+        }
+
     },
     ogTitle() {
+      if (this.title) {
+        return this.title;
+      }
       var meta = this.$meta().resume();
 
       if (meta.metaInfo&&meta.metaInfo.title)

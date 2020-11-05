@@ -42,6 +42,9 @@ Vue.component('SiteoPluginSelectItems', ()=> import( /* webpackChunkName: "plugi
 Vue.component('ErrorPage',   ()=>import( /* webpackChunkName: "page-error" */ './components/Routes/Error.vue'));
 
 Vue.component('PYv', ()=> import( /* webpackChunkName: "YoutubeVideo" */ './components/Structure/PYoutubeVideo.vue'));
+Vue.component('ShareWindow',  ()=>import(/* webpackChunkName: "ShareSave" */'./components/Elements/Share/Window.vue'));
+
+
 
 import {createRESTApi} from './http/rest-api.js';
 

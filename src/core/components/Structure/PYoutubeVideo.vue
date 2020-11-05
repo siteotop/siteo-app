@@ -40,6 +40,24 @@
           {{thumbUp}}
         </v-icon>  Like
        </v-btn>
+       <v-spacer>
+       </v-spacer>
+       <v-btn
+         text
+         color="primary accent-4"
+         @click="share=true"
+       >
+        <v-icon left>
+           $vuetify.icons.share
+        </v-icon>  {{$t('share')}}
+       </v-btn>
+       <ShareWindow
+         v-if="share"
+         :link="youtubeLink"
+         :title="'Youtube link'"
+         @close="share=false"
+        >
+       </ShareWindow>
 </v-card-actions>
 </v-card>
 </template>
@@ -57,6 +75,7 @@ export default {
     return {
       clearVideoId: '',
       start: '',
+      share: false,
       loaded: false,
       thumbUp: mdiThumbUpOutline
     }
