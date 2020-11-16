@@ -1,10 +1,10 @@
 <template >
-<div class="siteo-html" v-html="cntnt.t">
+<div :class="classText||'siteo-html'" v-html="cntnt.t">
 </div>
 </template>
 <script>
 export default {
-  props: ['cntnt'],
+  props: ['cntnt', 'classText'],
 
   // на SSR сервері це не потрібно тому ми робимо це в mounted
   mounted() {
