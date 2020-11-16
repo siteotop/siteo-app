@@ -63,7 +63,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
-    "@mdi/js": "^3.9.97",
+    "@mdi/js": "^5.8.55",
     "axios": "^0.19.2",
     "date-fns": "^1.29.0",
     "express": "^4.17.1",
