@@ -1,9 +1,8 @@
 <template >
-  <v-dialog
+  <component :is="dialog?'v-dialog': 'v-sheet'"
       v-model="shareWindow"
-      width="500"
+      :width="width"
       :fullscreen="$vuetify.breakpoint.xs"
-
      >
        <v-card>
 
@@ -15,7 +14,7 @@
             <v-icon left>$vuetify.icons.share</v-icon>
             {{$t('share')}}
           <v-spacer></v-spacer>
-           <v-btn    icon   @click="shareWindow = false">
+           <v-btn v-if="dialog"   icon   @click="shareWindow = false">
              <v-icon>$vuetify.icons.close</v-icon>
            </v-btn>
          </v-card-title>
@@ -24,10 +23,12 @@
            <v-subheader>
               {{ogTitle}}
            </v-subheader>
-           <v-text-field
+           <v-textarea
               id="shareCopyId"
               outlined
               :value="canonicalUrl"
+              auto-grow
+              rows="1"
               readonly>
              <template v-slot:append>
                <v-btn
@@ -39,9 +40,10 @@
             </template>
 
 
-           </v-text-field>
+           </v-textarea>
 
            <AppSharing
+              v-if="share"
               :cannonical="canonicalUrl"
               :ogTitle="ogTitle"
 
@@ -51,7 +53,7 @@
 
 
 
-         <v-card-actions>
+         <v-card-actions v-if="dialog">
            <v-spacer></v-spacer>
            <v-btn
              color="primary"
@@ -64,13 +66,13 @@
        </v-card>
        <v-snackbar
           v-model="snackbar"
-
           color="info"
+          bottom
+          absolute
           >
           Link Copied
-
-        </v-snackbar>
- </v-dialog>
+       </v-snackbar>
+ </component>
 </template>
 
 <script>
@@ -91,6 +93,19 @@ export default {
       title: {
         type: String,
         default: ''
+      },
+
+      dialog: {
+        type: Boolean,
+        default:true
+      },
+      share: {
+        type: Boolean,
+        default: true
+      },
+      width: {
+        type:String,
+        default: '500'
       }
 
   },
