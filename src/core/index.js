@@ -42,6 +42,8 @@ Vue.component('SiteoPluginSelectItems', ()=> import( /* webpackChunkName: "plugi
 Vue.component('ErrorPage',   ()=>import( /* webpackChunkName: "page-error" */ './components/Routes/Error.vue'));
 
 Vue.component('PYv', ()=> import( /* webpackChunkName: "YoutubeVideo" */ './components/Structure/PYoutubeVideo.vue'));
+Vue.component('DialogVideoYoutube',  ()=> import( /* webpackChunkName: "YoutubeVideo" */ './components/Elements/VideoYoutube.vue'));
+
 Vue.component('ShareWindow',  ()=>import(/* webpackChunkName: "ShareSave" */'./components/Elements/Share/Window.vue'));
 
 
@@ -121,7 +123,8 @@ import Vuetify, {
   VStepperItems,
   VStepperHeader,
   VFabTransition,
-  VSlideXTransition
+  VSlideXTransition,
+  VPagination
 } from 'vuetify/lib'
 import { Ripple, Scroll, Touch, Resize, Mutate, Intersect } from 'vuetify/lib/directives'
 
@@ -218,7 +221,7 @@ Vue.use(Vuetify, {
     VStepperContent:()=>import( /* webpackChunkName: "stepper" */ 'vuetify/lib/components/VStepper/VStepperContent'),
   //  VStepperHeader:()=>import( /* webpackChunkName: "stepper" */ 'vuetify/lib/components/VStepper/VStepperHeader'),
     VStepperStep:()=>import( /* webpackChunkName: "stepper" */ 'vuetify/lib/components/VStepper/VStepperStep'),
-    VPagination:()=>import( /* webpackChunkName: "stepper" */ 'vuetify/lib/components/VPagination/VPagination'),
+    VPagination,
     VStepperItems,
     VStepperHeader,
 
@@ -229,7 +232,9 @@ Vue.use(Vuetify, {
     VExpansionPanel:()=> import( /* webpackChunkName: "expansion" */ 'vuetify/lib/components/VExpansionPanel/VExpansionPanel'),
     VExpansionPanels:()=> import( /* webpackChunkName: "expansion" */ 'vuetify/lib/components/VExpansionPanel/VExpansionPanels'),
     VExpansionPanelContent:()=> import( /* webpackChunkName: "expansion" */ 'vuetify/lib/components/VExpansionPanel/VExpansionPanelContent'),
-    VExpansionPanelHeader:()=> import( /* webpackChunkName: "expansion" */ 'vuetify/lib/components/VExpansionPanel/VExpansionPanelHeader')
+    VExpansionPanelHeader:()=> import( /* webpackChunkName: "expansion" */ 'vuetify/lib/components/VExpansionPanel/VExpansionPanelHeader'),
+    VTimeline:()=> import( /* webpackChunkName: "timeline" */ 'vuetify/lib/components/VTimeline/VTimeline'),
+    VTimelineItem:()=> import( /* webpackChunkName: "timeline" */ 'vuetify/lib/components/VTimeline/VTimelineItem')
   },
 
   directives: {

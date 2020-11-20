@@ -16,7 +16,7 @@
    <!-- https://developers.google.com/youtube/player_parameters?hl=ru -->
     <iframe
       ref="iframe"
-      @load="loaded=true"
+      @load="onLoad"
       width="100%"
       height="100%"
       frameborder="0"
@@ -94,22 +94,34 @@ export default {
     var id = this.cntnt.v.match(new RegExp("([^&?]+)?|&?"));
      if (id&&id[1]) {
        this.clearVideoId =id[1];
-     }   else {
-
      }
-    var time =   this.cntnt.v.match(new RegExp("t=([0-9]+)"));
-    //time example ["t=23", "23", index: 0, input: "t=23", groups: undefined]
-    if (time&& time[1]) {
+
+     var time =   this.cntnt.v.match(new RegExp("t=([0-9]+)"));
+
+     //time example ["t=23", "23", index: 0, input: "t=23", groups: undefined]
+     if (time&& time[1]) {
        this.start = time[1]
-    }
+     }
+
+     // convert time 00:00 to seconds
+     if (this.cntnt.tc) {
+       var time  = this.cntnt.tc.split(':');
+       if (time.length==2) {
+          this.start = parseInt(time[0])*60 +  parseInt(time[1]);
+       }
+       console.log(this.start);
+     }
 
   },
 
   methods: {
     onWindowLoad() {
-
       var src= this.$refs['iframe'].getAttribute('data-src')
       this.$refs['iframe'].setAttribute('src', src);
+    },
+    onLoad() {
+      this.loaded=true;
+      this.$emit('loaded', true);
     }
   },
 

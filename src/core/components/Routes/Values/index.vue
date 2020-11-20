@@ -144,7 +144,13 @@
     </v-row>
    </v-container>
 
-   <DialogVideoYoutube v-if="videoActiveObject" :videoId="videoActiveObject.videoId"  :title="videoActiveObject.title" @close-dialog="videoActiveObject=false">
+   <DialogVideoYoutube
+    v-if="videoActiveObject"
+    :PYv="{
+        v: videoActiveObject.videoId,
+        t: videoActiveObject.title
+      }"
+    @close-dialog="videoActiveObject=false">
    </DialogVideoYoutube>
 
   <!--<slot  name="pagination">
@@ -215,9 +221,8 @@ export default {
   components: {
     CardValues,
     BPrice: ()=> import( /* webpackChunkName: "CardValues" */ './Cards/BPrice.vue') ,
-    ListValues: ()=> import( /* webpackChunkName: "ListValues" */ './Cards/ValuesList.vue') ,
-    DialogVideoYoutube: ()=> import( /* webpackChunkName: "YoutubeVideo" */ './Cards/VideoYoutube.vue'),
-  //  PAd: ()=> import( /* webpackChunkName: "adsense" */ '../../Structure/PAdsense/Index.vue')
+    ListValues: ()=> import( /* webpackChunkName: "ListValues" */ './Cards/ValuesList.vue')
+
   },
 
   _icons: {
