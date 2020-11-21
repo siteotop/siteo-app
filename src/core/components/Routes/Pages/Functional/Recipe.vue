@@ -20,7 +20,7 @@
     </template>
     <v-spacer></v-spacer>
 
-    <v-toolbar-title>{{recipe.title}}</v-toolbar-title>
+    <v-toolbar-title>{{recipe.jsonStructure.n}}</v-toolbar-title>
 
     <v-spacer></v-spacer>
 
@@ -80,7 +80,7 @@
           <v-toolbar color="grey lighten-4" flat>
 
 
-          <h2>Інгрідієнти </h2> <span class="text-h5 grey--text text--lighten-2 pl-1">{{settings.length}}/{{recipe.jsonStructure.ings.length}}</span>
+          <h2>Інгредієнти </h2> <span class="text-h5 grey--text text--lighten-2 pl-1">{{settings.length}}/{{recipe.jsonStructure.ings.length}}</span>
 
           <v-spacer></v-spacer>
 
@@ -154,35 +154,33 @@
                 </template>
               </v-list-item>
             </v-list-item-group>
-            <v-progress-linear
+
+        </v-card-text>
+        <v-card-text class="mb-3" v-if="settings.length">
+          <!--  <v-progress-linear
               v-if="settings.length"
 
               :value="settings.length"
             >
-           </v-progress-linear>
+          </v-progress-linear> -->
+          <ShareWindow
+            :title="'Скопіювати інгредієнти'"
+            :link="selectedText"
+            :dialog="false"
+            :share="false"
+            :width="'100%'"
+           >
+          </ShareWindow>
         </v-card-text>
-        <v-card-actions class="mb-3" v-if="settings.length">
-
-        <ShareWindow
-          :title="'Скопіювати інгредієнти'"
-          :link="selectedText"
-          :dialog="false"
-          :share="false"
-          :width="'100%'"
-         >
-        </ShareWindow>
-        </v-card-actions>
-        <v-lazy>
-          <PAd adType="list" >
-        </PAd>
-        </v-lazy>
+          <PAd >
+          </PAd>
       </v-card>
     </v-col>
   </v-row>
 
   <PYv
     id="video"
-
+    @loaded="video=true"
     v-if="recipe.jsonStructure.v"
         v-bind="{
             cntnt: {
@@ -195,35 +193,177 @@
     </PYv>
 
 
+  <v-card
+  id="how-to"
+  class="mt-3"
+  >
+    <v-toolbar color="grey lighten-4" flat>
+      <v-toolbar-title>
+         <h2>  Як приготувати</h2>
+       </v-toolbar-title>
+      <template v-slot:extension>
+           {{recipe.jsonStructure.tp}} <v-icon right>{{$options._icons.time}}</v-icon>
+           <v-spacer></v-spacer>
+           {{recipe.jsonStructure.tc}} <v-icon right>{{$options._icons.time}}</v-icon>
+           <v-spacer></v-spacer>
+           {{fullTime}} <v-icon right>{{$options._icons.time}}</v-icon>
+       </template>
 
-  <v-container
-    id="how-to"
+    </v-toolbar>
+
+    <v-card-subtitle>Покроковий рецепт</v-card-subtitle>
+    <v-card-text class="pl-0 ml-0">
+      <v-timeline
+        align-top
+        :dense="$vuetify.breakpoint.smAndDown"
+        dense
+
+      >
+       <template
+        v-for="(step, i) in recipe.jsonStructure.sts">
+        <v-timeline-item
+          v-if="i==3||i==7"
+        >
+          <v-card>
+            <PAd >
+            </PAd>
+          </v-card>
+        </v-timeline-item>
+        <v-timeline-item
+          :id="'step'+i"
+          :key="i"
+          fill-dot
+          class="white--text font-weight-medium "
+        >
+        <template v-slot:icon>
+          <span>{{(i+1)}}</span>
+        </template>
+          <v-card
+
+            hover
+          >
+            <v-card-title class="title">
+              {{step.t}}
+            </v-card-title>
+
+            <v-card-text class="white text--primary">
+                 {{step.d}}
+            </v-card-text>
+
+            <v-card-actions
+
+            >
+
+              <v-tooltip
+                v-if="video&&step.c"
+                top
+              >
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn
+                    small
+                    class="mx-0"
+                    color="grey"
+                    outlined
+                    v-bind="attrs"
+                    v-on:click.stop="timeVideo(step.c)"
+                    v-on="on"
+                  >
+                    {{step.c}}
+                    <v-icon>
+                      $vuetify.icons.video
+                    </v-icon>
+                  </v-btn>
+                </template>
+                <span>Цей момент у відео</span>
+              </v-tooltip>
+              <v-spacer>
+              </v-spacer>
+
+            </v-card-actions>
+          </v-card>
+      </v-timeline-item>
+     </template>
+    </v-timeline>
+    <DialogVideoYoutube
+       v-if="tVideo"
+     :PYv="{
+         v: recipe.jsonStructure.v,
+         t: recipe.title,
+         tc: tVideo
+       }"
+     @close-dialog="tVideo=false">
+    </DialogVideoYoutube>
+
+    </v-card-text>
+  </v-card>
+
+  <v-card
+    v-if="recipe.jsonStructure.tps.length"
+    id="tips"
+    class="mt-3"
+    dark
+    color="blue-grey"
+  >
+    <v-card-title>
+         <h2>Не забувай!</h2>
+    </v-card-title>
+
+    <v-card-text>
+        <v-alert
+          v-for="(tip, i) in recipe.jsonStructure.tps"
+          color="blue-grey darken-1"
+          dark
+          icon="$vuetify.icons.info"
+          border="right"
+          prominent
+        >
+            <div class="title">{{tip.t}}</div>
+            <div>{{tip.d}}</div>
+        </v-alert>
+    </v-card-text>
+  </v-card>
+
+  <v-card
+    class="mt-3"
+    v-if="recipe.jsonStructure.d">
+    <v-card-text>
+      <PHtml v-bind="{
+          cntnt: {t: recipe.jsonStructure.d},
+          classText: 'body-1'
+        }">
+      </PHtml>
+    </v-card-text>
+  </v-card>
+
+<v-lazy>
+  <v-card
+    class="my-3 pb-5"
+    color="primary"
     >
-    <h2 >Як приготувати </h2>
-    <v-subheader>покроковий рецепт</v-subheader>
-  <v-row v-for="(step, i) in recipe.jsonStructure.sts">
-    <v-col cols="1">
-      <v-avatar color="grey lighten-3">{{i+1}}</v-avatar>
-    </v-col>
-    <v-col cols="10" >
-      <v-card flat>
-         <v-card-title>
-            {{step.t}}
-         </v-card-title>
-         <v-card-text>
-             {{step.d}}
-         </v-card-text>
-      </v-card>
-    </v-col>
-    <v-col cols="1">
-        {{step.c}}
-    </v-col>
-  </v-row>
-</v-container>
+    <v-card-subtitle class="title white--text">
+      Автор
+    </v-card-subtitle>
+    <v-list-item
+          dark
+         >
+         <v-list-item-avatar light color="primary darken-2">
+           {{author.name[0]}}
+         </v-list-item-avatar>
 
+         <v-list-item-content>
+           <v-list-item-title >{{author.name}}</v-list-item-title>
 
+         </v-list-item-content>
+         <v-list-item-action>
+           <v-btn target="_blank" rel="author,nofollw" :href="author.url">Підписатися</v-btn>
+         </v-list-item-action>
+    </v-list-item>
+  </v-card>
+</v-lazy>
 </v-container>
-  </v-responsive>
+<script v-html="jsonLtd" type="application/ld+json">
+</script>
+</v-responsive>
 </template>
 <script>
 
@@ -231,7 +371,8 @@ import { mapState } from 'vuex';
 import PHtml  from  '../../../Structure/PHtml.vue';
 
 import {
-  mdiNoodles
+  mdiNoodles,
+  mdiClockOutline
  } from '@mdi/js'
 
 export default {
@@ -240,7 +381,8 @@ export default {
   },
 
   _icons: {
-    portions: mdiNoodles
+    portions: mdiNoodles,
+    time:mdiClockOutline
   },
 
   data() {
@@ -253,9 +395,12 @@ export default {
       portSelect:[], // items count for selection
       tempPortions: false,
       menu: [],
+      video: false, // when video loaded in frame
+      tVideo: false, // timecode for video
       offsetTop: '54px',
       offsets: [],
       timeout: null,
+
     }
   },
   mounted() {
@@ -283,6 +428,56 @@ export default {
   },
 
   computed: {
+    author() {
+      return {
+         '@type': this.recipe.jsonStructure.author.t||'Organization',
+         'name': this.recipe.jsonStructure.author.n||this.$store.state.appInstance.objectActive.name,
+         "url": this.recipe.jsonStructure.author.u || this.$store.getters.CORE_HOST
+        }
+    },
+    jsonLtd() {
+
+        var link = this.$store.getters.CORE_HOST+this.$route.path;
+        return {
+          "@context": "https://schema.org/",
+          "@type": "Recipe",
+          "name": this.recipe.jsonStructure.n,
+          "image": [
+            this.recipe.picture,
+            this.recipe.thumb420
+          ],
+          "author": this.author,
+          "datePublished": this.recipe.datePublished.substring(0,10),
+          "description":this.recipe.description,
+          "prepTime": `PT${this.recipe.jsonStructure.tp}M`,
+          "cookTime": `PT${this.recipe.jsonStructure.tc}M`,
+          "totalTime": `PT${this.fullTime}M`,
+          "keywords": this.recipe.jsonStructure.k,
+          "recipeYield": this.recipe.jsonStructure.pc,
+          "recipeCategory": this.recipe.jsonStructure.cat,
+          "recipeCuisine": this.recipe.jsonStructure.cui,
+          /*"nutrition": {
+            "@type": "NutritionInformation",
+            "calories": "270 calories"
+          },*/
+          "recipeIngredient": this.recipe.jsonStructure.ings.map(function(i){
+            return i.n + ' - '+(i.c||'')+' '+(i.t||'');
+          }),
+          "recipeInstructions":this.recipe.jsonStructure.sts.map((step, i)=>{
+            return {
+              "@type": "HowToStep",
+              "name": step.t,
+              "text": step.d,
+              "url": link+"#step"+(i+1),
+              "image": step.i
+            }
+          }) ,
+
+        };
+    },
+    fullTime() {
+        return parseInt(this.recipe.jsonStructure.tp) + parseInt(this.recipe.jsonStructure.tc);
+    },
     /**
       generate text for copied
     */
@@ -413,7 +608,11 @@ export default {
 
       },
 
-    async changeAll() {
+      timeVideo(time) {
+        this.tVideo = time;
+      },
+
+      async changeAll() {
           if (this.checkall) {
             this.settings=[];
             let end = this.recipe.jsonStructure.ings.length-1;

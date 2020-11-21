@@ -13,9 +13,12 @@ export default function (parentGetterUrl) {
           title: '',
           description:'',
           picture: '',
+          thumb420: '',
+          thumb120: '',
           og_image: '',
           meta_robots: '',
-          f: ''
+          f: '',
+          datePublished:''
       }
     },
 

@@ -1,5 +1,5 @@
 <template>
-<v-sheet>
+<v-sheet >
   <div ref="block" :style="{width:width, maxHeight: maxHeight , border: border}">
     <ins
       v-if="showBlock"
