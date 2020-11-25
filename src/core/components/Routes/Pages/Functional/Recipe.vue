@@ -51,13 +51,29 @@
   style="margin-top:240px;"
   v-scroll="onScroll"
   >
+  <v-breadcrumbs
+  :items="breadc">
+    <template v-slot:item="{ item }">
+      <v-breadcrumbs-item
+        :to="item.path||'/'"
+        :disabled="item.disabled"
+      >
+        {{ item.text}}
+      </v-breadcrumbs-item>
+    </template>
+  </v-breadcrumbs>
    <v-row>
     <v-col cols="12" class="text-center mb-2">
       <h1 class="text-h6 text-md-h2">{{recipe.title}}</h1>
         {{recipe.description}}
       <ul class="text-left mt-4 subtitle-1">
         <li v-for="(item, i) in menu">
-          <a :href="('#'+item.hash)">{{item.title}}</a>
+          <a
+          :href="('#'+item.hash)"
+          @click="gotoContent(item.hash)"
+          >
+          {{item.title}}
+          </a>
         </li>
       </ul>
     </v-col>
@@ -199,7 +215,7 @@
   >
     <v-toolbar color="grey lighten-4" flat>
       <v-toolbar-title>
-         <h2>  Як приготувати</h2>
+         <h2>  Як приготувати {{recipe.jsonStructure.n}}</h2>
        </v-toolbar-title>
       <template v-slot:extension>
            {{recipe.jsonStructure.tp}} <v-icon right>{{$options._icons.time}}</v-icon>
@@ -219,6 +235,42 @@
         dense
 
       >
+          <v-timeline-item
+            color="blue-grey darken-1"
+          >
+            <v-alert
+              :value="true"
+              color="blue-grey darken-1"
+              dark
+              >
+              <div class="title">
+                Перед приготуванням страви
+              </div>
+              <v-row align="center">
+                <v-col class="grow">
+                  Підготуйте всі <a href="#ingredients">інгредієнти</a> для страви <strong>"{{recipe.jsonStructure.n}}"</strong>
+                  <div v-if="recipe.jsonStructure.kitchen.length">
+                  Підготуйте основні засоби для приготування:
+                    <v-chip v-for="(item,i) in recipe.jsonStructure.kitchen"
+                    :key="i"
+                    small
+                    >
+                      {{item}}
+                    </v-chip>
+                  </div>
+            </v-col>
+               <v-col class="shrink">
+                 <v-lazy>
+                   <v-btn :disabled="playCook.length!=0"
+                    @click="playStart">
+                    Почати готувати
+                  </v-btn>
+                </v-lazy>
+               </v-col>
+             </v-row>
+            </v-alert>
+          </v-timeline-item>
+
        <template
         v-for="(step, i) in recipe.jsonStructure.sts">
         <v-timeline-item
@@ -232,21 +284,23 @@
         <v-timeline-item
           :id="'step'+i"
           :key="i"
-          fill-dot
+          :fill-dot="!playCook[i]"
+          :large="!!playCook[i]"
+          :color="playCook[i]==2?'grey lighten-2':'primary'"
           class="white--text font-weight-medium "
         >
         <template v-slot:icon>
-          <span>{{(i+1)}}</span>
+          <span >{{(i+1)}}</span>
         </template>
           <v-card
-
+            :class="playCook[i]==2?'grey--text lighten-2':''"
             hover
           >
             <v-card-title class="title">
-              {{step.t}}
+              {{step.t}} <v-spacer></v-spacer> <v-icon left v-if="playCook[i]==2" color="green">$vuetify.icons.success</v-icon>
             </v-card-title>
 
-            <v-card-text class="white text--primary">
+            <v-card-text >
                  {{step.d}}
             </v-card-text>
 
@@ -278,11 +332,64 @@
               </v-tooltip>
               <v-spacer>
               </v-spacer>
-
+              <VSlideXTransition>
+              <v-btn v-if="playCook[i]>0"
+                :disabled="playCook[i]==2"
+                @click="playStart(i)"
+              >
+                 Зроблено
+              </v-btn>
+              </VSlideXTransition>
             </v-card-actions>
           </v-card>
       </v-timeline-item>
      </template>
+     <v-fab-transition>
+       <v-timeline-item v-if="playFinish" large>
+         <template v-slot:icon>
+           <v-icon>
+              {{$options._icons.star}}
+           </v-icon>
+         </template>
+         <v-card
+
+         >
+           <v-card-title class="title">
+            ВІТАЄМО І СМАЧНОГО! Так тримати!
+           </v-card-title>
+
+           <v-card-text >
+                Ми сподіваємось у вас все вийшло! Бажаємо вам приємного настрою та наснаги в нових кулінарних починаннях!
+            <v-row>
+              <v-col>
+                <v-btn
+
+                  color="primary accent-4"
+                  @click="playShare=true"
+                >
+                 <v-icon left>
+                    $vuetify.icons.share
+                 </v-icon>  {{$t('share')}}
+                </v-btn>
+              </v-col>
+              <v-col>
+                <v-btn
+                color="primary"
+                target="_blank"
+                :href="author.url">Підписатись на автора</v-btn>
+              </v-col>
+            </v-row>  
+           </v-card-text>
+
+
+         <ShareWindow
+           v-if="playShare"
+           @close="playShare=false"
+          >
+         </ShareWindow>
+       </v-card>
+       </v-timeline-item>
+     </v-fab-transition>
     </v-timeline>
     <DialogVideoYoutube
        v-if="tVideo"
@@ -325,18 +432,38 @@
 
   <v-card
     class="mt-3"
-    v-if="recipe.jsonStructure.d">
-    <v-card-text>
+    >
+    <v-card-text v-if="recipe.jsonStructure.d">
       <PHtml v-bind="{
           cntnt: {t: recipe.jsonStructure.d},
           classText: 'body-1'
         }">
       </PHtml>
     </v-card-text>
+    <v-card-subtitle class="title">
+      Схожі рецепти страв
+    </v-card-subtitle>
+    <v-card-text v-if="recipe.jsonStructure.lnks.length">
+      <router-link
+        v-for="(link, i) in recipe.jsonStructure.lnks"
+        :key="i"
+        :to="link.u"
+      >
+        {{link.t}}
+      </router-link>
+
+    </v-card-text>
   </v-card>
 
-<v-lazy>
+<v-lazy
+:options="{
+        threshold: 1
+      }"
+  min-height="150"
+>
+  <v-fab-transition>
   <v-card
+    id="author"
     class="my-3 pb-5"
     color="primary"
     >
@@ -359,9 +486,13 @@
          </v-list-item-action>
     </v-list-item>
   </v-card>
+</v-fab-transition>
 </v-lazy>
+
 </v-container>
 <script v-html="jsonLtd" type="application/ld+json">
+</script>
+<script v-html="breadcrumbs" type="application/ld+json">
 </script>
 </v-responsive>
 </template>
@@ -372,7 +503,8 @@ import PHtml  from  '../../../Structure/PHtml.vue';
 
 import {
   mdiNoodles,
-  mdiClockOutline
+  mdiClockOutline,
+  mdiStar
  } from '@mdi/js'
 
 export default {
@@ -382,7 +514,8 @@ export default {
 
   _icons: {
     portions: mdiNoodles,
-    time:mdiClockOutline
+    time:mdiClockOutline,
+    star: mdiStar
   },
 
   data() {
@@ -400,6 +533,10 @@ export default {
       offsetTop: '54px',
       offsets: [],
       timeout: null,
+      playCook: [],
+      playFinish:false,
+      playShare: false,
+      breadc: []
 
     }
   },
@@ -413,9 +550,9 @@ export default {
   },
 
 
-  /*created() {
-
-  },*/
+  created() {
+    this.createBreadc();
+  },
 
   watch: {
     '$vuetify.breakpoint.mobile': function(newm, oldm) {
@@ -428,6 +565,7 @@ export default {
   },
 
   computed: {
+
     author() {
       return {
          '@type': this.recipe.jsonStructure.author.t||'Organization',
@@ -435,6 +573,22 @@ export default {
          "url": this.recipe.jsonStructure.author.u || this.$store.getters.CORE_HOST
         }
     },
+
+    breadcrumbs() {
+      return {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": this.breadc.map((item, i)=>{
+        return {
+          "@type": "ListItem",
+          "position":(i+1),
+          "name": item.text,
+          "item": this.$store.getters.CORE_HOST + item.path
+        }
+      })
+      }
+    },
+
     jsonLtd() {
 
         var link = this.$store.getters.CORE_HOST+this.$route.path;
@@ -510,6 +664,24 @@ export default {
          await  new Promise(resolve => setTimeout(resolve, 200))
      },
 
+     createBreadc() {
+
+        // app link
+        this.breadc.push({
+         text: this.$store.state.appInstance.objectActive.name,
+         path: '',
+         disabled:false,
+         property:"item",
+         typeof:"WebPage"
+        });
+        // last link
+        this.breadc.push({
+           text: this.recipe.jsonStructure.n,
+           path: this.$route.path,
+           disabled: true
+        });
+      //  return breadc;
+     },
      /**
       Generate menu for recipe
      */
@@ -545,6 +717,7 @@ export default {
             title: 'Поради',
             list: true
           },
+
 
         ];
 
@@ -679,6 +852,22 @@ export default {
 
         this.timeout = setTimeout(this.findActiveIndex, 17)
       },
+
+      /**
+        playCook = 1 active
+        playCook = 2 done
+      */
+      async playStart(i) {
+
+          if (this.playCook[i]) {
+            this.playCook[i]++;
+          }
+          this.playCook.push(1);
+          if (this.playCook.length ==   (this.recipe.jsonStructure.sts.length+1)) {
+            this.playFinish = true;
+          }
+
+      }
 
 
   }
