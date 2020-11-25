@@ -124,7 +124,11 @@ import Vuetify, {
   VStepperHeader,
   VFabTransition,
   VSlideXTransition,
-  VPagination
+  VPagination,
+  VBreadcrumbs,
+  VBreadcrumbsItem,
+  VExpandTransition
+
 } from 'vuetify/lib'
 import { Ripple, Scroll, Touch, Resize, Mutate, Intersect } from 'vuetify/lib/directives'
 
@@ -173,7 +177,8 @@ Vue.use(Vuetify, {
     VListItemTitle,
     VMenu,
     VNavigationDrawer,
-
+    VBreadcrumbs,
+    VBreadcrumbsItem,
     VSheet,
     VSkeletonLoader,
     VSubheader,
@@ -228,6 +233,7 @@ Vue.use(Vuetify, {
   //  VStepperItems:()=>import( /* webpackChunkName: "stepper" */ 'vuetify/lib/components/VStepper/VStepperItems'),
 
     VFabTransition,
+    VExpandTransition,
     VSlideXTransition,
     VExpansionPanel:()=> import( /* webpackChunkName: "expansion" */ 'vuetify/lib/components/VExpansionPanel/VExpansionPanel'),
     VExpansionPanels:()=> import( /* webpackChunkName: "expansion" */ 'vuetify/lib/components/VExpansionPanel/VExpansionPanels'),
