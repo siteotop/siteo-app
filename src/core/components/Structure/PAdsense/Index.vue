@@ -1,12 +1,14 @@
 <template>
-<div ref="block" :style="{width:width, maxHeight: maxHeight , border: border}">
-  <ins
-    v-if="showBlock"
-    class="adsbygoogle"
-    v-bind="configAdsense"
-    >
-  </ins>
-</div>
+<v-sheet >
+  <div ref="block" :style="{width:width, maxHeight: maxHeight , border: border}">
+    <ins
+      v-if="showBlock"
+      class="adsbygoogle"
+      v-bind="configAdsense"
+      >
+    </ins>
+  </div>
+</v-sheet>
 </template>
 
 <script>
@@ -23,8 +25,8 @@ export default {
     },
 
     maxHeight: {
-      type: String,
-      default: undefined
+      type: [String, Number],
+      default: 300
     }
 
   },

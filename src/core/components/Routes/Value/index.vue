@@ -73,7 +73,10 @@
             </v-container>
           </v-col>
       </v-row>
-
+  <v-row>
+    <PAd key="advvalue">
+    </PAd>
+  </v-row>
   </v-container>
 
 </section>

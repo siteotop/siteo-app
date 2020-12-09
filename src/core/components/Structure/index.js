@@ -3,6 +3,8 @@ export {default as PAv}  from  './PAvatar.vue';
 export {default as PCd}  from  './PCard.vue';
 //export {default as PCs}  from  './PCarusel.vue';
 export {default as PCt}  from  './PContainer.vue';
+export {default as PCh}  from  './Content/PHeader.vue';
+export {default as PCf}  from  './Content/PFooter.vue';
 export {default as PRw}  from  './PRow.vue';
 //export {default as PDl}  from  './PDialog.vue';
 //export {default as PDm}  from  './PDialogMenu';

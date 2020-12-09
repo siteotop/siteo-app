@@ -33,104 +33,90 @@
       >
 
       <template v-slot:prepend>
-          <v-toolbar
-            flat
-          >
+        <v-toolbar
+          flat
+        >
+        <v-toolbar-title> <h1 class="text-h6">{{pageTitleH1}}</h1></v-toolbar-title>
+        <v-spacer>
+        </v-spacer>
+        <v-btn
+          icon
+          @click="toogleDrawer">
+          <v-icon v-if="!mobileMode">$vuetify.icons.close</v-icon>
+          <v-icon v-else>{{$options._icons.map}}</v-icon>
+        </v-btn>
+      </v-toolbar>
+        <component
+         :is="'v-img'"
+         :src="categoryObject.thumb420"
+         max-height="150"
+         :gradient="'to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)'"
+         class="primary darken-4"
+         >
+           <v-container>
+             <v-row>
 
-            <v-chip
-               v-if="categoryObject.title"
-               close
-               @click:close="onChangeCategory(false)"
-               >
-               <v-avatar left>
-                 <v-img :src="categoryObject.thumb420"></v-img>
-               </v-avatar>{{categoryObject.title}}
-             </v-chip>
-            <v-chip
-              v-if="locationObject.title"
-              close
-              @click:close="onChangeLocation(false)"
-             >
+               <v-col>
+                 <SiteoPlugin
+                     pluginName="SiteoPluginSelectItems"
+                     :value ="categoryObject.idUrl"
+                     :pluginOptions="{
+                       eventOnChange: onChangeCategory,
+                       label: $store.getters.getSiteoConfig('t_ls'),
+                       startObject: categoryObject._id? categoryObject:false,
 
-             {{locationObject.title}}
-            </v-chip>
-            <v-spacer>
-            </v-spacer>
-            <v-btn
-              icon
-              @click="toogleDrawer">
-              <v-icon v-if="!mobileMode">$vuetify.icons.close</v-icon>
-              <v-icon v-else>{{$options._icons.map}}</v-icon>
-            </v-btn>
-          </v-toolbar>
+                       vComp: {
+                         //hint:'Choose website',
+                         itemValue:'idUrl',
+                         itemText:'title',
+                         //chips: true,
+                         //deletableChips:true,
+                         rounded: false,
+                         clearable: true
+                        }
+                   }"
+                 >
+                 </SiteoPlugin>
+                 <SiteoPlugin
+
+                     pluginName="SiteoPluginSelectItems"
+                     :value ="locationObject.idUrl"
+                     :pluginOptions="{
+                       internalApi:citiesLink,
+                     //  queryParams: ,
+                       label: $store.getters.getSiteoConfig('t_ac'),
+                       eventOnChange: onChangeLocation  ,
+                       startObject: locationObject._id? locationObject:false,
+
+                       vComp: {
+                         itemValue:'idUrl',
+                         itemText:'title',
+                         hint:'Choose website',
+                         rounded: false,
+                         clearable: true
+                       //  chips: true,
+                       //  deletableChips:true,
+                        }
+                   }"
+                 >
+                 </SiteoPlugin>
+
+               </v-col>
+               <v-col cols="12" class="text-center white--text">
+
+                   <strong class="text-subtitle-1">{{categoryObject.subtitle}}</strong>
+               </v-col>
+
+             </v-row>
+           </v-container>
+        </component>
         </template>
 
       <v-card
         tile
         class="grey lighten-5"
        >
-       <component
-        :is="'v-img'"
-        :src="categoryObject.thumb420"
-        height="300"
-        :gradient="'to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)'"
-        class="primary darken-4"
-        >
-          <v-container>
-            <v-row>
-              <v-col cols="12" class="text-center white--text">
-                  <h1 class="text-h5 text-sm-h3">{{pageTitleH1}}</h1>
-                  <strong class="text-subtitle-1">{{categoryObject.subtitle}}</strong>
-              </v-col>
-              <v-col>
-                <SiteoPlugin
-                    pluginName="SiteoPluginSelectItems"
-                    :value ="categoryObject.idUrl"
-                    :pluginOptions="{
-                      eventOnChange: onChangeCategory,
-                      label: $store.getters.getSiteoConfig('t_ls'),
-                      startObject: categoryObject._id? categoryObject:false,
 
-                      vComp: {
-                        //hint:'Choose website',
-                        itemValue:'idUrl',
-                        itemText:'title',
-                        //chips: true,
-                        //deletableChips:true,
-                        rounded: false,
-                       }
-                  }"
-                >
-                </SiteoPlugin>
-                <SiteoPlugin
-
-                    pluginName="SiteoPluginSelectItems"
-                    :value ="locationObject.idUrl"
-                    :pluginOptions="{
-                      internalApi:citiesLink,
-                    //  queryParams: ,
-                      label: $store.getters.getSiteoConfig('t_ac'),
-                      eventOnChange: onChangeLocation  ,
-                      startObject: locationObject._id? locationObject:false,
-
-                      vComp: {
-                        itemValue:'idUrl',
-                        itemText:'title',
-                        hint:'Choose website',
-                        rounded: false,
-                      //  chips: true,
-                      //  deletableChips:true,
-                       }
-                  }"
-                >
-                </SiteoPlugin>
-
-              </v-col>
-
-
-            </v-row>
-          </v-container>
-       </component>
       <v-card-text v-if="categoryObject.preview">
         {{categoryObject.preview}} <router-link :to="{ name: 'value', params: {
           valueIdUrl: categoryObject.idUrl
@@ -195,11 +181,13 @@
               >
               </CardLocation>
             </v-col>
-            <v-col v-if="i===0||(i%7==0)" >
-              <v-card>
+            <v-col
+              cols="12"
+              v-if="i===0||(i%7==0)" >
+
                 <PAd adType="list">
                 </PAd>
-            </v-card>
+            
             </v-col>
           </template>
 
@@ -281,7 +269,7 @@ export default {
       CardOpenLocation: ()=> import( /* webpackChunkName: "CardOpenLocation" */ '../Location/Cards/OpenLocation.vue'),
 
 
-      PAd: ()=> import( /* webpackChunkName: "adsense" */ '../../Structure/PAdsense/Index.vue'),
+    //  PAd: ()=> import( /* webpackChunkName: "adsense" */ '../../Structure/PAdsense/Index.vue'),
       LocationsMap: ()=> import( /* webpackChunkName: "map" */ './Map/index.vue'),
 
     },

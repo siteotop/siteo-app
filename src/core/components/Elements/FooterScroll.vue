@@ -84,9 +84,7 @@
 
 <script>
 export default {
-    components: {
-      ShareWindow: ()=>import('./Share/Window.vue')
-    },
+    
     data() {
         return {
            currentOffset: 0,

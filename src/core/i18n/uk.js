@@ -5,7 +5,7 @@ export default {
     copy: 'Копіювати', // in share element
     cancel: 'Відхилити', // in share element
     close: 'Закрити', // in share element
-    share: 'Поділитись', // in share element
+    share: 'Поділитися', // in share element
     rm: 'Більше',
     //no_data: 'Данных для отображения нет',
     mainpage: 'Головна сторінка',

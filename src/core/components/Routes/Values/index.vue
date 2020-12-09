@@ -18,7 +18,7 @@
 
       <v-col cols="12">
         <v-sheet class="transparent"  v-if="pageObject.meta_title">
-           <h1 class="text-h3 font-weight-black">{{pageObject.title}}</h1>
+           <h1 class="text-h5 text-md-h3 font-weight-black">{{pageObject.title}}</h1>
             <div class="mt-2 font-weight-medium">{{pageObject.description}}</div>
         </v-sheet>
       </v-col>
@@ -125,7 +125,7 @@
           </v-col>
           <v-col v-if="i===0||(i%7==0)" v-bind="vColProps">
             <v-card>
-              <PAd :adType="toggle_component">
+              <PAd :key="toggle_component" :adType="toggle_component">
               </PAd>
           </v-card>
           </v-col>
@@ -144,7 +144,13 @@
     </v-row>
    </v-container>
 
-   <DialogVideoYoutube v-if="videoActiveObject" :videoId="videoActiveObject.videoId"  :title="videoActiveObject.title" @close-dialog="videoActiveObject=false">
+   <DialogVideoYoutube
+    v-if="videoActiveObject"
+    :PYv="{
+        v: videoActiveObject.videoId,
+        t: videoActiveObject.title
+      }"
+    @close-dialog="videoActiveObject=false">
    </DialogVideoYoutube>
 
   <!--<slot  name="pagination">
@@ -215,9 +221,8 @@ export default {
   components: {
     CardValues,
     BPrice: ()=> import( /* webpackChunkName: "CardValues" */ './Cards/BPrice.vue') ,
-    ListValues: ()=> import( /* webpackChunkName: "ListValues" */ './Cards/ValuesList.vue') ,
-    DialogVideoYoutube: ()=> import( /* webpackChunkName: "DialogVideo" */ './Cards/VideoYoutube.vue'),
-    PAd: ()=> import( /* webpackChunkName: "adsense" */ '../../Structure/PAdsense/Index.vue')
+    ListValues: ()=> import( /* webpackChunkName: "ListValues" */ './Cards/ValuesList.vue')
+
   },
 
   _icons: {

@@ -8,15 +8,18 @@ const LoadScript = {
           var ele =  document.querySelector('script[src="' + src + '"]');
 
           // This function fix problem with one time loading same SiteoPlugin
+          //console.log(src);
           var timer = 0;
+          var prefix = 50;
           const checkFunc = ()=>{
               if (ele.hasAttribute( attrName)) {
                   resolve();
               } else {
                 if (timer<5000) {
                   console.log(timer);
-                  timer += 50;
-                  setTimeout(checkFunc, 50);
+                  timer += prefix;
+                  setTimeout(checkFunc, prefix);
+                  prefix=prefix+10;
                 } else {
                   // if script not loaded and
                   reject()

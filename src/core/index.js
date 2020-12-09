@@ -41,6 +41,12 @@ Vue.component('SiteoPluginForms', ()=> import( /* webpackChunkName: "plugin-form
 Vue.component('SiteoPluginSelectItems', ()=> import( /* webpackChunkName: "plugin-items" */ './components/Plugins/select-items/component.vue'));
 Vue.component('ErrorPage',   ()=>import( /* webpackChunkName: "page-error" */ './components/Routes/Error.vue'));
 
+Vue.component('PYv', ()=> import( /* webpackChunkName: "YoutubeVideo" */ './components/Structure/PYoutubeVideo.vue'));
+Vue.component('DialogVideoYoutube',  ()=> import( /* webpackChunkName: "YoutubeVideo" */ './components/Elements/VideoYoutube.vue'));
+
+Vue.component('ShareWindow',  ()=>import(/* webpackChunkName: "ShareSave" */'./components/Elements/Share/Window.vue'));
+
+
 
 import {createRESTApi} from './http/rest-api.js';
 
@@ -117,7 +123,12 @@ import Vuetify, {
   VStepperItems,
   VStepperHeader,
   VFabTransition,
-  VSlideXTransition
+  VSlideXTransition,
+  VPagination,
+  VBreadcrumbs,
+  VBreadcrumbsItem,
+  VExpandTransition
+
 } from 'vuetify/lib'
 import { Ripple, Scroll, Touch, Resize, Mutate, Intersect } from 'vuetify/lib/directives'
 
@@ -166,7 +177,8 @@ Vue.use(Vuetify, {
     VListItemTitle,
     VMenu,
     VNavigationDrawer,
-
+    VBreadcrumbs,
+    VBreadcrumbsItem,
     VSheet,
     VSkeletonLoader,
     VSubheader,
@@ -208,19 +220,27 @@ Vue.use(Vuetify, {
     VSimpleTable: ()=>import( /* webpackChunkName: "tables" */ 'vuetify/lib/components/VDataTable/VSimpleTable'),
 
     VDatePicker:()=>import( /* webpackChunkName: "pickers" */ 'vuetify/lib/components/VDatePicker/VDatePicker'),
+    VTimePicker:()=>import( /* webpackChunkName: "pickers" */ 'vuetify/lib/components/VTimePicker/VTimePicker'),
 
     VStepper:()=>import( /* webpackChunkName: "stepper" */ 'vuetify/lib/components/VStepper/VStepper'),
     VStepperContent:()=>import( /* webpackChunkName: "stepper" */ 'vuetify/lib/components/VStepper/VStepperContent'),
   //  VStepperHeader:()=>import( /* webpackChunkName: "stepper" */ 'vuetify/lib/components/VStepper/VStepperHeader'),
     VStepperStep:()=>import( /* webpackChunkName: "stepper" */ 'vuetify/lib/components/VStepper/VStepperStep'),
-    VPagination:()=>import( /* webpackChunkName: "stepper" */ 'vuetify/lib/components/VPagination/VPagination'),
+    VPagination,
     VStepperItems,
     VStepperHeader,
 
   //  VStepperItems:()=>import( /* webpackChunkName: "stepper" */ 'vuetify/lib/components/VStepper/VStepperItems'),
 
     VFabTransition,
-    VSlideXTransition
+    VExpandTransition,
+    VSlideXTransition,
+    VExpansionPanel:()=> import( /* webpackChunkName: "expansion" */ 'vuetify/lib/components/VExpansionPanel/VExpansionPanel'),
+    VExpansionPanels:()=> import( /* webpackChunkName: "expansion" */ 'vuetify/lib/components/VExpansionPanel/VExpansionPanels'),
+    VExpansionPanelContent:()=> import( /* webpackChunkName: "expansion" */ 'vuetify/lib/components/VExpansionPanel/VExpansionPanelContent'),
+    VExpansionPanelHeader:()=> import( /* webpackChunkName: "expansion" */ 'vuetify/lib/components/VExpansionPanel/VExpansionPanelHeader'),
+    VTimeline:()=> import( /* webpackChunkName: "timeline" */ 'vuetify/lib/components/VTimeline/VTimeline'),
+    VTimelineItem:()=> import( /* webpackChunkName: "timeline" */ 'vuetify/lib/components/VTimeline/VTimelineItem')
   },
 
   directives: {
