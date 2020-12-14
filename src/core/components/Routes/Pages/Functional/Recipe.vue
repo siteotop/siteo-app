@@ -194,24 +194,9 @@
     </v-col>
   </v-row>
 
-  <PYv
-    id="video"
-    @loaded="video=true"
-    v-if="recipe.jsonStructure.v"
-        v-bind="{
-            cntnt: {
-                v: recipe.jsonStructure.v,
-                t: 'Відео рецепт '+ recipe.title
-              },
-            cnf: {}
-          }"
-      >
-    </PYv>
-
-
   <v-card
   id="how-to"
-  class="mt-3"
+  class="mb-3"
   >
     <v-toolbar color="grey lighten-4" flat>
       <v-toolbar-title>
@@ -300,8 +285,7 @@
               {{step.t}} <v-spacer></v-spacer> <v-icon left v-if="playCook[i]==2" color="green">$vuetify.icons.success</v-icon>
             </v-card-title>
 
-            <v-card-text >
-                 {{step.d}}
+            <v-card-text v-html="step.d" >
             </v-card-text>
 
             <v-card-actions
@@ -378,7 +362,7 @@
                 target="_blank"
                 :href="author.url">Підписатись на автора</v-btn>
               </v-col>
-            </v-row>  
+            </v-row>
            </v-card-text>
 
 
@@ -404,6 +388,21 @@
     </v-card-text>
   </v-card>
 
+  <PYv
+    id="video"
+    @loaded="video=true"
+    v-if="recipe.jsonStructure.v"
+        v-bind="{
+            cntnt: {
+                v: recipe.jsonStructure.v,
+                t: 'Відео рецепт '+ recipe.title
+              },
+            cnf: {}
+          }"
+      >
+  </PYv>
+
+
   <v-card
     v-if="recipe.jsonStructure.tps.length"
     id="tips"
@@ -425,7 +424,7 @@
           prominent
         >
             <div class="title">{{tip.t}}</div>
-            <div>{{tip.d}}</div>
+            <div v-html="tip.d"></div>
         </v-alert>
     </v-card-text>
   </v-card>
@@ -699,17 +698,18 @@ export default {
             title: 'Інгредієнти',
             list: true
           },
-          {
-            id:"v",
-            hash: 'video',
-            title: 'Відео рецепт',
 
-          },
           {
             id:"sts",
             hash: 'how-to',
             title: 'Як приготувати',
             list: true
+          },
+          {
+            id:"v",
+            hash: 'video',
+            title: 'Відео рецепт',
+
           },
           {
             id:"tps",
