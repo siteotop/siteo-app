@@ -146,10 +146,7 @@
 
    <DialogVideoYoutube
     v-if="videoActiveObject"
-    :PYv="{
-        v: videoActiveObject.videoId,
-        t: videoActiveObject.title
-      }"
+    :PYv="videoActiveObject"
     @close-dialog="videoActiveObject=false">
    </DialogVideoYoutube>
 
@@ -289,7 +286,7 @@ export default {
 
          return this.pageObject.meta_title?
             this.replaceTitle(this.pageObject.meta_title)
-                :   (this.countItems + ' ' + this.category_title) ;
+                : this.category_title;
       },
 
       ...mapState({
@@ -483,6 +480,7 @@ export default {
     },
 
     clickOnVideo(eventTitle) {
+      console.log(eventTitle);
         this.videoActiveObject = eventTitle;
 
 
