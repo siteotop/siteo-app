@@ -133,7 +133,7 @@
 
         </v-toolbar>
         <v-card-subtitle>
-            Відмічай інгредієнти, які є в наявності або які потрібно купити для <b>страви {{recipe.jsonStructure.n}}</b>
+            Відмічай інгредієнти, які є в наявності або, які потрібно купити для <b>страви {{recipe.jsonStructure.n}}</b>
         </v-card-subtitle>
         <v-card-text>
           <v-list
@@ -348,7 +348,7 @@
                 :disabled="playCook[i]==2"
                 @click="playStart(i)"
               >
-                 Зроблено
+                 Готово
               </v-btn>
               </VSlideXTransition>
             </v-card-actions>
