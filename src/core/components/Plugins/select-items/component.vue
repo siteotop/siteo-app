@@ -6,7 +6,8 @@
       v-bind="filterPropsSElected"
       :label="correctLabel"
       v-model="valueData"
-      autocomplete="off"
+      :search-input.sync="search"
+      autocomplete
       @change="change($event)"
     >
     <template v-slot:prepend-item>
@@ -30,6 +31,7 @@
 <script>
 import VModelInput from '../forms/Fields/_mixins/v-model-input';
 import  _find  from 'lodash/find';
+import  _debounce  from 'lodash/debounce';
 export default {
   mixins: [VModelInput],
 
@@ -92,8 +94,8 @@ export default {
         startObjectShow: false,
         loading: false,
         items: [],
-        activated: false, // not activate get items
-
+        activated: false, // not activate get items;
+        search:null
       }
   },
   /*
@@ -116,7 +118,13 @@ export default {
         if (newValue!=oldValue&&newValue){
           this.fetchItems();
         }
-    }
+    },
+
+    search(searchtext, oldSearchText){
+
+        this.searching(searchtext);
+
+    },
   },
   computed: {
       showRealItems() {
@@ -176,6 +184,10 @@ export default {
     setActivateOnFocus() {
        this.activated=true;
     },
+
+    searching: _debounce(function(e){
+        console.log(e);
+    }, 250),
 
     fetchItems() {
        console.log('goooood');
