@@ -31,6 +31,7 @@ export default {
 
   components: {
     PageRecipe: ()=> import( /* webpackChunkName: "PageRecipe" */ './Functional/Recipe.vue') ,
+    PageCollection: ()=> import( /* webpackChunkName: "PageCollection" */ './Functional/Collection.vue') ,
   },
 
   watch: {

@@ -16,7 +16,15 @@
            <v-toolbar flat class="transparent ">
                   <v-avatar size="32" class="ma-1 white--text" :color="hover?'primary darken-2':'primary'">{{props.index}}</v-avatar>
                   <v-spacer></v-spacer>
-                  <v-btn v-if="props.videoId"  fab small @click="(event)=>{props.clickOnVideo({videoId: props.videoId, title: props.title})}">
+                  <v-btn v-if="props.videoId"  fab small @click="(event)=>{
+                    props.clickOnVideo(
+                      {
+                        //videoActiveObject for  PYv in values
+                        v: props.videoId,
+                        t: props.title,
+                        totext: props.about.text,
+                        to: props.about.bind.to
+                        })}">
                     <v-icon>$vuetify.icons.video</v-icon>
                   </v-btn>
 
@@ -49,7 +57,12 @@
           <v-list-item>
 
        <v-list-item-content>
-         <v-list-item-title class="text-h5"><h3>{{props.title}}</h3></v-list-item-title>
+         <v-list-item-title class="text-h5">
+           <router-link
+            :to="props.about.bind.to">
+            {{props.title}}
+           </router-link>
+          </v-list-item-title>
          <v-list-item-subtitle>{{props.subtitle}}</v-list-item-subtitle>
        </v-list-item-content>
       </v-list-item>
@@ -64,7 +77,9 @@
           </v-card-title> -->
         <v-divider  ></v-divider>
           <v-card-actions >
-              <v-btn
+
+            <v-spacer></v-spacer>
+            <v-btn
                 tag="a"
                 v-bind="props.about.bind"
 
@@ -73,7 +88,7 @@
               >
              {{props.about.text}}
             </v-btn>
-            <v-spacer></v-spacer>
+
             <v-btn
               v-if="props.action"
               tag="a"

@@ -28,7 +28,7 @@
               ></AppFieldRecaptcha>
           </v-col>
         </v-row>
-       <v-row 
+       <v-row
         class="my-3"
         >
           <v-col cols="10" class="text-left">
@@ -44,6 +44,13 @@
 
               <span>{{$t('commonForm.reset')}}</span>
             </v-tooltip>
+            <v-btn
+              v-if="paste"
+              icon
+              @click="contentPaste"
+              >
+              <v-icon>{{$options._icons.paste}}</v-icon>
+            </v-btn>
           </v-col>
        </v-row>
        <v-row v-if="footer" class="pt-2 grey--text">
@@ -82,7 +89,7 @@ import AppFieldItems from './Fields/AppFieldItems.vue';
 import AppFieldDate from './Fields/AppFieldDate.vue';
 import AppFieldRecaptcha from './Fields/AppFieldRecaptcha.vue';
 
-import {mdiBackupRestore}  from '@mdi/js'
+import {mdiBackupRestore, mdiContentPaste }  from '@mdi/js'
 
 const startFormData = function () {
   return {
@@ -196,6 +203,14 @@ export default {
       recaptcha: {
         type: Boolean,
         default: false
+      },
+
+      /**
+        For content paste
+      */
+      paste: {
+        type: Boolean,
+        default: false
       }
 
 
@@ -204,7 +219,8 @@ export default {
   },
 
   _icons: {
-    clear: mdiBackupRestore
+    clear: mdiBackupRestore,
+    paste: mdiContentPaste
   },
 
   data: startFormData,
@@ -447,6 +463,32 @@ export default {
         this.stopLoading();
     },
 
+    contentPaste() {
+      if (navigator.clipboard&&navigator.clipboard.readText) {
+
+        return navigator.clipboard.readText()
+        .then(text => {
+
+            console.log(text);
+            var object = JSON.parse(text);
+
+            if (object!==undefined&&object.fields!=undefined) {
+               for (let i in object.fields) {
+                  if (this.dataValues[i]!=undefined) {
+                    this.dataValues[i]=object.fields[i];
+                  }
+               }
+               this.$store.dispatch('generateSystemMessage', {text: `Paste from clipboard` , type: 'success'});
+            } else {
+              this.$store.dispatch('generateSystemMessage', {text: `No content for Paste` , type: 'warning'});
+            }
+
+        })
+        .catch(err => {
+           this.$store.dispatch('generateSystemMessage', {text: `Not paste` , type: 'error'});
+        });
+      }
+    }
 
 
 

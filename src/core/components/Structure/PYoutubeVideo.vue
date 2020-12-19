@@ -6,10 +6,26 @@
           {{cntnt.t}}
         </v-toolbar-title>
      <v-spacer></v-spacer>
-      <v-btn v-if="cnf.closable" icon @click="cnf.closeEvent">
-        <v-icon>
-        $vuetify.icons.close
-      </v-icon></v-btn>
+     <template
+      v-if="cnf.closable"
+     >
+       <v-btn
+         v-if="cntnt.to"
+         color="primary"
+         :to="cntnt.to"
+         >
+         {{cntnt.totext}}
+       </v-btn>
+       <v-btn
+
+         icon
+         @click="cnf.closeEvent">
+         <v-icon>
+         $vuetify.icons.close
+         </v-icon>
+       </v-btn>
+     </template>
+
     </v-toolbar>
 
  <v-responsive :aspect-ratio="cnf.r||'1.7'">
@@ -62,7 +78,7 @@
 </v-card>
 </template>
 <script>
-
+//PYoutubeVideo
 import {
      mdiThumbUpOutline
 

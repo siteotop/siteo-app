@@ -60,7 +60,8 @@ import {
   mdiShareVariant,
   mdiChevronUp,
   mdiGestureTap,
-  mdiVideo
+  mdiVideo,
+  mdiHelpCircle
 
  } from '@mdi/js'
 
@@ -98,5 +99,6 @@ export const vuetifyIcons = {
   share: mdiShareVariant,
   up: mdiChevronUp,
   action: mdiGestureTap,
-  video: mdiVideo
+  video: mdiVideo,
+  help: mdiHelpCircle
 }

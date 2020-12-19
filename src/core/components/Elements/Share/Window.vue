@@ -67,10 +67,9 @@
        <v-snackbar
           v-model="snackbar"
           color="info"
-          bottom
-          absolute
+          top
           >
-          Link Copied
+          Copied
        </v-snackbar>
  </component>
 </template>
@@ -103,6 +102,7 @@ export default {
         type: Boolean,
         default: true
       },
+
       width: {
         type:String,
         default: '500'
@@ -154,6 +154,7 @@ export default {
     copyText() {
         /* Get the text field */
         var copyText = document.getElementById("shareCopyId");
+
         /* Select the text field */
         copyText.select();
         /* Copy the text inside the text field */
