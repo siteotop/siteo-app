@@ -31,6 +31,7 @@ export default {
 
   components: {
     PageRecipe: ()=> import( /* webpackChunkName: "PageRecipe" */ './Functional/Recipe.vue') ,
+    PageCollection: ()=> import( /* webpackChunkName: "PageCollection" */ './Functional/Collection.vue') ,
   },
 
   watch: {
@@ -47,7 +48,7 @@ export default {
         autoHreflang() {
             return (this.$route.path == '/');
         },
-        
+
         ...mapState({
             pageObject (state) {
                 return state.pages? state.pages.objectActive: {};

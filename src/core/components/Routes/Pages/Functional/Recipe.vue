@@ -78,7 +78,7 @@
     </v-col>
     <v-col v-if="recipe.jsonStructure.pr" id="about-dish" cols="12">
       <PHtml v-bind="{
-          cntnt: {t: recipe.jsonStructure.pr},
+          cntnt: {t: recipe.jsonStructure.pr, n:1},
           classText: 'body-1'
         }">
       </PHtml>
@@ -465,7 +465,7 @@
     >
     <v-card-text v-if="recipe.jsonStructure.d">
       <PHtml v-bind="{
-          cntnt: {t: recipe.jsonStructure.d},
+          cntnt: {t: recipe.jsonStructure.d, n:1},
           classText: 'body-1'
         }">
       </PHtml>
@@ -526,7 +526,7 @@
 
 import { mapState } from 'vuex';
 import PHtml  from  '../../../Structure/PHtml.vue';
-
+import mixinFunctional from './mixin.js';
 import {
   mdiNoodles,
   mdiClockOutline,
@@ -534,6 +534,7 @@ import {
  } from '@mdi/js'
 
 export default {
+  mixins: [mixinFunctional],
   components: {
     PHtml
   },
@@ -723,21 +724,7 @@ export default {
 
   methods: {
 
-     /**
-      Function for Menu
-      go to id element
-     */
-     async  gotoContent(hash) {
-       //make pause for onScroll
-       this.scrollPause = true;
-       setTimeout(()=>{
-          this.scrollPause = false;
-       }, 400)
-       await  this.$vuetify.goTo('#'+hash, {offset: 100, duration: 40});
-       this.tab = hash;
 
-       //await  new Promise(resolve => setTimeout(, 200))
-     },
 
      createBreadc() {
 

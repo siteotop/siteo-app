@@ -10,7 +10,7 @@ export default {
   mounted() {
     this.changeLink();
     let countAds = 6;
-    if (this.cntnt.n) {
+    if (this.cntnt.n!=undefined) {
       countAds = parseInt(this.cntnt.n);
     }
     if (countAds) {
@@ -63,6 +63,7 @@ export default {
      */
      insertAds(countAds) {
         const paragraph = this.$el.querySelectorAll('p');
+        
         //console.log(paragraph);
         let configes=this.$store.getters.getSiteoConfig('SiteoPluginGadsense');
         // if adsense turn off return null;
