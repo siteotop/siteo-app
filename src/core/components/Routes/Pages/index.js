@@ -47,7 +47,7 @@ export default {
         autoHreflang() {
             return (this.$route.path == '/');
         },
-
+        
         ...mapState({
             pageObject (state) {
                 return state.pages? state.pages.objectActive: {};

@@ -29,7 +29,7 @@
     <template v-slot:extension>
       <v-tabs
 
-      v-if="menu.length"
+      v-if="mounted"
         centered
         center-active
         show-arrows
@@ -563,8 +563,8 @@ export default {
       playFinish:false,
       playShare: false,
       breadc: [],
-      scrollPause: false
-
+      scrollPause: false,
+      mounted: false
     }
   },
   mounted() {
@@ -572,12 +572,13 @@ export default {
       if (!this.$vuetify.breakpoint.mobile) {
           this.offsetTop = '64px';
       }
-      this.generateMenu();
+      this.mounted = true;
       this.generatePortions();
   },
 
 
   created() {
+    this.generateMenu();
     this.createBreadc();
   },
 

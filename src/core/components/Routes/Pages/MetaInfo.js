@@ -49,7 +49,7 @@ export default {
     },
 
     metaTitle() {
-      return this.pageObject.meta_title;
+      return this.pageObject.meta_title||this.pageObject.title;
     }
   },
 
