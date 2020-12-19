@@ -97,7 +97,7 @@ export default function (Vue, RESTApi, configs)  {
            },
 
            PATH_ICON() {
-             return process.env.PATH_ICON;
+             return configs.icon_path || process.env.PATH_ICON;
            },
 
            getSiteoConfig: ()=>field=> {
