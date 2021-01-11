@@ -78,7 +78,8 @@
     </v-col>
     <v-col v-if="recipe.jsonStructure.pr" id="about-dish" cols="12">
       <PHtml v-bind="{
-          cntnt: {t: recipe.jsonStructure.pr, n:1},
+          cntnt: {t: recipe.jsonStructure.pr},
+          cnf: {n:1},
           classText: 'body-1'
         }">
       </PHtml>
@@ -465,7 +466,8 @@
     >
     <v-card-text v-if="recipe.jsonStructure.d">
       <PHtml v-bind="{
-          cntnt: {t: recipe.jsonStructure.d, n:1},
+          cntnt: {t: recipe.jsonStructure.d },
+          cnf: {n:1}, 
           classText: 'body-1'
         }">
       </PHtml>

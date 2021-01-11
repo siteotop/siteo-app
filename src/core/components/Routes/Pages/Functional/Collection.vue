@@ -20,7 +20,8 @@
         </v-col>
         <v-col cols="12">
           <PHtml v-bind="{
-              cntnt: {t: collection.jsonStructure.d},
+              cntnt: {t:      collection.jsonStructure.d
+                },
               classText: 'body-1'
             }">
           </PHtml>
@@ -57,7 +58,12 @@
           </PYv>
 
           <PHtml v-bind="{
-              cntnt: {t: item.d, n: (i%2==0)?0:1},
+              cntnt: {
+                  t: item.d
+                },
+              cnf: {
+                  n: (i%2==0)?0:1
+              },
               classText: 'body-1'
             }">
           </PHtml>

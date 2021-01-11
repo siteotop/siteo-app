@@ -4,15 +4,34 @@
 </template>
 <script>
 export default {
-  props: ['cntnt', 'classText'],
+  props: {
+    cntnt: {
+      type: Object,
+      default: ()=>{{}}
+    },
+    classText: {
+      type:String
+    },
+    cnf: {
+      type: Object,
+      default: ()=>{{}}
+    }
+
+  },
 
   // на SSR сервері це не потрібно тому ми робимо це в mounted
   mounted() {
-    this.changeLink();
-    let countAds = 6;
-    if (this.cntnt.n!=undefined) {
-      countAds = parseInt(this.cntnt.n);
+    // if nourl isset
+    if (!this.cnf.u) {
+      this.changeLink();
     }
+
+    let countAds = 6;
+    if (this.cnf.n!=undefined) {
+      countAds = parseInt(this.cnf.n);
+    }
+    console.log(this.cntnt.t);
+    console.log(countAds);
     if (countAds) {
       this.insertAds(countAds);
     }
@@ -63,7 +82,7 @@ export default {
      */
      insertAds(countAds) {
         const paragraph = this.$el.querySelectorAll('p');
-        
+
         //console.log(paragraph);
         let configes=this.$store.getters.getSiteoConfig('SiteoPluginGadsense');
         // if adsense turn off return null;
