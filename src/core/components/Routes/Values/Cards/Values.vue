@@ -59,6 +59,7 @@
        <v-list-item-content>
          <v-list-item-title class="text-h5">
            <router-link
+            class="text-decoration-none"
             :to="props.about.bind.to">
             {{props.title}}
            </router-link>
