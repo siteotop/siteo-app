@@ -39,6 +39,7 @@ Vue.component('AppMessagesBlock', ()=> import( /* webpackChunkName: "alerts" */ 
 
 Vue.component('SiteoPluginForms', ()=> import( /* webpackChunkName: "plugin-form" */ './components/Plugins/forms/index.vue'));
 Vue.component('SiteoPluginSelectItems', ()=> import( /* webpackChunkName: "plugin-items" */ './components/Plugins/select-items/component.vue'));
+Vue.component('SiteoPluginLastItems', ()=> import( /* webpackChunkName: "plugin-items" */ './components/Plugins/last-items/component.vue'));
 Vue.component('ErrorPage',   ()=>import( /* webpackChunkName: "page-error" */ './components/Routes/Error.vue'));
 
 Vue.component('PYv', ()=> import( /* webpackChunkName: "YoutubeVideo" */ './components/Structure/PYoutubeVideo.vue'));

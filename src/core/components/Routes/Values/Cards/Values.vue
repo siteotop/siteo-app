@@ -14,9 +14,9 @@
             :alt="props.title"
           >
            <v-toolbar flat class="transparent ">
-                  <v-avatar size="32" class="ma-1 white--text" :color="hover?'primary darken-2':'primary'">{{props.index}}</v-avatar>
+                  <!--<v-avatar size="32" class="ma-1 white--text" :color="hover?'primary darken-2':'primary'">{{props.index}}</v-avatar> -->
                   <v-spacer></v-spacer>
-                  <v-btn v-if="props.videoId"  fab small @click="(event)=>{
+                  <v-btn v-if="props.clickOnVideo&&props.videoId"  fab small @click="(event)=>{
                     props.clickOnVideo(
                       {
                         //videoActiveObject for  PYv in values
@@ -59,10 +59,12 @@
        <v-list-item-content>
          <v-list-item-title class="text-h5">
            <router-link
+            v-if="props.about.bind.to"
             class="text-decoration-none"
             :to="props.about.bind.to">
             {{props.title}}
            </router-link>
+           <a class="text-decoration-none" :href="props.about.bind.href" v-else>{{props.title}}</a>
           </v-list-item-title>
          <v-list-item-subtitle>{{props.subtitle}}</v-list-item-subtitle>
        </v-list-item-content>
