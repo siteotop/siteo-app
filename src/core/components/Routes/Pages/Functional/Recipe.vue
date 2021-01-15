@@ -78,7 +78,8 @@
     </v-col>
     <v-col v-if="recipe.jsonStructure.pr" id="about-dish" cols="12">
       <PHtml v-bind="{
-          cntnt: {t: recipe.jsonStructure.pr, n:1},
+          cntnt: {t: recipe.jsonStructure.pr},
+          cnf: {n:1},
           classText: 'body-1'
         }">
       </PHtml>
@@ -140,6 +141,7 @@
             :dark="checkall"
           >
           <v-list-item
+            color="grey lighten-1"
           >
 
             <v-list-item-action>
@@ -158,20 +160,31 @@
             multiple
             active-class=""
           >
+              <template v-for="(ing, i) in recipe.jsonStructure.ings">
+                <v-list-item
+                  v-if="ing.t!=='title'"
+                  :key="i"
+                  >
+                  <template v-slot:default="{ active }">
+                  <v-list-item-action>
+                    <v-checkbox :input-value="active"></v-checkbox>
+                  </v-list-item-action>
+                  <v-list-item-content>
+                      <v-list-item-title>
+                        {{ing.n}}
+                        <span class="grey--text">{{ing.c}} {{ing.t}}</span>
+                      </v-list-item-title>
+                  </v-list-item-content>
+                  </template>
+                </v-list-item>
+                <v-list-item disabled v-else>
+                    <v-list-item-content>
 
-              <v-list-item :key="i" v-for="(ing, i) in recipe.jsonStructure.ings">
-                <template v-slot:default="{ active }">
-                <v-list-item-action>
-                  <v-checkbox :input-value="active"></v-checkbox>
-                </v-list-item-action>
-                <v-list-item-content>
-                    <v-list-item-title>
-                      {{ing.n}}
-                      <span class="grey--text">{{ing.c}} {{ing.t}}</span>
-                    </v-list-item-title>
-                </v-list-item-content>
-                </template>
-              </v-list-item>
+                          <span class="text-h6">{{ing.n}}</span>
+                        </v-list-item-content>
+                </v-list-item>
+              </template>
+
             </v-list-item-group>
 
         </v-card-text>
@@ -465,7 +478,8 @@
     >
     <v-card-text v-if="recipe.jsonStructure.d">
       <PHtml v-bind="{
-          cntnt: {t: recipe.jsonStructure.d, n:1},
+          cntnt: {t: recipe.jsonStructure.d },
+          cnf: {n:1},
           classText: 'body-1'
         }">
       </PHtml>

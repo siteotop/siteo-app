@@ -32,8 +32,10 @@
 import VModelInput from '../forms/Fields/_mixins/v-model-input';
 import  _find  from 'lodash/find';
 import  _debounce  from 'lodash/debounce';
+import mixinApi from './mixin-api.js'
+
 export default {
-  mixins: [VModelInput],
+  mixins: [VModelInput, mixinApi],
 
   props: {
      label: {
@@ -41,6 +43,7 @@ export default {
         default: ''
      },
 
+     // name field in main store
      nameStore: {
        type: String,
        default: ''
@@ -68,16 +71,7 @@ export default {
        default: false
      },
      // when use siteo API
-     internalApi: {
-       type: String,
-       default:''
-     },
 
-     // Id for Website
-     siteoId: {
-        type: String,
-        default: ''
-     },
 
      vComp: {
        type: Object,
@@ -92,8 +86,8 @@ export default {
   data() {
       return {
         startObjectShow: false,
-        loading: false,
-        items: [],
+        
+
         activated: false, // not activate get items;
         search:null
       }
@@ -150,26 +144,7 @@ export default {
 
       },
 
-      apiUrl() {
-        if (this.internalApi) {
-           return this.internalApi;
-        }
 
-         var siteoId='';
-         // if siteoId present
-         if (this.siteoId) {
-           // siteoId can be json or simple  string
-           if (this.siteoId=='parentId') {
-              siteoId=this.$store.getters['getSiteoConfig']('mainWebsite');
-           } else {
-              siteoId=this.siteoId;
-           }
-
-         } else {
-           siteoId=this.$store.getters['appInstance/activeId'];
-         }
-         return   '/apps/'+siteoId+'/values';
-      }
 
 
 
@@ -189,28 +164,7 @@ export default {
         console.log(e);
     }, 250),
 
-    fetchItems() {
-       console.log('goooood');
 
-       var  config = {
-          url: this.apiUrl,
-          params: {
-            limit: 20
-          }
-       }
-       this.loading=true;
-       this.$store.dispatch('callAPI', config).then(result=>{
-           console.log(result);
-           if (result.status==200&&result.data) {
-               this.items =result.data.items||[];
-           }
-           this.loading = false;
-       }).catch(error=>{
-          console.log(error);
-           this.loading = false;
-       })
-
-    },
 
     change(eventId) {
         if (this.startObjectShow) {

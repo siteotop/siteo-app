@@ -48,6 +48,11 @@ export default {
     },
 
 
+    components: {
+      SiteoPluginSelectItems:  ()=> import( /* webpackChunkName: "plugin-items" */ './Plugins/select-items/component.vue'),
+      SiteoPluginLastItems:  ()=> import( /* webpackChunkName: "plugin-items" */ './Plugins/last-items/component.vue')
+    },
+
 
     data() {
       return {
