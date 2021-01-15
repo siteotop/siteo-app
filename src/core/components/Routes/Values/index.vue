@@ -425,10 +425,12 @@ export default {
             }
           }
           return button;
+        } else {
+          button.bind = {
+             to: url_page
+           }
         }
-        button.bind = {
-          to: url_page
-        }
+      /* */
         return button;
       } else {
         button.bind = {
