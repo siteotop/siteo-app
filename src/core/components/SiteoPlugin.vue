@@ -1,11 +1,15 @@
 <template>
- <v-lazy
+ <component
+  :is="offlazy?'div':'v-lazy'"
   v-model="isActive"
 
  >
-  <div v-if="pluginName"><component :is="pluginName" v-on="$listeners" :value="value"  v-bind="pluginOptions"></component></div>
+  <div v-if="pluginName&&desktopReady">
+    <component :is="pluginName" v-on="$listeners" :value="value"  v-bind="pluginOptions">
+    </component>
+  </div>
 
- </v-lazy>
+</component>
 </template>
 
 <script>
@@ -27,7 +31,10 @@ export default {
           return {};
         }
       },
-
+      offlazy: {
+        type: Boolean,
+        default: false
+      },
       removeOnDestroy: {
         type: Boolean,
         default: false
@@ -85,6 +92,7 @@ export default {
 
         console.log(this);
         // https://some-domen.com/plugins/+this.pluginName
+        // desktopReady  needed when v-lazy is turn off
         this.desktopReady = true;
         //console.log(this.pluginName);
 
