@@ -1,5 +1,6 @@
 <template>
-  <v-card :loading="!loaded" loader-height="5">
+<v-lazy v-model="isActive">
+  <v-card :loading="onLoad"  v-if="clearVideoId" loader-height="5">
     <v-toolbar v-if="cntnt.t">
        <v-icon left>$vuetify.icons.video</v-icon>
         <v-toolbar-title>
@@ -32,14 +33,14 @@
    <!-- https://developers.google.com/youtube/player_parameters?hl=ru -->
     <iframe
       ref="iframe"
-      @load="onLoad"
       width="100%"
       height="100%"
+      @load="onLoad=false"
       frameborder="0"
       allow="autoplay; encrypted-media" allowfullscreen
       title="video from youtube"
 
-      :data-src="'https://www.youtube.com/embed/'+clearVideoId+'?autoplay='+(cnf.a||'')+'&listType=user_uploads&rel=0&start='+start"
+      :src="'https://www.youtube.com/embed/'+clearVideoId+'?autoplay='+(cnf.a||'')+'&listType=user_uploads&rel=0&start='+start"
       >
     </iframe>
  </v-responsive>
@@ -74,8 +75,9 @@
          @close="share=false"
         >
        </ShareWindow>
-</v-card-actions>
-</v-card>
+  </v-card-actions>
+ </v-card>
+</v-lazy>
 </template>
 <script>
 //PYoutubeVideo
@@ -89,66 +91,48 @@ export default {
 
   data() {
     return {
+      isActive: false,
       clearVideoId: '',
+      youtubeLink: '',
       start: '',
+      onLoad: true,
       share: false,
-      loaded: false,
       thumbUp: mdiThumbUpOutline
     }
   },
 
-  mounted() {
-      if (document.readyState === 'complete') {
-          this.onWindowLoad()
-      } else {
-        window.addEventListener("load", this.onWindowLoad);
-      }
-
-  },
-
-  created() {
-    var id = this.cntnt.v.match(new RegExp("([^&?]+)?|&?"));
-     if (id&&id[1]) {
-       this.clearVideoId =id[1];
-     }
-
-     var time =   this.cntnt.v.match(new RegExp("t=([0-9]+)"));
-
-     //time example ["t=23", "23", index: 0, input: "t=23", groups: undefined]
-     if (time&& time[1]) {
-       this.start = time[1]
-     }
-
-     // convert time 00:00 to seconds
-     if (this.cntnt.tc) {
-       var time  = this.cntnt.tc.split(':');
-       if (time.length==2) {
-          this.start = parseInt(time[0])*60 +  parseInt(time[1]);
-       }
-       console.log(this.start);
-     }
-
-  },
-
-  methods: {
-    onWindowLoad() {
-      var src= this.$refs['iframe'].getAttribute('data-src')
-      this.$refs['iframe'].setAttribute('src', src);
-    },
-    onLoad() {
-      this.loaded=true;
-      this.$emit('loaded', true);
+  watch:  {
+    isActive( newValue, oldValue) {
+        if (newValue) {
+          this.createId();
+        }
     }
   },
 
-  computed: {
+   methods: {
+     createId() {
+       var id = this.cntnt.v.match(new RegExp("([^&?]+)?|&?"));
+        if (id&&id[1]) {
+          this.clearVideoId =id[1];
+        }
 
-    youtubeLink() {
-      return 'https://youtube.com/watch?v='+this.clearVideoId;
-    },
+        var time =   this.cntnt.v.match(new RegExp("t=([0-9]+)"));
 
-  }
+        //time example ["t=23", "23", index: 0, input: "t=23", groups: undefined]
+        if (time&& time[1]) {
+          this.start = time[1]
+        }
 
+        // convert time 00:00 to seconds
+        if (this.cntnt.tc) {
+          var time  = this.cntnt.tc.split(':');
+          if (time.length==2) {
+             this.start = parseInt(time[0])*60 +  parseInt(time[1]);
+          }
+        }
+        this.youtubeLink = 'https://youtube.com/watch?v='+this.clearVideoId;
+     },
+   }
 
 }
 </script>
