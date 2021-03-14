@@ -71,7 +71,7 @@
       <v-btn
         block
         outlined
-        rounded
+
         color="primary"
 
         :key="i"

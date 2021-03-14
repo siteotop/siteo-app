@@ -54,22 +54,18 @@
               </v-row>
             </v-container>-->
           </v-img>
-          <v-list-item>
-
-       <v-list-item-content>
-         <v-list-item-title class="text-h5">
-           <router-link
-            v-if="props.about.bind.to"
-            class="text-decoration-none"
-            :to="props.about.bind.to">
-            {{props.title}}
-           </router-link>
-           <a class="text-decoration-none" :href="props.about.bind.href" v-else>{{props.title}}</a>
-          </v-list-item-title>
-         <v-list-item-subtitle>{{props.subtitle}}</v-list-item-subtitle>
-       </v-list-item-content>
-      </v-list-item>
-      {{props.comp}}
+      <v-card-title class="text-h5">
+        <router-link
+         v-if="props.about.bind.to"
+         class="text-decoration-none"
+         :to="props.about.bind.to">
+         {{props.title}}
+        </router-link>
+        <a class="text-decoration-none" :href="props.about.bind.href" v-else>{{props.title}}</a>
+      </v-card-title>
+      <v-card-subtitle>
+        {{props.subtitle}}
+      </v-card-subtitle>
       <v-card-text >
         {{props.preview}}
       </v-card-text>
@@ -79,38 +75,30 @@
             <PBt :to="props._to" :fab="true" :large="false"></PBt>
           </v-card-title> -->
         <v-divider  ></v-divider>
-          <v-card-actions >
+        <v-card-actions >
 
-            <v-spacer></v-spacer>
-            <v-btn
-                tag="a"
-                v-bind="props.about.bind"
-
-                text
-                color="primary accent-4"
-              >
-             {{props.about.text}}
-            </v-btn>
-
-            <v-btn
-              v-if="props.action"
+          <v-spacer></v-spacer>
+          <v-btn
               tag="a"
+              v-bind="props.about.bind"
+
               text
               color="primary accent-4"
-              v-bind="props.action.bind"
-
             >
-             {{props.action.text}}
-            </v-btn>
+           {{props.about.text}}
+          </v-btn>
 
-              <!--  <v-spacer></v-spacer>
-                <v-btn icon>
-                  <v-icon>mdi-heart</v-icon>
-                </v-btn>
-                <v-btn icon>
-                  <v-icon>mdi-share-variant</v-icon>
-                </v-btn>  -->
-        </v-card-actions>
+          <v-btn
+            v-if="props.action"
+            tag="a"
+            text
+            color="primary accent-4"
+            v-bind="props.action.bind"
+
+          >
+           {{props.action.text}}
+          </v-btn>
+      </v-card-actions>
 
     </v-card>
   </v-hover>
