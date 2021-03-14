@@ -1,6 +1,6 @@
 <template>
 <v-responsive class="mx-auto" width="920">
-  <v-app-bar
+  <!-- <v-app-bar
 
     fixed
     :style="{top: offsetTop }"
@@ -46,51 +46,53 @@
       </v-tabs>
     </template>
   </v-app-bar>
+-->
  <v-container
-  style="margin-top:240px;"
-  v-scroll="onScroll"
   >
-  <v-breadcrumbs
-  :items="breadc">
-    <template v-slot:item="{ item }">
-      <v-breadcrumbs-item
-        :to="item.path||'/'"
-        :disabled="item.disabled"
-      >
-        {{ item.text}}
-      </v-breadcrumbs-item>
-    </template>
-  </v-breadcrumbs>
+  <SiteoBreadcramps
+    :lastTitle="recipe.jsonStructure.n"
+  >
+  </SiteoBreadcramps>
    <v-row>
     <v-col cols="12" class="text-center mb-2">
       <h1 class="text-h5 text-md-h2">{{recipe.title}}</h1>
         {{recipe.description}}
-      <ul class="text-left mt-4 subtitle-1">
-        <li v-for="(item, i) in menu">
-          <a
-          :href="('#'+item.hash)"
-          @click="gotoContent(item.hash)"
-          >
+      </v-col>
+        <v-col cols="12" v-if="recipe.picture">
+          <v-img
+            :alt="recipe.jsonStructure.n"
+            min-height="300px"
+            width="100%"
+            :src="recipe.picture">
+          </v-img>
+        </v-col>
+    <v-col>
+
+      <v-btn
+        block
+        outlined
+        rounded
+        color="primary"
+
+        :key="i"
+        class="mb-1"
+         v-for="(item, i) in menu"
+        :href="('#'+item.hash)"
+        @click="gotoContent(item.hash)"
+        tag="a">
           {{item.title}}
-          </a>
-        </li>
-      </ul>
+      </v-btn>
+
     </v-col>
     <v-col v-if="recipe.jsonStructure.pr" id="about-dish" cols="12">
       <PHtml v-bind="{
           cntnt: {t: recipe.jsonStructure.pr},
           cnf: {n:1},
-          classText: 'body-1'
+          classText: 'text-body-1 text-md-h6 font-weight-regular'
         }">
       </PHtml>
     </v-col>
-    <v-col cols="12" v-if="recipe.picture">
-      <img
-        :alt="recipe.jsonStructure.n"
-        width="100%"
-        :src="recipe.picture">
-      </img>
-    </v-col>
+
     <v-col
       id="ingredients"
       cols="12"
@@ -230,191 +232,157 @@
     </v-toolbar>
 
     <v-card-subtitle>Покроковий рецепт</v-card-subtitle>
-    <v-card-text class="pl-0 ml-0">
-      <v-timeline
-        align-top
-        dense
+    <v-card-text >
+
+      <v-alert
+        :value="true"
+        :color="!playCook.length?'blue-grey darken-1':'blue-grey'"
+        dark
+        >
+        <div class="title">
+          Перед приготуванням страви
+        </div>
+        <v-row >
+          <v-col cols="12" class="grow">
+            Підготуйте всі <a href="#ingredients">інгредієнти</a> для страви <strong>"{{recipe.jsonStructure.n}}"</strong>
+            <div v-if="recipe.jsonStructure.kitchen.length">
+            Підготуйте основні засоби для приготування:
+              <v-chip v-for="(item,i) in recipe.jsonStructure.kitchen"
+              :key="i"
+              small
+              >
+                {{item}}
+              </v-chip>
+            </div>
+      </v-col>
+         <v-col cols="12" class="text-right">
+           <v-lazy>
+             <v-btn
+              color="primary"
+              :disabled="playCook.length!=0"
+              @click="playStart">
+              Почати готувати
+            </v-btn>
+          </v-lazy>
+         </v-col>
+       </v-row>
+      </v-alert>
+
+    <template v-for="(step, i) in recipe.jsonStructure.sts">
+
+      <v-card  class="mb-2" v-if="i==3||i==7">
+        <PAd >
+        </PAd>
+      </v-card>
+      <v-card
+        :class="(playCook[i]==2?'grey--text lighten-2':'') + ' mb-2'"
+        hover
 
       >
-          <v-timeline-item
-            :color="!playCook.length?'blue-grey darken-1':'blue-grey'"
-          >
-            <v-alert
-              :value="true"
-              :color="!playCook.length?'blue-grey darken-1':'blue-grey'"
-              dark
-              >
-              <div class="title">
-                Перед приготуванням страви
-              </div>
-              <v-row >
-                <v-col cols="12" class="grow">
-                  Підготуйте всі <a href="#ingredients">інгредієнти</a> для страви <strong>"{{recipe.jsonStructure.n}}"</strong>
-                  <div v-if="recipe.jsonStructure.kitchen.length">
-                  Підготуйте основні засоби для приготування:
-                    <v-chip v-for="(item,i) in recipe.jsonStructure.kitchen"
-                    :key="i"
-                    small
-                    >
-                      {{item}}
-                    </v-chip>
-                  </div>
-            </v-col>
-               <v-col cols="12" class="text-right">
-                 <v-lazy>
-                   <v-btn
-                    color="primary"
-                    :disabled="playCook.length!=0"
-                    @click="playStart">
-                    Почати готувати
-                  </v-btn>
-                </v-lazy>
-               </v-col>
-             </v-row>
-            </v-alert>
-          </v-timeline-item>
+        <v-card-title>
+          {{(i+1)}}.  {{step.t}}
+        </v-card-title>
 
-       <template
-        v-for="(step, i) in recipe.jsonStructure.sts">
-        <v-timeline-item
-          v-if="i==3||i==7"
+        <v-card-text class="text-body-1" v-html="step.d" >
+        </v-card-text>
+
+        <v-card-actions
         >
-          <v-card>
-            <PAd >
-            </PAd>
-          </v-card>
-        </v-timeline-item>
-        <v-timeline-item
-          :id="'step'+i"
-          :key="i"
-          :fill-dot="!playCook[i]"
-          :large="!!playCook[i]"
-          :color="!playCook[i]?'primary': (playCook[i]==2?'grey lighten-2':'primary darken-2')"
-          class="white--text font-weight-medium "
-        >
-        <template v-slot:icon>
-          <span >{{(i+1)}}</span>
-        </template>
-          <v-card
-            :class="playCook[i]==2?'grey--text lighten-2':''"
-            hover
+          <v-tooltip
+            v-if="video&&step.c"
+            top
           >
-            <v-card-title>
-              {{step.t}}
-
-
-
-            </v-card-title>
-
-            <v-card-text class="body-1" v-html="step.d" >
-            </v-card-text>
-
-            <v-card-actions
-
-            >
-
-              <v-tooltip
-                v-if="video&&step.c"
-                top
-              >
-                <template v-slot:activator="{ on, attrs }">
-                  <v-btn
-                    small
-                    class="mx-0"
-                    color="grey"
-                    outlined
-                    v-bind="attrs"
-                    v-on:click.stop="timeVideo(step.c)"
-                    v-on="on"
-                  >
-                    {{step.c}}
-                    <v-icon>
-                      $vuetify.icons.video
-                    </v-icon>
-                  </v-btn>
-                </template>
-                <span>Цей момент у відео</span>
-              </v-tooltip>
-              <v-spacer>
-              </v-spacer>
-              <template v-if="!!playCook[i]">
-                <v-icon left v-if="playCook[i]==2" color="green">$vuetify.icons.success</v-icon>
-
-
-                <v-progress-circular
-                     v-else
-                     :rotate="360"
-                     :width="5"
-                     :value="devideProgres(i)"
-                     color="teal"
-                     class="mr-2"
-                ></v-progress-circular>
-
-
-              </template>
-              <VSlideXTransition
-
-              >
+            <template v-slot:activator="{ on, attrs }">
               <v-btn
-                  v-if="playCook[i]>0"
-                :color="playCook[i]!==2?'primary':'grey'"
-                :disabled="playCook[i]==2"
-                @click="playStart(i)"
+                small
+                class="mx-0"
+                color="grey"
+                outlined
+                v-bind="attrs"
+                v-on:click.stop="timeVideo(step.c)"
+                v-on="on"
               >
-                 Готово
+                {{step.c}}
+                <v-icon>
+                  $vuetify.icons.video
+                </v-icon>
               </v-btn>
-              </VSlideXTransition>
-            </v-card-actions>
-          </v-card>
-      </v-timeline-item>
-     </template>
-     <v-fab-transition>
-       <v-timeline-item v-if="playFinish" large>
-         <template v-slot:icon>
-           <v-icon>
-              {{$options._icons.star}}
-           </v-icon>
-         </template>
-         <v-card
-
-         >
-           <v-card-title class="title">
-            ВІТАЄМО І СМАЧНОГО! Так тримати!
-           </v-card-title>
-
-           <v-card-text >
-                Ми сподіваємось у вас все вийшло! Бажаємо вам приємного настрою та наснаги в нових кулінарних починаннях!
-            <v-row>
-              <v-col>
-                <v-btn
-
-                  color="primary accent-4"
-                  @click="playShare=true"
-                >
-                 <v-icon left>
-                    $vuetify.icons.share
-                 </v-icon>  {{$t('share')}}
-                </v-btn>
-              </v-col>
-              <v-col>
-                <v-btn
-                color="primary"
-                target="_blank"
-                :href="author.url">Підписатись на автора</v-btn>
-              </v-col>
-            </v-row>
-           </v-card-text>
+            </template>
+            <span>Цей момент у відео</span>
+          </v-tooltip>
+          <v-spacer>
+          </v-spacer>
+          <template v-if="!!playCook[i]">
+            <v-icon left v-if="playCook[i]==2" color="green">$vuetify.icons.success</v-icon>
 
 
-         <ShareWindow
-           v-if="playShare"
-           @close="playShare=false"
+            <v-progress-circular
+                 v-else
+                 :rotate="360"
+                 :width="5"
+                 :value="devideProgres(i)"
+                 color="teal"
+                 class="mr-2"
+            ></v-progress-circular>
+
+
+          </template>
+          <VSlideXTransition
+
           >
-         </ShareWindow>
-       </v-card>
-       </v-timeline-item>
-     </v-fab-transition>
-    </v-timeline>
+          <v-btn
+              v-if="playCook[i]>0"
+            :color="playCook[i]!==2?'primary':'grey'"
+            :disabled="playCook[i]==2"
+            @click="playStart(i)"
+          >
+             Готово
+          </v-btn>
+          </VSlideXTransition>
+        </v-card-actions>
+      </v-card>
+    </template>
+    <v-fab-transition>
+        <v-card
+          v-if="playFinish"
+        >
+          <v-card-title class="title">
+           ВІТАЄМО І СМАЧНОГО! Так тримати!
+          </v-card-title>
+
+          <v-card-text >
+               Ми сподіваємось у вас все вийшло! Бажаємо вам приємного настрою та наснаги в нових кулінарних починаннях!
+           <v-row>
+             <v-col>
+               <v-btn
+
+                 color="primary accent-4"
+                 @click="playShare=true"
+               >
+                <v-icon left>
+                   $vuetify.icons.share
+                </v-icon>  {{$t('share')}}
+               </v-btn>
+             </v-col>
+             <v-col>
+               <v-btn
+               color="primary"
+               target="_blank"
+               :href="author.url">Підписатись на автора</v-btn>
+             </v-col>
+           </v-row>
+          </v-card-text>
+
+
+        <ShareWindow
+          v-if="playShare"
+          @close="playShare=false"
+         >
+        </ShareWindow>
+      </v-card>
+
+    </v-fab-transition>
+
     <DialogVideoYoutube
        v-if="tVideo"
      :PYv="{
@@ -448,7 +416,7 @@
     id="tips"
     class="mt-3"
     dark
-    color="blue-grey"
+    color="primary darken-3"
   >
     <v-card-title>
          <h2 class="text-h6 text-md-h4">Поради і запитання</h2>
@@ -461,14 +429,14 @@
         <v-alert
           v-for="(tip, i) in recipe.jsonStructure.tps"
           :key="i"
-          color="blue-grey darken-1"
+          color="primary darken-2"
           dark
           :icon="tip.q?'$vuetify.icons.help':'$vuetify.icons.info'"
           border="right"
           prominent
         >
             <div class="title">{{tip.t}}</div>
-            <div class="body-1" v-html="tip.d"></div>
+            <div v-html="tip.d"></div>
         </v-alert>
     </v-card-text>
   </v-card>
@@ -480,7 +448,7 @@
       <PHtml v-bind="{
           cntnt: {t: recipe.jsonStructure.d },
           cnf: {n:1},
-          classText: 'body-1'
+          classText: 'text-body-1'
         }">
       </PHtml>
     </v-card-text>
@@ -488,14 +456,16 @@
       {{recipe.jsonStructure.ct||'Схожі рецепти страв'}}
     </v-card-subtitle>
     <v-card-text v-if="recipe.jsonStructure.lnks.length">
+    <li
+      v-for="(link, i) in recipe.jsonStructure.lnks"
+    >
       <router-link
-        v-for="(link, i) in recipe.jsonStructure.lnks"
         :key="i"
         :to="link.u"
       >
         {{link.t}}
       </router-link>
-
+    </li>
     </v-card-text>
   </v-card>
 
@@ -530,8 +500,7 @@
 </v-container>
 <script v-html="jsonLtd" type="application/ld+json">
 </script>
-<script v-html="breadcrumbs" type="application/ld+json">
-</script>
+
 <script v-html="qaJsonLtd" type="application/ld+json">
 </script>
 </v-responsive>
@@ -571,22 +540,20 @@ export default {
       menu: [],
       video: false, // when video loaded in frame
       tVideo: false, // timecode for video
-      offsetTop: '54px',
-      offsets: [],
-      timeout: null,
+      //offsetTop: '54px',
+      //offsets: [],
+      //timeout: null,
       playCook: [],
       playFinish:false,
       playShare: false,
-      breadc: [],
-      scrollPause: false,
+
+    //  scrollPause: false,
       mounted: false
     }
   },
   mounted() {
 
-      if (!this.$vuetify.breakpoint.mobile) {
-          this.offsetTop = '64px';
-      }
+
       this.mounted = true;
       this.generatePortions();
   },
@@ -594,18 +561,8 @@ export default {
 
   created() {
     this.generateMenu();
-    this.createBreadc();
   },
 
-  watch: {
-    '$vuetify.breakpoint.mobile': function(newm, oldm) {
-        if (newm) {
-            this.offsetTop = '54px';
-        } else {
-          this.offsetTop = '64px';
-        }
-    }
-  },
 
   computed: {
 
@@ -652,20 +609,7 @@ export default {
 
     },
 
-    breadcrumbs() {
-      return {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": this.breadc.map((item, i)=>{
-        return {
-          "@type": "ListItem",
-          "position":(i+1),
-          "name": item.text,
-          "item": this.$store.getters.CORE_HOST + item.path
-        }
-      })
-      }
-    },
+
 
     /**
       @context https://schema.org/
@@ -740,24 +684,7 @@ export default {
 
 
 
-     createBreadc() {
 
-        // app link
-        this.breadc.push({
-         text: this.$store.state.appInstance.objectActive.name,
-         path: '',
-         disabled:false,
-         property:"item",
-         typeof:"WebPage"
-        });
-        // last link
-        this.breadc.push({
-           text: this.recipe.jsonStructure.n,
-           path: this.$route.path,
-           disabled: true
-        });
-      //  return breadc;
-     },
      /**
       Generate menu for recipe
      */
@@ -883,7 +810,7 @@ export default {
      https://github.com/vuetifyjs/vuetify/blob/34a37a06fd49e4c70f47b17e46eaa56716250283/packages/docs/src/layouts/default/Toc.vue
      **/
 
-     setOffsets () {
+     /*setOffsets () {
         const offsets = []
         const toc = this.menu.slice().reverse()
         for (const item of toc) {
@@ -892,16 +819,13 @@ export default {
           offsets.push(section.offsetTop -200)
         }
         this.offsets = offsets
-      },
-      async findActiveIndex () {
-        //if (this.$vuetify.breakpoint.mobile) return
+      },*/
+    /*  async findActiveIndex () {
         const currentOffset = (
           window.pageYOffset ||
           document.documentElement.offsetTop ||
           0
         )
-        // If we are at the top of the page
-        // reset the offset
 
         if (currentOffset === 0) {
 
@@ -919,24 +843,14 @@ export default {
           tindex = this.menu.length - 1
         }
         const hash = this.menu[tindex].hash;
-      //  if (hash === this.$route.hash) return
+        if (hash === this.$route.hash) return
         this.scrolling = true
 
         this.tab = hash;
 
         this.scrolling = false
-      },
-      onScroll () {
-        if (this.scrollPause) {
-          return false;
-        }
-        clearTimeout(this.timeout)
-        if (
-          this.scrolling
-        ) return;
+      }, */
 
-        this.timeout = setTimeout(this.findActiveIndex, 17)
-      },
 
       /**
         playCook = 1 active

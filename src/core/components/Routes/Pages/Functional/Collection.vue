@@ -1,6 +1,10 @@
 <template>
 <v-container>
     <v-responsive class="mx-auto" width="920">
+      <SiteoBreadcramps
+        :lastTitle="collection.title"
+      >
+      </SiteoBreadcramps>
       <v-container
        >
        <v-row>

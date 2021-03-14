@@ -89,12 +89,13 @@ export default function (Vue, RESTApi, configs)  {
              @example 'https://domain.com/base'
            */
            CORE_HOST() {
-            var fullhost = 'https://'+configs.host;
+             var fullhost = 'https://'+configs.host;
              if (configs.baseUrl!='/') {
                 fullhost+=configs.baseUrl;
              }
              return fullhost;
            },
+
 
            PATH_ICON() {
              return configs.icon_path || process.env.PATH_ICON;
