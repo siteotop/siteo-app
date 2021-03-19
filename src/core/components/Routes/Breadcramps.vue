@@ -1,6 +1,6 @@
 <template>
 <div>
-  <v-breadcrumbs
+  <v-breadcrumbs class="pl-2"
   :items="breadc">
     <template v-slot:item="{ item }">
       <v-breadcrumbs-item
@@ -69,8 +69,7 @@ export default {
               }
            });
          }
-       //  return breadc;
-      },
+       },
     },
     computed: {
       breadcrumbs() {
