@@ -82,7 +82,7 @@ export default {
         {
           property: 'og:title',
           vmid: 'ogt',
-          content: this.pageObject.og_title|| this.metaTitle
+          content: this.pageObject.og_title||this.pageObject.title||this.metaTitle
         },
 
         {

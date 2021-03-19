@@ -11,8 +11,13 @@
           </v-col>
         </v-row>
   </v-container>
-
+  <SiteoBreadcramps
+    :key="category_title" 
+    :lastTitle="category_title"
+  >
+  </SiteoBreadcramps>
   <v-container tag="section" fluid  v-if="pageObject.meta_title&&!loaded">
+
     <v-container class="container-text">
     <v-row   justify="center"   alignContent="center" class="text-center" >
 
@@ -25,6 +30,7 @@
     </v-row>
     </v-container>
   </v-container>
+
   <v-toolbar flat  >
     <v-menu
       eager
@@ -53,7 +59,7 @@
       </v-card>
     </v-menu>
 
-    <v-toolbar-title><h2 class="text-h6" >{{category_title}} {{$t('top')}} {{topCount}}  </h2></v-toolbar-title>
+    <v-toolbar-title><h2 class="text-h6" >{{category_title}}   </h2></v-toolbar-title>
     <v-spacer></v-spacer>
     <v-btn-toggle mandatory v-model="toggle_component">
       <v-btn text value="card">
@@ -278,8 +284,10 @@ export default {
              if (o) {
                return  o.title;
              }
+          } else {
+            return '';
           }
-         return  this.$store.getters.getSiteoConfig('t_ls')||'LIST VALUES'
+         //return  this.$store.getters.getSiteoConfig('t_ls')||'LIST VALUES'
       },
 
       metaTitle() {
