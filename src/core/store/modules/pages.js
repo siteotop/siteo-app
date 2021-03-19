@@ -18,7 +18,8 @@ export default function (parentGetterUrl) {
           og_image: '',
           meta_robots: '',
           f: '',
-          datePublished:''
+          datePublished:'',
+          dateModified:''
       }
     },
 
