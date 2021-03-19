@@ -84,13 +84,16 @@ export default {
         const paragraph = this.$el.querySelectorAll('p');
 
         //console.log(paragraph);
+        if (!(paragraph&&paragraph.length>1)){
+          return false;
+        }
         let configes=this.$store.getters.getSiteoConfig('SiteoPluginGadsense');
         // if adsense turn off return null;
         if (!configes||!configes.on) {
           return;
         }
         let ad = document.createElement('ins');
-        ad.setAttribute("class", "adsbygoogle");
+        ad.setAttribute("class", "adsbygoogle mt-3");
         ad.setAttribute("data-ad-layout", "in-article");
         ad.setAttribute("style", "display:block; text-align:center;");
         ad.setAttribute("data-ad-layout", "in-article");
