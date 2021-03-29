@@ -59,12 +59,20 @@
         {{recipe.description}}
       </v-col>
         <v-col cols="12" v-if="recipe.picture">
-          <v-img
+
+          <picture>
+            <source :srcset="recipe.picture" media="(min-width: 768px)">
+            <source :srcset="recipe.thumb420">
+            <img :srcset="recipe.thumb420" :alt="recipe.jsonStructure.n" style="width:100%;">
+
+          </picture>
+          <!--<v-img
+            eager
             :alt="recipe.jsonStructure.n"
             min-height="300px"
             width="100%"
             :src="recipe.picture">
-          </v-img>
+          </v-img> -->
         </v-col>
     <v-col>
 
