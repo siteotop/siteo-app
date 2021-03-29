@@ -5,7 +5,7 @@ import  RDw from './Structure/RootDrawer.vue';
 import  RAb from './Structure/RootAppBar.vue';
 import  RFt from './Structure/RootFooter.vue';
 import  RAc from './Structure/RootAction';
-import  RLn from './Structure/RootLangs.vue';
+
 
 export default {
     components: {
@@ -14,8 +14,7 @@ export default {
       RAb,
       RFt,
       RAc,
-      RLn,
-      FooterScroll: ()=>import( /* webpackChunkName: "footer-scroll" */ './Elements/FooterScroll.vue')
+      
     },
 
     appStr: [
@@ -23,7 +22,7 @@ export default {
       'RAb',
       'RCt',
       'RFt',
-      'FooterScroll'
+
     ],
     // _siteo_config: {},
     // _plugins: {},

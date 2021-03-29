@@ -83,8 +83,9 @@
 </template>
 
 <script>
+
 export default {
-    
+  
     data() {
         return {
            currentOffset: 0,
