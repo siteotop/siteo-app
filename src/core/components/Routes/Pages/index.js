@@ -53,39 +53,17 @@ export default {
             pageObject (state) {
                 return state.pages? state.pages.objectActive: {};
             },
-
-            pageMenu(state) {
-              if (Array.isArray(state.pages.objectActive.jsonStructure)) {
-                var menu = [];
-                state.pages.objectActive.jsonStructure.map(function(section, index){
-                    if (section.a/*_attrib*/) {
-                      if (section.a.id&&section.a['data-t']) {
-                        menu.push({
-                            title: section.a['data-t'],
-                            target: '#'+section.a.id
-                         });
-                        }
-                    }
-                });
-                return menu;
-              } else {
-                return [];
-              }
-            }
         }),
 
-
-
-
     },
 
-    mounted(){
+    /*mounted(){
         this.addEventForEdit();
-    },
+    },*/
 
 
     methods: {
-
+      /*
       addEventForEdit() {
         function KeyPress(e) {
           var evtobj = window.event? event : e
@@ -93,7 +71,7 @@ export default {
         }
         //document.onkeydown = KeyPress;
       },
-
+    */
     /*  asyncDataError(error_data) {
           this.$store.commit('pages/clearModel');
           this.$store.commit('pages/updateModel', {error: error_data});
