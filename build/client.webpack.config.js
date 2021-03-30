@@ -97,6 +97,8 @@ module.exports = merge(baseConfig, {
       new HtmlWebpackPlugin({
         template: html_template,
         filename: path.resolve(__dirname, "../ssr/template")+ '/index.ssr.html',
+        // Якщо файли будуть зверху, то вони почнуть завантажуватися паралельно потоку. Це краще, чим вони почнуть завантажуватися після обробки html
+        scriptLoading: 'defer',
         //inject: false,
         minify: false,
         templateParameters: {
@@ -122,6 +124,9 @@ module.exports = merge(baseConfig, {
       new HtmlWebpackPlugin({
        template: html_template,
        filename: path.resolve(__dirname, "../ssr/template")+ '/index.ssr.plain.html',
+
+
+
        //inject: false,
        templateParameters: {
            html_attr: "",
@@ -138,7 +143,7 @@ module.exports = merge(baseConfig, {
         'process.env': {
            NODE_ENV: JSON.stringify(process.env.NODE_ENV),
            HOST_API: JSON.stringify(process.env.HOST_API_FRONTEND),
-           PATH_ICON: JSON.stringify(process.env.PATH_ICON),  
+           PATH_ICON: JSON.stringify(process.env.PATH_ICON),
         }
       }),
       new MiniCssExtractPlugin({
