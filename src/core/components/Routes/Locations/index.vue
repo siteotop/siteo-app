@@ -128,7 +128,7 @@
       </v-divider>
       <v-card-text v-if="countItems==0">
           <v-alert v-if="!loaded" color="warning" border="left">
-              {{$t('list')}} {{$t('empty')}}
+              <!--{{$t('list')}}-->list  empty<!--{{$t('empty')}}-->
           </v-alert>
       </v-card-text >
         <v-toolbar v-else flat>
@@ -142,7 +142,7 @@
           </v-toolbar-title>
           <v-spacer>
           </v-spacer>
-          {{$t('top')}}:
+          <!--{{$t('top')}}--> top:
           {{topCount}}
         </v-toolbar>
         <v-card-text v-if="pageObject.description">
@@ -187,7 +187,7 @@
 
                 <PAd adType="list">
                 </PAd>
-            
+
             </v-col>
           </template>
 
@@ -391,7 +391,7 @@ export default {
 
          if (this.locationObject.title) {
            // field region using for language differences (like in Ukrainian в Будапешті)
-            startText+=' '+ this.$t('in') + ' '+this.locationObject.region;
+            startText+=' '+ /*this.$t('in')*/'в' + ' '+this.locationObject.region;
          }
          return startText
        },

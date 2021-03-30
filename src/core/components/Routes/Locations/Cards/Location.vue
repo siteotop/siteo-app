@@ -16,7 +16,7 @@
       <v-btn :to="{name: 'location', params: {
         locationIdUrl: props.location.idUrl,
       }}"  @click="(event)=>{props.clickOnLocation(event, props.location)}">
-        {{parent.$t('rm')}}
+        <!--{{parent.$t('rm')}}--> rm
       </v-btn>
 
     </v-card-actions>

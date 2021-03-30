@@ -11,8 +11,8 @@ import Meta from 'vue-meta'
 Vue.use(Meta);
 
 /**I18N */
-import VueI18n from 'vue-i18n';
-Vue.use(VueI18n);
+//import VueI18n from 'vue-i18n';
+//Vue.use(VueI18n);
 
 
 import {pluginUpdateVuetify, helperOptionsVuetify} from './vue-plugins/UpdateVuetify';
@@ -318,16 +318,18 @@ export const createSiteo =  function ({configs, client}) {
    // connect routes translating to all messages
    //APP.options.messages[APP.options.instance.data.lang].routes = APP.options.instance.routes;
    // Create VueI18n instance with options
-   AppInstanse.i18n = new VueI18n({
+  /* AppInstanse.i18n = new VueI18n({
       silentTranslationWarn: process.env.NODE_ENV === 'development'? false: true, // silent log
       locale: configs.lang, // app lang
       //messages: messages // set locale messages
-    });
+    });*/
 
-    import(/* webpackChunkName: "locale-[request]" */ './i18n/'+ configs.lang).then(({default:local}) => {
+    /*import( webpackChunkName: "locale-[request]"  './i18n/'+ configs.lang).then(({default:local}) => {
         //console.log(local);
         AppInstanse.i18n.mergeLocaleMessage(configs.lang, local);
     }).catch(error => {console.log(error)});
+    */
+
     AppInstanse.extends = CoreVue;
     if (client&&configs.plugins) {
        for (var pluginName in configs.plugins ) {

@@ -322,7 +322,7 @@ export default {
                 actions: [
                     {
                       textKey: ()=>{
-                          return this.$t('route');
+                          return 'Маршрут' /*this.$t('route')*/;
                       },
                       icon: 'directions',
                       onClick: this.goToDirect
@@ -330,7 +330,7 @@ export default {
 
                     {
                       textKey: ()=>{
-                          return this.$t('copy');
+                          return 'copy'  /*this.$t('copy')*/;
                       },
                       icon: 'copy',
                       onClick: this.copyLatLng
@@ -342,7 +342,7 @@ export default {
               actions: [
                 {
                   textKey: ()=>{
-                      return this.$t('open');
+                      return  'open'/*this.$t('open')*/;
                   },
                   icon: 'googlemaps',
                   onClick: this.goToGoogleMaps
@@ -354,7 +354,7 @@ export default {
               actions: [
                 {
                   textKey: ()=>{
-                      return this.$t('call');
+                      return 'call'/*this.$t('call')*/;
                   },
                   icon: 'phone',
                   onClick: this.callPhone
@@ -362,7 +362,7 @@ export default {
 
                 {
                   textKey: ()=>{
-                      return this.$t('copy');
+                      return 'copy'  /*this.$t('copy')*/;
                   },
                   icon: 'copy',
                   onClick: this.copyPhone
@@ -373,7 +373,7 @@ export default {
               actions: [
                 {
                   textKey: ()=>{
-                      return this.$t('open');
+                      return /*this.$t('open')*/'open';
                   },
                   icon: 'price',
                   onClick: this.goToPrice

@@ -12,7 +12,7 @@
          >
 
             <v-icon left>$vuetify.icons.share</v-icon>
-            {{$t('share')}}
+
           <v-spacer></v-spacer>
            <v-btn v-if="dialog"   icon   @click="shareWindow = false">
              <v-icon>$vuetify.icons.close</v-icon>
@@ -53,16 +53,16 @@
 
 
 
-         <v-card-actions v-if="dialog">
+      <!--   <v-card-actions v-if="dialog">
            <v-spacer></v-spacer>
            <v-btn
              color="primary"
              text
              @click="shareWindow = false"
            >
-             {{$t('close')}}
+             Close
            </v-btn>
-         </v-card-actions>
+         </v-card-actions> -->
        </v-card>
        <v-snackbar
           v-model="snackbar"
