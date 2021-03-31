@@ -7,8 +7,9 @@ export default {
        Function for Menu
        go to id element
       */
-      async  gotoContent(hash) {
+      async  gotoContent(event,hash) {
         //make pause for onScroll
+        event.preventDefault();
         this.scrollPause = true;
         setTimeout(()=>{
            this.scrollPause = false;
