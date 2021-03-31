@@ -11,9 +11,9 @@
       <h1 class="text-h5 text-md-h2">{{recipe.title}}</h1>
         {{recipe.description}}
       </v-col>
-        <v-col cols="12" v-if="recipe.picture">
+        <v-col cols="12" v-if="recipe.picture" style="min-height:200px;">
 
-          <picture>
+          <picture >
             <source :srcset="recipe.picture" media="(min-width: 768px)">
             <source :srcset="recipe.thumb420">
             <img :srcset="recipe.thumb420" :alt="recipe.jsonStructure.n" style="width:100%; height:auto">
@@ -94,10 +94,12 @@
           >
           <v-list-item
             color="grey lighten-1"
+            @click="changeAll"
           >
 
             <v-list-item-action>
-              <v-checkbox @change="changeAll" v-model="checkall" ></v-checkbox>
+              <v-icon v-if="!checkall">$vuetify.icon.checkboxOff</v-icon>
+              <v-icon v-else>$vuetify.icon.checkboxOn</v-icon>
             </v-list-item-action>
             <v-list-item-content>
                 <v-list-item-title>
@@ -119,7 +121,10 @@
                   >
                   <template v-slot:default="{ active }">
                   <v-list-item-action>
-                    <v-checkbox :input-value="active"></v-checkbox>
+                    <v-icon v-if="!active">$vuetify.icon.checkboxOff</v-icon>
+                    <v-icon
+                      color="primary"
+                    v-else>$vuetify.icon.checkboxOn</v-icon>
                   </v-list-item-action>
                   <v-list-item-content>
                       <v-list-item-title>
@@ -571,6 +576,7 @@ export default {
      },
 
       async changeAll() {
+          this.checkall=!this.checkall;
           if (this.checkall) {
             this.settings=[];
             let end = this.recipe.jsonStructure.ings.length-1;
