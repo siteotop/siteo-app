@@ -12,7 +12,12 @@ const presets = [
         },
 
         //https://babeljs.io/docs/en/babel-preset-env#usebuiltins-entry
-        useBuiltIns: "entry",
+        //useBuiltIns: "entry",
+
+        // При цих налаштуваннях можна використати все як описано тут https://babeljs.io/docs/en/babel-preset-env
+        //Також можна видалити @babel/polyfill з webpack
+        useBuiltIns: "usage",
+        corejs:3
       }
     ]
 ];

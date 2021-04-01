@@ -47,7 +47,6 @@ module.exports = merge(baseConfig, {
 
   },
   entry: {
-    'polyfill': '@babel/polyfill',
     'core': './src/client.js',
   },
 
