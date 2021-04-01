@@ -9,6 +9,10 @@
 
 [v-cloak] { display: none }
 
+.recipeWidth {
+  max-width: 920px !important;
+}
+
 .top-m-1 {
   margin-top:-15px;
 }
