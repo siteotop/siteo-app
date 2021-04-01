@@ -37,11 +37,9 @@
 </v-fab-transition >
   <template v-for="(step, i) in steps">
     <v-sheet  class="mb-2" v-if="i==3||i==7">
-    <v-lazy min-height="300">
       <PAd >
       </PAd>
-    </v-lazy>
-  </v-sheet>
+   </v-sheet>
     <v-card
       :elevation="playCook[i]"
       :class="(playCook[i]==2?'grey--text lighten-2':'') + ' mb-2'"
@@ -189,9 +187,8 @@ export default {
     },
 
     devideProgres(i) {
-
-        var number = this.steps.length;
-        return Math.round(i/number*100);
+      var number = this.steps.length;
+      return Math.round(i/number*100);
     },
     timeVideo(time,title) {
       this.tVideo = time;

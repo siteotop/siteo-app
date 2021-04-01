@@ -3,28 +3,28 @@
   class="recipeWidth"
   >
   <SiteoBreadcramps
-    :lastTitle="recipe.jsonStructure.n"
+    :lastTitle="selfObject.jsonStructure.n"
   >
   </SiteoBreadcramps>
    <v-row>
     <v-col cols="12" class="text-center mb-2">
-      <h1 class="text-h5 text-md-h2">{{recipe.title}}</h1>
-        {{recipe.description}}
+      <h1 class="text-h5 text-md-h2">{{selfObject.title}}</h1>
+        {{selfObject.description}}
       </v-col>
-        <v-col cols="12" v-if="recipe.picture" style="min-height:200px;">
+        <v-col cols="12" v-if="selfObject.picture" style="min-height:200px;">
 
           <picture >
-            <source :srcset="recipe.picture" media="(min-width: 768px)">
-            <source :srcset="recipe.thumb420">
-            <img :srcset="recipe.thumb420" :alt="recipe.jsonStructure.n" style="width:100%; height:auto">
+            <source :srcset="selfObject.picture" media="(min-width: 768px)">
+            <source :srcset="selfObject.thumb420">
+            <img :srcset="selfObject.thumb420" :alt="selfObject.jsonStructure.n" style="width:100%; height:auto">
 
           </picture>
           <!--<v-img
             eager
-            :alt="recipe.jsonStructure.n"
+            :alt="selfObject.jsonStructure.n"
             min-height="300px"
             width="100%"
-            :src="recipe.picture">
+            :src="selfObject.picture">
           </v-img> -->
         </v-col>
     <v-col>
@@ -45,9 +45,9 @@
       </v-btn>
 
     </v-col>
-    <v-col v-if="recipe.jsonStructure.pr" id="about-dish" cols="12">
+    <v-col v-if="selfObject.jsonStructure.pr" id="about-dish" cols="12">
       <PHtml v-bind="{
-          cntnt: {t: recipe.jsonStructure.pr},
+          cntnt: {t: selfObject.jsonStructure.pr},
           cnf: {n:1},
           classText: 'text-body-1 text-md-h6 font-weight-regular'
         }">
@@ -59,11 +59,11 @@
       cols="12"
       >
 
-      <v-card >
+      <v-card class="pb-8">
           <v-toolbar color="grey lighten-4" flat>
 
 
-          <h2 class="text-h6 text-md-h4">Інгредієнти </h2> <span class="text-h5 grey--text text--lighten-2 pl-1">{{settings.length}}/{{recipe.jsonStructure.ings.length}}</span>
+          <h2 class="text-h6 text-md-h4">Інгредієнти </h2>
 
           <v-spacer></v-spacer>
 
@@ -73,22 +73,17 @@
             title="Кількість порцій"
             @click="activePortion=true"
           >
-            Порцій: {{recipe.jsonStructure.pc}} <v-icon right>{{$options._icons.portions}}</v-icon>
+            Порцій: {{selfObject.jsonStructure.pc}} <v-icon right>{{$options._icons.portions}}</v-icon>
           </v-btn>
           <RecipePortions
-            :ings="recipe.jsonStructure.ings"
-            :portions="recipe.jsonStructure.pc"
+            :ings="selfObject.jsonStructure.ings"
+            :portions="selfObject.jsonStructure.pc"
             :icon="$options._icons.portions"
           v-else>
           </RecipePortions>
-
-
-
         </v-toolbar>
-        <v-card-subtitle>
-            Відмічайте та копіюйте інгредієнти, які є в наявності або, які потрібно купити для <b>страви {{recipe.jsonStructure.n}}.</b>
-        </v-card-subtitle>
-        <v-card-text>
+
+
           <v-list
             :dark="checkall"
           >
@@ -103,7 +98,8 @@
             </v-list-item-action>
             <v-list-item-content>
                 <v-list-item-title>
-                  <strong> всі </strong>
+                  <strong> Вибрати всі</strong>
+                  <span class=" grey--text text--lighten-2">{{selfObject.jsonStructure.ings.length}}</span>
                 </v-list-item-title>
             </v-list-item-content>
 
@@ -114,7 +110,7 @@
             multiple
             active-class=""
           >
-              <template v-for="(ing, i) in recipe.jsonStructure.ings">
+              <template v-for="(ing, i) in selfObject.jsonStructure.ings">
                 <v-list-item
                   v-if="ing.t!=='title'"
                   :key="i"
@@ -144,27 +140,21 @@
 
             </v-list-item-group>
 
-        </v-card-text>
       <!-- SHARE -->
-      <v-card-text class="mb-3" v-if="settings.length">
-          <ShareWindow
-            :title="'Скопіювати інгредієнти'"
-            :link="selectedText"
-            :appendLink="true"
-            :dialog="false"
-            :share="false"
-            :width="'100%'"
-           >
-          </ShareWindow>
-        </v-card-text>
-
+      <RecipeCopy
+        v-if="settings.length"
+        :counts="selfObject.jsonStructure.ings.length"
+        :settings="settings"
+        :ings="selfObject.jsonStructure.ings"
+        :title="selfObject.title"
+        @close="settings = []"
+      >
+     </RecipeCopy>
       </v-card>
     </v-col>
     <v-col>
-      <v-lazy>
-        <PAd >
-        </PAd>
-      </v-lazy>
+      <PAd >
+      </PAd>
     </v-col>
   </v-row>
 
@@ -174,25 +164,25 @@
   >
     <v-toolbar color="grey lighten-4" flat>
       <v-toolbar-title>
-         <h2 class="text-h6 text-md-h4">  Як приготувати {{recipe.jsonStructure.n}}</h2>
+         <h2 class="text-h6 text-md-h4">  Як приготувати {{selfObject.jsonStructure.n}}</h2>
        </v-toolbar-title>
       <template v-slot:extension>
-           {{recipe.jsonStructure.tp}} <v-icon right>{{$options._icons.time}}</v-icon>
+           {{selfObject.jsonStructure.tp}} <v-icon right>{{$options._icons.time}}</v-icon>
            <v-spacer></v-spacer>
-           {{recipe.jsonStructure.tc}} <v-icon right>{{$options._icons.time}}</v-icon>
+           {{selfObject.jsonStructure.tc}} <v-icon right>{{$options._icons.time}}</v-icon>
            <v-spacer></v-spacer>
            {{fullTime}} <v-icon right>{{$options._icons.time}}</v-icon>
        </template>
 
     </v-toolbar>
-       <v-card-subtitle><h3>Відео рецепт {{recipe.jsonStructure.n}}</h3></v-card-subtitle>
-       <template v-if="recipe.jsonStructure.v">
+       <v-card-subtitle><h3>Відео рецепт {{selfObject.jsonStructure.n}}</h3></v-card-subtitle>
+       <template v-if="selfObject.jsonStructure.v">
        <v-lazy v-model="isActive" id="video" >
          <PYv
            v-if="isActive"
            v-bind="{
                cntnt: {
-                   v: recipe.jsonStructure.v
+                   v: selfObject.jsonStructure.v
                  },
                cnf: {}
              }"
@@ -215,14 +205,13 @@
     </v-card-actions>
   </v-lazy>
    <template v-if="!playCook">
-    <template v-for="(step, i) in recipe.jsonStructure.sts">
+    <template v-for="(step, i) in selfObject.jsonStructure.sts">
       <v-sheet v-if="i==3||i==7">
-        <v-lazy>
           <PAd >
           </PAd>
-        </v-lazy>
       </v-sheet>
       <v-sheet
+        :id="'step'+i"
         class="pa-3 ma-1">
         <h4 class="text-h6">{{(i+1)}}.  {{step.t}}</h4>
         <div class="mt-3 text-body-1" v-html="step.d" >
@@ -231,9 +220,10 @@
     </template>
   </template>
     <RecipePlaycook v-else
-      :steps="recipe.jsonStructure.sts"
-      :videoId="recipe.jsonStructure.v"
-      :kitchen="recipe.jsonStructure.kitchen"
+      :steps="selfObject.jsonStructure.sts"
+      :videoId="selfObject.jsonStructure.v"
+      :kitchen="selfObject.jsonStructure.kitchen"
+
     >
     </RecipePlaycook>
     <v-lazy height="50">
@@ -265,20 +255,20 @@
   <v-card
     class="mt-3"
     >
-    <v-card-text v-if="recipe.jsonStructure.d">
+    <v-card-text v-if="selfObject.jsonStructure.d">
       <PHtml v-bind="{
-          cntnt: {t: recipe.jsonStructure.d },
+          cntnt: {t: selfObject.jsonStructure.d },
           cnf: {n:1},
           classText: 'text-body-1'
         }">
       </PHtml>
     </v-card-text>
     <v-card-subtitle class="title">
-      {{recipe.jsonStructure.ct||'Схожі рецепти страв'}}
+      {{selfObject.jsonStructure.ct||'Схожі рецепти страв'}}
     </v-card-subtitle>
-    <v-card-text v-if="recipe.jsonStructure.lnks.length">
+    <v-card-text v-if="selfObject.jsonStructure.lnks.length">
     <li
-      v-for="(link, i) in recipe.jsonStructure.lnks"
+      v-for="(link, i) in selfObject.jsonStructure.lnks"
     >
       <router-link
         :key="i"
@@ -320,7 +310,7 @@
 </v-lazy>
 
 <v-card
-  v-if="recipe.jsonStructure.tps.length"
+  v-if="selfObject.jsonStructure.tps.length"
   id="tips"
   class="mt-3 pb-4 mb-4"
   color="grey lighten-3"
@@ -329,10 +319,10 @@
        <h2 class="text-h6 text-md-h4">Поради і запитання</h2>
   </v-card-title>
   <v-card-subtitle>
-    Поради по приготуванні страви {{recipe.jsonStructure.n}}
+    Поради по приготуванні страви {{selfObject.jsonStructure.n}}
   </v-card-subtitle>
 
-  <v-card-text :key="i" v-for="(tip, i) in recipe.jsonStructure.tps">
+  <v-card-text :key="i" v-for="(tip, i) in selfObject.jsonStructure.tps">
       <h3 class="text-title">{{tip.t}}</h3>
       <div v-html="tip.d"></div>
   </v-card-text>
@@ -356,7 +346,6 @@
 </template>
 <script>
 
-import { mapState } from 'vuex';
 import PHtml  from  '../../../Structure/PHtml.vue';
 import mixinFunctional from './mixin.js';
 import {
@@ -367,10 +356,16 @@ import {
 
 export default {
   mixins: [mixinFunctional],
+  props: {
+      selfObject: {
+        type: Object
+      }
+  },
   components: {
     PHtml,
     RecipePortions: ()=> import( /* webpackChunkName: "recipe-play" */ './Recipe/Portions.vue'),
     RecipePlaycook: ()=> import( /* webpackChunkName: "recipe-play" */ './Recipe/Playcook.vue'),
+    RecipeCopy: ()=> import( /* webpackChunkName: "recipe-play" */ './Recipe/Copy.vue'),
   },
 
   _icons: {
@@ -410,19 +405,19 @@ export default {
     */
     author() {
       return {
-         '@type': this.recipe.jsonStructure.author.t||'Organization',
-         'name': this.recipe.jsonStructure.author.n||this.$store.state.appInstance.objectActive.name,
-         "url": this.recipe.jsonStructure.author.u || this.$store.getters.CORE_HOST
+         '@type': this.selfObject.jsonStructure.author.t||'Organization',
+         'name': this.selfObject.jsonStructure.author.n||this.$store.state.appInstance.objectActive.name,
+         "url": this.selfObject.jsonStructure.author.u || this.$store.getters.CORE_HOST
         }
     },
 
     qaJsonLtd() {
 
       var listQa=[];
-      if (!this.recipe.jsonStructure.tps) {
+      if (!this.selfObject.jsonStructure.tps) {
         return false;
       }
-        this.recipe.jsonStructure.tps.map((tip, i)=>{
+        this.selfObject.jsonStructure.tps.map((tip, i)=>{
         if (tip.q) {
           listQa.push( {
           "@type": "Question",
@@ -460,34 +455,34 @@ export default {
         return {
           "@context": "https://schema.org/",
           "@type": "Recipe",
-          "name": this.recipe.jsonStructure.n,
+          "name": this.selfObject.jsonStructure.n,
           "image": [
-            this.recipe.picture,
-            this.recipe.thumb420
+            this.selfObject.picture,
+            this.selfObject.thumb420
           ],
           "author": this.author,
-          "datePublished": this.recipe.datePublished.substring(0,10),
-          "description":this.recipe.description,
-          "prepTime": `PT${this.recipe.jsonStructure.tp}M`,
-          "cookTime": `PT${this.recipe.jsonStructure.tc}M`,
+          "datePublished": this.selfObject.datePublished.substring(0,10),
+          "description":this.selfObject.description,
+          "prepTime": `PT${this.selfObject.jsonStructure.tp}M`,
+          "cookTime": `PT${this.selfObject.jsonStructure.tc}M`,
           "totalTime": `PT${this.fullTime}M`,
-          "keywords": this.recipe.jsonStructure.k,
-          "recipeYield": this.recipe.jsonStructure.pc,
-          "recipeCategory": this.recipe.jsonStructure.cat,
-          "recipeCuisine": this.recipe.jsonStructure.cui,
+          "keywords": this.selfObject.jsonStructure.k,
+          "recipeYield": this.selfObject.jsonStructure.pc,
+          "recipeCategory": this.selfObject.jsonStructure.cat,
+          "recipeCuisine": this.selfObject.jsonStructure.cui,
           /*"nutrition": {
             "@type": "NutritionInformation",
             "calories": "270 calories"
           },*/
-          "recipeIngredient": this.recipe.jsonStructure.ings.map(function(i){
+          "recipeIngredient": this.selfObject.jsonStructure.ings.map(function(i){
             return i.n + ' - '+(i.c||'')+' '+(i.t||'');
           }),
-          "recipeInstructions":this.recipe.jsonStructure.sts.map((step, i)=>{
+          "recipeInstructions":this.selfObject.jsonStructure.sts.map((step, i)=>{
             return {
               "@type": "HowToStep",
               "name": step.t,
               "text": step.d,
-              "url": link+"#step"+(i+1),
+              "url": link+"#step"+i,
               "image": step.i
             }
           }) ,
@@ -495,34 +490,16 @@ export default {
         };
     },
     fullTime() {
-        return parseInt(this.recipe.jsonStructure.tp) + parseInt(this.recipe.jsonStructure.tc);
+        return parseInt(this.selfObject.jsonStructure.tp) + parseInt(this.selfObject.jsonStructure.tc);
     },
-    /**
-      generate text for copied
-    */
-    selectedText() {
-       if (this.settings.length>0) {
-          this.settings.sort();
-          let text='';
-          for (let i in this.settings) {
-            let ing = this.recipe.jsonStructure.ings[this.settings[i]];
-            text += ing.n+' - '+(ing.c?ing.c:'')+' '+(ing.t?ing.t:'') + '\n';
-          }
-          text+='\n'+this.recipe.title +' '+this.$store.getters.CORE_HOST+this.$route.path ;
-          return text;
-       } else {
-         return '';
-       }
-    },
-    ...mapState({
-      recipe: state => state.pages.objectActive
-    })
+
+
   } ,
 
   methods: {
 
     /**
-      Generate menu for recipe
+      Generate menu for selfObject
      */
      generateMenu() {
         var menu = [
@@ -563,11 +540,11 @@ export default {
 
         for (var i in menu) {
            if (menu[i].list){
-              if (this.recipe.jsonStructure[menu[i].id].length) {
+              if (this.selfObject.jsonStructure[menu[i].id].length) {
                 this.menu.push(menu[i]);
               }
            } else {
-              if (this.recipe.jsonStructure[menu[i].id]){
+              if (this.selfObject.jsonStructure[menu[i].id]){
                 this.menu.push(menu[i]);
               }
            }
@@ -579,7 +556,7 @@ export default {
           this.checkall=!this.checkall;
           if (this.checkall) {
             this.settings=[];
-            let end = this.recipe.jsonStructure.ings.length-1;
+            let end = this.selfObject.jsonStructure.ings.length-1;
             for (let i = 0; i <= end; i++) {
                 this.settings.push(i);
             }
