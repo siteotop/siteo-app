@@ -186,7 +186,6 @@
 //import WiPosts from '../Widgets/WiPosts.vue';
 import CardValues from './Cards/Values.vue';
 
-
 import values  from  '../../../store/modules/values';
 import { mapState } from 'vuex';
 import {

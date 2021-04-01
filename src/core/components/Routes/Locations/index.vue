@@ -267,9 +267,6 @@ export default {
     components: {
       CardLocation,
       CardOpenLocation: ()=> import( /* webpackChunkName: "CardOpenLocation" */ '../Location/Cards/OpenLocation.vue'),
-
-
-    //  PAd: ()=> import( /* webpackChunkName: "adsense" */ '../../Structure/PAdsense/Index.vue'),
       LocationsMap: ()=> import( /* webpackChunkName: "map" */ './Map/index.vue'),
 
     },

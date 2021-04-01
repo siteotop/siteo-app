@@ -1,25 +1,24 @@
 import * as baseChildren from './index';
 const dynamicBase = {
-  'PCs':()=> import( /* webpackChunkName: "carusel" */ './PCarusel.vue'),
-  'PDl':()=> import( /* webpackChunkName: "dialog" */ './PDialog.vue'),
+  'PPn':()=> import( /* webpackChunkName: "siteo-plugin" */ './PSiteoPlugin.vue'),
+  'PCs':()=> import( /* webpackChunkName: "vtf-groups" */ './PCarusel.vue'),
+  'PDl':()=> import( /* webpackChunkName: "vtf-dialog" */ './PDialog.vue'),
   'PDl':()=> import( /* webpackChunkName: "menu" */ './PDialogMenu.js'),
-  'PEx':()=> import( /* webpackChunkName: "expansion" */ './PExpansion.vue'),
-  'PPl':()=> import( /* webpackChunkName: "PPl" */ './PProgressLinear.vue'),
-  'PSd':()=> import( /* webpackChunkName: "PSd" */ './PSpeedDeal.vue'),
-  'PSg':()=> import( /* webpackChunkName: "carusel" */ './PSlideGroup.vue'),
-  'PSr':()=> import( /* webpackChunkName: "PSr" */ './PScroll.vue'),
-  'PTa':()=> import( /* webpackChunkName: "PTa" */ './PTable.vue'),
-  'PTb':()=> import( /* webpackChunkName: "carusel" */ './PTabs.vue'),
-  'PTm':()=> import( /* webpackChunkName: "PTm" */ './PTimeline.vue'),
-  
+  'PEx':()=> import( /* webpackChunkName: "vtf-expansion" */ './PExpansion.vue'),
+  'PPl':()=> import( /* webpackChunkName: "vtf-progress" */ './PProgressLinear.vue'),
+  //'PSd':()=> import( /* webpackChunkName: "PSd" */ './PSpeedDeal.vue'),
+  //'PSg':()=> import( /* webpackChunkName: "carusel" */ './PSlideGroup.vue'),
+  //'PSr':()=> import( /* webpackChunkName: "PSr" */ './PScroll.vue'),
+  'PTa':()=> import( /* webpackChunkName: "vtf-tables" */ './PTable.vue'),
+//  'PTb':()=> import( /* webpackChunkName: "carusel" */ './PTabs.vue'),
+//  'PTm':()=> import( /* webpackChunkName: "PTm" */ './PTimeline.vue'),
+
   'PLs':()=> import(
       /* webpackChunkName: "PLs" */
-      /* webpackPrefetch: true */
-
       './PList.vue'),
-  //'PAd':()=> import( /* webpackChunkName: "adsense" */ './PAdsense/Index.vue'),
-  'PPx':()=> import( /* webpackChunkName: "parallax" */ './PParallax.vue'),
-  'PLc':()=> import( /* webpackChunkName: "PLc" */ './PLocation.vue'),
+
+  'PPx':()=> import( /* webpackChunkName: "vtf-parallax" */ './PParallax.vue'),
+  //'PLc':()=> import( /* webpackChunkName: "PLc" */ './PLocation.vue'),
 
 };
 
