@@ -3,6 +3,8 @@
 </div>
 </template>
 <script>
+import Vue from 'vue';
+import PAdsense from './PAdsense/Index.vue';
 export default {
   props: {
     cntnt: {
@@ -26,14 +28,13 @@ export default {
       this.changeLink();
     }
 
-    let countAds = 6;
+    let countAds = 1;
     if (this.cnf.n!=undefined) {
       countAds = parseInt(this.cnf.n);
     }
-    console.log(this.cntnt.t);
-    console.log(countAds);
+    //let countAds = 6;
     if (countAds) {
-      this.insertAds(countAds);
+      this.insAds2();
     }
   },
 
@@ -80,52 +81,18 @@ export default {
      /**
       insert adsense
      */
-     insertAds(countAds) {
-        const paragraph = this.$el.querySelectorAll('p');
-
-        //console.log(paragraph);
-        if (!(paragraph&&paragraph.length>1)){
-          return false;
-        }
-        let configes=this.$store.getters.getSiteoConfig('SiteoPluginGadsense');
-        // if adsense turn off return null;
-        if (!configes||!configes.on) {
-          return;
-        }
-        let ad = document.createElement('ins');
-        ad.setAttribute("class", "adsbygoogle mt-3");
-        ad.setAttribute("data-ad-layout", "in-article");
-        ad.setAttribute("style", "display:block; text-align:center;");
-        ad.setAttribute("data-ad-layout", "in-article");
-        ad.setAttribute("data-ad-format", "fluid");
-        ad.setAttribute("data-ad-client", configes.pub);
-        ad.setAttribute("data-ad-slot", configes.bls.content.slot);
-        // add inside first paragraph
-        paragraph[0].appendChild(ad);
-        var i=1;
-        if (paragraph.length>5) {
-           let count = Math.round(paragraph.length/countAds);
-           console.log(count);
-           let n=5;
-           let l=paragraph.length;
-
-           while (n<l) {
-             i++;
-             paragraph[n].appendChild(ad.cloneNode());
-             n=n+count;
-           }
-           paragraph[paragraph.length-1].appendChild(ad.cloneNode());
-           i++;
-        }
-
-        this.$root.$loadScript('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js').then(function(){
-          for (let j=0;j<i;j++) {
-            (adsbygoogle = window.adsbygoogle || []).push({})
+     insAds2() {
+       var ComponentClass = Vue.extend(PAdsense);
+        var instance = new ComponentClass({
+          propsData: {
+            configs:this.$store.getters.getSiteoConfig('SiteoPluginGadsense')
           }
         });
-
-
-     }
+        instance.$mount(); // pass nothing
+        const paragraph = this.$el.querySelectorAll('p');
+        //this.$refs.container.appendChild(instance.$el)
+        paragraph[0].appendChild(instance.$el);
+     },
   }
 }
 </script>
