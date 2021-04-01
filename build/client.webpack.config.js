@@ -63,8 +63,10 @@ module.exports = merge(baseConfig, {
       splitChunks: {
         cacheGroups: {
           vendors: {
-            test: function () {return false},
-            priority: -10
+            test: /[\\/]node_modules[\\/](vue|vuex|vue-router|vue-meta)[\\/]/,
+            chunks: 'all',
+            //name: `vue-vendors`,
+            filename: `vue-vendors-${VERSION}.js`
           },
 
          }
@@ -166,10 +168,13 @@ module.exports = merge(baseConfig, {
         {
           test: /\.(sa|sc|c)ss$/,
           use: [
-            process.env.NODE_ENV !== 'production'
+            !isProd
              ? 'vue-style-loader'
              : MiniCssExtractPlugin.loader,
-            'css-loader',
+             {
+               loader: 'css-loader',
+
+             },
             'postcss-loader',
             {
               loader: 'sass-loader',
@@ -189,7 +194,7 @@ module.exports = merge(baseConfig, {
           use: [
 
             // https://vue-loader.vuejs.org/guide/extract-css.html#webpack-4
-            process.env.NODE_ENV !== 'production'
+            !isProd
              ? 'vue-style-loader'
              : MiniCssExtractPlugin.loader,
             'css-loader',
