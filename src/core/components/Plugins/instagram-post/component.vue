@@ -34,6 +34,8 @@ export default {
       }
   },
 
+/*
+AXIOS WAS DELETED FROM $root.$options
   mounted() {
       var self = this;
       if (!this.link) {
@@ -61,7 +63,7 @@ export default {
           console.log(error);
       })
   }
-
+*/
 
 
 }

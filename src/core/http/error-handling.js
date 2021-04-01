@@ -4,12 +4,12 @@
     {status : 45, data: {}   }  data is structure from server
  */
 
-export const checkObjectResponse = function (response, store){
+export const checkObjectResponse = function (response, dispatch){
     console.log(typeof(response));
     if (!response||!response.data||(typeof(response.data)!='object')) {
 
       var error='API Error: Response content is null or non Object'
-      store.dispatch('generateSystemMessage', {text:  error, type: 'error'});
+      dispatch('generateSystemMessage', {text:  error, type: 'error'});
       throw {
         response: {
           data: {

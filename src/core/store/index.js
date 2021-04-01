@@ -1,5 +1,5 @@
 import Vuex from 'vuex';
-import {checkObjectResponse} from 'core/http/error-handling.js';
+
 import SystemMessages from './messages.js';
 import {createModelCRUD} from './helpers/createModelCRUD'
 //import i18n from './i18n.js';
@@ -15,7 +15,7 @@ const helperNameRegister = function ( name) {
   }
 }
 
-export default function (Vue, RESTApi, configs)  {
+export default function (Vue, configs)  {
       const REGISTER={};
 
        Vue.use(Vuex);
@@ -135,43 +135,30 @@ export default function (Vue, RESTApi, configs)  {
 
            callCoreApi({dispatch}, APIconfig ) {
 
-             //APIconfig.headers
-             return  RESTApi({
-                method: APIconfig.method||'GET',
-                url: APIconfig.url,
-                data: APIconfig.data,
-                headers: APIconfig.headers,
-                params: APIconfig.params,
-                withCredentials: true
+              return import(
+                /* webpackChunkName: "axios-fetch" */
+                /* webpackMode: "lazy" */
+                '../http/rest-api.js' ).then(function(module){
 
-             })
+                 var RESTApi = module.createRESTApi(configs.host_api||process.env.HOST_API, dispatch);
+                 return  RESTApi({
+                    method: APIconfig.method||'GET',
+                    url: APIconfig.url,
+                    data: APIconfig.data,
+                    headers: APIconfig.headers,
+                    params: APIconfig.params,
+                    withCredentials: true
+
+                 })
+              })
+
+             //APIconfig.headers
+
 
            }
          }
        });
 
-
-       RESTApi.interceptors.response.use(
-         function (response) {
-            if (response.status==200) {
-                checkObjectResponse(response, store)
-            }
-            return response;
-         },
-
-         function (error) {
-           if (checkObjectResponse(error.response, store)) {
-             // common error
-             if (error.response.data.error_code=='validatorMessages') {
-
-             } else {
-                store.dispatch('generateSystemMessage', {text: `Error ${error.response.data.status
-         }: ${error.response.data.error_description}` , type: 'error'});
-             }
-              return Promise.reject(error);
-           }
-
-       });
 
         /**
           Register module with createModelCRUD
