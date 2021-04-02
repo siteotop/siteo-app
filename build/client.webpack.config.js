@@ -75,6 +75,9 @@ module.exports = merge(baseConfig, {
     },
 
     plugins: [
+
+
+
       new HtmlWebpackPlugin({
        template:html_template,
        filename: path.resolve(__dirname, "../public")+ '/index.html',
@@ -160,6 +163,23 @@ module.exports = merge(baseConfig, {
     module: {
 
       rules: [
+
+        {
+          test: /\.js$/,
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['@babel/preset-env', { targets: "ie 11" }]
+            ],
+            plugins: [/*'@babel/plugin-transform-runtime', не хотіло з цим плагіном працювати*/"@babel/plugin-syntax-dynamic-import"]
+          }
+        /*  include: [
+              path.resolve(__dirname, '../src'),
+              path.resolve(__dirname, '../node_modules/vue-awesome'),
+             //  path.resolve(__dirname, 'node_modules/vuetify/src'),
+              path.resolve(__dirname, '../node_modules/vuetify/lib/components'),
+            ]*/
+        },
         /**
           was created  by this documentation https://webpack.js.org/loaders/sass-loader/
           and Vue Loader  https://vue-loader.vuejs.org/migrating.html#css-extraction
