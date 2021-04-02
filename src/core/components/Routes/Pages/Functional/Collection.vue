@@ -1,42 +1,67 @@
 <template>
-<v-container fluid>
-    <v-responsive
-      class="mx-auto"
-      :width="width">
+<v-container fluid class="pa-0">
+
+    <v-container class="mx-cntt-wd">
       <SiteoBreadcramps
-        :lastTitle="collection.title"
+        :lastTitle="selfObject.title"
       >
       </SiteoBreadcramps>
-      </v-responsive>
-      <v-responsive
-      class="mx-auto"
-      :width="width"
-       v-if="collection.jsonStructure.n">
-        <v-img v-if="collection.picture" :src="collection.picture">
-        </v-img>
-        <v-row>
-         <v-col cols="12" class=" mb-2">
-           <h1 class="text-h4 text-md-h2">{{collection.title}}</h1>
-             {{collection.description}}
+    </v-container>
 
-         </v-col>
-
-       </v-row>
-      </v-responsive>
-      <v-responsive
-      class="mx-auto"
-      :width="width"
-        :key="i"
-        v-for="(item, i) in
-         collection.jsonStructure.list"
-      >
+    <v-container class="mx-cntt-wd"
+       v-if="selfObject.jsonStructure.n"
+    >
       <v-row>
-        <v-col >
-        <component :is="'Post'+item.t" v-bind="item" :i="i">
-        </component>
-      </v-col>
-      </v-row>
-      </v-responsive >
+       <v-col cols="12" class="text-center mb-2">
+         <h1 class="text-h4 text-md-h2">{{selfObject.title}}</h1>
+           {{selfObject.description}}
+         </v-col>
+           <v-col cols="12" v-if="selfObject.picture" style="min-height:200px;">
+
+             <picture >
+               <source :srcset="selfObject.picture" media="(min-width: 768px)">
+               <source :srcset="selfObject.thumb420">
+               <img :srcset="selfObject.thumb420" :alt="selfObject.jsonStructure.n" style="width:100%; height:auto">
+
+             </picture>
+           </v-col>
+        </v-row>
+    </v-container>
+
+
+    <v-container
+      class="mx-cntt-wd mb-1"
+      :width="width"
+      :key="i"
+      v-for="(item, i) in
+         selfObject.jsonStructure.list"
+      >
+        <v-row>
+          <v-col >
+          <component :is="'Post'+item.t" v-bind="item" :i="i">
+          </component>
+        </v-col>
+        </v-row>
+      </v-container>
+
+      <v-container class="mx-cntt-wd text-center mb-12">
+        <v-lazy height="80">
+          <v-btn
+            color="primary accent-4"
+            @click="playShare=true"
+          >
+           <v-icon left>
+              $vuetify.icons.share
+           </v-icon>
+           Поширити
+          </v-btn>
+        </v-lazy>
+        <ShareWindow
+          v-if="playShare"
+          @close="playShare=false"
+         >
+        </ShareWindow>
+      </v-container>
       <script v-html="jsonLtd" type="application/ld+json">
       </script>
 </v-container>
@@ -44,14 +69,18 @@
 
 
 <script>
-import { mapState } from 'vuex';
 import PHtml  from  '../../../Structure/PHtml.vue';
 import mixinFunctional from './mixin.js';
 const title = {
    functional: true,
    render(h, context) {
-     let cl = '';
-     return h(context.props.t, {attrs: {id:'h-'+context.props.i}, class:context.props.cl||cl}, context.props.d);
+
+     let cls ={
+        h1:'text-h4 text-md-h2',
+        h2:'text-h5 text-md-h3' ,
+        h3:'text-h6 text-md-h4'
+      }
+     return h(context.props.t, {attrs: {id:'h-'+context.props.i}, class:context.props.cl||cls[context.props.t]}, context.props.d);
    }
 };
 export default {
@@ -67,7 +96,7 @@ export default {
          return h('PHtml', {
             props:{
              cntnt: {t: context.props.d},
-             classText: 'text-h5 font-weight-regular',
+             classText: 'text-body-3',
              cnf: {
                  n: (context.props.i%2==0)?0:1
              },
@@ -116,9 +145,9 @@ export default {
       render(h,context) {
          let menu = context.parent.generateMenu();
          return h('v-sheet', {
-            class:'pa-4',
+            class:'pa-4 mb-4',
             props: {shaped: true, elevation: 1, color:'grey lighten-4'}},  [h('ol', menu.map(function(item) {
-           return h('li', {class:"text-h6 font-weight-medium mb-3"},
+           return h('li', {class:"text-body-1 font-weight-medium mb-3"},
              [h('a', {
 
                attrs: {href:'#'+item.hash },
@@ -132,10 +161,12 @@ export default {
     }
 
   },
+  props: ['selfObject'],
   data() {
       return {
         menu: [],
         width: 920,
+        playShare: false,
       }
   },
   computed: {
@@ -144,18 +175,15 @@ export default {
         return {
           "@context": "https://schema.org",
           "@type": "NewsArticle",
-          "headline": this.collection.title,
+          "headline": this.selfObject.title,
           "image": [
-            this.collection.picture,
-            this.collection.thumb420
+            this.selfObject.picture,
+            this.selfObject.thumb420
            ],
-          "datePublished": this.collection.datePublished,
-          "dateModified": this.collection.dateModified
+          "datePublished": this.selfObject.datePublished,
+          "dateModified": this.selfObject.dateModified
+      }
     }
-    },
-    ...mapState({
-      collection: state => state.pages.objectActive
-    })
   },
 
   methods: {
@@ -164,15 +192,15 @@ export default {
           return this.menu;
         }
         var menu = [];
-        this.collection.jsonStructure.list.map(function(item, index){
-           if (
-           item.t=='h2'
-           ||item.t=='h3') {
-             var item = {
+        this.selfObject.jsonStructure.list.map(function(item, index){
+           if (item&&
+           (item.t=='h2'
+           ||item.t=='h3')) {
+             var h = {
                 hash: 'h-'+index,
                 title: item.d
              }
-            menu.push(item);
+            menu.push(h);
 
            }
         })

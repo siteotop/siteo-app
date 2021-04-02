@@ -1,6 +1,6 @@
 <template>
 <v-container
-  class="recipeWidth"
+  class="mx-cntt-wd"
   >
   <SiteoBreadcramps
     :lastTitle="selfObject.jsonStructure.n"
@@ -8,7 +8,7 @@
   </SiteoBreadcramps>
    <v-row>
     <v-col cols="12" class="text-center mb-2">
-      <h1 class="text-h5 text-md-h2">{{selfObject.title}}</h1>
+      <h1 class="text-h4 text-md-h2">{{selfObject.title}}</h1>
         {{selfObject.description}}
       </v-col>
         <v-col cols="12" v-if="selfObject.picture" style="min-height:200px;">
@@ -32,9 +32,6 @@
       <v-btn
         block
         outlined
-
-
-
         :key="i"
         class="mb-1"
          v-for="(item, i) in menu"

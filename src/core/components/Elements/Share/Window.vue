@@ -5,13 +5,7 @@
       :width="width"
       :fullscreen="$vuetify.breakpoint.xs"
       >
-      <v-textarea
-         :style="{position:'absolute',left:'-99999px'}"
-         id="shareCopyId"
 
-         :value="copiedText"
-         readonly>
-      </v-textarea>
        <v-card :style="shareText?{position:'absolute',left:'-99999px'}:{}">
 
          <v-card-title
@@ -78,6 +72,13 @@
           >
           Copied
        </v-snackbar>
+       <v-textarea
+          :style="{position:'absolute',height:1,top:'-500',left:'-99999px'}"
+          id="shareCopyId"
+
+          :value="copiedText"
+          readonly>
+       </v-textarea>
  </component>
 </template>
 
