@@ -24,7 +24,7 @@ export default {
       i:  mdiFacebook
     },
     "viber": {
-      "sharer": "viber://forward?text=@description @url",
+      "sharer": "viber://forward?text=@url @description",
       i: mdiWhatsapp
     },
     "telegram": {
