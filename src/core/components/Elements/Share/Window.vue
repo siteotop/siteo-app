@@ -1,69 +1,70 @@
 <template >
-  <component :is="dialog?'v-dialog': 'v-sheet'"
+  <component
+      :is="dialog?'v-dialog': 'v-sheet'"
       v-model="shareWindow"
       :width="width"
       :fullscreen="$vuetify.breakpoint.xs"
-     >
-       <v-card>
+      >
+
+       <v-card :style="shareText?{position:'absolute',left:'-99999px'}:{}">
 
          <v-card-title
            class="text-h5 grey lighten-2"
            primary-title
+           v-if="!shareText"
          >
 
             <v-icon left>$vuetify.icons.share</v-icon>
-            {{$t('share')}}
+
           <v-spacer></v-spacer>
            <v-btn v-if="dialog"   icon   @click="shareWindow = false">
              <v-icon>$vuetify.icons.close</v-icon>
            </v-btn>
          </v-card-title>
 
-         <v-card-text class="pt-3">
-           <v-subheader>
+         <v-card-title >
+
               {{ogTitle}}
-           </v-subheader>
-           <v-textarea
-              id="shareCopyId"
-              outlined
-              :value="canonicalUrl"
-              auto-grow
-              rows="1"
-              readonly>
+
+         </v-card-title>
+
+         <v-card-text class="pt-3" >
+
+           <v-text-field
+             v-if="!shareText"
+             outlined
+             readonly
+            :value="copiedText"
+            class="text--secondary"
+           >
              <template v-slot:append>
-               <v-btn
-                icon
-                @click="copyText()"
-              >
-               <v-icon>{{$options._icons.copy}}</v-icon>
-             </v-btn>
+
+               <v-icon @click="copyText()">{{$options._icons.copy}}</v-icon>
+
             </template>
+           </v-text-field>
 
-
-           </v-textarea>
 
            <AppSharing
-              v-if="share"
+              v-if="!shareText"
+              :copyText="copyText"
               :cannonical="canonicalUrl"
               :ogTitle="ogTitle"
 
             >
             </AppSharing>
          </v-card-text>
-
-
-
-         <v-card-actions v-if="dialog">
-           <v-spacer></v-spacer>
-           <v-btn
-             color="primary"
-             text
-             @click="shareWindow = false"
-           >
-             {{$t('close')}}
-           </v-btn>
-         </v-card-actions>
        </v-card>
+       <AppSharing
+          v-if="shareText"
+          :cannonical="canonicalUrl"
+          :ogTitle="ogTitle"
+          :ogDescription="description"
+          :large="false"
+          :copyText="copyText"
+
+        >
+        </AppSharing>
        <v-snackbar
           v-model="snackbar"
           color="info"
@@ -71,13 +72,19 @@
           >
           Copied
        </v-snackbar>
+       <v-textarea
+          :style="{position:'absolute',height:1,top:'-500',left:'-99999px'}"
+          id="shareCopyId"
+
+          :value="copiedText"
+          readonly>
+       </v-textarea>
  </component>
 </template>
 
 <script>
 
 import AppSharing from './index.vue';
-import  _find  from 'lodash/find';
 
 import {mdiContentCopy} from '@mdi/js';
 
@@ -89,6 +96,14 @@ export default {
           type: String,
           default: ''
        },
+
+      description: {
+          type:String,
+          default: '',
+      },
+
+      // share link or share text
+
       title: {
         type: String,
         default: ''
@@ -98,11 +113,11 @@ export default {
         type: Boolean,
         default:true
       },
-      share: {
-        type: Boolean,
-        default: true
-      },
 
+      shareText: {
+        type: Boolean,
+        default: false
+      },
       width: {
         type:String,
         default: '500'
@@ -126,6 +141,19 @@ export default {
   },*/
 
   computed: {
+
+    /**
+      if mode share text we take copy text
+    */
+    copiedText() {
+       if (this.shareText) {
+         return this.description+" "+this.canonicalUrl;
+       } else {
+         return this.canonicalUrl
+       }
+
+    },
+
     canonicalUrl () {
         //console.log(this.$route);
         if (this.link) {

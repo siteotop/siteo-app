@@ -66,7 +66,7 @@
        >
         <v-icon left>
            $vuetify.icons.share
-        </v-icon>  {{$t('share')}}
+        </v-icon> 
        </v-btn>
        <ShareWindow
          v-if="share"

@@ -1,7 +1,5 @@
 
 
-import { mapState } from 'vuex';
-
 import pages from  '../../../store/modules/pages';
 
 import MetaInfo from './MetaInfo';
@@ -49,56 +47,23 @@ export default {
             return (this.$route.path == '/');
         },
 
-        ...mapState({
-            pageObject (state) {
-                return state.pages? state.pages.objectActive: {};
-            },
-
-            pageMenu(state) {
-              if (Array.isArray(state.pages.objectActive.jsonStructure)) {
-                var menu = [];
-                state.pages.objectActive.jsonStructure.map(function(section, index){
-                    if (section.a/*_attrib*/) {
-                      if (section.a.id&&section.a['data-t']) {
-                        menu.push({
-                            title: section.a['data-t'],
-                            target: '#'+section.a.id
-                         });
-                        }
-                    }
-                });
-                return menu;
-              } else {
-                return [];
-              }
-            }
-        }),
-
-
-
+        pageObject () {
+          if (this.$store.state.pages) {
+            return this.$store.state.pages.objectActive
+          } else {
+            return {};
+          }
+        },
 
     },
 
-    mounted(){
+    /*mounted(){
         this.addEventForEdit();
-    },
+    },*/
 
 
     methods: {
 
-      addEventForEdit() {
-        function KeyPress(e) {
-          var evtobj = window.event? event : e
-          if (evtobj.keyCode == 13 && evtobj.ctrlKey) alert("Ctrl+Enter");
-        }
-        //document.onkeydown = KeyPress;
-      },
-
-    /*  asyncDataError(error_data) {
-          this.$store.commit('pages/clearModel');
-          this.$store.commit('pages/updateModel', {error: error_data});
-      },
-*/
       /**
         Get ID for page
       */
@@ -158,20 +123,26 @@ export default {
               ])
            ] )
         }
-        var component = this.pageObject.f;
+
         if (!this.pageObject.f) {
           if (Array.isArray(this.pageObject.jsonStructure)) {
-             component= 'PageSchema';
+            return h('PageSchema', {
+              props: {
+                  structure: this.pageObject.jsonStructure,
+                }
+            });
           } else {
             return h('div', 'jsonStructure is not array');
           }
+
+        } else {
+          return h(this.pageObject.f, {
+            props: {
+                selfObject: this.pageObject,
+              }
+          });
         }
 
-        return h(component, {
-          props: {
-              structure: this.pageObject.jsonStructure,
-            }
-        });
 
 
 

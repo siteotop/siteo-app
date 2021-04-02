@@ -1,4 +1,20 @@
 // entry-client.js
+/**
+  Add Google analitics
+*/
+if (window.__SITEO_CONFIG__['SiteoPluginGanalitics']) {
+    import(
+
+        /*webpackChunkName: "analitics" */
+        /*webpackMode: "lazy" */
+        'vue-analytics').then((VueAnalytics)=>{
+        console.log(VueAnalytics.default);
+      Vue.use(VueAnalytics.default, {
+        id: window.__SITEO_CONFIG__['SiteoPluginGanalitics']['ui'],
+        router: app.$router
+      });
+    })
+}
 
 import  { createSiteo} from './core';
 
@@ -14,23 +30,6 @@ var app = createSiteo({
     configs: window.__SITEO_CONFIG__,
     client: true
 });
-
-/**
-  Add Google analitics
-*/
-if (window.__SITEO_CONFIG__['SiteoPluginGanalitics']) {
-
-    import(/* webpackChunkName: "analitics" */ 'vue-analytics').then((VueAnalytics)=>{
-        console.log(VueAnalytics.default);
-      Vue.use(VueAnalytics.default, {
-        id: window.__SITEO_CONFIG__['SiteoPluginGanalitics']['ui'],
-        router: app.$router
-      });
-    })
-}
-
-
-
 
 app.$router.onReady(() => {
 
@@ -48,11 +47,6 @@ app.$router.onReady(() => {
     }
 
    }
-
-   /*if (app.$store.state.appInstance.objectActive.design) {
-     console.log(JSON.stringify(app.$store.state.appInstance.objectActive.design.Vtf));
-     app.updateVuetifyOptions(app.$store.state.appInstance.objectActive.design.Vtf);
-   }*/
   //about  devide code client and SSR  https://bit.ly/2tnfDa4
 
   app.$mount('#app');
@@ -64,7 +58,11 @@ app.$router.onReady(() => {
 
 
 
+
+
+
 //https://github.com/typekit/webfontloader
+/*
 window.WebFontConfig = {
   google: {
     families: ['Roboto:300,400,500,700']
@@ -77,3 +75,4 @@ window.WebFontConfig = {
    wf.async = true;
    s.parentNode.insertBefore(wf, s);
 })(document);
+**/

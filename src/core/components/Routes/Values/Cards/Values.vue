@@ -30,29 +30,6 @@
 
 
            </v-toolbar>
-
-
-
-            <!--<v-container fill-height fluid>
-              <v-row >
-                <v-col  >
-
-                </v-col>
-
-                <v-col class="text-center" >
-                  <span v-if="!hover" class="text-h5">{{props.title}}</span>
-                  <div v-else class="align-center ">
-                        <BPrice class="text-h5 font-weight-bold "
-                          :discount="props.discount"
-                          :price="props.price">
-                        </BPrice>
-                      <div>
-                        <PBt  :to="props._to"></PBt>
-                      </div>
-                  </div>
-                </v-col>
-              </v-row>
-            </v-container>-->
           </v-img>
       <v-card-title class="text-h5">
         <router-link
@@ -69,11 +46,6 @@
       <v-card-text >
         {{props.preview}}
       </v-card-text>
-        <!--  <v-card-title>
-            <BPrice class="text-h5 font-weight-medium" :discount="props.discount" :price="props.price"></BPrice>
-            <v-spacer></v-spacer>
-            <PBt :to="props._to" :fab="true" :large="false"></PBt>
-          </v-card-title> -->
         <v-divider  ></v-divider>
         <v-card-actions >
 

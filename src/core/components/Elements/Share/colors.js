@@ -1,4 +1,5 @@
 export default {
+  copy: '' ,
   fb: 'indigo',
   instagram: 'purple lighten-1',
   youtube: 'red darken-1',

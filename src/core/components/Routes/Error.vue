@@ -17,7 +17,7 @@
           {{description}}
         </div>
         <div>
-          <span class="text-caption grey--text text--lighten-1">{{ $t('for_more')}}  <a class="text-caption grey--text text--lighten-1"  @click="modalError=true" >{{ $t('here')}}</a></span>
+          <span class="text-caption grey--text text--lighten-1"><!--{{ $t('for_more')}} --> Для більшої інформації натисни  <a class="text-caption grey--text text--lighten-1"  @click="modalError=true" ><!--{{ $t('here')}}--> тут </a></span>
           <v-dialog max-width="500" v-model="modalError">
             <v-card >
               <v-card-text>
@@ -112,7 +112,7 @@ export default {
             }
 
          }  else {
-           return  this.$t('error'+this.dataStatus);
+           return 'Error '+this.dataStatus /*this.$t('error'+this.dataStatus)*/;
          }
 
       },
@@ -127,7 +127,7 @@ export default {
          if (this.$store.state.appInstance.objectActive.name){
             return this.$store.state.appInstance.objectActive.name;
          } else {
-           return  this.$t('mainpage');
+           return 'mainpage'/*  this.$t('mainpage')*/;
          }
       },
 

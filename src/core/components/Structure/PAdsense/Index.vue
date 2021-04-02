@@ -1,14 +1,14 @@
 <template>
-<v-sheet >
-  <div ref="block" :style="{width:width, maxHeight: maxHeight , border: border}">
+<v-lazy v-model="lazyloaded">
+<div ref="block" :style="{display:'block', width:'100%', border: border}">
     <ins
       v-if="showBlock"
       class="adsbygoogle"
       v-bind="configAdsense"
       >
     </ins>
-  </div>
-</v-sheet>
+</div>
+</v-lazy>
 </template>
 
 <script>
@@ -27,12 +27,18 @@ export default {
     maxHeight: {
       type: [String, Number],
       default: 300
+    },
+
+    configs: {
+      type: [Boolean, Object],
+      defaukt: false
     }
 
   },
 
   data() {
     return {
+      lazyloaded: false,
       showBlock: false,
       configAdsense: false,
       width:'100%',
@@ -41,12 +47,12 @@ export default {
 
   },
 
-
-    mounted() {
-      this.loadAdsense();
-    },
-
-    watch: {
+  watch: {
+      lazyloaded(newValue, oldValue) {
+          if (newValue==true&&newValue!==oldValue) {
+            this.loadAdsense();
+          }
+      },
       adType(newType, oldType) {
           if (!newType&&newType!=oldType) {
             this.showBlock = false;
@@ -58,8 +64,14 @@ export default {
   },
   methods: {
      loadAdsense() {
-       var self=this;
-       var configes = self.$store.getters.getSiteoConfig('SiteoPluginGadsense');
+       var self=this, configes;
+
+       if (this.configs!==false) {
+          configes = this.configs;
+       } else {
+         configes =  self.$store.getters.getSiteoConfig('SiteoPluginGadsense');
+       }
+
        // checkon/off adsense
        if (!configes||!configes.on) {
          return;

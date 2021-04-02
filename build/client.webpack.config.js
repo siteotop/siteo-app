@@ -47,7 +47,6 @@ module.exports = merge(baseConfig, {
 
   },
   entry: {
-    'polyfill': '@babel/polyfill',
     'core': './src/client.js',
   },
 
@@ -64,8 +63,10 @@ module.exports = merge(baseConfig, {
       splitChunks: {
         cacheGroups: {
           vendors: {
-            test: function () {return false},
-            priority: -10
+            test: /[\\/]node_modules[\\/](vue|vuex|vue-router|vue-meta)[\\/]/,
+            chunks: 'all',
+            //name: `vue-vendors`,
+            filename: `vue-vendors-${VERSION}.js`
           },
 
          }
@@ -97,6 +98,8 @@ module.exports = merge(baseConfig, {
       new HtmlWebpackPlugin({
         template: html_template,
         filename: path.resolve(__dirname, "../ssr/template")+ '/index.ssr.html',
+        // Якщо файли будуть зверху, то вони почнуть завантажуватися паралельно потоку. Це краще, чим вони почнуть завантажуватися після обробки html
+        scriptLoading: 'defer',
         //inject: false,
         minify: false,
         templateParameters: {
@@ -122,6 +125,9 @@ module.exports = merge(baseConfig, {
       new HtmlWebpackPlugin({
        template: html_template,
        filename: path.resolve(__dirname, "../ssr/template")+ '/index.ssr.plain.html',
+
+
+
        //inject: false,
        templateParameters: {
            html_attr: "",
@@ -138,7 +144,7 @@ module.exports = merge(baseConfig, {
         'process.env': {
            NODE_ENV: JSON.stringify(process.env.NODE_ENV),
            HOST_API: JSON.stringify(process.env.HOST_API_FRONTEND),
-           PATH_ICON: JSON.stringify(process.env.PATH_ICON),  
+           PATH_ICON: JSON.stringify(process.env.PATH_ICON),
         }
       }),
       new MiniCssExtractPlugin({
@@ -162,10 +168,13 @@ module.exports = merge(baseConfig, {
         {
           test: /\.(sa|sc|c)ss$/,
           use: [
-            process.env.NODE_ENV !== 'production'
+            !isProd
              ? 'vue-style-loader'
              : MiniCssExtractPlugin.loader,
-            'css-loader',
+             {
+               loader: 'css-loader',
+
+             },
             'postcss-loader',
             {
               loader: 'sass-loader',
@@ -185,7 +194,7 @@ module.exports = merge(baseConfig, {
           use: [
 
             // https://vue-loader.vuejs.org/guide/extract-css.html#webpack-4
-            process.env.NODE_ENV !== 'production'
+            !isProd
              ? 'vue-style-loader'
              : MiniCssExtractPlugin.loader,
             'css-loader',

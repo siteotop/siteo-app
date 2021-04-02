@@ -12,7 +12,7 @@
         </v-row>
   </v-container>
   <SiteoBreadcramps
-    :key="category_title" 
+    :key="category_title"
     :lastTitle="category_title"
   >
   </SiteoBreadcramps>
@@ -186,7 +186,6 @@
 //import WiPosts from '../Widgets/WiPosts.vue';
 import CardValues from './Cards/Values.vue';
 
-
 import values  from  '../../../store/modules/values';
 import { mapState } from 'vuex';
 import {
@@ -301,7 +300,7 @@ export default {
           listItems (state) {
               if (state.values) {
                   if (state.values.items.objects) {
-                    let about_text=this.$store.getters.getSiteoConfig('t_re')||this.$t('rm');
+                    let about_text=this.$store.getters.getSiteoConfig('t_re')||'rm';
                     let prefix_val = this.$store.getters.getSiteoConfig('rvp');
                     let prefix_val_cat = this.categoryPrefix;
                     let prefix_loc = this.$store.getters.getSiteoConfig('rlp');

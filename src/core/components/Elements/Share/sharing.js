@@ -10,24 +10,43 @@ import {
   mdiVk,
   mdiWhatsapp,
   mdiMessageText,
-  mdiAt
+  mdiAt,
+  mdiContentCopy
 } from '@mdi/js';
 export default {
-
+    "copy": {
+      "sharer": "copy",
+      i:  mdiContentCopy
+    },
     "fb": {
-      "sharer": "https://www.facebook.com/sharer/sharer.php?u=@url&title=@title&description=@description&quote=@quote",
+    //  "sharer": "https://www.facebook.com/sharer/sharer.php?u=@url&title=@title&description=@title&quote=@title",
+    "sharer": "https://www.facebook.com/sharer/sharer.php?u=@url&quote=@description",
       i:  mdiFacebook
+    },
+    "viber": {
+      "sharer": "viber://forward?text=@description @url",
+      i: mdiWhatsapp
+    },
+    "telegram": {
+      "sharer": "https://t.me/share/url?url=@url&text=@description",
+      i: mdiTelegram,
     },
 
     "twitter": {
-      "sharer": "https://twitter.com/intent/tweet?text=@title&url=@url&hashtags=@hashtags@twitteruser",
+      "sharer": "https://twitter.com/intent/tweet?text=@description&url=@url",
       i:  mdiTwitter
     },
 
-    "linkedin": {
-      "sharer": "https://www.linkedin.com/shareArticle?mini=true&url=@url&title=@title&summary=@description",
-      i: mdiLinkedin
+    "email": {
+      "sharer": "mailto:?subject=@title&body=@description @url",
+      i: mdiAt
     },
+
+    "sms": {
+      "sharer": "sms:?body=@description @url",
+      i: mdiMessageText
+    },
+
 
   /*  "odnoklassniki": {
       "sharer": "https://connect.ok.ru/dk?st.cmd=WidgetSharePreview&st.shareUrl=@url&st.comments=@description",
@@ -35,55 +54,38 @@ export default {
     },
 */
     "pinterest": {
-      "sharer": "https://pinterest.com/pin/create/button/?url=@url&media=@media&description=@title",
+      "sharer": "https://pinterest.com/pin/create/button/?url=@url&description=@description",
       i: mdiPinterest
     },
 
+    "whatsapp": {
+      "sharer": "whatsapp://send?text=@description @url",
+      i:mdiWhatsapp
+
+    },
     "reddit": {
-      "sharer": "https://www.reddit.com/submit?url=@url&title=@title",
+      "sharer": "https://www.reddit.com/submit?url=@url&title=@description",
       i: mdiReddit
     },
 
     "skype": {
-      "sharer": "https://web.skype.com/share?url=@description%0D%0A@url",
+      "sharer": "https://web.skype.com/share?url=@description @url",
       i: mdiSkype
     },
 
-    "telegram": {
-      "sharer": "https://t.me/share/url?url=@url&text=@description",
-      i: mdiTelegram,
-    },
-
-    "viber": {
-      "sharer": "viber://forward?text=@url @description",
-      i: mdiWhatsapp
-    },
-
     "vk": {
-      "sharer": "https://vk.com/share.php?url=@url&title=@title&description=@description&image=@media&noparse=true",
+      "sharer": "https://vk.com/share.php?url=@url&description=@description",
       i: mdiVk
     },
 
-    /*"weibo": {
-      "sharer": "http://service.weibo.com/share/share.php?url=@url&title=@title",
-
-    },*/
-
-    "whatsapp": {
-      "sharer": "whatsapp://send?text=@description%0D%0A@url",
-      i:mdiWhatsapp
-
+    "linkedin": {
+      "sharer": "https://www.linkedin.com/shareArticle?mini=true&url=@url&summary=@description",
+      i: mdiLinkedin
     },
 
-    "sms": {
-      "sharer": "sms:?body=@url%20@description",
-      i: mdiMessageText
-    },
 
-    "email": {
-      "sharer": "mailto:?subject=@title&body=@url%0D%0A%0D%0A@description",
-      i: mdiAt
-    },
+
+
 
 
 }
