@@ -1,9 +1,5 @@
 //import "@babel/polyfill";
 
-import "core-js/stable";
-import "regenerator-runtime/runtime"
-
-
 import Vue from 'vue'; //1 include vue
 
 /**VUE-META

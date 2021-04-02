@@ -51,7 +51,7 @@ module.exports = {
            }
          }
        }
-       ),
+     ),
 
      ],
 
@@ -108,16 +108,7 @@ module.exports = {
       },
       // this will apply to both plain `.js` files
       // AND `<script>` blocks in `.vue` files
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        include: [
-            path.resolve(__dirname, '../src'),
-            path.resolve(__dirname, '../node_modules/vue-awesome'),
-           //  path.resolve(__dirname, 'node_modules/vuetify/src'),
-            path.resolve(__dirname, '../node_modules/vuetify/lib/components'),
-          ]
-      }
+      
     ]
   },
 

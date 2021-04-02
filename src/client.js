@@ -1,20 +1,6 @@
-// entry-client.js
-/**
-  Add Google analitics
-*/
-if (window.__SITEO_CONFIG__['SiteoPluginGanalitics']) {
-    import(
 
-        /*webpackChunkName: "analitics" */
-        /*webpackMode: "lazy" */
-        'vue-analytics').then((VueAnalytics)=>{
-        console.log(VueAnalytics.default);
-      Vue.use(VueAnalytics.default, {
-        id: window.__SITEO_CONFIG__['SiteoPluginGanalitics']['ui'],
-        router: app.$router
-      });
-    })
-}
+import "core-js/stable";
+import "regenerator-runtime/runtime"
 
 import  { createSiteo} from './core';
 
@@ -57,7 +43,23 @@ app.$router.onReady(() => {
 })
 
 
+// entry-client.js
+/**
+  Add Google analitics
+*/
+if (window.__SITEO_CONFIG__['SiteoPluginGanalitics']) {
+    import(
 
+        /*webpackChunkName: "analitics" */
+        /*webpackMode: "lazy" */
+        'vue-analytics').then((VueAnalytics)=>{
+          console.log(VueAnalytics.default);
+          Vue.use(VueAnalytics.default, {
+            id: window.__SITEO_CONFIG__['SiteoPluginGanalitics']['ui'],
+            router: app.$router
+          });
+          })
+}
 
 
 
